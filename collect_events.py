@@ -1,5 +1,3 @@
-import time
-
 import requests
 
 import json
@@ -18,11 +16,7 @@ def create_dragonlink_url(count=15):
 
 def collect_dragonlink_events(count=100):
     response = requests.get(create_dragonlink_url(count))
-
-    events_json = dict(response.json())["value"]
-
-    with open("json_examples/dragonlink_response.json", "w") as f:
-        json.dump(events_json, f)
+    return dict(response.json())["value"]
 
 
 def create_drexel_events_url(page=1):
@@ -33,12 +27,9 @@ def collect_drexel_events(count=100):
     results = []
     for i in range(count // 10):
         response = requests.get(create_drexel_events_url(i + 1))
-        events_json = dict(response.json())["results"]
-        results.extend(events_json)
-        time.sleep(.5)
+        results.extend(dict(response.json())["results"])
 
-    with open("json_examples/drexel_events_response.json", "w") as f:
-        json.dump(results, f)
+    return results
 
 
 def create_drexel_athletics_url(days_out=30):
@@ -52,16 +43,36 @@ def create_drexel_athletics_events():
     url = create_drexel_athletics_url()
     response = requests.get(url)
 
-    events_json = list(response.json())
+    response_json = list(response.json())
+    events_json = []
 
-    with open("json_examples/drexel_athletics_response.json", "w") as f:
-        json.dump(events_json, f)
+    for day in response_json:
+        if day["events"] is None:
+            continue
+        for event in day["events"]:
+            events_json.append(event)
+
+    return events_json
+
+
+def collect_all_events():
+    events = []
+    events.extend([Event.from_dragonlink_json(event_json) for event_json in collect_dragonlink_events()])
+    events.extend([Event.from_drexel_events_json(event_json) for event_json in collect_drexel_events()])
+    events.extend([Event.from_drexel_athletics_json(event_json) for event_json in create_drexel_athletics_events()])
+    return [i for i in events if i is not None]
+
+
+def save_events(events):
+    with open("events.json", "w") as f:
+        json.dump([event.to_json() for event in events], f, indent=4)
 
 
 def main():
-    create_drexel_athletics_events()
+    events = collect_all_events()
+    print(f"Events: {len(events)}")
+    save_events(events)
 
 
 if __name__ == "__main__":
     main()
-    # pprint(quote(datetime.now(ZoneInfo("America/New_York")).replace(microsecond=0).isoformat(), safe=""))

@@ -9,15 +9,29 @@ class Event:
         self.end_time = end_time
         self.image_id = image_id
 
+    def to_json(self):
+        return {
+            "id": self.event_id,
+            "source": self.source,
+            "name": self.name,
+            "organizationName": self.org_name,
+            "location": self.location,
+            "startsOn": self.start_time,
+            "endsOn": self.end_time,
+            "imagePath": self.image_id,
+        }
+
     @classmethod
     def from_json(cls, event_json):
-        if event_json["source"] == "dragonlink":
-            return cls.from_dragonlink_json(event_json)
-
-        if event_json["source"] == "drexel_events":
-            return cls.from_drexel_events_json(event_json)
-
-        raise ValueError("Unsupported event JSON format")
+        match event_json["source"]:
+            case "dragonlink":
+                return cls.from_dragonlink_json(event_json)
+            case "drexel_events":
+                return cls.from_drexel_events_json(event_json)
+            case "drexel_athletics":
+                return cls.from_drexel_athletics_json(event_json)
+            case _:
+                raise ValueError("Unsupported event JSON format")
 
     @classmethod
     def from_dragonlink_json(cls, event_json):
@@ -34,7 +48,7 @@ class Event:
 
     @classmethod
     def from_drexel_events_json(cls, event_json):
-        if "deadline" in event_json["typeNames"].lower():
+        if "deadline" in str(event_json["typeNames"]).lower():
             return None
         department_names = event_json.get("departmentNames")
 
