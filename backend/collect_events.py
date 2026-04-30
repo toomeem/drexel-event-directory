@@ -1,3 +1,5 @@
+import time
+
 import requests
 
 import json
@@ -28,7 +30,7 @@ def collect_drexel_events(count=100):
     for i in range(count // 10):
         response = requests.get(create_drexel_events_url(i + 1))
         results.extend(dict(response.json())["results"])
-
+        time.sleep(.1)
     return results
 
 

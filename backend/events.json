@@ -1,0 +1,2320 @@
+[
+  {
+    "id": "12446139",
+    "source": "dragonlink",
+    "name": "Physician Assistant Class of 2027 Finals Lunch",
+    "organizationName": "Physician Assistant Studies Class of 2027",
+    "location": "S405 Classrooom",
+    "startsOn": "2026-04-30T14:45:00+00:00",
+    "endsOn": "2026-04-30T16:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12374003",
+    "source": "dragonlink",
+    "name": "ISSS Lunch & Dialogue: Wellness Within Reach with Student Health Center and Counseling Center",
+    "organizationName": "International Students and Scholars Services",
+    "location": "Rush Building",
+    "startsOn": "2026-04-30T15:00:00+00:00",
+    "endsOn": "2026-04-30T17:00:00+00:00",
+    "imagePath": "e8d73bc8-1847-4d43-b577-d656656df999d5dd93ae-c663-44f8-b8ea-a89c3bdc35c4.png"
+  },
+  {
+    "id": "12211867",
+    "source": "dragonlink",
+    "name": "Journal Club Meeting",
+    "organizationName": "DUCOM Journal Club",
+    "location": "Online",
+    "startsOn": "2026-04-30T16:00:00+00:00",
+    "endsOn": "2026-04-30T17:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12441563",
+    "source": "dragonlink",
+    "name": "Language Equity",
+    "organizationName": "DUCOM Diversity Week",
+    "location": "HSB 4E04 - COM Classroom",
+    "startsOn": "2026-04-30T16:00:00+00:00",
+    "endsOn": "2026-04-30T17:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12392086",
+    "source": "dragonlink",
+    "name": "Greek Tag",
+    "organizationName": "Pi Kappa Phi Fraternity",
+    "location": "Any where outside ",
+    "startsOn": "2026-04-01T16:00:00+00:00",
+    "endsOn": "2026-04-30T17:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12431488",
+    "source": "dragonlink",
+    "name": "PHDSAG Spring Town Hall",
+    "organizationName": "Public Health Doctoral Students Advisory Group",
+    "location": "Nesbitt 340",
+    "startsOn": "2026-04-30T16:00:00+00:00",
+    "endsOn": "2026-04-30T17:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12371341",
+    "source": "dragonlink",
+    "name": "Coffee & Community",
+    "organizationName": "Lindy Center for Civic Engagement",
+    "location": "Lindy Center for Civic Engagement",
+    "startsOn": "2026-04-30T15:00:00+00:00",
+    "endsOn": "2026-04-30T18:00:00+00:00",
+    "imagePath": "e95c3e7b-68df-48cb-b64d-913de42f89ad4f8c3cde-c57c-4ddd-93d6-5c1c8de6708e.png"
+  },
+  {
+    "id": "12431547",
+    "source": "dragonlink",
+    "name": "Spring with Sigmas",
+    "organizationName": "Sigma Psi Zeta Sorority, Inc.",
+    "location": "Lanc Walk - DAC 3",
+    "startsOn": "2026-04-30T16:00:00+00:00",
+    "endsOn": "2026-04-30T20:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12431574",
+    "source": "dragonlink",
+    "name": "MedFit Walk + Froyo Fundraiser",
+    "organizationName": "MedFit Mind and Movement",
+    "location": "Dragon Statue - Table Space 1",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-04-30T22:00:00+00:00",
+    "imagePath": "f003548b-c951-46fa-9db6-16d087c4273a7d3cf794-24fc-4a40-8057-834e0dae84e5.png"
+  },
+  {
+    "id": "12443429",
+    "source": "dragonlink",
+    "name": "DZ Fundraising Bake Sale",
+    "organizationName": "Delta Zeta",
+    "location": "Lanc Walk - DAC 5",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-04-30T22:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12375560",
+    "source": "dragonlink",
+    "name": "Drexel Robotics Spring GBM",
+    "organizationName": "Drexel Robotics",
+    "location": "Hill Conference Room",
+    "startsOn": "2026-04-30T21:30:00+00:00",
+    "endsOn": "2026-04-30T22:30:00+00:00",
+    "imagePath": "bef791a7-4cb7-4a72-8552-d4c1c771fa1c007f5835-cbd4-4aea-885b-aa893d021914.png"
+  },
+  {
+    "id": "12443442",
+    "source": "dragonlink",
+    "name": "Seminar Talk Workshop",
+    "organizationName": "Biology & BEES Graduate Student Association",
+    "location": "PISB 107 - Classroom",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": "9b308bea-2dd9-4a0a-b490-455613c72e2884a7b59a-6c2c-4bdf-b794-997b9ed9d993.png"
+  },
+  {
+    "id": "12441561",
+    "source": "dragonlink",
+    "name": "All Around the World",
+    "organizationName": "DUCOM Diversity Week",
+    "location": "HSB 2E02 - COM Classroom",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12398675",
+    "source": "dragonlink",
+    "name": "Around the World ",
+    "organizationName": "DUCOM Diversity Week",
+    "location": "WR 160 - Team Based Learning Center",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12415710",
+    "source": "dragonlink",
+    "name": "Thursday Crosswalk Community Group",
+    "organizationName": "Crosswalk Christian Fellowship",
+    "location": "PISB 120 - Auditorium",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": "dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png"
+  },
+  {
+    "id": "12415711",
+    "source": "dragonlink",
+    "name": "Thursday Crosswalk Community Group",
+    "organizationName": "Crosswalk Christian Fellowship",
+    "location": "PISB 109 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": "dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png"
+  },
+  {
+    "id": "12449567",
+    "source": "dragonlink",
+    "name": "DIY Koinobori",
+    "organizationName": "Japanese Undergraduate Student Association",
+    "location": "GHALL 121 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436597",
+    "source": "dragonlink",
+    "name": "GBM #3",
+    "organizationName": "Sharing Excess, Drexel Chapter",
+    "location": "The Lindy Center",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": "5ce08d9c-3671-4a2e-afbb-08c882aeef2b670a4288-0d0d-4111-ae92-47276084371c.png"
+  },
+  {
+    "id": "12432517",
+    "source": "dragonlink",
+    "name": "Spring GBM",
+    "organizationName": "American Institute of Chemical Engineers",
+    "location": "CAT 061 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12421734",
+    "source": "dragonlink",
+    "name": "Discover What COOP Can Be!",
+    "organizationName": "Kelly Hall",
+    "location": "Kelly Hall Floor 7 Lounge",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:00:00+00:00",
+    "imagePath": "37723388-d082-4ad6-95b4-e8bc25d2256f23bf8dd6-af13-49fb-81ba-7b2817e2230a.png"
+  },
+  {
+    "id": "12440013",
+    "source": "dragonlink",
+    "name": "Gross Anatomy Lab Demo",
+    "organizationName": "Women in Orthopaedics",
+    "location": "HSB 4E05 - COM Classroom",
+    "startsOn": "2026-04-30T21:30:00+00:00",
+    "endsOn": "2026-04-30T23:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12443876",
+    "source": "dragonlink",
+    "name": "IBSA Spring GBM",
+    "organizationName": "Drexel International Business Student Association ",
+    "location": "GHALL 209 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-04-30T23:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12409318",
+    "source": "dragonlink",
+    "name": "Spring Practices",
+    "organizationName": "Drexel University Debate Union",
+    "location": "ACADMC 216 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": "f8106dd5-d104-41ee-b37f-bbed996c9f4e2daa65c8-f8b4-4680-9535-d009a06c5082.png"
+  },
+  {
+    "id": "12449568",
+    "source": "dragonlink",
+    "name": "J'ouvert Warm Up!",
+    "organizationName": "West Indian Student Establishment",
+    "location": "RUSH - Alumni Garden",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": "d3e9923e-f303-4bee-8d7f-17b9b2ece9b5df6d91b4-a517-49b3-87d7-15137d2ba554.png"
+  },
+  {
+    "id": "12328196",
+    "source": "dragonlink",
+    "name": "TechServ Spring Term General Body Meeting",
+    "organizationName": "TechServ",
+    "location": "Creese Student Center Room 051",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": "6955e932-1b7c-443a-993c-c5524e83206151428a90-1f8e-4fb0-98c4-e9a56fce6de7.png"
+  },
+  {
+    "id": "12443399",
+    "source": "dragonlink",
+    "name": "Medical Social Event",
+    "organizationName": "Phi Delta Epsilon (PhiDE)",
+    "location": "MACALS Liberty View, Sky View, and Lounge",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12455475",
+    "source": "dragonlink",
+    "name": "Federal Enforcement Safety Encounter Training ",
+    "organizationName": "Drexel Democrats",
+    "location": "GHALL 031 - Classroom",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12306613",
+    "source": "dragonlink",
+    "name": "Newman Dinner and Adoration",
+    "organizationName": "Drexel Newman Catholic Community",
+    "location": "The Newman Center",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": "bb0360da-e585-4e27-9ad5-c1f7cf77d4e91f41665c-9866-4564-9d05-c965224a74d3.png"
+  },
+  {
+    "id": "12375494",
+    "source": "dragonlink",
+    "name": "Drexel Theme Park Engineering and Design General Body Meeting",
+    "organizationName": "Theme Park Engineering and Design Group",
+    "location": "GHALL 368 - Classroom",
+    "startsOn": "2026-04-30T22:30:00+00:00",
+    "endsOn": "2026-05-01T00:00:00+00:00",
+    "imagePath": "66b52de6-1f88-4404-a97c-d46cb1daf9603fec29b2-2244-4cdf-af39-f6db8cfdd8a5.png"
+  },
+  {
+    "id": "12385495",
+    "source": "dragonlink",
+    "name": "Pie An E-Board",
+    "organizationName": "Asian Students Association",
+    "location": "Lanc Walk - DAC 1",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-05-01T00:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12445337",
+    "source": "dragonlink",
+    "name": "Bytes & Bridges",
+    "organizationName": "Women in Computing Society",
+    "location": "GHALL 220/221 - DiPiero GMR & Rose Terrace",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T01:00:00+00:00",
+    "imagePath": "6d7c0253-3d5b-4f43-a0a8-f47318ffc4bba4d09b14-d8b2-4fa5-a367-691c364b29fe.png"
+  },
+  {
+    "id": "12288511",
+    "source": "dragonlink",
+    "name": "Board Game Night",
+    "organizationName": "Unplugged Gaming Organization",
+    "location": "CREESE - Greenawalt Room A",
+    "startsOn": "2026-04-30T22:00:00+00:00",
+    "endsOn": "2026-05-01T01:00:00+00:00",
+    "imagePath": "ac82fca6-0408-46f7-a50c-7c14988ae37e57cdc88c-baac-4c2f-8983-1977b527ce31.png"
+  },
+  {
+    "id": "12449566",
+    "source": "dragonlink",
+    "name": "ASME Paint and Sip",
+    "organizationName": "Drexel American Society of Mechanical Engineers",
+    "location": "RANDEL 121 - Classroom",
+    "startsOn": "2026-04-30T22:15:00+00:00",
+    "endsOn": "2026-05-01T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12342870",
+    "source": "dragonlink",
+    "name": "Cru Large Group",
+    "organizationName": "Cru",
+    "location": "Ida Chen & Commons",
+    "startsOn": "2026-04-30T23:00:00+00:00",
+    "endsOn": "2026-05-01T01:00:00+00:00",
+    "imagePath": "f9d2235e-8e4d-4589-b983-c226e2cb3a7fc6c06728-ec50-49cf-be04-469b4ee2e06d.png"
+  },
+  {
+    "id": "12409120",
+    "source": "dragonlink",
+    "name": "ENC Huddle ",
+    "organizationName": "Every Nation Campus",
+    "location": "NSBITT 125 - Ruth Auditorium",
+    "startsOn": "2026-04-30T23:00:00+00:00",
+    "endsOn": "2026-05-01T01:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12392023",
+    "source": "dragonlink",
+    "name": "Barrio Dance Practices: Girls mod, Coed, Paga",
+    "organizationName": "Filipino Intercultural Society of Drexel University",
+    "location": "Rec Center - Group Exercise Studio - Room 216",
+    "startsOn": "2026-04-30T23:30:00+00:00",
+    "endsOn": "2026-05-01T02:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12409133",
+    "source": "dragonlink",
+    "name": "Super Smash Brothers Ultimate Weekly",
+    "organizationName": "Drexel Gaming Association",
+    "location": "MACALS - Lockheed Martin Launchpad",
+    "startsOn": "2026-04-30T21:00:00+00:00",
+    "endsOn": "2026-05-01T03:00:00+00:00",
+    "imagePath": "31c287c2-4260-4d2f-8f68-1763efe9bd4d87daa80b-376b-487c-aa86-7be81d8a9a9b.png"
+  },
+  {
+    "id": "12424346",
+    "source": "dragonlink",
+    "name": "Resume Review",
+    "organizationName": "Drexel Residence Life",
+    "location": "Kelly Hall Lobby",
+    "startsOn": "2026-05-01T15:00:00+00:00",
+    "endsOn": "2026-05-01T17:00:00+00:00",
+    "imagePath": "1a5bf3ba-91a0-4436-aff3-ad9086552e0271a87c2d-398b-4373-a31d-9c35ba70c41c.png"
+  },
+  {
+    "id": "12354936",
+    "source": "dragonlink",
+    "name": "PGSA Lunch Talks",
+    "organizationName": "Physics Graduate Student Association",
+    "location": "Disque 919",
+    "startsOn": "2026-05-01T16:00:00+00:00",
+    "endsOn": "2026-05-01T17:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12328562",
+    "source": "dragonlink",
+    "name": "Jummah Prayer",
+    "organizationName": "Drexel Muslim Students Association",
+    "location": "Ida Chen & Commons",
+    "startsOn": "2026-05-01T16:00:00+00:00",
+    "endsOn": "2026-05-01T18:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12328581",
+    "source": "dragonlink",
+    "name": "Living with the Quran",
+    "organizationName": "Drexel Muslim Students Association",
+    "location": "Ida Chen & Commons",
+    "startsOn": "2026-05-01T19:00:00+00:00",
+    "endsOn": "2026-05-01T20:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12438132",
+    "source": "dragonlink",
+    "name": "FISDU Last Run-Thru",
+    "organizationName": "Filipino Intercultural Society of Drexel University",
+    "location": "MAIN - Auditorium",
+    "startsOn": "2026-05-01T14:00:00+00:00",
+    "endsOn": "2026-05-01T21:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12343993",
+    "source": "dragonlink",
+    "name": "Professional Clothing Drive",
+    "organizationName": "DUCOM Rocky Statue Society",
+    "location": "HSB - 9W01 COM Lobby",
+    "startsOn": "2026-04-06T12:00:00+00:00",
+    "endsOn": "2026-05-01T21:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12443244",
+    "source": "dragonlink",
+    "name": "Pie-a-Kappa",
+    "organizationName": "Kappa Phi Lambda Sorority, Inc.",
+    "location": "Lanc Walk - DAC 4",
+    "startsOn": "2026-05-01T16:00:00+00:00",
+    "endsOn": "2026-05-01T22:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12449573",
+    "source": "dragonlink",
+    "name": "Build a Bouquet with SWE",
+    "organizationName": "Society of Women Engineers",
+    "location": "PISB 107 - Classroom",
+    "startsOn": "2026-05-01T21:30:00+00:00",
+    "endsOn": "2026-05-01T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12377736",
+    "source": "dragonlink",
+    "name": "Sunset Paint & Sip",
+    "organizationName": "Campus Activities Board",
+    "location": "Lanc Walk - DAC 2",
+    "startsOn": "2026-05-01T22:00:00+00:00",
+    "endsOn": "2026-05-02T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436718",
+    "source": "dragonlink",
+    "name": "Shabbat Dinner ",
+    "organizationName": "Jewish Student Association",
+    "location": "Perelman Center- 1st Floor Exclusive",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12391380",
+    "source": "dragonlink",
+    "name": "DIY Workshop Part 2 - 3D Printing",
+    "organizationName": "Drexel SIGGRAPH",
+    "location": "URBN 206 - Class Lab",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12445506",
+    "source": "dragonlink",
+    "name": "Splatoon Weekly",
+    "organizationName": "Drexel Gaming Association",
+    "location": "CREESE - Greenawalt Room A",
+    "startsOn": "2026-05-01T20:30:00+00:00",
+    "endsOn": "2026-05-02T00:30:00+00:00",
+    "imagePath": "b8236f72-1951-43a0-a2d6-b70cd5738be7af12f9c6-4c0f-48ce-a1fd-9f25d94a0574.png"
+  },
+  {
+    "id": "12328024",
+    "source": "dragonlink",
+    "name": "Global Connect - Friday Night Connection",
+    "organizationName": "Graduate Christian Fellowship at Drexel University ",
+    "location": "Drexel Graduate Student Lounge, Main Building",
+    "startsOn": "2026-05-01T22:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": "51c87c5b-582e-4f1e-8ccb-8c857f7100824653650e-6106-4ae7-8d95-1573aac00cd0.png"
+  },
+  {
+    "id": "12450361",
+    "source": "dragonlink",
+    "name": "Top Chef",
+    "organizationName": "Drexel Muslim Students Association",
+    "location": "Ida Chen & Commons",
+    "startsOn": "2026-05-01T22:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436723",
+    "source": "dragonlink",
+    "name": "Drexel Players Karaoke! ",
+    "organizationName": "Drexel Players",
+    "location": "NSBITT 111 - Stein and Lobby",
+    "startsOn": "2026-05-01T22:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12449572",
+    "source": "dragonlink",
+    "name": "Mock Trial Banquet",
+    "organizationName": "Drexel Undergraduate Mock Trial Association",
+    "location": "MACALS Sky View & Lounge",
+    "startsOn": "2026-05-01T22:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12328543",
+    "source": "dragonlink",
+    "name": "Drexel Dragon Jedi Meeting",
+    "organizationName": "Dragon Jedi",
+    "location": "Lanc Walk - DAC 1",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": "71cc5c6f-e8a2-4bc6-a19c-4c13087c08415be1f904-cbb5-4630-988a-84b2ec8d75a1.png"
+  },
+  {
+    "id": "12443666",
+    "source": "dragonlink",
+    "name": "DIY Floral Craft Night",
+    "organizationName": "Sigma Psi Zeta Sorority, Inc.",
+    "location": "GHALL 121 - Classroom",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12443676",
+    "source": "dragonlink",
+    "name": "Canvas Signing",
+    "organizationName": "Pi Kappa Phi Fraternity",
+    "location": "Race Lawn",
+    "startsOn": "2026-05-02T01:00:00+00:00",
+    "endsOn": "2026-05-02T02:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12440776",
+    "source": "dragonlink",
+    "name": "La Escapada: Imperio Dorado",
+    "organizationName": "Latinos for a United Campus",
+    "location": "MAIN - Great Court (Exclusive)",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T03:00:00+00:00",
+    "imagePath": "f10d7e30-6e88-4a78-aa6c-1243c1397f1cfd4719d8-5233-4743-9bd5-835a349f2859.png"
+  },
+  {
+    "id": "12408739",
+    "source": "dragonlink",
+    "name": "ABSK Friday Bible Study",
+    "organizationName": "Drexel Asian Baptist Student Koinonia",
+    "location": "ACADMC 217 - Classroom",
+    "startsOn": "2026-05-01T23:00:00+00:00",
+    "endsOn": "2026-05-02T03:00:00+00:00",
+    "imagePath": "95d4c554-7f91-464a-9ce1-3586babf344f303591fd-5331-431c-8554-a887caa06e1b.png"
+  },
+  {
+    "id": "12408756",
+    "source": "dragonlink",
+    "name": "Drexel Dragon Jedi After Club Hangout (ACH)",
+    "organizationName": "Dragon Jedi",
+    "location": "PISB 108 - Classroom",
+    "startsOn": "2026-05-02T01:00:00+00:00",
+    "endsOn": "2026-05-02T03:45:00+00:00",
+    "imagePath": "9d6644fb-8b8a-4044-9c04-57c57b3392904b73e1d9-7128-40f0-a235-dd032490d3aa.png"
+  },
+  {
+    "id": "12440355",
+    "source": "dragonlink",
+    "name": "Social at Fraternity House",
+    "organizationName": "Alpha Epsilon Pi- Delta Rho",
+    "location": "Alpha Epsilon Pi Fraternity House",
+    "startsOn": "2026-05-02T02:00:00+00:00",
+    "endsOn": "2026-05-02T06:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12440363",
+    "source": "dragonlink",
+    "name": "Event With Alcohol",
+    "organizationName": "Alpha Chi Rho",
+    "location": "Alpha Chi Rho",
+    "startsOn": "2026-05-02T02:00:00+00:00",
+    "endsOn": "2026-05-02T06:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12413057",
+    "source": "dragonlink",
+    "name": "Movement Labs Dance Practice",
+    "organizationName": "Drexel American Society of Mechanical Engineers",
+    "location": "Rec Center - Group Exercise Studio - Room 216",
+    "startsOn": "2026-05-02T15:00:00+00:00",
+    "endsOn": "2026-05-02T18:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436733",
+    "source": "dragonlink",
+    "name": "Overflow Dance Ministry Practice",
+    "organizationName": "Harvest Christian Fellowship",
+    "location": "BSONE 130 - Mitchell Auditorium",
+    "startsOn": "2026-05-02T16:45:00+00:00",
+    "endsOn": "2026-05-02T19:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12355984",
+    "source": "dragonlink",
+    "name": "Longwood Gardens",
+    "organizationName": "Campus Activities Board",
+    "location": "Longwood Gardens",
+    "startsOn": "2026-05-02T16:00:00+00:00",
+    "endsOn": "2026-05-02T22:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436729",
+    "source": "dragonlink",
+    "name": "Serves for SAAM: Volleyball Tournament",
+    "organizationName": "Sigma Psi Zeta Sorority, Inc.",
+    "location": "Buckley Green Exclusive",
+    "startsOn": "2026-05-02T21:00:00+00:00",
+    "endsOn": "2026-05-03T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12436732",
+    "source": "dragonlink",
+    "name": "Orthodox Minyan Group's SMASH",
+    "organizationName": "Jewish Student Association",
+    "location": "Perelman Center- 1st Floor Exclusive",
+    "startsOn": "2026-05-02T23:30:00+00:00",
+    "endsOn": "2026-05-03T01:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12408874",
+    "source": "dragonlink",
+    "name": "Magic: The Gathering",
+    "organizationName": "Drexel Gaming Association",
+    "location": "MACALS - Lockheed Martin Launchpad",
+    "startsOn": "2026-05-02T22:00:00+00:00",
+    "endsOn": "2026-05-03T02:00:00+00:00",
+    "imagePath": "cb07bc77-41a0-4212-9894-e68a49f7f2bb0eaf6851-95c4-4bef-8bf2-d61030adacd8.png"
+  },
+  {
+    "id": "12436731",
+    "source": "dragonlink",
+    "name": "Drexel Night Live Stand Up Comedy Night 2",
+    "organizationName": "Drexel Night Live",
+    "location": "NSBITT 125 - Ruth Auditorium",
+    "startsOn": "2026-05-02T22:00:00+00:00",
+    "endsOn": "2026-05-03T03:00:00+00:00",
+    "imagePath": "77ff1c61-f7ac-4653-ae53-f1372504daddd2c43aed-bf33-45f3-8c42-9774e28c6402.png"
+  },
+  {
+    "id": "12440859",
+    "source": "dragonlink",
+    "name": "Barrio Culture Show - Backstage",
+    "organizationName": "Filipino Intercultural Society of Drexel University",
+    "location": "RANDEL 326 - Classroom",
+    "startsOn": "2026-05-02T11:00:00+00:00",
+    "endsOn": "2026-05-03T03:45:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12440860",
+    "source": "dragonlink",
+    "name": "Barrio Culture Show - Backstage",
+    "organizationName": "Filipino Intercultural Society of Drexel University",
+    "location": "RANDEL 327 - Classroom",
+    "startsOn": "2026-05-02T11:00:00+00:00",
+    "endsOn": "2026-05-03T03:45:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12440712",
+    "source": "dragonlink",
+    "name": "Spring LAN",
+    "organizationName": "Drexel Gaming Association",
+    "location": "PISB - Atrium",
+    "startsOn": "2026-05-02T16:00:00+00:00",
+    "endsOn": "2026-05-03T04:00:00+00:00",
+    "imagePath": "7d84b987-5fc6-439f-ba97-43f743c80ab5b4ce379e-3cc6-4388-a8b1-b7768d55b9c2.png"
+  },
+  {
+    "id": "12450904",
+    "source": "dragonlink",
+    "name": "Event with Alcohol",
+    "organizationName": "Theta Chi",
+    "location": "Theta Chi House ",
+    "startsOn": "2026-05-03T02:30:00+00:00",
+    "endsOn": "2026-05-03T06:30:00+00:00",
+    "imagePath": "a89ec218-157e-4fef-8ad5-bceb5c00313d36bcd05c-7967-430b-928a-868e4630f104.png"
+  },
+  {
+    "id": "12397661",
+    "source": "dragonlink",
+    "name": "New member meetings",
+    "organizationName": "Phi Alpha Delta Pre-Law Fraternity",
+    "location": "PEARL 303 - Classroom",
+    "startsOn": "2026-05-03T22:00:00+00:00",
+    "endsOn": "2026-05-03T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12449576",
+    "source": "dragonlink",
+    "name": "GBM 2",
+    "organizationName": "Phi Delta Epsilon (PhiDE)",
+    "location": "PISB 108 - Classroom",
+    "startsOn": "2026-05-03T22:00:00+00:00",
+    "endsOn": "2026-05-04T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12425468",
+    "source": "dragonlink",
+    "name": "Register to Vote ",
+    "organizationName": "Drexel Residence Life",
+    "location": "Towers Hall",
+    "startsOn": "2026-05-03T23:00:00+00:00",
+    "endsOn": "2026-05-04T00:00:00+00:00",
+    "imagePath": "5a8a4520-b192-444f-9ae0-818fef2b8bb433c6c410-9c16-4180-89f3-c578ad6f7cdf.png"
+  },
+  {
+    "id": "12408806",
+    "source": "dragonlink",
+    "name": "Delta Zeta Chapter, Spring 26 ",
+    "organizationName": "Delta Zeta",
+    "location": "CAT 061 - Classroom",
+    "startsOn": "2026-05-03T22:30:00+00:00",
+    "endsOn": "2026-05-04T00:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12316428",
+    "source": "dragonlink",
+    "name": "DUCOM Classical Spring Recital",
+    "organizationName": "DUCOM Classical",
+    "location": "Philadelphia Ethical Society",
+    "startsOn": "2026-05-03T23:00:00+00:00",
+    "endsOn": "2026-05-04T01:00:00+00:00",
+    "imagePath": "daf38e11-029d-47ca-b9b6-683b9574ebaef23d1fc9-802b-4aa6-aa43-4e12ec9513b1.png"
+  },
+  {
+    "id": "12389616",
+    "source": "dragonlink",
+    "name": "Recognition Office Hours",
+    "organizationName": "Student Organization Resource Center",
+    "location": "Online",
+    "startsOn": "2026-05-04T14:00:00+00:00",
+    "endsOn": "2026-05-04T16:00:00+00:00",
+    "imagePath": "dc22311e-0872-44b9-8a09-4b45ef270d9959221dfb-dcf0-43a2-b242-81ecdb282b2b.png"
+  },
+  {
+    "id": "12449581",
+    "source": "dragonlink",
+    "name": "Islamic Awareness Week",
+    "organizationName": "Drexel Muslim Students Association",
+    "location": "Dragon Statue - Table Space 1",
+    "startsOn": "2026-05-04T16:00:00+00:00",
+    "endsOn": "2026-05-04T20:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12450417",
+    "source": "dragonlink",
+    "name": "DBUA Spring Fundrasier",
+    "organizationName": "Drexel Biomedical Engineering Undergraduate Association",
+    "location": "Korman Quad",
+    "startsOn": "2026-05-04T19:30:00+00:00",
+    "endsOn": "2026-05-04T21:30:00+00:00",
+    "imagePath": "12c2c8c2-6dbb-41d3-b4cc-1ab17dd7e0817d06fc31-45bb-4335-80de-40779d362076.pdf"
+  },
+  {
+    "id": "12427196",
+    "source": "dragonlink",
+    "name": "Picnic & Pages",
+    "organizationName": "DUCOM Book Wyrms",
+    "location": "HSB 4W13 - COM Seminar",
+    "startsOn": "2026-05-04T20:00:00+00:00",
+    "endsOn": "2026-05-04T22:00:00+00:00",
+    "imagePath": "9c1cc5ba-97df-4ad1-adff-d61b0f9e65918f1986f0-e26d-4719-8eac-89d6eeaaa8df.png"
+  },
+  {
+    "id": "12449585",
+    "source": "dragonlink",
+    "name": "ALPFA AI Resume Review",
+    "organizationName": "Association of Latino Professionals For America",
+    "location": "GHALL 206 - Classroom",
+    "startsOn": "2026-05-04T21:00:00+00:00",
+    "endsOn": "2026-05-04T22:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12328197",
+    "source": "dragonlink",
+    "name": "TechServ Spring Term General Body Meeting",
+    "organizationName": "TechServ",
+    "location": "Creese Student Center Room 051",
+    "startsOn": "2026-05-04T21:00:00+00:00",
+    "endsOn": "2026-05-04T23:00:00+00:00",
+    "imagePath": "6955e932-1b7c-443a-993c-c5524e83206151428a90-1f8e-4fb0-98c4-e9a56fce6de7.png"
+  },
+  {
+    "id": "12425495",
+    "source": "dragonlink",
+    "name": "The Mic drop",
+    "organizationName": "Drexel Residence Life",
+    "location": "Bentley Hall, Kitchen lounge",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-04T23:00:00+00:00",
+    "imagePath": "bfaf4d43-8b0c-4f78-8be0-816bfc93112bc8d6ce9d-c56d-48dc-8bbc-a3e20612fbda.png"
+  },
+  {
+    "id": "12374930",
+    "source": "dragonlink",
+    "name": "EWB Tech Team Meeting",
+    "organizationName": "Engineers Without Borders",
+    "location": "Lindy Center",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-04T23:00:00+00:00",
+    "imagePath": "3fb87b95-91c8-4b58-9b6a-78300bf7e80951574797-3e54-4211-b1d8-81cb183ecb5a.png"
+  },
+  {
+    "id": "12374895",
+    "source": "dragonlink",
+    "name": "EWB Global Relations & International Design Department Meeting",
+    "organizationName": "Engineers Without Borders",
+    "location": "Lindy Center",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-04T23:00:00+00:00",
+    "imagePath": "ce6dabed-f77a-4d8e-ba7b-e30aa2db015ca89db867-65c1-4002-96a3-ab5389083acf.png"
+  },
+  {
+    "id": "12415726",
+    "source": "dragonlink",
+    "name": "Sisters' Halaqa",
+    "organizationName": "Drexel Muslim Students Association",
+    "location": "ACADMC 107 - Classroom",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-04T23:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12408559",
+    "source": "dragonlink",
+    "name": "Cru Men's Bible Study",
+    "organizationName": "Cru",
+    "location": "ACADMC 216 - Classroom",
+    "startsOn": "2026-05-04T22:30:00+00:00",
+    "endsOn": "2026-05-04T23:30:00+00:00",
+    "imagePath": "d0452ec2-66d8-44fe-bccd-d9d43915ed776761b25e-14f6-4b33-b2a0-6d254a45bc7f.png"
+  },
+  {
+    "id": "12392043",
+    "source": "dragonlink",
+    "name": "FCA Weekly Huddle",
+    "organizationName": "Fellowship of Christian Athletes",
+    "location": "Hospitality Room",
+    "startsOn": "2026-05-04T22:30:00+00:00",
+    "endsOn": "2026-05-05T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12374914",
+    "source": "dragonlink",
+    "name": "EWB Domestic Design Department Meeting",
+    "organizationName": "Engineers Without Borders",
+    "location": "Lindy Center",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T00:00:00+00:00",
+    "imagePath": "f7a85454-a5cd-4c08-ab0e-383d4e201a2ff21a5e0d-04cc-4538-aad5-ba14d5e1b119.png"
+  },
+  {
+    "id": "12396429",
+    "source": "dragonlink",
+    "name": "TGIF | Spring Board Meeting",
+    "organizationName": "The Good Idea Fund",
+    "location": "Rush Building 209",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T00:00:00+00:00",
+    "imagePath": "908656f4-3c70-4953-8a72-4dbec46758b5ab5230fc-6d23-4362-a5c3-8ae0de3235ee.png"
+  },
+  {
+    "id": "12358169",
+    "source": "dragonlink",
+    "name": "Cru Women's Bible Study",
+    "organizationName": "Cru",
+    "location": "Interfaith Chapel",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T00:00:00+00:00",
+    "imagePath": "884787b0-54e2-477f-b894-600f40ffc835047bbf74-6e23-4643-9010-ef192b78863d.png"
+  },
+  {
+    "id": "12454404",
+    "source": "dragonlink",
+    "name": "Company Evaluation",
+    "organizationName": "Drexel Finance and Investment Group",
+    "location": "GHALL 137 - Classroom w/ 14 PCs",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T00:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12443796",
+    "source": "dragonlink",
+    "name": "Power in Peers: Building Your Fashion Network",
+    "organizationName": "Drexel University BRAG Chapter",
+    "location": "URBN 239 - Screening Room",
+    "startsOn": "2026-05-04T22:15:00+00:00",
+    "endsOn": "2026-05-05T00:30:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12408922",
+    "source": "dragonlink",
+    "name": "Weekly Executive Board Meeting",
+    "organizationName": "South Asian Students Association",
+    "location": "GHALL 121 - Classroom",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T00:30:00+00:00",
+    "imagePath": "252c0e10-fa7a-44a1-a9fb-4f0dcfc73674cabb7d23-4daf-4aa0-8c2c-215ea08b92ac.png"
+  },
+  {
+    "id": "12387970",
+    "source": "dragonlink",
+    "name": "Chapter",
+    "organizationName": "Delta Gamma \u2013 Eta Upsilon",
+    "location": "GHALL 106 - Classroom",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-05T01:00:00+00:00",
+    "imagePath": "b56ff802-0785-4b6c-b0ab-306ec1e9ae6663f7b382-bac5-4372-b95c-583d83f5ad0a.png"
+  },
+  {
+    "id": "12436734",
+    "source": "dragonlink",
+    "name": "MET Gala Watch Party",
+    "organizationName": "Retail and Design Club",
+    "location": "NSBITT 111 - Stein Auditorium",
+    "startsOn": "2026-05-04T22:00:00+00:00",
+    "endsOn": "2026-05-05T01:00:00+00:00",
+    "imagePath": "a7206598-75d0-4fe7-adc3-0cd10da5db93ea450e42-d4e9-4d31-b933-102f2fee0125.png"
+  },
+  {
+    "id": "12315889",
+    "source": "dragonlink",
+    "name": "USGA Joint Session",
+    "organizationName": "Undergraduate Student Government Association",
+    "location": "MACALS Sky View",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T01:00:00+00:00",
+    "imagePath": "ca393987-1025-48e9-ab2e-d59489d05649ab18eddd-2e1c-4f55-9cd1-e29b9523f648.png"
+  },
+  {
+    "id": "12387962",
+    "source": "dragonlink",
+    "name": "Heart to Heart",
+    "organizationName": "Sigma Psi Zeta Sorority, Inc.",
+    "location": "GHALL 205 - Classroom",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "12428202",
+    "source": "dragonlink",
+    "name": "Nana Kwasi and Tristan's Bible study ",
+    "organizationName": "Every Nation Campus",
+    "location": "Rush Building, Room 213",
+    "startsOn": "2026-05-04T23:00:00+00:00",
+    "endsOn": "2026-05-05T01:00:00+00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46488_122457",
+    "source": "drexel_events",
+    "name": "Diversity Week: Philadelphia",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "See Schedule",
+    "startsOn": "2026-04-30T00:00:00",
+    "endsOn": "2026-04-30T00:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46489_122453",
+    "source": "drexel_events",
+    "name": "Diversity Week: West Reading",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "See Schedule",
+    "startsOn": "2026-04-30T00:00:00",
+    "endsOn": "2026-04-30T00:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119968",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-04-30T09:00:00",
+    "endsOn": "2026-04-30T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121818",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-04-30T09:00:00",
+    "endsOn": "2026-04-30T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "45677_119624",
+    "source": "drexel_events",
+    "name": "Graduate Student Writing Group",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom",
+    "startsOn": "2026-04-30T10:00:00",
+    "endsOn": "2026-04-30T11:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46276_121437",
+    "source": "drexel_events",
+    "name": "Aging with Pride: Health, Resilience, & Equity for Older Queer Philadelphians",
+    "organizationName": [
+      "Urban Health Collaborative"
+    ],
+    "location": "Nesbitt Hall, Collaboratory (Room 140) & Online via Zoom",
+    "startsOn": "2026-04-30T10:00:00",
+    "endsOn": "2026-04-30T14:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24220"
+  },
+  {
+    "id": "46012_120854",
+    "source": "drexel_events",
+    "name": "Ausome Ambassadors",
+    "organizationName": [
+      "Dornsife Center"
+    ],
+    "location": "3509 Spring Garden st , 19104, Philadelphia, PA",
+    "startsOn": "2026-04-30T10:00:00",
+    "endsOn": "2026-04-30T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24139"
+  },
+  {
+    "id": "46352_121765",
+    "source": "drexel_events",
+    "name": "ISSS Lunch & Dialogue: Wellness Within Reach with Student Health Center and Counseling Center",
+    "organizationName": [
+      "International Students and Scholars Services"
+    ],
+    "location": "Rush Building - Garden (sunny day) or SCDI Room 209 (rainy day)",
+    "startsOn": "2026-04-30T11:00:00",
+    "endsOn": "2026-04-30T13:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46333_121653",
+    "source": "drexel_events",
+    "name": "Coffee & Community",
+    "organizationName": [
+      "Lindy Center"
+    ],
+    "location": "Lindy Center for Civic Engagement \r\n3210 Cherry St",
+    "startsOn": "2026-04-30T11:00:00",
+    "endsOn": "2026-04-30T14:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24254"
+  },
+  {
+    "id": "46308_121574",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-04-30T12:00:00",
+    "endsOn": "2026-04-30T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46307_121525",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-04-30T12:00:00",
+    "endsOn": "2026-04-30T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46292_121469",
+    "source": "drexel_events",
+    "name": "Behavioral Health Webinar: Overview of Early Psychosis Identification and Intervention",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Virtual event",
+    "startsOn": "2026-04-30T13:00:00",
+    "endsOn": "2026-04-30T14:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46405_122021",
+    "source": "drexel_events",
+    "name": "Study Hours",
+    "organizationName": [
+      "Center for Learning and Academic Success Services"
+    ],
+    "location": "Korman 120",
+    "startsOn": "2026-04-30T13:00:00",
+    "endsOn": "2026-04-30T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
+  },
+  {
+    "id": "46422_122075",
+    "source": "drexel_events",
+    "name": "BEES Department Graduate Seminar",
+    "organizationName": [
+      "Biodiversity, Earth and Environmental Science"
+    ],
+    "location": "PISB 104",
+    "startsOn": "2026-04-30T15:30:00",
+    "endsOn": "2026-04-30T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24328"
+  },
+  {
+    "id": "46403_122002",
+    "source": "drexel_events",
+    "name": "Strategies for Finding Data and Statistics",
+    "organizationName": [
+      "Office of Graduate Studies"
+    ],
+    "location": "Virtual via Zoom, Registration required",
+    "startsOn": "2026-04-30T17:00:00",
+    "endsOn": "2026-04-30T18:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24312"
+  },
+  {
+    "id": "45448_119028",
+    "source": "drexel_events",
+    "name": "DUCoM Monthly Dragon Talks",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online via Zoom",
+    "startsOn": "2026-04-30T19:00:00",
+    "endsOn": "2026-04-30T20:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46515_122458",
+    "source": "drexel_events",
+    "name": "Global Neurosciences Institute Grand Rounds",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online Event",
+    "startsOn": "2026-05-01T08:00:00",
+    "endsOn": "2026-05-01T09:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119969",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-01T09:00:00",
+    "endsOn": "2026-05-01T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121819",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-01T09:00:00",
+    "endsOn": "2026-05-01T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "46379_121954",
+    "source": "drexel_events",
+    "name": "Annual Chemistry Minisymposium: Week 1",
+    "organizationName": [
+      "Chemistry"
+    ],
+    "location": "Drexel University\r\nDisque Hall 109\r\nOR\r\nZoom",
+    "startsOn": "2026-05-01T11:00:00",
+    "endsOn": "2026-05-01T12:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24290"
+  },
+  {
+    "id": "45558_119333",
+    "source": "drexel_events",
+    "name": "Writing Retreat for Faculty and Staff",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom",
+    "startsOn": "2026-05-01T11:00:00",
+    "endsOn": "2026-05-01T12:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798"
+  },
+  {
+    "id": "45959_120652",
+    "source": "drexel_events",
+    "name": "Writing Group for Multilingual Writers",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom Link\r\n<a href=https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1\"\">https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1</a>",
+    "startsOn": "2026-05-01T11:00:00",
+    "endsOn": "2026-05-01T12:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24050"
+  },
+  {
+    "id": "46342_121703",
+    "source": "drexel_events",
+    "name": "Study Abroad 101",
+    "organizationName": [
+      "Study Abroad"
+    ],
+    "location": "Virtual: https://drexel.zoom.us/j/89279554448",
+    "startsOn": "2026-05-01T11:00:00",
+    "endsOn": "2026-05-01T12:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46307_121526",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-01T12:00:00",
+    "endsOn": "2026-05-01T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46308_121575",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-01T12:00:00",
+    "endsOn": "2026-05-01T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119970",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-02T09:00:00",
+    "endsOn": "2026-05-02T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121820",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-02T09:00:00",
+    "endsOn": "2026-05-02T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "46308_121576",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-02T12:00:00",
+    "endsOn": "2026-05-02T17:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46307_121527",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-02T12:00:00",
+    "endsOn": "2026-05-02T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46044_120918",
+    "source": "drexel_events",
+    "name": "Drop-in Science Workshops: Capturing City Nature",
+    "organizationName": [
+      "Academy of Natural Sciences"
+    ],
+    "location": "The Academy of Natural Sciences of Drexel University\r\n1900 Benjamin Franklin Parkway\r\nPhiladelphia, PA 19103",
+    "startsOn": "2026-05-02T14:00:00",
+    "endsOn": "2026-05-02T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24106"
+  },
+  {
+    "id": "45756_119971",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-03T09:00:00",
+    "endsOn": "2026-05-03T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121821",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-03T09:00:00",
+    "endsOn": "2026-05-03T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "46307_121528",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-03T12:00:00",
+    "endsOn": "2026-05-03T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46308_121577",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-03T12:00:00",
+    "endsOn": "2026-05-03T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46255_121392",
+    "source": "drexel_events",
+    "name": "DUCoM Classical Spring Recital",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Philadelphia Ethical Society\r\n1906 Rittenhouse Square\r\nPhiladelphia, PA 19103",
+    "startsOn": "2026-05-03T18:15:00",
+    "endsOn": "2026-05-03T21:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119972",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-04T09:00:00",
+    "endsOn": "2026-05-04T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121822",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-04T09:00:00",
+    "endsOn": "2026-05-04T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "46469_122171",
+    "source": "drexel_events",
+    "name": "Transcriptomic Analysis of Circadian Rhythm Disruption & Intercellular Desynchrony in Human Brain",
+    "organizationName": [
+      "School of Biomedical Engineering"
+    ],
+    "location": "Papadakis Integrated Sciences Building (PISB), Room 108, located at the northeast corner of 33rd and Chestnut Streets.",
+    "startsOn": "2026-05-04T09:30:00",
+    "endsOn": "2026-05-04T11:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24344"
+  },
+  {
+    "id": "46243_121368",
+    "source": "drexel_events",
+    "name": "Real World Diabetes: A Series of Free Workshops",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "The Eye Institute\r\n1200 West Godfrey Avenue\r\nPhiladelphia, PA 19141",
+    "startsOn": "2026-05-04T10:00:00",
+    "endsOn": "2026-05-04T12:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46428_122087",
+    "source": "drexel_events",
+    "name": "Online Open House: MS/PhD in Pharmacology & Physiology",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online Event",
+    "startsOn": "2026-05-04T11:00:00",
+    "endsOn": "2026-05-04T12:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46308_121578",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-04T12:00:00",
+    "endsOn": "2026-05-04T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46307_121529",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-04T12:00:00",
+    "endsOn": "2026-05-04T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46405_122022",
+    "source": "drexel_events",
+    "name": "Study Hours",
+    "organizationName": [
+      "Center for Learning and Academic Success Services"
+    ],
+    "location": "Korman 120",
+    "startsOn": "2026-05-04T13:00:00",
+    "endsOn": "2026-05-04T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
+  },
+  {
+    "id": "46477_122189",
+    "source": "drexel_events",
+    "name": "Multlingual Writers' Group",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "On Zoom:\r\n\r\nhttps://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1",
+    "startsOn": "2026-05-04T14:00:00",
+    "endsOn": "2026-05-04T14:50:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24347"
+  },
+  {
+    "id": "45756_119973",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-05T09:00:00",
+    "endsOn": "2026-05-05T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121823",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-05T09:00:00",
+    "endsOn": "2026-05-05T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "45523_119224",
+    "source": "drexel_events",
+    "name": "Adult Learners in Higher Education: The Importance of Access and Continuing Education",
+    "organizationName": [
+      "Goodwin College of Professional Studies"
+    ],
+    "location": "Zoom Meeting:\r\nhttps://drexel.zoom.us/j/86454581714",
+    "startsOn": "2026-05-05T12:00:00",
+    "endsOn": "2026-05-05T13:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23770"
+  },
+  {
+    "id": "46307_121530",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-05T12:00:00",
+    "endsOn": "2026-05-05T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46308_121579",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-05T12:00:00",
+    "endsOn": "2026-05-05T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46405_122023",
+    "source": "drexel_events",
+    "name": "Study Hours",
+    "organizationName": [
+      "Center for Learning and Academic Success Services"
+    ],
+    "location": "Korman 120",
+    "startsOn": "2026-05-05T13:00:00",
+    "endsOn": "2026-05-05T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
+  },
+  {
+    "id": "46478_122196",
+    "source": "drexel_events",
+    "name": "Pennoni Information Session",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Hagerty Library - L14 Classroom",
+    "startsOn": "2026-05-05T15:00:00",
+    "endsOn": "2026-05-05T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24348"
+  },
+  {
+    "id": "46295_121475",
+    "source": "drexel_events",
+    "name": "Graduate Student-Any Career Questions Drop-In Zoom Time",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Zoom: Register on Handshake",
+    "startsOn": "2026-05-05T15:00:00",
+    "endsOn": "2026-05-05T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24233"
+  },
+  {
+    "id": "46341_121679",
+    "source": "drexel_events",
+    "name": "Study Abroad 101",
+    "organizationName": [
+      "Study Abroad"
+    ],
+    "location": "Academic Building\r\n101 N 33rd St, Suite 201",
+    "startsOn": "2026-05-05T15:00:00",
+    "endsOn": "2026-05-05T16:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119974",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-06T09:00:00",
+    "endsOn": "2026-05-06T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121824",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-06T09:00:00",
+    "endsOn": "2026-05-06T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "45557_119302",
+    "source": "drexel_events",
+    "name": "UHC Invited Speaker Series: Rebekah Israel Cross",
+    "organizationName": [
+      "Urban Health Collaborative"
+    ],
+    "location": "Nesbitt Hall & Online",
+    "startsOn": "2026-05-06T11:00:00",
+    "endsOn": "2026-05-06T12:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23805"
+  },
+  {
+    "id": "46390_121976",
+    "source": "drexel_events",
+    "name": "Drexel Materials Spring Seminar Series",
+    "organizationName": [
+      "Materials Science and Engineering"
+    ],
+    "location": "Hill Seminar Room (LeBow Eng. 240)",
+    "startsOn": "2026-05-06T11:00:00",
+    "endsOn": "2026-05-06T12:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24301"
+  },
+  {
+    "id": "46308_121580",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-06T12:00:00",
+    "endsOn": "2026-05-06T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46425_122081",
+    "source": "drexel_events",
+    "name": "Lactation Consultant Program Information Session",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online Event",
+    "startsOn": "2026-05-06T12:00:00",
+    "endsOn": "2026-05-06T13:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46307_121531",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-06T12:00:00",
+    "endsOn": "2026-05-06T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46405_122024",
+    "source": "drexel_events",
+    "name": "Study Hours",
+    "organizationName": [
+      "Center for Learning and Academic Success Services"
+    ],
+    "location": "Korman 120",
+    "startsOn": "2026-05-06T13:00:00",
+    "endsOn": "2026-05-06T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
+  },
+  {
+    "id": "46343_121729",
+    "source": "drexel_events",
+    "name": "Study Abroad Walk-In Hours",
+    "organizationName": [
+      "Study Abroad"
+    ],
+    "location": "In-person at the Education Abroad Office, Academic Building Suite 201, and virtual:  https://drexel.zoom.us/j/87687380529",
+    "startsOn": "2026-05-06T13:00:00",
+    "endsOn": "2026-05-06T15:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46244_121370",
+    "source": "drexel_events",
+    "name": "Resume Review Day",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Zoom: Register on Handshake \r\n\r\nhttps://drexel.joinhandshake.com/edu/events/1923980",
+    "startsOn": "2026-05-06T13:00:00",
+    "endsOn": "2026-05-06T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24202"
+  },
+  {
+    "id": "46137_121145",
+    "source": "drexel_events",
+    "name": "Working with Communities: Critical Geographies",
+    "organizationName": [
+      "College of Arts and Sciences"
+    ],
+    "location": "Drexel Teaching and Learning Center\r\n3401 Market Street, Suite 202, \r\nor via Zoom",
+    "startsOn": "2026-05-06T14:00:00",
+    "endsOn": "2026-05-06T15:50:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24157"
+  },
+  {
+    "id": "46261_121404",
+    "source": "drexel_events",
+    "name": "Working with Communities: Critical Geographies",
+    "organizationName": [
+      "School of Education"
+    ],
+    "location": "Drexel Teaching and Learning Center\r\n3401 Market Street, Suite 202,\r\nor via Zoom",
+    "startsOn": "2026-05-06T14:00:00",
+    "endsOn": "2026-05-06T15:50:00",
+    "imagePath": null
+  },
+  {
+    "id": "46359_121784",
+    "source": "drexel_events",
+    "name": "UREP Drop-In Hours",
+    "organizationName": [
+      "Pennoni Honors College"
+    ],
+    "location": "Bentley 1st Floor Lobby",
+    "startsOn": "2026-05-06T15:00:00",
+    "endsOn": "2026-05-06T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24276"
+  },
+  {
+    "id": "46409_122049",
+    "source": "drexel_events",
+    "name": "Pennoni Uno Throwdown",
+    "organizationName": [
+      "Pennoni Honors College"
+    ],
+    "location": "Bentley 2nd Floor",
+    "startsOn": "2026-05-06T15:00:00",
+    "endsOn": "2026-05-06T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24318"
+  },
+  {
+    "id": "46284_121453",
+    "source": "drexel_events",
+    "name": "Helix Electric, Inc. - Co-Op Program & Company Info Session",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Virtual - Register on Handshake for link",
+    "startsOn": "2026-05-06T16:00:00",
+    "endsOn": "2026-05-06T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24228"
+  },
+  {
+    "id": "46354_121769",
+    "source": "drexel_events",
+    "name": "SuperNova Undergraduate Research Fellows Info Session",
+    "organizationName": [
+      "Pennoni Honors College"
+    ],
+    "location": "Bentley 156",
+    "startsOn": "2026-05-06T17:00:00",
+    "endsOn": "2026-05-06T18:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24271"
+  },
+  {
+    "id": "46502_122246",
+    "source": "drexel_events",
+    "name": "EGS Games Showcase",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Center Lobby\r\n3501 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-06T17:30:00",
+    "endsOn": "2026-05-06T18:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24374"
+  },
+  {
+    "id": "46426_122083",
+    "source": "drexel_events",
+    "name": "Lactation Consultant Program Information Session",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online Event",
+    "startsOn": "2026-05-06T19:00:00",
+    "endsOn": "2026-05-06T20:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46375_121946",
+    "source": "drexel_events",
+    "name": "Alumni Weekend",
+    "organizationName": [
+      "Institutional Advancement"
+    ],
+    "location": "3142 Market Street, 1st Floor\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-07T00:00:00",
+    "endsOn": "2026-05-09T00:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24286"
+  },
+  {
+    "id": "46371_121825",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-07T09:00:00",
+    "endsOn": "2026-05-07T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "45756_119975",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-07T09:00:00",
+    "endsOn": "2026-05-07T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "45677_119625",
+    "source": "drexel_events",
+    "name": "Graduate Student Writing Group",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom",
+    "startsOn": "2026-05-07T10:00:00",
+    "endsOn": "2026-05-07T11:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46245_121372",
+    "source": "drexel_events",
+    "name": "Resume Review Day",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Zoom: Register on Handshake",
+    "startsOn": "2026-05-07T10:00:00",
+    "endsOn": "2026-05-07T12:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24203"
+  },
+  {
+    "id": "46047_121294",
+    "source": "drexel_events",
+    "name": "Drexel Writing Festival",
+    "organizationName": [
+      "College of Arts and Sciences"
+    ],
+    "location": "Please visit the Drexel Writing Festival webpage for author event dates, times, and locations.\r\n\r\n<a href=\"https://drexel.edu/coas/news-events/drexel-writing-festival/\" target=\"_blank\">Drexel Writing Festival</a>",
+    "startsOn": "2026-05-07T11:00:00",
+    "endsOn": "2026-05-07T12:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24175"
+  },
+  {
+    "id": "46333_121654",
+    "source": "drexel_events",
+    "name": "Coffee & Community",
+    "organizationName": [
+      "Lindy Center"
+    ],
+    "location": "Lindy Center for Civic Engagement \r\n3210 Cherry St",
+    "startsOn": "2026-05-07T11:00:00",
+    "endsOn": "2026-05-07T14:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24254"
+  },
+  {
+    "id": "46373_121942",
+    "source": "drexel_events",
+    "name": "Resume in a Rush",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Rush Building Room 101",
+    "startsOn": "2026-05-07T12:00:00",
+    "endsOn": "2026-05-07T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24284"
+  },
+  {
+    "id": "46307_121532",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-07T12:00:00",
+    "endsOn": "2026-05-07T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46308_121581",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-07T12:00:00",
+    "endsOn": "2026-05-07T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46405_122025",
+    "source": "drexel_events",
+    "name": "Study Hours",
+    "organizationName": [
+      "Center for Learning and Academic Success Services"
+    ],
+    "location": "Korman 120",
+    "startsOn": "2026-05-07T13:00:00",
+    "endsOn": "2026-05-07T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
+  },
+  {
+    "id": "46383_121962",
+    "source": "drexel_events",
+    "name": "Fast Pitch Competition at Inclusive Impact Day",
+    "organizationName": [
+      "Close School of Entrepreneurship"
+    ],
+    "location": "DiPiero Grand Meeting Hall, LeBow",
+    "startsOn": "2026-05-07T13:45:00",
+    "endsOn": "2026-05-07T15:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24294"
+  },
+  {
+    "id": "46517_122473",
+    "source": "drexel_events",
+    "name": "Neurophysiological and Perceptual Responses to Real and Virtual Environments",
+    "organizationName": [
+      "School of Biomedical Engineering"
+    ],
+    "location": "Remote",
+    "startsOn": "2026-05-07T15:00:00",
+    "endsOn": "2026-05-07T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24386"
+  },
+  {
+    "id": "46423_122077",
+    "source": "drexel_events",
+    "name": "BEES Department Graduate Seminar",
+    "organizationName": [
+      "Biodiversity, Earth and Environmental Science"
+    ],
+    "location": "PISB 104",
+    "startsOn": "2026-05-07T15:30:00",
+    "endsOn": "2026-05-07T17:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24329"
+  },
+  {
+    "id": "46317_121617",
+    "source": "drexel_events",
+    "name": "OPT Information Webinar",
+    "organizationName": [
+      "International Students and Scholars Services"
+    ],
+    "location": "Zoom:\r\nhttps://drexel.zoom.us/webinar/register/WN_RO2Z40PCRJevzgM8uOVy6Q",
+    "startsOn": "2026-05-07T15:30:00",
+    "endsOn": "2026-05-07T16:30:00",
+    "imagePath": null
+  },
+  {
+    "id": "46356_121773",
+    "source": "drexel_events",
+    "name": "10 Years of Nerd Night",
+    "organizationName": [
+      "Pennoni Honors College"
+    ],
+    "location": "Bentley Hall 2nd Floor Annex",
+    "startsOn": "2026-05-07T18:00:00",
+    "endsOn": "2026-05-07T20:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24358"
+  },
+  {
+    "id": "45449_119030",
+    "source": "drexel_events",
+    "name": "DUCoM Monthly Dragon Talks",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "Online via Zoom",
+    "startsOn": "2026-05-07T19:00:00",
+    "endsOn": "2026-05-07T20:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46233_121346",
+    "source": "drexel_events",
+    "name": "36th Annual St. Chris Research Day",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "St. Christopher's Hospital for Children",
+    "startsOn": "2026-05-08T00:00:00",
+    "endsOn": "2026-05-08T00:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45756_119976",
+    "source": "drexel_events",
+    "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W.W. Hagerty Library - Atrium\r\n3300 Market Street, Philadelphia",
+    "startsOn": "2026-05-08T09:00:00",
+    "endsOn": "2026-05-08T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
+  },
+  {
+    "id": "46371_121826",
+    "source": "drexel_events",
+    "name": "Visualizing Health: A Photography Exhibit",
+    "organizationName": [
+      "Libraries"
+    ],
+    "location": "W. W. Hagerty Library\r\n3300 Market Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-08T09:00:00",
+    "endsOn": "2026-05-08T16:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
+  },
+  {
+    "id": "46260_121402",
+    "source": "drexel_events",
+    "name": "Neurobiology & Anatomy Seminar",
+    "organizationName": [
+      "College of Medicine"
+    ],
+    "location": "In-Person: Auditorium A, Queen Lane Campus\r\nOnline: Please contact organizer for zoom link",
+    "startsOn": "2026-05-08T10:00:00",
+    "endsOn": "2026-05-08T11:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45959_120653",
+    "source": "drexel_events",
+    "name": "Writing Group for Multilingual Writers",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom Link\r\n<a href=https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1\"\">https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1</a>",
+    "startsOn": "2026-05-08T11:00:00",
+    "endsOn": "2026-05-08T12:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24050"
+  },
+  {
+    "id": "46342_121704",
+    "source": "drexel_events",
+    "name": "Study Abroad 101",
+    "organizationName": [
+      "Study Abroad"
+    ],
+    "location": "Virtual: https://drexel.zoom.us/j/89279554448",
+    "startsOn": "2026-05-08T11:00:00",
+    "endsOn": "2026-05-08T12:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45558_119334",
+    "source": "drexel_events",
+    "name": "Writing Retreat for Faculty and Staff",
+    "organizationName": [
+      "University Writing Program"
+    ],
+    "location": "Zoom",
+    "startsOn": "2026-05-08T11:00:00",
+    "endsOn": "2026-05-08T12:30:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798"
+  },
+  {
+    "id": "46308_121582",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-08T12:00:00",
+    "endsOn": "2026-05-08T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "46496_122234",
+    "source": "drexel_events",
+    "name": "Steinbright Peer Mentor Office Hour: Tips for a Successful Co-op Search!",
+    "organizationName": [
+      "Steinbright Career Development Center"
+    ],
+    "location": "Zoom-Register on Handshake for a link",
+    "startsOn": "2026-05-08T12:00:00",
+    "endsOn": "2026-05-08T13:00:00",
+    "imagePath": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24360"
+  },
+  {
+    "id": "46307_121533",
+    "source": "drexel_events",
+    "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
+    "organizationName": [
+      "Westphal College of Media Arts and Design"
+    ],
+    "location": "URBN Annex, Pearlstein Gallery\r\n3401 Filbert Street\r\nPhiladelphia, PA 19104",
+    "startsOn": "2026-05-08T12:00:00",
+    "endsOn": "2026-05-08T18:00:00",
+    "imagePath": null
+  },
+  {
+    "id": "45201_118248",
+    "source": "drexel_events",
+    "name": "Little Women, The Musical",
+    "organizationName": [
+      "Performing Arts"
+    ],
+    "location": "URBN Annex Black Box Theater\r\n3401 Filbert St, Philadelphia, PA 19104",
+    "startsOn": "2026-05-08T20:00:00",
+    "endsOn": "2026-05-08T22:00:00",
+    "imagePath": null
+  },
+  {
+    "id": 11239,
+    "source": "drexel_athletics",
+    "name": "DREX at Stony Brook",
+    "organizationName": "Softball",
+    "location": "Stony Brook, N.Y.",
+    "startsOn": "2026-04-30T19:00:00Z",
+    "endsOn": null,
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11189,
+    "source": "drexel_athletics",
+    "name": "DREX vs Stony Brook",
+    "organizationName": "Men's Lacrosse",
+    "location": "Towson, Md.",
+    "startsOn": "2026-04-30T23:00:00Z",
+    "endsOn": null,
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11240,
+    "source": "drexel_athletics",
+    "name": "DREX at Stony Brook",
+    "organizationName": "Softball",
+    "location": "Stony Brook, N.Y.",
+    "startsOn": "2026-05-01T18:00:00Z",
+    "endsOn": null,
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11241,
+    "source": "drexel_athletics",
+    "name": "DREX at Stony Brook",
+    "organizationName": "Softball",
+    "location": "Stony Brook, N.Y.",
+    "startsOn": "2026-05-02T17:00:00Z",
+    "endsOn": null,
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11190,
+    "source": "drexel_athletics",
+    "name": "DREX vs CAA Championships",
+    "organizationName": "Men's Lacrosse",
+    "location": "Towson, Md.",
+    "startsOn": "2026-05-02T19:30:00Z",
+    "endsOn": null,
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11260,
+    "source": "drexel_athletics",
+    "name": "DREX at Jefferson Dad Vail Regatta",
+    "organizationName": "Men's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-08T04:00:00Z",
+    "endsOn": "2026-05-09T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11253,
+    "source": "drexel_athletics",
+    "name": "DREX at Jefferson Dad Vail Regatta",
+    "organizationName": "Women's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-08T04:00:00Z",
+    "endsOn": "2026-05-09T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11260,
+    "source": "drexel_athletics",
+    "name": "DREX at Jefferson Dad Vail Regatta",
+    "organizationName": "Men's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-08T04:00:00Z",
+    "endsOn": "2026-05-09T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11253,
+    "source": "drexel_athletics",
+    "name": "DREX at Jefferson Dad Vail Regatta",
+    "organizationName": "Women's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-08T04:00:00Z",
+    "endsOn": "2026-05-09T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11254,
+    "source": "drexel_athletics",
+    "name": "DREX at CAA Rowing Championships",
+    "organizationName": "Women's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-15T04:00:00Z",
+    "endsOn": "2026-05-16T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11254,
+    "source": "drexel_athletics",
+    "name": "DREX at CAA Rowing Championships",
+    "organizationName": "Women's Rowing",
+    "location": "Cooper River / Cherry Hill, N.J.",
+    "startsOn": "2026-05-15T04:00:00Z",
+    "endsOn": "2026-05-16T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11261,
+    "source": "drexel_athletics",
+    "name": "DREX at IRA National Championships",
+    "organizationName": "Men's Rowing",
+    "location": "Gold River, Calif.",
+    "startsOn": "2026-05-29T04:00:00Z",
+    "endsOn": "2026-05-31T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  },
+  {
+    "id": 11261,
+    "source": "drexel_athletics",
+    "name": "DREX at IRA National Championships",
+    "organizationName": "Men's Rowing",
+    "location": "Gold River, Calif.",
+    "startsOn": "2026-05-29T04:00:00Z",
+    "endsOn": "2026-05-31T04:00:00Z",
+    "imagePath": "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
+  }
+]
