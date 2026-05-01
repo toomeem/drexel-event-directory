@@ -1,80 +1,31 @@
 class Event:
-    def __init__(self, event_id, source, name, org_name, location, start_time, end_time, image_id):
+    def __init__(self, event_id, source, name, org_name, location, start_time, end_time, image_url):
         self.event_id = event_id
         self.source = source
         self.name = name
         self.org_name = org_name
         self.location = location
+        self.image_url = image_url
         self.start_time = start_time
         self.end_time = end_time
-        self.image_id = image_id
+
+    def __eq__(self, other):
+        return self.event_id == other.event_id
+
+    def get_start_timestamp(self):
+        return round(self.start_time.timestamp()) if self.start_time else None
+
+    def get_end_timestamp(self):
+        return round(self.end_time.timestamp()) if self.end_time else None
 
     def to_json(self):
         return {
-            "id": self.event_id,
+            "event_id": self.event_id,
             "source": self.source,
             "name": self.name,
-            "organizationName": self.org_name,
+            "org_name": self.org_name,
             "location": self.location,
-            "startsOn": self.start_time,
-            "endsOn": self.end_time,
-            "imagePath": self.image_id,
+            "start_time": self.get_start_timestamp(),
+            "end_time": self.get_end_timestamp(),
+            "image_url": self.image_url,
         }
-
-    @classmethod
-    def from_json(cls, event_json):
-        match event_json["source"]:
-            case "dragonlink":
-                return cls.from_dragonlink_json(event_json)
-            case "drexel_events":
-                return cls.from_drexel_events_json(event_json)
-            case "drexel_athletics":
-                return cls.from_drexel_athletics_json(event_json)
-            case _:
-                raise ValueError("Unsupported event JSON format")
-
-    @classmethod
-    def from_dragonlink_json(cls, event_json):
-        return cls(
-            event_id=event_json["id"],
-            source="dragonlink",
-            name=event_json["name"],
-            org_name=event_json["organizationName"],
-            location=event_json["location"],
-            start_time=event_json["startsOn"],
-            end_time=event_json["endsOn"],
-            image_id=event_json["imagePath"],
-        )
-
-    @classmethod
-    def from_drexel_events_json(cls, event_json):
-        if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
-            return None
-        department_names = event_json.get("departmentNames")
-
-        return cls(
-            event_id=event_json["id"],
-            source="drexel_events",
-            name=event_json["title"],
-            org_name=department_names[0] if department_names else "Drexel University",
-            location=event_json["address"],
-            start_time=event_json["startDate"],
-            end_time=event_json["endDate"],
-            image_id=event_json["image"],
-        )
-
-    @classmethod
-    def from_drexel_athletics_json(cls, event_json):
-        at_vs = event_json.get("atVs")
-        opponent = event_json.get("opponent").get("title")
-        default_image = "https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/drexeldragons.com/images/sng_2023/footer_reccenter.png"
-        return cls(
-            event_id=event_json["id"],
-            source="drexel_athletics",
-            name=" ".join(["DREX", at_vs, opponent]),
-            org_name=f"Drexel {event_json["sport"]["title"]}",
-            location=event_json["location"],
-            start_time=event_json["dateUtc"],
-            end_time=event_json["endDateUtc"],
-            image_id=default_image,  # TODO: get images for each sport
-        )

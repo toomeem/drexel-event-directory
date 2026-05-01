@@ -9,6 +9,70 @@ from urllib.parse import quote
 from event_class import Event
 
 
+def normalize_time(source, time_str):
+    timezone = ZoneInfo("America/New_York")
+    if not time_str:
+        return None
+    match source:
+        case "drexel_events":
+            dt = datetime.fromisoformat(time_str).replace(tzinfo=timezone)
+            return dt
+        case "drexel_athletics":
+            dt = datetime.fromisoformat(time_str.replace("Z", "+00:00"))
+            return dt.astimezone(timezone)
+        case _:
+            return datetime.fromisoformat(time_str).astimezone(timezone)
+
+
+def create_event_object(source, event_json):
+    dragonlink_image_url = "https://drexel.campuslabs.com/engage/image/"
+    drexel_athletics_default_image_url = "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
+    kwargs = {"event_id": None,
+              "source": source,
+              "name": None,
+              "org_name": None,
+              "location": None,
+              "start_time": None,
+              "end_time": None,
+              "image_url": None
+              }
+
+    match source:
+        case "dragonlink":
+            kwargs["event_id"] = event_json["id"]
+            kwargs["name"] = event_json["name"]
+            kwargs["org_name"] = event_json["organizationName"]
+            kwargs["location"] = event_json["location"]
+            kwargs["start_time"] = normalize_time(source, event_json["startsOn"])
+            kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
+            if event_json["imagePath"]:
+                kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
+        case "drexel_events":
+            if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
+                return None
+            department_names = event_json.get("departmentNames")
+            kwargs["event_id"] = event_json["id"]
+            kwargs["name"] = event_json["title"]
+            kwargs["org_name"] = department_names[0] if department_names else "Drexel University"
+            kwargs["location"] = event_json["address"]
+            kwargs["start_time"] = normalize_time(source, event_json["startDate"])
+            kwargs["end_time"] = normalize_time(source, event_json["endDate"])
+            kwargs["image_url"] = event_json["image"]
+        case "drexel_athletics":
+            at_vs = event_json["atVs"]
+            opponent = event_json["opponent"]["title"]
+            kwargs["event_id"] = event_json["id"]
+            kwargs["name"] = " ".join(["DREX", at_vs, opponent])
+            kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
+            kwargs["location"] = event_json["location"]
+            kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
+            kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
+            kwargs["image_url"] = drexel_athletics_default_image_url  # TODO: get images for each sport
+        case _:
+            return None
+    return Event(**kwargs)
+
+
 def create_dragonlink_url(count=15):
     base_url = "https://drexel.campuslabs.com/engage/api/discovery/event/search"
     timestamp = quote(datetime.now(ZoneInfo("America/New_York")).replace(microsecond=0).isoformat(), safe="")
@@ -59,9 +123,11 @@ def create_drexel_athletics_events():
 
 def collect_all_events():
     events = []
-    events.extend([Event.from_dragonlink_json(event_json) for event_json in collect_dragonlink_events()])
-    events.extend([Event.from_drexel_events_json(event_json) for event_json in collect_drexel_events()])
-    events.extend([Event.from_drexel_athletics_json(event_json) for event_json in create_drexel_athletics_events()])
+    events.extend([create_event_object("dragonlink", event_json) for event_json in collect_dragonlink_events()])
+    events.extend([create_event_object("drexel_events", event_json) for event_json in collect_drexel_events()])
+    events.extend(
+        [create_event_object("drexel_athletics", event_json) for event_json in create_drexel_athletics_events()])
+
     return [i for i in events if i is not None]
 
 

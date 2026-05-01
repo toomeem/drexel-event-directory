@@ -8,22 +8,15 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="aws-drexel_event_db" uuid="072df554-3033-4578-95f3-7caa66721710">
+    <data-source source="LOCAL" name="drexel-event" uuid="44ec7e8b-c65d-4a6d-94ea-89f51ad669a2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://database-1-instance-1.cov2q2gg87ne.us-east-1.rds.amazonaws.com:5432/postgres</jdbc-url>
+      <jdbc-url>jdbc:postgresql://drexel-event.cov2q2gg87ne.us-east-1.rds.amazonaws.com:5432/postgres</jdbc-url>
       <jdbc-additional-properties>
         <property name="cloud.explorer.internal.metadata" value="us-east-1" />
         <property name="cloud.explorer.connection.data.id" value="655f4cb8-6ec5-49ce-9105-094dcf31a438" />
       </jdbc-additional-properties>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="drexel_event_main" uuid="b8be6483-44de-4b9d-900c-89f0406e6cd4">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://drexel-event-db.cov2q2gg87ne.us-east-1.rds.amazonaws.com:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
