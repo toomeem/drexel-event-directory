@@ -1,3 +1,6 @@
+import os
+
+import psycopg2
 import time
 
 import requests
@@ -6,6 +9,7 @@ import json
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 from urllib.parse import quote
+from dotenv import load_dotenv
 from event_class import Event
 
 
@@ -27,7 +31,7 @@ def normalize_time(source, time_str):
 def create_event_object(source, event_json):
     dragonlink_image_url = "https://drexel.campuslabs.com/engage/image/"
     drexel_athletics_default_image_url = "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    kwargs = {"event_id": None,
+    kwargs = {"_id": None,
               "source": source,
               "name": None,
               "org_name": None,
@@ -39,7 +43,6 @@ def create_event_object(source, event_json):
 
     match source:
         case "dragonlink":
-            kwargs["event_id"] = event_json["id"]
             kwargs["name"] = event_json["name"]
             kwargs["org_name"] = event_json["organizationName"]
             kwargs["location"] = event_json["location"]
@@ -51,7 +54,7 @@ def create_event_object(source, event_json):
             if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
                 return None
             department_names = event_json.get("departmentNames")
-            kwargs["event_id"] = event_json["id"]
+
             kwargs["name"] = event_json["title"]
             kwargs["org_name"] = department_names[0] if department_names else "Drexel University"
             kwargs["location"] = event_json["address"]
@@ -61,15 +64,16 @@ def create_event_object(source, event_json):
         case "drexel_athletics":
             at_vs = event_json["atVs"]
             opponent = event_json["opponent"]["title"]
-            kwargs["event_id"] = event_json["id"]
+
             kwargs["name"] = " ".join(["DREX", at_vs, opponent])
             kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
             kwargs["location"] = event_json["location"]
             kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
             kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
-            kwargs["image_url"] = drexel_athletics_default_image_url  # TODO: get images for each sport
+            kwargs["image_url"] = drexel_athletics_default_image_url
         case _:
             return None
+    kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".replace(" ", "_")
     return Event(**kwargs)
 
 
@@ -128,19 +132,64 @@ def collect_all_events():
     events.extend(
         [create_event_object("drexel_athletics", event_json) for event_json in create_drexel_athletics_events()])
 
-    return [i for i in events if i is not None]
+    return list({e._id: e for e in events if e is not None}.values())
 
 
-def save_events(events):
+def load_events_from_file(path="events.json"):
+    timezone = ZoneInfo("America/New_York")
+    with open(path) as f:
+        events_json = json.load(f)
+    events = []
+    for e in events_json:
+        events.append(Event(
+            _id=e["id"],
+            source=e["source"],
+            name=e["name"],
+            org_name=e["org_name"],
+            location=e["location"],
+            start_time=datetime.fromtimestamp(e["start_time"], tz=timezone) if e["start_time"] else None,
+            end_time=datetime.fromtimestamp(e["end_time"], tz=timezone) if e["end_time"] else None,
+            image_url=e["image_url"],
+        ))
+    return events
+
+
+def save_events_to_file(events):
     with open("events.json", "w") as f:
         json.dump([event.to_json() for event in events], f, indent=4)
 
 
-def main():
+def save_events_to_db(events):
+    with psycopg2.connect(
+            host=os.getenv("RDS_ENDPOINT"),
+            database="postgres",
+            user=os.getenv("RDS_USERNAME"),
+            password=os.getenv("RDS_PASSWORD"),
+            port="5432"
+    ) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("TRUNCATE TABLE main.events")
+            cursor.executemany(
+                '''
+                INSERT INTO main.events(id, source, name, org_name, location, start_time, end_time, image_url)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                ''',
+                [event.to_sql() for event in events])
+
+
+def fill_db():
+    events = load_events_from_file()
+    print(f"Events: {len(events)}")
+    save_events_to_db(events)
+
+
+def update_events():
     events = collect_all_events()
     print(f"Events: {len(events)}")
-    save_events(events)
+    save_events_to_file(events)
 
 
 if __name__ == "__main__":
-    main()
+    load_dotenv()
+    # fill_db()
+    update_events()

@@ -1,16 +1,6 @@
 [
     {
-        "event_id": "12392023",
-        "source": "dragonlink",
-        "name": "Barrio Dance Practices: Girls mod, Coed, Paga",
-        "org_name": "Filipino Intercultural Society of Drexel University",
-        "location": "Rec Center - Group Exercise Studio - Room 216",
-        "start_time": 1777591800,
-        "end_time": 1777600800,
-        "image_url": null
-    },
-    {
-        "event_id": "12409133",
+        "id": "dragonlink:Drexel_Gaming_Association:12409133",
         "source": "dragonlink",
         "name": "Super Smash Brothers Ultimate Weekly",
         "org_name": "Drexel Gaming Association",
@@ -20,7 +10,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/31c287c2-4260-4d2f-8f68-1763efe9bd4d87daa80b-376b-487c-aa86-7be81d8a9a9b.png"
     },
     {
-        "event_id": "12424346",
+        "id": "dragonlink:Drexel_Residence_Life:12424346",
         "source": "dragonlink",
         "name": "Resume Review",
         "org_name": "Drexel Residence Life",
@@ -30,7 +20,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/1a5bf3ba-91a0-4436-aff3-ad9086552e0271a87c2d-398b-4373-a31d-9c35ba70c41c.png"
     },
     {
-        "event_id": "12354936",
+        "id": "dragonlink:Physics_Graduate_Student_Association:12354936",
         "source": "dragonlink",
         "name": "PGSA Lunch Talks",
         "org_name": "Physics Graduate Student Association",
@@ -40,7 +30,7 @@
         "image_url": null
     },
     {
-        "event_id": "12328562",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12328562",
         "source": "dragonlink",
         "name": "Jummah Prayer",
         "org_name": "Drexel Muslim Students Association",
@@ -50,7 +40,7 @@
         "image_url": null
     },
     {
-        "event_id": "12456748",
+        "id": "dragonlink:Phi_Sigma_Sigma:12456748",
         "source": "dragonlink",
         "name": "Pink Moon Boutique",
         "org_name": "Phi Sigma Sigma",
@@ -60,7 +50,7 @@
         "image_url": null
     },
     {
-        "event_id": "12328581",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12328581",
         "source": "dragonlink",
         "name": "Living with the Quran",
         "org_name": "Drexel Muslim Students Association",
@@ -70,7 +60,7 @@
         "image_url": null
     },
     {
-        "event_id": "12438132",
+        "id": "dragonlink:Filipino_Intercultural_Society_of_Drexel_University:12438132",
         "source": "dragonlink",
         "name": "FISDU Last Run-Thru",
         "org_name": "Filipino Intercultural Society of Drexel University",
@@ -80,7 +70,7 @@
         "image_url": null
     },
     {
-        "event_id": "12343993",
+        "id": "dragonlink:DUCOM_Rocky_Statue_Society:12343993",
         "source": "dragonlink",
         "name": "Professional Clothing Drive",
         "org_name": "DUCOM Rocky Statue Society",
@@ -90,7 +80,7 @@
         "image_url": null
     },
     {
-        "event_id": "12443244",
+        "id": "dragonlink:Kappa_Phi_Lambda_Sorority,_Inc.:12443244",
         "source": "dragonlink",
         "name": "Pie-a-Kappa",
         "org_name": "Kappa Phi Lambda Sorority, Inc.",
@@ -100,7 +90,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449573",
+        "id": "dragonlink:Society_of_Women_Engineers:12449573",
         "source": "dragonlink",
         "name": "Build a Bouquet with SWE",
         "org_name": "Society of Women Engineers",
@@ -110,7 +100,7 @@
         "image_url": null
     },
     {
-        "event_id": "12377736",
+        "id": "dragonlink:Campus_Activities_Board:12377736",
         "source": "dragonlink",
         "name": "Sunset Paint & Sip",
         "org_name": "Campus Activities Board",
@@ -120,7 +110,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436718",
+        "id": "dragonlink:Jewish_Student_Association:12436718",
         "source": "dragonlink",
         "name": "Shabbat Dinner ",
         "org_name": "Jewish Student Association",
@@ -130,7 +120,7 @@
         "image_url": null
     },
     {
-        "event_id": "12391380",
+        "id": "dragonlink:Drexel_SIGGRAPH:12391380",
         "source": "dragonlink",
         "name": "DIY Workshop Part 2 - 3D Printing",
         "org_name": "Drexel SIGGRAPH",
@@ -140,7 +130,7 @@
         "image_url": null
     },
     {
-        "event_id": "12445506",
+        "id": "dragonlink:Drexel_Gaming_Association:12445506",
         "source": "dragonlink",
         "name": "Splatoon Weekly",
         "org_name": "Drexel Gaming Association",
@@ -150,7 +140,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b8236f72-1951-43a0-a2d6-b70cd5738be7af12f9c6-4c0f-48ce-a1fd-9f25d94a0574.png"
     },
     {
-        "event_id": "12328024",
+        "id": "dragonlink:Graduate_Christian_Fellowship_at_Drexel_University_:12328024",
         "source": "dragonlink",
         "name": "Global Connect - Friday Night Connection",
         "org_name": "Graduate Christian Fellowship at Drexel University ",
@@ -160,7 +150,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/51c87c5b-582e-4f1e-8ccb-8c857f7100824653650e-6106-4ae7-8d95-1573aac00cd0.png"
     },
     {
-        "event_id": "12450361",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12450361",
         "source": "dragonlink",
         "name": "Top Chef",
         "org_name": "Drexel Muslim Students Association",
@@ -170,7 +160,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436723",
+        "id": "dragonlink:Drexel_Players:12436723",
         "source": "dragonlink",
         "name": "Drexel Players Karaoke! ",
         "org_name": "Drexel Players",
@@ -180,7 +170,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449572",
+        "id": "dragonlink:Drexel_Undergraduate_Mock_Trial_Association:12449572",
         "source": "dragonlink",
         "name": "Mock Trial Banquet",
         "org_name": "Drexel Undergraduate Mock Trial Association",
@@ -190,7 +180,7 @@
         "image_url": null
     },
     {
-        "event_id": "12328543",
+        "id": "dragonlink:Dragon_Jedi:12328543",
         "source": "dragonlink",
         "name": "Drexel Dragon Jedi Meeting",
         "org_name": "Dragon Jedi",
@@ -200,7 +190,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/71cc5c6f-e8a2-4bc6-a19c-4c13087c08415be1f904-cbb5-4630-988a-84b2ec8d75a1.png"
     },
     {
-        "event_id": "12443666",
+        "id": "dragonlink:Sigma_Psi_Zeta_Sorority,_Inc.:12443666",
         "source": "dragonlink",
         "name": "DIY Floral Craft Night",
         "org_name": "Sigma Psi Zeta Sorority, Inc.",
@@ -210,7 +200,7 @@
         "image_url": null
     },
     {
-        "event_id": "12443676",
+        "id": "dragonlink:Pi_Kappa_Phi_Fraternity:12443676",
         "source": "dragonlink",
         "name": "Canvas Signing",
         "org_name": "Pi Kappa Phi Fraternity",
@@ -220,7 +210,7 @@
         "image_url": null
     },
     {
-        "event_id": "12440776",
+        "id": "dragonlink:Latinos_for_a_United_Campus:12440776",
         "source": "dragonlink",
         "name": "La Escapada: Imperio Dorado",
         "org_name": "Latinos for a United Campus",
@@ -230,7 +220,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/f10d7e30-6e88-4a78-aa6c-1243c1397f1cfd4719d8-5233-4743-9bd5-835a349f2859.png"
     },
     {
-        "event_id": "12408739",
+        "id": "dragonlink:Drexel_Asian_Baptist_Student_Koinonia:12408739",
         "source": "dragonlink",
         "name": "ABSK Friday Bible Study",
         "org_name": "Drexel Asian Baptist Student Koinonia",
@@ -240,7 +230,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/95d4c554-7f91-464a-9ce1-3586babf344f303591fd-5331-431c-8554-a887caa06e1b.png"
     },
     {
-        "event_id": "12408756",
+        "id": "dragonlink:Dragon_Jedi:12408756",
         "source": "dragonlink",
         "name": "Drexel Dragon Jedi After Club Hangout (ACH)",
         "org_name": "Dragon Jedi",
@@ -250,7 +240,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/9d6644fb-8b8a-4044-9c04-57c57b3392904b73e1d9-7128-40f0-a235-dd032490d3aa.png"
     },
     {
-        "event_id": "12440355",
+        "id": "dragonlink:Alpha_Epsilon_Pi-_Delta_Rho:12440355",
         "source": "dragonlink",
         "name": "Social at Fraternity House",
         "org_name": "Alpha Epsilon Pi- Delta Rho",
@@ -260,7 +250,7 @@
         "image_url": null
     },
     {
-        "event_id": "12440363",
+        "id": "dragonlink:Alpha_Chi_Rho:12440363",
         "source": "dragonlink",
         "name": "Event With Alcohol",
         "org_name": "Alpha Chi Rho",
@@ -270,7 +260,7 @@
         "image_url": null
     },
     {
-        "event_id": "12413057",
+        "id": "dragonlink:Drexel_American_Society_of_Mechanical_Engineers:12413057",
         "source": "dragonlink",
         "name": "Movement Labs Dance Practice",
         "org_name": "Drexel American Society of Mechanical Engineers",
@@ -280,7 +270,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436733",
+        "id": "dragonlink:Harvest_Christian_Fellowship:12436733",
         "source": "dragonlink",
         "name": "Overflow Dance Ministry Practice",
         "org_name": "Harvest Christian Fellowship",
@@ -290,7 +280,7 @@
         "image_url": null
     },
     {
-        "event_id": "12355984",
+        "id": "dragonlink:Campus_Activities_Board:12355984",
         "source": "dragonlink",
         "name": "Longwood Gardens",
         "org_name": "Campus Activities Board",
@@ -300,7 +290,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436729",
+        "id": "dragonlink:Sigma_Psi_Zeta_Sorority,_Inc.:12436729",
         "source": "dragonlink",
         "name": "Serves for SAAM: Volleyball Tournament",
         "org_name": "Sigma Psi Zeta Sorority, Inc.",
@@ -310,7 +300,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436732",
+        "id": "dragonlink:Jewish_Student_Association:12436732",
         "source": "dragonlink",
         "name": "Orthodox Minyan Group's SMASH",
         "org_name": "Jewish Student Association",
@@ -320,7 +310,7 @@
         "image_url": null
     },
     {
-        "event_id": "12408874",
+        "id": "dragonlink:Drexel_Gaming_Association:12408874",
         "source": "dragonlink",
         "name": "Magic: The Gathering",
         "org_name": "Drexel Gaming Association",
@@ -330,7 +320,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/cb07bc77-41a0-4212-9894-e68a49f7f2bb0eaf6851-95c4-4bef-8bf2-d61030adacd8.png"
     },
     {
-        "event_id": "12436731",
+        "id": "dragonlink:Drexel_Night_Live:12436731",
         "source": "dragonlink",
         "name": "Drexel Night Live Stand Up Comedy Night 2",
         "org_name": "Drexel Night Live",
@@ -340,7 +330,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/77ff1c61-f7ac-4653-ae53-f1372504daddd2c43aed-bf33-45f3-8c42-9774e28c6402.png"
     },
     {
-        "event_id": "12440859",
+        "id": "dragonlink:Filipino_Intercultural_Society_of_Drexel_University:12440859",
         "source": "dragonlink",
         "name": "Barrio Culture Show - Backstage",
         "org_name": "Filipino Intercultural Society of Drexel University",
@@ -350,7 +340,7 @@
         "image_url": null
     },
     {
-        "event_id": "12440860",
+        "id": "dragonlink:Filipino_Intercultural_Society_of_Drexel_University:12440860",
         "source": "dragonlink",
         "name": "Barrio Culture Show - Backstage",
         "org_name": "Filipino Intercultural Society of Drexel University",
@@ -360,7 +350,7 @@
         "image_url": null
     },
     {
-        "event_id": "12456527",
+        "id": "dragonlink:Philly_Maza:12456527",
         "source": "dragonlink",
         "name": "Philly Maza Banquet",
         "org_name": "Philly Maza",
@@ -370,7 +360,7 @@
         "image_url": null
     },
     {
-        "event_id": "12440712",
+        "id": "dragonlink:Drexel_Gaming_Association:12440712",
         "source": "dragonlink",
         "name": "Spring LAN",
         "org_name": "Drexel Gaming Association",
@@ -380,7 +370,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/7d84b987-5fc6-439f-ba97-43f743c80ab5b4ce379e-3cc6-4388-a8b1-b7768d55b9c2.png"
     },
     {
-        "event_id": "12450904",
+        "id": "dragonlink:Theta_Chi:12450904",
         "source": "dragonlink",
         "name": "Event with Alcohol",
         "org_name": "Theta Chi",
@@ -390,7 +380,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/a89ec218-157e-4fef-8ad5-bceb5c00313d36bcd05c-7967-430b-928a-868e4630f104.png"
     },
     {
-        "event_id": "12397661",
+        "id": "dragonlink:Phi_Alpha_Delta_Pre-Law_Fraternity:12397661",
         "source": "dragonlink",
         "name": "New member meetings",
         "org_name": "Phi Alpha Delta Pre-Law Fraternity",
@@ -400,7 +390,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449576",
+        "id": "dragonlink:Phi_Delta_Epsilon_(PhiDE):12449576",
         "source": "dragonlink",
         "name": "GBM 2",
         "org_name": "Phi Delta Epsilon (PhiDE)",
@@ -410,7 +400,7 @@
         "image_url": null
     },
     {
-        "event_id": "12425468",
+        "id": "dragonlink:Drexel_Residence_Life:12425468",
         "source": "dragonlink",
         "name": "Register to Vote ",
         "org_name": "Drexel Residence Life",
@@ -420,7 +410,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5a8a4520-b192-444f-9ae0-818fef2b8bb433c6c410-9c16-4180-89f3-c578ad6f7cdf.png"
     },
     {
-        "event_id": "12408806",
+        "id": "dragonlink:Delta_Zeta:12408806",
         "source": "dragonlink",
         "name": "Delta Zeta Chapter, Spring 26 ",
         "org_name": "Delta Zeta",
@@ -430,7 +420,7 @@
         "image_url": null
     },
     {
-        "event_id": "12316428",
+        "id": "dragonlink:DUCOM_Classical:12316428",
         "source": "dragonlink",
         "name": "DUCOM Classical Spring Recital",
         "org_name": "DUCOM Classical",
@@ -440,7 +430,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/daf38e11-029d-47ca-b9b6-683b9574ebaef23d1fc9-802b-4aa6-aa43-4e12ec9513b1.png"
     },
     {
-        "event_id": "12389616",
+        "id": "dragonlink:Student_Organization_Resource_Center:12389616",
         "source": "dragonlink",
         "name": "Recognition Office Hours",
         "org_name": "Student Organization Resource Center",
@@ -450,7 +440,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/dc22311e-0872-44b9-8a09-4b45ef270d9959221dfb-dcf0-43a2-b242-81ecdb282b2b.png"
     },
     {
-        "event_id": "12449581",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12449581",
         "source": "dragonlink",
         "name": "Islamic Awareness Week",
         "org_name": "Drexel Muslim Students Association",
@@ -460,7 +450,7 @@
         "image_url": null
     },
     {
-        "event_id": "12450417",
+        "id": "dragonlink:Drexel_Biomedical_Engineering_Undergraduate_Association:12450417",
         "source": "dragonlink",
         "name": "DBUA Spring Fundrasier",
         "org_name": "Drexel Biomedical Engineering Undergraduate Association",
@@ -470,7 +460,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/12c2c8c2-6dbb-41d3-b4cc-1ab17dd7e0817d06fc31-45bb-4335-80de-40779d362076.pdf"
     },
     {
-        "event_id": "12427196",
+        "id": "dragonlink:DUCOM_Book_Wyrms:12427196",
         "source": "dragonlink",
         "name": "Picnic & Pages",
         "org_name": "DUCOM Book Wyrms",
@@ -480,7 +470,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/9c1cc5ba-97df-4ad1-adff-d61b0f9e65918f1986f0-e26d-4719-8eac-89d6eeaaa8df.png"
     },
     {
-        "event_id": "12449585",
+        "id": "dragonlink:Association_of_Latino_Professionals_For_America:12449585",
         "source": "dragonlink",
         "name": "ALPFA AI Resume Review",
         "org_name": "Association of Latino Professionals For America",
@@ -490,7 +480,7 @@
         "image_url": null
     },
     {
-        "event_id": "12328197",
+        "id": "dragonlink:TechServ:12328197",
         "source": "dragonlink",
         "name": "TechServ Spring Term General Body Meeting",
         "org_name": "TechServ",
@@ -500,7 +490,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6955e932-1b7c-443a-993c-c5524e83206151428a90-1f8e-4fb0-98c4-e9a56fce6de7.png"
     },
     {
-        "event_id": "12425495",
+        "id": "dragonlink:Drexel_Residence_Life:12425495",
         "source": "dragonlink",
         "name": "The Mic drop",
         "org_name": "Drexel Residence Life",
@@ -510,7 +500,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bfaf4d43-8b0c-4f78-8be0-816bfc93112bc8d6ce9d-c56d-48dc-8bbc-a3e20612fbda.png"
     },
     {
-        "event_id": "12374930",
+        "id": "dragonlink:Engineers_Without_Borders:12374930",
         "source": "dragonlink",
         "name": "EWB Tech Team Meeting",
         "org_name": "Engineers Without Borders",
@@ -520,7 +510,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3fb87b95-91c8-4b58-9b6a-78300bf7e80951574797-3e54-4211-b1d8-81cb183ecb5a.png"
     },
     {
-        "event_id": "12374895",
+        "id": "dragonlink:Engineers_Without_Borders:12374895",
         "source": "dragonlink",
         "name": "EWB Global Relations & International Design Department Meeting",
         "org_name": "Engineers Without Borders",
@@ -530,7 +520,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ce6dabed-f77a-4d8e-ba7b-e30aa2db015ca89db867-65c1-4002-96a3-ab5389083acf.png"
     },
     {
-        "event_id": "12415726",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12415726",
         "source": "dragonlink",
         "name": "Sisters' Halaqa",
         "org_name": "Drexel Muslim Students Association",
@@ -540,7 +530,7 @@
         "image_url": null
     },
     {
-        "event_id": "12408559",
+        "id": "dragonlink:Cru:12408559",
         "source": "dragonlink",
         "name": "Cru Men's Bible Study",
         "org_name": "Cru",
@@ -550,7 +540,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/d0452ec2-66d8-44fe-bccd-d9d43915ed776761b25e-14f6-4b33-b2a0-6d254a45bc7f.png"
     },
     {
-        "event_id": "12392043",
+        "id": "dragonlink:Fellowship_of_Christian_Athletes:12392043",
         "source": "dragonlink",
         "name": "FCA Weekly Huddle",
         "org_name": "Fellowship of Christian Athletes",
@@ -560,7 +550,7 @@
         "image_url": null
     },
     {
-        "event_id": "12374914",
+        "id": "dragonlink:Engineers_Without_Borders:12374914",
         "source": "dragonlink",
         "name": "EWB Domestic Design Department Meeting",
         "org_name": "Engineers Without Borders",
@@ -570,7 +560,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/f7a85454-a5cd-4c08-ab0e-383d4e201a2ff21a5e0d-04cc-4538-aad5-ba14d5e1b119.png"
     },
     {
-        "event_id": "12396429",
+        "id": "dragonlink:The_Good_Idea_Fund:12396429",
         "source": "dragonlink",
         "name": "TGIF | Spring Board Meeting",
         "org_name": "The Good Idea Fund",
@@ -580,7 +570,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/908656f4-3c70-4953-8a72-4dbec46758b5ab5230fc-6d23-4362-a5c3-8ae0de3235ee.png"
     },
     {
-        "event_id": "12358169",
+        "id": "dragonlink:Cru:12358169",
         "source": "dragonlink",
         "name": "Cru Women's Bible Study",
         "org_name": "Cru",
@@ -590,7 +580,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/884787b0-54e2-477f-b894-600f40ffc835047bbf74-6e23-4643-9010-ef192b78863d.png"
     },
     {
-        "event_id": "12454404",
+        "id": "dragonlink:Drexel_Finance_and_Investment_Group:12454404",
         "source": "dragonlink",
         "name": "Company Evaluation",
         "org_name": "Drexel Finance and Investment Group",
@@ -600,7 +590,7 @@
         "image_url": null
     },
     {
-        "event_id": "12443796",
+        "id": "dragonlink:Drexel_University_BRAG_Chapter:12443796",
         "source": "dragonlink",
         "name": "Power in Peers: Building Your Fashion Network",
         "org_name": "Drexel University BRAG Chapter",
@@ -610,7 +600,7 @@
         "image_url": null
     },
     {
-        "event_id": "12408922",
+        "id": "dragonlink:South_Asian_Students_Association:12408922",
         "source": "dragonlink",
         "name": "Weekly Executive Board Meeting",
         "org_name": "South Asian Students Association",
@@ -620,7 +610,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/252c0e10-fa7a-44a1-a9fb-4f0dcfc73674cabb7d23-4daf-4aa0-8c2c-215ea08b92ac.png"
     },
     {
-        "event_id": "12387970",
+        "id": "dragonlink:Delta_Gamma_\u2013_Eta_Upsilon:12387970",
         "source": "dragonlink",
         "name": "Chapter",
         "org_name": "Delta Gamma \u2013 Eta Upsilon",
@@ -630,7 +620,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b56ff802-0785-4b6c-b0ab-306ec1e9ae6663f7b382-bac5-4372-b95c-583d83f5ad0a.png"
     },
     {
-        "event_id": "12436734",
+        "id": "dragonlink:Retail_and_Design_Club:12436734",
         "source": "dragonlink",
         "name": "MET Gala Watch Party",
         "org_name": "Retail and Design Club",
@@ -640,7 +630,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/a7206598-75d0-4fe7-adc3-0cd10da5db93ea450e42-d4e9-4d31-b933-102f2fee0125.png"
     },
     {
-        "event_id": "12456529",
+        "id": "dragonlink:Society_of_Asian_Scientists_and_Engineers:_Drexel_University_Chapter:12456529",
         "source": "dragonlink",
         "name": "DigiKey Workshop",
         "org_name": "Society of Asian Scientists and Engineers: Drexel University Chapter",
@@ -650,7 +640,7 @@
         "image_url": null
     },
     {
-        "event_id": "12315889",
+        "id": "dragonlink:Undergraduate_Student_Government_Association:12315889",
         "source": "dragonlink",
         "name": "USGA Joint Session",
         "org_name": "Undergraduate Student Government Association",
@@ -660,7 +650,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ca393987-1025-48e9-ab2e-d59489d05649ab18eddd-2e1c-4f55-9cd1-e29b9523f648.png"
     },
     {
-        "event_id": "12387962",
+        "id": "dragonlink:Sigma_Psi_Zeta_Sorority,_Inc.:12387962",
         "source": "dragonlink",
         "name": "Heart to Heart",
         "org_name": "Sigma Psi Zeta Sorority, Inc.",
@@ -670,7 +660,7 @@
         "image_url": null
     },
     {
-        "event_id": "12428202",
+        "id": "dragonlink:Every_Nation_Campus:12428202",
         "source": "dragonlink",
         "name": "Nana Kwasi and Tristan's Bible study ",
         "org_name": "Every Nation Campus",
@@ -680,7 +670,7 @@
         "image_url": null
     },
     {
-        "event_id": "12306563",
+        "id": "dragonlink:Drexel_Newman_Catholic_Community:12306563",
         "source": "dragonlink",
         "name": "Pizza and Prayer!",
         "org_name": "Drexel Newman Catholic Community",
@@ -690,7 +680,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/293765d3-b6af-4811-84bd-d9dbbb3fbd48a53030e5-72dc-495a-b696-ce22137c3abd.png"
     },
     {
-        "event_id": "12440438",
+        "id": "dragonlink:Phi_Sigma_Sigma:12440438",
         "source": "dragonlink",
         "name": "phi sigma sigma chapter meeting",
         "org_name": "Phi Sigma Sigma",
@@ -700,7 +690,7 @@
         "image_url": null
     },
     {
-        "event_id": "12425621",
+        "id": "dragonlink:Drexel_Gaming_Association:12425621",
         "source": "dragonlink",
         "name": "Mario Kart Weekly",
         "org_name": "Drexel Gaming Association",
@@ -710,7 +700,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/faa3de0d-4614-42fe-99db-54a234f747ce4467ee5f-b9e1-4bf4-89a9-43938512312a.png"
     },
     {
-        "event_id": "12408875",
+        "id": "dragonlink:Drexel_Gaming_Association:12408875",
         "source": "dragonlink",
         "name": "Magic: The Gathering",
         "org_name": "Drexel Gaming Association",
@@ -720,7 +710,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/cb07bc77-41a0-4212-9894-e68a49f7f2bb0eaf6851-95c4-4bef-8bf2-d61030adacd8.png"
     },
     {
-        "event_id": "12413349",
+        "id": "dragonlink:Harvest_Christian_Fellowship:12413349",
         "source": "dragonlink",
         "name": "Overflow Dance Ministry Practice",
         "org_name": "Harvest Christian Fellowship",
@@ -730,7 +720,7 @@
         "image_url": null
     },
     {
-        "event_id": "12442226",
+        "id": "dragonlink:Delta_Phi_Epsilon:12442226",
         "source": "dragonlink",
         "name": "Sisterhood: Group exercise",
         "org_name": "Delta Phi Epsilon",
@@ -740,7 +730,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449597",
+        "id": "dragonlink:Drexel_Dance_Marathon:12449597",
         "source": "dragonlink",
         "name": "Professional Headshots- Benefitting CHOP!",
         "org_name": "Drexel Dance Marathon",
@@ -750,7 +740,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449582",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12449582",
         "source": "dragonlink",
         "name": "Islamic Awareness Week",
         "org_name": "Drexel Muslim Students Association",
@@ -760,7 +750,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449952",
+        "id": "dragonlink:Kappa_Phi_Lambda_Sorority,_Inc.:12449952",
         "source": "dragonlink",
         "name": "Kappas' Care Closet",
         "org_name": "Kappa Phi Lambda Sorority, Inc.",
@@ -770,7 +760,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449589",
+        "id": "dragonlink:Biomedical_Science_Graduate_Student_Association:12449589",
         "source": "dragonlink",
         "name": "Blankets and Burritos",
         "org_name": "Biomedical Science Graduate Student Association",
@@ -780,7 +770,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/269c50ed-f685-4c57-af98-cbb5c1ccace66e9a3f64-9092-4299-adfe-eba74121310b.png"
     },
     {
-        "event_id": "12385032",
+        "id": "dragonlink:Drexel_Muslim_Students_Association:12385032",
         "source": "dragonlink",
         "name": "Weekly Halaqa",
         "org_name": "Drexel Muslim Students Association",
@@ -790,7 +780,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436853",
+        "id": "dragonlink:Society_of_Women_Engineers:12436853",
         "source": "dragonlink",
         "name": "SWE Spring GBM#1 ",
         "org_name": "Society of Women Engineers",
@@ -800,7 +790,7 @@
         "image_url": null
     },
     {
-        "event_id": "12395442",
+        "id": "dragonlink:Student_Life_Leadership_Curriculum:12395442",
         "source": "dragonlink",
         "name": "Leading The Whole Person with Reverend Musser",
         "org_name": "Student Life Leadership Curriculum",
@@ -810,7 +800,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ae3ebf04-ab09-42c4-ac77-1f025c2305a19916723a-d75b-44dc-b06b-01b5c65eca40.png"
     },
     {
-        "event_id": "12449591",
+        "id": "dragonlink:Drexel_Speaks:12449591",
         "source": "dragonlink",
         "name": "Drexel Speaks Weekly Meeting ",
         "org_name": "Drexel Speaks",
@@ -820,7 +810,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ded675c2-658b-49ee-889e-38159419460e1c54b619-3a50-4f99-b1f1-7e0843b2e256.png"
     },
     {
-        "event_id": "12456882",
+        "id": "dragonlink:Women_In_Surgery:12456882",
         "source": "dragonlink",
         "name": "Panel with 4th years ",
         "org_name": "Women In Surgery",
@@ -830,7 +820,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/63710f39-a1e7-4d80-acab-f21005b666ef0648a9e2-ef72-421c-bb47-37d7c197ecba.png"
     },
     {
-        "event_id": "12358030",
+        "id": "dragonlink:Drexel_Students_for_Christ:12358030",
         "source": "dragonlink",
         "name": "DSC Bible Study",
         "org_name": "Drexel Students for Christ",
@@ -840,7 +830,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/d64a64f0-5c00-421f-8c95-baea1dd4f3eae747f8b4-f761-4509-b427-848bbdc16a0f.png"
     },
     {
-        "event_id": "12445970",
+        "id": "dragonlink:Chemistry_Graduate_Student_Association:12445970",
         "source": "dragonlink",
         "name": "Chem GSA Spring Ball",
         "org_name": "Chemistry Graduate Student Association",
@@ -850,7 +840,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/74803476-dbc5-469a-aa84-42b2cdeabf34614ce382-04c9-4fad-ad49-8e91600e5d6b.png"
     },
     {
-        "event_id": "12452918",
+        "id": "dragonlink:West_Indian_Student_Establishment:12452918",
         "source": "dragonlink",
         "name": "Whine Wid Wise",
         "org_name": "West Indian Student Establishment",
@@ -860,7 +850,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3cf1fe64-31a3-4417-8c87-76da2f3be5ef64170946-ea44-45a2-abb7-ee69407cac3d.png"
     },
     {
-        "event_id": "12409319",
+        "id": "dragonlink:Drexel_University_Debate_Union:12409319",
         "source": "dragonlink",
         "name": "Spring Practices",
         "org_name": "Drexel University Debate Union",
@@ -870,7 +860,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/f8106dd5-d104-41ee-b37f-bbed996c9f4e2daa65c8-f8b4-4680-9535-d009a06c5082.png"
     },
     {
-        "event_id": "12454410",
+        "id": "dragonlink:National_Society_of_Black_Engineers:12454410",
         "source": "dragonlink",
         "name": "Study Hours with NSBE",
         "org_name": "National Society of Black Engineers",
@@ -880,7 +870,7 @@
         "image_url": null
     },
     {
-        "event_id": "12449598",
+        "id": "dragonlink:Drexel_Women_in_Business:12449598",
         "source": "dragonlink",
         "name": "Mothers Day Card Making ",
         "org_name": "Drexel Women in Business",
@@ -890,7 +880,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ae75f5f6-1299-4bc6-922c-b2f2c722f991d8d67e5b-1c02-4aa7-9a44-2ad89f869098.png"
     },
     {
-        "event_id": "12449599",
+        "id": "dragonlink:Global_China_Connection:12449599",
         "source": "dragonlink",
         "name": "GCC Card Making for Elders",
         "org_name": "Global China Connection",
@@ -900,7 +890,7 @@
         "image_url": null
     },
     {
-        "event_id": "12443180",
+        "id": "dragonlink:Hack4Impact_Drexel:12443180",
         "source": "dragonlink",
         "name": "Spring Showcase",
         "org_name": "Hack4Impact Drexel",
@@ -910,7 +900,7 @@
         "image_url": null
     },
     {
-        "event_id": "12456514",
+        "id": "dragonlink:Drexel_African_Students_Association:12456514",
         "source": "dragonlink",
         "name": "DASA Fashion Show Practice",
         "org_name": "Drexel African Students Association",
@@ -920,7 +910,7 @@
         "image_url": null
     },
     {
-        "event_id": "12452916",
+        "id": "dragonlink:Ascend_Drexel_Student_Chapter:12452916",
         "source": "dragonlink",
         "name": "Mentorship Field Day",
         "org_name": "Ascend Drexel Student Chapter",
@@ -930,7 +920,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5da1f572-93b7-4b6a-91d7-caf0891169f85e676650-5d94-46c5-a9c0-931e5a887663.png"
     },
     {
-        "event_id": "12449588",
+        "id": "dragonlink:Korean_Student_Association:12449588",
         "source": "dragonlink",
         "name": "DKPC x KSA Children Day ",
         "org_name": "Korean Student Association",
@@ -940,7 +930,7 @@
         "image_url": null
     },
     {
-        "event_id": "12436847",
+        "id": "dragonlink:Drexel_Electric_Racing:12436847",
         "source": "dragonlink",
         "name": "Drexel Electric Racing GBM - Spring 2026",
         "org_name": "Drexel Electric Racing",
@@ -950,7 +940,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/98a53309-4b25-434e-b346-641e54bfb498d00d9ab7-d108-4ab8-a310-455e85511d9d.png"
     },
     {
-        "event_id": "12375073",
+        "id": "dragonlink:Engineers_Without_Borders:12375073",
         "source": "dragonlink",
         "name": "EWB Fundraising & Marketing Department Meeting",
         "org_name": "Engineers Without Borders",
@@ -960,7 +950,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/69357295-dbaf-4d1f-aac4-de889001ace654e48fb0-0aec-4341-a6c3-afb14958bbbb.png"
     },
     {
-        "event_id": "12375114",
+        "id": "dragonlink:Drexel_University_Circle_K:12375114",
         "source": "dragonlink",
         "name": "Drexel University Circle K General Body Meeting",
         "org_name": "Drexel University Circle K",
@@ -970,7 +960,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3c340f3d-1bc7-4f58-940a-6a87668f923ea02fbf3a-3025-4620-be1d-87699339b6bb.png"
     },
     {
-        "event_id": "12409381",
+        "id": "dragonlink:Society_of_Asian_Scientists_and_Engineers:_Drexel_University_Chapter:12409381",
         "source": "dragonlink",
         "name": "SASE Spring Term E-board Meetings",
         "org_name": "Society of Asian Scientists and Engineers: Drexel University Chapter",
@@ -980,7 +970,7 @@
         "image_url": null
     },
     {
-        "event_id": "12288512",
+        "id": "dragonlink:Unplugged_Gaming_Organization:12288512",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -990,7 +980,7 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ac82fca6-0408-46f7-a50c-7c14988ae37e57cdc88c-baac-4c2f-8983-1977b527ce31.png"
     },
     {
-        "event_id": "12328425",
+        "id": "dragonlink:Dragon_Jedi:12328425",
         "source": "dragonlink",
         "name": "Drexel Dragon Jedi Meeting",
         "org_name": "Dragon Jedi",
@@ -1000,7 +990,17 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/4265d1d2-624b-41eb-83e9-c110183ade155a762c1e-2122-40c1-b0c2-23a06557b06b.png"
     },
     {
-        "event_id": "45756_119968",
+        "id": "dragonlink:Delta_Phi_Epsilon:12449586",
+        "source": "dragonlink",
+        "name": "Chapter",
+        "org_name": "Delta Phi Epsilon",
+        "location": "NSBITT 125 - Ruth Auditorium",
+        "start_time": 1778022000,
+        "end_time": 1778032800,
+        "image_url": null
+    },
+    {
+        "id": "drexel_events:Libraries:45756_119968",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1010,7 +1010,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121818",
+        "id": "drexel_events:Libraries:46371_121818",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1020,7 +1020,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "45677_119624",
+        "id": "drexel_events:University_Writing_Program:45677_119624",
         "source": "drexel_events",
         "name": "Graduate Student Writing Group",
         "org_name": "University Writing Program",
@@ -1030,7 +1030,7 @@
         "image_url": null
     },
     {
-        "event_id": "46276_121437",
+        "id": "drexel_events:Urban_Health_Collaborative:46276_121437",
         "source": "drexel_events",
         "name": "Aging with Pride: Health, Resilience, & Equity for Older Queer Philadelphians",
         "org_name": "Urban Health Collaborative",
@@ -1040,7 +1040,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24220"
     },
     {
-        "event_id": "46012_120854",
+        "id": "drexel_events:Dornsife_Center:46012_120854",
         "source": "drexel_events",
         "name": "Ausome Ambassadors",
         "org_name": "Dornsife Center",
@@ -1050,7 +1050,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24139"
     },
     {
-        "event_id": "46352_121765",
+        "id": "drexel_events:International_Students_and_Scholars_Services:46352_121765",
         "source": "drexel_events",
         "name": "ISSS Lunch & Dialogue: Wellness Within Reach with Student Health Center and Counseling Center",
         "org_name": "International Students and Scholars Services",
@@ -1060,7 +1060,7 @@
         "image_url": null
     },
     {
-        "event_id": "46333_121653",
+        "id": "drexel_events:Lindy_Center:46333_121653",
         "source": "drexel_events",
         "name": "Coffee & Community",
         "org_name": "Lindy Center",
@@ -1070,7 +1070,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24254"
     },
     {
-        "event_id": "46308_121574",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121574",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1080,7 +1080,7 @@
         "image_url": null
     },
     {
-        "event_id": "46307_121525",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121525",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1090,7 +1090,7 @@
         "image_url": null
     },
     {
-        "event_id": "46292_121469",
+        "id": "drexel_events:College_of_Medicine:46292_121469",
         "source": "drexel_events",
         "name": "Behavioral Health Webinar: Overview of Early Psychosis Identification and Intervention",
         "org_name": "College of Medicine",
@@ -1100,7 +1100,7 @@
         "image_url": null
     },
     {
-        "event_id": "46405_122021",
+        "id": "drexel_events:Center_for_Learning_and_Academic_Success_Services:46405_122021",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Center for Learning and Academic Success Services",
@@ -1110,7 +1110,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
     },
     {
-        "event_id": "46422_122075",
+        "id": "drexel_events:Biodiversity,_Earth_and_Environmental_Science:46422_122075",
         "source": "drexel_events",
         "name": "BEES Department Graduate Seminar",
         "org_name": "Biodiversity, Earth and Environmental Science",
@@ -1120,7 +1120,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24328"
     },
     {
-        "event_id": "46403_122002",
+        "id": "drexel_events:Office_of_Graduate_Studies:46403_122002",
         "source": "drexel_events",
         "name": "Strategies for Finding Data and Statistics",
         "org_name": "Office of Graduate Studies",
@@ -1130,7 +1130,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24312"
     },
     {
-        "event_id": "45448_119028",
+        "id": "drexel_events:College_of_Medicine:45448_119028",
         "source": "drexel_events",
         "name": "DUCoM Monthly Dragon Talks",
         "org_name": "College of Medicine",
@@ -1140,7 +1140,7 @@
         "image_url": null
     },
     {
-        "event_id": "46515_122458",
+        "id": "drexel_events:College_of_Medicine:46515_122458",
         "source": "drexel_events",
         "name": "Global Neurosciences Institute Grand Rounds",
         "org_name": "College of Medicine",
@@ -1150,7 +1150,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119969",
+        "id": "drexel_events:Libraries:45756_119969",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1160,7 +1160,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121819",
+        "id": "drexel_events:Libraries:46371_121819",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1170,7 +1170,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "46379_121954",
+        "id": "drexel_events:Chemistry:46379_121954",
         "source": "drexel_events",
         "name": "Annual Chemistry Minisymposium: Week 1",
         "org_name": "Chemistry",
@@ -1180,7 +1180,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24290"
     },
     {
-        "event_id": "45558_119333",
+        "id": "drexel_events:University_Writing_Program:45558_119333",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "University Writing Program",
@@ -1190,7 +1190,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798"
     },
     {
-        "event_id": "45959_120652",
+        "id": "drexel_events:University_Writing_Program:45959_120652",
         "source": "drexel_events",
         "name": "Writing Group for Multilingual Writers",
         "org_name": "University Writing Program",
@@ -1200,7 +1200,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24050"
     },
     {
-        "event_id": "46342_121703",
+        "id": "drexel_events:Study_Abroad:46342_121703",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Study Abroad",
@@ -1210,7 +1210,7 @@
         "image_url": null
     },
     {
-        "event_id": "46307_121526",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121526",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1220,7 +1220,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121575",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121575",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1230,7 +1230,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119970",
+        "id": "drexel_events:Libraries:45756_119970",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1240,7 +1240,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121820",
+        "id": "drexel_events:Libraries:46371_121820",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1250,7 +1250,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "46308_121576",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121576",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1260,7 +1260,7 @@
         "image_url": null
     },
     {
-        "event_id": "46307_121527",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121527",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1270,7 +1270,7 @@
         "image_url": null
     },
     {
-        "event_id": "46044_120918",
+        "id": "drexel_events:Academy_of_Natural_Sciences:46044_120918",
         "source": "drexel_events",
         "name": "Drop-in Science Workshops: Capturing City Nature",
         "org_name": "Academy of Natural Sciences",
@@ -1280,7 +1280,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24106"
     },
     {
-        "event_id": "45756_119971",
+        "id": "drexel_events:Libraries:45756_119971",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1290,7 +1290,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121821",
+        "id": "drexel_events:Libraries:46371_121821",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1300,7 +1300,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "46307_121528",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121528",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1310,7 +1310,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121577",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121577",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1320,7 +1320,7 @@
         "image_url": null
     },
     {
-        "event_id": "46255_121392",
+        "id": "drexel_events:College_of_Medicine:46255_121392",
         "source": "drexel_events",
         "name": "DUCoM Classical Spring Recital",
         "org_name": "College of Medicine",
@@ -1330,7 +1330,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119972",
+        "id": "drexel_events:Libraries:45756_119972",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1340,7 +1340,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121822",
+        "id": "drexel_events:Libraries:46371_121822",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1350,7 +1350,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "46469_122171",
+        "id": "drexel_events:School_of_Biomedical_Engineering:46469_122171",
         "source": "drexel_events",
         "name": "Transcriptomic Analysis of Circadian Rhythm Disruption & Intercellular Desynchrony in Human Brain",
         "org_name": "School of Biomedical Engineering",
@@ -1360,7 +1360,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24344"
     },
     {
-        "event_id": "46243_121368",
+        "id": "drexel_events:College_of_Medicine:46243_121368",
         "source": "drexel_events",
         "name": "Real World Diabetes: A Series of Free Workshops",
         "org_name": "College of Medicine",
@@ -1370,7 +1370,7 @@
         "image_url": null
     },
     {
-        "event_id": "46428_122087",
+        "id": "drexel_events:College_of_Medicine:46428_122087",
         "source": "drexel_events",
         "name": "Online Open House: MS/PhD in Pharmacology & Physiology",
         "org_name": "College of Medicine",
@@ -1380,7 +1380,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121578",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121578",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1390,7 +1390,7 @@
         "image_url": null
     },
     {
-        "event_id": "46307_121529",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121529",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1400,7 +1400,7 @@
         "image_url": null
     },
     {
-        "event_id": "46405_122022",
+        "id": "drexel_events:Center_for_Learning_and_Academic_Success_Services:46405_122022",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Center for Learning and Academic Success Services",
@@ -1410,7 +1410,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
     },
     {
-        "event_id": "46477_122189",
+        "id": "drexel_events:University_Writing_Program:46477_122189",
         "source": "drexel_events",
         "name": "Multlingual Writers' Group",
         "org_name": "University Writing Program",
@@ -1420,7 +1420,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24347"
     },
     {
-        "event_id": "45756_119973",
+        "id": "drexel_events:Libraries:45756_119973",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1430,7 +1430,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121823",
+        "id": "drexel_events:Libraries:46371_121823",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1440,7 +1440,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "45523_119224",
+        "id": "drexel_events:Goodwin_College_of_Professional_Studies:45523_119224",
         "source": "drexel_events",
         "name": "Adult Learners in Higher Education: The Importance of Access and Continuing Education",
         "org_name": "Goodwin College of Professional Studies",
@@ -1450,7 +1450,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23770"
     },
     {
-        "event_id": "46307_121530",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121530",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1460,7 +1460,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121579",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121579",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1470,7 +1470,7 @@
         "image_url": null
     },
     {
-        "event_id": "46405_122023",
+        "id": "drexel_events:Center_for_Learning_and_Academic_Success_Services:46405_122023",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Center for Learning and Academic Success Services",
@@ -1480,7 +1480,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
     },
     {
-        "event_id": "46478_122196",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46478_122196",
         "source": "drexel_events",
         "name": "Pennoni Information Session",
         "org_name": "Steinbright Career Development Center",
@@ -1490,7 +1490,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24348"
     },
     {
-        "event_id": "46295_121475",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46295_121475",
         "source": "drexel_events",
         "name": "Graduate Student-Any Career Questions Drop-In Zoom Time",
         "org_name": "Steinbright Career Development Center",
@@ -1500,7 +1500,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24233"
     },
     {
-        "event_id": "46341_121679",
+        "id": "drexel_events:Study_Abroad:46341_121679",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Study Abroad",
@@ -1510,7 +1510,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119974",
+        "id": "drexel_events:Libraries:45756_119974",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1520,7 +1520,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121824",
+        "id": "drexel_events:Libraries:46371_121824",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1530,7 +1530,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "45557_119302",
+        "id": "drexel_events:Urban_Health_Collaborative:45557_119302",
         "source": "drexel_events",
         "name": "UHC Invited Speaker Series: Rebekah Israel Cross",
         "org_name": "Urban Health Collaborative",
@@ -1540,7 +1540,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23805"
     },
     {
-        "event_id": "46390_121976",
+        "id": "drexel_events:Materials_Science_and_Engineering:46390_121976",
         "source": "drexel_events",
         "name": "Drexel Materials Spring Seminar Series",
         "org_name": "Materials Science and Engineering",
@@ -1550,7 +1550,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24301"
     },
     {
-        "event_id": "46308_121580",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121580",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1560,7 +1560,7 @@
         "image_url": null
     },
     {
-        "event_id": "46425_122081",
+        "id": "drexel_events:College_of_Medicine:46425_122081",
         "source": "drexel_events",
         "name": "Lactation Consultant Program Information Session",
         "org_name": "College of Medicine",
@@ -1570,7 +1570,7 @@
         "image_url": null
     },
     {
-        "event_id": "46307_121531",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121531",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1580,7 +1580,7 @@
         "image_url": null
     },
     {
-        "event_id": "46405_122024",
+        "id": "drexel_events:Center_for_Learning_and_Academic_Success_Services:46405_122024",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Center for Learning and Academic Success Services",
@@ -1590,7 +1590,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
     },
     {
-        "event_id": "46343_121729",
+        "id": "drexel_events:Study_Abroad:46343_121729",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Study Abroad",
@@ -1600,7 +1600,7 @@
         "image_url": null
     },
     {
-        "event_id": "46244_121370",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46244_121370",
         "source": "drexel_events",
         "name": "Resume Review Day",
         "org_name": "Steinbright Career Development Center",
@@ -1610,7 +1610,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24202"
     },
     {
-        "event_id": "46137_121145",
+        "id": "drexel_events:College_of_Arts_and_Sciences:46137_121145",
         "source": "drexel_events",
         "name": "Working with Communities: Critical Geographies",
         "org_name": "College of Arts and Sciences",
@@ -1620,7 +1620,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24157"
     },
     {
-        "event_id": "46261_121404",
+        "id": "drexel_events:School_of_Education:46261_121404",
         "source": "drexel_events",
         "name": "Working with Communities: Critical Geographies",
         "org_name": "School of Education",
@@ -1630,7 +1630,7 @@
         "image_url": null
     },
     {
-        "event_id": "46359_121784",
+        "id": "drexel_events:Pennoni_Honors_College:46359_121784",
         "source": "drexel_events",
         "name": "UREP Drop-In Hours",
         "org_name": "Pennoni Honors College",
@@ -1640,7 +1640,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24276"
     },
     {
-        "event_id": "46409_122049",
+        "id": "drexel_events:Pennoni_Honors_College:46409_122049",
         "source": "drexel_events",
         "name": "Pennoni Uno Throwdown",
         "org_name": "Pennoni Honors College",
@@ -1650,7 +1650,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24318"
     },
     {
-        "event_id": "46284_121453",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46284_121453",
         "source": "drexel_events",
         "name": "Helix Electric, Inc. - Co-Op Program & Company Info Session",
         "org_name": "Steinbright Career Development Center",
@@ -1660,7 +1660,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24228"
     },
     {
-        "event_id": "46354_121769",
+        "id": "drexel_events:Pennoni_Honors_College:46354_121769",
         "source": "drexel_events",
         "name": "SuperNova Undergraduate Research Fellows Info Session",
         "org_name": "Pennoni Honors College",
@@ -1670,7 +1670,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24271"
     },
     {
-        "event_id": "46502_122246",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46502_122246",
         "source": "drexel_events",
         "name": "EGS Games Showcase",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1680,7 +1680,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24374"
     },
     {
-        "event_id": "46426_122083",
+        "id": "drexel_events:College_of_Medicine:46426_122083",
         "source": "drexel_events",
         "name": "Lactation Consultant Program Information Session",
         "org_name": "College of Medicine",
@@ -1690,7 +1690,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119975",
+        "id": "drexel_events:Libraries:45756_119975",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1700,7 +1700,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121825",
+        "id": "drexel_events:Libraries:46371_121825",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1710,7 +1710,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "45677_119625",
+        "id": "drexel_events:University_Writing_Program:45677_119625",
         "source": "drexel_events",
         "name": "Graduate Student Writing Group",
         "org_name": "University Writing Program",
@@ -1720,7 +1720,7 @@
         "image_url": null
     },
     {
-        "event_id": "46245_121372",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46245_121372",
         "source": "drexel_events",
         "name": "Resume Review Day",
         "org_name": "Steinbright Career Development Center",
@@ -1730,7 +1730,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24203"
     },
     {
-        "event_id": "46047_121294",
+        "id": "drexel_events:College_of_Arts_and_Sciences:46047_121294",
         "source": "drexel_events",
         "name": "Drexel Writing Festival",
         "org_name": "College of Arts and Sciences",
@@ -1740,7 +1740,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24175"
     },
     {
-        "event_id": "46333_121654",
+        "id": "drexel_events:Lindy_Center:46333_121654",
         "source": "drexel_events",
         "name": "Coffee & Community",
         "org_name": "Lindy Center",
@@ -1750,7 +1750,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24254"
     },
     {
-        "event_id": "46373_121942",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46373_121942",
         "source": "drexel_events",
         "name": "Resume in a Rush",
         "org_name": "Steinbright Career Development Center",
@@ -1760,7 +1760,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24284"
     },
     {
-        "event_id": "46307_121532",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121532",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1770,7 +1770,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121581",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121581",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1780,7 +1780,7 @@
         "image_url": null
     },
     {
-        "event_id": "46405_122025",
+        "id": "drexel_events:Center_for_Learning_and_Academic_Success_Services:46405_122025",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Center for Learning and Academic Success Services",
@@ -1790,7 +1790,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314"
     },
     {
-        "event_id": "46383_121962",
+        "id": "drexel_events:Close_School_of_Entrepreneurship:46383_121962",
         "source": "drexel_events",
         "name": "Fast Pitch Competition at Inclusive Impact Day",
         "org_name": "Close School of Entrepreneurship",
@@ -1800,7 +1800,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24294"
     },
     {
-        "event_id": "46517_122473",
+        "id": "drexel_events:School_of_Biomedical_Engineering:46517_122473",
         "source": "drexel_events",
         "name": "Neurophysiological and Perceptual Responses to Real and Virtual Environments",
         "org_name": "School of Biomedical Engineering",
@@ -1810,7 +1810,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24386"
     },
     {
-        "event_id": "46423_122077",
+        "id": "drexel_events:Biodiversity,_Earth_and_Environmental_Science:46423_122077",
         "source": "drexel_events",
         "name": "BEES Department Graduate Seminar",
         "org_name": "Biodiversity, Earth and Environmental Science",
@@ -1820,7 +1820,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24329"
     },
     {
-        "event_id": "46317_121617",
+        "id": "drexel_events:International_Students_and_Scholars_Services:46317_121617",
         "source": "drexel_events",
         "name": "OPT Information Webinar",
         "org_name": "International Students and Scholars Services",
@@ -1830,7 +1830,7 @@
         "image_url": null
     },
     {
-        "event_id": "46356_121773",
+        "id": "drexel_events:Pennoni_Honors_College:46356_121773",
         "source": "drexel_events",
         "name": "10 Years of Nerd Night",
         "org_name": "Pennoni Honors College",
@@ -1840,7 +1840,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24358"
     },
     {
-        "event_id": "45449_119030",
+        "id": "drexel_events:College_of_Medicine:45449_119030",
         "source": "drexel_events",
         "name": "DUCoM Monthly Dragon Talks",
         "org_name": "College of Medicine",
@@ -1850,7 +1850,7 @@
         "image_url": null
     },
     {
-        "event_id": "45756_119976",
+        "id": "drexel_events:Libraries:45756_119976",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Libraries",
@@ -1860,7 +1860,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909"
     },
     {
-        "event_id": "46371_121826",
+        "id": "drexel_events:Libraries:46371_121826",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Libraries",
@@ -1870,7 +1870,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282"
     },
     {
-        "event_id": "46260_121402",
+        "id": "drexel_events:College_of_Medicine:46260_121402",
         "source": "drexel_events",
         "name": "Neurobiology & Anatomy Seminar",
         "org_name": "College of Medicine",
@@ -1880,7 +1880,7 @@
         "image_url": null
     },
     {
-        "event_id": "46342_121704",
+        "id": "drexel_events:Study_Abroad:46342_121704",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Study Abroad",
@@ -1890,7 +1890,7 @@
         "image_url": null
     },
     {
-        "event_id": "45558_119334",
+        "id": "drexel_events:University_Writing_Program:45558_119334",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "University Writing Program",
@@ -1900,7 +1900,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798"
     },
     {
-        "event_id": "45959_120653",
+        "id": "drexel_events:University_Writing_Program:45959_120653",
         "source": "drexel_events",
         "name": "Writing Group for Multilingual Writers",
         "org_name": "University Writing Program",
@@ -1910,7 +1910,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24050"
     },
     {
-        "event_id": "46496_122234",
+        "id": "drexel_events:Steinbright_Career_Development_Center:46496_122234",
         "source": "drexel_events",
         "name": "Steinbright Peer Mentor Office Hour: Tips for a Successful Co-op Search!",
         "org_name": "Steinbright Career Development Center",
@@ -1920,7 +1920,7 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24360"
     },
     {
-        "event_id": "46307_121533",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46307_121533",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1930,7 +1930,7 @@
         "image_url": null
     },
     {
-        "event_id": "46308_121582",
+        "id": "drexel_events:Westphal_College_of_Media_Arts_and_Design:46308_121582",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1940,7 +1940,7 @@
         "image_url": null
     },
     {
-        "event_id": "45201_118248",
+        "id": "drexel_events:Performing_Arts:45201_118248",
         "source": "drexel_events",
         "name": "Little Women, The Musical",
         "org_name": "Performing Arts",
@@ -1950,7 +1950,7 @@
         "image_url": null
     },
     {
-        "event_id": 11239,
+        "id": "drexel_athletics:Drexel_Softball:11239",
         "source": "drexel_athletics",
         "name": "DREX at Stony Brook",
         "org_name": "Drexel Softball",
@@ -1960,7 +1960,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11189,
+        "id": "drexel_athletics:Drexel_Men's_Lacrosse:11189",
         "source": "drexel_athletics",
         "name": "DREX vs Stony Brook",
         "org_name": "Drexel Men's Lacrosse",
@@ -1970,7 +1970,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11240,
+        "id": "drexel_athletics:Drexel_Softball:11240",
         "source": "drexel_athletics",
         "name": "DREX at Stony Brook",
         "org_name": "Drexel Softball",
@@ -1980,7 +1980,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11241,
+        "id": "drexel_athletics:Drexel_Softball:11241",
         "source": "drexel_athletics",
         "name": "DREX at Stony Brook",
         "org_name": "Drexel Softball",
@@ -1990,17 +1990,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11190,
-        "source": "drexel_athletics",
-        "name": "DREX vs CAA Championships",
-        "org_name": "Drexel Men's Lacrosse",
-        "location": "Towson, Md.",
-        "start_time": 1777750200,
-        "end_time": null,
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    },
-    {
-        "event_id": 11260,
+        "id": "drexel_athletics:Drexel_Men's_Rowing:11260",
         "source": "drexel_athletics",
         "name": "DREX at Jefferson Dad Vail Regatta",
         "org_name": "Drexel Men's Rowing",
@@ -2010,7 +2000,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11253,
+        "id": "drexel_athletics:Drexel_Women's_Rowing:11253",
         "source": "drexel_athletics",
         "name": "DREX at Jefferson Dad Vail Regatta",
         "org_name": "Drexel Women's Rowing",
@@ -2020,27 +2010,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11260,
-        "source": "drexel_athletics",
-        "name": "DREX at Jefferson Dad Vail Regatta",
-        "org_name": "Drexel Men's Rowing",
-        "location": "Cooper River / Cherry Hill, N.J.",
-        "start_time": 1778212800,
-        "end_time": 1778299200,
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    },
-    {
-        "event_id": 11253,
-        "source": "drexel_athletics",
-        "name": "DREX at Jefferson Dad Vail Regatta",
-        "org_name": "Drexel Women's Rowing",
-        "location": "Cooper River / Cherry Hill, N.J.",
-        "start_time": 1778212800,
-        "end_time": 1778299200,
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    },
-    {
-        "event_id": 11254,
+        "id": "drexel_athletics:Drexel_Women's_Rowing:11254",
         "source": "drexel_athletics",
         "name": "DREX at CAA Rowing Championships",
         "org_name": "Drexel Women's Rowing",
@@ -2050,27 +2020,7 @@
         "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     },
     {
-        "event_id": 11254,
-        "source": "drexel_athletics",
-        "name": "DREX at CAA Rowing Championships",
-        "org_name": "Drexel Women's Rowing",
-        "location": "Cooper River / Cherry Hill, N.J.",
-        "start_time": 1778817600,
-        "end_time": 1778904000,
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    },
-    {
-        "event_id": 11261,
-        "source": "drexel_athletics",
-        "name": "DREX at IRA National Championships",
-        "org_name": "Drexel Men's Rowing",
-        "location": "Gold River, Calif.",
-        "start_time": 1780027200,
-        "end_time": 1780200000,
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
-    },
-    {
-        "event_id": 11261,
+        "id": "drexel_athletics:Drexel_Men's_Rowing:11261",
         "source": "drexel_athletics",
         "name": "DREX at IRA National Championships",
         "org_name": "Drexel Men's Rowing",

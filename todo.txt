@@ -1,2 +1,3 @@
-normalize start and end times
-normalize urls
+
+
+get default images for sports
