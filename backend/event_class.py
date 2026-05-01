@@ -48,7 +48,7 @@ class Event:
 
     @classmethod
     def from_drexel_events_json(cls, event_json):
-        if "deadline" in str(event_json["typeNames"]).lower():
+        if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
             return None
         department_names = event_json.get("departmentNames")
 
@@ -56,7 +56,7 @@ class Event:
             event_id=event_json["id"],
             source="drexel_events",
             name=event_json["title"],
-            org_name=department_names if department_names else "Drexel University",
+            org_name=department_names[0] if department_names else "Drexel University",
             location=event_json["address"],
             start_time=event_json["startDate"],
             end_time=event_json["endDate"],
@@ -72,7 +72,7 @@ class Event:
             event_id=event_json["id"],
             source="drexel_athletics",
             name=" ".join(["DREX", at_vs, opponent]),
-            org_name=event_json["sport"]["title"],
+            org_name=f"Drexel {event_json["sport"]["title"]}",
             location=event_json["location"],
             start_time=event_json["dateUtc"],
             end_time=event_json["endDateUtc"],
