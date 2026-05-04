@@ -14,12 +14,17 @@ port = 5432
 
 
 def db_entry_to_json(db_entry):
-    if (db_entry[5] - datetime.now()) > timedelta(days=7):
-        time_str_prefix = datetime.strftime(db_entry[5], "%b %d, ")
+    start_time = db_entry[5]
+    end_time = db_entry[6]
+    if (start_time - datetime.now()) > timedelta(days=7):
+        time_str_prefix = datetime.strftime(start_time, "%b %d, ")
     else:
-        time_str_prefix = datetime.strftime(db_entry[5], "%a ")
-    time_str = time_str_prefix + datetime.strftime(db_entry[5], "%#I:%M") + "-" + datetime.strftime(db_entry[6],
-                                                                                                    "%#I:%M %p")
+        time_str_prefix = datetime.strftime(start_time, "%a ")
+    time_str = (time_str_prefix +
+                datetime.strftime(start_time, "%-I:%M")
+                + "-" +
+                datetime.strftime(end_time, "%-I:%M %p")
+                )
     return {
         "id": db_entry[0],
         "source": db_entry[1],
@@ -32,7 +37,10 @@ def db_entry_to_json(db_entry):
 
 
 def lambda_handler(event, context):
-    offset = (int(event.get("page", 1)) - 1) * 12
+    try:
+        offset = (int(event["page"]) - 1) * 12
+    except ValueError:
+        offset = 0
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
@@ -44,7 +52,7 @@ def lambda_handler(event, context):
         )
         with connection.cursor() as cursor:
             cursor.execute(
-                f'''
+                '''
                 SELECT id,
                        source,
                        name,
@@ -55,9 +63,10 @@ def lambda_handler(event, context):
                        image_url
                 FROM main.events
                 WHERE end_time > now()
-                ORDER BY start_time 
-                LIMIT 12 OFFSET {offset}
-                ''')
+                ORDER BY start_time
+                LIMIT 12 OFFSET %s
+                ''',
+                (offset,))
             events = cursor.fetchall()
         return json.dumps({
             "statusCode": 200,

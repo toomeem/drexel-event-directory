@@ -3,7 +3,6 @@ import os
 import time
 from datetime import datetime, timedelta
 from urllib.parse import quote
-from zoneinfo import ZoneInfo
 
 import psycopg2
 import requests
@@ -13,18 +12,18 @@ from event_class import Event
 
 
 def normalize_time(source, time_str):
-    timezone = ZoneInfo("America/New_York")
+    timezone = timedelta(hours=-4)
     if not time_str:
         return None
     match source:
         case "drexel_events":
-            dt = datetime.fromisoformat(time_str).replace(tzinfo=timezone)
+            dt = datetime.fromisoformat(time_str) + timezone
             return dt
         case "drexel_athletics":
-            dt = datetime.fromisoformat(time_str.replace("Z", "+00:00"))
-            return dt.astimezone(timezone)
+            dt = datetime.fromisoformat(time_str.replace("Z", "+00:00")) + timezone
+            return dt
         case _:
-            return datetime.fromisoformat(time_str).astimezone(timezone)
+            return datetime.fromisoformat(time_str) + timezone
 
 
 def create_event_object(source, event_json):
@@ -49,6 +48,8 @@ def create_event_object(source, event_json):
             kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
             if event_json["imagePath"]:
                 kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
+            else:
+                kwargs["image_url"] = event_json["organizationProfilePicture"]
         case "drexel_events":
             if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
                 return None
@@ -72,7 +73,8 @@ def create_event_object(source, event_json):
             kwargs["image_url"] = drexel_athletics_default_image_url
         case _:
             return None
-    kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".replace(" ", "_")
+    kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
+    kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
     if kwargs["location"] is not None:
         kwargs["location"] = kwargs["location"].strip().replace("\r", "").replace("\n", " ")
     return Event(**kwargs)
@@ -80,7 +82,7 @@ def create_event_object(source, event_json):
 
 def create_dragonlink_url(count=15):
     base_url = "https://drexel.campuslabs.com/engage/api/discovery/event/search"
-    timestamp = quote(datetime.now(ZoneInfo("America/New_York")).replace(microsecond=0).isoformat(), safe="")
+    timestamp = quote(datetime.now().replace(microsecond=0).isoformat(), safe="")
     base_filters = "&orderByField=endsOn&orderByDirection=ascending&status=Approved&take="
     return base_url + "?endsAfter=" + timestamp + base_filters + str(count)
 
@@ -104,7 +106,7 @@ def collect_drexel_events(count=100):
 
 
 def create_drexel_athletics_url(days_out=30):
-    now = datetime.now(ZoneInfo("America/New_York"))
+    now = datetime.now()
     start_date = now.strftime("%m-%d-%Y")
     end_date = (now + timedelta(days=days_out)).strftime("%m-%d-%Y")
     return f"https://drexeldragons.com/api/v2/Calendar/from/{start_date}/to/{end_date}"
@@ -137,7 +139,6 @@ def collect_all_events():
 
 
 def load_events_from_file(path="events.json"):
-    timezone = ZoneInfo("America/New_York")
     with open(path) as f:
         events_json = json.load(f)
     events = []
@@ -148,8 +149,8 @@ def load_events_from_file(path="events.json"):
             name=e["name"],
             org_name=e["org_name"],
             location=e["location"],
-            start_time=datetime.fromtimestamp(e["start_time"], tz=timezone) if e["start_time"] else None,
-            end_time=datetime.fromtimestamp(e["end_time"], tz=timezone) if e["end_time"] else None,
+            start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
+            end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None,
             image_url=e["image_url"],
         ))
     return events
