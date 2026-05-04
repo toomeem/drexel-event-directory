@@ -2,27 +2,15 @@ import json
 import os
 from datetime import timedelta, datetime
 
-import boto3
 import psycopg2
 
 proxy_host_name = os.environ["RDS_ENDPOINT"]
 db_user_name = "postgres"
-db_name = "drexel-event"
+db_name = "postgres"
 user = "postgres"
 aws_region = "us-east-1"
 password = os.environ["RDS_PASSWORD"]
 port = 5432
-
-
-def get_auth_token():
-    client = boto3.client('rds')
-    token = client.generate_db_auth_token(
-        DBHostname=proxy_host_name,
-        Port=port,
-        DBUsername=db_user_name,
-        Region=aws_region,
-    )
-    return token
 
 
 def db_entry_to_json(db_entry):
@@ -44,15 +32,15 @@ def db_entry_to_json(db_entry):
 
 
 def lambda_handler(event, context):
-    token = get_auth_token()
+    offset = (int(event.get("page", 1)) - 1) * 12
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
             user=db_user_name,
-            password=token,
+            password=password,
             dbname=db_name,
             port=port,
-            ssl={'ca': 'Amazon RDS'}  # Ensure you have the CA bundle for SSL connection
+            sslmode='require'
         )
         with connection.cursor() as cursor:
             cursor.execute(
@@ -67,8 +55,8 @@ def lambda_handler(event, context):
                        image_url
                 FROM main.events
                 WHERE end_time > now()
-                ORDER BY start_time ASC
-                LIMIT {event['count']}
+                ORDER BY start_time 
+                LIMIT 12 OFFSET {offset}
                 ''')
             events = cursor.fetchall()
         return json.dumps({
