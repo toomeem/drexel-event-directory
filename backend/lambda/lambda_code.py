@@ -50,7 +50,7 @@ def lambda_handler(event, context):
             host=proxy_host_name,
             user=db_user_name,
             password=token,
-            db=db_name,
+            dbname=db_name,
             port=port,
             ssl={'ca': 'Amazon RDS'}  # Ensure you have the CA bundle for SSL connection
         )
