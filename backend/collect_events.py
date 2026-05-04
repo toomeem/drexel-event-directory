@@ -1,15 +1,14 @@
+import json
 import os
+import time
+from datetime import datetime, timedelta
+from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 import psycopg2
-import time
-
 import requests
-
-import json
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
-from urllib.parse import quote
 from dotenv import load_dotenv
+
 from event_class import Event
 
 
@@ -74,6 +73,8 @@ def create_event_object(source, event_json):
         case _:
             return None
     kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".replace(" ", "_")
+    if kwargs["location"] is not None:
+        kwargs["location"] = kwargs["location"].strip().replace("\r", "").replace("\n", " ")
     return Event(**kwargs)
 
 
@@ -171,10 +172,10 @@ def save_events_to_db(events):
             cursor.execute("TRUNCATE TABLE main.events")
             cursor.executemany(
                 '''
-                INSERT INTO main.events(id, source, name, org_name, location, start_time, end_time, image_url)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time, end_time)
+                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s))
                 ''',
-                [event.to_sql() for event in events])
+                [(e[0], e[1], e[2], e[3], e[4], e[7], e[5], e[6]) for e in [event.to_sql() for event in events]])
 
 
 def fill_db():
@@ -191,5 +192,5 @@ def update_events():
 
 if __name__ == "__main__":
     load_dotenv()
-    # fill_db()
-    update_events()
+    fill_db()
+    # update_events()
