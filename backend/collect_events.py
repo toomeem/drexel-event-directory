@@ -224,7 +224,12 @@ def collect_all_events():
     events.extend(
         [create_event_object("drexel_athletics", event_json) for event_json in create_drexel_athletics_events()])
 
-    return list({e._id: e for e in events if e is not None}.values())
+    # remove duplicates using __eq__; higher priority wins (kept as last occurrence)
+    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
+    events = [e for e in events if e is not None]
+    events.sort(key=lambda x: (x.start_time.timestamp(), source_priority.get(x.source, 0)))
+
+    return [e for i, e in enumerate(events) if e not in events[i + 1:]]
 
 
 def load_events_from_file(path="events.json"):
@@ -285,5 +290,5 @@ def update_events():
 
 if __name__ == "__main__":
     load_dotenv()
-    # update_events()
+    update_events()
     fill_db()
