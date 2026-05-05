@@ -110,17 +110,6 @@
         "event_link": "https://drexel.campuslabs.com/engage/event/12395442"
     },
     {
-        "id": "dragonlink:drexelstudentsforchrist:12358030",
-        "source": "dragonlink",
-        "name": "DSC Bible Study",
-        "org_name": "Drexel Students for Christ",
-        "location": "ROSS - 2nd Floor Lounge",
-        "image_url": "https://drexel.campuslabs.com/engage/image/d64a64f0-5c00-421f-8c95-baea1dd4f3eae747f8b4-f761-4509-b427-848bbdc16a0f.png",
-        "start_time": 1778005800,
-        "end_time": 1778009400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12358030"
-    },
-    {
         "id": "dragonlink:drexelspeaks:12449591",
         "source": "dragonlink",
         "name": "Drexel Speaks Weekly Meeting ",
@@ -154,15 +143,15 @@
         "event_link": "https://drexel.campuslabs.com/engage/event/12443876"
     },
     {
-        "id": "dragonlink:koreanstudentassociation:12449588",
+        "id": "dragonlink:drexelstudentsforchrist:12358030",
         "source": "dragonlink",
-        "name": "DKPC x KSA Children Day ",
-        "org_name": "Korean Student Association",
-        "location": "GHALL 406",
-        "image_url": "https://drexel.campuslabs.com/engage/image/31361c8f-f0c0-4fda-a074-481dfbbf6b0fcab0bdaa-e0a7-4295-84f9-d7097740633e.jpeg",
+        "name": "DSC Bible Study",
+        "org_name": "Drexel Students for Christ",
+        "location": "ROSS - 2nd Floor Lounge",
+        "image_url": "https://drexel.campuslabs.com/engage/image/d64a64f0-5c00-421f-8c95-baea1dd4f3eae747f8b4-f761-4509-b427-848bbdc16a0f.png",
         "start_time": 1778005800,
-        "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449588"
+        "end_time": 1778009400,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12358030"
     },
     {
         "id": "dragonlink:drexelelectricracing:12436847",
@@ -284,6 +273,17 @@
         "start_time": 1778004000,
         "end_time": 1778011200,
         "event_link": "https://drexel.campuslabs.com/engage/event/12456514"
+    },
+    {
+        "id": "dragonlink:koreanstudentassociation:12449588",
+        "source": "dragonlink",
+        "name": "DKPC x KSA Children Day ",
+        "org_name": "Korean Student Association",
+        "location": "GHALL 406",
+        "image_url": "https://drexel.campuslabs.com/engage/image/31361c8f-f0c0-4fda-a074-481dfbbf6b0fcab0bdaa-e0a7-4295-84f9-d7097740633e.jpeg",
+        "start_time": 1778005800,
+        "end_time": 1778011200,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449588"
     },
     {
         "id": "dragonlink:ascenddrexelstudentchapter:12452916",
@@ -1012,6 +1012,17 @@
         "event_link": "https://drexel.campuslabs.com/engage/event/12449267"
     },
     {
+        "id": "dragonlink:nationalpanhelleniccouncil:10819326",
+        "source": "dragonlink",
+        "name": "SororiTEA",
+        "org_name": "National Pan-Hellenic Council",
+        "location": "The Center for Black Culture",
+        "image_url": "https://drexel.campuslabs.com/engage/image/89629f31-a055-483a-a4f1-f9fdd823dfb30895c589-24f9-43c8-9b8b-7dd57e5418aa.png",
+        "start_time": 1778176800,
+        "end_time": 1778184000,
+        "event_link": "https://drexel.campuslabs.com/engage/event/10819326"
+    },
+    {
         "id": "dragonlink:pennonihonorscollege:12374502",
         "source": "dragonlink",
         "name": "10 Years of Nerd Night",
@@ -1032,17 +1043,6 @@
         "start_time": 1778176800,
         "end_time": 1778184000,
         "event_link": "https://drexel.campuslabs.com/engage/event/12450008"
-    },
-    {
-        "id": "dragonlink:nationalpanhelleniccouncil:10819326",
-        "source": "dragonlink",
-        "name": "SororiTEA",
-        "org_name": "National Pan-Hellenic Council",
-        "location": "The Center for Black Culture",
-        "image_url": "https://drexel.campuslabs.com/engage/image/89629f31-a055-483a-a4f1-f9fdd823dfb30895c589-24f9-43c8-9b8b-7dd57e5418aa.png",
-        "start_time": 1778176800,
-        "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/10819326"
     },
     {
         "id": "dragonlink:drexeluniversitydebateunion:12409320",
@@ -1138,7 +1138,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1777982400,
         "end_time": 1778004000,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121530"
@@ -1149,7 +1149,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1777982400,
         "end_time": 1778004000,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121579"
@@ -1259,7 +1259,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778068800,
         "end_time": 1778090400,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121531"
@@ -1270,7 +1270,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778068800,
         "end_time": 1778090400,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121580"
@@ -1479,7 +1479,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778155200,
         "end_time": 1778176800,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121532"
@@ -1490,7 +1490,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778155200,
         "end_time": 1778176800,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121581"
@@ -1567,7 +1567,7 @@
         "name": "DUCoM Monthly Dragon Talks",
         "org_name": "College of Medicine",
         "location": "Online via Zoom",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg",
         "start_time": 1778180400,
         "end_time": 1778184000,
         "event_link": "https://drexel.edu/events/Event?_i=45449_119030"
@@ -1644,7 +1644,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778241600,
         "end_time": 1778263200,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121582"
@@ -1666,7 +1666,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778241600,
         "end_time": 1778263200,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121533"
@@ -1710,7 +1710,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778328000,
         "end_time": 1778349600,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121534"
@@ -1721,7 +1721,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778328000,
         "end_time": 1778346000,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121583"
@@ -1743,7 +1743,7 @@
         "name": "Drexel Pilates New Studio Opening",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "Drexel Pilates Studio 3300 Race St Race St Residence Halls",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s",
         "start_time": 1778338800,
         "end_time": 1778347800,
         "event_link": "https://drexel.edu/events/Event?_i=46360_121789"
@@ -1787,7 +1787,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778414400,
         "end_time": 1778436000,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121535"
@@ -1798,7 +1798,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778414400,
         "end_time": 1778436000,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121584"
@@ -1853,7 +1853,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778500800,
         "end_time": 1778522400,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121536"
@@ -1864,7 +1864,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778500800,
         "end_time": 1778522400,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121585"
@@ -2007,7 +2007,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778587200,
         "end_time": 1778608800,
         "event_link": "https://drexel.edu/events/Event?_i=46307_121537"
@@ -2018,7 +2018,7 @@
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
         "location": "URBN Annex, Pearlstein Gallery 3401 Filbert St",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "image_url": "https://drexel.edu/~/media/Images/pearlsteingallery/slideshows-banners/PearlsteinBanner1.ashx",
         "start_time": 1778587200,
         "end_time": 1778608800,
         "event_link": "https://drexel.edu/events/Event?_i=46308_121586"
@@ -2161,7 +2161,7 @@
         "name": "DREX at Jefferson Dad Vail Regatta",
         "org_name": "Drexel Men's Rowing",
         "location": "Cooper River / Cherry Hill, N.J.",
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png",
+        "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1778198400,
         "end_time": 1778284800,
         "event_link": "https://drexeldragons.com/sports/mens-crew/schedule"
@@ -2172,7 +2172,7 @@
         "name": "DREX at Jefferson Dad Vail Regatta",
         "org_name": "Drexel Women's Rowing",
         "location": "Cooper River / Cherry Hill, N.J.",
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png",
+        "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1778198400,
         "end_time": 1778284800,
         "event_link": "https://drexeldragons.com/sports/womens-crew/schedule"
@@ -2183,7 +2183,7 @@
         "name": "DREX at CAA Rowing Championships",
         "org_name": "Drexel Women's Rowing",
         "location": "Cooper River / Cherry Hill, N.J.",
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png",
+        "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1778803200,
         "end_time": 1778889600,
         "event_link": "https://drexeldragons.com/sports/womens-crew/schedule"
@@ -2194,7 +2194,7 @@
         "name": "DREX at IRA National Championships",
         "org_name": "Drexel Men's Rowing",
         "location": "Gold River, Calif.",
-        "image_url": "https://drexeldragons.com/images/sng_2023/footer_reccenter.png",
+        "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1780012800,
         "end_time": 1780185600,
         "event_link": "https://drexeldragons.com/sports/mens-crew/schedule"
