@@ -1,2 +1,6 @@
-make frontend
+remove duplicate events
+add links to the original event
+remove links in the location description
+    html in description too
 get default images for sports
+get more sources

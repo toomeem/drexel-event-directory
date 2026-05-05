@@ -41,7 +41,9 @@ def simplify_location(location):
 
 
 def create_event_object(source, event_json):
-    dragonlink_image_url = "https://drexel.campuslabs.com/engage/image/"
+    dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
+    dragonlink_image_url = dragonlink_base_url + "image/"
+    dragonlink_event_url = dragonlink_base_url + "event/"
     drexel_athletics_default_image_url = "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
     drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
     kwargs = {"_id": None,
@@ -51,7 +53,8 @@ def create_event_object(source, event_json):
               "location": None,
               "start_time": None,
               "end_time": None,
-              "image_url": None
+              "image_url": None,
+              "event_link": None,
               }
 
     match source:
@@ -67,16 +70,24 @@ def create_event_object(source, event_json):
                 kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
             else:
                 kwargs["image_url"] = drexel_default_image
+            kwargs["event_link"] = dragonlink_event_url + event_json["id"]
         case "drexel_events":
             if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
                 return None
+            authors = event_json.get("authors")
             department_names = event_json.get("departmentNames")
+            if authors:
+                kwargs["org_name"] = authors[0]
+            elif department_names:
+                kwargs["org_name"] = department_names[0]
+            else:
+                kwargs["org_name"] = "Drexel University"
 
             kwargs["name"] = event_json["title"]
-            kwargs["org_name"] = department_names[0] if department_names else "Drexel University"
             kwargs["location"] = event_json["address"]
             kwargs["start_time"] = normalize_time(source, event_json["startDate"])
             kwargs["end_time"] = normalize_time(source, event_json["endDate"])
+            kwargs["event_link"] = event_json["contentUrl"]
             if event_json["image"]:
                 kwargs["image_url"] = event_json["image"]
             else:
@@ -100,7 +111,7 @@ def create_event_object(source, event_json):
     return Event(**kwargs)
 
 
-def create_dragonlink_url(count=15):
+def create_dragonlink_url(count):
     base_url = "https://drexel.campuslabs.com/engage/api/discovery/event/search"
     timestamp = quote(datetime.now().replace(microsecond=0).isoformat(), safe="")
     base_filters = "&orderByField=endsOn&orderByDirection=ascending&status=Approved&take="
@@ -172,6 +183,7 @@ def load_events_from_file(path="events.json"):
             start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
             end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None,
             image_url=e["image_url"],
+            event_link=e["event_link"]
         ))
     return events
 
