@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/api/events.ts","./src/components/eventcard.tsx","./src/components/siteheader.tsx","./src/data/sampleevents.ts","./src/pages/aboutpage.tsx","./src/pages/eventspage.tsx"],"version":"5.9.3"}

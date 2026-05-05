@@ -5,3 +5,8 @@ backend/.env
 /.claude/
 /.idea/
 *.iml
+/frontend/.claude/
+/frontend/.idea/
+/frontend/dist/assets/
+/frontend/node_modules/
+
