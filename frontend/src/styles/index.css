@@ -167,10 +167,17 @@ img {
   overflow: hidden;
   transition: border-color 0.12s ease, box-shadow 0.12s ease,
     transform 0.12s ease;
+  cursor: pointer;
 }
 
 .event-card:hover {
   box-shadow: 0 8px 24px rgba(17, 20, 24, 0.18);
+  transform: translateY(-2px);
+}
+
+.event-card:focus-visible {
+  outline: 2px solid var(--color-drexel-blue);
+  outline-offset: 2px;
 }
 
 .event-card__media {
@@ -379,6 +386,7 @@ img {
 
 :root[data-theme="dark"] .event-card:hover {
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 :root[data-theme="dark"] .event-card__media {

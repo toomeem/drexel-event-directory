@@ -9,8 +9,12 @@ export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;
 
+  const handleClick = () => {
+    window.open(event.event_link, "_blank");
+  };
+
   return (
-    <article className="event-card">
+    <article className="event-card" onClick={handleClick} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && handleClick()}>
       <div className="event-card__media">
         {showImage ? (
           <img

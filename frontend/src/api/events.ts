@@ -8,6 +8,7 @@ export interface DrexelEvent {
   location: string;
   time: string;
   image_url: string | null;
+  event_link: string;
 }
 
 interface EventsResponse {
