@@ -27,16 +27,16 @@ def normalize_time(source, time_str):
 
 
 def simplify_location(location):
-    suffixes = [",", " - Classroom", " - Classroom w/ 14 PCs"]
-    replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
     remove_list = ["\r", ", PA 19104", "Philadelphia"]
+    replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
+    suffixes = [" - Classroom w/ 14 PCs", " - Classroom", ","]
+    for i in remove_list:
+        location = location.replace(i, "")
+    for old, new in replace_list:
+        location = location.replace(old, new)
     location = location.strip()
     for suffix in suffixes:
         location = location.removesuffix(suffix)
-    for old, new in replace_list:
-        location = location.replace(old, new)
-    for old in remove_list:
-        location = location.replace(old, "")
     return location.strip()
 
 
@@ -233,7 +233,7 @@ def save_events_to_db(events):
                                         event_link)
                 VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s)
                 ''',
-                [(e[0], e[1], e[2], e[3], e[4], e[7], e[5], e[6], e[7]) for e in
+                [(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8]) for e in
                  [event.to_sql() for event in events]])
 
 
@@ -251,5 +251,5 @@ def update_events():
 
 if __name__ == "__main__":
     load_dotenv()
-    # update_events()
-    fill_db()
+    update_events()
+    # fill_db()
