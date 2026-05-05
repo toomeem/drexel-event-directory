@@ -16,8 +16,9 @@ export function EventsPage() {
         setEvents(data);
         setStatus("ready");
       })
-      .catch(() => {
+      .catch((err: unknown) => {
         if (cancelled) return;
+        console.error("[EventsPage] fetchEvents failed:", err);
         setStatus("error");
       });
     return () => {

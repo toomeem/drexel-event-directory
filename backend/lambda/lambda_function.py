@@ -36,11 +36,24 @@ def db_entry_to_json(db_entry):
     }
 
 
+CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Content-Type": "application/json",
+}
+
+
 def lambda_handler(event, context):
+    if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
+        return {"statusCode": 200, "headers": CORS_HEADERS, "body": ""}
+
+    params = event.get("queryStringParameters") or {}
     try:
-        offset = (int(event["page"]) - 1) * 12
-    except (ValueError, KeyError):
+        offset = (int(params.get("page", 1)) - 1) * 12
+    except ValueError:
         offset = 0
+
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
@@ -68,9 +81,17 @@ def lambda_handler(event, context):
                 ''',
                 (offset,))
             events = cursor.fetchall()
-        return json.dumps({
+        return {
             "statusCode": 200,
-            "body": [db_entry_to_json(event) for event in events]
-        })
+            "headers": CORS_HEADERS,
+            "body": json.dumps({
+                "statusCode": 200,
+                "body": [db_entry_to_json(e) for e in events],
+            }),
+        }
     except Exception as e:
-        return {"statusCode": 500, "body": str(e)}
+        return {
+            "statusCode": 500,
+            "headers": CORS_HEADERS,
+            "body": json.dumps({"statusCode": 500, "body": str(e)}),
+        }
