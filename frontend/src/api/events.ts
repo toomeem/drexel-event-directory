@@ -1,5 +1,3 @@
-import { sampleEvents } from "../data/sampleEvents";
-
 export type EventSource = "drexel_events" | "dragonlink";
 
 export interface DrexelEvent {
@@ -18,10 +16,9 @@ interface EventsResponse {
 }
 
 export async function fetchEvents(): Promise<DrexelEvent[]> {
-  // TODO: replace with live AWS Lambda endpoint once available.
-  const response: EventsResponse = {
-    statusCode: 200,
-    body: sampleEvents,
-  };
-  return response.body;
+  const endpoint = import.meta.env.VITE_LAMBDA_ENDPOINT;
+  const res = await fetch(endpoint);
+  if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
+  const data: EventsResponse = await res.json();
+  return data.body;
 }

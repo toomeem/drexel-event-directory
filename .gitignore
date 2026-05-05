@@ -9,4 +9,4 @@ backend/.env
 /frontend/.idea/
 /frontend/dist/assets/
 /frontend/node_modules/
-frontend/package-lock.json
+/frontend/package-lock.json
