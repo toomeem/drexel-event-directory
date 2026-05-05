@@ -13,15 +13,24 @@ export interface DrexelEvent {
 interface EventsResponse {
   statusCode: number;
   body: DrexelEvent[];
+  total_events: number;
 }
 
-export async function fetchEvents(): Promise<DrexelEvent[]> {
+export interface FetchEventsResult {
+  events: DrexelEvent[];
+  totalEvents: number;
+}
+
+export async function fetchEvents(
+  page: number,
+  limit: number,
+): Promise<FetchEventsResult> {
   const endpoint = import.meta.env.VITE_LAMBDA_ENDPOINT;
   console.log("[fetchEvents] endpoint:", endpoint);
-  const res = await fetch(endpoint);
+  const res = await fetch(`${endpoint}?page=${page}&limit=${limit}`);
   console.log("[fetchEvents] response status:", res.status, res.statusText);
   if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
   const data: EventsResponse = await res.json();
   console.log("[fetchEvents] data:", data);
-  return data.body;
+  return { events: data.body, totalEvents: data.total_events };
 }

@@ -95,7 +95,7 @@ def lambda_handler(event, context):
             "headers": CORS_HEADERS,
             "body": json.dumps({
                 "statusCode": 200,
-                "total": total,
+                "total_events": total,
                 "body": [db_entry_to_json(e) for e in events],
             }),
         }

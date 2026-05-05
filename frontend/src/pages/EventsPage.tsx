@@ -9,15 +9,20 @@ const EVENTS_PER_ROW = 4;
 
 export function EventsPage() {
   const [events, setEvents] = useState<DrexelEvent[]>([]);
+  const [totalEvents, setTotalEvents] = useState(0);
   const [status, setStatus] = useState<Status>("loading");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const eventCount = EVENTS_PER_ROW * EVENT_ROWS_PER_PAGE;
+
   useEffect(() => {
     let cancelled = false;
-    fetchEvents()
-      .then((data) => {
+    setStatus("loading");
+    fetchEvents(currentPage, eventCount)
+      .then(({ events: data, totalEvents: total }) => {
         if (cancelled) return;
         setEvents(data);
+        setTotalEvents(total);
         setStatus("ready");
       })
       .catch((err: unknown) => {
@@ -28,7 +33,7 @@ export function EventsPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [currentPage, eventCount]);
 
   if (status === "loading") {
     return <p className="events-page__status">Loading events…</p>;
@@ -43,10 +48,7 @@ export function EventsPage() {
   if (events.length === 0) {
     return <p className="events-page__status">No events found.</p>;
   }
-  const eventCount = EVENTS_PER_ROW * EVENT_ROWS_PER_PAGE;
-  const totalPages = Math.ceil(events.length / eventCount);
-  const pageStart = (currentPage - 1) * eventCount;
-  const pageEvents = events.slice(pageStart, pageStart + eventCount);
+  const totalPages = Math.ceil(totalEvents / eventCount);
 
   function goToPage(page: number) {
     setCurrentPage(page);
@@ -56,7 +58,7 @@ export function EventsPage() {
   return (
     <div className="events-page">
       <div className="event-grid">
-        {pageEvents.map((event) => (
+        {events.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
       </div>
