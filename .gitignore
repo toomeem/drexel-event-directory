@@ -1,4 +1,6 @@
 backend/.env
+frontend/.env
+frontend/.env.local
 /backend/.lambda_venv/
 /backend/.lambda_package/
 /backend/lambda_package.zip

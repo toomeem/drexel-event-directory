@@ -26,6 +26,11 @@ export async function fetchEvents(
   limit: number,
 ): Promise<FetchEventsResult> {
   const endpoint = import.meta.env.VITE_LAMBDA_ENDPOINT;
+  if (!endpoint) {
+    throw new Error(
+      "VITE_LAMBDA_ENDPOINT is not set — check the build env / GitHub Actions secret",
+    );
+  }
   console.log("[fetchEvents] endpoint:", endpoint);
   const res = await fetch(`${endpoint}?page=${page}&limit=${limit}`);
   console.log("[fetchEvents] response status:", res.status, res.statusText);
