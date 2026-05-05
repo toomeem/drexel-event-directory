@@ -1,5 +1,7 @@
 backend/.env
 /backend/.lambda_venv/
-/.claude/settings.local.json
 /backend/.lambda_package/
 /backend/lambda_package.zip
+/.claude/
+/.idea/
+*.iml

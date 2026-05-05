@@ -39,7 +39,7 @@ def db_entry_to_json(db_entry):
 def lambda_handler(event, context):
     try:
         offset = (int(event["page"]) - 1) * 12
-    except ValueError:
+    except (ValueError, KeyError):
         offset = 0
     try:
         connection = psycopg2.connect(

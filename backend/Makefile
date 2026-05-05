@@ -3,7 +3,7 @@
 PYTHON_VERSION := py -3.14
 PACKAGE_DIR := .lambda_package
 PACKAGE_NAME := lambda_package.zip
-LAMBDA_FUNCTION := lambda_code.py # Add other files separated by spaces if necessary
+LAMBDA_FUNCTION := lambda_function.py # Add other files separated by spaces if necessary
 
 # Default target executed when no arguments are given to make.
 default: clean package
