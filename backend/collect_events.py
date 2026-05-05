@@ -29,6 +29,7 @@ def normalize_time(source, time_str):
 def create_event_object(source, event_json):
     dragonlink_image_url = "https://drexel.campuslabs.com/engage/image/"
     drexel_athletics_default_image_url = "https://drexeldragons.com/images/sng_2023/footer_reccenter.png"
+    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
     kwargs = {"_id": None,
               "source": source,
               "name": None,
@@ -48,8 +49,10 @@ def create_event_object(source, event_json):
             kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
             if event_json["imagePath"]:
                 kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
+            elif event_json["organizationProfilePicture"]:
+                kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
             else:
-                kwargs["image_url"] = event_json["organizationProfilePicture"]
+                kwargs["image_url"] = drexel_default_image
         case "drexel_events":
             if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
                 return None
@@ -60,7 +63,10 @@ def create_event_object(source, event_json):
             kwargs["location"] = event_json["address"]
             kwargs["start_time"] = normalize_time(source, event_json["startDate"])
             kwargs["end_time"] = normalize_time(source, event_json["endDate"])
-            kwargs["image_url"] = event_json["image"]
+            if event_json["image"]:
+                kwargs["image_url"] = event_json["image"]
+            else:
+                kwargs["image_url"] = drexel_default_image
         case "drexel_athletics":
             at_vs = event_json["atVs"]
             opponent = event_json["opponent"]["title"]

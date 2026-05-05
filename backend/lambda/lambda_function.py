@@ -16,13 +16,16 @@ port = 5432
 def db_entry_to_json(db_entry):
     start_time = db_entry[5]
     end_time = db_entry[6]
-    if (start_time - datetime.now()) > timedelta(days=7):
-        time_str_prefix = datetime.strftime(start_time, "%b %d, ")
+    if start_time.strftime("%m/%d") == end_time.strftime("%m/%d"):
+        time_str_prefix = "Today"
+    elif (start_time - datetime.now()) > timedelta(days=7):
+        time_str_prefix = datetime.strftime(start_time, "%b %d")
     else:
-        time_str_prefix = datetime.strftime(start_time, "%a ")
+        time_str_prefix = datetime.strftime(start_time, "%a")
     time_str = (time_str_prefix +
-                datetime.strftime(start_time, "%-I:%M")
-                + "-" +
+                " - " +
+                datetime.strftime(start_time, "%-I:%M") +
+                "-" +
                 datetime.strftime(end_time, "%-I:%M %p")
                 )
     return {
