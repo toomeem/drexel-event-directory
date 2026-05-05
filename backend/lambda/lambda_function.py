@@ -14,8 +14,8 @@ port = 5432
 
 
 def db_entry_to_json(db_entry):
-    start_time = db_entry[5]
-    end_time = db_entry[6]
+    start_time = db_entry[6]
+    end_time = db_entry[7]
     if datetime.now().strftime("%m/%d") == end_time.strftime("%m/%d"):
         time_str_prefix = "Today"
     elif (start_time - datetime.now()) > timedelta(days=7):
@@ -34,8 +34,9 @@ def db_entry_to_json(db_entry):
         "name": db_entry[2],
         "org_name": db_entry[3],
         "location": db_entry[4],
+        "image_url": db_entry[5],
         "time": time_str.replace(":00", ""),
-        "image_url": db_entry[7],
+        "event_link": db_entry[8],
     }
 
 
@@ -80,9 +81,10 @@ def lambda_handler(event, context):
                        name,
                        org_name,
                        location,
+                       image_url,
                        start_time,
                        end_time,
-                       image_url
+                       event_link
                 FROM main.events
                 WHERE end_time > now()
                 ORDER BY start_time
