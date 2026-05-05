@@ -5,9 +5,9 @@ from datetime import datetime, timedelta
 from urllib.parse import quote
 
 import psycopg2
-import requests
 from dotenv import load_dotenv
 
+import requests
 from event_class import Event
 
 
@@ -24,6 +24,20 @@ def normalize_time(source, time_str):
             return dt
         case _:
             return datetime.fromisoformat(time_str) + timezone
+
+
+def simplify_location(location):
+    suffixes = [",", " - Classroom", " - Classroom w/ 14 PCs"]
+    replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
+    remove_list = ["\r", ", PA 19104", "Philadelphia"]
+    location = location.strip()
+    for suffix in suffixes:
+        location = location.removesuffix(suffix)
+    for old, new in replace_list:
+        location = location.replace(old, new)
+    for old in remove_list:
+        location = location.replace(old, "")
+    return location.strip()
 
 
 def create_event_object(source, event_json):
@@ -82,7 +96,7 @@ def create_event_object(source, event_json):
     kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
     kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
     if kwargs["location"] is not None:
-        kwargs["location"] = kwargs["location"].strip().replace("\r", "").replace("\n", " ")
+        kwargs["location"] = simplify_location(kwargs["location"])
     return Event(**kwargs)
 
 
@@ -199,5 +213,5 @@ def update_events():
 
 if __name__ == "__main__":
     load_dotenv()
+    update_events()
     fill_db()
-    # update_events()
