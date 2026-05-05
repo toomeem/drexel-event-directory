@@ -11,7 +11,7 @@ export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
       <div className="site-header__inner">
         <NavLink to="/" className="site-header__brand">
           <span className="site-header__brand-mark" aria-hidden="true" />
-          <span className="site-header__brand-text">Drexel Events</span>
+          <span className="site-header__brand-text">Drexel Event Hub</span>
         </NavLink>
         <nav className="site-header__nav">
           <NavLink

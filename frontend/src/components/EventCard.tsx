@@ -28,7 +28,7 @@ export function EventCard({ event }: EventCardProps) {
         <p className="event-card__time">{event.time}</p>
         <h3 className="event-card__title">{event.name}</h3>
         <p className="event-card__location">{event.location}</p>
-        <p className="event-card__host">Hosted by {event.org_name}</p>
+        <p className="event-card__host">Hosted by <strong>{event.org_name}</strong></p>
       </div>
     </article>
   );
