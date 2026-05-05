@@ -1,5 +1,5 @@
 class Event:
-    def __init__(self, _id, source, name, org_name, location, start_time, end_time, image_url, event_link):
+    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link):
         self._id = _id
         self.source = source
         self.name = name
@@ -27,12 +27,21 @@ class Event:
             "name": self.name,
             "org_name": self.org_name,
             "location": self.location,
+            "image_url": self.image_url,
             "start_time": self.get_start_timestamp(),
             "end_time": self.get_end_timestamp(),
-            "image_url": self.image_url,
             "event_link": self.event_link
         }
 
     def to_sql(self):
-        return (self._id, self.source, self.name, self.org_name, self.location,
-                self.get_start_timestamp(), self.get_end_timestamp(), self.image_url)
+        return (
+            self._id,
+            self.source,
+            self.name,
+            self.org_name,
+            self.location,
+            self.image_url,
+            self.get_start_timestamp(),
+            self.get_end_timestamp(),
+            self.event_link
+        )
