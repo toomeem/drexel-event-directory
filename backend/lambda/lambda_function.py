@@ -48,12 +48,16 @@ CORS_HEADERS = {
 
 
 def lambda_handler(event, context):
+    EVENT_ROWS_PER_PAGE = 6
+    EVENTS_PER_ROW = 4
+    page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
+
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
         return {"statusCode": 200, "headers": CORS_HEADERS, "body": ""}
 
     params = event.get("queryStringParameters") or {}
     try:
-        offset = (int(params.get("page", 1)) - 1) * 12
+        offset = (int(params.get("page", 1)) - 1) * page_event_count
     except ValueError:
         offset = 0
 
@@ -67,6 +71,8 @@ def lambda_handler(event, context):
             sslmode='require'
         )
         with connection.cursor() as cursor:
+            cursor.execute("SELECT COUNT(*) FROM main.events WHERE end_time > now()")
+            total = cursor.fetchone()[0]
             cursor.execute(
                 '''
                 SELECT id,
@@ -80,15 +86,16 @@ def lambda_handler(event, context):
                 FROM main.events
                 WHERE end_time > now()
                 ORDER BY start_time
-                LIMIT 12 OFFSET %s
+                LIMIT %s OFFSET %s
                 ''',
-                (offset,))
+                (page_event_count, offset,))
             events = cursor.fetchall()
         return {
             "statusCode": 200,
             "headers": CORS_HEADERS,
             "body": json.dumps({
                 "statusCode": 200,
+                "total": total,
                 "body": [db_entry_to_json(e) for e in events],
             }),
         }

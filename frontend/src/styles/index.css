@@ -237,6 +237,48 @@ img {
   color: var(--color-text-subtle);
 }
 
+.events-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.pagination__btn {
+  padding: 8px 20px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.pagination__btn:hover:not(:disabled) {
+  background: var(--color-placeholder);
+  border-color: var(--color-accent);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination__info {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  min-width: 100px;
+  text-align: center;
+}
+
 .about-page {
   max-width: 640px;
 }

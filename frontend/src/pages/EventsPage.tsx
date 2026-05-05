@@ -4,9 +4,13 @@ import { fetchEvents, type DrexelEvent } from "../api/events";
 
 type Status = "loading" | "ready" | "error";
 
+const EVENT_ROWS_PER_PAGE = 6;
+const EVENTS_PER_ROW = 4;
+
 export function EventsPage() {
   const [events, setEvents] = useState<DrexelEvent[]>([]);
   const [status, setStatus] = useState<Status>("loading");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,12 +43,42 @@ export function EventsPage() {
   if (events.length === 0) {
     return <p className="events-page__status">No events found.</p>;
   }
+  const eventCount = EVENTS_PER_ROW * EVENT_ROWS_PER_PAGE;
+  const totalPages = Math.ceil(events.length / eventCount);
+  const pageStart = (currentPage - 1) * eventCount;
+  const pageEvents = events.slice(pageStart, pageStart + eventCount);
+
+  function goToPage(page: number) {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
-    <div className="event-grid">
-      {events.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ))}
+    <div className="events-page">
+      <div className="event-grid">
+        {pageEvents.map((event) => (
+          <EventCard key={event.id} event={event} />
+        ))}
+      </div>
+      <div className="pagination">
+        <button
+          className="pagination__btn"
+          onClick={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span className="pagination__info">
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          className="pagination__btn"
+          onClick={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
