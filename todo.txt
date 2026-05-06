@@ -1,3 +1,10 @@
-remove links in the location description
-    html in description too
+add filtering
+    live tag
+    starting soon tag
+    online/hybrid tag
+    food tag
+    free tag
+    popular tag
+add search
+add more filters
 get more sources
