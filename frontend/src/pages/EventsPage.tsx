@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { EventCard } from "../components/EventCard";
 import { fetchEvents, type DrexelEvent } from "../api/events";
 
@@ -11,7 +12,8 @@ export function EventsPage() {
   const [events, setEvents] = useState<DrexelEvent[]>([]);
   const [totalEvents, setTotalEvents] = useState(0);
   const [status, setStatus] = useState<Status>("loading");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Math.max(1, Number(searchParams.get("page")) || 1);
 
   const eventCount = EVENTS_PER_ROW * EVENT_ROWS_PER_PAGE;
 
@@ -51,7 +53,7 @@ export function EventsPage() {
   const totalPages = Math.ceil(totalEvents / eventCount);
 
   function goToPage(page: number) {
-    setCurrentPage(page);
+    setSearchParams({ page: String(page) });
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
