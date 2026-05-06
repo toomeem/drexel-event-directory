@@ -336,7 +336,9 @@ if __name__ == "__main__":
     start = time.time()
     load_dotenv()
     client = OpenAI()
-    update_events(client)
-    # fill_db()
+
+    # update_events(client)
+    fill_db()
+
     end = time.time()
     print(f"Finished in {round(end - start, 2)} seconds.")
