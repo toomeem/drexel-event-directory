@@ -4,11 +4,18 @@ import time
 from datetime import datetime, timedelta
 from urllib.parse import quote
 
-import psycopg2
-from dotenv import load_dotenv
+from openai import OpenAI
+from pydantic import BaseModel
 
+import psycopg2
 import requests
+from dotenv import load_dotenv
 from event_class import Event
+
+
+class OnlineStatus(BaseModel):
+    event_status: str  # in-person, virtual, hybrid
+    physical_location: str
 
 
 def normalize_time(source, time_str):
@@ -45,7 +52,7 @@ def match_default_image(name, org_name, location):
     org_name = org_name.lower() if org_name else ""
     location = location.lower() if location else ""
     drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
-    pearlstien_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
+    pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
     westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
     dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
     main_building_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Main_Building_-_Drexel_University_%2853590618820%29.jpg/250px-Main_Building_-_Drexel_University_%2853590618820%29.jpg"
@@ -55,7 +62,7 @@ def match_default_image(name, org_name, location):
     rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
     med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
     image_aliases = {
-        "pearlstein gallery": pearlstien_image,
+        "pearlstein gallery": pearlstein_image,
         "westphal": westphal_image,
         "dac": dac_image,
         "rec center": dac_image,
@@ -76,13 +83,36 @@ def match_default_image(name, org_name, location):
     return drexel_default_image
 
 
-def create_event_object(source, event_json):
+def get_online_status(client, location):
+    response = client.chat.completions.parse(
+        model="gpt-5-nano-2025-08-07",
+        messages=[
+            {
+                "role": "system",
+                "content":
+                    '''
+                        You are an expert at structured data extraction. 
+                        You will be given information about the location of an event on Drexel University's campus and your task is to determine whether the event is hybrid, virtual or in-person. 
+                        If an event is virtual, it will explicitly state that is is event_status/virtual and will likely say 'zoom' or 'meet'. If it doesn't clearly state that it is virtual, you will assume it is in-person.
+                        You will first select the 'event_status' field. Here are the only allowed responses for the event_status field: ['in-person', 'virtual', 'hybrid'].
+                        If the event is hybrid, It will explicitly state a physical location and that it is virtual/event_status. I will most likely signal this using 'and'/'&' or 'or' to show that there are multiple options. Example 'PISB 108 & Online'
+                        For hybrid events, for the 'physical_location' parameter just return the physical location and ignore any information about the virtual aspect of the event. For in-person events, just return the location as the 'physical_location' and for virtual events, return 'N/A' for the physical location.
+                 ''',
+            },
+            {"role": "user", "content": location},
+        ],
+        response_format=OnlineStatus,
+    )
+    response_object = response.choices[0].message.parsed
+    return {"event_status": response_object.event_status, "physical_location": response_object.physical_location}
+
+
+def create_event_object(source, event_json, client):
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
     drexel_athletics_image = "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg"
     drexel_athletics_schedule_url = "https://drexeldragons.com/sports/"
-    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
     drexel_athletics_aliases = {
         "mbball": "mens-basketball",
         "wbball": "womens-basketball",
@@ -103,6 +133,7 @@ def create_event_object(source, event_json):
         "fhockey": "field-hockey",
         "softball": "softball",
     }
+    online_keywords = ["event_status", "zoom", "virtual", "hybrid", "handshake"]
     kwargs = {"_id": None,
               "source": source,
               "name": None,
@@ -112,6 +143,7 @@ def create_event_object(source, event_json):
               "start_time": None,
               "end_time": None,
               "event_link": None,
+              "event_status": None,
               }
 
     match source:
@@ -166,6 +198,16 @@ def create_event_object(source, event_json):
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
+    if source == "drexel_athletics":
+        kwargs["event_status"] = "in-person"
+    elif any(keyword in str(kwargs["location"]).lower() for keyword in online_keywords):
+        online_status_response = get_online_status(client, kwargs["location"])
+        kwargs["event_status"] = online_status_response["event_status"]
+        if kwargs["event_status"] == "hybrid":
+            kwargs["location"] = online_status_response["physical_location"]
+    else:
+        kwargs["event_status"] = "in-person"
+
     return Event(**kwargs)
 
 
@@ -217,12 +259,13 @@ def create_drexel_athletics_events():
     return events_json
 
 
-def collect_all_events():
+def collect_all_events(client):
     events = []
-    events.extend([create_event_object("dragonlink", event_json) for event_json in collect_dragonlink_events()])
-    events.extend([create_event_object("drexel_events", event_json) for event_json in collect_drexel_events()])
+    events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
+    events.extend([create_event_object("drexel_events", event_json, client) for event_json in collect_drexel_events()])
     events.extend(
-        [create_event_object("drexel_athletics", event_json) for event_json in create_drexel_athletics_events()])
+        [create_event_object("drexel_athletics", event_json, client) for event_json in
+         create_drexel_athletics_events()])
 
     # remove duplicates using __eq__; higher priority wins (kept as last occurrence)
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
@@ -282,13 +325,18 @@ def fill_db():
     save_events_to_db(events)
 
 
-def update_events():
-    events = collect_all_events()
+def update_events(client):
+    print("Updating events...")
+    events = collect_all_events(client)
     save_events_to_file(events)
     print(f"Saved {len(events)} events to file.")
 
 
 if __name__ == "__main__":
+    start = time.time()
     load_dotenv()
-    update_events()
-    fill_db()
+    client = OpenAI()
+    update_events(client)
+    # fill_db()
+    end = time.time()
+    print(f"Finished in {round(end - start, 2)} seconds.")

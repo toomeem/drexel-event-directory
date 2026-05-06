@@ -8,7 +8,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1777971600,
         "end_time": 1777996800,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119973"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119973",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121823",
@@ -19,18 +20,20 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1777971600,
         "end_time": 1777996800,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121823"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121823",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:dr.tinamariecoolidge:45523119224",
         "source": "drexel_events",
         "name": "Adult Learners in Higher Education: The Importance of Access and Continuing Education",
         "org_name": "Dr. Tina Marie Coolidge",
-        "location": "Zoom Meeting: https://drexel.zoom.us/j/86454581714",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23770",
         "start_time": 1777982400,
         "end_time": 1777986000,
-        "event_link": "https://drexel.edu/events/Event?_i=45523_119224"
+        "event_link": "https://drexel.edu/events/Event?_i=45523_119224",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121530",
@@ -41,7 +44,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1777982400,
         "end_time": 1778004000,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121530"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121530",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121579",
@@ -52,18 +56,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1777982400,
         "end_time": 1778004000,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121579"
-    },
-    {
-        "id": "dragonlink:drexelmuslimstudentsassociation:12449582",
-        "source": "dragonlink",
-        "name": "Islamic Awareness Week",
-        "org_name": "Drexel Muslim Students Association",
-        "location": "Dragon Statue - Table Space 2",
-        "image_url": "https://drexel.campuslabs.com/engage/image/b5a3cb6b-5656-4b95-869a-7d7517d306d14a00c973-63ad-4804-b282-af774ee3ede7.png",
-        "start_time": 1777982400,
-        "end_time": 1777996800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449582"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121579",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:kappaphilambdasorority,inc.:12449952",
@@ -74,7 +68,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/38dc1333-abde-444d-8cf9-f88106a55a83f3759c62-f4ae-4b73-a038-77ce1d9b8244.png",
         "start_time": 1777982400,
         "end_time": 1778000400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449952"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449952",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:alliehumphries:46405122023",
@@ -85,29 +80,20 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314",
         "start_time": 1777986000,
         "end_time": 1777993200,
-        "event_link": "https://drexel.edu/events/Event?_i=46405_122023"
-    },
-    {
-        "id": "dragonlink:campusactivitiesboard:12458504",
-        "source": "dragonlink",
-        "name": "Spring Scrapbook Cafe",
-        "org_name": "Campus Activities Board",
-        "location": "Saxby's at Drexel University",
-        "image_url": "https://drexel.campuslabs.com/engage/image/19c24a9b-8c26-4777-8ff2-060fef3b3cfd5522fe40-a686-4bc8-9c47-e963b37e17b5.png",
-        "start_time": 1777986000,
-        "end_time": 1777996800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12458504"
+        "event_link": "https://drexel.edu/events/Event?_i=46405_122023",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:kenbohrer:46295121475",
         "source": "drexel_events",
         "name": "Graduate Student-Any Career Questions Drop-In Zoom Time",
         "org_name": "Ken Bohrer",
-        "location": "Zoom: Register on Handshake",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24233",
         "start_time": 1777993200,
         "end_time": 1777996800,
-        "event_link": "https://drexel.edu/events/Event?_i=46295_121475"
+        "event_link": "https://drexel.edu/events/Event?_i=46295_121475",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:educationabroadoffice:46341121679",
@@ -118,7 +104,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1777993200,
         "end_time": 1777996800,
-        "event_link": "https://drexel.edu/events/Event?_i=46341_121679"
+        "event_link": "https://drexel.edu/events/Event?_i=46341_121679",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:steinbrightcareerdevelopmentcenter:46478122196",
@@ -129,7 +116,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24348",
         "start_time": 1777993200,
         "end_time": 1777996800,
-        "event_link": "https://drexel.edu/events/Event?_i=46478_122196"
+        "event_link": "https://drexel.edu/events/Event?_i=46478_122196",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:biomedicalsciencegraduatestudentassociation:12449589",
@@ -140,7 +128,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/269c50ed-f685-4c57-af98-cbb5c1ccace66e9a3f64-9092-4299-adfe-eba74121310b.png",
         "start_time": 1777998600,
         "end_time": 1778005800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449589"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449589",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:neurodragons:12461428",
@@ -151,7 +140,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/0cf619f3-beb5-4ab9-8438-301fb7f9236c59a7af75-a10e-4fe9-bf0f-8da1bd7510b2.png",
         "start_time": 1778000400,
         "end_time": 1778004000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12461428"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12461428",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelmuslimstudentsassociation:12385032",
@@ -162,7 +152,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b5a3cb6b-5656-4b95-869a-7d7517d306d14a00c973-63ad-4804-b282-af774ee3ede7.png",
         "start_time": 1778000400,
         "end_time": 1778007600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12385032"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12385032",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:chemistrygraduatestudentassociation:12445970",
@@ -173,7 +164,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/74803476-dbc5-469a-aa84-42b2cdeabf34614ce382-04c9-4fad-ad49-8e91600e5d6b.png",
         "start_time": 1778000400,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12445970"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12445970",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:queerpeopleofcolor:12461431",
@@ -184,7 +176,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/9797c462-9ffe-4873-816b-af0611587c0b18c865e6-d4c0-42e8-9806-65384bf25fe8.png",
         "start_time": 1778004000,
         "end_time": 1778007600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12461431"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12461431",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:societyofwomenengineers:12436853",
@@ -195,7 +188,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/081f134f-7434-460a-bb8e-143b9b9783605cfb557b-3c45-40b1-835a-185c307f7027.jpg",
         "start_time": 1778004000,
         "end_time": 1778007600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436853"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436853",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:studentlifeleadershipcurriculum:12395442",
@@ -206,7 +200,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ae3ebf04-ab09-42c4-ac77-1f025c2305a19916723a-d75b-44dc-b06b-01b5c65eca40.png",
         "start_time": 1778004000,
         "end_time": 1778007600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12395442"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12395442",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelspeaks:12449591",
@@ -217,7 +212,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ded675c2-658b-49ee-889e-38159419460e1c54b619-3a50-4f99-b1f1-7e0843b2e256.png",
         "start_time": 1778004000,
         "end_time": 1778009400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449591"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449591",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:womeninsurgery:12456882",
@@ -228,7 +224,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/63710f39-a1e7-4d80-acab-f21005b666ef0648a9e2-ef72-421c-bb47-37d7c197ecba.png",
         "start_time": 1778004000,
         "end_time": 1778009400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12456882"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12456882",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelinternationalbusinessstudentassociation:12443876",
@@ -239,7 +236,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/54c49869-ac00-427e-af65-54f88666762875ebcf90-47cc-412a-aaed-76b412287388.png",
         "start_time": 1778004000,
         "end_time": 1778009400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12443876"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12443876",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:westindianstudentestablishment:12452918",
@@ -250,7 +248,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3cf1fe64-31a3-4417-8c87-76da2f3be5ef64170946-ea44-45a2-abb7-ee69407cac3d.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12452918"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12452918",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexeluniversitydebateunion:12409319",
@@ -261,7 +260,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/f8106dd5-d104-41ee-b37f-bbed996c9f4e2daa65c8-f8b4-4680-9535-d009a06c5082.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12409319"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409319",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:nationalsocietyofblackengineers:12454410",
@@ -272,7 +272,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/078f5982-6151-4d9f-8b41-69962d2b7ce9e57022c0-e311-417a-bdd9-ec4d08155a1c.jpg",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12454410"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12454410",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelwomeninbusiness:12449598",
@@ -283,7 +284,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ae75f5f6-1299-4bc6-922c-b2f2c722f991d8d67e5b-1c02-4aa7-9a44-2ad89f869098.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449598"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449598",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:globalchinaconnection:12449599",
@@ -294,7 +296,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bfac7fcb-6b39-4a9b-9f78-6b6e11d85bc95a0e0c72-f305-4eb2-81a0-a1d1cb0940c3.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449599"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449599",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:hack4impactdrexel:12443180",
@@ -305,7 +308,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5da0b9bf-99bc-4536-b879-87fb73e40b10cd85467b-95c2-431d-8467-74dc41fce1f0.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12443180"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12443180",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelafricanstudentsassociation:12456514",
@@ -316,7 +320,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/fec44b10-85d9-433e-b266-d8e573da8b2c44716459-b09b-4083-97ce-48ee57a333d6.PNG",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12456514"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12456514",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:ascenddrexelstudentchapter:12452916",
@@ -327,7 +332,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5da1f572-93b7-4b6a-91d7-caf0891169f85e676650-5d94-46c5-a9c0-931e5a887663.png",
         "start_time": 1778004000,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12452916"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12452916",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:unpluggedgamingorganization:12288512",
@@ -338,7 +344,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ac82fca6-0408-46f7-a50c-7c14988ae37e57cdc88c-baac-4c2f-8983-1977b527ce31.png",
         "start_time": 1778004000,
         "end_time": 1778014800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12288512"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12288512",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelgamingassociation:12425579",
@@ -349,7 +356,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/28486410-1b9f-434c-964f-18c0bc8153b9890c6fa1-e347-4724-b72d-85290751d614.png",
         "start_time": 1778004000,
         "end_time": 1778020200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12425579"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12425579",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelstudentsforchrist:12358030",
@@ -360,7 +368,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/d64a64f0-5c00-421f-8c95-baea1dd4f3eae747f8b4-f761-4509-b427-848bbdc16a0f.png",
         "start_time": 1778005800,
         "end_time": 1778009400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12358030"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12358030",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:koreanstudentassociation:12449588",
@@ -371,7 +380,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/31361c8f-f0c0-4fda-a074-481dfbbf6b0fcab0bdaa-e0a7-4295-84f9-d7097740633e.jpeg",
         "start_time": 1778005800,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449588"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449588",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelelectricracing:12436847",
@@ -382,7 +392,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/98a53309-4b25-434e-b346-641e54bfb498d00d9ab7-d108-4ab8-a310-455e85511d9d.png",
         "start_time": 1778007600,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436847"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436847",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:engineerswithoutborders:12375073",
@@ -393,7 +404,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/69357295-dbaf-4d1f-aac4-de889001ace654e48fb0-0aec-4341-a6c3-afb14958bbbb.png",
         "start_time": 1778007600,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375073"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375073",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexeluniversitycirclek:12375114",
@@ -404,7 +416,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3c340f3d-1bc7-4f58-940a-6a87668f923ea02fbf3a-3025-4620-be1d-87699339b6bb.png",
         "start_time": 1778007600,
         "end_time": 1778011200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375114"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375114",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:dragonjedi:12328425",
@@ -415,7 +428,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/4265d1d2-624b-41eb-83e9-c110183ade155a762c1e-2122-40c1-b0c2-23a06557b06b.png",
         "start_time": 1778007600,
         "end_time": 1778014800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12328425"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12328425",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:zetaphibetasororityinc.:12461398",
@@ -426,7 +440,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6fd6c1d3-57ea-4e96-9513-875b25d871c039bd3645-b0c7-48e5-a6dc-86c48608eada.png",
         "start_time": 1778007600,
         "end_time": 1778014800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12461398"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12461398",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:deltaphiepsilon:12449586",
@@ -437,7 +452,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/29bff88b-1208-4994-a860-6f77b9ef6161acecdda3-c7ec-4ff6-b357-ecfd6c7a00b6.jpg",
         "start_time": 1778007600,
         "end_time": 1778018400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449586"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449586",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:societyofasianscientistsandengineers:drexeluniversitychapter:12409381",
@@ -448,7 +464,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/7a307f7e-885d-4b30-ae1d-137efc5a9e72c1cc4715-6864-4aaa-abf1-123e042c79eb.png",
         "start_time": 1778009400,
         "end_time": 1778013000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12409381"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409381",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121824",
@@ -459,7 +476,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778058000,
         "end_time": 1778083200,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121824"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121824",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119974",
@@ -470,7 +488,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778058000,
         "end_time": 1778083200,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119974"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119974",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:ducomphysickhousesociety:12434447",
@@ -481,7 +500,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778058000,
         "end_time": 1778086800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12434447"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12434447",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:willbecker:45557119302",
@@ -492,7 +512,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23805",
         "start_time": 1778065200,
         "end_time": 1778068800,
-        "event_link": "https://drexel.edu/events/Event?_i=45557_119302"
+        "event_link": "https://drexel.edu/events/Event?_i=45557_119302",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:materialsscienceandengineering:46390121976",
@@ -503,7 +524,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24301",
         "start_time": 1778065200,
         "end_time": 1778068800,
-        "event_link": "https://drexel.edu/events/Event?_i=46390_121976"
+        "event_link": "https://drexel.edu/events/Event?_i=46390_121976",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:bencyoonnoonny:46425122081",
@@ -514,7 +536,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778068800,
         "end_time": 1778072400,
-        "event_link": "https://drexel.edu/events/Event?_i=46425_122081"
+        "event_link": "https://drexel.edu/events/Event?_i=46425_122081",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121531",
@@ -525,7 +548,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778068800,
         "end_time": 1778090400,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121531"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121531",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121580",
@@ -536,7 +560,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778068800,
         "end_time": 1778090400,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121580"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121580",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelmuslimstudentsassociation:12449583",
@@ -547,29 +572,32 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b5a3cb6b-5656-4b95-869a-7d7517d306d14a00c973-63ad-4804-b282-af774ee3ede7.png",
         "start_time": 1778068800,
         "end_time": 1778083200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449583"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449583",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:jillianclark:46244121370",
         "source": "drexel_events",
         "name": "Resume Review Day",
         "org_name": "Jillian Clark",
-        "location": "Zoom: Register on Handshake https://drexel.joinhandshake.com/edu/events/1923980",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24202",
         "start_time": 1778072400,
         "end_time": 1778079600,
-        "event_link": "https://drexel.edu/events/Event?_i=46244_121370"
+        "event_link": "https://drexel.edu/events/Event?_i=46244_121370",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:educationabroadoffice:46343121729",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
-        "location": "In-person at the Education Abroad Office, Academic Building Suite 201, and virtual: https://drexel.zoom.us/j/87687380529",
+        "location": "Education Abroad Office, Academic Building Suite 201",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778072400,
         "end_time": 1778079600,
-        "event_link": "https://drexel.edu/events/Event?_i=46343_121729"
+        "event_link": "https://drexel.edu/events/Event?_i=46343_121729",
+        "event_status": "hybrid"
     },
     {
         "id": "drexelevents:alliehumphries:46405122024",
@@ -580,7 +608,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314",
         "start_time": 1778072400,
         "end_time": 1778079600,
-        "event_link": "https://drexel.edu/events/Event?_i=46405_122024"
+        "event_link": "https://drexel.edu/events/Event?_i=46405_122024",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:deltazeta:12461489",
@@ -591,29 +620,32 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/479569b3-3f2c-4f10-a934-14813f06d006a8163e44-520f-4fbf-ac97-4ccde9307568.jpg",
         "start_time": 1778072400,
         "end_time": 1778079600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12461489"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12461489",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stevev\u00e1squezdolph,phd:46261121404",
         "source": "drexel_events",
         "name": "Working with Communities: Critical Geographies",
         "org_name": "Steve V\u00e1squez Dolph, PhD",
-        "location": "Drexel Teaching and Learning Center 3401 Market St, Suite 202, or via Zoom",
+        "location": "Drexel Teaching and Learning Center 3401 Market St, Suite 202",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778076000,
         "end_time": 1778082600,
-        "event_link": "https://drexel.edu/events/Event?_i=46261_121404"
+        "event_link": "https://drexel.edu/events/Event?_i=46261_121404",
+        "event_status": "hybrid"
     },
     {
         "id": "drexelevents:stevev\u00e1squezdolph,phd:46137121145",
         "source": "drexel_events",
         "name": "Working with Communities: Critical Geographies",
         "org_name": "Steve V\u00e1squez Dolph, PhD",
-        "location": "Drexel Teaching and Learning Center 3401 Market St, Suite 202, or via Zoom",
+        "location": "Drexel Teaching and Learning Center 3401 Market St, Suite 202",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24157",
         "start_time": 1778076000,
         "end_time": 1778082600,
-        "event_link": "https://drexel.edu/events/Event?_i=46137_121145"
+        "event_link": "https://drexel.edu/events/Event?_i=46137_121145",
+        "event_status": "hybrid"
     },
     {
         "id": "dragonlink:writersroom:12450308",
@@ -624,7 +656,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/cd500789-fd45-40b5-a400-33e0f31372ba21e16fdf-1afd-43d8-9c9a-8a060c8d5d11.png",
         "start_time": 1778076000,
         "end_time": 1778083200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450308"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450308",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:centerforblackculture:12410588",
@@ -635,7 +668,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ff978fc4-6fee-42f8-be4c-c295b498a25f53ac0e1c-5011-45fe-8999-ea4f11a9affb.png",
         "start_time": 1778076000,
         "end_time": 1778083200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12410588"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12410588",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:carolynriley:46525122489",
@@ -646,7 +680,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24393",
         "start_time": 1778077800,
         "end_time": 1778083200,
-        "event_link": "https://drexel.edu/events/Event?_i=46525_122489"
+        "event_link": "https://drexel.edu/events/Event?_i=46525_122489",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:pennonihonorscollege:12374701",
@@ -657,18 +692,20 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/dff7d0d3-3c8c-4179-954d-0bac48c27e5783294c08-0e72-4b91-9f2d-0778b6610401.png",
         "start_time": 1778079600,
         "end_time": 1778086800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12374701"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12374701",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:steinbrightcareerdevelopmentcenter:46284121453",
         "source": "drexel_events",
         "name": "Helix Electric, Inc. - Co-Op Program & Company Info Session",
         "org_name": "Steinbright Career Development Center",
-        "location": "Virtual - Register on Handshake for link",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24228",
         "start_time": 1778083200,
         "end_time": 1778086800,
-        "event_link": "https://drexel.edu/events/Event?_i=46284_121453"
+        "event_link": "https://drexel.edu/events/Event?_i=46284_121453",
+        "event_status": "virtual"
     },
     {
         "id": "dragonlink:kappaphigamma,sororityinc.:12425996",
@@ -679,7 +716,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/554c3ae8-a630-46a7-aa14-eba24099d0fc1dbfa9ff-7bd5-477e-b2b6-79be969c1cb2.png",
         "start_time": 1778083200,
         "end_time": 1778086800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12425996"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12425996",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:pennonihonorscollege:46354121769",
@@ -690,7 +728,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24271",
         "start_time": 1778086800,
         "end_time": 1778090400,
-        "event_link": "https://drexel.edu/events/Event?_i=46354_121769"
+        "event_link": "https://drexel.edu/events/Event?_i=46354_121769",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:societyofwomenengineers:12306591",
@@ -701,7 +740,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/081f134f-7434-460a-bb8e-143b9b9783605cfb557b-3c45-40b1-835a-185c307f7027.jpg",
         "start_time": 1778086800,
         "end_time": 1778090400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12306591"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12306591",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:pennonihonorscollege:12374469",
@@ -712,7 +752,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bfcf85dd-af52-48c7-a3fc-fb6c60fb980357392ec8-ad4f-413c-8a81-388a46200032.png",
         "start_time": 1778086800,
         "end_time": 1778090400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12374469"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12374469",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:medfitmindandmovement:12449606",
@@ -723,7 +764,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/c34ecc7b-956d-4d0d-8b54-176edd8262e5508ef1b0-79fb-41db-8f26-9ee6a054f743.png",
         "start_time": 1778086800,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449606"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449606",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:activemindsatdrexeluniversity:12449957",
@@ -734,7 +776,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/8be73d48-b0ac-409b-aeb0-b685f9211d4ea33b3418-928b-4c4b-9e10-4e369e342b38.png",
         "start_time": 1778086800,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449957"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449957",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexeluniversitycounselingcenter:12444545",
@@ -745,7 +788,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/0dcef96d-cbbd-4a3f-bcce-15c8f290d9d2ce8570b0-920c-4995-9a53-9229bcf16586.png",
         "start_time": 1778086800,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12444545"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12444545",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:ducomreadingterminalsociety:12428524",
@@ -756,7 +800,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/eff4c432-a60e-436f-b550-74add01e53f00e950223-1d7d-4426-a532-59da46971bc2.png",
         "start_time": 1778086800,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12428524"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12428524",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:emerykaczmarekjohnson:46502122246",
@@ -767,7 +812,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24374",
         "start_time": 1778088600,
         "end_time": 1778092200,
-        "event_link": "https://drexel.edu/events/Event?_i=46502_122246"
+        "event_link": "https://drexel.edu/events/Event?_i=46502_122246",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:societyofwomenengineers:12436862",
@@ -778,7 +824,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/081f134f-7434-460a-bb8e-143b9b9783605cfb557b-3c45-40b1-835a-185c307f7027.jpg",
         "start_time": 1778088600,
         "end_time": 1778092200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436862"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436862",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelsierraclub:12436857",
@@ -789,7 +836,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/51a66c80-1c0b-417d-a592-ea8bf5c274769b1a1d05-474f-4987-9df2-7007643da5c0.png",
         "start_time": 1778088600,
         "end_time": 1778092200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436857"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436857",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:everynationcampus:12440424",
@@ -800,7 +848,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bb9059b7-6aa1-4b36-91d7-51f8e74ac72247571149-4117-4351-8640-974f52c10615.png",
         "start_time": 1778088600,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12440424"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12440424",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:theaccountingsociety:12436861",
@@ -811,7 +860,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6aacb93a-e6fb-4af2-956a-c954d986dcac010df1d6-1a19-43a6-b9ea-253ec20527c6.png",
         "start_time": 1778088600,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436861"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436861",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:cru:12408668",
@@ -822,7 +872,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/a5653085-7e1f-4e37-bd00-0fc0b26c9c50d529e63b-fb9f-46a7-b356-403137057bfd.png",
         "start_time": 1778090400,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12408668"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12408668",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:weekendwarriors:12456575",
@@ -833,7 +884,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/4ddbe9ee-c553-4d4e-baa4-acb01f01698e5cb7fabb-e66d-41f5-babc-14b52d9727b5.png",
         "start_time": 1778090400,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12456575"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12456575",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelinstituteoftransportationengineers:12461445",
@@ -844,18 +896,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/06d4183d-abc4-4a42-b585-19a37153ffb1c7216c6a-8fa3-4aff-9682-07b160649b5a.png",
         "start_time": 1778090400,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12461445"
-    },
-    {
-        "id": "dragonlink:engineerswithoutborders:12387884",
-        "source": "dragonlink",
-        "name": "EWB Exec Board/General Body Meeting",
-        "org_name": "Engineers Without Borders",
-        "location": "Lindy Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/036158a3-d194-4fbe-a96d-8cb0de0186068a18f83b-483f-4c8f-9b45-8f380fedf0fd.png",
-        "start_time": 1778090400,
-        "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12387884"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12461445",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:toxicfreephillydrexel:12449607",
@@ -866,7 +908,20 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b4967a92-ff22-4c3a-b6d7-b04e7d52b5fe59fb2e53-d170-4f37-b6e2-07983fb350f7.png",
         "start_time": 1778090400,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449607"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449607",
+        "event_status": "in-person"
+    },
+    {
+        "id": "dragonlink:engineerswithoutborders:12387884",
+        "source": "dragonlink",
+        "name": "EWB Exec Board/General Body Meeting",
+        "org_name": "Engineers Without Borders",
+        "location": "Lindy Center",
+        "image_url": "https://drexel.campuslabs.com/engage/image/036158a3-d194-4fbe-a96d-8cb0de0186068a18f83b-483f-4c8f-9b45-8f380fedf0fd.png",
+        "start_time": 1778090400,
+        "end_time": 1778094000,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12387884",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:phialphadeltaprelawfraternity:12375203",
@@ -877,7 +932,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/89b3b67e-2e98-46e2-9169-763d0d180d6ae93c77c7-a263-4e33-a445-c3d28f778a4a.jpeg",
         "start_time": 1778090400,
         "end_time": 1778094000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375203"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375203",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelfiberartsclub:12456507",
@@ -888,7 +944,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b5c9af55-8980-427b-a90e-e0b259d546a87fa2b1e5-91fc-4d99-9aab-caf7bf078a79.png",
         "start_time": 1778090400,
         "end_time": 1778095800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12456507"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12456507",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:techserv:12328198",
@@ -899,7 +956,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6955e932-1b7c-443a-993c-c5524e83206151428a90-1f8e-4fb0-98c4-e9a56fce6de7.png",
         "start_time": 1778090400,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12328198"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12328198",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelafricanstudentsassociation:12454662",
@@ -910,7 +968,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/fec44b10-85d9-433e-b266-d8e573da8b2c44716459-b09b-4083-97ce-48ee57a333d6.PNG",
         "start_time": 1778090400,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12454662"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12454662",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:businessanalyticsclub:12449587",
@@ -921,7 +980,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/2215ec88-a153-4f55-98ed-3d5ff494c48f6682f2b7-6b59-408d-be14-a7d24016e283.png",
         "start_time": 1778090400,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449587"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449587",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:ascenddrexelstudentchapter:12446773",
@@ -932,7 +992,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/23e4f097-f65b-4372-9556-eca645ed3c76a7f3ef1a-2fe7-4a39-adfa-dbbefa42806d.png",
         "start_time": 1778090400,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12446773"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12446773",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:crosswalkchristianfellowship:12409471",
@@ -943,7 +1004,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5601b76f-ab42-4b82-8bcf-2bcf465b20c6df61ffd9-7091-4b9c-a7d1-00cad171dcad.png",
         "start_time": 1778090400,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12409471"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409471",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:crosswalkchristianfellowship:12409472",
@@ -954,7 +1016,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/5601b76f-ab42-4b82-8bcf-2bcf465b20c6df61ffd9-7091-4b9c-a7d1-00cad171dcad.png",
         "start_time": 1778090400,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12409472"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409472",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:pilambdaphipadeltaiota:12449602",
@@ -965,7 +1028,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6de5a1f2-5ec3-4ca9-946c-86af4b945270f29e3d15-89d2-4739-9d9e-d27b1004db60.jpg",
         "start_time": 1778090400,
         "end_time": 1778104800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449602"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449602",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelgamingassociation:12443458",
@@ -976,7 +1040,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/e15084a8-2d76-405e-a133-109b4cc1eb1287cab28b-6847-433b-bb23-940947bbc25f.png",
         "start_time": 1778090400,
         "end_time": 1778104800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12443458"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12443458",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:interculturalgreekcouncil:12449600",
@@ -987,7 +1052,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/760d85ec-7d3d-4336-ab7e-12614a6c067c7549411e-d822-4874-b487-6ad18436b669.jpeg",
         "start_time": 1778092200,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449600"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449600",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:opendoorchristiancommunity:12379525",
@@ -998,7 +1064,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b14b38fb-69cd-4cef-9c66-c79ee44b412e4e777242-28b9-406d-a752-5e88da72e4d2.png",
         "start_time": 1778092200,
         "end_time": 1778099400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12379525"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12379525",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:opendoorchristiancommunity:12379526",
@@ -1009,7 +1076,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b14b38fb-69cd-4cef-9c66-c79ee44b412e4e777242-28b9-406d-a752-5e88da72e4d2.png",
         "start_time": 1778092200,
         "end_time": 1778099400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12379526"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12379526",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:bencyoonnoonny:46426122083",
@@ -1020,7 +1088,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778094000,
         "end_time": 1778097600,
-        "event_link": "https://drexel.edu/events/Event?_i=46426_122083"
+        "event_link": "https://drexel.edu/events/Event?_i=46426_122083",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:formulasae:12375339",
@@ -1031,7 +1100,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/aef6afff-3089-4b8e-ba33-6e7b4b46a8b802eefc28-22cb-4970-9d0f-d3e1d3f5ccce.png",
         "start_time": 1778094000,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375339"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375339",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelfinanceandinvestmentgroup:12446784",
@@ -1042,7 +1112,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/19b618de-49f8-4574-8f69-465fa0c5022eca49344d-3bc0-4624-a3f2-d9874e9cea5e.jpeg",
         "start_time": 1778094000,
         "end_time": 1778097600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12446784"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12446784",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelprepaclub:12449601",
@@ -1053,7 +1124,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/45f792be-4d0d-4572-bb2b-90e378bf4daa98eb9fca-49ec-42e4-9c6a-3817ec17c213.png",
         "start_time": 1778094000,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449601"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449601",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelweh:12375187",
@@ -1064,7 +1136,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/a8ace8a3-b3f8-4754-949c-8da9be7a6b695d74911b-9550-441c-9181-adb89855216f.png",
         "start_time": 1778094000,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375187"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375187",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:sigmapsizetasorority,inc.:12449605",
@@ -1075,7 +1148,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3e22a56e-3ef1-4cca-a6d4-68e8caaac8a5f5301612-1759-4201-9498-33e1c336a136.jpg",
         "start_time": 1778094000,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449605"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449605",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:filmincolor:12447820",
@@ -1086,7 +1160,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ab3a1124-7e2e-42a2-82fb-dc5a455c13e800521328-c62f-4e96-ac54-edd94f3b49ef.png",
         "start_time": 1778094000,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12447820"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12447820",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:panhelleniccouncil:12436559",
@@ -1097,7 +1172,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/93bc7557-1bac-4bf8-8870-7b3b88050841e84db0ae-91c9-457a-88e4-93c05b834366.png",
         "start_time": 1778097600,
         "end_time": 1778101200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12436559"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12436559",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:storyfellowship:12408992",
@@ -1108,7 +1184,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/a0055052-feea-4fe1-bfb3-978439ed5ca1c619d85a-ce51-4bfb-8fc2-665b9b829ded.png",
         "start_time": 1778101200,
         "end_time": 1778104200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12408992"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12408992",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121825",
@@ -1119,7 +1196,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778144400,
         "end_time": 1778169600,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121825"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121825",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119975",
@@ -1130,29 +1208,32 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778144400,
         "end_time": 1778169600,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119975"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119975",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:jillianclark:46245121372",
         "source": "drexel_events",
         "name": "Resume Review Day",
         "org_name": "Jillian Clark",
-        "location": "Zoom: Register on Handshake",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24203",
         "start_time": 1778148000,
         "end_time": 1778155200,
-        "event_link": "https://drexel.edu/events/Event?_i=46245_121372"
+        "event_link": "https://drexel.edu/events/Event?_i=46245_121372",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:juliapines:45677119625",
         "source": "drexel_events",
         "name": "Graduate Student Writing Group",
         "org_name": "Julia Pines",
-        "location": "Zoom",
+        "location": "Online",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778148000,
         "end_time": 1778151600,
-        "event_link": "https://drexel.edu/events/Event?_i=45677_119625"
+        "event_link": "https://drexel.edu/events/Event?_i=45677_119625",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:henryisraeli:46047121294",
@@ -1163,7 +1244,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24175",
         "start_time": 1778151600,
         "end_time": 1778157000,
-        "event_link": "https://drexel.edu/events/Event?_i=46047_121294"
+        "event_link": "https://drexel.edu/events/Event?_i=46047_121294",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:lindycenterforcivicengagement:12371342",
@@ -1174,7 +1256,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/e95c3e7b-68df-48cb-b64d-913de42f89ad4f8c3cde-c57c-4ddd-93d6-5c1c8de6708e.png",
         "start_time": 1778151600,
         "end_time": 1778162400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12371342"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12371342",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:amandastagg:46373121942",
@@ -1185,7 +1268,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24284",
         "start_time": 1778155200,
         "end_time": 1778169600,
-        "event_link": "https://drexel.edu/events/Event?_i=46373_121942"
+        "event_link": "https://drexel.edu/events/Event?_i=46373_121942",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121532",
@@ -1196,7 +1280,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778155200,
         "end_time": 1778176800,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121532"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121532",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121581",
@@ -1207,7 +1292,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778155200,
         "end_time": 1778176800,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121581"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121581",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:lambdachialpha:12443658",
@@ -1218,7 +1304,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/ca125037-eac5-4008-9109-b606089fbe7aad7b09e5-2fed-4607-b56c-426932458a04.jpg",
         "start_time": 1778155200,
         "end_time": 1778158800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12443658"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12443658",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelmuslimstudentsassociation:12449584",
@@ -1229,7 +1316,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b5a3cb6b-5656-4b95-869a-7d7517d306d14a00c973-63ad-4804-b282-af774ee3ede7.png",
         "start_time": 1778155200,
         "end_time": 1778169600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449584"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449584",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:alliehumphries:46405122025",
@@ -1240,7 +1328,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314",
         "start_time": 1778158800,
         "end_time": 1778166000,
-        "event_link": "https://drexel.edu/events/Event?_i=46405_122025"
+        "event_link": "https://drexel.edu/events/Event?_i=46405_122025",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:melissatevere:46383121962",
@@ -1251,7 +1340,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24294",
         "start_time": 1778161500,
         "end_time": 1778166000,
-        "event_link": "https://drexel.edu/events/Event?_i=46383_121962"
+        "event_link": "https://drexel.edu/events/Event?_i=46383_121962",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:sigmaalphamu:12450163",
@@ -1262,7 +1352,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/eab59dfe-5d26-4f65-9a65-725f9db86bb4715c084b-f4df-4f21-8e99-618dfa965bff.jpeg",
         "start_time": 1778162400,
         "end_time": 1778173200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450163"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450163",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:nataliabroz:46517122473",
@@ -1273,7 +1364,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24386",
         "start_time": 1778166000,
         "end_time": 1778173200,
-        "event_link": "https://drexel.edu/events/Event?_i=46517_122473"
+        "event_link": "https://drexel.edu/events/Event?_i=46517_122473",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:donnafahres:46423122077",
@@ -1284,18 +1376,20 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24329",
         "start_time": 1778167800,
         "end_time": 1778173200,
-        "event_link": "https://drexel.edu/events/Event?_i=46423_122077"
+        "event_link": "https://drexel.edu/events/Event?_i=46423_122077",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:internationalstudentsandscholarsservices:46317121617",
         "source": "drexel_events",
         "name": "OPT Information Webinar",
         "org_name": "International Students and Scholars Services",
-        "location": "Zoom: https://drexel.zoom.us/webinar/register/WN_RO2Z40PCRJevzgM8uOVy6Q",
+        "location": "Online",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778167800,
         "end_time": 1778171400,
-        "event_link": "https://drexel.edu/events/Event?_i=46317_121617"
+        "event_link": "https://drexel.edu/events/Event?_i=46317_121617",
+        "event_status": "virtual"
     },
     {
         "id": "dragonlink:emergencymedicineinterestgroup:12391912",
@@ -1306,7 +1400,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/4db7d435-4344-443e-9ed9-71fb218abd4eb4848b6a-0c1d-40bd-81dd-356099a064f5.png",
         "start_time": 1778169600,
         "end_time": 1778180400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12391912"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12391912",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:campusactivitiesboard:12421375",
@@ -1317,7 +1412,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/cfa8bb42-b667-40f2-a69b-0b3244fb9da176e1716e-41cc-4ecb-8411-0e290e91f554.png",
         "start_time": 1778169600,
         "end_time": 1778180400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12421375"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12421375",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:lawinmedicine:12412233",
@@ -1328,7 +1424,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/3ca0ed10-2585-4dc8-9fc8-02d711c87ed9f0fc3345-17ca-4c9b-b1f3-eb07e7ba005a.png",
         "start_time": 1778173200,
         "end_time": 1778176800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12412233"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12412233",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:psichihonorsociety:12450440",
@@ -1339,7 +1436,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/eaed7b0f-18f1-4b46-b1a8-e66c8058ed11661d7cad-9747-469b-a9bb-5b918c38af7b.jpg",
         "start_time": 1778173200,
         "end_time": 1778180400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450440"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450440",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:biology&beesgraduatestudentassociation:12438138",
@@ -1350,7 +1448,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b67bd5e4-2826-48c0-9f92-9fca2507472b78f600eb-1e82-42d0-bdb8-04dece168eb6.png",
         "start_time": 1778173200,
         "end_time": 1778182200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12438138"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12438138",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelrobotics:12375561",
@@ -1361,7 +1460,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bef791a7-4cb7-4a72-8552-d4c1c771fa1c007f5835-cbd4-4aea-885b-aa893d021914.png",
         "start_time": 1778175000,
         "end_time": 1778178600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375561"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375561",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:fraternityandsororitylife:12399296",
@@ -1372,7 +1472,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/d8614b59-1ca7-4540-a84f-cca09ca32ff8759656f3-9407-4f7f-b76b-071023a6d87c.png",
         "start_time": 1778176800,
         "end_time": 1778178600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12399296"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12399296",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:kappaphigamma,sororityinc.:12427583",
@@ -1383,7 +1484,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/554c3ae8-a630-46a7-aa14-eba24099d0fc1dbfa9ff-7bd5-477e-b2b6-79be969c1cb2.png",
         "start_time": 1778176800,
         "end_time": 1778180400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12427583"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12427583",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:theneurosciencesociety:12460242",
@@ -1394,7 +1496,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/b6e291ce-0497-41cc-836d-b3eeb3a03384f55a0e54-f77d-4be6-87ae-e9191c3498ba.png",
         "start_time": 1778176800,
         "end_time": 1778180400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12460242"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12460242",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:publicrelationsstudentsocietyofamerica:12450360",
@@ -1405,7 +1508,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/007b61b7-8584-40e6-9659-761681658b36e07eefd9-7bdc-4238-940d-b160483d16cb.png",
         "start_time": 1778176800,
         "end_time": 1778182200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450360"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450360",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelnewmancatholiccommunity:12306614",
@@ -1416,7 +1520,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/bb0360da-e585-4e27-9ad5-c1f7cf77d4e91f41665c-9866-4564-9d05-c965224a74d3.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12306614"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12306614",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexelwomeninbusiness:12449267",
@@ -1427,29 +1532,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/be348fcf-a922-407c-8e5f-b423e8c46b106593a66d-86c0-4f2e-8c58-4a67fef69650.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12449267"
-    },
-    {
-        "id": "dragonlink:pennonihonorscollege:12374502",
-        "source": "dragonlink",
-        "name": "10 Years of Nerd Night",
-        "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/41d5a67e-08df-41bf-9bd4-af47e23f656e46a35c3f-33d2-485e-b4a8-223786c0b8d3.png",
-        "start_time": 1778176800,
-        "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12374502"
-    },
-    {
-        "id": "dragonlink:phialphadeltaprelawfraternity:12450008",
-        "source": "dragonlink",
-        "name": "field day",
-        "org_name": "Phi Alpha Delta Pre-Law Fraternity",
-        "location": "Race Lawn",
-        "image_url": "https://drexel.campuslabs.com/engage/image/89b3b67e-2e98-46e2-9169-763d0d180d6ae93c77c7-a263-4e33-a445-c3d28f778a4a.jpeg",
-        "start_time": 1778176800,
-        "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450008"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12449267",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:nationalpanhelleniccouncil:10819326",
@@ -1460,7 +1544,32 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/89629f31-a055-483a-a4f1-f9fdd823dfb30895c589-24f9-43c8-9b8b-7dd57e5418aa.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/10819326"
+        "event_link": "https://drexel.campuslabs.com/engage/event/10819326",
+        "event_status": "in-person"
+    },
+    {
+        "id": "dragonlink:pennonihonorscollege:12374502",
+        "source": "dragonlink",
+        "name": "10 Years of Nerd Night",
+        "org_name": "Pennoni Honors College",
+        "location": "Bentley Hall 2nd Floor Annex",
+        "image_url": "https://drexel.campuslabs.com/engage/image/41d5a67e-08df-41bf-9bd4-af47e23f656e46a35c3f-33d2-485e-b4a8-223786c0b8d3.png",
+        "start_time": 1778176800,
+        "end_time": 1778184000,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12374502",
+        "event_status": "in-person"
+    },
+    {
+        "id": "dragonlink:phialphadeltaprelawfraternity:12450008",
+        "source": "dragonlink",
+        "name": "field day",
+        "org_name": "Phi Alpha Delta Pre-Law Fraternity",
+        "location": "Race Lawn",
+        "image_url": "https://drexel.campuslabs.com/engage/image/89b3b67e-2e98-46e2-9169-763d0d180d6ae93c77c7-a263-4e33-a445-c3d28f778a4a.jpeg",
+        "start_time": 1778176800,
+        "end_time": 1778184000,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450008",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:drexeluniversitydebateunion:12409320",
@@ -1471,7 +1580,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/f8106dd5-d104-41ee-b37f-bbed996c9f4e2daa65c8-f8b4-4680-9535-d009a06c5082.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12409320"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409320",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:taubetapi:12450319",
@@ -1482,7 +1592,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/d28206e8-8b00-4cad-b15f-00b52d0f0146f6ebd3b1-88cc-4fc4-b1ff-2e975a4c1bb8.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450319"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450319",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:techserv:12328199",
@@ -1493,7 +1604,32 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/6955e932-1b7c-443a-993c-c5524e83206151428a90-1f8e-4fb0-98c4-e9a56fce6de7.png",
         "start_time": 1778176800,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12328199"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12328199",
+        "event_status": "in-person"
+    },
+    {
+        "id": "dragonlink:crosswalkchristianfellowship:12415712",
+        "source": "dragonlink",
+        "name": "Thursday Crosswalk Community Group",
+        "org_name": "Crosswalk Christian Fellowship",
+        "location": "PISB 120 - Auditorium",
+        "image_url": "https://drexel.campuslabs.com/engage/image/dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png",
+        "start_time": 1778176800,
+        "end_time": 1778187600,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12415712",
+        "event_status": "in-person"
+    },
+    {
+        "id": "dragonlink:crosswalkchristianfellowship:12415713",
+        "source": "dragonlink",
+        "name": "Thursday Crosswalk Community Group",
+        "org_name": "Crosswalk Christian Fellowship",
+        "location": "PISB 109",
+        "image_url": "https://drexel.campuslabs.com/engage/image/dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png",
+        "start_time": 1778176800,
+        "end_time": 1778187600,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12415713",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:themeparkengineeringanddesigngroup:12375495",
@@ -1504,7 +1640,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/66b52de6-1f88-4404-a97c-d46cb1daf9603fec29b2-2244-4cdf-af39-f6db8cfdd8a5.png",
         "start_time": 1778178600,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12375495"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12375495",
+        "event_status": "in-person"
     },
     {
         "id": "dragonlink:societyofasianscientistsandengineers:drexeluniversitychapter:12450080",
@@ -1515,18 +1652,20 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/7a307f7e-885d-4b30-ae1d-137efc5a9e72c1cc4715-6864-4aaa-abf1-123e042c79eb.png",
         "start_time": 1778178600,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12450080"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12450080",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:collegeofmedicine:45449119030",
         "source": "drexel_events",
         "name": "DUCoM Monthly Dragon Talks",
         "org_name": "College of Medicine",
-        "location": "Online via Zoom",
+        "location": "Online",
         "image_url": "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg",
         "start_time": 1778180400,
         "end_time": 1778184000,
-        "event_link": "https://drexel.edu/events/Event?_i=45449_119030"
+        "event_link": "https://drexel.edu/events/Event?_i=45449_119030",
+        "event_status": "virtual"
     },
     {
         "id": "dragonlink:drexeldemocrats:12414823",
@@ -1537,7 +1676,8 @@
         "image_url": "https://drexel.campuslabs.com/engage/image/e66026fb-49ca-404d-96bc-73bfa2e5433d6840d0bc-9df8-4baa-8013-e1f8b53ffeaa.png",
         "start_time": 1778180400,
         "end_time": 1778184000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12414823"
+        "event_link": "https://drexel.campuslabs.com/engage/event/12414823",
+        "event_status": "in-person"
     },
     {
         "id": "drexelathletics:drexelwomensrowing:11253",
@@ -1548,7 +1688,8 @@
         "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1778198400,
         "end_time": 1778284800,
-        "event_link": "https://drexeldragons.com/sports/womens-crew/schedule"
+        "event_link": "https://drexeldragons.com/sports/womens-crew/schedule",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119976",
@@ -1559,7 +1700,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778230800,
         "end_time": 1778256000,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119976"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119976",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121826",
@@ -1570,51 +1712,56 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778230800,
         "end_time": 1778256000,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121826"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121826",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:joyhudson:46260121402",
         "source": "drexel_events",
         "name": "Neurobiology & Anatomy Seminar",
         "org_name": "Joy Hudson",
-        "location": "In-Person: Auditorium A, Queen Lane Campus Online: Please contact organizer for zoom link",
+        "location": "Auditorium A, Queen Lane Campus",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778234400,
         "end_time": 1778238000,
-        "event_link": "https://drexel.edu/events/Event?_i=46260_121402"
+        "event_link": "https://drexel.edu/events/Event?_i=46260_121402",
+        "event_status": "hybrid"
     },
     {
         "id": "drexelevents:lisadimaio:45959120653",
         "source": "drexel_events",
         "name": "Writing Group for Multilingual Writers",
         "org_name": "Lisa DiMaio",
-        "location": "Zoom Link <a href=https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1\"\">https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1</a>",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24050",
         "start_time": 1778238000,
         "end_time": 1778241600,
-        "event_link": "https://drexel.edu/events/Event?_i=45959_120653"
+        "event_link": "https://drexel.edu/events/Event?_i=45959_120653",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:educationabroadoffice:46342121704",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
-        "location": "Virtual: https://drexel.zoom.us/j/89279554448",
+        "location": "Online",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778238000,
         "end_time": 1778241600,
-        "event_link": "https://drexel.edu/events/Event?_i=46342_121704"
+        "event_link": "https://drexel.edu/events/Event?_i=46342_121704",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:elizabethkimball:45558119334",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
-        "location": "Zoom",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798",
         "start_time": 1778238000,
         "end_time": 1778243400,
-        "event_link": "https://drexel.edu/events/Event?_i=45558_119334"
+        "event_link": "https://drexel.edu/events/Event?_i=45558_119334",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121582",
@@ -1625,18 +1772,20 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778241600,
         "end_time": 1778263200,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121582"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121582",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:mirandawilson:46496122234",
         "source": "drexel_events",
         "name": "Steinbright Peer Mentor Office Hour: Tips for a Successful Co-op Search!",
         "org_name": "Miranda Wilson",
-        "location": "Zoom-Register on Handshake for a link",
+        "location": "TBD",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24360",
         "start_time": 1778241600,
         "end_time": 1778245200,
-        "event_link": "https://drexel.edu/events/Event?_i=46496_122234"
+        "event_link": "https://drexel.edu/events/Event?_i=46496_122234",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121533",
@@ -1647,7 +1796,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778241600,
         "end_time": 1778263200,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121533"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121533",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:performingarts:45201118248",
@@ -1658,7 +1808,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778270400,
         "end_time": 1778277600,
-        "event_link": "https://drexel.edu/events/Event?_i=45201_118248"
+        "event_link": "https://drexel.edu/events/Event?_i=45201_118248",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119977",
@@ -1669,7 +1820,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778317200,
         "end_time": 1778342400,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119977"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119977",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121827",
@@ -1680,7 +1832,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778317200,
         "end_time": 1778342400,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121827"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121827",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121534",
@@ -1691,7 +1844,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778328000,
         "end_time": 1778349600,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121534"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121534",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121583",
@@ -1702,7 +1856,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778328000,
         "end_time": 1778346000,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121583"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121583",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:schoolofpublichealth:46129121129",
@@ -1713,7 +1868,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24149",
         "start_time": 1778337000,
         "end_time": 1778346000,
-        "event_link": "https://drexel.edu/events/Event?_i=46129_121129"
+        "event_link": "https://drexel.edu/events/Event?_i=46129_121129",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46360121789",
@@ -1724,7 +1880,8 @@
         "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s",
         "start_time": 1778338800,
         "end_time": 1778347800,
-        "event_link": "https://drexel.edu/events/Event?_i=46360_121789"
+        "event_link": "https://drexel.edu/events/Event?_i=46360_121789",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:performingarts:45201118249",
@@ -1735,7 +1892,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778356800,
         "end_time": 1778364000,
-        "event_link": "https://drexel.edu/events/Event?_i=45201_118249"
+        "event_link": "https://drexel.edu/events/Event?_i=45201_118249",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119978",
@@ -1746,7 +1904,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778403600,
         "end_time": 1778428800,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119978"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119978",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121828",
@@ -1757,7 +1916,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778403600,
         "end_time": 1778428800,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121828"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121828",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121535",
@@ -1768,7 +1928,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778414400,
         "end_time": 1778436000,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121535"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121535",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121584",
@@ -1779,7 +1940,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778414400,
         "end_time": 1778436000,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121584"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121584",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:performingarts:45201118250",
@@ -1790,7 +1952,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778421600,
         "end_time": 1778428800,
-        "event_link": "https://drexel.edu/events/Event?_i=45201_118250"
+        "event_link": "https://drexel.edu/events/Event?_i=45201_118250",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119979",
@@ -1801,7 +1964,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778490000,
         "end_time": 1778515200,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119979"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119979",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121829",
@@ -1812,7 +1976,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778490000,
         "end_time": 1778515200,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121829"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121829",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:henryisraeli:46047121295",
@@ -1823,7 +1988,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24175",
         "start_time": 1778491800,
         "end_time": 1778497200,
-        "event_link": "https://drexel.edu/events/Event?_i=46047_121295"
+        "event_link": "https://drexel.edu/events/Event?_i=46047_121295",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121536",
@@ -1834,7 +2000,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778500800,
         "end_time": 1778522400,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121536"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121536",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121585",
@@ -1845,7 +2012,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778500800,
         "end_time": 1778522400,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121585"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121585",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:alliehumphries:46405122026",
@@ -1856,18 +2024,20 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314",
         "start_time": 1778504400,
         "end_time": 1778511600,
-        "event_link": "https://drexel.edu/events/Event?_i=46405_122026"
+        "event_link": "https://drexel.edu/events/Event?_i=46405_122026",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:lisadimaio:46477122190",
         "source": "drexel_events",
         "name": "Multlingual Writers' Group",
         "org_name": "Lisa DiMaio",
-        "location": "On Zoom: https://drexel.zoom.us/j/87280686321?pwd=2wgbsGAGBBPELaptAVFfOx9GpTbpbZ.1",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24347",
         "start_time": 1778508000,
         "end_time": 1778511000,
-        "event_link": "https://drexel.edu/events/Event?_i=46477_122190"
+        "event_link": "https://drexel.edu/events/Event?_i=46477_122190",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:pennonihonorscollege:46339121670",
@@ -1878,7 +2048,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24260",
         "start_time": 1778508000,
         "end_time": 1778511600,
-        "event_link": "https://drexel.edu/events/Event?_i=46339_121670"
+        "event_link": "https://drexel.edu/events/Event?_i=46339_121670",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:bencyoonnoonny:46429122089",
@@ -1889,18 +2060,20 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778508000,
         "end_time": 1778511600,
-        "event_link": "https://drexel.edu/events/Event?_i=46429_122089"
+        "event_link": "https://drexel.edu/events/Event?_i=46429_122089",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:sarahflynn:46434122099",
         "source": "drexel_events",
         "name": "Health Management and Policy Department Dissertation Defense: Caroline Kravitz",
         "org_name": "Sarah Flynn",
-        "location": "Nesbitt 132 or Zoom",
+        "location": "Nesbitt 132",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24331",
         "start_time": 1778509800,
         "end_time": 1778515200,
-        "event_link": "https://drexel.edu/events/Event?_i=46434_122099"
+        "event_link": "https://drexel.edu/events/Event?_i=46434_122099",
+        "event_status": "hybrid"
     },
     {
         "id": "drexelevents:khushipatel:46481122204",
@@ -1911,7 +2084,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24350",
         "start_time": 1778515200,
         "end_time": 1778520600,
-        "event_link": "https://drexel.edu/events/Event?_i=46481_122204"
+        "event_link": "https://drexel.edu/events/Event?_i=46481_122204",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:collegeofmedicine:45843120180",
@@ -1922,7 +2096,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23964",
         "start_time": 1778520600,
         "end_time": 1778531400,
-        "event_link": "https://drexel.edu/events/Event?_i=45843_120180"
+        "event_link": "https://drexel.edu/events/Event?_i=45843_120180",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121830",
@@ -1933,7 +2108,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778576400,
         "end_time": 1778601600,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121830"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121830",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119980",
@@ -1944,18 +2120,20 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778576400,
         "end_time": 1778601600,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119980"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119980",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:carolannimbesi:46150121173",
         "source": "drexel_events",
         "name": "Pharmacology & Physiology Seminar",
         "org_name": "Carolann Imbesi",
-        "location": "In-Person: New College Building, Room 8312 Online: Please contact organizer for zoom link",
+        "location": "New College Building, Room 8312",
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778583600,
         "end_time": 1778587200,
-        "event_link": "https://drexel.edu/events/Event?_i=46150_121173"
+        "event_link": "https://drexel.edu/events/Event?_i=46150_121173",
+        "event_status": "hybrid"
     },
     {
         "id": "drexelevents:bencyoonnoonny:46466122165",
@@ -1966,7 +2144,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778583600,
         "end_time": 1778587200,
-        "event_link": "https://drexel.edu/events/Event?_i=46466_122165"
+        "event_link": "https://drexel.edu/events/Event?_i=46466_122165",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:pennonihonorscollege:46415122061",
@@ -1977,7 +2156,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24323",
         "start_time": 1778587200,
         "end_time": 1778594400,
-        "event_link": "https://drexel.edu/events/Event?_i=46415_122061"
+        "event_link": "https://drexel.edu/events/Event?_i=46415_122061",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46307121537",
@@ -1988,7 +2168,8 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778587200,
         "end_time": 1778608800,
-        "event_link": "https://drexel.edu/events/Event?_i=46307_121537"
+        "event_link": "https://drexel.edu/events/Event?_i=46307_121537",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:westphalcollegeofmediaartsanddesign:46308121586",
@@ -1999,18 +2180,20 @@
         "image_url": "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F",
         "start_time": 1778587200,
         "end_time": 1778608800,
-        "event_link": "https://drexel.edu/events/Event?_i=46308_121586"
+        "event_link": "https://drexel.edu/events/Event?_i=46308_121586",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:kenbohrer:46252121386",
         "source": "drexel_events",
         "name": "Graduate Students Resume Drop-ins",
         "org_name": "Ken Bohrer",
-        "location": "zoom: Register on Handshake",
+        "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24209",
         "start_time": 1778590800,
         "end_time": 1778594400,
-        "event_link": "https://drexel.edu/events/Event?_i=46252_121386"
+        "event_link": "https://drexel.edu/events/Event?_i=46252_121386",
+        "event_status": "virtual"
     },
     {
         "id": "drexelevents:alliehumphries:46405122027",
@@ -2021,7 +2204,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24314",
         "start_time": 1778590800,
         "end_time": 1778598000,
-        "event_link": "https://drexel.edu/events/Event?_i=46405_122027"
+        "event_link": "https://drexel.edu/events/Event?_i=46405_122027",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:nataliabroz:46522122483",
@@ -2032,7 +2216,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24390",
         "start_time": 1778594400,
         "end_time": 1778601600,
-        "event_link": "https://drexel.edu/events/Event?_i=46522_122483"
+        "event_link": "https://drexel.edu/events/Event?_i=46522_122483",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:educationabroadoffice:46341121680",
@@ -2043,7 +2228,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778598000,
         "end_time": 1778601600,
-        "event_link": "https://drexel.edu/events/Event?_i=46341_121680"
+        "event_link": "https://drexel.edu/events/Event?_i=46341_121680",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:henryisraeli:46047120925",
@@ -2054,7 +2240,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24175",
         "start_time": 1778599800,
         "end_time": 1778691600,
-        "event_link": "https://drexel.edu/events/Event?_i=46047_120925"
+        "event_link": "https://drexel.edu/events/Event?_i=46047_120925",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:dornsifecenter:45978120706",
@@ -2065,7 +2252,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24062",
         "start_time": 1778605200,
         "end_time": 1778544000,
-        "event_link": "https://drexel.edu/events/Event?_i=45978_120706"
+        "event_link": "https://drexel.edu/events/Event?_i=45978_120706",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:melissatevere:46524122487",
@@ -2076,7 +2264,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24392",
         "start_time": 1778605200,
         "end_time": 1778610600,
-        "event_link": "https://drexel.edu/events/Event?_i=46524_122487"
+        "event_link": "https://drexel.edu/events/Event?_i=46524_122487",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:publicsafety:45567120141",
@@ -2087,7 +2276,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23796",
         "start_time": 1778605200,
         "end_time": 1778616000,
-        "event_link": "https://drexel.edu/events/Event?_i=45567_120141"
+        "event_link": "https://drexel.edu/events/Event?_i=45567_120141",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:45756119981",
@@ -2098,7 +2288,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23909",
         "start_time": 1778662800,
         "end_time": 1778688000,
-        "event_link": "https://drexel.edu/events/Event?_i=45756_119981"
+        "event_link": "https://drexel.edu/events/Event?_i=45756_119981",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:stacystanislaw:46371121831",
@@ -2109,7 +2300,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24282",
         "start_time": 1778662800,
         "end_time": 1778688000,
-        "event_link": "https://drexel.edu/events/Event?_i=46371_121831"
+        "event_link": "https://drexel.edu/events/Event?_i=46371_121831",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:materialsscienceandengineering:46391121978",
@@ -2120,7 +2312,8 @@
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24302",
         "start_time": 1778670000,
         "end_time": 1778673600,
-        "event_link": "https://drexel.edu/events/Event?_i=46391_121978"
+        "event_link": "https://drexel.edu/events/Event?_i=46391_121978",
+        "event_status": "in-person"
     },
     {
         "id": "drexelevents:bencyoonnoonny:46467122167",
@@ -2131,7 +2324,8 @@
         "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
         "start_time": 1778673600,
         "end_time": 1778677200,
-        "event_link": "https://drexel.edu/events/Event?_i=46467_122167"
+        "event_link": "https://drexel.edu/events/Event?_i=46467_122167",
+        "event_status": "in-person"
     },
     {
         "id": "drexelathletics:drexelwomensrowing:11254",
@@ -2142,7 +2336,8 @@
         "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1778803200,
         "end_time": 1778889600,
-        "event_link": "https://drexeldragons.com/sports/womens-crew/schedule"
+        "event_link": "https://drexeldragons.com/sports/womens-crew/schedule",
+        "event_status": "in-person"
     },
     {
         "id": "drexelathletics:drexelmensrowing:11261",
@@ -2153,6 +2348,7 @@
         "image_url": "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg",
         "start_time": 1780012800,
         "end_time": 1780185600,
-        "event_link": "https://drexeldragons.com/sports/mens-crew/schedule"
+        "event_link": "https://drexeldragons.com/sports/mens-crew/schedule",
+        "event_status": "in-person"
     }
 ]

@@ -1,5 +1,6 @@
 class Event:
-    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link):
+    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link,
+                 event_status="no"):
         self._id = _id
         self.source = source
         self.name = name
@@ -9,6 +10,7 @@ class Event:
         self.start_time = start_time
         self.end_time = end_time
         self.event_link = event_link
+        self.event_status = event_status  # 'in-person', 'virtual', 'hybrid'
 
     def get_start_timestamp(self):
         return round(self.start_time.timestamp()) if self.start_time else None
@@ -37,7 +39,8 @@ class Event:
             "image_url": self.image_url,
             "start_time": self.get_start_timestamp(),
             "end_time": self.get_end_timestamp(),
-            "event_link": self.event_link
+            "event_link": self.event_link,
+            "event_status": self.event_status,
         }
 
     def to_sql(self):
@@ -50,5 +53,6 @@ class Event:
             self.image_url,
             self.get_start_timestamp(),
             self.get_end_timestamp(),
-            self.event_link
+            self.event_link,
+            self.event_status,
         )
