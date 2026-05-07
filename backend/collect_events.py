@@ -123,21 +123,23 @@ def dragonlink_event_parsing(event_json, kwargs):
         kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
     kwargs["event_link"] = dragonlink_event_url + event_json["id"]
 
-    if "Credit" in event_json["categoryNames"]:
+    if event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
+        kwargs["theme"] = event_json["theme"]
+    elif "Credit" in event_json["categoryNames"] or event_json["theme"] == "CommunityService":
         kwargs["theme"] = "Community"
-    elif "Social" in event_json["categoryNames"]:
-        kwargs["theme"] = "Social"
-    elif "Academic" in event_json["categoryNames"]:
-        kwargs["theme"] = "Academic"
     elif "Philanthropy" in event_json["categoryNames"] or "Fundraising" in event_json["categoryNames"]:
         kwargs["theme"] = "Fundraising"
-    elif event_json["theme"] == "CommunityService":
-        kwargs["theme"] = "Community"
-    elif "Professional Development/Leadership" in event_json["categoryNames"]:
+    elif "Social" in event_json["categoryNames"] or "Fraternity and Sorority Life" in event_json["categoryNames"]:
+        kwargs["theme"] = "Social"
+    elif "Professional Development/Leadership" in event_json["categoryNames"] or "Leadership Development" in event_json[
+        "categoryNames"] or "Networking" in event_json["categoryNames"]:
         kwargs["theme"] = "Career"
-    elif event_json["theme"] == "ThoughtfulLearning":
+    elif "Academic" in event_json["categoryNames"] or "Educational" in event_json["categoryNames"]:
         kwargs["theme"] = "Academic"
-    # todo: finish logic
+    elif "Residence Life - Community and Civic Engagement" in event_json["categoryNames"]:
+        kwargs["theme"] = "Community"
+    else:
+        kwargs["theme"] = "Social"
     # kwargs["perks"] = event_json["benefitNames"]
     return kwargs
 
