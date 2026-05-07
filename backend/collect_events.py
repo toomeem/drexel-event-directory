@@ -107,10 +107,89 @@ def get_online_status(client, location):
     return {"event_status": response_object.event_status, "physical_location": response_object.physical_location}
 
 
-def create_event_object(source, event_json, client):
+def dragonlink_event_parsing(event_json, kwargs):
+    source = "dragonlink"
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
+    kwargs["name"] = event_json["name"]
+    kwargs["org_name"] = event_json["organizationName"]
+    kwargs["location"] = event_json["location"]
+    kwargs["start_time"] = normalize_time(source, event_json["startsOn"])
+    kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
+    if event_json["imagePath"]:
+        kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
+    elif event_json["organizationProfilePicture"]:
+        kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
+    kwargs["event_link"] = dragonlink_event_url + event_json["id"]
+
+    if "Credit" in event_json["categoryNames"]:
+        kwargs["theme"] = "Community"
+    elif "Social" in event_json["categoryNames"]:
+        kwargs["theme"] = "Social"
+    elif "Academic" in event_json["categoryNames"]:
+        kwargs["theme"] = "Academic"
+    elif "Philanthropy" in event_json["categoryNames"] or "Fundraising" in event_json["categoryNames"]:
+        kwargs["theme"] = "Fundraising"
+    elif event_json["theme"] == "CommunityService":
+        kwargs["theme"] = "Community"
+    elif "Professional Development/Leadership" in event_json["categoryNames"]:
+        kwargs["theme"] = "Career"
+    elif event_json["theme"] == "ThoughtfulLearning":
+        kwargs["theme"] = "Academic"
+    # todo: finish logic
+    # kwargs["perks"] = event_json["benefitNames"]
+    return kwargs
+
+
+def drexel_event_parsing(event_json, kwargs):
+    source = "drexel_events"
+    if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
+        return None
+    authors = event_json.get("authors")
+    department_names = event_json.get("departmentNames")
+    if authors:
+        kwargs["org_name"] = authors[0]
+    elif department_names:
+        kwargs["org_name"] = department_names[0]
+    else:
+        kwargs["org_name"] = "Drexel University"
+
+    kwargs["name"] = event_json["title"]
+    kwargs["location"] = event_json["address"]
+    kwargs["start_time"] = normalize_time(source, event_json["startDate"])
+    kwargs["end_time"] = normalize_time(source, event_json["endDate"])
+    kwargs["event_link"] = event_json["contentUrl"]
+    if event_json["image"]:
+        kwargs["image_url"] = event_json["image"]
+    if event_json["typeNames"]:
+        type_names = event_json["typeNames"]
+        if "Exhibit" in type_names or "Performing Arts" in event_json["departmentNames"]:
+            kwargs["theme"] = "Arts"
+        elif "Academic Events" in type_names or "Academic Support" in type_names:
+            kwargs["theme"] = "Academic"
+        elif "SCDC: Information Sessions" in type_names or "SCDC: Workshops" in type_names:
+            kwargs["theme"] = "Academic"
+        elif "Co-op & Career Development" in type_names or "Lectures" in type_names:
+            kwargs["theme"] = "Academic"
+        elif "Diversity & Inclusion" in type_names:
+            kwargs["theme"] = "Cultural"
+        elif "Community Service" in type_names or "Civic Engagement" in type_names:
+            kwargs["theme"] = "Community"
+        elif "ANS: Museum Activities" in type_names:
+            kwargs["theme"] = "Social"
+        elif "Student Life & Organizations" in type_names:
+            kwargs["theme"] = "Social"
+        elif "Seminars" in type_names:
+            kwargs["theme"] = "Academic"
+        else:
+            kwargs["theme"] = "Social"
+    # kwargs["perks"] = event_json["benefitNames"]
+    return kwargs
+
+
+def drexel_athletics_event_parsing(event_json, kwargs):
+    source = "drexel_athletics"
     drexel_athletics_image = "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg"
     drexel_athletics_schedule_url = "https://drexeldragons.com/sports/"
     drexel_athletics_aliases = {
@@ -133,64 +212,49 @@ def create_event_object(source, event_json, client):
         "fhockey": "field-hockey",
         "softball": "softball",
     }
-    online_keywords = ["event_status", "zoom", "virtual", "hybrid", "handshake"]
-    kwargs = {"_id": None,
-              "source": source,
-              "name": None,
-              "org_name": None,
-              "location": None,
-              "image_url": None,
-              "start_time": None,
-              "end_time": None,
-              "event_link": None,
-              "event_status": None,
-              }
+
+    at_vs = event_json["atVs"]
+    opponent = event_json["opponent"]["title"]
+    sport_shorthand = drexel_athletics_aliases[event_json["sport"]["globalSportShortname"]]
+
+    kwargs["name"] = " ".join(["DREX", at_vs, opponent])
+    kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
+    kwargs["location"] = event_json["location"]
+    kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
+    kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
+    kwargs["image_url"] = drexel_athletics_image
+    kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
+    return kwargs
+
+
+def create_event_object(source, event_json, client):
+    online_keywords = ["zoom", "virtual", "hybrid", "handshake"]
+    online_location_default_text = "Virtual Event"
+    kwargs = {
+        "_id": None,
+        "source": source,
+        "name": None,
+        "org_name": None,
+        "location": None,
+        "image_url": None,
+        "start_time": None,
+        "end_time": None,
+        "event_link": None,
+        "event_status": None,
+        "theme": None,
+        "perks": [],
+    }
 
     match source:
         case "dragonlink":
-            kwargs["name"] = event_json["name"]
-            kwargs["org_name"] = event_json["organizationName"]
-            kwargs["location"] = event_json["location"]
-            kwargs["start_time"] = normalize_time(source, event_json["startsOn"])
-            kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
-            if event_json["imagePath"]:
-                kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
-            elif event_json["organizationProfilePicture"]:
-                kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
-            kwargs["event_link"] = dragonlink_event_url + event_json["id"]
+            kwargs = dragonlink_event_parsing(event_json, kwargs)
         case "drexel_events":
-            if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
-                return None
-            authors = event_json.get("authors")
-            department_names = event_json.get("departmentNames")
-            if authors:
-                kwargs["org_name"] = authors[0]
-            elif department_names:
-                kwargs["org_name"] = department_names[0]
-            else:
-                kwargs["org_name"] = "Drexel University"
-
-            kwargs["name"] = event_json["title"]
-            kwargs["location"] = event_json["address"]
-            kwargs["start_time"] = normalize_time(source, event_json["startDate"])
-            kwargs["end_time"] = normalize_time(source, event_json["endDate"])
-            kwargs["event_link"] = event_json["contentUrl"]
-            if event_json["image"]:
-                kwargs["image_url"] = event_json["image"]
+            kwargs = drexel_event_parsing(event_json, kwargs)
         case "drexel_athletics":
-            at_vs = event_json["atVs"]
-            opponent = event_json["opponent"]["title"]
-            sport_shorthand = drexel_athletics_aliases[event_json["sport"]["globalSportShortname"]]
-
-            kwargs["name"] = " ".join(["DREX", at_vs, opponent])
-            kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
-            kwargs["location"] = event_json["location"]
-            kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
-            kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
-            kwargs["image_url"] = drexel_athletics_image
-            kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
+            kwargs = drexel_athletics_event_parsing(event_json, kwargs)
         case _:
             return None
+
     kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
     kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
     if kwargs["location"] is not None:
@@ -205,6 +269,8 @@ def create_event_object(source, event_json, client):
         kwargs["event_status"] = online_status_response["event_status"]
         if kwargs["event_status"] == "hybrid":
             kwargs["location"] = online_status_response["physical_location"]
+        elif kwargs["event_status"] == "virtual":
+            kwargs["location"] = online_location_default_text
     else:
         kwargs["event_status"] = "in-person"
 

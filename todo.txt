@@ -6,5 +6,5 @@ add filtering
     free tag
     popular tag
 add search
-add more filters
 get more sources
+parse location better
