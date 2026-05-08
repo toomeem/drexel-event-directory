@@ -12,7 +12,7 @@ class Event:
         self.event_link = event_link
         self.event_status = event_status  # 'in-person', 'virtual', 'hybrid'
         self.theme = theme  # Academic, Arts, Athletics, Career, Community, Cultural, Fundraising, Social, Spirituality
-        self.perks = perks
+        self.perks = perks  # Free Food, Free Stuff, Credit
 
     def get_start_timestamp(self):
         return round(self.start_time.timestamp()) if self.start_time else None
@@ -43,6 +43,8 @@ class Event:
             "end_time": self.get_end_timestamp(),
             "event_link": self.event_link,
             "event_status": self.event_status,
+            "theme": self.theme,
+            "perks": self.perks,
         }
 
     def to_sql(self):
@@ -57,4 +59,6 @@ class Event:
             self.get_end_timestamp(),
             self.event_link,
             self.event_status,
+            self.theme,
+            "|".join(self.perks),
         )

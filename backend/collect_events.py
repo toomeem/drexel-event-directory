@@ -140,7 +140,7 @@ def dragonlink_event_parsing(event_json, kwargs):
         kwargs["theme"] = "Community"
     else:
         kwargs["theme"] = "Social"
-    # kwargs["perks"] = event_json["benefitNames"]
+    kwargs["perks"] = event_json["benefitNames"]
     return kwargs
 
 
@@ -186,7 +186,22 @@ def drexel_event_parsing(event_json, kwargs):
             kwargs["theme"] = "Academic"
         else:
             kwargs["theme"] = "Social"
-    # kwargs["perks"] = event_json["benefitNames"]
+    kwargs["perks"] = event_json["features"]
+    for i in range(len(kwargs["perks"])):
+        if kwargs["perks"][i] == "Giveaways":
+            kwargs["perks"][i] = "Free Stuff"
+        elif kwargs["perks"][i] == "CEU Available":
+            kwargs["perks"][i] = "Credit"
+
+    unknown_perks = [
+        i for i in [i for i in kwargs["perks"] if i not in
+                    ["Free Food", "Free Stuff", "Credit", "Online Access"]]
+        if i
+    ]
+    if unknown_perks:
+        print(f"Unknown perk: {unknown_perks}")
+
+    kwargs["perks"] = [i for i in kwargs["perks"] if i in ["Free Food", "Free Stuff", "Credit"]]
     return kwargs
 
 
@@ -226,6 +241,8 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
     kwargs["image_url"] = drexel_athletics_image
     kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
+    kwargs["theme"] = "Athletics"
+    kwargs["perks"] = []
     return kwargs
 
 
@@ -256,7 +273,8 @@ def create_event_object(source, event_json, client):
             kwargs = drexel_athletics_event_parsing(event_json, kwargs)
         case _:
             return None
-
+    if kwargs is None:
+        return None
     kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
     kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
     if kwargs["location"] is not None:
@@ -287,8 +305,12 @@ def create_dragonlink_api_url(count):
 
 
 def collect_dragonlink_events(count=100):
-    response = requests.get(create_dragonlink_api_url(count))
-    return dict(response.json())["value"]
+    response = requests.get(create_dragonlink_api_url(count)).json()
+
+    with open("json_examples/dragonlink_response.json", "w") as f:
+        json.dump(response, f, indent=4)
+
+    return response["value"]
 
 
 def create_drexel_events_api_url(page=1):
@@ -301,6 +323,10 @@ def collect_drexel_events(count=100):
         response = requests.get(create_drexel_events_api_url(i + 1))
         results.extend(dict(response.json())["results"])
         time.sleep(.1)
+
+    with open("json_examples/drexel_events_response.json", "w") as f:
+        json.dump(results, f, indent=4)
+
     return results
 
 
@@ -323,6 +349,9 @@ def create_drexel_athletics_events():
             continue
         for event in day["events"]:
             events_json.append(event)
+
+    with open("json_examples/drexel_athletics_response.json", "w") as f:
+        json.dump(events_json, f, indent=4)
 
     return events_json
 
@@ -357,7 +386,10 @@ def load_events_from_file(path="events.json"):
             image_url=e["image_url"],
             start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
             end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None,
-            event_link=e["event_link"]
+            event_link=e["event_link"],
+            event_status=e["event_status"],
+            theme=e["theme"],
+            perks=e["perks"],
         ))
     return events
 
@@ -380,24 +412,24 @@ def save_events_to_db(events):
             cursor.executemany(
                 '''
                 INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time, end_time,
-                                        event_link)
-                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s)
+                                        event_link, event_status, theme, perks)
+                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s)
                 ''',
-                [(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8]) for e in
+                [(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], e[9], e[10], e[11]) for e in
                  [event.to_sql() for event in events]])
 
 
 def fill_db():
     events = load_events_from_file()
-    print(f"Uploading {len(events)} events to database...")
+    print(f"\nUploading {len(events)} events to database...")
     save_events_to_db(events)
 
 
 def update_events(client):
-    print("Updating events...")
+    print("\nUpdating events...")
     events = collect_all_events(client)
     save_events_to_file(events)
-    print(f"Saved {len(events)} events to file.")
+    print(f"\nSaved {len(events)} events to file.")
 
 
 if __name__ == "__main__":
@@ -409,4 +441,4 @@ if __name__ == "__main__":
     fill_db()
 
     end = time.time()
-    print(f"Finished in {round(end - start, 2)} seconds.")
+    print(f"\nFinished in {round(end - start, 2)} seconds.")
