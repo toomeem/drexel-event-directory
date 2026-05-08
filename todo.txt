@@ -1,9 +1,6 @@
 add filtering
     live tag
     starting soon tag
-    online/hybrid tag
-    food tag
-    free tag
     popular tag
 add search
 get more sources

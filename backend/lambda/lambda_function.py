@@ -28,6 +28,9 @@ def db_entry_to_json(db_entry):
                 "-" +
                 datetime.strftime(end_time, "%-I:%M %p")
                 )
+    perks = db_entry[11]
+    if perks and "|" in perks:
+        perks = perks.split("|")
     return {
         "id": db_entry[0],
         "source": db_entry[1],
@@ -37,6 +40,9 @@ def db_entry_to_json(db_entry):
         "image_url": db_entry[5],
         "time": time_str.replace(":00", ""),
         "event_link": db_entry[8],
+        "event_status": db_entry[9],
+        "theme": db_entry[10],
+        "perks": perks,
     }
 
 
@@ -72,8 +78,6 @@ def lambda_handler(event, context):
             sslmode='require'
         )
         with connection.cursor() as cursor:
-            cursor.execute("SELECT COUNT(*) FROM main.events WHERE end_time > now()")
-            total = cursor.fetchone()[0]
             cursor.execute(
                 '''
                 SELECT id,
@@ -84,14 +88,20 @@ def lambda_handler(event, context):
                        image_url,
                        start_time,
                        end_time,
-                       event_link
+                       event_link,
+                       event_status,
+                       theme,
+                       perks,
+                       COUNT(*) OVER () AS total_count
                 FROM main.events
-                WHERE end_time > now()
+                WHERE (end_time + INTERVAL '1 hour') > now()
                 ORDER BY start_time
                 LIMIT %s OFFSET %s
                 ''',
-                (page_event_count, offset,))
+                (page_event_count, offset))
             events = cursor.fetchall()
+
+        total = events[0][12] if events else 0
         return {
             "statusCode": 200,
             "headers": CORS_HEADERS,
@@ -101,6 +111,7 @@ def lambda_handler(event, context):
                 "body": [db_entry_to_json(e) for e in events],
             }),
         }
+
     except Exception as e:
         return {
             "statusCode": 500,
