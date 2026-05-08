@@ -27,6 +27,13 @@ export function EventCard({ event }: EventCardProps) {
         ) : (
           <div className="event-card__image-placeholder" aria-hidden="true" />
         )}
+        {Array.isArray(event.perks) && event.perks.length > 0 && (
+          <ul className="event-card__perks">
+            {event.perks.map((perk) => (
+              <li key={perk} className="event-card__perk">{perk}</li>
+            ))}
+          </ul>
+        )}
       </div>
       <div className="event-card__body">
         <p className="event-card__time">

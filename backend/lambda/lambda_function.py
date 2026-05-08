@@ -29,8 +29,8 @@ def db_entry_to_json(db_entry):
                 datetime.strftime(end_time, "%-I:%M %p")
                 )
     perks = db_entry[11]
-    if perks and "|" in perks:
-        perks = perks.split("|")
+    if perks:
+        perks = [i for i in perks.split("|") if i]
     return {
         "id": db_entry[0],
         "source": db_entry[1],

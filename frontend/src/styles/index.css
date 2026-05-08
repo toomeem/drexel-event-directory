@@ -181,10 +181,40 @@ img {
 }
 
 .event-card__media {
+  position: relative;
   aspect-ratio: 4 / 3;
   background: var(--color-placeholder);
   overflow: hidden;
   border-bottom: 2px solid var(--color-border);
+}
+
+.event-card__perks {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.event-card__perk {
+  background: #ffffff;
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+:root[data-theme="dark"] .event-card__perk {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border-strong);
 }
 
 .event-card__image {
