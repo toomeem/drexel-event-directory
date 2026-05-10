@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/api/events.ts","./src/components/eventcard.tsx","./src/components/siteheader.tsx","./src/data/sampleevents.ts","./src/pages/aboutpage.tsx","./src/pages/eventspage.tsx"],"version":"5.9.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/events.ts","./src/components/eventcard.tsx","./src/components/eventfilterbar.tsx","./src/components/filterdropdown.tsx","./src/components/siteheader.tsx","./src/pages/aboutpage.tsx","./src/pages/eventspage.tsx"],"version":"6.0.3"}

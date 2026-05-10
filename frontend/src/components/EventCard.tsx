@@ -5,6 +5,13 @@ interface EventCardProps {
   event: DrexelEvent;
 }
 
+function formatPerk(perk: string): string {
+  return perk
+    .split(/[\s_]+/)
+    .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w))
+    .join(" ");
+}
+
 export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;
@@ -30,7 +37,7 @@ export function EventCard({ event }: EventCardProps) {
         {Array.isArray(event.perks) && event.perks.length > 0 && (
           <ul className="event-card__perks">
             {event.perks.map((perk) => (
-              <li key={perk} className="event-card__perk">{perk}</li>
+              <li key={perk} className="event-card__perk">{formatPerk(perk)}</li>
             ))}
           </ul>
         )}

@@ -1,4 +1,6 @@
 export type EventSource = "drexel_events" | "dragonlink" | "drexel_athletics";
+export type EventStatus = "in-person" | "virtual" | "hybrid";
+export type DateRange = "today" | "week" | "month";
 
 export interface DrexelEvent {
   id: string;
@@ -9,6 +11,8 @@ export interface DrexelEvent {
   time: string;
   image_url: string | null;
   event_link: string;
+  event_status?: EventStatus | string | null;
+  theme?: string | null;
   perks?: string[];
 }
 
@@ -23,9 +27,17 @@ export interface FetchEventsResult {
   totalEvents: number;
 }
 
+export interface EventFilters {
+  dateRange?: DateRange;
+  eventStatus?: EventStatus;
+  themes?: string[];
+  perks?: string[];
+}
+
 export async function fetchEvents(
   page: number,
   limit: number,
+  filters: EventFilters = {},
 ): Promise<FetchEventsResult> {
   const endpoint = import.meta.env.VITE_LAMBDA_ENDPOINT;
   if (!endpoint) {
@@ -33,8 +45,21 @@ export async function fetchEvents(
       "VITE_LAMBDA_ENDPOINT is not set — check the build env / GitHub Actions secret",
     );
   }
-  console.log("[fetchEvents] endpoint:", endpoint);
-  const res = await fetch(`${endpoint}?page=${page}&limit=${limit}`);
+  const params = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+  });
+  if (filters.dateRange) params.set("dateRange", filters.dateRange);
+  if (filters.eventStatus) params.set("event_status", filters.eventStatus);
+  if (filters.themes && filters.themes.length > 0) {
+    params.set("theme", filters.themes.join(","));
+  }
+  if (filters.perks && filters.perks.length > 0) {
+    params.set("perks", filters.perks.join(","));
+  }
+  const url = `${endpoint}?${params.toString()}`;
+  console.log("[fetchEvents] url:", url);
+  const res = await fetch(url);
   console.log("[fetchEvents] response status:", res.status, res.statusText);
   if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
   const data: EventsResponse = await res.json();
