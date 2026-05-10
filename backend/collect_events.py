@@ -3,6 +3,7 @@ import os
 import time
 from datetime import datetime, timedelta
 from urllib.parse import quote
+from zoneinfo import ZoneInfo
 
 from openai import OpenAI
 from pydantic import BaseModel
@@ -12,6 +13,9 @@ import requests
 from dotenv import load_dotenv
 from event_class import Event
 
+PHILLY_TZ = ZoneInfo("America/New_York")
+HTTP_TIMEOUT = (5, 30)
+
 
 class OnlineStatus(BaseModel):
     event_status: str  # in-person, virtual, hybrid
@@ -19,18 +23,16 @@ class OnlineStatus(BaseModel):
 
 
 def normalize_time(source, time_str):
-    timezone = timedelta(hours=-4)
     if not time_str:
         return None
-    match source:
-        case "drexel_events":
-            dt = datetime.fromisoformat(time_str) + timezone
-            return dt
-        case "drexel_athletics":
-            dt = datetime.fromisoformat(time_str.replace("Z", "+00:00")) + timezone
-            return dt
-        case _:
-            return datetime.fromisoformat(time_str) + timezone
+    if source == "drexel_athletics":
+        time_str = time_str.replace("Z", "")
+    dt = datetime.fromisoformat(time_str)
+    if dt.tzinfo is not None:
+        dt = dt.replace(tzinfo=None)
+    # Source times are UTC; apply Philadelphia's offset for that date (-4 EDT / -5 EST).
+    offset = dt.replace(tzinfo=PHILLY_TZ).utcoffset()
+    return dt + offset
 
 
 def simplify_location(location):
@@ -72,17 +74,24 @@ def match_default_image(name, org_name, location):
     return drexel_default_image
 
 
+_online_status_cache = {}
+
+
 def get_online_status(client, location):
+    if location in _online_status_cache:
+        return _online_status_cache[location]
     response = client.chat.completions.parse(model="gpt-5-nano-2025-08-07", messages=[{"role": "system", "content": '''
-                        You are an expert at structured data extraction. 
-                        You will be given information about the location of an event on Drexel University's campus and your task is to determine whether the event is hybrid, virtual or in-person. 
+                        You are an expert at structured data extraction.
+                        You will be given information about the location of an event on Drexel University's campus and your task is to determine whether the event is hybrid, virtual or in-person.
                         If an event is virtual, it will explicitly state that is is event_status/virtual and will likely say 'zoom' or 'meet'. If it doesn't clearly state that it is virtual, you will assume it is in-person.
                         You will first select the 'event_status' field. Here are the only allowed responses for the event_status field: ['in-person', 'virtual', 'hybrid'].
                         If the event is hybrid, It will explicitly state a physical location and that it is virtual/event_status. I will most likely signal this using 'and'/'&' or 'or' to show that there are multiple options. Example 'PISB 108 & Online'
                         For hybrid events, for the 'physical_location' parameter just return the physical location and ignore any information about the virtual aspect of the event. For in-person events, just return the location as the 'physical_location' and for virtual events, return 'N/A' for the physical location.
                  ''', }, {"role": "user", "content": location}, ], response_format=OnlineStatus, )
     response_object = response.choices[0].message.parsed
-    return {"event_status": response_object.event_status, "physical_location": response_object.physical_location}
+    result = {"event_status": response_object.event_status, "physical_location": response_object.physical_location}
+    _online_status_cache[location] = result
+    return result
 
 
 def dragonlink_event_parsing(event_json, kwargs):
@@ -144,43 +153,43 @@ def drexel_event_parsing(event_json, kwargs):
     kwargs["event_link"] = event_json["contentUrl"]
     if event_json["image"]:
         kwargs["image_url"] = event_json["image"]
-    if event_json["typeNames"]:
-        type_names = event_json["typeNames"]
-        if "Exhibit" in type_names or "Performing Arts" in event_json["departmentNames"]:
-            kwargs["theme"] = "arts"
-        elif "Academic Events" in type_names or "Academic Support" in type_names:
-            kwargs["theme"] = "academic"
-        elif "SCDC: Information Sessions" in type_names or "SCDC: Workshops" in type_names:
-            kwargs["theme"] = "academic"
-        elif "Co-op & Career Development" in type_names or "Lectures" in type_names:
-            kwargs["theme"] = "academic"
-        elif "Diversity & Inclusion" in type_names:
-            kwargs["theme"] = "cultural"
-        elif "Community Service" in type_names or "Civic Engagement" in type_names:
-            kwargs["theme"] = "community"
-        elif "ANS: Museum Activities" in type_names:
-            kwargs["theme"] = "social"
-        elif "Student Life & Organizations" in type_names:
-            kwargs["theme"] = "social"
-        elif "Seminars" in type_names:
-            kwargs["theme"] = "academic"
-        else:
-            kwargs["theme"] = "social"
 
-    for i in range(len(event_json["features"])):
-        if event_json["features"][i] == "Giveaways":
+    type_names = event_json.get("typeNames") or []
+    department_names = event_json.get("departmentNames") or []
+    if "Exhibit" in type_names or "Performing Arts" in department_names:
+        kwargs["theme"] = "arts"
+    elif "Academic Events" in type_names or "Academic Support" in type_names:
+        kwargs["theme"] = "academic"
+    elif "SCDC: Information Sessions" in type_names or "SCDC: Workshops" in type_names:
+        kwargs["theme"] = "academic"
+    elif "Co-op & Career Development" in type_names or "Lectures" in type_names:
+        kwargs["theme"] = "academic"
+    elif "Diversity & Inclusion" in type_names:
+        kwargs["theme"] = "cultural"
+    elif "Community Service" in type_names or "Civic Engagement" in type_names:
+        kwargs["theme"] = "community"
+    elif "ANS: Museum Activities" in type_names:
+        kwargs["theme"] = "social"
+    elif "Student Life & Organizations" in type_names:
+        kwargs["theme"] = "social"
+    elif "Seminars" in type_names:
+        kwargs["theme"] = "academic"
+    else:
+        kwargs["theme"] = "social"
+
+    features = event_json.get("features") or []
+    for feature in features:
+        if feature == "Giveaways":
             kwargs["perks"].append("free_stuff")
-        elif "credit" in event_json["features"][i].lower() or event_json["features"][i] == "CEU Available":
+        elif "credit" in feature.lower() or feature == "CEU Available":
             kwargs["perks"].append("credit")
-        elif event_json["features"][i] == "Free Food":
+        elif feature == "Free Food":
             kwargs["perks"].append("free_food")
 
-    if event_json["features"]:
-        unknown_perks = [i for i in
-                         [i for i in event_json["features"] if
-                          i not in ["Free Food", "Free Stuff", "Credit", "Online Access", "Giveaways"]] if i]
-        if unknown_perks:
-            print(f"Unknown perk: {unknown_perks}")
+    unknown_perks = [f for f in features if
+                     f and f not in ("Free Food", "Free Stuff", "Credit", "Online Access", "Giveaways")]
+    if unknown_perks:
+        print(f"Unknown perk: {unknown_perks}")
 
     return kwargs
 
@@ -191,17 +200,19 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     drexel_athletics_schedule_url = "https://drexeldragons.com/sports/"
     drexel_athletics_aliases = {"mbball": "mens-basketball", "wbball": "womens-basketball", "mgolf": "mens-golf",
                                 "mlax": "mens-lacrosse", "wlax": "womens-lacrosse", "mcrew": "mens-crew",
-                                "wcrew": "womens-crew",
-                                "msoc": "mens-soccer", "wsoc": "womens-soccer", "msquash": "mens-squash",
-                                "wsquash": "womens-squash",
+                                "wcrew": "womens-crew", "msoc": "mens-soccer", "wsoc": "womens-soccer",
+                                "msquash": "mens-squash", "wsquash": "womens-squash",
                                 "mswim": "mens-swimming-and-diving", "wswim": "womens-swimming-and-diving",
-                                "mten": "mens-tennis",
-                                "wten": "womens-tennis", "wrestling": "wrestling", "fhockey": "field-hockey",
-                                "softball": "softball", }
+                                "mten": "mens-tennis", "wten": "womens-tennis", "wrestling": "wrestling",
+                                "fhockey": "field-hockey", "softball": "softball", }
 
     at_vs = event_json["atVs"]
     opponent = event_json["opponent"]["title"]
-    sport_shorthand = drexel_athletics_aliases[event_json["sport"]["globalSportShortname"]]
+    sport_short_raw = event_json["sport"]["globalSportShortname"]
+    sport_shorthand = drexel_athletics_aliases.get(sport_short_raw)
+    if sport_shorthand is None:
+        print(f"Unknown athletics sport shortname: {sport_short_raw}")
+        sport_shorthand = sport_short_raw
 
     kwargs["name"] = " ".join(["DREX", at_vs, opponent])
     kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
@@ -210,7 +221,7 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
     kwargs["image_url"] = drexel_athletics_image
     kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
-    kwargs["theme"] = "Athletics"
+    kwargs["theme"] = "athletics"
     kwargs["perks"] = []
     return kwargs
 
@@ -263,9 +274,10 @@ def create_dragonlink_api_url(count):
 
 
 def collect_dragonlink_events(count=100):
-    response = requests.get(create_dragonlink_api_url(count)).json()
+    response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT).json()
 
-    with open("json_examples/dragonlink_response.json", "w") as f:
+    os.makedirs("json_examples", exist_ok=True)
+    with open("json_examples/dragonlink_response.json", "w", encoding="utf-8") as f:
         json.dump(response, f, indent=4)
 
     return response["value"]
@@ -278,11 +290,12 @@ def create_drexel_events_api_url(page=1):
 def collect_drexel_events(count=100):
     results = []
     for i in range(count // 10):
-        response = requests.get(create_drexel_events_api_url(i + 1))
+        response = requests.get(create_drexel_events_api_url(i + 1), timeout=HTTP_TIMEOUT)
         results.extend(dict(response.json())["results"])
         time.sleep(.1)
 
-    with open("json_examples/drexel_events_response.json", "w") as f:
+    os.makedirs("json_examples", exist_ok=True)
+    with open("json_examples/drexel_events_response.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
 
     return results
@@ -297,7 +310,7 @@ def create_drexel_athletics_api_url(days_out=90):
 
 def create_drexel_athletics_events():
     url = create_drexel_athletics_api_url()
-    response = requests.get(url)
+    response = requests.get(url, timeout=HTTP_TIMEOUT)
 
     response_json = list(response.json())
     events_json = []
@@ -308,7 +321,8 @@ def create_drexel_athletics_events():
         for event in day["events"]:
             events_json.append(event)
 
-    with open("json_examples/drexel_athletics_response.json", "w") as f:
+    os.makedirs("json_examples", exist_ok=True)
+    with open("json_examples/drexel_athletics_response.json", "w", encoding="utf-8") as f:
         json.dump(events_json, f, indent=4)
 
     return events_json
@@ -321,16 +335,32 @@ def collect_all_events(client):
     events.extend([create_event_object("drexel_athletics", event_json, client) for event_json in
                    create_drexel_athletics_events()])
 
-    # remove duplicates using __eq__; higher priority wins (kept as last occurrence)
-    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
-    events = [e for e in events if e is not None]
-    events.sort(key=lambda x: (x.start_time.timestamp(), source_priority.get(x.source, 0)))
+    events = [e for e in events if e is not None and e.start_time is not None]
 
-    return [e for i, e in enumerate(events) if e not in events[i + 1:]]
+    # Dedup priority for cross-source duplicates: dragonlink > drexel_athletics > drexel_events.
+    # Same-source non-athletics duplicates are kept distinct (matches Event.__eq__).
+    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
+    groups = {}
+    for e in events:
+        key = (e.name.lower().strip(), e.get_start_timestamp(), e.get_end_timestamp())
+        groups.setdefault(key, []).append(e)
+
+    result = []
+    for group in groups.values():
+        sources = {e.source for e in group}
+        if len(sources) > 1:
+            result.append(max(group, key=lambda e: source_priority.get(e.source, -1)))
+        elif sources == {"drexel_athletics"}:
+            result.append(group[0])
+        else:
+            result.extend(group)
+
+    result.sort(key=lambda e: e.get_start_timestamp())
+    return result
 
 
 def load_events_from_file(path="events.json"):
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         events_json = json.load(f)
     events = []
     for e in events_json:
@@ -344,7 +374,7 @@ def load_events_from_file(path="events.json"):
 
 
 def save_events_to_file(events):
-    with open("events.json", "w") as f:
+    with open("events.json", "w", encoding="utf-8") as f:
         json.dump([event.to_json() for event in events], f, indent=4)
 
 
@@ -375,9 +405,14 @@ def update_events(client):
     print(f"\nSaved {len(events)} events to file.")
 
 
+REQUIRED_ENV_VARS = ("RDS_ENDPOINT", "RDS_USERNAME", "RDS_PASSWORD", "OPENAI_API_KEY")
+
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
+    missing = [v for v in REQUIRED_ENV_VARS if not os.getenv(v)]
+    if missing:
+        raise RuntimeError(f"Missing required environment variables: {missing}")
     client = OpenAI()
 
     update_events(client)

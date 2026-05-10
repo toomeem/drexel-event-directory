@@ -7,10 +7,13 @@ import psycopg2
 proxy_host_name = os.environ["RDS_ENDPOINT"]
 db_user_name = "postgres"
 db_name = "postgres"
-user = "postgres"
-aws_region = "us-east-1"
 password = os.environ["RDS_PASSWORD"]
 port = 5432
+
+
+def _fmt_hm(dt, with_ampm=False):
+    h = dt.strftime("%I").lstrip("0") or "12"
+    return f"{h}:{dt.strftime('%M %p')}" if with_ampm else f"{h}:{dt.strftime('%M')}"
 
 
 def db_entry_to_json(db_entry):
@@ -22,8 +25,7 @@ def db_entry_to_json(db_entry):
         time_str_prefix = datetime.strftime(start_time, "%b %d")
     else:
         time_str_prefix = datetime.strftime(start_time, "%a")
-    time_str = (time_str_prefix + " - " + datetime.strftime(start_time, "%-I:%M") + "-" + datetime.strftime(end_time,
-                                                                                                            "%-I:%M %p"))
+    time_str = f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
     if db_entry[11]:
         perks = [i for i in db_entry[11].split("|") if i]
     else:
@@ -40,6 +42,7 @@ CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Method
 def lambda_handler(event, context):
     EVENT_ROWS_PER_PAGE = 6
     EVENTS_PER_ROW = 4
+    MAX_PAGE = 1000
     page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
     now = datetime.now()
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
@@ -47,9 +50,10 @@ def lambda_handler(event, context):
 
     params = event.get("queryStringParameters") or {}
     try:
-        offset = max((int(params.get("page", 1)) - 1) * page_event_count, 0)
+        page = max(1, min(int(params.get("page", 1)), MAX_PAGE))
     except (ValueError, TypeError):
-        offset = 0
+        page = 1
+    offset = (page - 1) * page_event_count
     date_filter = params.get("dateRange")
     date_end = 9999999999
     if date_filter == "today":
@@ -79,6 +83,7 @@ def lambda_handler(event, context):
         if s:
             s = s.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
             search_pattern = f"%{s}%"
+    connection = None
     try:
         connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
                                       port=port, sslmode='require')
@@ -111,8 +116,12 @@ def lambda_handler(event, context):
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
-        return {"statusCode": 200, "headers": CORS_HEADERS, "body": json.dumps(
-            {"statusCode": 200, "total_events": total, "body": [db_entry_to_json(e) for e in events], }), }
+        return {"statusCode": 200, "headers": CORS_HEADERS,
+                "body": json.dumps({"total_events": total, "body": [db_entry_to_json(e) for e in events]})}
 
     except Exception as e:
-        return {"statusCode": 500, "headers": CORS_HEADERS, "body": json.dumps({"statusCode": 500, "body": str(e)}), }
+        print(f"lambda_handler error: {e!r}")
+        return {"statusCode": 500, "headers": CORS_HEADERS, "body": json.dumps({"error": "Internal Server Error"})}
+    finally:
+        if connection is not None:
+            connection.close()

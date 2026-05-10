@@ -1,6 +1,6 @@
 class Event:
-    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link,
-                 event_status, theme, perks):
+    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link, event_status,
+                 theme, perks):
         self._id = _id
         self.source = source
         self.name = name
@@ -21,6 +21,8 @@ class Event:
         return round(self.end_time.timestamp()) if self.end_time else None
 
     def __eq__(self, other):
+        if not isinstance(other, Event):
+            return NotImplemented
         if self.source == other.source and self.source != "drexel_athletics":
             return False
         if self.get_start_timestamp() != other.get_start_timestamp():
@@ -32,33 +34,12 @@ class Event:
         return False
 
     def to_json(self):
-        return {
-            "id": self._id,
-            "source": self.source,
-            "name": self.name,
-            "org_name": self.org_name,
-            "location": self.location,
-            "image_url": self.image_url,
-            "start_time": self.get_start_timestamp(),
-            "end_time": self.get_end_timestamp(),
-            "event_link": self.event_link,
-            "event_status": self.event_status,
-            "theme": self.theme,
-            "perks": self.perks,
-        }
+        return {"id": self._id, "source": self.source, "name": self.name, "org_name": self.org_name,
+                "location": self.location, "image_url": self.image_url, "start_time": self.get_start_timestamp(),
+                "end_time": self.get_end_timestamp(), "event_link": self.event_link, "event_status": self.event_status,
+                "theme": self.theme, "perks": self.perks, }
 
     def to_sql(self):
-        return (
-            self._id,
-            self.source,
-            self.name,
-            self.org_name,
-            self.location,
-            self.image_url,
-            self.get_start_timestamp(),
-            self.get_end_timestamp(),
-            self.event_link,
-            self.event_status,
-            self.theme,
-            "|".join(self.perks),
-        )
+        return (self._id, self.source, self.name, self.org_name, self.location, self.image_url,
+                self.get_start_timestamp(), self.get_end_timestamp(), self.event_link, self.event_status, self.theme,
+                "|".join(self.perks),)
