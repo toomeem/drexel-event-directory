@@ -34,9 +34,15 @@ export function EventCard({ event }: EventCardProps) {
         ) : (
           <div className="event-card__image-placeholder" aria-hidden="true" />
         )}
-        {Array.isArray(event.perks) && event.perks.length > 0 && (
+        {((Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "virtual" || event.event_status === "hybrid") && (
           <ul className="event-card__perks">
-            {event.perks.map((perk) => (
+            {event.event_status === "virtual" && (
+              <li className="event-card__perk event-card__perk--virtual">Virtual</li>
+            )}
+            {event.event_status === "hybrid" && (
+              <li className="event-card__perk event-card__perk--hybrid">Hybrid</li>
+            )}
+            {Array.isArray(event.perks) && event.perks.map((perk) => (
               <li key={perk} className="event-card__perk">{formatPerk(perk)}</li>
             ))}
           </ul>

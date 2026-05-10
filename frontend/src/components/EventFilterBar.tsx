@@ -103,6 +103,25 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
     onChange({ ...filters, search: "" });
   }
 
+  function clearAllFilters() {
+    setSearchInput("");
+    lastEmittedRef.current = "";
+    onChange({
+      search: "",
+      dateRange: [],
+      eventStatus: [],
+      themes: [],
+      perks: [],
+    });
+  }
+
+  const hasActiveFilters =
+    filters.search ||
+    filters.dateRange.length > 0 ||
+    filters.eventStatus.length > 0 ||
+    filters.themes.length > 0 ||
+    filters.perks.length > 0;
+
   return (
     <div className="filter-bar" role="toolbar" aria-label="Event filters">
       <FilterDropdown
@@ -189,6 +208,16 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
         multi={true}
         onApply={(values) => onChange({ ...filters, perks: values })}
       />
+      {hasActiveFilters && (
+        <button
+          type="button"
+          className="filter-bar__clear-btn"
+          onClick={clearAllFilters}
+          aria-label="Clear all filters"
+        >
+          Clear Filters
+        </button>
+      )}
     </div>
   );
 }
