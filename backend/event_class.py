@@ -11,8 +11,8 @@ class Event:
         self.end_time = end_time
         self.event_link = event_link
         self.event_status = event_status  # 'in-person', 'virtual', 'hybrid'
-        self.theme = theme  # Academic, Arts, Athletics, Career, Community, Cultural, Fundraising, Social, Spirituality
-        self.perks = perks  # Free Food, Free Stuff, Credit
+        self.theme = theme  # academic, arts, athletics, career, community, cultural, fundraising, social, spirituality
+        self.perks = perks  # free_food, free_stuff, credit
 
     def get_start_timestamp(self):
         return round(self.start_time.timestamp()) if self.start_time else None
