@@ -26,7 +26,9 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
   const statusRaw = searchParams.get("event_status");
   const themeRaw = searchParams.get("theme");
   const perksRaw = searchParams.get("perks");
+  const searchRaw = searchParams.get("search");
   return {
+    search: searchRaw ?? "",
     dateRange:
       dateRaw && (VALID_DATE_RANGES as string[]).includes(dateRaw)
         ? [dateRaw]
@@ -64,6 +66,7 @@ export function EventsPage() {
   const eventStatus = filters.eventStatus[0];
   const themesKey = filters.themes.join(",");
   const perksKey = filters.perks.join(",");
+  const searchKey = filters.search;
 
   useEffect(() => {
     let cancelled = false;
@@ -73,6 +76,7 @@ export function EventsPage() {
       eventStatus: eventStatus as EventStatus | undefined,
       themes: themesKey ? themesKey.split(",") : undefined,
       perks: perksKey ? perksKey.split(",") : undefined,
+      search: searchKey || undefined,
     })
       .then(({ events: data, totalEvents: total }) => {
         if (cancelled) return;
@@ -88,7 +92,15 @@ export function EventsPage() {
     return () => {
       cancelled = true;
     };
-  }, [currentPage, eventCount, dateRange, eventStatus, themesKey, perksKey]);
+  }, [
+    currentPage,
+    eventCount,
+    dateRange,
+    eventStatus,
+    themesKey,
+    perksKey,
+    searchKey,
+  ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
 
@@ -112,7 +124,10 @@ export function EventsPage() {
     if (newFilters.perks.length > 0) {
       next.set("perks", newFilters.perks.join(","));
     }
-    setSearchParams(next);
+    if (newFilters.search.trim()) {
+      next.set("search", newFilters.search.trim());
+    }
+    setSearchParams(next, { replace: true });
   }
 
   return (

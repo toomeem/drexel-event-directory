@@ -32,6 +32,7 @@ export interface EventFilters {
   eventStatus?: EventStatus;
   themes?: string[];
   perks?: string[];
+  search?: string;
 }
 
 export async function fetchEvents(
@@ -56,6 +57,9 @@ export async function fetchEvents(
   }
   if (filters.perks && filters.perks.length > 0) {
     params.set("perks", filters.perks.join(","));
+  }
+  if (filters.search && filters.search.trim()) {
+    params.set("search", filters.search.trim());
   }
   const url = `${endpoint}?${params.toString()}`;
   console.log("[fetchEvents] url:", url);
