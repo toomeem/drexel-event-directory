@@ -78,6 +78,13 @@ def lambda_handler(event, context):
     event_status = params.get("event_status")
     if event_status not in ("in-person", "virtual", "hybrid"):
         event_status = None
+    valid_themes = {"academic", "arts", "athletics", "career", "community",
+                    "cultural", "fundraising", "social", "spirituality"}
+    themes = None
+    theme_param = params.get("theme")
+    if theme_param:
+        candidates = [t.strip().lower() for t in theme_param.split(",")]
+        themes = [t for t in candidates if t in valid_themes] or None
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
@@ -107,10 +114,11 @@ def lambda_handler(event, context):
                 WHERE (end_time + INTERVAL '1 hour') > now()
                   AND start_time <= to_timestamp(%s)
                   AND (%s IS NULL OR event_status = %s)
+                  AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
                 ORDER BY start_time
                 LIMIT %s OFFSET %s
                 ''',
-                (date_end, event_status, event_status, page_event_count, offset))
+                (date_end, event_status, event_status, themes, themes, page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
