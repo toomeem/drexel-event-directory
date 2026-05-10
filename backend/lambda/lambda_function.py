@@ -22,36 +22,19 @@ def db_entry_to_json(db_entry):
         time_str_prefix = datetime.strftime(start_time, "%b %d")
     else:
         time_str_prefix = datetime.strftime(start_time, "%a")
-    time_str = (time_str_prefix +
-                " - " +
-                datetime.strftime(start_time, "%-I:%M") +
-                "-" +
-                datetime.strftime(end_time, "%-I:%M %p")
-                )
-    perks = db_entry[11]
-    if perks:
-        perks = [i for i in perks.split("|") if i]
-    return {
-        "id": db_entry[0],
-        "source": db_entry[1],
-        "name": db_entry[2],
-        "org_name": db_entry[3],
-        "location": db_entry[4],
-        "image_url": db_entry[5],
-        "time": time_str.replace(":00", ""),
-        "event_link": db_entry[8],
-        "event_status": db_entry[9],
-        "theme": db_entry[10],
-        "perks": perks,
-    }
+    time_str = (time_str_prefix + " - " + datetime.strftime(start_time, "%-I:%M") + "-" + datetime.strftime(end_time,
+                                                                                                            "%-I:%M %p"))
+    if db_entry[11]:
+        perks = [i for i in db_entry[11].split("|") if i]
+    else:
+        perks = None
+    return {"id": db_entry[0], "source": db_entry[1], "name": db_entry[2], "org_name": db_entry[3],
+            "location": db_entry[4], "image_url": db_entry[5], "time": time_str.replace(":00", ""),
+            "event_link": db_entry[8], "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
 
 
-CORS_HEADERS = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json",
-}
+CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type", "Content-Type": "application/json", }
 
 
 def lambda_handler(event, context):
@@ -78,63 +61,50 @@ def lambda_handler(event, context):
     event_status = params.get("event_status")
     if event_status not in ("in-person", "virtual", "hybrid"):
         event_status = None
-    valid_themes = {"academic", "arts", "athletics", "career", "community",
-                    "cultural", "fundraising", "social", "spirituality"}
+    valid_themes = {"academic", "arts", "athletics", "career", "community", "cultural", "fundraising", "social",
+                    "spirituality"}
     themes = None
     theme_param = params.get("theme")
     if theme_param:
         candidates = [t.strip().lower() for t in theme_param.split(",")]
         themes = [t for t in candidates if t in valid_themes] or None
+    perks_filter = None
+    perks_param = params.get("perks")
+    if perks_param:
+        perks_filter = [p.strip().lower() for p in perks_param.split(",") if p.strip()] or None
     try:
-        connection = psycopg2.connect(
-            host=proxy_host_name,
-            user=db_user_name,
-            password=password,
-            dbname=db_name,
-            port=port,
-            sslmode='require'
-        )
+        connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
+                                      port=port, sslmode='require')
         with connection.cursor() as cursor:
-            cursor.execute(
-                '''
-                SELECT id,
-                       source,
-                       name,
-                       org_name,
-                       location,
-                       image_url,
-                       start_time,
-                       end_time,
-                       event_link,
-                       event_status,
-                       theme,
-                       perks,
-                       COUNT(*) OVER () AS total_count
-                FROM main.events
-                WHERE (end_time + INTERVAL '1 hour') > now()
-                  AND start_time <= to_timestamp(%s)
-                  AND (%s IS NULL OR event_status = %s)
-                  AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
-                ORDER BY start_time
-                LIMIT %s OFFSET %s
-                ''',
-                (date_end, event_status, event_status, themes, themes, page_event_count, offset))
+            cursor.execute('''
+                           SELECT id,
+                                  source,
+                                  name,
+                                  org_name,
+                                  location,
+                                  image_url,
+                                  start_time,
+                                  end_time,
+                                  event_link,
+                                  event_status,
+                                  theme,
+                                  perks,
+                                  COUNT(*) OVER () AS total_count
+                           FROM main.events
+                           WHERE (end_time + INTERVAL '1 hour') > now()
+                             AND start_time <= to_timestamp(%s)
+                             AND (%s IS NULL OR event_status = %s)
+                             AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
+                             AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
+                           ORDER BY start_time
+                           LIMIT %s OFFSET %s
+                           ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
+                                 page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
-        return {
-            "statusCode": 200,
-            "headers": CORS_HEADERS,
-            "body": json.dumps({
-                "statusCode": 200,
-                "total_events": total,
-                "body": [db_entry_to_json(e) for e in events],
-            }),
-        }
+        return {"statusCode": 200, "headers": CORS_HEADERS, "body": json.dumps(
+            {"statusCode": 200, "total_events": total, "body": [db_entry_to_json(e) for e in events], }), }
 
     except Exception as e:
-        return {
-            "statusCode": 500,
-            "headers": CORS_HEADERS,
-            "body": json.dumps({"statusCode": 500, "body": str(e)}),
-        }
+        return {"statusCode": 500, "headers": CORS_HEADERS, "body": json.dumps({"statusCode": 500, "body": str(e)}), }
