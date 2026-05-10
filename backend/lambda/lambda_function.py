@@ -72,6 +72,13 @@ def lambda_handler(event, context):
     perks_param = params.get("perks")
     if perks_param:
         perks_filter = [p.strip().lower() for p in perks_param.split(",") if p.strip()] or None
+    search_pattern = None
+    search_param = params.get("search")
+    if search_param:
+        s = search_param.strip()
+        if s:
+            s = s.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+            search_pattern = f"%{s}%"
     try:
         connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
                                       port=port, sslmode='require')
@@ -96,10 +103,11 @@ def lambda_handler(event, context):
                              AND (%s IS NULL OR event_status = %s)
                              AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
                              AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
+                             AND (%s::text IS NULL OR name ILIKE %s OR org_name ILIKE %s)
                            ORDER BY start_time
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
-                                 page_event_count, offset))
+                                 search_pattern, search_pattern, search_pattern, page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
