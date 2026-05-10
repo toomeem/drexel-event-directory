@@ -75,6 +75,9 @@ def lambda_handler(event, context):
         date_end = (now + timedelta(days=7)).timestamp()
     elif date_filter == "month":
         date_end = (now + timedelta(days=30)).timestamp()
+    event_status = params.get("event_status")
+    if event_status not in ("in-person", "virtual", "hybrid"):
+        event_status = None
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
@@ -103,10 +106,11 @@ def lambda_handler(event, context):
                 FROM main.events
                 WHERE (end_time + INTERVAL '1 hour') > now()
                   AND start_time <= to_timestamp(%s)
+                  AND (%s IS NULL OR event_status = %s)
                 ORDER BY start_time
                 LIMIT %s OFFSET %s
                 ''',
-                (date_end, page_event_count, offset))
+                (date_end, event_status, event_status, page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
