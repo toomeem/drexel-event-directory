@@ -58,16 +58,23 @@ def lambda_handler(event, context):
     EVENT_ROWS_PER_PAGE = 6
     EVENTS_PER_ROW = 4
     page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
-
+    now = datetime.now()
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
         return {"statusCode": 200, "headers": CORS_HEADERS, "body": ""}
 
     params = event.get("queryStringParameters") or {}
     try:
-        offset = (int(params.get("page", 1)) - 1) * page_event_count
-    except ValueError:
+        offset = max((int(params.get("page", 1)) - 1) * page_event_count, 0)
+    except (ValueError, TypeError):
         offset = 0
-
+    date_filter = params.get("dateRange")
+    date_end = 9999999999
+    if date_filter == "today":
+        date_end = (datetime(year=now.year, month=now.month, day=now.day) + timedelta(days=1)).timestamp()
+    elif date_filter == "week":
+        date_end = (now + timedelta(days=7)).timestamp()
+    elif date_filter == "month":
+        date_end = (now + timedelta(days=30)).timestamp()
     try:
         connection = psycopg2.connect(
             host=proxy_host_name,
@@ -95,10 +102,11 @@ def lambda_handler(event, context):
                        COUNT(*) OVER () AS total_count
                 FROM main.events
                 WHERE (end_time + INTERVAL '1 hour') > now()
+                  AND start_time <= to_timestamp(%s)
                 ORDER BY start_time
                 LIMIT %s OFFSET %s
                 ''',
-                (page_event_count, offset))
+                (date_end, page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][12] if events else 0
