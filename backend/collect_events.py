@@ -148,6 +148,8 @@ def drexel_event_parsing(event_json, kwargs):
 
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
+    if "<a" in kwargs["location"]:
+        kwargs["location"] = kwargs["location"].split("<a")[0].strip()
     kwargs["start_time"] = normalize_time(source, event_json["startDate"])
     kwargs["end_time"] = normalize_time(source, event_json["endDate"])
     kwargs["event_link"] = event_json["contentUrl"]
@@ -187,7 +189,8 @@ def drexel_event_parsing(event_json, kwargs):
             kwargs["perks"].append("free_food")
 
     unknown_perks = [f for f in features if
-                     f and f not in ("Free Food", "Free Stuff", "Credit", "Online Access", "Giveaways")]
+                     f and f not in ("Free Food", "Free Stuff", "Credit", "Online Access", "Giveaways",
+                                     "CEU Available")]
     if unknown_perks:
         print(f"Unknown perk: {unknown_perks}")
 
