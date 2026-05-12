@@ -21,17 +21,36 @@ def sanitize_input(value):
     return cleaned
 
 
+CORS_HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST,OPTIONS',
+}
+
+
 def lambda_handler(event, context):
+    http_method = (
+        event.get('httpMethod')
+        or event.get('requestContext', {}).get('http', {}).get('method', '')
+    )
+    if http_method == 'OPTIONS':
+        return {'statusCode': 200, 'headers': CORS_HEADERS, 'body': ''}
+
+    if 'body' in event:
+        payload = json.loads(event['body']) if isinstance(event['body'], str) else event['body']
+    else:
+        payload = event
+
     try:
-        input_text = sanitize_input(event.get('input', ''))
+        input_text = sanitize_input(payload.get('input', ''))
     except ValueError as e:
-        return {'statusCode': 400, 'body': json.dumps({'error': str(e)})}
+        return {'statusCode': 400, 'headers': CORS_HEADERS, 'body': json.dumps({'error': str(e)})}
 
     bedrock = boto3.client(service_name='bedrock-agent-runtime', region_name='us-east-1')
     response = bedrock.invoke_agent(
         agentId=AGENT_ID,
         agentAliasId=AGENT_ALIAS_ID,
-        sessionId=event.get('id') or str(uuid.uuid4().hex),
+        sessionId=payload.get('id') or str(uuid.uuid4().hex),
         inputText=input_text,
     )
 
@@ -41,4 +60,4 @@ def lambda_handler(event, context):
         if chunk and 'bytes' in chunk:
             completion += chunk['bytes'].decode('utf-8')
 
-    return {'statusCode': 200, 'body': json.dumps({'completion': completion})}
+    return {'statusCode': 200, 'headers': CORS_HEADERS, 'body': json.dumps({'completion': completion})}
