@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ChatbotWidget } from "./components/ChatbotWidget";
 import { SiteHeader } from "./components/SiteHeader";
 import { EventsPage } from "./pages/EventsPage";
 import { AboutPage } from "./pages/AboutPage";
@@ -33,6 +34,7 @@ export function App() {
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
+      <ChatbotWidget />
     </div>
   );
 }
