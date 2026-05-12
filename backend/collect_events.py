@@ -1,6 +1,7 @@
 import json
 import os
 import time
+import uuid
 from datetime import datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
@@ -8,6 +9,7 @@ from zoneinfo import ZoneInfo
 from openai import OpenAI
 from pydantic import BaseModel
 
+import boto3
 import psycopg2
 import requests
 from dotenv import load_dotenv
@@ -247,8 +249,9 @@ def create_event_object(source, event_json, client):
             return None
     if kwargs is None:
         return None
-    kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
-    kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
+    # kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
+    # kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
+    kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["location"] is not None:
         kwargs["location"] = simplify_location(kwargs["location"])
     if kwargs["image_url"] is None:
@@ -401,25 +404,61 @@ def fill_db():
     save_events_to_db(events)
 
 
-def update_events(client):
+def update_events_file(client):
     print("\nUpdating events...")
     events = collect_all_events(client)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
 
-REQUIRED_ENV_VARS = ("RDS_ENDPOINT", "RDS_USERNAME", "RDS_PASSWORD", "OPENAI_API_KEY")
+def save_individual_event_to_file(event):
+    path = "chunking_tmp_dir/" + event._id + ".json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(event.to_json(), f)
+
+
+def clear_tmp_dir():
+    path = "chunking_tmp_dir/"
+    for file in os.listdir(path):
+        os.remove(os.path.join(path, file))
+
+
+def clear_s3_folder(bucket):
+    folder_path = "chunked/"
+    bucket.objects.filter(Prefix=folder_path).delete()
+
+
+def upload_file_to_s3(bucket, file_name):
+    local_file_path = "chunking_tmp_dir/" + file_name + ".json"
+    s3_file_path = "chunked/" + file_name + ".json"
+    bucket.upload_file(local_file_path, s3_file_path)
+
+
+def upload_all_events_to_s3():
+    s3 = boto3.resource('s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"), )
+    bucket_name = os.getenv("S3_BUCKET_NAME")
+    bucket = s3.Bucket(bucket_name)
+
+    events = load_events_from_file()
+
+    clear_s3_folder(bucket)
+
+    for event in events:
+        save_individual_event_to_file(event)
+        upload_file_to_s3(bucket, event._id)
+
+    clear_tmp_dir()
+
 
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
-    missing = [v for v in REQUIRED_ENV_VARS if not os.getenv(v)]
-    if missing:
-        raise RuntimeError(f"Missing required environment variables: {missing}")
     client = OpenAI()
 
-    update_events(client)
+    update_events_file(client)
     fill_db()
+    upload_all_events_to_s3()
 
     end = time.time()
     print(f"\nFinished in {round(end - start, 2)} seconds.")

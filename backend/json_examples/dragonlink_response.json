@@ -1,5 +1,5 @@
 {
-    "@odata.count": 501,
+    "@odata.count": 486,
     "@search.coverage": null,
     "@search.facets": {
         "CategoryIds": [
@@ -14,36 +14,43 @@
                 "type": 0,
                 "from": null,
                 "to": null,
-                "value": "19658",
-                "count": 37
-            },
-            {
-                "type": 0,
-                "from": null,
-                "to": null,
-                "value": "22028",
-                "count": 10
-            },
-            {
-                "type": 0,
-                "from": null,
-                "to": null,
-                "value": "24379",
-                "count": 4
-            },
-            {
-                "type": 0,
-                "from": null,
-                "to": null,
-                "value": "24380",
+                "value": "10616",
                 "count": 1
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
+                "value": "19658",
+                "count": 33
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "22028",
+                "count": 11
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "24379",
+                "count": 5
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "24380",
+                "count": 2
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
                 "value": "271",
-                "count": 16
+                "count": 14
             },
             {
                 "type": 0,
@@ -57,28 +64,28 @@
                 "from": null,
                 "to": null,
                 "value": "273",
-                "count": 54
+                "count": 50
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "274",
-                "count": 46
+                "count": 44
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "275",
-                "count": 75
+                "count": 67
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "276",
-                "count": 208
+                "count": 198
             },
             {
                 "type": 0,
@@ -92,35 +99,35 @@
                 "from": null,
                 "to": null,
                 "value": "278",
-                "count": 69
+                "count": 63
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "279",
-                "count": 32
+                "count": 30
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "280",
-                "count": 7
+                "count": 6
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "281",
-                "count": 18
+                "count": 17
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "282",
-                "count": 36
+                "count": 30
             },
             {
                 "type": 0,
@@ -134,14 +141,14 @@
                 "from": null,
                 "to": null,
                 "value": "284",
-                "count": 12
+                "count": 14
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "285",
-                "count": 103
+                "count": 100
             },
             {
                 "type": 0,
@@ -155,7 +162,7 @@
                 "from": null,
                 "to": null,
                 "value": "8659",
-                "count": 23
+                "count": 20
             }
         ],
         "BenefitNames": [
@@ -171,14 +178,14 @@
                 "from": null,
                 "to": null,
                 "value": "Free Food",
-                "count": 98
+                "count": 96
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Free Stuff",
-                "count": 45
+                "count": 42
             }
         ],
         "Theme": [
@@ -201,49 +208,49 @@
                 "from": null,
                 "to": null,
                 "value": "CommunityService",
-                "count": 46
+                "count": 42
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Cultural",
-                "count": 31
+                "count": 33
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Fundraising",
-                "count": 31
+                "count": 29
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "GroupBusiness",
-                "count": 35
+                "count": 32
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Social",
-                "count": 169
+                "count": 166
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Spirituality",
-                "count": 97
+                "count": 94
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "ThoughtfulLearning",
-                "count": 75
+                "count": 73
             }
         ],
         "BranchId": [
@@ -252,21 +259,21 @@
                 "from": null,
                 "to": null,
                 "value": 12429,
-                "count": 467
+                "count": 451
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": 349932,
-                "count": 17
+                "count": 15
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": 416969,
-                "count": 8
+                "count": 11
             },
             {
                 "type": 0,
@@ -278,889 +285,6 @@
         ]
     },
     "value": [
-        {
-            "id": "12461495",
-            "institutionId": 3859,
-            "organizationId": 237736,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel University Coffee Club ",
-            "organizationProfilePicture": "e3a135dc-2c98-4308-a062-f7c009f05a07c8a2abac-e16e-4cc6-9800-f1fa5b7d4bf1.png",
-            "organizationNames": [],
-            "name": "Brown Street Coffee Run",
-            "description": "<p class=\"my-2 [&amp;+p]:mt-4 [&amp;_strong:has(+br)]:inline-block [&amp;_strong:has(+br)]:pb-2\">Our Week 6 Spring Quarter coffee run is here, and this time, DUCC is heading back to Green Line Cafe! Taking place on Saturday, May 9 &amp; Sunday, May 10 \u2615\ufe0f</p>\r\n<p class=\"my-2 [&amp;+p]:mt-4 [&amp;_strong:has(+br)]:inline-block [&amp;_strong:has(+br)]:pb-2\"><strong>How It Works:</strong><br />Members signed up for the event will meet at Mario the Dragon Statue and head to Green Line Cafe's West Philly location (2545 Brown St, Philadelphia, PA 19130) together. Both runs will start at 11 AM. If you can&rsquo;t make the group meet-up, feel free to meet us directly at the caf&eacute;! Please note we will be walking or taking SEPTA to and from the coffee shop, so please dress appropriately!</p>\r\n<p class=\"my-2 [&amp;+p]:mt-4 [&amp;_strong:has(+br)]:inline-block [&amp;_strong:has(+br)]:pb-2\"><strong>Event Sign-Up:</strong><br />Spots are first come, first serve, with a limit of 10 members per day to ensure we don&rsquo;t overwhelm the caf&eacute;. If you&rsquo;ve signed up but can no longer attend, please let us know the night before.</p>\r\n<p class=\"\" data-start=\"865\" data-end=\"1036\">On&nbsp;<strong data-start=\"883\" data-end=\"900\">Monday,&nbsp;</strong>May 6, an email will be sent out with a&nbsp;Google Form link&nbsp;for sign-ups and a reminder of the event details. Be sure to check your inbox!</p>\r\n<p class=\"\" data-start=\"1038\" data-end=\"1127\">If you can&rsquo;t make this event, there will be many more coffee runs are coming for the upcoming 2026-2027 academic year!</p>\r\n<p class=\"\" data-start=\"1038\" data-end=\"1127\">&nbsp;</p>\r\n<p class=\"\" data-start=\"1038\" data-end=\"1127\"><strong>Important:</strong>&nbsp;If there are any questions, feel free to reach out to us via email at drexelcoffeeclub@gmail.com or on our Instagram @drexelcoffeeclub.</p>",
-            "location": "Brown Street Coffee",
-            "startsOn": "2026-05-10T15:00:00+00:00",
-            "endsOn": "2026-05-10T18:00:00+00:00",
-            "imagePath": "e74b79d0-4161-47f2-a375-8499c50df33d995aef57-2047-480b-91ad-c09e975b35a0.png",
-            "theme": "Social",
-            "categoryIds": [
-                "276"
-            ],
-            "categoryNames": [
-                "Social"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.970450",
-            "longitude": "-75.179490",
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.971245
-        },
-        {
-            "id": "12397662",
-            "institutionId": 3859,
-            "organizationId": 388397,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Phi Alpha Delta Pre-Law Fraternity",
-            "organizationProfilePicture": "89b3b67e-2e98-46e2-9169-763d0d180d6ae93c77c7-a263-4e33-a445-c3d28f778a4a.jpeg",
-            "organizationNames": [],
-            "name": "New member meetings",
-            "description": "<p>meetings for members who have just joined so they can stay up to date on chapter events</p>",
-            "location": "PEARL 303 - Classroom",
-            "startsOn": "2026-05-10T22:00:00+00:00",
-            "endsOn": "2026-05-10T23:00:00+00:00",
-            "imagePath": null,
-            "theme": "Social",
-            "categoryIds": [],
-            "categoryNames": [],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.94029
-        },
-        {
-            "id": "12408807",
-            "institutionId": 3859,
-            "organizationId": 13845,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Delta Zeta",
-            "organizationProfilePicture": "479569b3-3f2c-4f10-a934-14813f06d006a8163e44-520f-4fbf-ac97-4ccde9307568.jpg",
-            "organizationNames": [],
-            "name": "Delta Zeta Chapter, Spring 26 ",
-            "description": "<p>Our weekly meeting with our entire group of sisters.</p>",
-            "location": "CAT 061 - Classroom",
-            "startsOn": "2026-05-10T22:30:00+00:00",
-            "endsOn": "2026-05-11T00:30:00+00:00",
-            "imagePath": null,
-            "theme": "GroupBusiness",
-            "categoryIds": [],
-            "categoryNames": [],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.93808
-        },
-        {
-            "id": "12384930",
-            "institutionId": 3859,
-            "organizationId": 167357,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Public Health Doctoral Students Advisory Group",
-            "organizationProfilePicture": "09f2e7d7-f35e-4496-a40b-c303da50c8286eb03e7a-05fd-408d-af02-0163157a5789.png",
-            "organizationNames": [],
-            "name": "PhDSAG Monthly Co-Working Space",
-            "description": "<p>A monthly space for coffee, bagels, and co-working for doctoral students</p>",
-            "location": "Nesbitt Collaboratory (Nesbitt 140)",
-            "startsOn": "2026-05-11T14:00:00+00:00",
-            "endsOn": "2026-05-11T16:00:00+00:00",
-            "imagePath": "cd5b4722-49d2-4f36-ba70-077d70e05ed0661b8346-b3f7-4aec-b680-24b2b673635d.png",
-            "theme": "Social",
-            "categoryIds": [
-                "276"
-            ],
-            "categoryNames": [
-                "Social"
-            ],
-            "benefitNames": [
-                "Free Food"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.86945
-        },
-        {
-            "id": "12458149",
-            "institutionId": 3859,
-            "organizationId": 376281,
-            "organizationIds": [],
-            "branchId": 349932,
-            "branchIds": [],
-            "organizationName": "DUCOM Pagoda Society",
-            "organizationProfilePicture": null,
-            "organizationNames": [],
-            "name": "Getting Started in Medical Student Research: Library Resources & Research Basics",
-            "description": "<p data-start=\"797\" data-end=\"1289\">These two sessions, led by Sarah Hughes, Health Sciences Librarian with Drexel University Libraries, will introduce medical students to library resources and foundational research skills. Topics will include getting started with research, developing a research question, understanding different types of projects such as literature reviews, scoping reviews, and systematic reviews, choosing appropriate databases, building a search strategy, and using concepts such as MeSH terms, PICO, and PRISMA.</p>\r\n<p data-start=\"1291\" data-end=\"1524\" data-is-last-node=\"\" data-is-only-node=\"\">The sessions will also include time for questions and discussion. This event is especially intended for students interested in beginning or strengthening research projects over the summer, but all DUCOM students are welcome to attend.</p>",
-            "location": "Online",
-            "startsOn": "2026-05-11T15:00:00+00:00",
-            "endsOn": "2026-05-11T16:30:00+00:00",
-            "imagePath": null,
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "275"
-            ],
-            "categoryNames": [
-                "Educational"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.86503
-        },
-        {
-            "id": "12372700",
-            "institutionId": 3859,
-            "organizationId": 321743,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Pennoni Honors College",
-            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
-            "organizationNames": [],
-            "name": "Honors Program Info Session",
-            "description": "<p><span data-contrast=\"auto\">Drexel's Honors Program, offered by the Pennoni Honors College, actively encourages students to think deeper and explore their curiosity.</span></p>\r\n<p>&nbsp;</p>\r\n<p><span data-contrast=\"auto\">The Honors Program is open to all majors and allows students to gain access to&nbsp;small, discussion-based classes, exclusive cultural events in Philadelphia, Honors-specific advising and mentoring, and unique civic engagement opportunities.</span></p>\r\n<p>&nbsp;</p>\r\n<p><span data-contrast=\"auto\">The <a href=\"https://drexel.edu/pennoni/honors/admissions\">Honors Program application</a></span><span data-contrast=\"auto\">&nbsp;will be live on April 1 to&nbsp;first- and second-year&nbsp;students. The deadline to apply is June 2.</span></p>\r\n<p>&nbsp;</p>\r\n<p><span data-contrast=\"auto\">Interested in learning more about the Honors Program and its offerings? Attend this information session, hosted by Honors Program Advisor Kenyon Walter-Privott.</span></p>\r\n<p>&nbsp;</p>\r\n<p><a href=\"https://forms.office.com/Pages/ResponsePage.aspx?id=-uZkNr1HpkWWcIxPCA-MpkO-Gh0JV8xKj6ElJoL-UW1URU1RNFUzV0pXMFk0WDhTUkk2WlE4OUREUS4u\"><strong>RSVP HERE</strong></a></p>\r\n<p>&nbsp;</p>\r\n<p><span data-contrast=\"auto\">If you have questions about the Honors Program or the application, please email&nbsp;</span><a href=\"mailto:honorsprogram@drexel.edu\"><span data-contrast=\"none\">honorsprogram@drexel.edu</span></a><span data-contrast=\"auto\">.</span></p>",
-            "location": "Bentley Hall 2nd Floor Annex",
-            "startsOn": "2026-05-11T18:00:00+00:00",
-            "endsOn": "2026-05-11T19:00:00+00:00",
-            "imagePath": "89ef67b1-5845-4ce7-a991-988ab392593f483cc505-ed2d-4bc7-ae5e-4fcbb531291c.png",
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "271",
-                "275",
-                "278"
-            ],
-            "categoryNames": [
-                "Training/Information Session",
-                "Educational",
-                "Academic"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.957990",
-            "longitude": "-75.189580",
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.85173
-        },
-        {
-            "id": "12455199",
-            "institutionId": 3859,
-            "organizationId": 365805,
-            "organizationIds": [],
-            "branchId": 349932,
-            "branchIds": [],
-            "organizationName": "DUCOM Ultrasound Club",
-            "organizationProfilePicture": "8375793f-3dfc-4c54-bb6c-52cce23e3a975e68c800-500e-4a48-83f3-bd8d0cd4043f.png",
-            "organizationNames": [],
-            "name": "EM/Ultrasound Workshop",
-            "description": "<p>A combined event between EM club and US club - a workshop to provide students experience with point-of-care ultrasound</p>",
-            "location": "WR 160 - Team Based Learning Center",
-            "startsOn": "2026-05-11T15:00:00+00:00",
-            "endsOn": "2026-05-11T21:00:00+00:00",
-            "imagePath": null,
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "275"
-            ],
-            "categoryNames": [
-                "Educational"
-            ],
-            "benefitNames": [
-                "Free Food"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 6,
-            "@search.score": 99.86503
-        },
-        {
-            "id": "12450558",
-            "institutionId": 3859,
-            "organizationId": 74752,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "The Cleftomaniacs",
-            "organizationProfilePicture": "a760ce0e-12d6-445c-84ff-51c25adf4f4653f028d3-eccd-4539-9097-9e8e0c3f90e9.jpeg",
-            "organizationNames": [],
-            "name": "Cleftomaniacs Clothing Sale!",
-            "description": "<p>The Cleftomaniacs are selling their clothes on Lancaster Walk! Come by and see what we got!</p>",
-            "location": "Lanc Walk - DAC 1",
-            "startsOn": "2026-05-11T20:00:00+00:00",
-            "endsOn": "2026-05-11T22:30:00+00:00",
-            "imagePath": null,
-            "theme": "Fundraising",
-            "categoryIds": [
-                "279"
-            ],
-            "categoryNames": [
-                "Fundraising"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.842865
-        },
-        {
-            "id": "12449333",
-            "institutionId": 3859,
-            "organizationId": 12541,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel Economics Society",
-            "organizationProfilePicture": "d3a7245f-f37a-4939-8c86-cd28da91434480d06140-59ba-4138-83c2-a74fc254a7dc.png",
-            "organizationNames": [],
-            "name": "DES: What's Up: Careers in Econ",
-            "description": "<p></p>\r\n<p data-start=\"555\" data-end=\"811\"><strong>Still confused about what careers you can pursue with an Economics degree?</strong> You&rsquo;re not alone. Whether you're interested in business, government, finance, or something else entirely, Econ can take you in many directions.</p>\r\n<p data-start=\"813\" data-end=\"998\">Come through to our <em data-start=\"833\" data-end=\"861\">What&rsquo;s Up: Careers in Econ</em> event for a quick, casual session where we explore different paths, share insights, and help you get a better sense of what&rsquo;s out there.</p>",
-            "location": "GHALL 206 - Classroom",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-11T22:30:00+00:00",
-            "imagePath": "dcd9dc6f-690d-423a-a1f4-2a80bf22226c7d4c5d40-f761-4a0d-94b1-aa6e2b75ed6e.png",
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "275",
-                "276",
-                "282"
-            ],
-            "categoryNames": [
-                "Educational",
-                "Social",
-                "Networking"
-            ],
-            "benefitNames": [
-                "Free Food",
-                "Free Stuff"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12328203",
-            "institutionId": 3859,
-            "organizationId": 12582,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "TechServ",
-            "organizationProfilePicture": "2f896600-cf54-4601-9371-c2e35b0602842a8fa29d-46f6-4e80-8977-61ceae2a5c1b.png",
-            "organizationNames": [],
-            "name": "TechServ Spring Term General Body Meeting",
-            "description": "<p>Join TechServ and make a real impact in Philadelphia communities. We refurbish donated computers and get them into the hands of people who need them most. No experience? No problem! All skill levels are welcome! You'll learn hands-on tech skills, meet other students, and give back in a meaningful way.</p>",
-            "location": "Creese Student Center Room 051",
-            "startsOn": "2026-05-11T21:00:00+00:00",
-            "endsOn": "2026-05-11T23:00:00+00:00",
-            "imagePath": "dfc28174-a9ac-4d06-abb9-325b867233380bfde0ab-f9f8-484d-8dd7-d66e606bd4ab.png",
-            "theme": "CommunityService",
-            "categoryIds": [
-                "273",
-                "274",
-                "19658"
-            ],
-            "categoryNames": [
-                "General Body Meeting",
-                "Community Service",
-                "Sustainability"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.953530",
-            "longitude": "-75.188450",
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83843
-        },
-        {
-            "id": "12454552",
-            "institutionId": 3859,
-            "organizationId": 12565,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "American Marketing Association Drexel",
-            "organizationProfilePicture": "b15273bd-704b-4b78-898a-763baf19eb11c543df73-ee52-4411-b72d-2980f4f766b0.jpg",
-            "organizationNames": [],
-            "name": "Saxbys Branding Panel",
-            "description": "<p></p>\r\n<p data-start=\"70\" data-end=\"620\">Join AMAD for a Saxbys Branding Panel with the minds behind the student-run coffee shop! Hear behind-the-scenes stories on how Saxbys builds a brand that&rsquo;s more than just coffee, dive into marketing strategy and storytelling, and stick around for a Q&amp;A session. Whether you&rsquo;re a marketing student, a branding enthusiast, or just love coffee, get ready for an inspiring fireside chat with AMAD.</p>",
-            "location": "GHALL 033 - Classroom",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-11T23:00:00+00:00",
-            "imagePath": null,
-            "theme": "GroupBusiness",
-            "categoryIds": [
-                "278"
-            ],
-            "categoryNames": [
-                "Academic"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 2,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12462537",
-            "institutionId": 3859,
-            "organizationId": 218667,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel Motion Capture",
-            "organizationProfilePicture": "0c1a32a9-42a2-4d2a-b691-37ddfb3414d0b835a36a-ccdf-4440-ae03-485190e06f4d.png",
-            "organizationNames": [],
-            "name": "Mocap Shoot",
-            "description": "<p>Interested in motion capture? Come join Drexel Motion Capture for a motion capture shoot! We will be demonstrating the steps to run a motion capture session open to all students.</p>\r\n<p>For more details, please email drexelmocap@gmail.com</p>",
-            "location": "URBN 246",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-11T23:00:00+00:00",
-            "imagePath": "c48c1c76-8ec0-407b-aafd-b1b10fe481322d0fbf8f-a042-4d2c-83f7-1d384326049c.png",
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "271",
-                "273",
-                "275",
-                "276",
-                "278",
-                "282"
-            ],
-            "categoryNames": [
-                "Training/Information Session",
-                "General Body Meeting",
-                "Educational",
-                "Social",
-                "Academic",
-                "Networking"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.956380",
-            "longitude": "-75.192930",
-            "recScore": null,
-            "rsvpTotal": 2,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12374931",
-            "institutionId": 3859,
-            "organizationId": 12629,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Engineers Without Borders",
-            "organizationProfilePicture": "598a8500-3939-4f57-b29a-30bac669803f97085672-ec89-4659-853f-23c8b173d6d3.png",
-            "organizationNames": [],
-            "name": "EWB Tech Team Meeting",
-            "description": "<p>Please join our tech team as they have their weekly meeting to discuss the technical aspects of our projects and logistics!&nbsp;</p>",
-            "location": "Lindy Center",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-11T23:00:00+00:00",
-            "imagePath": "3fb87b95-91c8-4b58-9b6a-78300bf7e80951574797-3e54-4211-b1d8-81cb183ecb5a.png",
-            "theme": "CommunityService",
-            "categoryIds": [
-                "275",
-                "276",
-                "278",
-                "282",
-                "8659",
-                "19658"
-            ],
-            "categoryNames": [
-                "Educational",
-                "Social",
-                "Academic",
-                "Networking",
-                "Freshman Focused",
-                "Sustainability"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12374896",
-            "institutionId": 3859,
-            "organizationId": 12629,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Engineers Without Borders",
-            "organizationProfilePicture": "598a8500-3939-4f57-b29a-30bac669803f97085672-ec89-4659-853f-23c8b173d6d3.png",
-            "organizationNames": [],
-            "name": "EWB Global Relations & International Design Department Meeting",
-            "description": "<p>Please join our Global Relations &amp; International Design (GRID) department for their weekly meeting discussing our international projects and communicating with our international partners!&nbsp;</p>",
-            "location": "Lindy Center",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-11T23:00:00+00:00",
-            "imagePath": "ce6dabed-f77a-4d8e-ba7b-e30aa2db015ca89db867-65c1-4002-96a3-ab5389083acf.png",
-            "theme": "CommunityService",
-            "categoryIds": [
-                "274",
-                "275",
-                "276",
-                "278",
-                "279",
-                "282",
-                "8659",
-                "19658"
-            ],
-            "categoryNames": [
-                "Community Service",
-                "Educational",
-                "Social",
-                "Academic",
-                "Fundraising",
-                "Networking",
-                "Freshman Focused",
-                "Sustainability"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12462013",
-            "institutionId": 3859,
-            "organizationId": 306111,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel Dance Marathon",
-            "organizationProfilePicture": "42a329b7-978c-4953-b3f0-4089a034f8672269d268-5fb5-4b48-826f-a65ece66a8a8.png",
-            "organizationNames": [],
-            "name": "Hair Tinsel with DragonTHON!",
-            "description": "<p>Come get hair tinsel or eye black from dragonTHON! All proceeds go to CHOP! Also can learn how to register or some fundraising tips and tricks!</p>",
-            "location": "Lanc Walk - DAC 2",
-            "startsOn": "2026-05-11T19:30:00+00:00",
-            "endsOn": "2026-05-11T23:30:00+00:00",
-            "imagePath": null,
-            "theme": "Fundraising",
-            "categoryIds": [],
-            "categoryNames": [],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.84508
-        },
-        {
-            "id": "12408560",
-            "institutionId": 3859,
-            "organizationId": 84809,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Cru",
-            "organizationProfilePicture": "c29f8015-f928-4715-85e0-10664719dfc3d07151c5-c0cb-41b6-8ba8-18a16794917b.png",
-            "organizationNames": [],
-            "name": "Cru Men's Bible Study",
-            "description": "<p>Come join a community of men who want to seek the Lord together and grow in friendship! We will be studying various books of the Bible and topics/themes throughout the year. Anyone is welcome no matter how familiar you are with the Bible, and you can join any week of the year - no preparation required! DM our Instagram @drexelcru for more information!</p>",
-            "location": "ACADMC 216 - Classroom",
-            "startsOn": "2026-05-11T22:30:00+00:00",
-            "endsOn": "2026-05-11T23:30:00+00:00",
-            "imagePath": "d0452ec2-66d8-44fe-bccd-d9d43915ed776761b25e-14f6-4b33-b2a0-6d254a45bc7f.png",
-            "theme": "Spirituality",
-            "categoryIds": [
-                "276",
-                "285"
-            ],
-            "categoryNames": [
-                "Social",
-                "Religious/Spiritual"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83178
-        },
-        {
-            "id": "12450537",
-            "institutionId": 3859,
-            "organizationId": 166395,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel K-Pop Club",
-            "organizationProfilePicture": "6f5c3b46-c63a-49ce-9dbb-069984a438d2625a44b5-6643-45cd-b0aa-0257fdf008eb.jpg",
-            "organizationNames": [],
-            "name": "Disbanded + Nugu Presentation Night",
-            "description": "<p><span style=\"font-weight: 400;\">Interested in learning about lesser known K-pop groups? Whether a veteran fan or new to the industry, join us at presentation night! We'll go over some groups that disbanded too soon or are currently active but simply nugu (meaning \"who\" in Korean, so relatively unknown). </span></p>",
-            "location": "PISB 107 - Classroom",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "aace5b6c-48ef-4a24-a7b3-a25c10079013555e0356-9aea-4cbf-b795-d036a7d37732.png",
-            "theme": "Social",
-            "categoryIds": [
-                "276"
-            ],
-            "categoryNames": [
-                "Social"
-            ],
-            "benefitNames": [
-                "Free Food"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12461771",
-            "institutionId": 3859,
-            "organizationId": 138792,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Dragon Concert Series",
-            "organizationProfilePicture": "9a16c27d-923b-49d4-a4a1-bc1de72f5917aebac7fb-9cbc-4866-b71f-2bee74864ccf.png",
-            "organizationNames": [],
-            "name": "Masterclass on Creative Direction with Atlantic Record\u2019s Amber Baker",
-            "description": "<p>Join DCS for a riveting conversation on how to get your start in creative direction. Amber Baker, Atlantic Records&rsquo; Sr. Director of Creative, will break down her creative process and share how ideas evolve from concept to final execution in the music industry. From building visual identities for artists to collaborating across teams, Amber will provide insight into what it takes to succeed in a creative role at a major label. Whether you&rsquo;re interested in visual storytelling, branding, or working behind the scenes with artists, this event will offer valuable advice and real-world perspective for anyone looking to pursue a career in creative direction.</p>",
-            "location": "One Drexel Plaza, Suite 18",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "6b084ac7-9532-45e4-8c4b-78b26fef0152c910052c-14b5-4523-a2bd-3c25435f6bcf.png",
-            "theme": "Arts",
-            "categoryIds": [
-                "275",
-                "282"
-            ],
-            "categoryNames": [
-                "Educational",
-                "Networking"
-            ],
-            "benefitNames": [
-                "Free Food"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.955470",
-            "longitude": "-75.184050",
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12449598",
-            "institutionId": 3859,
-            "organizationId": 12474,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel Women in Business",
-            "organizationProfilePicture": "f24c7040-a3bb-41f8-b0b1-e4fcffbc81bf60a6bfcd-afc8-48d5-984d-20cf613c79af.jpeg",
-            "organizationNames": [],
-            "name": "Mothers Day Card Making ",
-            "description": "<p>Join DWIB as we make Mother's Day cards to be donated across Philadelphia.&nbsp; Bring along any unused, single-packed or sealed sanitary products for a donation drive as well!</p>",
-            "location": "GHALL 219 - Classroom w/ 8 PCs",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "ae75f5f6-1299-4bc6-922c-b2f2c722f991d8d67e5b-1c02-4aa7-9a44-2ad89f869098.png",
-            "theme": "CommunityService",
-            "categoryIds": [
-                "280"
-            ],
-            "categoryNames": [
-                "Philanthropy"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 2,
-            "@search.score": 99.83399
-        },
-        {
-            "id": "12392044",
-            "institutionId": 3859,
-            "organizationId": 77080,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Fellowship of Christian Athletes",
-            "organizationProfilePicture": "6cbd13bd-d694-4637-98ff-a023b2cbfc5f9281c806-7f97-41d0-90b3-41d0f165ca62.jpg",
-            "organizationNames": [],
-            "name": "FCA Weekly Huddle",
-            "description": "<p>FCA's weekly huddle meeting throughout the term where we meet to fellowship, eat pizza, and discuss God's Word.</p>",
-            "location": "Media Room",
-            "startsOn": "2026-05-11T22:30:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": null,
-            "theme": "Spirituality",
-            "categoryIds": [
-                "273",
-                "281",
-                "285"
-            ],
-            "categoryNames": [
-                "General Body Meeting",
-                "Athletic",
-                "Religious/Spiritual"
-            ],
-            "benefitNames": [
-                "Free Food"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83178
-        },
-        {
-            "id": "12450564",
-            "institutionId": 3859,
-            "organizationId": 72361,
-            "organizationIds": [
-                "72361",
-                "76887"
-            ],
-            "branchId": 12429,
-            "branchIds": [
-                "12429"
-            ],
-            "organizationName": "Drexel Finance and Investment Group",
-            "organizationProfilePicture": "19b618de-49f8-4574-8f69-465fa0c5022eca49344d-3bc0-4624-a3f2-d9874e9cea5e.jpeg",
-            "organizationNames": [
-                "Drexel Finance and Investment Group",
-                "Society of Security Analysts "
-            ],
-            "name": "DCF Valuation Overview",
-            "description": "<p>The event will focus on intrinsic valuation through the Discounted Cash Flow methodology. We will dive deeper into what a DCF model looks like, what are the model assumptions, and walk through every step of the process to arrive at a share price.&nbsp;&nbsp;</p>",
-            "location": "GHALL 137 - Classroom w/ 14 PCs",
-            "startsOn": "2026-05-11T23:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": null,
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [],
-            "categoryNames": [],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 2,
-            "@search.score": 99.82956
-        },
-        {
-            "id": "12374915",
-            "institutionId": 3859,
-            "organizationId": 12629,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Engineers Without Borders",
-            "organizationProfilePicture": "598a8500-3939-4f57-b29a-30bac669803f97085672-ec89-4659-853f-23c8b173d6d3.png",
-            "organizationNames": [],
-            "name": "EWB Domestic Design Department Meeting",
-            "description": "<p>Please join our Domestic Design team for their weekly meetings discussing the designs and progress of our local Philadelphia projects!&nbsp;</p>",
-            "location": "Lindy Center",
-            "startsOn": "2026-05-11T23:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "f7a85454-a5cd-4c08-ab0e-383d4e201a2ff21a5e0d-04cc-4538-aad5-ba14d5e1b119.png",
-            "theme": "CommunityService",
-            "categoryIds": [
-                "274",
-                "275",
-                "276",
-                "278",
-                "282",
-                "8659",
-                "19658"
-            ],
-            "categoryNames": [
-                "Community Service",
-                "Educational",
-                "Social",
-                "Academic",
-                "Networking",
-                "Freshman Focused",
-                "Sustainability"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.82956
-        },
-        {
-            "id": "12421755",
-            "institutionId": 3859,
-            "organizationId": 416969,
-            "organizationIds": [
-                "114101",
-                "416969"
-            ],
-            "branchId": 416969,
-            "branchIds": [
-                "416969"
-            ],
-            "organizationName": "Drexel Residence Life",
-            "organizationProfilePicture": "aa9dc301-5d1f-4fa4-b7ef-750bcd36d7cf6ea92138-eb84-46ef-8224-b9b31b21ad3a.jpg",
-            "organizationNames": [
-                "Van Rensselaer Hall",
-                "Drexel Residence Life"
-            ],
-            "name": "Drexel Scavenger Hunt",
-            "description": "<p>Come participate in a scavenger hunt across campus and get a chance to win $100 to spend at Rally House!</p>",
-            "location": "Van R Lobby",
-            "startsOn": "2026-05-11T23:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "4bfb98df-7e74-43d6-b21e-1a722217fd89dd215197-710e-4536-946b-f31dbcbc0393.png",
-            "theme": "Social",
-            "categoryIds": [
-                "24379"
-            ],
-            "categoryNames": [
-                "Residence Life - Community and Civic Engagement"
-            ],
-            "benefitNames": [
-                "Free Stuff"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": "39.959920",
-            "longitude": "-75.190240",
-            "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.82956
-        },
-        {
-            "id": "12396430",
-            "institutionId": 3859,
-            "organizationId": 60045,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "The Good Idea Fund",
-            "organizationProfilePicture": "3efef90d-0743-4903-bec2-4e64af22be05fc0f7721-8649-4a63-a28c-78e1cdb7bc9c.png",
-            "organizationNames": [],
-            "name": "TGIF | Spring Board Meeting",
-            "description": "<p>The Good Idea Fund's Spring Board Meetings</p>",
-            "location": "Rush Building 209",
-            "startsOn": "2026-05-11T23:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "908656f4-3c70-4953-8a72-4dbec46758b5ab5230fc-6d23-4362-a5c3-8ae0de3235ee.png",
-            "theme": "GroupBusiness",
-            "categoryIds": [
-                "273"
-            ],
-            "categoryNames": [
-                "General Body Meeting"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.82956
-        },
-        {
-            "id": "12358170",
-            "institutionId": 3859,
-            "organizationId": 84809,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Cru",
-            "organizationProfilePicture": "c29f8015-f928-4715-85e0-10664719dfc3d07151c5-c0cb-41b6-8ba8-18a16794917b.png",
-            "organizationNames": [],
-            "name": "Cru Women's Bible Study",
-            "description": "<p>Come join a community of women who want to seek the Lord together and grow in friendship! We will be studying various books of the Bible and topics/themes throughout the year.&nbsp; Anyone is welcome no matter how familiar you are with the Bible, and you can join any week of the year - no preparation required! DM our Instagram @drexelcru for more information!</p>",
-            "location": "Interfaith Chapel",
-            "startsOn": "2026-05-11T23:00:00+00:00",
-            "endsOn": "2026-05-12T00:00:00+00:00",
-            "imagePath": "884787b0-54e2-477f-b894-600f40ffc835047bbf74-6e23-4643-9010-ef192b78863d.png",
-            "theme": "Spirituality",
-            "categoryIds": [
-                "276",
-                "285"
-            ],
-            "categoryNames": [
-                "Social",
-                "Religious/Spiritual"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.82956
-        },
         {
             "id": "12408923",
             "institutionId": 3859,
@@ -1187,35 +311,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
-        },
-        {
-            "id": "12387971",
-            "institutionId": 3859,
-            "organizationId": 139768,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Delta Gamma \u2013 Eta Upsilon",
-            "organizationProfilePicture": "19c82cc6-b2c0-47b9-a389-178785b189320233dac6-13bd-4dcf-a438-fb2928d74787.png",
-            "organizationNames": [],
-            "name": "Chapter",
-            "description": "<p><span style=\"font-weight: 400;\">Weekly chapter meeting!</span></p>",
-            "location": "GHALL 106 - Classroom",
-            "startsOn": "2026-05-11T22:00:00+00:00",
-            "endsOn": "2026-05-12T01:00:00+00:00",
-            "imagePath": "b56ff802-0785-4b6c-b0ab-306ec1e9ae6663f7b382-bac5-4372-b95c-583d83f5ad0a.png",
-            "theme": "Social",
-            "categoryIds": [],
-            "categoryNames": [],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.83399
+            "@search.score": 1.0
         },
         {
             "id": "12306564",
@@ -1251,7 +347,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
+            "@search.score": 1.0
         },
         {
             "id": "12315890",
@@ -1279,7 +375,35 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
+            "@search.score": 1.0
+        },
+        {
+            "id": "12387971",
+            "institutionId": 3859,
+            "organizationId": 139768,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Delta Gamma \u2013 Eta Upsilon",
+            "organizationProfilePicture": "19c82cc6-b2c0-47b9-a389-178785b189320233dac6-13bd-4dcf-a438-fb2928d74787.png",
+            "organizationNames": [],
+            "name": "Chapter",
+            "description": "<p><span style=\"font-weight: 400;\">Weekly chapter meeting!</span></p>",
+            "location": "GHALL 106 - Classroom",
+            "startsOn": "2026-05-11T22:00:00+00:00",
+            "endsOn": "2026-05-12T01:00:00+00:00",
+            "imagePath": "b56ff802-0785-4b6c-b0ab-306ec1e9ae6663f7b382-bac5-4372-b95c-583d83f5ad0a.png",
+            "theme": "Social",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 1.0
         },
         {
             "id": "12428203",
@@ -1315,7 +439,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
+            "@search.score": 1.0
         },
         {
             "id": "12425622",
@@ -1347,7 +471,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
+            "@search.score": 1.0
         },
         {
             "id": "12462012",
@@ -1379,7 +503,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82956
+            "@search.score": 1.0
         },
         {
             "id": "12408877",
@@ -1411,7 +535,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.83399
+            "@search.score": 1.0
         },
         {
             "id": "12463206",
@@ -1443,7 +567,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.758545
+            "@search.score": 99.95355
         },
         {
             "id": "12463981",
@@ -1475,7 +599,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.754105
+            "@search.score": 99.949135
         },
         {
             "id": "12404388",
@@ -1508,8 +632,8 @@
             "latitude": "39.957990",
             "longitude": "-75.189580",
             "recScore": null,
-            "rsvpTotal": 14,
-            "@search.score": 99.754105
+            "rsvpTotal": 27,
+            "@search.score": 99.949135
         },
         {
             "id": "12463204",
@@ -1541,7 +665,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.74966
+            "@search.score": 99.94471
         },
         {
             "id": "12463212",
@@ -1577,7 +701,7 @@
             "longitude": "-75.188080",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.743
+            "@search.score": 99.93807
         },
         {
             "id": "12453059",
@@ -1613,7 +737,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.74744
+            "@search.score": 99.9425
         },
         {
             "id": "12385033",
@@ -1645,7 +769,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.73188
+            "@search.score": 99.92701
         },
         {
             "id": "12463208",
@@ -1679,7 +803,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.72966
+            "@search.score": 99.9248
         },
         {
             "id": "12444248",
@@ -1713,7 +837,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12449592",
@@ -1749,7 +873,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12358031",
@@ -1781,7 +905,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72521
+            "@search.score": 99.92037
         },
         {
             "id": "12461438",
@@ -1809,7 +933,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72521
+            "@search.score": 99.92037
         },
         {
             "id": "12456519",
@@ -1837,7 +961,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12463203",
@@ -1871,7 +995,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12409321",
@@ -1905,7 +1029,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12461774",
@@ -1933,7 +1057,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 4,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12375074",
@@ -1979,7 +1103,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72299
+            "@search.score": 99.91816
         },
         {
             "id": "12375115",
@@ -2014,7 +1138,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72299
+            "@search.score": 99.91816
         },
         {
             "id": "12461772",
@@ -2042,7 +1166,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12462564",
@@ -2080,7 +1204,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.72521
+            "@search.score": 99.92037
         },
         {
             "id": "12408650",
@@ -2108,7 +1232,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72521
+            "@search.score": 99.92037
         },
         {
             "id": "12354871",
@@ -2136,7 +1260,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72299
+            "@search.score": 99.91816
         },
         {
             "id": "12354872",
@@ -2196,7 +1320,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 3,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12460212",
@@ -2242,7 +1366,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12450595",
@@ -2273,7 +1397,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72521
+            "@search.score": 99.92037
         },
         {
             "id": "12328426",
@@ -2309,7 +1433,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72299
+            "@search.score": 99.91816
         },
         {
             "id": "12409382",
@@ -2337,7 +1461,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72077
+            "@search.score": 99.91595
         },
         {
             "id": "12450606",
@@ -2365,7 +1489,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72299
+            "@search.score": 99.91816
         },
         {
             "id": "12425580",
@@ -2397,7 +1521,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.72744
+            "@search.score": 99.922585
         },
         {
             "id": "12450737",
@@ -2441,7 +1565,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.6518
+            "@search.score": 99.84729
         },
         {
             "id": "12464653",
@@ -2469,7 +1593,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.64735
+            "@search.score": 99.84286
         },
         {
             "id": "12461802",
@@ -2501,7 +1625,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.64735
+            "@search.score": 99.84286
         },
         {
             "id": "12410589",
@@ -2537,7 +1661,7 @@
             "longitude": "-75.189420",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.638435
+            "@search.score": 99.83399
         },
         {
             "id": "12464525",
@@ -2572,8 +1696,8 @@
             "latitude": "39.956830",
             "longitude": "-75.189420",
             "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.63398
+            "rsvpTotal": 2,
+            "@search.score": 99.82956
         },
         {
             "id": "12249821",
@@ -2601,7 +1725,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.63175
+            "@search.score": 99.82734
         },
         {
             "id": "12443909",
@@ -2633,7 +1757,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.64735
+            "@search.score": 99.84286
         },
         {
             "id": "12306592",
@@ -2665,7 +1789,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62507
+            "@search.score": 99.82069
         },
         {
             "id": "12320216",
@@ -2704,7 +1828,7 @@
             "longitude": "-75.189420",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62507
+            "@search.score": 99.82069
         },
         {
             "id": "12463411",
@@ -2740,7 +1864,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.62507
+            "@search.score": 99.82069
         },
         {
             "id": "12463424",
@@ -2768,7 +1892,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.62507
+            "@search.score": 99.82069
         },
         {
             "id": "12420689",
@@ -2800,7 +1924,7 @@
             "longitude": "-75.196980",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62507
+            "@search.score": 99.82069
         },
         {
             "id": "12464657",
@@ -2837,7 +1961,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.62284
+            "@search.score": 99.81847
         },
         {
             "id": "12440425",
@@ -2873,7 +1997,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62284
+            "@search.score": 99.81847
         },
         {
             "id": "12461782",
@@ -2906,8 +2030,8 @@
             "latitude": null,
             "longitude": null,
             "recScore": null,
-            "rsvpTotal": 5,
-            "@search.score": 99.62061
+            "rsvpTotal": 7,
+            "@search.score": 99.81625
         },
         {
             "id": "12408669",
@@ -2941,7 +2065,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12464651",
@@ -2969,7 +2093,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12387885",
@@ -3017,7 +2141,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12375204",
@@ -3045,7 +2169,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12408726",
@@ -3084,7 +2208,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12463419",
@@ -3116,41 +2240,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
-        },
-        {
-            "id": "12454585",
-            "institutionId": 3859,
-            "organizationId": 12588,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Asian Students Association",
-            "organizationProfilePicture": "f6864e24-82fc-4037-9b6e-e8dddb2126d6e9afb5c9-a1b5-4294-ba77-67be05c2d90a.png",
-            "organizationNames": [],
-            "name": "Games on the Green",
-            "description": "<p><span style=\"font-weight: 400;\">Welcome to </span><strong>Games on the Green</strong><span style=\"font-weight: 400;\">!</span><strong>\ud83d\udd25\ud83d\udcaa\ud83c\udffb\ud83c\udf4f</strong></p>\r\n<p><span style=\"font-weight: 400;\">Are you ready to cooperate &amp; compete against your fellow ASA members in this outdoor event? You will be placed into a team where you must defeat other teams in different activities &amp; games. \ud83e\udd3c</span></p>\r\n<p><span style=\"font-weight: 400;\">Get ready to test your skills and dexterity as you push your team to the top of the leaderboard. Do you have the power and teamwork to surpass in the grass? \ud83c\udfc5\ud83c\udfc1</span></p>\r\n<p><span style=\"font-weight: 400;\">Come enjoy a night of mini-games, snacks, and laughter with ASA (we also have prizes as well)!</span></p>",
-            "location": "Race Lawn",
-            "startsOn": "2026-05-13T21:30:00+00:00",
-            "endsOn": "2026-05-13T23:30:00+00:00",
-            "imagePath": null,
-            "theme": "Social",
-            "categoryIds": [
-                "276"
-            ],
-            "categoryNames": [
-                "Social"
-            ],
-            "benefitNames": [
-                "Free Stuff"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.62284
+            "@search.score": 99.81625
         },
         {
             "id": "12456508",
@@ -3182,7 +2272,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12454596",
@@ -3210,7 +2300,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12328204",
@@ -3246,7 +2336,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12397677",
@@ -3274,7 +2364,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12456524",
@@ -3302,7 +2392,63 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
+        },
+        {
+            "id": "12466194",
+            "institutionId": 3859,
+            "organizationId": 12497,
+            "organizationIds": [
+                "12497",
+                "12501",
+                "12648",
+                "20244",
+                "60018",
+                "239017",
+                "402381"
+            ],
+            "branchId": 12429,
+            "branchIds": [
+                "12429"
+            ],
+            "organizationName": "Fraternity and Sorority Life",
+            "organizationProfilePicture": "98a1856d-e2da-45d9-9c02-672da3bdcb06a48138ce-882f-4352-b385-c8f82d3c0c83.jpg",
+            "organizationNames": [
+                "Fraternity and Sorority Life",
+                "Intercultural Greek Council",
+                "Interfraternity Council",
+                "Panhellenic Council",
+                "Lindy Center for Civic Engagement",
+                "Dornsife Center for Neighborhood Partnerships",
+                "National Pan-Hellenic Council"
+            ],
+            "name": "Greek Week: Service Project",
+            "description": "<p>This year's Greek Week service project, in partnership with the Lindy Center, Dornsife Center and University &amp; Community Partnerships, seeks to support elementary-age students in K-3 years. Students in nearby elementary schools will receive a packet of materials to aid in their reading and literacy development over the summer months, reducing \"<a href=\"https://www.scholastic.com/parents/books-and-reading/raise-a-reader-blog/summer-slide.html\">Summer Slide</a>.\"</p>\r\n<p>\"Summer Slide\" refers to the loss of knowledge in reading and math over summer break, which can lead to a snowball effect of skill loss each year. For fraternities and sororities, founded as literary societies, literacy and educational attainment are at the core of what we do! Fraternity &amp; Sorority members will compile materials and pack the kits to be donated to the local schools.&nbsp;</p>",
+            "location": "Dornsife Center",
+            "startsOn": "2026-05-13T22:00:00+00:00",
+            "endsOn": "2026-05-14T00:00:00+00:00",
+            "imagePath": "eca4c5e4-8c40-4eaa-a192-a1eecdd7c0bcf61c103d-b057-49bd-8d11-9bee22c6f1b8.png",
+            "theme": "CommunityService",
+            "categoryIds": [
+                "274",
+                "275",
+                "10616",
+                "22028"
+            ],
+            "categoryNames": [
+                "Community Service",
+                "Educational",
+                "Civic & Social Engagement",
+                "Fraternity and Sorority Life"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "32.805850",
+            "longitude": "-117.208880",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.81625
         },
         {
             "id": "12464640",
@@ -3334,7 +2480,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12464643",
@@ -3368,7 +2514,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12379527",
@@ -3405,7 +2551,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.618385
+            "@search.score": 99.81403
         },
         {
             "id": "12464655",
@@ -3437,7 +2583,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.618385
+            "@search.score": 99.81403
         },
         {
             "id": "12463417",
@@ -3465,7 +2611,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.61727
+            "@search.score": 99.81292
         },
         {
             "id": "12409474",
@@ -3497,7 +2643,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12409473",
@@ -3529,7 +2675,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62061
+            "@search.score": 99.81625
         },
         {
             "id": "12375188",
@@ -3563,7 +2709,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.61616
+            "@search.score": 99.81181
         },
         {
             "id": "12436560",
@@ -3595,7 +2741,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.6117
+            "@search.score": 99.80738
         },
         {
             "id": "12408993",
@@ -3627,7 +2773,872 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.60725
+            "@search.score": 99.80294
+        },
+        {
+            "id": "12443459",
+            "institutionId": 3859,
+            "organizationId": 74755,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel Gaming Association",
+            "organizationProfilePicture": "ac5ad8d6-8dd2-4cca-b1bc-6d122bb703e325ea389f-d8b5-4489-a770-5e38eba81a3c.png",
+            "organizationNames": [],
+            "name": "Warhammer 40K",
+            "description": "<p>Join DGA for Warhammer games in a friendly and casual setting! We will provide models to use if you don&rsquo;t have any, but you are welcome to bring your own!</p>",
+            "location": "MACALS Liberty View & Lounge",
+            "startsOn": "2026-05-13T22:00:00+00:00",
+            "endsOn": "2026-05-14T02:00:00+00:00",
+            "imagePath": "e15084a8-2d76-405e-a133-109b4cc1eb1287cab28b-6847-433b-bb23-940947bbc25f.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.81625
+        },
+        {
+            "id": "12458150",
+            "institutionId": 3859,
+            "organizationId": 376281,
+            "organizationIds": [],
+            "branchId": 349932,
+            "branchIds": [],
+            "organizationName": "DUCOM Pagoda Society",
+            "organizationProfilePicture": null,
+            "organizationNames": [],
+            "name": "Getting Started in Medical Student Research: Library Resources & Research Basics",
+            "description": "<p data-start=\"797\" data-end=\"1289\">These two sessions, led by Sarah Hughes, Health Sciences Librarian with Drexel University Libraries, will introduce medical students to library resources and foundational research skills. Topics will include getting started with research, developing a research question, understanding different types of projects such as literature reviews, scoping reviews, and systematic reviews, choosing appropriate databases, building a search strategy, and using concepts such as MeSH terms, PICO, and PRISMA.</p>\r\n<p data-start=\"1291\" data-end=\"1524\" data-is-last-node=\"\" data-is-only-node=\"\">The sessions will also include time for questions and discussion. This event is especially intended for students interested in beginning or strengthening research projects over the summer, but all DUCOM students are welcome to attend.</p>",
+            "location": "Online",
+            "startsOn": "2026-05-14T15:00:00+00:00",
+            "endsOn": "2026-05-14T16:30:00+00:00",
+            "imagePath": null,
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275"
+            ],
+            "categoryNames": [
+                "Educational"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.74077
+        },
+        {
+            "id": "12364014",
+            "institutionId": 3859,
+            "organizationId": 98997,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "International Students and Scholars Services",
+            "organizationProfilePicture": "07192d04-95aa-4020-979f-7452b4391de538a3f0ba-5697-4d17-9e23-4f426b59a965.png",
+            "organizationNames": [],
+            "name": "ISSS Lunch & Dialogue: Student Situational Preparedness w/ Drexel's Department of Public Safety",
+            "description": "<p class=\"cvGsUA direction-ltr align-start para-style-body\"><span class=\"a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none\">Students living in a new city and attending college are susceptible to encountering dangerous situations. Being aware of your surroundings and recognizing situations that are potentially dangerous are key to keeping yourself safe. There are measures students can take to prevent themselves from being victims of a crime. Drexel's Department of Public Safety will provide tips to encourage students to think and act accordingly&mdash;not to be scared, but to be prepared.</span></p>\r\n<p class=\"cvGsUA direction-ltr align-start para-style-body\"><span class=\"a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none\">Light lunch will be provided for students who RSVPed on DragonLink.</span></p>",
+            "location": "Graduate Student Lounge",
+            "startsOn": "2026-05-14T16:30:00+00:00",
+            "endsOn": "2026-05-14T17:30:00+00:00",
+            "imagePath": "ebbd3257-0d93-413b-97a6-09df123034b708a78f15-d99a-499c-9c99-ca59a0ac7efe.png",
+            "theme": "Cultural",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.954090",
+            "longitude": "-75.186860",
+            "recScore": null,
+            "rsvpTotal": 7,
+            "@search.score": 99.7341
+        },
+        {
+            "id": "12371343",
+            "institutionId": 3859,
+            "organizationId": 60018,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Lindy Center for Civic Engagement",
+            "organizationProfilePicture": "e39d6e63-234f-4510-bbab-4cc1bcdd8db0d4453e6a-3816-479d-a4f2-0d5d185f4d21.png",
+            "organizationNames": [],
+            "name": "Coffee & Community",
+            "description": "<p>Join UCP for Coffee &amp; Community every week this term! Come study, hang out, or chat between classes at the Lindy Center on Thursdays 11am - 2pm and our at our partner sites on Wednesdays (Writers Room) and Fridays (Dornsife Center).&nbsp;</p>",
+            "location": "Lindy Center for Civic Engagement",
+            "startsOn": "2026-05-14T15:00:00+00:00",
+            "endsOn": "2026-05-14T18:00:00+00:00",
+            "imagePath": "e95c3e7b-68df-48cb-b64d-913de42f89ad4f8c3cde-c57c-4ddd-93d6-5c1c8de6708e.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 1,
+            "@search.score": 99.74077
+        },
+        {
+            "id": "12464039",
+            "institutionId": 3859,
+            "organizationId": 416969,
+            "organizationIds": [
+                "147412",
+                "416969"
+            ],
+            "branchId": 416969,
+            "branchIds": [
+                "12429",
+                "416969"
+            ],
+            "organizationName": "Drexel Residence Life",
+            "organizationProfilePicture": "aa9dc301-5d1f-4fa4-b7ef-750bcd36d7cf6ea92138-eb84-46ef-8224-b9b31b21ad3a.jpg",
+            "organizationNames": [
+                "Drexel University Counseling Center",
+                "Drexel Residence Life"
+            ],
+            "name": "Meet the Counseling Center",
+            "description": "<p>&ldquo;Meet the Counseling Center&rdquo; is a tabling-style engagement event hosted in collaboration with the Drexel University Counseling Center. Residents will have the opportunity to meet and speak with Counseling Center representatives, learn more about available mental health resources and services, and receive informational materials and giveaways. The event is intended to increase awareness of campus support resources while creating an approachable and welcoming environment for students to connect with staff!</p>",
+            "location": "Van R Lobby",
+            "startsOn": "2026-05-14T16:00:00+00:00",
+            "endsOn": "2026-05-14T18:00:00+00:00",
+            "imagePath": "d6e3e693-bb8a-4340-a2db-ef737a0c6737dfea9c4b-1ec8-47d0-a8ba-ba595baa0eae.png",
+            "theme": "Social",
+            "categoryIds": [
+                "24380"
+            ],
+            "categoryNames": [
+                "Residence Life - Learning and Integration"
+            ],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.959970",
+            "longitude": "-75.190270",
+            "recScore": null,
+            "rsvpTotal": 1,
+            "@search.score": 99.73632
+        },
+        {
+            "id": "12454648",
+            "institutionId": 3859,
+            "organizationId": 167357,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Public Health Doctoral Students Advisory Group",
+            "organizationProfilePicture": "09f2e7d7-f35e-4496-a40b-c303da50c8286eb03e7a-05fd-408d-af02-0163157a5789.png",
+            "organizationNames": [],
+            "name": "PHDSAG DEI Week Series: Creating Youth-Led Change with the Healing Centered Learning Program",
+            "description": "<div class=\"elementToProof\">A panel event, offering an overview of the Center for Nonviolence and Social Justice (CSNJ) and include a panel discussion about the Healing Centered Learning (HCL), support young people impacted by trauma or violence. Pizza and light refreshments will be served.&nbsp;</div>",
+            "location": "Nesbitt Collaboratory (Nesbitt 140)",
+            "startsOn": "2026-05-14T19:00:00+00:00",
+            "endsOn": "2026-05-14T21:00:00+00:00",
+            "imagePath": "fd4d69e5-3e1e-4c13-8484-74e02601fb8cdccf9789-ad0a-4b4c-b747-400131f3f1dd.png",
+            "theme": "Social",
+            "categoryIds": [
+                "271",
+                "275",
+                "276",
+                "286"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Social",
+                "Diversity"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.955930",
+            "longitude": "-75.189140",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.72299
+        },
+        {
+            "id": "12454650",
+            "institutionId": 3859,
+            "organizationId": 12485,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Society of Women Engineers",
+            "organizationProfilePicture": "081f134f-7434-460a-bb8e-143b9b9783605cfb557b-3c45-40b1-835a-185c307f7027.jpg",
+            "organizationNames": [],
+            "name": "Build Your Own Bouquet",
+            "description": "<p>Join us in celebrating Mental Health Awareness Month by creating your own pipe cleaner flower bouquet! Sweet treats will be provided!</p>",
+            "location": "GHALL 406 - Classroom",
+            "startsOn": "2026-05-14T21:30:00+00:00",
+            "endsOn": "2026-05-14T22:30:00+00:00",
+            "imagePath": null,
+            "theme": "Social",
+            "categoryIds": [
+                "275",
+                "276",
+                "286"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Social",
+                "Diversity"
+            ],
+            "benefitNames": [
+                "Credit",
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 5,
+            "@search.score": 99.711876
+        },
+        {
+            "id": "12463444",
+            "institutionId": 3859,
+            "organizationId": 12470,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel Institute of Electrical & Electronics Engineers",
+            "organizationProfilePicture": "93081b9b-bc70-4830-8a3c-7d3ad4bc10c821009c79-0780-4c05-81f7-d3d943d73c02.png",
+            "organizationNames": [],
+            "name": "Drexel IEEE GBM & CO-OP Panel",
+            "description": "<p>Drexel IEEE is hosting its quarterly GBM and hosting a co-op panel with upperclassmen right after! Learn from the E-board and other members of IEEE about career opportunities and how to get involved with the organization!</p>",
+            "location": "PISB 107 - Classroom",
+            "startsOn": "2026-05-14T21:30:00+00:00",
+            "endsOn": "2026-05-14T22:30:00+00:00",
+            "imagePath": null,
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "273"
+            ],
+            "categoryNames": [
+                "General Body Meeting"
+            ],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 7,
+            "@search.score": 99.711876
+        },
+        {
+            "id": "12441227",
+            "institutionId": 3859,
+            "organizationId": 65033,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Student Center for Diversity & Inclusion",
+            "organizationProfilePicture": "f08b6acb-cbf5-4bab-a0e8-792295d463408a532cc0-2f9b-4edc-ac5a-96fd26fec648.png",
+            "organizationNames": [],
+            "name": "SCDI Graduation Celebration",
+            "description": "<p><span data-contrast=\"none\">We are proud to celebrate the incredible journeys of our graduating seniors &mdash; and the cultures, stories, and communities that have shaped them. This year, we invite you to join the entire Drexel community as we celebrate your unique experiences and your time as a Dragon!&nbsp;</span><span data-ccp-props=\"{&quot;335559738&quot;:240,&quot;335559739&quot;:240}\">&nbsp;</span></p>\r\n<p><span data-contrast=\"none\">This exciting event will feature music, food,&nbsp;complimentary headshots, and&nbsp;meaningful moments to honor our Drexel seniors. Graduates can connect&nbsp;</span><span data-contrast=\"none\">with&nbsp;</span><span data-contrast=\"none\">family</span><span data-contrast=\"none\">, friends,&nbsp;</span><span data-contrast=\"none\">and enjoy festivities as we celebrate Drexel's Class of 2026. </span></p>\r\n<p><span data-contrast=\"none\">Students will be able to pick up stoles and cords honoring their various communities during this celebratory event: Kente stoles, Sarape stoles, APIM woven stoles&nbsp;&amp;&nbsp;rainbow cords.&nbsp;For&nbsp;additional&nbsp;information&nbsp;regarding&nbsp;first generation cords,&nbsp;Spiritual and Religious Life pins, and veterans'&nbsp;cords,&nbsp;students should reach out to&nbsp;</span><a href=\"mailto:inclusion@drexel.edu\"><span data-contrast=\"none\">inclusion@drexel.edu.</span></a></p>",
+            "location": "Main Building - Great Court",
+            "startsOn": "2026-05-14T21:00:00+00:00",
+            "endsOn": "2026-05-14T23:00:00+00:00",
+            "imagePath": "7e6a3f7d-bb7b-404d-86b1-2a656b6b01b217a12fe2-6836-4eeb-a7d9-be0b1afa9d6c.png",
+            "theme": "Cultural",
+            "categoryIds": [
+                "276",
+                "284",
+                "286"
+            ],
+            "categoryNames": [
+                "Social",
+                "Cultural",
+                "Diversity"
+            ],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.954090",
+            "longitude": "-75.186860",
+            "recScore": null,
+            "rsvpTotal": 188,
+            "@search.score": 99.714096
+        },
+        {
+            "id": "12454626",
+            "institutionId": 3859,
+            "organizationId": 55437,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Sharing Excess, Drexel Chapter",
+            "organizationProfilePicture": "090ab06d-66a5-46ec-ab79-eeed9c7a7fe01532c3aa-19db-4e8c-b48e-b6755510f20f.png",
+            "organizationNames": [],
+            "name": "GBM #4",
+            "description": "<p>Join us for our General Body Meeting to meet others in the organization and keep up with what we are doing this term.</p>",
+            "location": "The Lindy Center",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-14T23:00:00+00:00",
+            "imagePath": "b4df1b22-79a9-42b4-8e8e-309ee153dce5275393ac-d941-4109-8d50-89cef9c7b5df.png",
+            "theme": "CommunityService",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.958080",
+            "longitude": "-75.188270",
+            "recScore": null,
+            "rsvpTotal": 1,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12306615",
+            "institutionId": 3859,
+            "organizationId": 12480,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel Newman Catholic Community",
+            "organizationProfilePicture": "de5cdba6-3663-4594-a0a9-eeeeeec30a53520247c0-1936-4a97-a56c-ef814b496113.png",
+            "organizationNames": [],
+            "name": "Newman Dinner and Adoration",
+            "description": "<ul>\r\n<li>Join us for fellowship and faith at the Newman Center every Thursday! We will begin with dinner in the church hall at 6:00 PM followed by Adoration in the main church at 7:00 PM.</li>\r\n</ul>",
+            "location": "The Newman Center",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": "bb0360da-e585-4e27-9ad5-c1f7cf77d4e91f41665c-9866-4564-9d05-c965224a74d3.png",
+            "theme": "Spirituality",
+            "categoryIds": [
+                "276",
+                "285"
+            ],
+            "categoryNames": [
+                "Social",
+                "Religious/Spiritual"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.954470",
+            "longitude": "-75.197950",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12463437",
+            "institutionId": 3859,
+            "organizationId": 12464,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel American Society of Mechanical Engineers",
+            "organizationProfilePicture": "ed027daf-a2b6-4712-82e9-d067c9567f4c3767d357-5f05-416e-8156-581914318964.jpg",
+            "organizationNames": [],
+            "name": "ASME Minecraft Create Mod Workshop",
+            "description": "<p>Interested in Minecraft and automation? Come check out ASME&rsquo;s Minecraft Create Mod event! Whether you&rsquo;re brand new to Minecraft or already familiar with Create, we&rsquo;ve got you covered. We&rsquo;ll help you get set up, walk through the basics of the mod, and introduce some mechanical concepts you can use to build your own dream factory. For our main challenge, we&rsquo;ll be automating the process of making a cake in-game. We&rsquo;ll have real cake and snacks for you to enjoy while you build! *NOTE: YOU MUST OWN MINECRAFT JAVA EDITION AND A DEVICE CAPABLE OF RUNNING IT*</p>",
+            "location": "RANDEL 121 - Classroom",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": null,
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12328205",
+            "institutionId": 3859,
+            "organizationId": 12582,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "TechServ",
+            "organizationProfilePicture": "2f896600-cf54-4601-9371-c2e35b0602842a8fa29d-46f6-4e80-8977-61ceae2a5c1b.png",
+            "organizationNames": [],
+            "name": "TechServ Spring Term General Body Meeting",
+            "description": "<p>Join TechServ and make a real impact in Philadelphia communities. We refurbish donated computers and get them into the hands of people who need them most. No experience? No problem! All skill levels are welcome! You'll learn hands-on tech skills, meet other students, and give back in a meaningful way.</p>",
+            "location": "Creese Student Center Room 051",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": "dfc28174-a9ac-4d06-abb9-325b867233380bfde0ab-f9f8-484d-8dd7-d66e606bd4ab.png",
+            "theme": "CommunityService",
+            "categoryIds": [
+                "273",
+                "274",
+                "19658"
+            ],
+            "categoryNames": [
+                "General Body Meeting",
+                "Community Service",
+                "Sustainability"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.953530",
+            "longitude": "-75.188450",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12409322",
+            "institutionId": 3859,
+            "organizationId": 101892,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel University Debate Union",
+            "organizationProfilePicture": "f6c02612-169a-40b5-ae03-0dd72522f22c035a7af5-3205-4d27-be75-35b7bc3d40f3.png",
+            "organizationNames": [],
+            "name": "Spring Practices",
+            "description": "<p>Come attend spring practices. We are open to people of all skill levels.</p>",
+            "location": "ACADMC 216 - Classroom",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": "f8106dd5-d104-41ee-b37f-bbed996c9f4e2daa65c8-f8b4-4680-9535-d009a06c5082.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "281"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Athletic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12463970",
+            "institutionId": 3859,
+            "organizationId": 137875,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Dornsife Undergraduate Student Government Organization (USGO)",
+            "organizationProfilePicture": "3dba5697-d85c-47e7-9d6b-7bb46a402ad579ffea05-8d27-45ec-af0b-781383488f7c.jpeg",
+            "organizationNames": [],
+            "name": "DUSGO Public Health Senior Sendoff!",
+            "description": "<p>Join us as we celebrate our senior class at Dornsife, with food, speeches, and games!</p>",
+            "location": "NSBITT Chapman Court - Lobby",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": null,
+            "theme": "Social",
+            "categoryIds": [
+                "278"
+            ],
+            "categoryNames": [
+                "Academic"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 9,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12464664",
+            "institutionId": 3859,
+            "organizationId": 16622,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "National Society of Black Engineers",
+            "organizationProfilePicture": "078f5982-6151-4d9f-8b41-69962d2b7ce9e57022c0-e311-417a-bdd9-ec4d08155a1c.jpg",
+            "organizationNames": [],
+            "name": "GBM with Southland Industries",
+            "description": "<p>Come join the National Society of Black Engineers for our second General Board Meeting for the Spring Quarter with Southland Industries. Find out more about the company and the intern/co-op opportunities they offer for students.</p>",
+            "location": "PEARL 102 - Classroom",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": null,
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12438179",
+            "institutionId": 3859,
+            "organizationId": 237742,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel CHI User Experience Club",
+            "organizationProfilePicture": "4a5497ea-a9c5-4309-99b0-83647edaf8a3f103bd66-8a8c-4121-80c7-60a07ff8a0b8.png",
+            "organizationNames": [],
+            "name": "DrexelChi: Picnic Social!",
+            "description": "<p><span data-sheets-root=\"1\">Come enjoy the spring weather with the Drexel CHI Club! We're hosting a laid-back picnic social with pizza, drinks, and plenty of space to hang out, meet new people, and catch up with friends. Whether you've been coming to events all year or this is your first time, everyone is welcome. Come close out the term on a good note!</span></p>",
+            "location": "Lanc Walk - DAC 2",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": "c8d82a19-439e-4d54-85c2-11bdddf51d4f44496e33-2164-4094-ad01-f5533002baf2.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 4,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12456581",
+            "institutionId": 3859,
+            "organizationId": 12489,
+            "organizationIds": [
+                "12437",
+                "12489"
+            ],
+            "branchId": 12429,
+            "branchIds": [
+                "12429"
+            ],
+            "organizationName": "Campus Activities Board",
+            "organizationProfilePicture": "4d12e706-d821-4da0-9048-71d6548f6bc0a0bae6b7-6199-4b9f-8781-07fbcea43c1c.png",
+            "organizationNames": [
+                "International Students Union",
+                "Campus Activities Board"
+            ],
+            "name": "Global Culture Fest",
+            "description": "<p>Celebrate Global Cultural Fest! Experience the richness of global cultures through delicious international foods and engaging cultural booths. Enjoy live performances of music and dance from around the world, and participate in hands-on workshops to learn about different traditions.</p>\r\n<p>Join us as we come together to celebrate our diverse international community. Everyone is welcome!</p>",
+            "location": "CREESE - Behrakis Grand Hall",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": null,
+            "theme": "Cultural",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 2,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12375496",
+            "institutionId": 3859,
+            "organizationId": 35861,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Theme Park Engineering and Design Group",
+            "organizationProfilePicture": "6700e7dc-5505-4d4b-b183-e3e0dcf19cd5c4c51e74-0883-4e33-af84-3c763a161bd1.jpg",
+            "organizationNames": [],
+            "name": "Drexel Theme Park Engineering and Design General Body Meeting",
+            "description": "<p>Come join us this week for one of our weekly discussions on the Theme Park industry! We will tackle a new topic each week, whether it be ride engineering, theme park history, members' co-op experience, or host design challenges!</p>\r\n<p>To see this week's GBM topic and other club activities like our projects or trips, check our club media @DrexelTPED, or stay up to date through our Discord! (<a href=\"https://discord.gg/AEfsN25z\">Click here to join our Discord</a>)</p>",
+            "location": "GHALL 368 - Classroom",
+            "startsOn": "2026-05-14T22:30:00+00:00",
+            "endsOn": "2026-05-15T00:00:00+00:00",
+            "imagePath": "66b52de6-1f88-4404-a97c-d46cb1daf9603fec29b2-2244-4cdf-af39-f6db8cfdd8a5.png",
+            "theme": "Social",
+            "categoryIds": [
+                "273",
+                "275",
+                "276",
+                "282"
+            ],
+            "categoryNames": [
+                "General Body Meeting",
+                "Educational",
+                "Social",
+                "Networking"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 1,
+            "@search.score": 99.70743
+        },
+        {
+            "id": "12288515",
+            "institutionId": 3859,
+            "organizationId": 12562,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Unplugged Gaming Organization",
+            "organizationProfilePicture": "36dec874-5aaa-4abb-af2c-ae40cd3b0eafa2c5af41-c6ee-497d-8af8-85e89f0c46ea.jpg",
+            "organizationNames": [],
+            "name": "Board Game Night",
+            "description": "<p>Come join us for a night of playing some fun board games. We will supply games but feel free to bring your own as well!</p>",
+            "location": "CREESE - Greenawalt Room A",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T01:00:00+00:00",
+            "imagePath": "ac82fca6-0408-46f7-a50c-7c14988ae37e57cdc88c-baac-4c2f-8983-1977b527ce31.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12464686",
+            "institutionId": 3859,
+            "organizationId": 100995,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Society of Asian Scientists and Engineers: Drexel University Chapter",
+            "organizationProfilePicture": "7a307f7e-885d-4b30-ae1d-137efc5a9e72c1cc4715-6864-4aaa-abf1-123e042c79eb.png",
+            "organizationNames": [],
+            "name": "DigiKey Workshop Part 2",
+            "description": "<div class=\"Qr7Oae\" role=\"listitem\">\r\n<div class=\"OxAavc NVbRL\" data-required=\"true\" data-item-id=\"1717898309\">\r\n<div class=\"Ih4Dzb\">\r\n<div class=\"q4tvle JqSWld yqQS1\" tabindex=\"0\" role=\"textbox\" aria-label=\"Event Description (min 3 sentences)\" aria-disabled=\"true\">Ready to bring your board to life? In part 2 of our FPGA workshop with DigiKey, you&rsquo;ll get hands-on coding your board and turning it into a real, working system. Learn the basics of FPGA programming, test your designs, and see your hardware actually respond to your code.</div>\r\n</div>\r\n</div>\r\n</div>\r\n<div class=\"Qr7Oae\" role=\"listitem\">\r\n<div class=\"OxAavc NVbRL\" data-required=\"true\" data-item-id=\"1880780977\">\r\n<div class=\"pYfr3c\">\r\n<div class=\"prOLdf\">\r\n<div class=\"g53bl\">\r\n<div class=\"cTDvob D1wxyf RjsPE\" role=\"heading\" aria-level=\"3\" aria-describedby=\"i.desc.1880780977 c389\">&nbsp;</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>",
+            "location": "Senior Design Studio",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T01:00:00+00:00",
+            "imagePath": null,
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.955460",
+            "longitude": "-75.185810",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12415714",
+            "institutionId": 3859,
+            "organizationId": 403783,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Crosswalk Christian Fellowship",
+            "organizationProfilePicture": "6fb6df53-94fc-43cd-8266-c316124c3dd231e468cb-ad4a-4004-baa9-0bee2ce51503.jpg",
+            "organizationNames": [],
+            "name": "Thursday Crosswalk Community Group",
+            "description": "<p>Crosswalk Fellowship is your home away from home! We&rsquo;re a Christian college fellowship within Metro Church, with students living in the Philadelphia area between the ages of 18-22. We gather as a community representing various schools to learn, encourage, challenge, and mature as Christians.</p>\r\n<p>We meet for Community Groups on Wednesdays/Thursdays on Campus. The specific building &amp; room varies, so text &ldquo;Crosswalk&rdquo; to 94000 to connect with us, so we can help you get plugged in! We also meet for Sunday Worship at Metro Church (East Falls), 9:30AM/11:30AM. Rides are provided to both services! Text &ldquo;Crosswalk&rdquo; to 94000 for more information on rides.</p>\r\n<p>If you have any questions, you can email andrew@metrophilly.org. Follow our Instagram @CrosswalkFellowship to stay in the loop!</p>",
+            "location": "PISB 120 - Auditorium",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T01:00:00+00:00",
+            "imagePath": "dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png",
+            "theme": "Spirituality",
+            "categoryIds": [
+                "285"
+            ],
+            "categoryNames": [
+                "Religious/Spiritual"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12415715",
+            "institutionId": 3859,
+            "organizationId": 403783,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Crosswalk Christian Fellowship",
+            "organizationProfilePicture": "6fb6df53-94fc-43cd-8266-c316124c3dd231e468cb-ad4a-4004-baa9-0bee2ce51503.jpg",
+            "organizationNames": [],
+            "name": "Thursday Crosswalk Community Group",
+            "description": "<p>Crosswalk Fellowship is your home away from home! We&rsquo;re a Christian college fellowship within Metro Church, with students living in the Philadelphia area between the ages of 18-22. We gather as a community representing various schools to learn, encourage, challenge, and mature as Christians.</p>\r\n<p>We meet for Community Groups on Wednesdays/Thursdays on Campus. The specific building &amp; room varies, so text &ldquo;Crosswalk&rdquo; to 94000 to connect with us, so we can help you get plugged in! We also meet for Sunday Worship at Metro Church (East Falls), 9:30AM/11:30AM. Rides are provided to both services! Text &ldquo;Crosswalk&rdquo; to 94000 for more information on rides.</p>\r\n<p>If you have any questions, you can email andrew@metrophilly.org. Follow our Instagram @CrosswalkFellowship to stay in the loop!</p>",
+            "location": "PISB 109 - Classroom",
+            "startsOn": "2026-05-14T22:00:00+00:00",
+            "endsOn": "2026-05-15T01:00:00+00:00",
+            "imagePath": "dde2418d-46f4-4d97-b937-97a11cdf0d875a6751a8-f667-4029-aa6b-477e211a1e5b.png",
+            "theme": "Spirituality",
+            "categoryIds": [
+                "285"
+            ],
+            "categoryNames": [
+                "Religious/Spiritual"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.70965
+        },
+        {
+            "id": "12342872",
+            "institutionId": 3859,
+            "organizationId": 84809,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Cru",
+            "organizationProfilePicture": "c29f8015-f928-4715-85e0-10664719dfc3d07151c5-c0cb-41b6-8ba8-18a16794917b.png",
+            "organizationNames": [],
+            "name": "Cru Large Group",
+            "description": "<p>Join us for a time of community at Cru Large Group. Our weekly large group meeting consists of student led worship, games, and discussions about spiritual life and questions. This is a great time to explore questions and to grow in community here at Drexel. Time listed is our official start time, so feel free to get here a few minutes early for some time to meet everyone!</p>\r\n<p>&nbsp;</p>",
+            "location": "Ida Chen & Commons",
+            "startsOn": "2026-05-14T23:00:00+00:00",
+            "endsOn": "2026-05-15T01:00:00+00:00",
+            "imagePath": "f9d2235e-8e4d-4589-b983-c226e2cb3a7fc6c06728-ec50-49cf-be04-469b4ee2e06d.png",
+            "theme": "Spirituality",
+            "categoryIds": [
+                "276",
+                "285"
+            ],
+            "categoryNames": [
+                "Social",
+                "Religious/Spiritual"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.7052
+        },
+        {
+            "id": "12454642",
+            "institutionId": 3859,
+            "organizationId": 119078,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "The Accounting Society",
+            "organizationProfilePicture": "6aacb93a-e6fb-4af2-956a-c954d986dcac010df1d6-1a19-43a6-b9ea-253ec20527c6.png",
+            "organizationNames": [],
+            "name": "The Numbers & Strategy Summit",
+            "description": "<p>Case competition event where student teams analyze a real-world financial or business scenario and present strategic, data-driven solutions to a panel of judges.</p>",
+            "location": "GHALL 137 - Classroom w/ 14 PCs",
+            "startsOn": "2026-05-14T21:30:00+00:00",
+            "endsOn": "2026-05-15T01:30:00+00:00",
+            "imagePath": null,
+            "theme": "Social",
+            "categoryIds": [
+                "278"
+            ],
+            "categoryNames": [
+                "Academic"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 1,
+            "@search.score": 99.711876
         }
     ]
 }
