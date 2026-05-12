@@ -1,6 +1,6 @@
 [
     {
-        "id": "019e1a72753970ed80f86fb8d3fe102d",
+        "id": "019e1a88a3c573898cb44ac1f86edf2b",
         "source": "dragonlink",
         "name": "Exec Board Meetings",
         "org_name": "Drexel Dance Marathon",
@@ -14,7 +14,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86f9d06e49c3e",
+        "id": "019e1a88a3c573898cb44aa67727c45c",
         "source": "dragonlink",
         "name": "Chapter",
         "org_name": "Delta Gamma \u2013 Eta Upsilon",
@@ -28,7 +28,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa1902ca8c5",
+        "id": "019e1a88a3c573898cb44aaa4706e083",
         "source": "dragonlink",
         "name": "Magic: The Gathering",
         "org_name": "Drexel Gaming Association",
@@ -42,21 +42,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86f9a60317481",
-        "source": "dragonlink",
-        "name": "Weekly Executive Board Meeting",
-        "org_name": "South Asian Students Association",
-        "location": "GHALL 121",
-        "image_url": "https://drexel.campuslabs.com/engage/image/252c0e10-fa7a-44a1-a9fb-4f0dcfc73674cabb7d23-4daf-4aa0-8c2c-215ea08b92ac.png",
-        "start_time": 1778540400,
-        "end_time": 1778545800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12408923",
-        "event_status": "in-person",
-        "theme": "cultural",
-        "perks": []
-    },
-    {
-        "id": "019e1a72753970ed80f86f9b546a1694",
+        "id": "019e1a88a3c474c58b89d906988326a7",
         "source": "dragonlink",
         "name": "Pizza and Prayer!",
         "org_name": "Drexel Newman Catholic Community",
@@ -72,7 +58,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86f9c8be57b31",
+        "id": "019e1a88a3c474c58b89d9077f28fd7a",
         "source": "dragonlink",
         "name": "USGA Joint Session",
         "org_name": "Undergraduate Student Government Association",
@@ -86,7 +72,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86f9eb79b226d",
+        "id": "019e1a88a3c573898cb44aa72d040f6b",
         "source": "dragonlink",
         "name": "Nana Kwasi and Tristan's Bible study ",
         "org_name": "Every Nation Campus",
@@ -100,7 +86,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86f9f05c7d9a0",
+        "id": "019e1a88a3c573898cb44aa83d12e286",
         "source": "dragonlink",
         "name": "Mario Kart Weekly",
         "org_name": "Drexel Gaming Association",
@@ -114,7 +100,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa092f2bd4e",
+        "id": "019e1a88a3c573898cb44aa93116aee1",
         "source": "dragonlink",
         "name": "Overflow Dance Ministry Practice",
         "org_name": "Harvest Christian Fellowship",
@@ -128,7 +114,7 @@
         "perks": []
     },
     {
-        "id": "019e1a728e9c74618008dc11826e935d",
+        "id": "019e1a88c21f75efa268f24cff5d259b",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Stacy Stanislaw",
@@ -142,7 +128,7 @@
         "perks": []
     },
     {
-        "id": "019e1a728e9d7055a9a0a1a9d4fdb012",
+        "id": "019e1a88c21f75efa268f24d3f75a959",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -156,7 +142,7 @@
         "perks": []
     },
     {
-        "id": "019e1a728e9d7055a9a0a1aa403fa51f",
+        "id": "019e1a88c21f75efa268f24efcd2b3c9",
         "source": "drexel_events",
         "name": "Pharmacology & Physiology Seminar",
         "org_name": "Carolann Imbesi",
@@ -170,7 +156,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72a8327146ad5cc47564cec9dc",
+        "id": "019e1a88dbd2777dbdf5d469f658d646",
         "source": "drexel_events",
         "name": "Online Open House: MS/PhD in Molecular & Cell Biology & Genetics",
         "org_name": "Bency Oonnoonny",
@@ -184,7 +170,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72a8327146ad5cc476dd140a6e",
+        "id": "019e1a88dbd2777dbdf5d46ad05377d4",
         "source": "drexel_events",
         "name": "Sun Catcher Grab-N-Go Art",
         "org_name": "Pennoni Honors College",
@@ -200,7 +186,7 @@
         ]
     },
     {
-        "id": "019e1a72a8327146ad5cc477704e7662",
+        "id": "019e1a88dbd2777dbdf5d46b1539968a",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -214,7 +200,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72a8327146ad5cc478cbf9ff8b",
+        "id": "019e1a88dbd2777dbdf5d46c747e457a",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -228,7 +214,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72a8327146ad5cc479320be4a0",
+        "id": "019e1a88dbd2777dbdf5d46d487f92f4",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Allie Humphries",
@@ -242,7 +228,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72a8327146ad5cc47a496d84fb",
+        "id": "019e1a88dbd2777dbdf5d46ef3d91eab",
         "source": "drexel_events",
         "name": "Graduate Students Resume Drop-ins",
         "org_name": "Ken Bohrer",
@@ -256,7 +242,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d3bf25bd478",
+        "id": "019e1a89044e719c8f8528e48f093b85",
         "source": "drexel_events",
         "name": "A Novel Method of Exosome Loading Using Direct Cell Transfection",
         "org_name": "Natalia Broz",
@@ -270,7 +256,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa2f3474904",
+        "id": "019e1a88a3c573898cb44aab5edecb00",
         "source": "dragonlink",
         "name": "Drink Sale Fundraiser",
         "org_name": "Phi Delta Epsilon (PhiDE)",
@@ -284,7 +270,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d3ccb594878",
+        "id": "019e1a89044e719c8f8528e59f4b13a0",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -298,7 +284,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d3db04dd984",
+        "id": "019e1a89044e719c8f8528e604ac4a57",
         "source": "drexel_events",
         "name": "Drexel Writing Festival",
         "org_name": "Henry Israeli",
@@ -312,7 +298,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa305fd39d5",
+        "id": "019e1a88a3c573898cb44aacea86039a",
         "source": "dragonlink",
         "name": "PA Student Bake Sale ",
         "org_name": "Wilbur W. Oaks Physician Assistant Student Society",
@@ -326,7 +312,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa4d4b211b3",
+        "id": "019e1a88a3c573898cb44aadc9fdafab",
         "source": "dragonlink",
         "name": " Sun Catcher Grab-N-Go Art",
         "org_name": "Pennoni Honors College",
@@ -342,7 +328,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fa50adf69c8",
+        "id": "019e1a88a3c573898cb44aae1c9cbd71",
         "source": "dragonlink",
         "name": "Lemonade and Ice Pop Sale",
         "org_name": "Kappa Phi Gamma, Sorority Inc.",
@@ -356,7 +342,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d3e73e567dd",
+        "id": "019e1a89044e719c8f8528e7719a255d",
         "source": "drexel_events",
         "name": "Sharing Excess",
         "org_name": "Dornsife Center",
@@ -372,7 +358,7 @@
         ]
     },
     {
-        "id": "019e1a72c08a7602a9f41d3f998b80bb",
+        "id": "019e1a89044e719c8f8528e8836fa58f",
         "source": "drexel_events",
         "name": "Dine and Opine: Trivia Night with Don Milley",
         "org_name": "Melissa Tevere",
@@ -389,7 +375,7 @@
         ]
     },
     {
-        "id": "019e1a72c08a7602a9f41d404519e073",
+        "id": "019e1a89044e719c8f8528e9de6e6fab",
         "source": "drexel_events",
         "name": "SAFE (Self-Awareness for Everyone) Class",
         "org_name": "Public Safety",
@@ -403,7 +389,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa746e9722b",
+        "id": "019e1a88a3c573898cb44ab0f3770102",
         "source": "dragonlink",
         "name": "Yuzu and You",
         "org_name": "DUCOM Pagoda Society",
@@ -417,7 +403,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa6078409ce",
+        "id": "019e1a88a3c573898cb44aafd42e3593",
         "source": "dragonlink",
         "name": "Professional Presence: Branding & Networking Workshop",
         "org_name": "Dragon's First",
@@ -431,7 +417,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa8c79cd3c2",
+        "id": "019e1a88a3c573898cb44ab192eaa6d8",
         "source": "dragonlink",
         "name": "Weekly Halaqa",
         "org_name": "Drexel Muslim Students Association",
@@ -445,7 +431,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fa9467b0abf",
+        "id": "019e1a88a3c573898cb44ab2a256cbea",
         "source": "dragonlink",
         "name": "Drexel University Real Estate Club Networking Event ",
         "org_name": "Drexel University Real Estate Club",
@@ -461,7 +447,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86faa462f4c2a",
+        "id": "019e1a88a3c573898cb44ab379c2bfd9",
         "source": "dragonlink",
         "name": "Letters of Kindness",
         "org_name": "Drexel Residence Life",
@@ -477,7 +463,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fabbe8ab4ee",
+        "id": "019e1a88a3c573898cb44ab4fb8e2bb8",
         "source": "dragonlink",
         "name": "Drexel Speaks Weekly Meeting ",
         "org_name": "Drexel Speaks",
@@ -491,7 +477,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fae18cb92e0",
+        "id": "019e1a88a3c573898cb44ab7dd66590a",
         "source": "dragonlink",
         "name": "DASA Fashion Show Practice",
         "org_name": "Drexel African Students Association",
@@ -505,7 +491,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fafdc6b677f",
+        "id": "019e1a88a3c573898cb44ab8e9c9d60a",
         "source": "dragonlink",
         "name": "Popin' Cookin' DIY Night",
         "org_name": "Japanese Undergraduate Student Association",
@@ -521,7 +507,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fb096ecea1f",
+        "id": "019e1a88a3c573898cb44ab9fcc63acd",
         "source": "dragonlink",
         "name": "Spring Practices",
         "org_name": "Drexel University Debate Union",
@@ -535,7 +521,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fb1525cf2d8",
+        "id": "019e1a88a3c573898cb44abafae1ea4a",
         "source": "dragonlink",
         "name": "Mandarin Learning",
         "org_name": "Global China Connection",
@@ -549,7 +535,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fb4087f2633",
+        "id": "019e1a88a3c573898cb44abd416fa4a1",
         "source": "dragonlink",
         "name": "Associate Committee Case Competition",
         "org_name": "Business Analytics Club",
@@ -563,7 +549,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fb90af0e9f6",
+        "id": "019e1a88a3c573898cb44ac25db41985",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -577,7 +563,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbac3255441",
+        "id": "019e1a88a3c573898cb44ac3e2d417d4",
         "source": "dragonlink",
         "name": "Relay race ",
         "org_name": "National Pan-Hellenic Council",
@@ -591,7 +577,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbfd53bbc19",
+        "id": "019e1a88a3c573898cb44ac82e412cb5",
         "source": "dragonlink",
         "name": "Super Smash Brothers Melee Weekly",
         "org_name": "Drexel Gaming Association",
@@ -605,7 +591,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fac2eb097a2",
+        "id": "019e1a88a3c573898cb44ab50fb1c29f",
         "source": "dragonlink",
         "name": "DSC Bible Study",
         "org_name": "Drexel Students for Christ",
@@ -619,7 +605,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fad029f492b",
+        "id": "019e1a88a3c573898cb44ab6cd8e843f",
         "source": "dragonlink",
         "name": "Med-Peds Match Panel",
         "org_name": "DUCOM Med-Peds Interest Group",
@@ -633,7 +619,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fb5688bbf39",
+        "id": "019e1a88a3c573898cb44abe85631bb7",
         "source": "dragonlink",
         "name": "Engineering Field Day",
         "org_name": "ASHRAE",
@@ -649,7 +635,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fb662357204",
+        "id": "019e1a88a3c573898cb44abf1efee663",
         "source": "dragonlink",
         "name": "Executive Board Meeting",
         "org_name": "Drexel Muslim Students Association",
@@ -663,7 +649,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbbe26ee628",
+        "id": "019e1a88a3c573898cb44ac431c67de8",
         "source": "dragonlink",
         "name": "Picnic in the Park!",
         "org_name": "Campus Activities Board",
@@ -680,7 +666,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fb206c5821a",
+        "id": "019e1a88a3c573898cb44abbf1528e9b",
         "source": "dragonlink",
         "name": "EWB Fundraising & Marketing Department Meeting",
         "org_name": "Engineers Without Borders",
@@ -694,7 +680,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fb30ff94b69",
+        "id": "019e1a88a3c573898cb44abc3b418245",
         "source": "dragonlink",
         "name": "Drexel University Circle K General Body Meeting",
         "org_name": "Drexel University Circle K",
@@ -711,7 +697,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fb7f4f418dd",
+        "id": "019e1a88a3c573898cb44ac0e2d5be89",
         "source": "dragonlink",
         "name": "Exec Board Meetings",
         "org_name": "Drexel Dance Marathon",
@@ -725,7 +711,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbc16bc5f20",
+        "id": "019e1a88a3c573898cb44ac5a66b4cca",
         "source": "dragonlink",
         "name": "Drexel Dragon Jedi Meeting",
         "org_name": "Dragon Jedi",
@@ -739,7 +725,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbe7bc8f7b1",
+        "id": "019e1a88a3c573898cb44ac796a539fc",
         "source": "dragonlink",
         "name": "Chapter",
         "org_name": "Delta Phi Epsilon",
@@ -753,7 +739,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fbddf66529c",
+        "id": "019e1a88a3c573898cb44ac6c22bc9f2",
         "source": "dragonlink",
         "name": "SASE Spring Term E-board Meetings",
         "org_name": "Society of Asian Scientists and Engineers: Drexel University Chapter",
@@ -767,7 +753,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d412ae1cc2a",
+        "id": "019e1a89044e719c8f8528ea98785cf0",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Stacy Stanislaw",
@@ -781,7 +767,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d421fbb8aee",
+        "id": "019e1a89044e719c8f8528eb548c764e",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -795,7 +781,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d4376f25524",
+        "id": "019e1a89044e719c8f8528ecfdca44ad",
         "source": "drexel_events",
         "name": "Drexel Materials Spring Seminar Series",
         "org_name": "Materials Science and Engineering",
@@ -809,7 +795,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d448f222416",
+        "id": "019e1a89044e719c8f8528eda24a6d9f",
         "source": "drexel_events",
         "name": "Online Open House: MS in Drug Discovery and Development",
         "org_name": "Bency Oonnoonny",
@@ -823,7 +809,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d45fd8adc1a",
+        "id": "019e1a89044e719c8f8528eec2a01ef9",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -837,7 +823,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d460f1e8984",
+        "id": "019e1a89044e719c8f8528ef0a261627",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -851,7 +837,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72c08a7602a9f41d4712178e5f",
+        "id": "019e1a89044e719c8f8528f04cb6a1ce",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -865,7 +851,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55072d5a0d685a3726bc3bd",
+        "id": "019e1a8917ce73b7a3ff577ab09f6fb6",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Allie Humphries",
@@ -879,7 +865,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fc0aba7c745",
+        "id": "019e1a88a3c573898cb44ac94496e0e8",
         "source": "dragonlink",
         "name": "Greek Week Tile Judging Night",
         "org_name": "Intercultural Greek Council",
@@ -893,7 +879,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55072d5a0d685a49bfb6781",
+        "id": "019e1a8917ce73b7a3ff577b964fae56",
         "source": "drexel_events",
         "name": "Jonathan Mann Health & Human Rights Memorial Lecture",
         "org_name": "Dan Castranova",
@@ -909,7 +895,7 @@
         ]
     },
     {
-        "id": "019e1a72753970ed80f86fc1eded720a",
+        "id": "019e1a88a3c573898cb44aca4913d5de",
         "source": "dragonlink",
         "name": "NSBE Bake Sale ",
         "org_name": "National Society of Black Engineers",
@@ -923,7 +909,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753970ed80f86fc2cebb9c6f",
+        "id": "019e1a88a3c573898cb44acbe49ed574",
         "source": "dragonlink",
         "name": "DASA Bake Sale",
         "org_name": "Drexel African Students Association",
@@ -937,7 +923,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571be1559893f",
+        "id": "019e1a88a3c573898cb44acfa32c3034",
         "source": "dragonlink",
         "name": "DKPC Refresher Drinks Fundraiser",
         "org_name": "Drexel K-Pop Club",
@@ -951,7 +937,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571bb61d08635",
+        "id": "019e1a88a3c573898cb44acc2bcd95a3",
         "source": "dragonlink",
         "name": "Let's Talk: Identity",
         "org_name": "Center for Black Culture",
@@ -965,7 +951,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55173a7ab9fe55e08c7e6cd",
+        "id": "019e1a8917ce73b7a3ff577c8eb460d1",
         "source": "drexel_events",
         "name": "Blindness and Low Vision Studies Prospective Student Q&A",
         "org_name": "Bency Oonnoonny",
@@ -979,7 +965,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571bc2b4a07e6",
+        "id": "019e1a88a3c573898cb44acd479595d0",
         "source": "dragonlink",
         "name": "Unplugging the Mind",
         "org_name": "Drexel University Counseling Center",
@@ -995,7 +981,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571bd75c724d0",
+        "id": "019e1a88a3c573898cb44ace4cfe59d7",
         "source": "dragonlink",
         "name": "Journal Club Meeting",
         "org_name": "DUCOM Journal Club",
@@ -1009,7 +995,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571bf11815742",
+        "id": "019e1a88a3c573898cb44ad071e4d1f1",
         "source": "dragonlink",
         "name": "SWE Spring 2026 Officer Meetings",
         "org_name": "Society of Women Engineers",
@@ -1023,7 +1009,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c0d4288049",
+        "id": "019e1a88a3c573898cb44ad1b819477a",
         "source": "dragonlink",
         "name": "Real Talk with Robia",
         "org_name": "Center for Black Culture",
@@ -1040,7 +1026,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571c1b222a085",
+        "id": "019e1a88a3c573898cb44ad2c38e63b7",
         "source": "dragonlink",
         "name": "open study night",
         "org_name": "Neurodragons",
@@ -1056,7 +1042,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571c267288c53",
+        "id": "019e1a88a3c573898cb44ad3777db780",
         "source": "dragonlink",
         "name": "MEDFIT Spring Walk to Playa Bowls",
         "org_name": "MedFit Mind and Movement",
@@ -1070,7 +1056,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c3ca6fb37e",
+        "id": "019e1a88a3c573898cb44ad4d2c75319",
         "source": "dragonlink",
         "name": "Philadelphia Park Cleanup",
         "org_name": "Biomedical Science Graduate Student Association",
@@ -1084,7 +1070,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c4df39ca7c",
+        "id": "019e1a88a3c573898cb44ad530653501",
         "source": "dragonlink",
         "name": "DBUA CO-OP Panel",
         "org_name": "Drexel Biomedical Engineering Undergraduate Association",
@@ -1101,7 +1087,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571c54e531717",
+        "id": "019e1a88a3c573898cb44ad61c48c722",
         "source": "dragonlink",
         "name": "Aaron and Edwin's bible study ",
         "org_name": "Every Nation Campus",
@@ -1115,7 +1101,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c68e852af6",
+        "id": "019e1a88a3c573898cb44ad747f1ccf6",
         "source": "dragonlink",
         "name": "Clay Keychains!",
         "org_name": "Depict",
@@ -1131,7 +1117,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571c751704bb4",
+        "id": "019e1a88a3c573898cb44ad85240af95",
         "source": "dragonlink",
         "name": "Cru Co-ed Bible Study",
         "org_name": "Cru",
@@ -1145,7 +1131,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c8b7cfbf23",
+        "id": "019e1a88a3c573898cb44ad90db6bab6",
         "source": "dragonlink",
         "name": "DIY Suncatchers",
         "org_name": "Alpha Omega Epsilon ",
@@ -1159,7 +1145,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571c9b956fb13",
+        "id": "019e1a88a3c573898cb44ada23e2609f",
         "source": "dragonlink",
         "name": "EWB Exec Board/General Body Meeting",
         "org_name": "Engineers Without Borders",
@@ -1173,7 +1159,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ca994c5cc8",
+        "id": "019e1a88a3c573898cb44adba11164eb",
         "source": "dragonlink",
         "name": "Weekly chapter meetings",
         "org_name": "Phi Alpha Delta Pre-Law Fraternity",
@@ -1187,7 +1173,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571cbee3706ec",
+        "id": "019e1a88a3c573898cb44adc3f536a35",
         "source": "dragonlink",
         "name": "Hang with Hindu YUVA - GBM",
         "org_name": "Hindu YUVA @ Drexel",
@@ -1204,7 +1190,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571ccaf402d3a",
+        "id": "019e1a88a3c573898cb44add7cd02451",
         "source": "dragonlink",
         "name": "Weekend Warriors SLT Meeting",
         "org_name": "Weekend Warriors",
@@ -1218,7 +1204,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571cd447f3e32",
+        "id": "019e1a88a3c573898cb44adef5b3a5f9",
         "source": "dragonlink",
         "name": "Fiber Arts General Body Meeting",
         "org_name": "Drexel Fiber Arts Club",
@@ -1232,7 +1218,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ceff20cf80",
+        "id": "019e1a88a3c573898cb44adffac499ed",
         "source": "dragonlink",
         "name": "Drexel CHAARG Weekly Workout",
         "org_name": "Drexel CHAARG",
@@ -1246,7 +1232,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571cfa4eda4eb",
+        "id": "019e1a88a3c573898cb44ae06b2e6759",
         "source": "dragonlink",
         "name": "TechServ Spring Term General Body Meeting",
         "org_name": "TechServ",
@@ -1260,7 +1246,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d033901c43",
+        "id": "019e1a88a3c573898cb44ae101e3fe35",
         "source": "dragonlink",
         "name": "Elections",
         "org_name": "Phi Alpha Delta Pre-Law Fraternity",
@@ -1274,7 +1260,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d13a87903f",
+        "id": "019e1a88a3c573898cb44ae24408e988",
         "source": "dragonlink",
         "name": "DASA Fashion Show Practice",
         "org_name": "Drexel African Students Association",
@@ -1288,7 +1274,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d282e6a141",
+        "id": "019e1a88a3c673e5a826895a8a503622",
         "source": "dragonlink",
         "name": "Greek Week: Service Project",
         "org_name": "Fraternity and Sorority Life",
@@ -1302,7 +1288,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d3f528b8cb",
+        "id": "019e1a88a3c673e5a826895bf1d65b84",
         "source": "dragonlink",
         "name": "Case Competition ",
         "org_name": "Business Analytics Club",
@@ -1316,7 +1302,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d47f96cc3c",
+        "id": "019e1a88a3c673e5a826895c3652b53c",
         "source": "dragonlink",
         "name": "Brain Brawl",
         "org_name": "Ascend Drexel Student Chapter",
@@ -1332,7 +1318,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571d8c33ac7c4",
+        "id": "019e1a88a3c673e5a826896048ef30f8",
         "source": "dragonlink",
         "name": "Wednesday Community Group",
         "org_name": "Crosswalk Christian Fellowship",
@@ -1346,7 +1332,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d939782e48",
+        "id": "019e1a88a3c673e5a8268961ad16bc13",
         "source": "dragonlink",
         "name": "Wednesday Community Group",
         "org_name": "Crosswalk Christian Fellowship",
@@ -1360,7 +1346,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ddf7e94069",
+        "id": "019e1a88a3c673e5a8268965a366250d",
         "source": "dragonlink",
         "name": "Warhammer 40K",
         "org_name": "Drexel Gaming Association",
@@ -1374,7 +1360,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d5446803cc",
+        "id": "019e1a88a3c673e5a826895d1fbe2536",
         "source": "dragonlink",
         "name": "Free Dinner & More!",
         "org_name": "Open Door Christian Community ",
@@ -1391,7 +1377,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571d62351016a",
+        "id": "019e1a88a3c673e5a826895e8fd968d5",
         "source": "dragonlink",
         "name": "SHPE Karaoke Night",
         "org_name": "Society of Hispanic Professional Engineers - Drexel Chapter",
@@ -1405,7 +1391,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571d74e90df24",
+        "id": "019e1a88a3c673e5a826895fb46e84f2",
         "source": "dragonlink",
         "name": "Slice and Swirl ",
         "org_name": "Jewish Student Association",
@@ -1419,7 +1405,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571da87165d75",
+        "id": "019e1a88a3c673e5a8268962c15fe2a4",
         "source": "dragonlink",
         "name": "Weekly WEH Meeting!!!",
         "org_name": "Drexel WEH",
@@ -1433,7 +1419,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571dbf0e99c9c",
+        "id": "019e1a88a3c673e5a8268963e7d15da4",
         "source": "dragonlink",
         "name": "PHC Weekly Spring Meetings",
         "org_name": "Panhellenic Council",
@@ -1447,7 +1433,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571dcf267b25a",
+        "id": "019e1a88a3c673e5a82689640375e63e",
         "source": "dragonlink",
         "name": "Weekly Prayer Meeting",
         "org_name": "Story Fellowship",
@@ -1461,7 +1447,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55173a7ab9fe55f1cfb01a1",
+        "id": "019e1a8917ce73b7a3ff577d38f32a34",
         "source": "drexel_events",
         "name": "Class of 2026 Commencement",
         "org_name": "College of Medicine",
@@ -1475,7 +1461,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55173a7ab9fe560c7a85732",
+        "id": "019e1a8917ce73b7a3ff577ee1485892",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -1489,7 +1475,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55173a7ab9fe561e24b4c81",
+        "id": "019e1a8917ce73b7a3ff577ff0459e97",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Stacy Stanislaw",
@@ -1503,7 +1489,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72d55173a7ab9fe562ebb869f8",
+        "id": "019e1a8917ce73b7a3ff578020e64c47",
         "source": "drexel_events",
         "name": "Graduate Student Writing Group",
         "org_name": "Julia Pines",
@@ -1517,7 +1503,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72f08a739a91696b3623017991",
+        "id": "019e1a894e247431958ecf4c0ab6860d",
         "source": "drexel_events",
         "name": "Improving Liver Cancer Radiotherapy using Ultrasound-triggered Microbubble Destruction",
         "org_name": "Natalia Broz",
@@ -1531,7 +1517,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72f08a739a91696b37d58055de",
+        "id": "019e1a894e247431958ecf4d01bdd7b5",
         "source": "drexel_events",
         "name": "Coffee & Community",
         "org_name": "Lindy Center",
@@ -1547,7 +1533,7 @@
         ]
     },
     {
-        "id": "019e1a72f08a739a91696b389d4a4237",
+        "id": "019e1a894e247431958ecf4e41b83bc0",
         "source": "drexel_events",
         "name": "Community Aid & Well-being: Make One Take One",
         "org_name": "Drexel Collection",
@@ -1563,7 +1549,7 @@
         ]
     },
     {
-        "id": "019e1a72f08a739a91696b39f4c3920f",
+        "id": "019e1a894e247431958ecf4f29b89797",
         "source": "drexel_events",
         "name": "Senior Series: Ace That Interview!\u202f",
         "org_name": "Amanda Stagg",
@@ -1577,7 +1563,7 @@
         "perks": []
     },
     {
-        "id": "019e1a7305b375f4bb3799e01ed16b8d",
+        "id": "019e1a89596f773c93a047fa4f88b823",
         "source": "drexel_events",
         "name": "Writing to Make Things Happen",
         "org_name": "Dierdre McMahon",
@@ -1591,7 +1577,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2abbeec23f6",
+        "id": "019e1a89667a75cda0150dde42c127aa",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1605,7 +1591,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2ac027e0b02",
+        "id": "019e1a89667a75cda0150ddf7b6fbf09",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -1619,7 +1605,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2ad805aaa77",
+        "id": "019e1a89667a75cda0150de0c7d6cebd",
         "source": "drexel_events",
         "name": "ISSS Lunch & Dialogue: Student Situational Preparedness w/ DPS Officer",
         "org_name": "International Students and Scholars Services",
@@ -1635,7 +1621,7 @@
         ]
     },
     {
-        "id": "019e1a73122074fcb64ff2aee2f8cfbe",
+        "id": "019e1a89667a75cda0150de18a28b8ff",
         "source": "drexel_events",
         "name": "Dorm Objects 101 Guided Tours",
         "org_name": "Lynn Waddell",
@@ -1649,7 +1635,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2afe2517267",
+        "id": "019e1a89667b757ea2caa425c2a94040",
         "source": "drexel_events",
         "name": "2026 Tree of the Year Ceremony",
         "org_name": "Finance and Administrative Services",
@@ -1663,7 +1649,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2b0497d1c9b",
+        "id": "019e1a89667b757ea2caa4265ef3b241",
         "source": "drexel_events",
         "name": "Employee Engagement Session: Library, Collections and Archives",
         "org_name": "Human Resources",
@@ -1677,7 +1663,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73122074fcb64ff2b14e3c653e",
+        "id": "019e1a89667b757ea2caa427a0439b69",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Allie Humphries",
@@ -1691,7 +1677,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ded00c4a61",
+        "id": "019e1a88a3c673e5a826896672ee64dd",
         "source": "dragonlink",
         "name": "Getting Started in Medical Student Research: Library Resources & Research Basics",
         "org_name": "DUCOM Pagoda Society",
@@ -1705,7 +1691,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571e040790bc5",
+        "id": "019e1a88a3c673e5a826896815ca4864",
         "source": "dragonlink",
         "name": "Coffee & Community",
         "org_name": "Lindy Center for Civic Engagement",
@@ -1721,7 +1707,7 @@
         ]
     },
     {
-        "id": "019e1a73122074fcb64ff2b2b8706cf2",
+        "id": "019e1a89667b757ea2caa428e803bd7a",
         "source": "drexel_events",
         "name": "Creating Youth-Led Change with the Healing Centered Learning Program at CNSJ",
         "org_name": "Caroline Kravitz",
@@ -1737,7 +1723,7 @@
         ]
     },
     {
-        "id": "019e1a7322ea713a8d4b9aff0e7c88f1",
+        "id": "019e1a8980cc73979c30790ea10cf65d",
         "source": "drexel_events",
         "name": "Physics Colloquium",
         "org_name": "Dr. Brigita Urbanc",
@@ -1751,7 +1737,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571e1ddcbd0b4",
+        "id": "019e1a88a3c673e5a8268969379ad809",
         "source": "dragonlink",
         "name": "Meet the Counseling Center",
         "org_name": "Drexel Residence Life",
@@ -1768,7 +1754,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571df6acf545c",
+        "id": "019e1a88a3c673e5a8268967e61fed8b",
         "source": "dragonlink",
         "name": "ISSS Lunch & Dialogue: Student Situational Preparedness w/ Drexel's Department of Public Safety",
         "org_name": "International Students and Scholars Services",
@@ -1784,7 +1770,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e2b23f9675",
+        "id": "019e1a88a3c673e5a826896a7fa838f1",
         "source": "dragonlink",
         "name": "PHDSAG DEI Week Series: Creating Youth-Led Change with the Healing Centered Learning Program",
         "org_name": "Public Health Doctoral Students Advisory Group",
@@ -1800,7 +1786,7 @@
         ]
     },
     {
-        "id": "019e1a733fc77437b3c5428ecd41f71a",
+        "id": "019e1a89941471409d93df45e3765c47",
         "source": "drexel_events",
         "name": "Little Women, The Musical",
         "org_name": "Performing Arts",
@@ -1814,7 +1800,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571e51c58b744",
+        "id": "019e1a88a3c673e5a826896d10dcd35e",
         "source": "dragonlink",
         "name": "SCDI Graduation Celebration",
         "org_name": "Student Center for Diversity & Inclusion",
@@ -1831,7 +1817,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e31a851ccb",
+        "id": "019e1a88a3c673e5a826896bf7fc8d8f",
         "source": "dragonlink",
         "name": "Build Your Own Bouquet",
         "org_name": "Society of Women Engineers",
@@ -1848,7 +1834,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e48a350f58",
+        "id": "019e1a88a3c673e5a826896c06dcd0b0",
         "source": "dragonlink",
         "name": "Drexel IEEE GBM & CO-OP Panel",
         "org_name": "Drexel Institute of Electrical & Electronics Engineers",
@@ -1865,7 +1851,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571f5b5d0ca3c",
+        "id": "019e1a88a3c673e5a826897de4ce9edd",
         "source": "dragonlink",
         "name": "The Numbers & Strategy Summit",
         "org_name": "The Accounting Society",
@@ -1881,7 +1867,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e67614e5ce",
+        "id": "019e1a88a3c673e5a826896ead53475b",
         "source": "dragonlink",
         "name": "GBM #4",
         "org_name": "Sharing Excess, Drexel Chapter",
@@ -1898,7 +1884,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e7e28a9e33",
+        "id": "019e1a88a3c673e5a826896f12e56de5",
         "source": "dragonlink",
         "name": "Newman Dinner and Adoration",
         "org_name": "Drexel Newman Catholic Community",
@@ -1914,7 +1900,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e804c10b80",
+        "id": "019e1a88a3c673e5a8268970b0a4464a",
         "source": "dragonlink",
         "name": "ASME Minecraft Create Mod Workshop",
         "org_name": "Drexel American Society of Mechanical Engineers",
@@ -1930,7 +1916,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571e9a1851cd8",
+        "id": "019e1a88a3c673e5a82689715c7739e3",
         "source": "dragonlink",
         "name": "TechServ Spring Term General Body Meeting",
         "org_name": "TechServ",
@@ -1944,7 +1930,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ea6fa2173b",
+        "id": "019e1a88a3c673e5a8268972bfcfef86",
         "source": "dragonlink",
         "name": "Spring Practices",
         "org_name": "Drexel University Debate Union",
@@ -1958,7 +1944,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571eb4474f485",
+        "id": "019e1a88a3c673e5a8268973432bf485",
         "source": "dragonlink",
         "name": "DUSGO Public Health Senior Sendoff!",
         "org_name": "Dornsife Undergraduate Student Government Organization (USGO)",
@@ -1974,7 +1960,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571ec36e01a21",
+        "id": "019e1a88a3c673e5a8268974e025a3eb",
         "source": "dragonlink",
         "name": "GBM with Southland Industries",
         "org_name": "National Society of Black Engineers",
@@ -1988,7 +1974,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ed048fffa2",
+        "id": "019e1a88a3c673e5a8268975965d0193",
         "source": "dragonlink",
         "name": "DrexelChi: Picnic Social!",
         "org_name": "Drexel CHI User Experience Club",
@@ -2004,7 +1990,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571ee36f147a7",
+        "id": "019e1a88a3c673e5a826897601ac1a86",
         "source": "dragonlink",
         "name": "Global Culture Fest",
         "org_name": "Campus Activities Board",
@@ -2021,7 +2007,7 @@
         ]
     },
     {
-        "id": "019e1a72753a775db04571f04c67bd9b",
+        "id": "019e1a88a3c673e5a82689781e8dbf3d",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -2035,7 +2021,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571f1cb43c980",
+        "id": "019e1a88a3c673e5a8268979b90c3c8c",
         "source": "dragonlink",
         "name": "DigiKey Workshop Part 2",
         "org_name": "Society of Asian Scientists and Engineers: Drexel University Chapter",
@@ -2049,7 +2035,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571f2b3bb239e",
+        "id": "019e1a88a3c673e5a826897a3e8f9731",
         "source": "dragonlink",
         "name": "Thursday Crosswalk Community Group",
         "org_name": "Crosswalk Christian Fellowship",
@@ -2063,7 +2049,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571f38aa34c18",
+        "id": "019e1a88a3c673e5a826897bfa74af20",
         "source": "dragonlink",
         "name": "Thursday Crosswalk Community Group",
         "org_name": "Crosswalk Christian Fellowship",
@@ -2077,7 +2063,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571ef873a10b0",
+        "id": "019e1a88a3c673e5a8268977693f7fa1",
         "source": "dragonlink",
         "name": "Drexel Theme Park Engineering and Design General Body Meeting",
         "org_name": "Theme Park Engineering and Design Group",
@@ -2091,7 +2077,7 @@
         "perks": []
     },
     {
-        "id": "019e1a72753a775db04571f423640c75",
+        "id": "019e1a88a3c673e5a826897c390e3768",
         "source": "dragonlink",
         "name": "Cru Large Group",
         "org_name": "Cru",
@@ -2105,7 +2091,21 @@
         "perks": []
     },
     {
-        "id": "019e1a733fc77437b3c5428f5ddf9ff4",
+        "id": "019e1a88a3c673e5a826897e6774eb44",
+        "source": "dragonlink",
+        "name": "ENC Huddle ",
+        "org_name": "Every Nation Campus",
+        "location": "GHALL 031",
+        "image_url": "https://drexel.campuslabs.com/engage/image/bb9059b7-6aa1-4b36-91d7-51f8e74ac72247571149-4117-4351-8640-974f52c10615.png",
+        "start_time": 1778799600,
+        "end_time": 1778808600,
+        "event_link": "https://drexel.campuslabs.com/engage/event/12409107",
+        "event_status": "in-person",
+        "theme": "spirituality",
+        "perks": []
+    },
+    {
+        "id": "019e1a89941471409d93df46dca94cd7",
         "source": "drexel_events",
         "name": "Maternal and Child Health Symposium: The Importance of Data to Advance Maternal and Child Health",
         "org_name": "Renee Davis",
@@ -2119,7 +2119,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73520772da999057f1af57aa74",
+        "id": "019e1a89ad2371aea9cd46efd7069664",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2133,7 +2133,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73520772da999057f24f9ffe46",
+        "id": "019e1a89ad2371aea9cd46f04b7fe6be",
         "source": "drexel_events",
         "name": "Behavioral Health Webinar: Ethnoracial Issues and Psychopharmacology",
         "org_name": "College of Medicine",
@@ -2149,7 +2149,7 @@
         ]
     },
     {
-        "id": "019e1a736022713da3ddecf0bff56014",
+        "id": "019e1a89bbff767a86e4bb617a7ac2c3",
         "source": "drexel_events",
         "name": "\"When We Sketch\u2026\": Student Drawings of Everyday Objects in the Drexel Founding Collection exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2163,7 +2163,7 @@
         "perks": []
     },
     {
-        "id": "019e1a736022713da3ddecf100488b7b",
+        "id": "019e1a89bbff767a86e4bb622b049d59",
         "source": "drexel_events",
         "name": "Writing Group for Multilingual Writers",
         "org_name": "Lisa DiMaio",
@@ -2177,7 +2177,7 @@
         "perks": []
     },
     {
-        "id": "019e1a7383b876f1b2781761be9624a0",
+        "id": "019e1a89c8cc764c85af3f82e82b933e",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -2191,7 +2191,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3727d91d7a",
+        "id": "019e1a89d5fe771eb035635676daf79b",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -2205,7 +2205,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a38ade16df7",
+        "id": "019e1a89d5fe771eb03563570b0f8d9f",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2219,7 +2219,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a397c62ac9e",
+        "id": "019e1a89d5fe771eb03563582c53e19d",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2233,7 +2233,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3aecc35a1a",
+        "id": "019e1a89d5fe771eb03563591459412b",
         "source": "drexel_events",
         "name": "Dorm Objects 101 Guided Tours",
         "org_name": "Lynn Waddell",
@@ -2247,7 +2247,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3b20fb0bf3",
+        "id": "019e1a89d5fe771eb035635a77f94946",
         "source": "drexel_events",
         "name": "So You're Thinking About a PhD?",
         "org_name": "Pennoni Honors College",
@@ -2261,7 +2261,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3cc7fccd59",
+        "id": "019e1a89d5fe771eb035635ba744de53",
         "source": "drexel_events",
         "name": "Grad School, Your Way: Exploring Different Routes to Advanced Degrees",
         "org_name": "Melissa Bennett",
@@ -2275,7 +2275,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3d54179d76",
+        "id": "019e1a89d5fe771eb035635c75fac1c8",
         "source": "drexel_events",
         "name": "Garbage Gala 2026",
         "org_name": "Josh Weiss",
@@ -2289,7 +2289,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3e72dac3f3",
+        "id": "019e1a89d5fe771eb035635dc4e95c3e",
         "source": "drexel_events",
         "name": "Little Women, The Musical",
         "org_name": "Performing Arts",
@@ -2303,7 +2303,7 @@
         "perks": []
     },
     {
-        "id": "019e1a7413f9721eaf691c0355c80e5b",
+        "id": "019e1a8a5ccf777698a160763a2bac37",
         "source": "drexel_athletics",
         "name": "DREX at CAA Rowing Championships",
         "org_name": "Drexel Women's Rowing",
@@ -2317,7 +2317,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a3fce474619",
+        "id": "019e1a89d5fe771eb035635ea1f89250",
         "source": "drexel_events",
         "name": "WESTPHEST: Architecture Senior Project Final Reviews",
         "org_name": "Devyn Jackson",
@@ -2331,7 +2331,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a409b46e869",
+        "id": "019e1a89d5fe771eb035635f6e410f9e",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2345,7 +2345,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a41ea04e2bc",
+        "id": "019e1a89d5fe771eb0356360b30446da",
         "source": "drexel_events",
         "name": "SAFE (Self-Awareness for Everyone) Class",
         "org_name": "Public Safety",
@@ -2359,7 +2359,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5374b2837a0a42ff7aa3f7",
+        "id": "019e1a89d5fe771eb03563618146f07a",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2373,7 +2373,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b44b05dcec82",
+        "id": "019e1a89d5fe771eb0356362ace611f3",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2387,7 +2387,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b44c5a6662ae",
+        "id": "019e1a89d5fe771eb03563632b76d7db",
         "source": "drexel_events",
         "name": "Little Women, The Musical",
         "org_name": "Performing Arts",
@@ -2401,7 +2401,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b44d8929b92d",
+        "id": "019e1a89d5ff7141b2838b22650d06df",
         "source": "drexel_events",
         "name": "Graduate Student-Interviewing Techniques",
         "org_name": "Ken Bohrer",
@@ -2415,7 +2415,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b44ea955099f",
+        "id": "019e1a89d5ff7141b2838b23ebcf02c6",
         "source": "drexel_events",
         "name": "K-Pop World Festival 2026 USA Regional Round Dance Competition",
         "org_name": "Department of Global Studies, Modern Languages",
@@ -2429,7 +2429,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b44f20ac81b3",
+        "id": "019e1a89d5ff7141b2838b24ff57f47c",
         "source": "drexel_events",
         "name": "WESTPHEST: Dance Student Showcase - Performance, Progress, Practice",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2443,7 +2443,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4502ecb2733",
+        "id": "019e1a89d5ff7141b2838b2589c18cdf",
         "source": "drexel_events",
         "name": "Little Women, The Musical",
         "org_name": "Performing Arts",
@@ -2457,7 +2457,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4519c637174",
+        "id": "019e1a89d5ff7141b2838b260cf0b406",
         "source": "drexel_events",
         "name": "Medical Marijuana: Delivering Clinical Care in an Ever-Evolving Environment",
         "org_name": "College of Medicine",
@@ -2471,7 +2471,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b452cce32887",
+        "id": "019e1a89d5ff7141b2838b27490e9d97",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2485,7 +2485,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4532a54559b",
+        "id": "019e1a89d5ff7141b2838b288129423f",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2499,7 +2499,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4547319afa9",
+        "id": "019e1a89d5ff7141b2838b294f0289e2",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2513,7 +2513,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b45515eede3f",
+        "id": "019e1a89d5ff7141b2838b2a4ce8cb30",
         "source": "drexel_events",
         "name": "WESTPHEST: Dance Student Showcase - Bodies of Work",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2527,7 +2527,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4560fb01f92",
+        "id": "019e1a89d5ff7141b2838b2b0a941e8e",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2541,7 +2541,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b4575a7ea456",
+        "id": "019e1a89d5ff7141b2838b2cf679afc7",
         "source": "drexel_events",
         "name": "A Graph Learning Framework To Identify Shared Genetic Drivers of CHD and Neuroblastoma",
         "org_name": "Natalia Broz",
@@ -2555,7 +2555,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b45836b74433",
+        "id": "019e1a89d5ff7141b2838b2d12025bda",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2569,7 +2569,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b459d1d58708",
+        "id": "019e1a89d5ff7141b2838b2e48d3b9c6",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2583,7 +2583,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b45add1234fe",
+        "id": "019e1a89d5ff7141b2838b2f0b09cd8c",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Allie Humphries",
@@ -2597,7 +2597,7 @@
         "perks": []
     },
     {
-        "id": "019e1a738f5477788d49b45be06e2c3a",
+        "id": "019e1a89d5ff7141b2838b30ce7debcb",
         "source": "drexel_events",
         "name": "Multlingual Writers' Group",
         "org_name": "Lisa DiMaio",
@@ -2611,7 +2611,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73a61f76fc8dc867b171132851",
+        "id": "019e1a89e1fe71deba4ed1f197929415",
         "source": "drexel_events",
         "name": "Health Management and Policy Department Dissertation Defense: Tasha Joshua",
         "org_name": "Sarah Flynn",
@@ -2625,7 +2625,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73a62072dfb6be508fcd3d3898",
+        "id": "019e1a89e1fe71deba4ed1f2a2d09656",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2639,7 +2639,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73a62072dfb6be50904bfcb93d",
+        "id": "019e1a89e1fe71deba4ed1f3133672ef",
         "source": "drexel_events",
         "name": "Developmental Leadership",
         "org_name": "Kathy Choy",
@@ -2653,7 +2653,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73afa3726495b444a6d74395f5",
+        "id": "019e1a89ebff749199321631fc27241b",
         "source": "drexel_events",
         "name": "Virtual Information Session: Pre-med Pre-health: Ask the Admissions Director",
         "org_name": "Bency Oonnoonny",
@@ -2667,7 +2667,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73afa3726495b444a7ceef3fc8",
+        "id": "019e1a89ebff7491993216323768ab3a",
         "source": "drexel_events",
         "name": "Graduate Students Resume Dropins",
         "org_name": "Ken Bohrer",
@@ -2681,7 +2681,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187bed8c3d2b1",
+        "id": "019e1a8a2c24770faa73d3444873d6ee",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2695,7 +2695,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187bf2f43b5d0",
+        "id": "019e1a8a2c24770faa73d3453cf3df67",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2709,7 +2709,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187c03ae71328",
+        "id": "019e1a8a2c24770faa73d346d619f5ce",
         "source": "drexel_events",
         "name": "Research Day",
         "org_name": "Professor Lila Chrysikou",
@@ -2723,7 +2723,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187c1bba69028",
+        "id": "019e1a8a2c24770faa73d347858ae8f7",
         "source": "drexel_events",
         "name": "Study Hours",
         "org_name": "Allie Humphries",
@@ -2737,7 +2737,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187c2203901af",
+        "id": "019e1a8a2c24770faa73d348228313cd",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -2751,7 +2751,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73d41e74dd8ca187c35518c106",
+        "id": "019e1a8a2c24770faa73d349cafb7db7",
         "source": "drexel_events",
         "name": "Fellowships for Future Graduate Students",
         "org_name": "Pennoni Honors College",
@@ -2765,7 +2765,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73f28475459b8168189a1c0ce1",
+        "id": "019e1a8a373675b5ab2ea6900c988133",
         "source": "drexel_events",
         "name": "Free Health Clinic",
         "org_name": "Dornsife Center",
@@ -2779,7 +2779,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73f28475459b816819f4cebbc5",
+        "id": "019e1a8a373675b5ab2ea69140c13fec",
         "source": "drexel_events",
         "name": "Talking Tuesday: Mental Health with the Peer Counselors",
         "org_name": "Lindy Center",
@@ -2795,7 +2795,7 @@
         ]
     },
     {
-        "id": "019e1a73f28475459b81681a3904623b",
+        "id": "019e1a8a373675b5ab2ea69299fb8206",
         "source": "drexel_events",
         "name": "Visualizing Health: A Photography Exhibit",
         "org_name": "Stacy Stanislaw",
@@ -2809,7 +2809,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73f28571c0ad4c65b6a3a1a611",
+        "id": "019e1a8a373675b5ab2ea693a461c39e",
         "source": "drexel_events",
         "name": "Drexel Materials Spring Seminar Series",
         "org_name": "Materials Science and Engineering",
@@ -2823,7 +2823,7 @@
         "perks": []
     },
     {
-        "id": "019e1a73f28571c0ad4c65b78cb13629",
+        "id": "019e1a8a373675b5ab2ea69454a5bb78",
         "source": "drexel_events",
         "name": "Memorial Day Primer: Featuring Philadelphia\u2019s Unforgettable Edison 64, Brotherhood, and Sacrifice",
         "org_name": "Rebecca Weidensaul",
@@ -2840,7 +2840,7 @@
         ]
     },
     {
-        "id": "019e1a73f28571c0ad4c65b819f248ee",
+        "id": "019e1a8a373675b5ab2ea6957308b128",
         "source": "drexel_events",
         "name": "First Steps to Fulbright: DUCOM Edition",
         "org_name": "Pennoni Honors College",
@@ -2854,7 +2854,7 @@
         "perks": []
     },
     {
-        "id": "019e1a740153758f90f95ca5cbed74d3",
+        "id": "019e1a8a4d317060a69f6087fc64a5cf",
         "source": "drexel_events",
         "name": "Lactation Consultant Program Information Session",
         "org_name": "Bency Oonnoonny",
@@ -2868,7 +2868,7 @@
         "perks": []
     },
     {
-        "id": "019e1a740153758f90f95ca6ce64d2d5",
+        "id": "019e1a8a4d317060a69f60883b9ec84b",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Collective Landscapes",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2882,7 +2882,7 @@
         "perks": []
     },
     {
-        "id": "019e1a740153758f90f95ca7e38bbf3a",
+        "id": "019e1a8a4d317060a69f608929ed1ee2",
         "source": "drexel_events",
         "name": "The Leonard Pearlstein Gallery Presents - Conflagrations",
         "org_name": "Westphal College of Media Arts and Design",
@@ -2896,7 +2896,7 @@
         "perks": []
     },
     {
-        "id": "019e1a740153758f90f95ca851effc7a",
+        "id": "019e1a8a4d317060a69f608ad44db96a",
         "source": "drexel_events",
         "name": "In Loving Communion: Critical Conversations on Racism, Health, and Healing",
         "org_name": "K White",
@@ -2910,7 +2910,7 @@
         "perks": []
     },
     {
-        "id": "019e1a7413f9721eaf691c04db18a4e3",
+        "id": "019e1a8a5ccf777698a160777cc2d609",
         "source": "drexel_athletics",
         "name": "DREX at IRA National Championships",
         "org_name": "Drexel Men's Rowing",

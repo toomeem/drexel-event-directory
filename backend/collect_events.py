@@ -334,6 +334,29 @@ def create_drexel_athletics_events():
     return events_json
 
 
+def save_individual_event_to_file(event):
+    path = "chunking_tmp_dir/" + event._id + ".json"
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(event.to_json(), f)
+
+
+def clear_tmp_dir():
+    path = "chunking_tmp_dir/"
+    for file in os.listdir(path):
+        os.remove(os.path.join(path, file))
+
+
+def clear_s3_folder(bucket):
+    folder_path = "chunked/"
+    bucket.objects.filter(Prefix=folder_path).delete()
+
+
+def upload_file_to_s3(bucket, file_name):
+    local_file_path = "chunking_tmp_dir/" + file_name + ".json"
+    s3_file_path = "chunked/" + file_name + ".json"
+    bucket.upload_file(local_file_path, s3_file_path)
+
+
 def collect_all_events(client):
     events = []
     events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
@@ -405,36 +428,15 @@ def fill_db():
 
 
 def update_events_file(client):
-    print("\nUpdating events...")
+    print("\nCollecting events...")
     events = collect_all_events(client)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
 
-def save_individual_event_to_file(event):
-    path = "chunking_tmp_dir/" + event._id + ".json"
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(event.to_json(), f)
-
-
-def clear_tmp_dir():
-    path = "chunking_tmp_dir/"
-    for file in os.listdir(path):
-        os.remove(os.path.join(path, file))
-
-
-def clear_s3_folder(bucket):
-    folder_path = "chunked/"
-    bucket.objects.filter(Prefix=folder_path).delete()
-
-
-def upload_file_to_s3(bucket, file_name):
-    local_file_path = "chunking_tmp_dir/" + file_name + ".json"
-    s3_file_path = "chunked/" + file_name + ".json"
-    bucket.upload_file(local_file_path, s3_file_path)
-
-
 def upload_all_events_to_s3():
+    print("\nUploading events to S3...")
+
     s3 = boto3.resource('s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
                         aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"), )
     bucket_name = os.getenv("S3_BUCKET_NAME")
@@ -461,4 +463,4 @@ if __name__ == "__main__":
     upload_all_events_to_s3()
 
     end = time.time()
-    print(f"\nFinished in {round(end - start, 2)} seconds.")
+    print(f"\nFinished in {round(end - start, 1)} seconds.")
