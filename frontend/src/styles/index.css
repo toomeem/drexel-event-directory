@@ -229,6 +229,29 @@ img {
   border-color: #6d28d9;
 }
 
+.event-card__perk--live {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #b91c1c;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.event-card__perk-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  flex-shrink: 0;
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
 :root[data-theme="dark"] .event-card__perk--virtual {
   background: #1d4ed8;
   border-color: #1e40af;
@@ -237,6 +260,11 @@ img {
 :root[data-theme="dark"] .event-card__perk--hybrid {
   background: #6d28d9;
   border-color: #5b21b6;
+}
+
+:root[data-theme="dark"] .event-card__perk--live {
+  background: #b91c1c;
+  border-color: #991b1b;
 }
 
 .event-card__image {

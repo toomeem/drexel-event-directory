@@ -12,9 +12,16 @@ function formatPerk(perk: string): string {
     .join(" ");
 }
 
+function isLive(event: DrexelEvent): boolean {
+  if (!event.start_time || !event.end_time) return false;
+  const now = Date.now() / 1000;
+  return now >= event.start_time && now <= event.end_time;
+}
+
 export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;
+  const live = isLive(event);
 
   const handleClick = () => {
     window.open(event.event_link, "_blank");
@@ -34,8 +41,14 @@ export function EventCard({ event }: EventCardProps) {
         ) : (
           <div className="event-card__image-placeholder" aria-hidden="true" />
         )}
-        {((Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "virtual" || event.event_status === "hybrid") && (
+        {(live || (Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "virtual" || event.event_status === "hybrid") && (
           <ul className="event-card__perks">
+            {live && (
+              <li className="event-card__perk event-card__perk--live">
+                <span className="event-card__perk-live-dot" aria-hidden="true" />
+                Live
+              </li>
+            )}
             {event.event_status === "virtual" && (
               <li className="event-card__perk event-card__perk--virtual">Virtual</li>
             )}

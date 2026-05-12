@@ -9,6 +9,8 @@ export interface DrexelEvent {
   org_name: string;
   location: string;
   time: string;
+  start_time?: number | null;
+  end_time?: number | null;
   image_url: string | null;
   event_link: string;
   event_status?: EventStatus | string | null;
