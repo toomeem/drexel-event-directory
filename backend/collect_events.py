@@ -30,6 +30,7 @@ def normalize_time(source, time_str):
     if source == "drexel_athletics":
         time_str = time_str.replace("Z", "")
     dt = datetime.fromisoformat(time_str)
+    return dt
     if dt.tzinfo is not None:
         dt = dt.replace(tzinfo=None)
     # Source times are UTC; apply Philadelphia's offset for that date (-4 EDT / -5 EST).
@@ -249,8 +250,6 @@ def create_event_object(source, event_json, client):
             return None
     if kwargs is None:
         return None
-    # kwargs["_id"] = f"{source}:{kwargs['org_name']}:{event_json['id']}".lower()
-    # kwargs["_id"] = kwargs["_id"].replace(" ", "").replace("_", "").replace("-", "").replace("'", "").replace("\"", "")
     kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["location"] is not None:
         kwargs["location"] = simplify_location(kwargs["location"])
@@ -460,7 +459,7 @@ if __name__ == "__main__":
 
     update_events_file(client)
     fill_db()
-    upload_all_events_to_s3()
+    # upload_all_events_to_s3()
 
     end = time.time()
     print(f"\nFinished in {round(end - start, 1)} seconds.")

@@ -1,8 +1,11 @@
 import json
 import os
 from datetime import timedelta, datetime
+from zoneinfo import ZoneInfo
 
 import psycopg2
+
+PHILLY_TZ = ZoneInfo("America/New_York")
 
 proxy_host_name = os.environ["RDS_ENDPOINT"]
 db_user_name = "postgres"
@@ -17,22 +20,31 @@ def _fmt_hm(dt, with_ampm=False):
 
 
 def db_entry_to_json(db_entry):
-    start_time = db_entry[6]
-    end_time = db_entry[7]
-    if datetime.now().strftime("%m/%d") == end_time.strftime("%m/%d"):
-        time_str_prefix = "Today"
-    elif (start_time - datetime.now()) > timedelta(days=7):
-        time_str_prefix = datetime.strftime(start_time, "%b %d")
+    start_time = db_entry[6].astimezone(PHILLY_TZ)
+    end_time = db_entry[7].astimezone(PHILLY_TZ)
+    now = datetime.now(PHILLY_TZ)
+    if end_time - start_time > timedelta(hours=24):
+        if (start_time - now) > timedelta(days=7):
+            time_str = datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
+        else:
+            time_str = datetime.strftime(start_time, "%b %-d - ") + datetime.strftime(end_time, "%-d")
     else:
-        time_str_prefix = datetime.strftime(start_time, "%a")
-    time_str = f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
+        if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
+            time_str_prefix = "Today"
+        elif (start_time - now) > timedelta(days=7):
+            time_str_prefix = datetime.strftime(start_time, "%b %-d")
+        else:
+            time_str_prefix = datetime.strftime(start_time, "%a")
+        time_str = f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
     if db_entry[11]:
         perks = [i for i in db_entry[11].split("|") if i]
     else:
         perks = None
     return {"id": db_entry[0], "source": db_entry[1], "name": db_entry[2], "org_name": db_entry[3],
             "location": db_entry[4], "image_url": db_entry[5], "time": time_str.replace(":00", ""),
-            "event_link": db_entry[8], "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
+            "start_time": round(start_time.timestamp()) if start_time else None,
+            "end_time": round(end_time.timestamp()) if end_time else None, "event_link": db_entry[8],
+            "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
 
 
 CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
@@ -44,7 +56,7 @@ def lambda_handler(event, context):
     EVENTS_PER_ROW = 4
     MAX_PAGE = 1000
     page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
-    now = datetime.now()
+    now = datetime.now(PHILLY_TZ)
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
         return {"statusCode": 200, "headers": CORS_HEADERS, "body": ""}
 
@@ -57,7 +69,8 @@ def lambda_handler(event, context):
     date_filter = params.get("dateRange")
     date_end = 9999999999
     if date_filter == "today":
-        date_end = (datetime(year=now.year, month=now.month, day=now.day) + timedelta(days=1)).timestamp()
+        date_end = (datetime(year=now.year, month=now.month, day=now.day, tzinfo=PHILLY_TZ) + timedelta(
+            days=1)).timestamp()
     elif date_filter == "week":
         date_end = (now + timedelta(days=7)).timestamp()
     elif date_filter == "month":
