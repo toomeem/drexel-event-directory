@@ -32,7 +32,7 @@ def test_aws_bedrock():
 
     response = client.responses.create(model="openai.gpt-oss-120b",
                                        input=[{"role": "user",
-                                               "content": "Tell me about events hosted by the pennoni honors college."}])
+                                               "content": "Tell me about events hosted by the the drexel gaming association."}])
     print(response.output_text)
 
 
@@ -40,5 +40,7 @@ if __name__ == "__main__":
     load_dotenv()
     start = time.time()
 
+    test_aws_bedrock()
+
     end = time.time()
-    print(f"Time taken: {round(end - start, 2)} seconds")
+    # print(f"Time taken: {round(end - start, 2)} seconds")

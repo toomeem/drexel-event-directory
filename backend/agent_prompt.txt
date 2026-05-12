@@ -1,0 +1,3 @@
+Answer the user's QUESTION using the provided JSON CONTEXT.
+Keep your answer grounded in the facts of the CONTEXT.
+If the CONTEXT doesn’t contain the facts to answer the QUESTION, say that you don't have enough information to answer the question.
