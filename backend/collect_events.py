@@ -31,11 +31,6 @@ def normalize_time(source, time_str):
         time_str = time_str.replace("Z", "")
     dt = datetime.fromisoformat(time_str)
     return dt
-    if dt.tzinfo is not None:
-        dt = dt.replace(tzinfo=None)
-    # Source times are UTC; apply Philadelphia's offset for that date (-4 EDT / -5 EST).
-    offset = dt.replace(tzinfo=PHILLY_TZ).utcoffset()
-    return dt + offset
 
 
 def simplify_location(location):
@@ -452,14 +447,18 @@ def upload_all_events_to_s3():
     clear_tmp_dir()
 
 
+def main():
+    update_events_file(client)
+    fill_db()
+    upload_all_events_to_s3()
+
+
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
     client = OpenAI()
 
-    update_events_file(client)
-    fill_db()
-    # upload_all_events_to_s3()
+    main()
 
     end = time.time()
     print(f"\nFinished in {round(end - start, 1)} seconds.")
