@@ -8,8 +8,9 @@ Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/dr
 
 - Browse upcoming events from DragonLink, Drexel.edu, and Drexel Athletics
 - Filter by theme (academic, arts, social, athletics, etc.), event format (in-person, virtual, hybrid), and perks (free food, credit, etc.)
-- AI chatbot (AWS Bedrock Agent + Knowledge Base) for natural language event queries
-- Light/dark mode
+- Main endpoint hosted on AWS Lambda
+- AI chatbot (AWS Bedrock Agent + S3 Knowledge Base) for natural language user queries
+
   
 
 ## Project Structure
