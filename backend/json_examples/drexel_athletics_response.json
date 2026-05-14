@@ -1,7 +1,7 @@
 [
     {
         "gameImageUrl": null,
-        "time": "",
+        "time": "9:30 a.m.",
         "conference": false,
         "gameCenterEnabled": false,
         "conferenceTitle": null,
@@ -31,7 +31,7 @@
             "title": "CAA Rowing Championships",
             "prefix": "",
             "website": "http://www.caasports.com/",
-            "websiteLabel": "CAA Rowing Championships on May 16, 2026 ",
+            "websiteLabel": "CAA Rowing Championships on May 16, 2026 9:30 a.m.",
             "location": "Richmond, VA ",
             "conference": false,
             "mascot": "",
@@ -75,7 +75,7 @@
         "hasWePlayedMoments": false,
         "ticketLink": {
             "customMessages": [],
-            "label": "Buy Tickets:  CAA Rowing Championships on May 16 ",
+            "label": "Buy Tickets:  CAA Rowing Championships on May 16 9:30 a.m.",
             "fallbackText": "Buy tickets",
             "seatGeekLink": null,
             "showSeatGeek": false,

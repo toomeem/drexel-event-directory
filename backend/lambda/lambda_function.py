@@ -47,11 +47,10 @@ def db_entry_to_json(db_entry):
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
 
 
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "https://toomeem.github.io")
 MAX_SEARCH_LEN = 100
 VALID_PERKS = {"free_food", "free_stuff", "credit"}
 
-CORS_HEADERS = {"Access-Control-Allow-Origin": ALLOWED_ORIGIN, "Access-Control-Allow-Methods": "GET, OPTIONS",
+CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin", "Content-Type": "application/json", }
 
 

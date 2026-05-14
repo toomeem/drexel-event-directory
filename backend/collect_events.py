@@ -34,9 +34,21 @@ def normalize_time(source, time_str):
 
 
 def simplify_location(location):
-    remove_list = ["\r", ", PA 19104", "Philadelphia"]
+    if not location:
+        return None
+    total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
+                          "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
+                          "Rincliffe Gallery": "Rincliffe Gallery",
+                          "Pearlstein Gallery": "Pearlstein Gallery",
+                          "Peck Alumni Center Gallery": "Peck Alumni Center Gallery",
+                          "Lanc Walk": "Lancaster Walk", "Lancaster Walk": "Lancaster Walk", }
+    remove_list = ["\r", "19104", "Philadelphia", ", PA"]
     replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom", ","]
+
+    for k, v in total_replace_list.items():
+        if k in location:
+            return v
     for i in remove_list:
         location = location.replace(i, "")
     for old, new in replace_list:
@@ -245,9 +257,10 @@ def create_event_object(source, event_json, client):
             return None
     if kwargs is None:
         return None
+
     kwargs["_id"] = str(uuid.uuid7().hex)
-    if kwargs["location"] is not None:
-        kwargs["location"] = simplify_location(kwargs["location"])
+    kwargs["location"] = simplify_location(kwargs["location"])
+
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 

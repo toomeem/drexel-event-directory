@@ -8,16 +8,13 @@ import boto3
 AGENT_ID = os.environ['AWS_BEDROCK_AGENT_ID']
 AGENT_ALIAS_ID = os.environ['AWS_BEDROCK_AGENT_ALIAS_ID']
 KNOWLEDGE_BASE_ID = os.environ['AWS_BEDROCK_KNOWLEDGE_BASE_ID']
-ALLOWED_ORIGIN = "https://toomeem.github.io"
 MAX_INPUT_LEN = 400
 MAX_CHUNKS = 15
 
-# Bedrock session IDs must match [0-9a-zA-Z._:-]{2,100}. We tighten that to
-# the hex-only format produced by our own generator below so attackers can't
-# hijack another user's session by supplying their ID.
+# sanitize session ids
 SESSION_ID_RE = re.compile(r"^[0-9a-f]{32}$")
 
-CORS_HEADERS = {"Access-Control-Allow-Origin": ALLOWED_ORIGIN, "Access-Control-Allow-Methods": "POST, OPTIONS",
+CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS",
                 "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin", "Content-Type": "application/json", }
 
 

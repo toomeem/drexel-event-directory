@@ -25,10 +25,11 @@ class Event:
             return NotImplemented
         if self.source == other.source and self.source != "drexel_athletics":
             return False
+        # only filter out events by the start time because duplicates can have different end times
         if self.get_start_timestamp() != other.get_start_timestamp():
             return False
-        if self.get_end_timestamp() != other.get_end_timestamp():
-            return False
+        if self.location.strip() == other.location.strip():
+            return True
         if self.name.lower().strip() == other.name.lower().strip():
             return True
         return False
