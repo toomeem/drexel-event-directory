@@ -45,7 +45,7 @@ export function AboutPage() {
                 <h2 className="about-page__section-title">Data Sources</h2>
                 <p className="about-page__body">
                     Event data is collected from three official Drexel sources and
-                    deduplicated automatically when the same event appears in more than one.
+                    deduplicated automatically.
                 </p>
                 <ul className="about-page__source-list">
                     {SOURCES.map((source) => (
