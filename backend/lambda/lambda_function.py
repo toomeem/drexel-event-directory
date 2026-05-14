@@ -47,8 +47,12 @@ def db_entry_to_json(db_entry):
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
 
 
-CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type", "Content-Type": "application/json", }
+ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "https://toomeem.github.io")
+MAX_SEARCH_LEN = 100
+VALID_PERKS = {"free_food", "free_stuff", "credit"}
+
+CORS_HEADERS = {"Access-Control-Allow-Origin": ALLOWED_ORIGIN, "Access-Control-Allow-Methods": "GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin", "Content-Type": "application/json", }
 
 
 def lambda_handler(event, context):
@@ -88,11 +92,12 @@ def lambda_handler(event, context):
     perks_filter = None
     perks_param = params.get("perks")
     if perks_param:
-        perks_filter = [p.strip().lower() for p in perks_param.split(",") if p.strip()] or None
+        candidates = [p.strip().lower() for p in perks_param.split(",") if p.strip()]
+        perks_filter = [p for p in candidates if p in VALID_PERKS] or None
     search_pattern = None
     search_param = params.get("search")
     if search_param:
-        s = search_param.strip()
+        s = search_param.strip()[:MAX_SEARCH_LEN]
         if s:
             s = s.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
             search_pattern = f"%{s}%"

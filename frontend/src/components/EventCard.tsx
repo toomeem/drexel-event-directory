@@ -18,13 +18,26 @@ function isLive(event: DrexelEvent): boolean {
   return now >= event.start_time && now <= event.end_time;
 }
 
+function safeHttpUrl(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  try {
+    const u = new URL(raw, window.location.origin);
+    if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
 export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;
   const live = isLive(event);
+  const safeLink = safeHttpUrl(event.event_link);
 
   const handleClick = () => {
-    window.open(event.event_link, "_blank");
+    if (!safeLink) return;
+    window.open(safeLink, "_blank", "noopener,noreferrer");
   };
 
   return (

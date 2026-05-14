@@ -28,6 +28,7 @@ jobs:
         working-directory: frontend
         env:
           VITE_LAMBDA_ENDPOINT: ${{ secrets.VITE_LAMBDA_ENDPOINT }}
+          VITE_CHATBOT_LAMBDA_ENDPOINT: ${{ secrets.VITE_CHATBOT_LAMBDA_ENDPOINT }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

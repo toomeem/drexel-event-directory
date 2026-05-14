@@ -64,11 +64,8 @@ export async function fetchEvents(
     params.set("search", filters.search.trim());
   }
   const url = `${endpoint}?${params.toString()}`;
-  console.log("[fetchEvents] url:", url);
   const res = await fetch(url);
-  console.log("[fetchEvents] response status:", res.status, res.statusText);
   if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
   const data: EventsResponse = await res.json();
-  console.log("[fetchEvents] data:", data);
   return { events: data.body, totalEvents: data.total_events };
 }
