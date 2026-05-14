@@ -102,20 +102,11 @@ img {
   color: #ffffff;
 }
 
-.site-header__brand-mark {
-  width: 22px;
-  height: 22px;
-  border: 1.5px solid var(--color-drexel-gold);
-  border-radius: var(--radius-sm);
-  position: relative;
-}
-
-.site-header__brand-mark:after {
-  content: "";
-  position: absolute;
-  inset: 4px 4px auto 4px;
-  height: 2px;
-  background: var(--color-drexel-gold);
+.site-header__logo {
+  width: 96px;
+  height: 96px;
+  display: block;
+  object-fit: contain;
 }
 
 .site-header__nav {
@@ -654,7 +645,7 @@ img {
 .about-page__title {
   font-size: 28px;
   font-weight: 600;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   color: var(--color-drexel-blue);
 }
 
@@ -666,7 +657,18 @@ img {
 }
 
 .about-page__section {
-  margin-top: 32px;
+  margin-top: 22px;
+}
+
+.about-page__row {
+  display: flex;
+  gap: 32px;
+  margin-top: 22px;
+}
+
+.about-page__row .about-page__section {
+  margin-top: 0;
+  flex: 1;
 }
 
 .about-page__section-title {

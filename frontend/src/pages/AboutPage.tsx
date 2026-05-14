@@ -63,6 +63,38 @@ export function AboutPage() {
           ))}
         </ul>
       </section>
+
+      <div className="about-page__row">
+        <section className="about-page__section">
+          <h2 className="about-page__section-title">For Recruiters😁</h2>
+          <p className="about-page__body">
+            Interested in my work?{" "}
+            <a
+              href="https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/resume_V3.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-page__source-name"
+            >
+              View my resume ↗
+            </a>
+          </p>
+        </section>
+
+        <section className="about-page__section">
+          <h2 className="about-page__section-title">Open Source</h2>
+          <p className="about-page__body">
+            This project is open source.{" "}
+            <a
+              href="https://github.com/toomeem/drexel-event-directory/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-page__source-name"
+            >
+              View the source on GitHub ↗
+            </a>
+          </p>
+        </section>
+      </div>
     </div>
   );
 }

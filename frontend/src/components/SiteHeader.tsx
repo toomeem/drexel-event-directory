@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+const LOGO_URL = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/logos/logo_v4.png";
+
 interface SiteHeaderProps {
   theme: "light" | "dark";
   onToggleTheme: () => void;
@@ -10,8 +12,8 @@ export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
     <header className="site-header">
       <div className="site-header__inner">
         <NavLink to="/" className="site-header__brand">
-          <span className="site-header__brand-mark" aria-hidden="true" />
-          <span className="site-header__brand-text">Drexel Event Hub</span>
+          <img src={LOGO_URL} alt="Drexel Logo" className="site-header__logo" />
+
         </NavLink>
         <nav className="site-header__nav">
           <NavLink
