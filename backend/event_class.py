@@ -32,6 +32,8 @@ class Event:
             return True
         if self.name.lower().strip() == other.name.lower().strip():
             return True
+        if self.org_name.lower().strip() == other.org_name.lower().strip():
+            return True
         return False
 
     def to_json(self):

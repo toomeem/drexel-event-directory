@@ -62,6 +62,7 @@ def lambda_handler(event, context):
     EVENT_ROWS_PER_PAGE = 6
     EVENTS_PER_ROW = 4
     MAX_PAGE = 1000
+
     page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
     now = datetime.now(PHILLY_TZ)
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":

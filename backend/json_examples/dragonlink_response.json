@@ -308,7 +308,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.96189
+            "@search.score": 99.96923
         },
         {
             "id": "12364014",
@@ -342,7 +342,7 @@
             "longitude": "-75.186860",
             "recScore": null,
             "rsvpTotal": 13,
-            "@search.score": 99.95526
+            "@search.score": 99.9626
         },
         {
             "id": "12371343",
@@ -376,7 +376,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.96189
+            "@search.score": 99.96923
         },
         {
             "id": "12464039",
@@ -420,7 +420,7 @@
             "longitude": "-75.190270",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.957466
+            "@search.score": 99.964806
         },
         {
             "id": "12454648",
@@ -460,7 +460,7 @@
             "longitude": "-75.189140",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.94421
+            "@search.score": 99.951546
         },
         {
             "id": "12454650",
@@ -499,7 +499,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 10,
-            "@search.score": 99.93314
+            "@search.score": 99.94049
         },
         {
             "id": "12463444",
@@ -534,7 +534,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 10,
-            "@search.score": 99.93314
+            "@search.score": 99.94049
         },
         {
             "id": "12441227",
@@ -573,7 +573,7 @@
             "longitude": "-75.186860",
             "recScore": null,
             "rsvpTotal": 234,
-            "@search.score": 99.935356
+            "@search.score": 99.942696
         },
         {
             "id": "12467826",
@@ -607,7 +607,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12454626",
@@ -638,7 +638,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12306615",
@@ -674,7 +674,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12463437",
@@ -708,7 +708,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12328205",
@@ -744,7 +744,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12409322",
@@ -778,7 +778,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12463970",
@@ -812,7 +812,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 9,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12464664",
@@ -840,7 +840,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12438179",
@@ -874,7 +874,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 4,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12456581",
@@ -913,7 +913,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 8,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12375496",
@@ -951,7 +951,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.92872
+            "@search.score": 99.936066
         },
         {
             "id": "12288515",
@@ -983,7 +983,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12464686",
@@ -1011,7 +1011,7 @@
             "longitude": "-75.185810",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12415714",
@@ -1043,7 +1043,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12415715",
@@ -1075,7 +1075,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12342872",
@@ -1109,7 +1109,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.926506
+            "@search.score": 99.93385
         },
         {
             "id": "12454642",
@@ -1143,7 +1143,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.93314
+            "@search.score": 99.94049
         },
         {
             "id": "12467800",
@@ -1178,7 +1178,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.93093
+            "@search.score": 99.93828
         },
         {
             "id": "12409107",
@@ -1214,7 +1214,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.926506
+            "@search.score": 99.93385
         },
         {
             "id": "12454631",
@@ -1254,7 +1254,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.926506
+            "@search.score": 99.93385
         },
         {
             "id": "12464708",
@@ -1286,7 +1286,7 @@
             "longitude": "-75.195090",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.957466
+            "@search.score": 99.964806
         },
         {
             "id": "12409136",
@@ -1318,7 +1318,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.935356
+            "@search.score": 99.942696
         },
         {
             "id": "12354937",
@@ -1352,7 +1352,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.85122
+            "@search.score": 99.858574
         },
         {
             "id": "12414263",
@@ -1384,7 +1384,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.85122
+            "@search.score": 99.858574
         },
         {
             "id": "12328564",
@@ -1416,7 +1416,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.85122
+            "@search.score": 99.858574
         },
         {
             "id": "12458147",
@@ -1452,7 +1452,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.84679
+            "@search.score": 99.85414
         },
         {
             "id": "12456660",
@@ -1484,7 +1484,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.84679
+            "@search.score": 99.85414
         },
         {
             "id": "12328583",
@@ -1518,7 +1518,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.83792
+            "@search.score": 99.845276
         },
         {
             "id": "12374572",
@@ -1554,7 +1554,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 18,
-            "@search.score": 99.83792
+            "@search.score": 99.845276
         },
         {
             "id": "12463506",
@@ -1586,7 +1586,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.842354
+            "@search.score": 99.84971
         },
         {
             "id": "12467861",
@@ -1622,7 +1622,7 @@
             "longitude": "-75.189420",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.83792
+            "@search.score": 99.845276
         },
         {
             "id": "12465713",
@@ -1656,7 +1656,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.824615
+            "@search.score": 99.83198
         },
         {
             "id": "12467880",
@@ -1684,7 +1684,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.82905
+            "@search.score": 99.83641
         },
         {
             "id": "12454658",
@@ -1718,7 +1718,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.824615
+            "@search.score": 99.83198
         },
         {
             "id": "12467276",
@@ -1761,8 +1761,8 @@
             "latitude": "39.954090",
             "longitude": "-75.186860",
             "recScore": null,
-            "rsvpTotal": 8,
-            "@search.score": 99.824615
+            "rsvpTotal": 9,
+            "@search.score": 99.83198
         },
         {
             "id": "12461801",
@@ -1796,7 +1796,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.822395
+            "@search.score": 99.82976
         },
         {
             "id": "12454697",
@@ -1824,7 +1824,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.820175
+            "@search.score": 99.827545
         },
         {
             "id": "12438189",
@@ -1852,7 +1852,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.820175
+            "@search.score": 99.827545
         },
         {
             "id": "12454692",
@@ -1888,7 +1888,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.820175
+            "@search.score": 99.827545
         },
         {
             "id": "12445508",
@@ -1920,7 +1920,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.83127
+            "@search.score": 99.83863
         },
         {
             "id": "12464692",
@@ -1952,7 +1952,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.824615
+            "@search.score": 99.83198
         },
         {
             "id": "12328545",
@@ -1986,7 +1986,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.820175
+            "@search.score": 99.827545
         },
         {
             "id": "12454685",
@@ -2018,7 +2018,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.83792
+            "@search.score": 99.845276
         },
         {
             "id": "12408741",
@@ -2052,7 +2052,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.820175
+            "@search.score": 99.827545
         },
         {
             "id": "12408758",
@@ -2084,7 +2084,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.81131
+            "@search.score": 99.81867
         },
         {
             "id": "12463439",
@@ -2112,7 +2112,7 @@
             "longitude": "-75.191040",
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.80687
+            "@search.score": 99.81423
         },
         {
             "id": "12463443",
@@ -2140,7 +2140,7 @@
             "longitude": "-75.192130",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.80243
+            "@search.score": 99.8098
         },
         {
             "id": "12456744",
@@ -2176,7 +2176,7 @@
             "longitude": "-75.192680",
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.75803
+            "@search.score": 99.7654
         },
         {
             "id": "12439680",
@@ -2216,7 +2216,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 3,
-            "@search.score": 99.75359
+            "@search.score": 99.76096
         },
         {
             "id": "12449522",
@@ -2262,7 +2262,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.7547
+            "@search.score": 99.76208
         },
         {
             "id": "12449523",
@@ -2308,7 +2308,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.7547
+            "@search.score": 99.76208
         },
         {
             "id": "12460154",
@@ -2344,7 +2344,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 3,
-            "@search.score": 99.74581
+            "@search.score": 99.75319
         },
         {
             "id": "12459660",
@@ -2372,7 +2372,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.74359
+            "@search.score": 99.75097
         },
         {
             "id": "12463527",
@@ -2404,7 +2404,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.746925
+            "@search.score": 99.7543
         },
         {
             "id": "12461607",
@@ -2432,7 +2432,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.742485
+            "@search.score": 99.749855
         },
         {
             "id": "12460102",
@@ -2467,7 +2467,7 @@
             "longitude": "-75.189260",
             "recScore": null,
             "rsvpTotal": 4,
-            "@search.score": 99.744705
+            "@search.score": 99.75208
         },
         {
             "id": "12456718",
@@ -2501,7 +2501,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.75803
+            "@search.score": 99.7654
         },
         {
             "id": "12463394",
@@ -2535,7 +2535,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.744705
+            "@search.score": 99.75208
         },
         {
             "id": "12449524",
@@ -2581,7 +2581,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.73692
+            "@search.score": 99.7443
         },
         {
             "id": "12467886",
@@ -2609,7 +2609,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.71803
+            "@search.score": 99.72541
         },
         {
             "id": "12392855",
@@ -2637,7 +2637,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.711365
+            "@search.score": 99.71874
         },
         {
             "id": "12459971",
@@ -2675,7 +2675,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.74026
+            "@search.score": 99.747635
         },
         {
             "id": "12408878",
@@ -2707,7 +2707,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.71803
+            "@search.score": 99.72541
         },
         {
             "id": "12463447",
@@ -2735,7 +2735,7 @@
             "longitude": "-75.191100",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.70024
+            "@search.score": 99.70763
         },
         {
             "id": "12463445",
@@ -2763,7 +2763,7 @@
             "longitude": "-75.191230",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.69579
+            "@search.score": 99.70318
         },
         {
             "id": "12465722",
@@ -2791,7 +2791,7 @@
             "longitude": "-75.180710",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.632355
+            "@search.score": 99.63975
         },
         {
             "id": "12456498",
@@ -2819,7 +2819,7 @@
             "longitude": "-75.356050",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.760254
+            "@search.score": 99.767624
         },
         {
             "id": "12456499",
@@ -2847,7 +2847,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.65351
+            "@search.score": 99.660904
         },
         {
             "id": "12449520",
@@ -2893,7 +2893,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.637924
+            "@search.score": 99.64532
         },
         {
             "id": "12449521",
@@ -2939,7 +2939,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.637924
+            "@search.score": 99.64532
         },
         {
             "id": "12397663",
@@ -2967,7 +2967,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.61119
+            "@search.score": 99.61858
         },
         {
             "id": "12408808",
@@ -2995,7 +2995,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.608955
+            "@search.score": 99.616356
         },
         {
             "id": "12444319",
@@ -3029,7 +3029,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.53535
+            "@search.score": 99.542755
         },
         {
             "id": "12456869",
@@ -3057,7 +3057,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.530876
+            "@search.score": 99.53829
         },
         {
             "id": "12463550",
@@ -3091,7 +3091,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 99.52641
+            "@search.score": 99.53383
         },
         {
             "id": "12459051",
@@ -3129,7 +3129,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.52195
+            "@search.score": 99.52936
         },
         {
             "id": "12456764",
@@ -3157,7 +3157,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.530876
+            "@search.score": 99.53829
         },
         {
             "id": "12452392",
@@ -3193,7 +3193,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.513016
+            "@search.score": 99.52043
         },
         {
             "id": "12463564",
@@ -3225,7 +3225,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.530876
+            "@search.score": 99.53829
         },
         {
             "id": "12461805",
@@ -3253,7 +3253,7 @@
             "longitude": "-75.191130",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.508545
+            "@search.score": 99.51596
         },
         {
             "id": "12328206",
@@ -3289,7 +3289,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.508545
+            "@search.score": 99.51596
         },
         {
             "id": "12456119",
@@ -3317,7 +3317,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 7,
-            "@search.score": 99.504074
+            "@search.score": 99.51149
         },
         {
             "id": "12374932",
@@ -3359,7 +3359,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.504074
+            "@search.score": 99.51149
         },
         {
             "id": "12415727",
@@ -3391,7 +3391,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.504074
+            "@search.score": 99.51149
         },
         {
             "id": "12374897",
@@ -3437,7 +3437,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.504074
+            "@search.score": 99.51149
         },
         {
             "id": "12408561",
@@ -3471,7 +3471,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.50184
+            "@search.score": 99.50926
         },
         {
             "id": "12464160",
@@ -3507,7 +3507,7 @@
             "longitude": "-75.127750",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.513016
+            "@search.score": 99.52043
         },
         {
             "id": "12464164",
@@ -3541,7 +3541,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.508545
+            "@search.score": 99.51596
         },
         {
             "id": "12463551",
@@ -3575,7 +3575,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.504074
+            "@search.score": 99.51149
         },
         {
             "id": "12392045",
@@ -3613,7 +3613,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.50184
+            "@search.score": 99.50926
         },
         {
             "id": "12374916",
@@ -3657,7 +3657,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.49961
+            "@search.score": 99.50703
         },
         {
             "id": "12396431",
@@ -3689,7 +3689,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.49961
+            "@search.score": 99.50703
         }
     ]
 }

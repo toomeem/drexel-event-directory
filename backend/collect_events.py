@@ -24,6 +24,29 @@ class OnlineStatus(BaseModel):
     physical_location: str
 
 
+def _fmt_hm(dt, with_ampm=False):
+    h = dt.strftime("%I").lstrip("0") or "12"
+    return f"{h}:{dt.strftime('%M %p')}" if with_ampm else f"{h}:{dt.strftime('%M')}"
+
+
+def make_time_str(start_time, end_time):
+    start_time = start_time.replace(tzinfo=PHILLY_TZ)
+    end_time = end_time.replace(tzinfo=PHILLY_TZ)
+    now = datetime.now(PHILLY_TZ)
+    if end_time - start_time > timedelta(hours=24):
+        if (start_time - now) > timedelta(days=7):
+            return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
+        return f"{start_time.strftime('%b')} {start_time.day} - {end_time.day}"
+
+    if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
+        time_str_prefix = "Today"
+    elif (start_time - now) > timedelta(days=7):
+        time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
+    else:
+        time_str_prefix = datetime.strftime(start_time, "%a")
+    return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
+
+
 def normalize_time(source, time_str):
     if not time_str:
         return None
@@ -38,10 +61,11 @@ def simplify_location(location):
         return None
     total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
                           "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
-                          "Rincliffe Gallery": "Rincliffe Gallery",
-                          "Pearlstein Gallery": "Pearlstein Gallery",
-                          "Peck Alumni Center Gallery": "Peck Alumni Center Gallery",
-                          "Lanc Walk": "Lancaster Walk", "Lancaster Walk": "Lancaster Walk", }
+                          "Rincliffe Gallery": "Rincliffe Gallery", "Pearlstein Gallery": "Pearlstein Gallery",
+                          "Peck Alumni Center Gallery": "Peck Alumni Center Gallery", "Lanc Walk": "Lancaster Walk",
+                          "Lancaster Walk": "Lancaster Walk", "Hagerty Library": "Hagerty Library",
+                          "Hagerty": "Hagerty Library", "A. J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
+                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad", }
     remove_list = ["\r", "19104", "Philadelphia", ", PA"]
     replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom", ","]
@@ -343,8 +367,11 @@ def create_drexel_athletics_events():
 
 def save_individual_event_to_file(event):
     path = "chunking_tmp_dir/" + event._id + ".json"
+    event_json = event.to_json()
+    event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
+
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(event.to_json(), f)
+        json.dump(event_json, f)
 
 
 def clear_tmp_dir():
@@ -364,6 +391,13 @@ def upload_file_to_s3(bucket, file_name):
     bucket.upload_file(local_file_path, s3_file_path)
 
 
+def sync_s3_knowledge_base():
+    client = boto3.client("bedrock-agent", aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                          aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"), region_name="us-east-1")
+    client.start_ingestion_job(knowledgeBaseId=os.getenv("AWS_BEDROCK_KNOWLEDGE_BASE_ID"),
+                               dataSourceId=os.getenv("AWS_BEDROCK_DATA_SOURCE_ID"))
+
+
 def collect_all_events(client):
     events = []
     events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
@@ -373,23 +407,26 @@ def collect_all_events(client):
 
     events = [e for e in events if e is not None and e.start_time is not None]
 
-    # Dedup priority for cross-source duplicates: dragonlink > drexel_athletics > drexel_events.
-    # Same-source non-athletics duplicates are kept distinct (matches Event.__eq__).
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
-    groups = {}
+
+    # group possible duplicates by start time first
+    by_start = {}
     for e in events:
-        key = (e.name.lower().strip(), e.get_start_timestamp(), e.get_end_timestamp())
-        groups.setdefault(key, []).append(e)
+        by_start.setdefault(e.get_start_timestamp(), []).append(e)
 
     result = []
-    for group in groups.values():
-        sources = {e.source for e in group}
-        if len(sources) > 1:
-            result.append(max(group, key=lambda e: source_priority.get(e.source, -1)))
-        elif sources == {"drexel_athletics"}:
-            result.append(group[0])
-        else:
-            result.extend(group)
+    for candidates in by_start.values():
+        clusters = []
+        for event in candidates:
+            for cluster in clusters:
+                if any(event == existing for existing in cluster):
+                    cluster.append(event)
+                    break
+            else:
+                clusters.append([event])
+
+        for cluster in clusters:
+            result.append(max(cluster, key=lambda e: source_priority.get(e.source, -1)))
 
     result.sort(key=lambda e: e.get_start_timestamp())
     return result
@@ -444,8 +481,8 @@ def update_events_file(client):
 def upload_all_events_to_s3():
     print("\nUploading events to S3...")
 
-    s3 = boto3.resource('s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-                        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"), )
+    s3 = boto3.resource(service_name='s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
     bucket_name = os.getenv("S3_BUCKET_NAME")
     bucket = s3.Bucket(bucket_name)
 
@@ -458,10 +495,14 @@ def upload_all_events_to_s3():
         upload_file_to_s3(bucket, event._id)
 
     clear_tmp_dir()
+    time.sleep(3)
+    sync_s3_knowledge_base()
+
+    print(f"\nUploaded {len(events)} events to S3 and synced Bedrock knowledge base.")
 
 
 def main():
-    update_events_file(client)
+    update_events_file(openai_client)
     fill_db()
     upload_all_events_to_s3()
 
@@ -469,7 +510,7 @@ def main():
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
-    client = OpenAI()
+    openai_client = OpenAI()
 
     main()
 
