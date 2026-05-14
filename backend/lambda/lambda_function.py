@@ -19,23 +19,27 @@ def _fmt_hm(dt, with_ampm=False):
     return f"{h}:{dt.strftime('%M %p')}" if with_ampm else f"{h}:{dt.strftime('%M')}"
 
 
-def db_entry_to_json(db_entry):
-    start_time = db_entry[6].astimezone(PHILLY_TZ)
-    end_time = db_entry[7].astimezone(PHILLY_TZ)
+def make_time_str(start_time, end_time):
     now = datetime.now(PHILLY_TZ)
     if end_time - start_time > timedelta(hours=24):
         if (start_time - now) > timedelta(days=7):
-            time_str = datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
-        else:
-            time_str = datetime.strftime(start_time, "%b %-d - ") + datetime.strftime(end_time, "%-d")
+            return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
+        return datetime.strftime(start_time, "%b %-d - ") + datetime.strftime(end_time, "%-d")
+
+    if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
+        time_str_prefix = "Today"
+    elif (start_time - now) > timedelta(days=7):
+        time_str_prefix = datetime.strftime(start_time, "%b %-d")
     else:
-        if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
-            time_str_prefix = "Today"
-        elif (start_time - now) > timedelta(days=7):
-            time_str_prefix = datetime.strftime(start_time, "%b %-d")
-        else:
-            time_str_prefix = datetime.strftime(start_time, "%a")
-        time_str = f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
+        time_str_prefix = datetime.strftime(start_time, "%a")
+    return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
+
+
+def db_entry_to_json(db_entry):
+    start_time = db_entry[6].astimezone(PHILLY_TZ)
+    end_time = db_entry[7].astimezone(PHILLY_TZ)
+
+    time_str = make_time_str(start_time, end_time)
     if db_entry[11]:
         perks = [i for i in db_entry[11].split("|") if i]
     else:
