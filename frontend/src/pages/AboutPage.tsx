@@ -1,18 +1,18 @@
 const SOURCES = [
     {
-        name: "Drexel Events",
+        name: "Drexel Events 🗓️",
         url: "https://drexel.edu/events?q&sortBy=relevance&sortOrder=asc&page=1&startDate&endDate",
         description:
             "The official Drexel University events calendar, covering academic talks, workshops, career fairs, cultural programs, and university-wide happenings.",
     },
     {
-        name: "DragonLink",
+        name: "DragonLink 🐉",
         url: "https://drexel.campuslabs.com/engage/",
         description:
             "Drexel's student engagement platform, where registered student organizations post club meetings, social events, fundraisers, and more.",
     },
     {
-        name: "Drexel Athletics",
+        name: "Drexel Athletics 🏀",
         url: "https://drexeldragons.com/",
         description:
             "The official home of Drexel Dragons athletics, providing schedules for all varsity sports including basketball, soccer, lacrosse, swimming, and more.",
@@ -26,8 +26,8 @@ export function AboutPage() {
             <p className="about-page__body">
                 Drexel Event Hub is a centralized directory of events happening on and
                 around Drexel University's campus. Instead of checking multiple sites,
-                you can browse, filter, and search everything in one place — from club
-                meetings and academic lectures to athletics games and cultural
+                you can browse, filter, and search for everything in one place, including
+                club meetings, academic lectures, athletics games, and cultural
                 celebrations.
             </p>
 
