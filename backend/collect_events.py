@@ -133,7 +133,10 @@ def dragonlink_event_parsing(event_json, kwargs):
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
+    specific_events_to_exclude = ["12449523", "12449521"]
 
+    if str(event_json["id"]) in specific_events_to_exclude:
+        return None
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
@@ -502,7 +505,7 @@ def upload_all_events_to_s3():
 
 
 def main():
-    update_events_file(openai_client)
+    # update_events_file(openai_client)
     fill_db()
     upload_all_events_to_s3()
 
