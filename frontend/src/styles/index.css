@@ -427,26 +427,32 @@ img {
 .filter-bar__clear-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 12px;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-surface);
-  color: var(--color-text);
-  font-size: 14px;
-  font-weight: 500;
+  color: var(--color-text-subtle);
   cursor: pointer;
   transition: background 0.12s ease, border-color 0.12s ease,
     color 0.12s ease;
 }
 
-.filter-bar__clear-btn:hover {
+.filter-bar__clear-btn:hover:not(:disabled) {
   background: #b3261e;
   border-color: #b3261e;
   color: #ffffff;
 }
 
-:root[data-theme="dark"] .filter-bar__clear-btn:hover {
+.filter-bar__clear-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+:root[data-theme="dark"] .filter-bar__clear-btn:hover:not(:disabled) {
   background: #d32f2f;
   border-color: #d32f2f;
   color: #ffffff;

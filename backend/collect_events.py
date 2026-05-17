@@ -505,7 +505,7 @@ def upload_all_events_to_s3():
 
 
 def main():
-    # update_events_file(openai_client)
+    update_events_file(openai_client)
     fill_db()
     upload_all_events_to_s3()
 

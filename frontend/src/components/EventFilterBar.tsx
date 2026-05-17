@@ -208,16 +208,29 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
         multi={true}
         onApply={(values) => onChange({ ...filters, perks: values })}
       />
-      {hasActiveFilters && (
-        <button
-          type="button"
-          className="filter-bar__clear-btn"
-          onClick={clearAllFilters}
-          aria-label="Clear all filters"
+      <button
+        type="button"
+        className="filter-bar__clear-btn"
+        onClick={clearAllFilters}
+        disabled={!hasActiveFilters}
+        aria-label="Clear all filters"
+        title="Clear all filters"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
         >
-          Clear Filters
-        </button>
-      )}
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
     </div>
   );
 }
