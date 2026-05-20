@@ -59,27 +59,79 @@ def normalize_time(source, time_str):
 def simplify_location(location):
     if not location:
         return None
+
+    online_placeholders = ["online", "remote", "virtual", "virtual event", "zoom"]
+    if location.lower() in online_placeholders:
+        return "Online"
+
+    strip_chars = " ,.-"
     total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
                           "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
                           "Rincliffe Gallery": "Rincliffe Gallery", "Pearlstein Gallery": "Pearlstein Gallery",
                           "Peck Alumni Center Gallery": "Peck Alumni Center Gallery", "Lanc Walk": "Lancaster Walk",
                           "Lancaster Walk": "Lancaster Walk", "Hagerty Library": "Hagerty Library",
                           "Hagerty": "Hagerty Library", "A. J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad", }
-    remove_list = ["\r", "19104", "Philadelphia", ", PA"]
-    replace_list = [(" Street", " St"), ("\n", " "), ("  ", " "), ("  ", " ")]
-    suffixes = [" - Classroom w/ 14 PCs", " - Classroom", ","]
+                          "A.J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
+                          "Anthony J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
+                          "AJ Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
+                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad", "Online Event": "Online",
+                          "Zoom": "Online", "Geary Auditorium": "Geary Auditorium",
+                          "Mandell Theater": "Mandell Theater", "Drexel Park": "Drexel Park",
+                          "Education Abroad Office": "Education Abroad Office",
+                          "Academic Building Suite 201": "Education Abroad Office",
+                          "Hill Seminar Room": "Hill Seminar Room", "LeBow Eng. 240": "Hill Seminar Room",
+                          "Lindy Center for Civic Engagement": "Lindy Center", "The Lindy Center": "Lindy Center",
+                          "MAIN - Auditorium": "Main Building", "NSBITT 111": "NSBITT Stein Auditorium",
+                          "Stein Auditorium": "NSBITT Stein Auditorium",
+                          "NSBITT 125 - Ruth Auditorium": "NSBITT Ruth Auditorium", "Korman Quad": "Korman Quad",
+                          "Humpty Dumplings Glenside": "Humpty Dumplings", "Register on Handshake": "Online",
+                          "zoom:": "Online", "The Kimmel Center": "The Kimmel Center", "Penny Park": "Penny Park",
+                          "Mitchell Auditorium": "BSONE Mitchell Auditorium",
+                          "Penn's Landing 401 S Christopher Columbus Blvd": "Penn's Landing",
+                          "URBN 206 - Class Lab": "URBN 206", }
+    suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
+                " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
+                "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(Exclusive)", "- All Sections",
+                "- Danzinger Conference Room", "(212 - Chapel, 211 - Office)"]
+    remove_list = ["\r", "19103", "19104", "19106", "Philadelphia", ", PA", "(PISB)",
+                   "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
+                   "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
+                   "*RSVP Required to Attend*", "60 N. 36th Street", "33rd and Market Street", ", USA",
+                   "(if rain-W106)", ]
+    replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
+                    ("Papadakis Integrated Sciences Building", "PISB"), ("Creese Student Center", "CREESE"),
+                    ("Drexel University Campus", "Drexel Campus"), ("Bossone Research and Enterprise Center", "BSONE"),
+                    ("Bossone Research Center", "BSONE"), (", Room", " room"), ("Rush building", "RUSH"),
+                    ("Rush Building", "RUSH"), (" - Alumni Garden", " Garden"),
+                    ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
+                    ("Great Court (Exclusive)", "Great Court"), ("Academic Building", "ACADMC"),
+                    ("Gerri C. LeBow Hall", "LEBOW"), ("Drexel Health Sciences Building", "HSB"),
+                    ("Daskalakis Athletic Center", "DAC"), ("Table Space 1 - Lobby", "Lobby"),
+                    ("Table Space 2 - Lobby", "Lobby"), (" , ", " "), ("  ", " "), ("  ", " "), ("  ", " "), ]
+    building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
+                           "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "JEMIC", "CCI", "DAC"]
 
     for k, v in total_replace_list.items():
         if k in location:
             return v
+    location = location.strip(strip_chars)
+    for suffix in suffixes:
+        location = location.removesuffix(suffix)
     for i in remove_list:
         location = location.replace(i, "")
     for old, new in replace_list:
         location = location.replace(old, new)
-    location = location.strip()
-    for suffix in suffixes:
-        location = location.removesuffix(suffix)
+    location = location.strip(strip_chars)
+    for i in building_shortnames:
+        if i in location:
+            location = (
+                location.replace(f"{i}, Room", i, 1).replace(f"{i}, room", i, 1).replace(f"{i} - Room", i, 1).replace(
+                    f"{i} - room", i, 1).replace(f"{i} Room", i, 1).replace(f"{i} room", i, 1).replace(f"{i}Room", i,
+                                                                                                       1).replace(
+                    f"{i}room", i, 1).replace(f"{i} Suite", i, 1).replace(f"{i} Meeting room", i, 1).replace(
+                    f"{i} Meeting Room", i).replace(f"{i} meeting room", i, 1))
+
+            break
     return location.strip()
 
 
@@ -149,7 +201,22 @@ def dragonlink_event_parsing(event_json, kwargs):
         kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
     kwargs["event_link"] = dragonlink_event_url + event_json["id"]
 
-    if event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
+    religious_orgs = ["Jewish Student Association", "Drexel Muslim Students Association", "Every Nation Campus",
+                      "Drexel Asian Baptist Student Koinonia", "Story Fellowship", "Cru",
+                      "Drexel Newman Catholic Community", "Crosswalk Christian Fellowship", "Drexel WEH",
+                      "Hindu YUVA @ Drexel", "Open Door Christian Community ", "Drexel Students for Christ"]
+    athletics_keywords = ["pilates", "bhangra", "yoga", "zumba", "salsa", "spikeball", "spike ball",
+                          "drexel dragon jedi meeting", "kayaking", "paintball", "hike", "hiking", "skiing",
+                          "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
+                          "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
+
+    if kwargs["org_name"] in religious_orgs:
+        kwargs["theme"] = "spirituality"
+    elif kwargs["org_name"] == "Weekend Warriors":
+        kwargs["theme"] = "athletics"
+    elif any([keyword in kwargs["name"].lower() for keyword in athletics_keywords]):
+        kwargs["theme"] = "athletics"
+    elif event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
         kwargs["theme"] = event_json["theme"].lower()
     elif "Credit" in event_json["categoryNames"] or event_json["theme"] == "CommunityService":
         kwargs["theme"] = "community"
@@ -166,7 +233,9 @@ def dragonlink_event_parsing(event_json, kwargs):
         kwargs["theme"] = "community"
     else:
         kwargs["theme"] = "social"
+
     kwargs["perks"] = [i.lower().replace(" ", "_") for i in event_json["benefitNames"]]
+    kwargs["theme"] = kwargs["theme"].lower()
     return kwargs
 
 
@@ -267,8 +336,9 @@ def drexel_athletics_event_parsing(event_json, kwargs):
 
 
 def create_event_object(source, event_json, client):
-    online_keywords = ["zoom", "virtual", "hybrid", "handshake"]
-    online_location_default_text = "Virtual Event"
+    online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
+    online_location_default_text = "Online"
+    exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting"]
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], }
@@ -285,14 +355,20 @@ def create_event_object(source, event_json, client):
     if kwargs is None:
         return None
 
+    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["org_name"], kwargs["location"]]):
+        return None
+    if kwargs["name"] in exclude_events:
+        return None
     kwargs["_id"] = str(uuid.uuid7().hex)
-    kwargs["location"] = simplify_location(kwargs["location"])
-
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
     if source == "drexel_athletics":
         kwargs["event_status"] = "in-person"
+    elif kwargs["location"] == online_location_default_text:
+        kwargs["event_status"] = "virtual"
+    elif "and virtual" in kwargs["location"]:
+        kwargs["event_status"] = "hybrid"
     elif any(keyword in str(kwargs["location"]).lower() for keyword in online_keywords):
         online_status_response = get_online_status(client, kwargs["location"])
         kwargs["event_status"] = online_status_response["event_status"]
@@ -302,6 +378,10 @@ def create_event_object(source, event_json, client):
             kwargs["location"] = online_location_default_text
     else:
         kwargs["event_status"] = "in-person"
+
+    kwargs["location"] = simplify_location(kwargs["location"])
+    if kwargs["location"] == "Online":
+        kwargs["event_status"] = "virtual"
 
     return Event(**kwargs)
 
@@ -313,7 +393,7 @@ def create_dragonlink_api_url(count):
     return base_url + "?endsAfter=" + timestamp + base_filters + str(count)
 
 
-def collect_dragonlink_events(count=200):
+def collect_dragonlink_events(count=300):
     response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT).json()
 
     os.makedirs("json_examples", exist_ok=True)
@@ -368,13 +448,15 @@ def create_drexel_athletics_events():
     return events_json
 
 
-def save_individual_event_to_file(event):
+def create_event_chunk_file(event):
     path = "chunking_tmp_dir/" + event._id + ".json"
     event_json = event.to_json()
     event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
     del event_json["event_link"]
     del event_json["image_url"]
     del event_json["id"]
+    del event_json["start_time"]
+    del event_json["end_time"]
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(event_json, f)
@@ -497,7 +579,7 @@ def upload_all_events_to_s3():
     clear_s3_folder(bucket)
 
     for event in events:
-        save_individual_event_to_file(event)
+        create_event_chunk_file(event)
         upload_file_to_s3(bucket, event._id)
 
     clear_tmp_dir()
@@ -521,4 +603,4 @@ if __name__ == "__main__":
     main()
 
     end = time.time()
-    print(f"\nFinished in {round(end - start, 1)} seconds.")
+    print(f"\nFinished in {round((end - start) / 60, 1)} mins.")
