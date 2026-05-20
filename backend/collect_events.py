@@ -313,7 +313,7 @@ def create_dragonlink_api_url(count):
     return base_url + "?endsAfter=" + timestamp + base_filters + str(count)
 
 
-def collect_dragonlink_events(count=100):
+def collect_dragonlink_events(count=200):
     response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT).json()
 
     os.makedirs("json_examples", exist_ok=True)
@@ -372,6 +372,9 @@ def save_individual_event_to_file(event):
     path = "chunking_tmp_dir/" + event._id + ".json"
     event_json = event.to_json()
     event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
+    del event_json["event_link"]
+    del event_json["image_url"]
+    del event_json["id"]
 
     with open(path, "w", encoding="utf-8") as f:
         json.dump(event_json, f)

@@ -24,7 +24,7 @@ class Event:
         if not isinstance(other, Event):
             return NotImplemented
         if self.source == other.source and self.source != "drexel_athletics":
-            return False
+            return self.org_name == other.org_name and self.start_time == other.start_time
         # only filter out events by the start time because duplicates can have different end times
         if self.get_start_timestamp() != other.get_start_timestamp():
             return False
