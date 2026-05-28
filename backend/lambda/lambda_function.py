@@ -24,12 +24,14 @@ def make_time_str(start_time, end_time):
     if end_time - start_time > timedelta(hours=24):
         if (start_time - now) > timedelta(days=7):
             return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
-        return datetime.strftime(start_time, "%b %-d - ") + datetime.strftime(end_time, "%-d")
+        return f"{start_time.strftime('%b')} {start_time.day} - {end_time.day}"
 
-    if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
+    if now.strftime("%m/%d") == start_time.strftime("%m/%d"):
         time_str_prefix = "Today"
+    elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
+        time_str_prefix = "Tmrw"
     elif (start_time - now) > timedelta(days=7):
-        time_str_prefix = datetime.strftime(start_time, "%b %-d")
+        time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
         time_str_prefix = datetime.strftime(start_time, "%a")
     return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
@@ -125,13 +127,13 @@ def lambda_handler(event, context):
                                   perks,
                                   COUNT(*) OVER () AS total_count
                            FROM main.events
-                           WHERE (end_time + INTERVAL '1 hour') > now()
+                           WHERE end_time > now()
                              AND start_time <= to_timestamp(%s)
                              AND (%s IS NULL OR event_status = %s)
                              AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
                              AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
                              AND (%s::text IS NULL OR name ILIKE %s OR org_name ILIKE %s)
-                           ORDER BY start_time
+                           ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
                                  search_pattern, search_pattern, search_pattern, page_event_count, offset))

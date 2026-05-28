@@ -38,8 +38,10 @@ def make_time_str(start_time, end_time):
             return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
         return f"{start_time.strftime('%b')} {start_time.day} - {end_time.day}"
 
-    if now.strftime("%m/%d") == end_time.strftime("%m/%d"):
+    if now.strftime("%m/%d") == start_time.strftime("%m/%d"):
         time_str_prefix = "Today"
+    elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
+        time_str_prefix = "Tmrw"
     elif (start_time - now) > timedelta(days=7):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
@@ -64,7 +66,7 @@ def simplify_location(location):
     if location.lower() in online_placeholders:
         return "Online"
 
-    strip_chars = " ,.-"
+    strip_chars = " ,.-*"
     total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
                           "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
                           "Rincliffe Gallery": "Rincliffe Gallery", "Pearlstein Gallery": "Pearlstein Gallery",
@@ -88,7 +90,12 @@ def simplify_location(location):
                           "zoom:": "Online", "The Kimmel Center": "The Kimmel Center", "Penny Park": "Penny Park",
                           "Mitchell Auditorium": "BSONE Mitchell Auditorium",
                           "Penn's Landing 401 S Christopher Columbus Blvd": "Penn's Landing",
-                          "URBN 206 - Class Lab": "URBN 206", }
+                          "URBN 206 - Class Lab": "URBN 206",
+                          "Cancer Center at the Thomas Jefferson University": "Cancer Center at the Thomas Jefferson University",
+                          "URBN Annex Screening Room": "URBN Annex Screening Room",
+                          "Main Auditorium in Main Building": "Main Auditorium in Main Building",
+                          "The Academy of Natural Sciences": "The Academy of Natural Sciences",
+                          "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Annex Black Box Theater"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(Exclusive)", "- All Sections",
@@ -96,8 +103,8 @@ def simplify_location(location):
     remove_list = ["\r", "19103", "19104", "19106", "Philadelphia", ", PA", "(PISB)",
                    "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
                    "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
-                   "*RSVP Required to Attend*", "60 N. 36th Street", "33rd and Market Street", ", USA",
-                   "(if rain-W106)", ]
+                   "RSVP Required to Attend", "60 N. 36th Street", "33rd and Market Street", ", USA", "(if rain-W106)",
+                   "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3141 Chestnut Street"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("Creese Student Center", "CREESE"),
                     ("Drexel University Campus", "Drexel Campus"), ("Bossone Research and Enterprise Center", "BSONE"),
@@ -129,7 +136,7 @@ def simplify_location(location):
                     f"{i} - room", i, 1).replace(f"{i} Room", i, 1).replace(f"{i} room", i, 1).replace(f"{i}Room", i,
                                                                                                        1).replace(
                     f"{i}room", i, 1).replace(f"{i} Suite", i, 1).replace(f"{i} Meeting room", i, 1).replace(
-                    f"{i} Meeting Room", i).replace(f"{i} meeting room", i, 1))
+                    f"{i} Meeting Room", i).replace(f"{i} meeting room", i, 1).replace(f"{i},", i, 1))
 
             break
     return location.strip()
@@ -338,7 +345,13 @@ def drexel_athletics_event_parsing(event_json, kwargs):
 def create_event_object(source, event_json, client):
     online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
     online_location_default_text = "Online"
-    exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting"]
+    exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
+                      "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
+                      "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
+                      "Dorm Objects 101 Guided Tours", "GBM #5",
+                      "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
+                      "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
+                      "SWE Spring 2026 Officer Meetings"]
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], }
@@ -358,6 +371,9 @@ def create_event_object(source, event_json, client):
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["org_name"], kwargs["location"]]):
         return None
     if kwargs["name"] in exclude_events:
+        return None
+    if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
+            kwargs["name"].lower():
         return None
     kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["image_url"] is None:
@@ -407,7 +423,7 @@ def create_drexel_events_api_url(page=1):
     return f"https://drexel.edu/api/du/scevent?pageId=%7B1F80CA59-5675-4C76-B499-BA06662B3E34%7D&page={page}&perPage=10&sortOrder=asc&loadAllPages=false&q=&sortBy=relevance&startDate=&endDate="
 
 
-def collect_drexel_events(count=100):
+def collect_drexel_events(count=150):
     results = []
     for i in range(count // 10):
         response = requests.get(create_drexel_events_api_url(i + 1), timeout=HTTP_TIMEOUT)
