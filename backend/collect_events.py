@@ -61,7 +61,9 @@ def normalize_time(source, time_str):
 def simplify_location(location):
     if not location:
         return None
-
+    if "cancelled" in location.lower():
+        return None
+    
     online_placeholders = ["online", "remote", "virtual", "virtual event", "zoom"]
     if location.lower() in online_placeholders:
         return "Online"
@@ -375,6 +377,9 @@ def create_event_object(source, event_json, client):
     if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
             kwargs["name"].lower():
         return None
+    if kwargs["name"].startswith("CANCELLED"):
+        return None
+
     kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
@@ -396,6 +401,8 @@ def create_event_object(source, event_json, client):
         kwargs["event_status"] = "in-person"
 
     kwargs["location"] = simplify_location(kwargs["location"])
+    if kwargs["location"] is None:
+        return None
     if kwargs["location"] == "Online":
         kwargs["event_status"] = "virtual"
 
@@ -423,7 +430,7 @@ def create_drexel_events_api_url(page=1):
     return f"https://drexel.edu/api/du/scevent?pageId=%7B1F80CA59-5675-4C76-B499-BA06662B3E34%7D&page={page}&perPage=10&sortOrder=asc&loadAllPages=false&q=&sortBy=relevance&startDate=&endDate="
 
 
-def collect_drexel_events(count=150):
+def collect_drexel_events(count=200):
     results = []
     for i in range(count // 10):
         response = requests.get(create_drexel_events_api_url(i + 1), timeout=HTTP_TIMEOUT)
