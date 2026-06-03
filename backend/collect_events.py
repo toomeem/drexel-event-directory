@@ -63,7 +63,7 @@ def simplify_location(location):
         return None
     if "cancelled" in location.lower():
         return None
-    
+
     online_placeholders = ["online", "remote", "virtual", "virtual event", "zoom"]
     if location.lower() in online_placeholders:
         return "Online"
@@ -85,40 +85,54 @@ def simplify_location(location):
                           "Academic Building Suite 201": "Education Abroad Office",
                           "Hill Seminar Room": "Hill Seminar Room", "LeBow Eng. 240": "Hill Seminar Room",
                           "Lindy Center for Civic Engagement": "Lindy Center", "The Lindy Center": "Lindy Center",
-                          "MAIN - Auditorium": "Main Building", "NSBITT 111": "NSBITT Stein Auditorium",
-                          "Stein Auditorium": "NSBITT Stein Auditorium",
+                          "NSBITT 111": "NSBITT Stein Auditorium", "Stein Auditorium": "NSBITT Stein Auditorium",
                           "NSBITT 125 - Ruth Auditorium": "NSBITT Ruth Auditorium", "Korman Quad": "Korman Quad",
                           "Humpty Dumplings Glenside": "Humpty Dumplings", "Register on Handshake": "Online",
                           "zoom:": "Online", "The Kimmel Center": "The Kimmel Center", "Penny Park": "Penny Park",
                           "Mitchell Auditorium": "BSONE Mitchell Auditorium",
                           "Penn's Landing 401 S Christopher Columbus Blvd": "Penn's Landing",
-                          "URBN 206 - Class Lab": "URBN 206",
+
                           "Cancer Center at the Thomas Jefferson University": "Cancer Center at the Thomas Jefferson University",
-                          "URBN Annex Screening Room": "URBN Annex Screening Room",
-                          "Main Auditorium in Main Building": "Main Auditorium in Main Building",
+                          "URBN Annex Screening Room": "URBN Screening Room",
+                          "MAIN - Auditorium": "Main Building Auditorium",
+                          "Main Auditorium": "Main Building Auditorium",
+                          "Main Auditorium in Main Building": "Main Building Auditorium",
+                          "Main Auditorium\r\nMain Building": "Main Building Auditorium",
                           "The Academy of Natural Sciences": "The Academy of Natural Sciences",
-                          "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Annex Black Box Theater"}
+                          "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Black Box Theater",
+                          "Dornsife Center for Neighborhood Partnership": "Dornsife Center",
+                          "Highmark Mann Center": "Highmark Mann Center",
+                          "Mack Miles Playground": "Mack Miles Playground",
+                          "Office of Graduate Studies": "Office of Graduate Studies",
+                          "Office of Graduate Students": "Office of Graduate Studies",
+                          "Elkin's Park Parking Lot": "Elkin's Park Parking Lot", "Dragon Statue": "Dragon Statue"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
-                "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(Exclusive)", "- All Sections",
-                "- Danzinger Conference Room", "(212 - Chapel, 211 - Office)"]
-    remove_list = ["\r", "19103", "19104", "19106", "Philadelphia", ", PA", "(PISB)",
-                   "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
-                   "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
-                   "RSVP Required to Attend", "60 N. 36th Street", "33rd and Market Street", ", USA", "(if rain-W106)",
-                   "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3141 Chestnut Street"]
+                "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
+                "- All Sections", "- Danzinger Conference Room", "(212 - Chapel, 211 - Office)"]
+    remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "Pa 19104", "Pa 19103", "Pa 19106", "19103", "19104",
+                   "19106", "Philadelphia", ", PA", "located at the northeast corner of 33rd and Chestnut Streets",
+                   "located at 32nd and Market Streets", "101 N 33rd St", "(Main 010 A)", "located at",
+                   "3230 Market Street", "- Group Exercise Studio -", "RSVP Required to Attend", "60 N. 36th Street",
+                   "33rd and Market Street", ", USA", "(if rain-W106)", "3501 Market Street", "3401 Filbert Street",
+                   "3200 Chestnut Street", "3200 Chestnut St", "3141 Chestnut Street", "3141 Chestnut St",
+                   "Table Space 1 -", "Table Space 1", "Table Space 2 -", "Table Space 2",
+                   "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
+                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(15 Wellness Points)"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
-                    ("Papadakis Integrated Sciences Building", "PISB"), ("Creese Student Center", "CREESE"),
-                    ("Drexel University Campus", "Drexel Campus"), ("Bossone Research and Enterprise Center", "BSONE"),
-                    ("Bossone Research Center", "BSONE"), (", Room", " room"), ("Rush building", "RUSH"),
-                    ("Rush Building", "RUSH"), (" - Alumni Garden", " Garden"),
+                    ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
+                    ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),
+                    ("Bossone Research and Enterprise Center", "BSONE"), ("Bossone Research Center", "BSONE"),
+                    ("Rush building", "RUSH"), ("Rush Building", "RUSH"), (" - Alumni Garden", " Garden"),
                     ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
                     ("Great Court (Exclusive)", "Great Court"), ("Academic Building", "ACADMC"),
                     ("Gerri C. LeBow Hall", "LEBOW"), ("Drexel Health Sciences Building", "HSB"),
-                    ("Daskalakis Athletic Center", "DAC"), ("Table Space 1 - Lobby", "Lobby"),
-                    ("Table Space 2 - Lobby", "Lobby"), (" , ", " "), ("  ", " "), ("  ", " "), ("  ", " "), ]
+                    ("Health Sciences Building", "HSB"), ("Daskalakis Athletic Center", "DAC"), ("(,", "("),
+                    (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "), ("  ", " "),
+                    ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
-                           "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "JEMIC", "CCI", "DAC"]
+                           "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
+                           "DAC"]
 
     for k, v in total_replace_list.items():
         if k in location:
@@ -127,12 +141,13 @@ def simplify_location(location):
     for suffix in suffixes:
         location = location.removesuffix(suffix)
     for i in remove_list:
-        location = location.replace(i, "")
+        location = location.replace(i, "", 1)
     for old, new in replace_list:
         location = location.replace(old, new)
     location = location.strip(strip_chars)
     for i in building_shortnames:
         if i in location:
+            location = location.replace(f"({i})", "", 1).replace(f"{i} Center", i, 1).replace(f"{i} center", i, 1)
             location = (
                 location.replace(f"{i}, Room", i, 1).replace(f"{i}, room", i, 1).replace(f"{i} - Room", i, 1).replace(
                     f"{i} - room", i, 1).replace(f"{i} Room", i, 1).replace(f"{i} room", i, 1).replace(f"{i}Room", i,
@@ -405,6 +420,16 @@ def create_event_object(source, event_json, client):
         return None
     if kwargs["location"] == "Online":
         kwargs["event_status"] = "virtual"
+
+    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
+                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
+                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
+                       "Incorporated", "Inc.", "Student Group", ", ,"]
+    if kwargs["org_name"].startswith("Drexel University"):
+        kwargs["org_name"] = kwargs["org_name"].replace("Drexel University", "", 1)
+    for i in org_name_remove:
+        kwargs["org_name"] = kwargs["org_name"].replace(i, "", 1)
+    kwargs["org_name"] = kwargs["org_name"].strip(";-,. ")
 
     return Event(**kwargs)
 
