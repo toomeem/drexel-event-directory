@@ -127,9 +127,9 @@ def simplify_location(location):
                     ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
                     ("Great Court (Exclusive)", "Great Court"), ("Academic Building", "ACADMC"),
                     ("Gerri C. LeBow Hall", "LEBOW"), ("Drexel Health Sciences Building", "HSB"),
-                    ("Health Sciences Building", "HSB"), ("Daskalakis Athletic Center", "DAC"), ("(,", "("),
-                    (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "), ("  ", " "),
-                    ("  ", " "), ]
+                    ("Health Sciences Building", "HSB"), ("Daskalakis Athletic Center", "DAC"),
+                    ("Room 209", "RUSH 209"), ("(,", "("), (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""),
+                    (" , ", " "), ("  ", " "), ("  ", " "), ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
@@ -234,7 +234,9 @@ def dragonlink_event_parsing(event_json, kwargs):
                           "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
                           "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
 
-    if kwargs["org_name"] in religious_orgs:
+    if "General Body Meeting" in kwargs["categoryNames"] or "Presidents Meeting" in kwargs["categoryNames"]:
+        return None
+    elif kwargs["org_name"] in religious_orgs:
         kwargs["theme"] = "spirituality"
     elif kwargs["org_name"] == "Weekend Warriors":
         kwargs["theme"] = "athletics"
@@ -430,6 +432,7 @@ def create_event_object(source, event_json, client):
     for i in org_name_remove:
         kwargs["org_name"] = kwargs["org_name"].replace(i, "", 1)
     kwargs["org_name"] = kwargs["org_name"].strip(";-,. ")
+    # todo: remove "Drexel " prefix from org names with a few exceptions
 
     return Event(**kwargs)
 
