@@ -234,7 +234,7 @@ def dragonlink_event_parsing(event_json, kwargs):
                           "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
                           "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
 
-    if "General Body Meeting" in kwargs["categoryNames"] or "Presidents Meeting" in kwargs["categoryNames"]:
+    if "General Body Meeting" in event_json["categoryNames"] or "Presidents Meeting" in event_json["categoryNames"]:
         return None
     elif kwargs["org_name"] in religious_orgs:
         kwargs["theme"] = "spirituality"
