@@ -91,7 +91,6 @@ def simplify_location(location):
                           "zoom:": "Online", "The Kimmel Center": "The Kimmel Center", "Penny Park": "Penny Park",
                           "Mitchell Auditorium": "BSONE Mitchell Auditorium",
                           "Penn's Landing 401 S Christopher Columbus Blvd": "Penn's Landing",
-
                           "Cancer Center at the Thomas Jefferson University": "Cancer Center at the Thomas Jefferson University",
                           "URBN Annex Screening Room": "URBN Screening Room",
                           "MAIN - Auditorium": "Main Building Auditorium",
@@ -105,11 +104,13 @@ def simplify_location(location):
                           "Mack Miles Playground": "Mack Miles Playground",
                           "Office of Graduate Studies": "Office of Graduate Studies",
                           "Office of Graduate Students": "Office of Graduate Studies",
-                          "Elkin's Park Parking Lot": "Elkin's Park Parking Lot", "Dragon Statue": "Dragon Statue"}
+                          "Elkin's Park Parking Lot": "Elkin's Park Parking Lot", "Dragon Statue": "Dragon Statue",
+                          "Drexel University Recreation Center": "DAC", "Drexel Recreation Center": "DAC",
+                          "Daskalakis Athletic Center": "DAC"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
-                "- All Sections", "- Danzinger Conference Room", "(212 - Chapel, 211 - Office)"]
+                "- All Sections", "- Danzinger Conference Room"]
     remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "Pa 19104", "Pa 19103", "Pa 19106", "19103", "19104",
                    "19106", "Philadelphia", ", PA", "located at the northeast corner of 33rd and Chestnut Streets",
                    "located at 32nd and Market Streets", "101 N 33rd St", "(Main 010 A)", "located at",
@@ -118,18 +119,17 @@ def simplify_location(location):
                    "3200 Chestnut Street", "3200 Chestnut St", "3141 Chestnut Street", "3141 Chestnut St",
                    "Table Space 1 -", "Table Space 1", "Table Space 2 -", "Table Space 2",
                    "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
-                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(15 Wellness Points)"]
+                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
                     ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),
                     ("Bossone Research and Enterprise Center", "BSONE"), ("Bossone Research Center", "BSONE"),
                     ("Rush building", "RUSH"), ("Rush Building", "RUSH"), (" - Alumni Garden", " Garden"),
                     ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
-                    ("Great Court (Exclusive)", "Great Court"), ("Academic Building", "ACADMC"),
-                    ("Gerri C. LeBow Hall", "LEBOW"), ("Drexel Health Sciences Building", "HSB"),
-                    ("Health Sciences Building", "HSB"), ("Daskalakis Athletic Center", "DAC"),
+                    ("Academic Building", "ACADMC"), ("Gerri C. LeBow Hall", "LEBOW"),
+                    ("Drexel Health Sciences Building", "HSB"), ("Health Sciences Building", "HSB"),
                     ("Room 209", "RUSH 209"), ("(,", "("), (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""),
-                    (" , ", " "), ("  ", " "), ("  ", " "), ("  ", " "), ]
+                    (" , ", " "), ("  ", " "), ("  ", " "), (" , ", " "), ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
@@ -147,16 +147,25 @@ def simplify_location(location):
     location = location.strip(strip_chars)
     for i in building_shortnames:
         if i in location:
-            location = location.replace(f"({i})", "", 1).replace(f"{i} Center", i, 1).replace(f"{i} center", i, 1)
+            location = location.replace(f"({i})", "", 1).replace(f"{i} Center", f"{i} ", 1).replace(f"{i} center",
+                                                                                                    f"{i} ", 1)
             location = (
-                location.replace(f"{i}, Room", i, 1).replace(f"{i}, room", i, 1).replace(f"{i} - Room", i, 1).replace(
-                    f"{i} - room", i, 1).replace(f"{i} Room", i, 1).replace(f"{i} room", i, 1).replace(f"{i}Room", i,
-                                                                                                       1).replace(
-                    f"{i}room", i, 1).replace(f"{i} Suite", i, 1).replace(f"{i} Meeting room", i, 1).replace(
-                    f"{i} Meeting Room", i).replace(f"{i} meeting room", i, 1).replace(f"{i},", i, 1))
-
+                location.replace(f"{i}, Room", f"{i} ", 1).replace(f"{i}, room", f"{i} ", 1).replace(f"{i} - Room",
+                                                                                                     f"{i} ",
+                                                                                                     1).replace(
+                    f"{i} - room", f"{i} ", 1).replace(f"{i} Room", f"{i} ", 1).replace(f"{i} room", f"{i} ",
+                                                                                        1).replace(f"{i}Room", i,
+                                                                                                   1).replace(
+                    f"{i}room", f"{i} ", 1).replace(f"{i} Suite", f"{i} ", 1).replace(f"{i} Meeting room", f"{i} ",
+                                                                                      1).replace(f"{i} Meeting Room",
+                                                                                                 i).replace(
+                    f"{i} meeting room", f"{i} ", 1).replace(f"{i},", f"{i} ", 1)).replace(f"{i}Suite", f"{i} ",
+                                                                                           1).replace(f"{i}Room",
+                                                                                                      f"{i} ",
+                                                                                                      1).replace(
+                f"{i}room", f"{i} ", 1)
             break
-    return location.strip()
+    return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ").replace("  ", " ")
 
 
 def match_default_image(name, org_name, location):
@@ -392,11 +401,11 @@ def create_event_object(source, event_json, client):
     if kwargs["name"] in exclude_events:
         return None
     if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
-            kwargs["name"].lower():
+            kwargs["name"].lower() or "Chpater" in kwargs["name"]:
         return None
     if kwargs["name"].startswith("CANCELLED"):
         return None
-
+    kwargs["name"] = kwargs["name"].replace("(15 Wellness Points)", "").strip(" ;:/,*")
     kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
