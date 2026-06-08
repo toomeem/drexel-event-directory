@@ -1,7 +1,44 @@
+use hashing to avoid deleting and re-adding events each time
+use multithreading when collecting events
+create a dev db to save money while iterating on data cleaning and filtering
+split some of the data cleaning into separate functions
+shorten org names to try to prevent them from being over one line
+be able to filter out event types (e.g. select all and the unselect one or more)
+    update "All" button to "Select All" and "Unselect All"
+improve location cleaning
+improve event name cleaning
+rename virtual to online
+improve event type labeling (a yoga event wasn't labeled as "athletics")
+parse event name to check for "credit" perk ("15 Wellness Points")
+remove more events (office hours, walk-in hours, events for faculty)
 add filtering
-    live tag
-    starting soon tag
-    popular tag
-add search
+    add filter bundles to make it easier to look for specific types of events
+    "starting soon" label
+    "popular" label
+    "for new students" label
+    "for grad students" label
+    "field trip" label
+    "fun" label
+    "workshop" label
+    "good for newcomers" label
+    "volunteering" label
+    "weekly" label
+    "greek life" label
+    "political" label
+add additional filtering for religious events to filter by religion (use org name to label)
+    maybe add specific religion icons?
+    allow filtering out religious events
+add icons for each event type
+    add food icons for food events that aren't necessarily free
+save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
+add button to turn on/off AI features
+add form to add a new event
+improve search
+more default images
+    for events that occur 5+ times, manually add a default image (VirtuaQuest)
+    add default images for orgs that host a lot of events but don't have images (study abroad office)
+    add default images for thesis defenses?
+    check event descriptions for links and check the links for images? (could work for a specific list of sites)
 get more sources
-parse location better
+    add club/intramural sports
+add section for new students that explains stuff and has a map of campus

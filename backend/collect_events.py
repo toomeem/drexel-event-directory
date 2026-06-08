@@ -481,7 +481,8 @@ def collect_drexel_events(count=200):
     return results
 
 
-def create_drexel_athletics_api_url(days_out=90):
+def create_drexel_athletics_api_url(days_out=30):
+    # set default days_out to higher amount after streamlining data collection process
     now = datetime.now()
     start_date = now.strftime("%m-%d-%Y")
     end_date = (now + timedelta(days=days_out)).strftime("%m-%d-%Y")
