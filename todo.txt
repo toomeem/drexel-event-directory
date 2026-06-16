@@ -1,10 +1,8 @@
-create a dev db to save money while iterating on data cleaning and filtering
+save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
 be able to filter out event types (e.g. select all and the unselect one or more)
     update "All" button to "Select All" and "Unselect All"
-improve event name cleaning
 rename virtual to online
 improve event type labeling (a yoga event wasn't labeled as "athletics")
-parse event name to check for "credit" perk ("15 Wellness Points")
 remove more events (office hours, walk-in hours, events for faculty)
 MAKE WEBSITE MOBILE-FRIENDLY
 add filtering
@@ -26,7 +24,6 @@ add additional filtering for religious events to filter by religion (use org nam
     allow filtering out religious events
 add icons for each event type
     add food icons for food events that aren't necessarily free
-save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
 add button to turn on/off AI features
 add form to add a new event
 improve search

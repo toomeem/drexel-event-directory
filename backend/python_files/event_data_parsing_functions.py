@@ -98,6 +98,7 @@ def simplify_location(location):
                           "The Academy of Natural Sciences": "The Academy of Natural Sciences",
                           "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Black Box Theater",
                           "Dornsife Center for Neighborhood Partnership": "Dornsife Center",
+                          "Dornsife Center For Neighborhood Partnerships": "Dornsife Center",
                           "Highmark Mann Center": "Highmark Mann Center",
                           "Mack Miles Playground": "Mack Miles Playground",
                           "Office of Graduate Studies": "Office of Graduate Studies",
@@ -361,18 +362,19 @@ def drexel_athletics_event_parsing(event_json, kwargs):
 
 
 def invalid_event(kwargs):
-    exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
-                      "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
-                      "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
-                      "Dorm Objects 101 Guided Tours", "GBM #5",
-                      "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
-                      "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
-                      "SWE Spring 2026 Officer Meetings", "In Her Own League: The Baseball Collection of Helen Beitler"]
+    excluded_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
+                       "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
+                       "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
+                       "Dorm Objects 101 Guided Tours", "GBM #5",
+                       "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
+                       "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
+                       "SWE Spring 2026 Officer Meetings",
+                       "In Her Own League: The Baseball Collection of Helen Beitler", "Free Uber Rides For Seniors"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
         return True
-    if kwargs["name"] in exclude_events:
+    if kwargs["name"] in excluded_events:
         return True
     if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
             kwargs["name"].lower() or "Chpater" in kwargs["name"]:
@@ -410,7 +412,8 @@ def parse_org_name(org_name):
                     "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
                     "College of Computing and Informatics": "CCI",
                     "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
-                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life"}
+                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life",
+                    "Biomedical Science Graduate Student Association": "Biomed Grad Student Association"}
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
@@ -441,7 +444,11 @@ def create_event_object(source, event_json):
     if invalid_event(kwargs):
         return None
 
-    kwargs["name"] = kwargs["name"].replace("(15 Wellness Points)", "").strip(" ;:/,*")
+    if "15 wellness points" in kwargs["name"].lower():
+        kwargs["perks"].append("credit")
+        kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
+    
+    kwargs["name"] = kwargs["name"].replace("()", "").strip(" ;:/,*")
     kwargs["org_name"] = parse_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
     if kwargs["image_url"] is None:
@@ -451,8 +458,8 @@ def create_event_object(source, event_json):
         kwargs["location"] = "Online"
     else:
         kwargs["location"] = simplify_location(kwargs["location"])
-    if kwargs["location"] is None:
-        return None
+        if kwargs["location"] is None:
+            return None
 
     # todo: remove "Drexel " prefix from org names with a few exceptions
     return Event(**kwargs)
