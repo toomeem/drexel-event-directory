@@ -1,11 +1,12 @@
 import json
 import os
+import random
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
-from openai import OpenAI
 from pydantic import BaseModel
 
 import requests
@@ -102,7 +103,9 @@ def simplify_location(location):
                           "Office of Graduate Students": "Office of Graduate Studies",
                           "Elkin's Park Parking Lot": "Elkin's Park Parking Lot", "Dragon Statue": "Dragon Statue",
                           "Drexel University Recreation Center": "DAC", "Drexel Recreation Center": "DAC",
-                          "Daskalakis Athletic Center": "DAC"}
+                          "Daskalakis Athletic Center": "DAC", "Parkway Central Library": "Parkway Central Library",
+                          "Lits Building": "Lits Building", "Independence National Park": "Independence National Park",
+                          "3509 Brandywine St & the corner of 36th and Spring Garden": "3509 Brandywine St"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
@@ -115,7 +118,7 @@ def simplify_location(location):
                    "3200 Chestnut Street", "3200 Chestnut St", "3141 Chestnut Street", "3141 Chestnut St",
                    "Table Space 1 -", "Table Space 1", "Table Space 2 -", "Table Space 2",
                    "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
-                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)"]
+                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
                     ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),
@@ -387,7 +390,7 @@ def create_event_object(source, event_json, client):
                       "Dorm Objects 101 Guided Tours", "GBM #5",
                       "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
                       "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
-                      "SWE Spring 2026 Officer Meetings"]
+                      "SWE Spring 2026 Officer Meetings", "In Her Own League: The Baseball Collection of Helen Beitler"]
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], }
@@ -464,7 +467,7 @@ def collect_dragonlink_events(count=300):
     response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT).json()
 
     os.makedirs("json_examples", exist_ok=True)
-    with open("json_examples/dragonlink_response.json", "w", encoding="utf-8") as f:
+    with open("backend/json_examples/dragonlink_response.json", "w", encoding="utf-8") as f:
         json.dump(response, f, indent=4)
 
     return response["value"]
@@ -474,15 +477,27 @@ def create_drexel_events_api_url(page=1):
     return f"https://drexel.edu/api/du/scevent?pageId=%7B1F80CA59-5675-4C76-B499-BA06662B3E34%7D&page={page}&perPage=10&sortOrder=asc&loadAllPages=false&q=&sortBy=relevance&startDate=&endDate="
 
 
+def get_drexel_events_response(page):
+    time.sleep(random.random() * 0.25)
+    response = requests.get(create_drexel_events_api_url(page), timeout=HTTP_TIMEOUT)
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} {response.text}")
+    return dict(response.json())["results"]
+
+
 def collect_drexel_events(count=200):
     results = []
-    for i in range(count // 10):
-        response = requests.get(create_drexel_events_api_url(i + 1), timeout=HTTP_TIMEOUT)
-        results.extend(dict(response.json())["results"])
-        time.sleep(.1)
+    max_threads = 5
+    total_requests = (count // 10) + 1
+    requests_nums = [i for i in range(1, total_requests)]
+
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
+        futures = [executor.submit(get_drexel_events_response, i) for i in requests_nums]
+        for future in as_completed(futures):
+            results.extend(future.result())
 
     os.makedirs("json_examples", exist_ok=True)
-    with open("json_examples/drexel_events_response.json", "w", encoding="utf-8") as f:
+    with open("backend/json_examples/drexel_events_response.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
 
     return results
@@ -510,10 +525,7 @@ def create_drexel_athletics_events():
             events_json.append(event)
 
     os.makedirs("json_examples", exist_ok=True)
-    with open("json_examples/drexel_athletics_response.json", "w", encoding="utf-8") as f:
+    with open("backend/json_examples/drexel_athletics_response.json", "w", encoding="utf-8") as f:
         json.dump(events_json, f, indent=4)
 
     return events_json
-
-
-openai_client = OpenAI()

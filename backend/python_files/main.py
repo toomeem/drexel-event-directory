@@ -3,10 +3,12 @@ import os
 import time
 from datetime import datetime
 
+from openai import OpenAI
+
 import boto3
 import psycopg2
 from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
-    collect_dragonlink_events, collect_drexel_events, create_drexel_athletics_events, openai_client
+    collect_dragonlink_events, collect_drexel_events, create_drexel_athletics_events
 from dotenv import load_dotenv
 from backend.python_files.event_class import Event
 
@@ -159,6 +161,7 @@ def main():
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
+    openai_client = OpenAI()
 
     main()
 
