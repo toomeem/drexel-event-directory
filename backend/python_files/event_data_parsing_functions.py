@@ -170,18 +170,6 @@ def simplify_location(location):
     return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ").replace("  ", " ")
 
 
-def simplify_org_name(org_name):
-    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
-                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
-                    "Drexel Newman Catholic Community": "Newman Catholic Community",
-                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
-                    "College of Computing and Informatics": "CCI",
-                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants"}
-    if org_name not in replace_list.keys():
-        return org_name
-    return replace_list[org_name]
-
-
 def match_default_image(name, org_name, location):
     name = name.lower() if name else ""
     org_name = org_name.lower() if org_name else ""
@@ -271,17 +259,15 @@ def dragonlink_event_parsing(event_json, kwargs):
 
 
 def drexel_event_parsing(event_json, kwargs):
-    source = "drexel_events"
     if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
         return None
+    source = "drexel_events"
     authors = event_json.get("authors")
     department_names = event_json.get("departmentNames")
     if authors:
         kwargs["org_name"] = authors[0]
     elif department_names:
         kwargs["org_name"] = department_names[0]
-    else:
-        kwargs["org_name"] = "Drexel University"
     research_keywords = ["PhD Research Proposal", "PhD Thesis Defense"]
     for i in research_keywords:
         if i in event_json["body"]:
@@ -294,8 +280,6 @@ def drexel_event_parsing(event_json, kwargs):
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
-    if "<a" in kwargs["location"]:
-        kwargs["location"] = kwargs["location"].split("<a")[0].strip()
     kwargs["start_time"] = normalize_time(source, event_json["startDate"])
     kwargs["end_time"] = normalize_time(source, event_json["endDate"])
     kwargs["event_link"] = event_json["contentUrl"]
@@ -386,7 +370,7 @@ def invalid_event(kwargs):
                       "SWE Spring 2026 Officer Meetings", "In Her Own League: The Baseball Collection of Helen Beitler"]
     if kwargs is None:
         return True
-    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["org_name"], kwargs["location"]]):
+    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
         return True
     if kwargs["name"] in exclude_events:
         return True
@@ -417,6 +401,28 @@ def get_event_status(source, location):
         return "in-person"
 
 
+def parse_org_name(org_name):
+    if not org_name:
+        return "Drexel University"
+    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
+                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
+                    "Drexel Newman Catholic Community": "Newman Catholic Community",
+                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
+                    "College of Computing and Informatics": "CCI",
+                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants"}
+    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
+                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
+                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
+                       "Incorporated", "Inc.", "Student Group", ", ,"]
+    if org_name in replace_list.keys():
+        return replace_list[org_name]
+    if org_name.startswith("Drexel University"):
+        org_name = org_name.replace("Drexel University", "", 1)
+    for i in org_name_remove:
+        org_name = org_name.replace(i, "", 1)
+    return org_name.strip(":*_;-,. ")
+
+
 def create_event_object(source, event_json, client):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
@@ -431,14 +437,15 @@ def create_event_object(source, event_json, client):
             kwargs = drexel_athletics_event_parsing(event_json, kwargs)
         case _:
             return None
-
-    if invalid_event(kwargs["name"]):
+    if invalid_event(kwargs):
         return None
 
     kwargs["name"] = kwargs["name"].replace("(15 Wellness Points)", "").strip(" ;:/,*")
+    kwargs["org_name"] = parse_org_name(kwargs["org_name"])
+    kwargs["event_status"] = get_event_status(source, kwargs["location"])
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
-    kwargs["event_status"] = get_event_status(source, kwargs["location"])
+
     if kwargs["event_status"] == "virtual":
         kwargs["location"] = "Online"
     else:
@@ -446,15 +453,6 @@ def create_event_object(source, event_json, client):
     if kwargs["location"] is None:
         return None
 
-    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
-                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
-                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
-                       "Incorporated", "Inc.", "Student Group", ", ,"]
-    if kwargs["org_name"].startswith("Drexel University"):
-        kwargs["org_name"] = kwargs["org_name"].replace("Drexel University", "", 1)
-    for i in org_name_remove:
-        kwargs["org_name"] = kwargs["org_name"].replace(i, "", 1)
-    kwargs["org_name"] = kwargs["org_name"].strip(";-,. ")
     # todo: remove "Drexel " prefix from org names with a few exceptions
     return Event(**kwargs)
 
