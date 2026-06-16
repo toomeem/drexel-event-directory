@@ -104,14 +104,14 @@ def simplify_location(location):
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
                 "- All Sections", "- Danzinger Conference Room"]
-    remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "Pa 19104", "Pa 19103", "Pa 19106", "19103", "19104",
-                   "19106", "Philadelphia", ", PA", "located at the northeast corner of 33rd and Chestnut Streets",
-                   "located at 32nd and Market Streets", "101 N 33rd St", "(Main 010 A)", "located at",
-                   "3230 Market Street", "- Group Exercise Studio -", "RSVP Required to Attend", "60 N. 36th Street",
-                   "33rd and Market Street", ", USA", "(if rain-W106)", "3501 Market Street", "3401 Filbert Street",
-                   "3200 Chestnut Street", "3200 Chestnut St", "3141 Chestnut Street", "3141 Chestnut St",
-                   "Table Space 1 -", "Table Space 1", "Table Space 2 -", "Table Space 2",
-                   "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
+    remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "In person at the", "In person at", "Pa 19104",
+                   "Pa 19103", "Pa 19106", "19103", "19104", "19106", "Philadelphia", ", PA",
+                   "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
+                   "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
+                   "RSVP Required to Attend", "60 N. 36th Street", "33rd and Market Street", ", USA", "(if rain-W106)",
+                   "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3200 Chestnut St",
+                   "3141 Chestnut Street", "3141 Chestnut St", "Table Space 1 -", "Table Space 1", "Table Space 2 -",
+                   "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
                    "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
@@ -400,13 +400,14 @@ def create_event_object(source, event_json, client):
 
     if source == "drexel_athletics":
         kwargs["event_status"] = "in-person"
-    elif kwargs["location"] == online_location_default_text:
+    elif kwargs["location"] in online_location_default_text:
         kwargs["event_status"] = "virtual"
-    elif any(keyword in str(kwargs["location"]).lower() for keyword in online_keywords):
-        hybrid_keywords = ["or virtually", "hybrid", "and virtual"]
+    elif any(keyword in kwargs["location"].lower() for keyword in online_keywords):
+        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
         for i in hybrid_keywords:
-            if i in str(kwargs["location"]).lower():
+            if i in kwargs["location"].lower():
                 kwargs["event_status"] = "hybrid"
+                break
             else:
                 kwargs["event_status"] = "virtual"
     else:

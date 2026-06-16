@@ -53,12 +53,11 @@ def sync_s3_knowledge_base():
 
 def collect_all_events(client):
     events = []
-    start_time = time.time()
+
     events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
     events.extend([create_event_object("drexel_events", event_json, client) for event_json in collect_drexel_events()])
     events.extend([create_event_object("drexel_athletics", event_json, client) for event_json in
                    collect_drexel_athletics_events()])
-    print(f"total time for all events: {round(time.time() - start_time, 2)} seconds")
     events = [e for e in events if e is not None and e.start_time is not None]
 
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
@@ -169,4 +168,4 @@ if __name__ == "__main__":
     main()
 
     end = time.time()
-    print(f"\nFinished in {round((end - start) / 60, 1)} mins.")
+    print(f"\nFinished in {round((end - start), 1)} seconds.")

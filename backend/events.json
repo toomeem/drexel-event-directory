@@ -1,6 +1,6 @@
 [
     {
-        "id": "1efd0348c53d225f",
+        "id": "3736bdd4e4157716",
         "source": "drexel_events",
         "name": "Engineering Durable AS Immune Tolerance via Push/Pull Immunomodulation of Dendritic Cells",
         "org_name": "Natalia Broz",
@@ -14,7 +14,7 @@
         "perks": []
     },
     {
-        "id": "1b079395f9541b37",
+        "id": "12672fe0d49c90dc",
         "source": "drexel_events",
         "name": "Data and Dialogue",
         "org_name": "Jamie Reese",
@@ -28,7 +28,7 @@
         "perks": []
     },
     {
-        "id": "7976167a97211482",
+        "id": "eebe36462c37613",
         "source": "drexel_events",
         "name": "Online Open House: MS/PhD in Molecular & Cell Biology & Genetics",
         "org_name": "Bency Oonnoonny",
@@ -42,7 +42,7 @@
         "perks": []
     },
     {
-        "id": "33a3445d55730734",
+        "id": "27d20a5b474f7857",
         "source": "drexel_events",
         "name": "Data and Dialogue",
         "org_name": "Jamie Reese",
@@ -56,7 +56,7 @@
         "perks": []
     },
     {
-        "id": "7f615a4d55454260",
+        "id": "56f56667e59a5ca4",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -70,7 +70,7 @@
         "perks": []
     },
     {
-        "id": "619e4d4e2a89d36e",
+        "id": "1f5eb808aa3a77f1",
         "source": "drexel_events",
         "name": "Department of Medicine Grand Rounds",
         "org_name": "College of Medicine",
@@ -84,7 +84,7 @@
         "perks": []
     },
     {
-        "id": "484b70a0c43a2ba0",
+        "id": "4c953c794202f449",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -98,21 +98,21 @@
         "perks": []
     },
     {
-        "id": "59eaef5d44248c82",
+        "id": "158717d4641b496",
         "source": "drexel_events",
         "name": "2026 Faculty Professional Development Day and Faculty Awards",
         "org_name": "College of Medicine",
-        "location": "Online",
+        "location": "HSB",
         "image_url": "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg",
         "start_time": 1781791200,
         "end_time": 1781812800,
         "event_link": "https://drexel.edu/events/Event?_i=46544_122528",
-        "event_status": "virtual",
+        "event_status": "hybrid",
         "theme": "social",
         "perks": []
     },
     {
-        "id": "497f68a68cbe18a6",
+        "id": "57112ab860653610",
         "source": "dragonlink",
         "name": "DragonLink Tabling Event",
         "org_name": "Elkins Park Student Success & Campus Engagement",
@@ -129,7 +129,7 @@
         ]
     },
     {
-        "id": "7966f5de90a99d2e",
+        "id": "2dbde500a444c6b2",
         "source": "drexel_events",
         "name": "Faculty AI Discussion Group at Dornsife",
         "org_name": "Carolyn Jackson",
@@ -143,7 +143,7 @@
         "perks": []
     },
     {
-        "id": "31c753d75f0f9d41",
+        "id": "48f410c6ab2d904a",
         "source": "drexel_events",
         "name": "Leading Across Differences",
         "org_name": "Kathy Choy",
@@ -157,7 +157,7 @@
         "perks": []
     },
     {
-        "id": "538129c5d2af1cde",
+        "id": "c05a41ebfa364e6",
         "source": "dragonlink",
         "name": "ASHRAE LEMONADE STAND FUNDRAISER",
         "org_name": "ASHRAE",
@@ -171,7 +171,7 @@
         "perks": []
     },
     {
-        "id": "1127703b31a1195d",
+        "id": "1945a091af56bae3",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -185,7 +185,7 @@
         "perks": []
     },
     {
-        "id": "13064367536995cd",
+        "id": "479d4e5a97db0499",
         "source": "dragonlink",
         "name": "Lawn Games",
         "org_name": "Drexel P.U.L.S.E: Chapter of Global Public Health Brigades",
@@ -199,7 +199,7 @@
         "perks": []
     },
     {
-        "id": "43285d2c9912d34c",
+        "id": "2607860c4e0af654",
         "source": "drexel_events",
         "name": "Predicting Dementia from Spontaneous Speech Using Large Language Models",
         "org_name": "Natalia Broz",
@@ -213,7 +213,7 @@
         "perks": []
     },
     {
-        "id": "56908fc6c91de92a",
+        "id": "38d07095cca7bdd8",
         "source": "dragonlink",
         "name": "CFC Meeting- Bible Study",
         "org_name": "Christian Fellowship Club",
@@ -227,7 +227,7 @@
         "perks": []
     },
     {
-        "id": "564a493811a136b0",
+        "id": "1a67ffc5ff502a4c",
         "source": "dragonlink",
         "name": "Dinner & Networking with Walmart Health & Wellness",
         "org_name": "Elkins Park Bennett Career Center",
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "id": "5d0b0897150ce1c1",
+        "id": "102bb34e1f481f7f",
         "source": "dragonlink",
         "name": "USGA Joint Session",
         "org_name": "Undergraduate Student Government Association",
@@ -258,7 +258,7 @@
         "perks": []
     },
     {
-        "id": "587725d4f4a50093",
+        "id": "5e480545f9a24108",
         "source": "dragonlink",
         "name": "NSF GRFP Workshop 1 - Setting Yourself Up for Success",
         "org_name": "Pennoni Honors College",
@@ -272,7 +272,7 @@
         "perks": []
     },
     {
-        "id": "1a0c7b188d1a5ee9",
+        "id": "5d5a46fb6bf0e783",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -286,7 +286,7 @@
         "perks": []
     },
     {
-        "id": "7471ad3322326d98",
+        "id": "3af1aa7246197782",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -300,7 +300,7 @@
         "perks": []
     },
     {
-        "id": "5671159881f91178",
+        "id": "5449661b34e74a32",
         "source": "dragonlink",
         "name": "DSC Bible Study",
         "org_name": "Drexel Students for Christ",
@@ -314,7 +314,7 @@
         "perks": []
     },
     {
-        "id": "1a027d19b01c7ed3",
+        "id": "7affe47a5cdd9073",
         "source": "drexel_events",
         "name": "Chair Yoga: Stretches for Office Workers",
         "org_name": "Monica Fauble",
@@ -328,7 +328,7 @@
         "perks": []
     },
     {
-        "id": "4a4cb51b00f23e06",
+        "id": "253325293c24bf0e",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -342,7 +342,7 @@
         "perks": []
     },
     {
-        "id": "211a0ee4bd7f3b49",
+        "id": "2c437a3ad1fff22f",
         "source": "drexel_events",
         "name": "Development of a Geometrically Tunable Cardiovascular Shunt for Pediatric Heart Reconstruction",
         "org_name": "Natalia Broz",
@@ -356,7 +356,7 @@
         "perks": []
     },
     {
-        "id": "27aa6accc1342309",
+        "id": "18970adb2f78fcf1",
         "source": "dragonlink",
         "name": "Humpty Dumplings Fundraiser",
         "org_name": "Hearts In Motion",
@@ -370,7 +370,7 @@
         "perks": []
     },
     {
-        "id": "63d81acf349614ec",
+        "id": "6f90921e63fca551",
         "source": "drexel_events",
         "name": "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
         "org_name": "College of Medicine",
@@ -384,7 +384,7 @@
         "perks": []
     },
     {
-        "id": "567ecddb6684cbe",
+        "id": "33c5079bbee99daa",
         "source": "dragonlink",
         "name": "Free Cone & Free Speech",
         "org_name": "Lindy Center for Civic Engagement",
@@ -400,7 +400,7 @@
         ]
     },
     {
-        "id": "55f2ff2cfdb16fd7",
+        "id": "6f28a4cb5a60bdb7",
         "source": "dragonlink",
         "name": "Summer Bash BBQ",
         "org_name": "Elkins Park Student Success & Campus Engagement",
@@ -417,7 +417,7 @@
         ]
     },
     {
-        "id": "2d03d11f1654d9cd",
+        "id": "40339ff249460bb2",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -433,7 +433,7 @@
         ]
     },
     {
-        "id": "1ec1d1331abe033e",
+        "id": "21ee027d01bc008e",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -447,7 +447,7 @@
         "perks": []
     },
     {
-        "id": "48ca488beaf6f41e",
+        "id": "58d7ee4419ceb3b9",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -461,7 +461,7 @@
         "perks": []
     },
     {
-        "id": "4d960e30b2cdd44",
+        "id": "66f84242d3ac7c83",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -475,7 +475,7 @@
         "perks": []
     },
     {
-        "id": "5c38f9236eb9d7b6",
+        "id": "2ef8cc16905e3783",
         "source": "dragonlink",
         "name": "Pre-Writing Workshop: Graduate Fellowships",
         "org_name": "Pennoni Honors College",
@@ -489,7 +489,7 @@
         "perks": []
     },
     {
-        "id": "43d165d26837d516",
+        "id": "40910c11730e4987",
         "source": "dragonlink",
         "name": "Accessible Recreational Activities Day",
         "org_name": "Drexel Association of Prosthetics and Orthotics",
@@ -503,7 +503,7 @@
         "perks": []
     },
     {
-        "id": "70864dc071698d15",
+        "id": "52455bf5dd8b3fe",
         "source": "dragonlink",
         "name": "Magic: The Gathering",
         "org_name": "Drexel Gaming Association",
@@ -519,7 +519,7 @@
         ]
     },
     {
-        "id": "6ad7b778f75a9251",
+        "id": "66932e117dc7bafa",
         "source": "drexel_events",
         "name": "Revisit 1876",
         "org_name": "Libraries",
@@ -533,7 +533,7 @@
         "perks": []
     },
     {
-        "id": "8ba6e46197022ce",
+        "id": "616887dadba72ec9",
         "source": "drexel_events",
         "name": "Faculty & Staff | AI Workshop Series",
         "org_name": "Carolyn Jackson",
@@ -547,7 +547,7 @@
         "perks": []
     },
     {
-        "id": "3bd47c8b7b92e7d1",
+        "id": "7e2f2863de976eb8",
         "source": "drexel_athletics",
         "name": "DREX at Henley Royal Regatta",
         "org_name": "Drexel Men's Rowing",
@@ -561,7 +561,7 @@
         "perks": []
     },
     {
-        "id": "4c867f178714a421",
+        "id": "56ef987583581d46",
         "source": "drexel_events",
         "name": "Graduate Student Resume Drop-Ins",
         "org_name": "Ken Bohrer",
@@ -575,7 +575,7 @@
         "perks": []
     },
     {
-        "id": "24ce3b51e02a1558",
+        "id": "3b7cca6d9d2a7193",
         "source": "dragonlink",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
@@ -589,7 +589,7 @@
         "perks": []
     },
     {
-        "id": "1cf84421e4296291",
+        "id": "2d1167c673c6a576",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -603,7 +603,7 @@
         "perks": []
     },
     {
-        "id": "7aef32209036f9be",
+        "id": "17344aed871d566f",
         "source": "dragonlink",
         "name": "Board Game Night",
         "org_name": "Unplugged Gaming Organization",
@@ -617,7 +617,7 @@
         "perks": []
     },
     {
-        "id": "77082d71b3c51b1b",
+        "id": "6fb60e28cb84b05d",
         "source": "dragonlink",
         "name": "DSC Bible Study",
         "org_name": "Drexel Students for Christ",
@@ -631,7 +631,7 @@
         "perks": []
     },
     {
-        "id": "6681c99a905a4ceb",
+        "id": "396cc111b79211bd",
         "source": "drexel_events",
         "name": "America\u2019s National Anniversaries & Philadelphia on the World Stage",
         "org_name": "Libraries",
@@ -645,7 +645,7 @@
         "perks": []
     },
     {
-        "id": "3d1ca51284bd70e8",
+        "id": "3d1f7633a61e7882",
         "source": "dragonlink",
         "name": "NCB & Queen Lane Scavenger Hunt",
         "org_name": "Biomedical Science Graduate Student Association",
@@ -659,7 +659,7 @@
         "perks": []
     },
     {
-        "id": "33739a76676cb224",
+        "id": "3739fe78e78fe92c",
         "source": "drexel_events",
         "name": "Independent Search Panel with Steinbright Peer Mentors",
         "org_name": "Miranda Wilson",
@@ -673,7 +673,7 @@
         "perks": []
     },
     {
-        "id": "2cb659662a74c75b",
+        "id": "5d8e25914782983c",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -687,7 +687,7 @@
         "perks": []
     },
     {
-        "id": "7ea09d005ea1209e",
+        "id": "71fa89b10c6b9687",
         "source": "dragonlink",
         "name": "Chipotle Fundraiser",
         "org_name": "Hearts In Motion",
@@ -701,7 +701,7 @@
         "perks": []
     },
     {
-        "id": "1f28a3fd4d05480a",
+        "id": "7503f90d9e555b98",
         "source": "drexel_events",
         "name": "Virtual Information Session: Pre-medical Pre-health Programs: Ask the Admissions Director",
         "org_name": "Bency Oonnoonny",
@@ -715,7 +715,7 @@
         "perks": []
     },
     {
-        "id": "18044b931ea6d21b",
+        "id": "4ee06b1500a44bf8",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -731,7 +731,7 @@
         ]
     },
     {
-        "id": "2c82b5deafd5ce02",
+        "id": "1816810bc655f7b4",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -745,7 +745,7 @@
         "perks": []
     },
     {
-        "id": "6e04360fc051a32d",
+        "id": "468249f5d4f7e6cc",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -759,7 +759,7 @@
         "perks": []
     },
     {
-        "id": "12955144fa677535",
+        "id": "3abbaf55626c076d",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -773,7 +773,7 @@
         "perks": []
     },
     {
-        "id": "6042aa202a3761c4",
+        "id": "aeab2cd8b1800f9",
         "source": "drexel_events",
         "name": "Revisit 1876",
         "org_name": "Libraries",
@@ -787,7 +787,7 @@
         "perks": []
     },
     {
-        "id": "611bba647b7a647a",
+        "id": "66bd5aa5a837cfa0",
         "source": "drexel_events",
         "name": "International Graduate Student Pre-Arrival Webinar #1",
         "org_name": "Office of Graduate Studies",
@@ -801,7 +801,7 @@
         "perks": []
     },
     {
-        "id": "43c80d5ae409e32f",
+        "id": "6e399b2116959a5e",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -815,7 +815,7 @@
         "perks": []
     },
     {
-        "id": "63a85d324e0f766d",
+        "id": "6bffad14043025e5",
         "source": "dragonlink",
         "name": "NSF GRFP Workshop 2 - Developing a Research Statement",
         "org_name": "Pennoni Honors College",
@@ -829,7 +829,7 @@
         "perks": []
     },
     {
-        "id": "3a07955eafdb5847",
+        "id": "7f585ebc3b5019d7",
         "source": "drexel_events",
         "name": "Faculty & Staff | AI Workshop Series",
         "org_name": "Carolyn Jackson",
@@ -843,7 +843,7 @@
         "perks": []
     },
     {
-        "id": "dd2ef8b9c067d95",
+        "id": "71c3e21ecd9adf6d",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -857,7 +857,7 @@
         "perks": []
     },
     {
-        "id": "b4b7d5938c2f50e",
+        "id": "3c1937360d33ee6a",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -871,7 +871,7 @@
         "perks": []
     },
     {
-        "id": "34c936867174f4b7",
+        "id": "27757c908ed4756e",
         "source": "drexel_events",
         "name": "America\u2019s National Anniversaries & Philadelphia on the World Stage",
         "org_name": "Libraries",
@@ -885,7 +885,7 @@
         "perks": []
     },
     {
-        "id": "522352ff6cca608",
+        "id": "759866b28c7ba429",
         "source": "dragonlink",
         "name": "Midweek Pick-Me-Up",
         "org_name": "Elkins Park Student Success & Campus Engagement",
@@ -901,7 +901,7 @@
         ]
     },
     {
-        "id": "449b0c09d5e5efe1",
+        "id": "708f3534db27a3ae",
         "source": "drexel_events",
         "name": "Divorce as a New Beginning: Finding Balance in Transition",
         "org_name": "Monica Fauble",
@@ -915,7 +915,7 @@
         "perks": []
     },
     {
-        "id": "1b39ab9dfe0a372e",
+        "id": "5d17d67c59fb42d3",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -929,7 +929,7 @@
         "perks": []
     },
     {
-        "id": "4c6e0dd1eee1550b",
+        "id": "729c1be5f5cda431",
         "source": "drexel_events",
         "name": "International Graduate Student Pre-Arrival Webinar #2",
         "org_name": "Office of Graduate Studies",
@@ -943,7 +943,7 @@
         "perks": []
     },
     {
-        "id": "7525c133dedac9d2",
+        "id": "44c0f7d7feff0149",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -957,7 +957,7 @@
         "perks": []
     },
     {
-        "id": "d40acadb32264cc",
+        "id": "2ac96ac8bc9b7010",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -973,7 +973,7 @@
         ]
     },
     {
-        "id": "35fa512cebb369e8",
+        "id": "da666c99c125654",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -987,7 +987,7 @@
         "perks": []
     },
     {
-        "id": "5c1adfeef3528dc5",
+        "id": "f803c99f5875a01",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -1001,7 +1001,7 @@
         "perks": []
     },
     {
-        "id": "258853b92c251e60",
+        "id": "8a8b78233f122c5",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -1015,7 +1015,7 @@
         "perks": []
     },
     {
-        "id": "18ca3255716e33fe",
+        "id": "4195540228ffeef5",
         "source": "dragonlink",
         "name": "Game Night",
         "org_name": "Biomedical Science Graduate Student Association",
@@ -1031,7 +1031,7 @@
         ]
     },
     {
-        "id": "2133921b44eb802d",
+        "id": "57c2f63f8c820b78",
         "source": "dragonlink",
         "name": "Beach Day Trip",
         "org_name": "Elkins Park Student Success & Campus Engagement",
@@ -1045,7 +1045,7 @@
         "perks": []
     },
     {
-        "id": "5919ac38a617d3c",
+        "id": "7a553ac54f3e6ffe",
         "source": "dragonlink",
         "name": "Red Cross Blood Drive",
         "org_name": "Student Academy of the American Academy of Physician Assistants",
@@ -1059,7 +1059,7 @@
         "perks": []
     },
     {
-        "id": "ea0ea8105db4293",
+        "id": "1189bc03c5e5f5ab",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1073,7 +1073,7 @@
         "perks": []
     },
     {
-        "id": "39059ecc7ee16c42",
+        "id": "7d7a6ac0a64218a4",
         "source": "drexel_events",
         "name": "Revisit 1876",
         "org_name": "Libraries",
@@ -1087,7 +1087,7 @@
         "perks": []
     },
     {
-        "id": "5289cb972618c541",
+        "id": "7f5b79210e8b9735",
         "source": "dragonlink",
         "name": "Pie a professor event",
         "org_name": "Hearts In Motion",
@@ -1101,7 +1101,7 @@
         "perks": []
     },
     {
-        "id": "6dc236ae95f0cf04",
+        "id": "4df4ffd468d41371",
         "source": "drexel_events",
         "name": "What even is Graduate Clinical Psychology School?!",
         "org_name": "China Parenteau",
@@ -1115,7 +1115,7 @@
         "perks": []
     },
     {
-        "id": "46a2ed11daaf9a4a",
+        "id": "6229d79eb186d78",
         "source": "dragonlink",
         "name": "Student Council Meeting",
         "org_name": "Elkins Park Student Council",
@@ -1131,7 +1131,7 @@
         ]
     },
     {
-        "id": "5407c5cf2995e807",
+        "id": "795edaec73cef19a",
         "source": "drexel_events",
         "name": "Goodwin College Virtual Information Session 2025\u201326 Schedule (All Goodwin Programs)",
         "org_name": "Dr. Tina Marie Coolidge",
@@ -1145,7 +1145,7 @@
         "perks": []
     },
     {
-        "id": "49564676f7e3c2b4",
+        "id": "43faebee572e0a8",
         "source": "drexel_events",
         "name": "Intro to Canvas, Drexel's Learning Management System",
         "org_name": "Office of Graduate Studies",
@@ -1159,7 +1159,7 @@
         "perks": []
     },
     {
-        "id": "38373d34d61d5b03",
+        "id": "7ae5b8fd1f92401",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1173,7 +1173,7 @@
         "perks": []
     },
     {
-        "id": "70b4c0c522d53f2f",
+        "id": "4130a80efcd7b3da",
         "source": "drexel_events",
         "name": "Managing Within the Law",
         "org_name": "Kathy Choy",
@@ -1187,7 +1187,7 @@
         "perks": []
     },
     {
-        "id": "2f34c766ca482957",
+        "id": "2ad928f974f0cec",
         "source": "drexel_events",
         "name": "Graduate Students  Resume Drop-Ins",
         "org_name": "Ken Bohrer",
@@ -1201,7 +1201,7 @@
         "perks": []
     },
     {
-        "id": "70ef796fb7e1173a",
+        "id": "798a379a09274150",
         "source": "dragonlink",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
@@ -1215,7 +1215,7 @@
         "perks": []
     },
     {
-        "id": "365da2213c1eedf5",
+        "id": "694df9675224d5e",
         "source": "drexel_events",
         "name": "Faculty & Staff | AI Workshop Series",
         "org_name": "Carolyn Jackson",
@@ -1229,7 +1229,7 @@
         "perks": []
     },
     {
-        "id": "6377e8fbfb614b0a",
+        "id": "3d478976d9989e03",
         "source": "dragonlink",
         "name": "Soccer Watch Party",
         "org_name": "Biomedical Science Graduate Student Association",
@@ -1243,7 +1243,7 @@
         "perks": []
     },
     {
-        "id": "6dd4b2bddf4bc691",
+        "id": "4bff642e8e9c4d3",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -1257,7 +1257,7 @@
         "perks": []
     },
     {
-        "id": "294974c22db42bc1",
+        "id": "466a21b6b79b77e4",
         "source": "drexel_events",
         "name": "Sharing Excess",
         "org_name": "Dornsife Center",
@@ -1273,7 +1273,7 @@
         ]
     },
     {
-        "id": "bca4b81a24c276a",
+        "id": "79603e8258367ced",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1287,7 +1287,7 @@
         "perks": []
     },
     {
-        "id": "13bda019cd5ffb04",
+        "id": "2f0aede3ca9a84fa",
         "source": "drexel_events",
         "name": "America\u2019s National Anniversaries & Philadelphia on the World Stage",
         "org_name": "Libraries",
@@ -1301,7 +1301,7 @@
         "perks": []
     },
     {
-        "id": "3bbcef50313b47af",
+        "id": "50a7eda36ae22bdc",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -1315,7 +1315,7 @@
         "perks": []
     },
     {
-        "id": "ed58f0676b74308",
+        "id": "5272c7a6eb303ebc",
         "source": "drexel_events",
         "name": "Academic Integrity and Responsible Use of Artificial Intelligence (AI)",
         "org_name": "Office of Graduate Studies",
@@ -1329,7 +1329,7 @@
         "perks": []
     },
     {
-        "id": "3069a446f43ad1fc",
+        "id": "365b22cd071f043a",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1343,7 +1343,7 @@
         "perks": []
     },
     {
-        "id": "3ffda7f4ab52d76d",
+        "id": "77404f92609ffff5",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1359,7 +1359,7 @@
         ]
     },
     {
-        "id": "4258891d3821d97b",
+        "id": "52e35372d13f2ab4",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1373,7 +1373,7 @@
         "perks": []
     },
     {
-        "id": "77604cb299b6e873",
+        "id": "1e8b2153adf62ce3",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
         "org_name": "Elizabeth Kimball",
@@ -1387,7 +1387,7 @@
         "perks": []
     },
     {
-        "id": "5b2d52635303ab9c",
+        "id": "2163a705f3aa3857",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -1401,7 +1401,7 @@
         "perks": []
     },
     {
-        "id": "24dc3a66efd4fdb0",
+        "id": "2cd15fec72f8dbdc",
         "source": "drexel_events",
         "name": "Undergraduate July Summer Open House",
         "org_name": "",
@@ -1415,7 +1415,7 @@
         "perks": []
     },
     {
-        "id": "14818003c36debc8",
+        "id": "c55d341661083e7",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1429,7 +1429,7 @@
         "perks": []
     },
     {
-        "id": "76b1c5d0ccd947a2",
+        "id": "6a9c030c6d2ca362",
         "source": "drexel_events",
         "name": "Revisit 1876",
         "org_name": "Libraries",
@@ -1443,7 +1443,7 @@
         "perks": []
     },
     {
-        "id": "62a77e9acc794ce1",
+        "id": "5c973a9879005df1",
         "source": "drexel_events",
         "name": "Virtual Information Session: Pre-medical Pre-health Programs: Ask the Admissions Director",
         "org_name": "Bency Oonnoonny",
@@ -1457,7 +1457,7 @@
         "perks": []
     },
     {
-        "id": "427e4b000c628a6e",
+        "id": "2456b280a351b5f9",
         "source": "drexel_events",
         "name": "An Overview of Drexel's Graduate Student Career Services",
         "org_name": "Office of Graduate Studies",
@@ -1471,7 +1471,7 @@
         "perks": []
     },
     {
-        "id": "2cb1e6b037608728",
+        "id": "21111f3e0b591ca6",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1485,7 +1485,7 @@
         "perks": []
     },
     {
-        "id": "3299b9df6c09c7e0",
+        "id": "79955c1ce4979ca1",
         "source": "dragonlink",
         "name": "NSF GRFP Workshop 3 - Developing a Personal Statement",
         "org_name": "Pennoni Honors College",
@@ -1499,7 +1499,7 @@
         "perks": []
     },
     {
-        "id": "151333d510255cf6",
+        "id": "d20719b8ef99abc",
         "source": "drexel_events",
         "name": "Graduate Students Resume Drop-Ins",
         "org_name": "Ken Bohrer",
@@ -1513,7 +1513,7 @@
         "perks": []
     },
     {
-        "id": "668eb8a0d3e0da57",
+        "id": "68adf684bc18e3c8",
         "source": "drexel_events",
         "name": "Study Abroad 101",
         "org_name": "Education Abroad Office",
@@ -1527,7 +1527,7 @@
         "perks": []
     },
     {
-        "id": "6df930ba1aeffdd7",
+        "id": "27223f82e2302fc8",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1541,7 +1541,7 @@
         "perks": []
     },
     {
-        "id": "4b836d46ad276a6d",
+        "id": "1675cf6d19cd3518",
         "source": "drexel_events",
         "name": "America\u2019s National Anniversaries & Philadelphia on the World Stage",
         "org_name": "Libraries",
@@ -1555,7 +1555,7 @@
         "perks": []
     },
     {
-        "id": "25a51d8037503dc8",
+        "id": "6dcfa406767b98f4",
         "source": "drexel_events",
         "name": "Medicare Basics: What You Need to Know",
         "org_name": "Monica Fauble",
@@ -1569,7 +1569,7 @@
         "perks": []
     },
     {
-        "id": "2b8a562a2821338f",
+        "id": "4af85329bda2b2a9",
         "source": "drexel_events",
         "name": "Study Abroad Walk-In Hours",
         "org_name": "Education Abroad Office",
@@ -1583,7 +1583,7 @@
         "perks": []
     },
     {
-        "id": "3e0d91dcfb0b1608",
+        "id": "71ac8ddf14e92dcc",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
         "org_name": "College of Computing and Informatics",
@@ -1597,7 +1597,7 @@
         "perks": []
     },
     {
-        "id": "3ced2efeb264dc6b",
+        "id": "7897a1026037ce58",
         "source": "dragonlink",
         "name": "Drexel Spirit Fest",
         "org_name": "Elkins Park Student Success & Campus Engagement",
@@ -1614,7 +1614,7 @@
         ]
     },
     {
-        "id": "437758f9ce9caf0d",
+        "id": "15bd4c1bbdd2a7c7",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1630,7 +1630,7 @@
         ]
     },
     {
-        "id": "2f789a844a81fa69",
+        "id": "2cccf033556067da",
         "source": "dragonlink",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
@@ -1644,7 +1644,7 @@
         "perks": []
     },
     {
-        "id": "423b5af8f6d6c4eb",
+        "id": "396990b68f17dbfb",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1660,7 +1660,7 @@
         ]
     },
     {
-        "id": "485c6f536efa9352",
+        "id": "59fb43eb7813b70",
         "source": "dragonlink",
         "name": "NSF GRFP Workshop 4 - Bringing It All Together",
         "org_name": "Pennoni Honors College",
@@ -1674,7 +1674,7 @@
         "perks": []
     },
     {
-        "id": "5c6926ea68fe69e3",
+        "id": "661fa2786961156a",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1690,7 +1690,7 @@
         ]
     },
     {
-        "id": "4cd32fa242821ea9",
+        "id": "76f928d3f5efbb5",
         "source": "dragonlink",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
@@ -1704,7 +1704,7 @@
         "perks": []
     },
     {
-        "id": "1646e72769004ddd",
+        "id": "3b279d8a68b833e1",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1720,7 +1720,7 @@
         ]
     },
     {
-        "id": "3657f4dfe4cdaaf9",
+        "id": "3edbcd271c30e9ea",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1736,7 +1736,7 @@
         ]
     },
     {
-        "id": "28d621ac76cc4f8e",
+        "id": "286c1f3fd9d73a8b",
         "source": "dragonlink",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
@@ -1750,7 +1750,7 @@
         "perks": []
     },
     {
-        "id": "41249eca0dadaaae",
+        "id": "235e0a39f9358a2b",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
@@ -1766,7 +1766,7 @@
         ]
     },
     {
-        "id": "bdeb073b579d22f",
+        "id": "5415bbd2f3a3435d",
         "source": "dragonlink",
         "name": "Pizza in the Park",
         "org_name": "Drexel Newman Catholic Community",
