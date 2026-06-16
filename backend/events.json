@@ -3,7 +3,7 @@
         "id": "1362f5a9949779a304d91e36c82f68fb",
         "source": "drexel_events",
         "name": "Engineering Durable AS Immune Tolerance via Push/Pull Immunomodulation of Dendritic Cells",
-        "org_name": "Natalia Broz",
+        "org_name": "Sihan Jia - PhD Candidate",
         "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24445",
         "start_time": 1781618400,
@@ -112,23 +112,6 @@
         "perks": []
     },
     {
-        "id": "87f27563f91298457fdd5464729e2ccf",
-        "source": "dragonlink",
-        "name": "DragonLink Tabling Event",
-        "org_name": "Elkins Park Student Success & Campus Engagement",
-        "location": "Elkins Park Cafe",
-        "image_url": "https://drexel.campuslabs.com/engage/image/29a0dc50-c552-4b76-b410-1de6b659001918cde60b-44d1-4d65-9afa-b793673c8d05.png",
-        "start_time": 1781798400,
-        "end_time": 1781809200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12482993",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food",
-            "free_stuff"
-        ]
-    },
-    {
         "id": "5f911dbd5314f99543a569007c9ba952",
         "source": "drexel_events",
         "name": "Faculty AI Discussion Group at Dornsife",
@@ -157,20 +140,6 @@
         "perks": []
     },
     {
-        "id": "51f1b72eed7b02e41435cdab82836e60",
-        "source": "dragonlink",
-        "name": "ASHRAE LEMONADE STAND FUNDRAISER",
-        "org_name": "ASHRAE",
-        "location": "Lancaster Walk",
-        "image_url": "https://drexel.campuslabs.com/engage/image/64a6c6f7-3a29-4aa9-a27b-11d53e013f2a5926214c-dae4-4bb8-bd8c-45446bbd1bb8.png",
-        "start_time": 1781820000,
-        "end_time": 1781823600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12427640",
-        "event_status": "in-person",
-        "theme": "fundraising",
-        "perks": []
-    },
-    {
         "id": "793fb6934c62de37fe09ea090635fc71",
         "source": "drexel_events",
         "name": "Writing Retreat for Faculty and Staff",
@@ -185,24 +154,10 @@
         "perks": []
     },
     {
-        "id": "08d1221d4cb42eb37b7f8539456d3063",
-        "source": "dragonlink",
-        "name": "Lawn Games",
-        "org_name": "Drexel P.U.L.S.E: Chapter of Global Public Health Brigades",
-        "location": "Race Lawn",
-        "image_url": "https://drexel.campuslabs.com/engage/image/21243f0d-6b5e-485f-960a-54d27742e746c095ee12-4069-4704-878f-04a7484222a4.jpg",
-        "start_time": 1781884800,
-        "end_time": 1781895600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12482830",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
         "id": "f2672b27a91518372b381b425e1d8bec",
         "source": "drexel_events",
         "name": "Predicting Dementia from Spontaneous Speech Using Large Language Models",
-        "org_name": "Natalia Broz",
+        "org_name": "Felix Agbavor - PhD Candidate",
         "location": "Online",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24449",
         "start_time": 1782133200,
@@ -213,60 +168,29 @@
         "perks": []
     },
     {
-        "id": "bcd0c6dc4000ca7adb1f77919426bd7e",
-        "source": "dragonlink",
-        "name": "CFC Meeting- Bible Study",
-        "org_name": "Christian Fellowship Club",
-        "location": "Hafter Center Patio",
-        "image_url": "https://drexel.campuslabs.com/engage/image/0a78f127-2018-41fe-b396-e84967d836c01ba7d00a-6d8c-4247-a109-987fa9b17548.png",
-        "start_time": 1782144000,
-        "end_time": 1782147600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12480104",
+        "id": "8310b169b7ec51b4224f6ee772411a90",
+        "source": "drexel_events",
+        "name": "Next-Gen Dragon Heart: A New Blood Pumping Solution for Pediatric Patients with Heart Failure",
+        "org_name": "Giselle C. Matlis - PhD Candidate",
+        "location": "BSONE 709",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24451",
+        "start_time": 1782151200,
+        "end_time": 1782158400,
+        "event_link": "https://drexel.edu/events/Event?_i=46639_122932",
         "event_status": "in-person",
-        "theme": "spirituality",
+        "theme": "academic",
         "perks": []
     },
     {
-        "id": "b4fa53a8a450456ff8f5a8e81b57ca92",
-        "source": "dragonlink",
-        "name": "Dinner & Networking with Walmart Health & Wellness",
-        "org_name": "Elkins Park Bennett Career Center",
-        "location": "The Highland Pub & Kitchen",
-        "image_url": "https://drexel.campuslabs.com/engage/image/e247c23a-073e-43ae-b198-213453b14964cd72d7aa-a62c-427b-9698-9a2cdab91731.png",
-        "start_time": 1782165600,
-        "end_time": 1782172800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12488485",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food",
-            "free_stuff"
-        ]
-    },
-    {
-        "id": "fefaebcb3afab33a6898ff5285be3568",
-        "source": "dragonlink",
-        "name": "USGA Joint Session",
-        "org_name": "Undergraduate Student Government Association",
-        "location": "MACALS Sky View",
-        "image_url": "https://drexel.campuslabs.com/engage/image/dd22982d-f55b-422a-ba50-aae44bc9eedeabb1bd63-edf6-43a8-ba63-43edd5596a81.png",
-        "start_time": 1782169200,
-        "end_time": 1782176400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12484021",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "9913be523698bf474198e1495d7a70e7",
-        "source": "dragonlink",
+        "id": "4c4e0435907130a96c88a632b8c9d8c9",
+        "source": "drexel_events",
         "name": "NSF GRFP Workshop 1 - Setting Yourself Up for Success",
         "org_name": "Pennoni Honors College",
         "location": "Online",
-        "image_url": "https://drexel.campuslabs.com/engage/image/b5e53280-f1a9-47f1-9576-20876e8959a2d9adf676-1419-4adb-869d-46e771118a17.png",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24402",
         "start_time": 1782232200,
         "end_time": 1782235800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12462697",
+        "event_link": "https://drexel.edu/events/Event?_i=46535_122510",
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
@@ -283,34 +207,6 @@
         "event_link": "https://drexel.edu/events/Event?_i=46341_121686",
         "event_status": "in-person",
         "theme": "academic",
-        "perks": []
-    },
-    {
-        "id": "b238feb848efecc34c836e67a6215e14",
-        "source": "dragonlink",
-        "name": "Board Game Night",
-        "org_name": "Unplugged Gaming Organization",
-        "location": "CREESE - Greenawalt Room A",
-        "image_url": "https://drexel.campuslabs.com/engage/image/a3b6dc57-eae5-428c-abe6-80b5c048f81915622aa5-9919-4dc2-bbc2-1bdb782c228d.png",
-        "start_time": 1782252000,
-        "end_time": 1782261900,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12479944",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "611ec3be7c3f89ef33508f467a8f4ac7",
-        "source": "dragonlink",
-        "name": "DSC Bible Study",
-        "org_name": "Drexel Students for Christ",
-        "location": "Ida Chen & Commons",
-        "image_url": "https://drexel.campuslabs.com/engage/image/9b25dfc4-8a81-41e4-b99c-52bf809fc95a445f8c78-a7e0-4ab1-8938-e75d841712ca.png",
-        "start_time": 1782253800,
-        "end_time": 1782257400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12481977",
-        "event_status": "in-person",
-        "theme": "spirituality",
         "perks": []
     },
     {
@@ -345,7 +241,7 @@
         "id": "2c5489f8717948df07761d4fcb3d8409",
         "source": "drexel_events",
         "name": "Development of a Geometrically Tunable Cardiovascular Shunt for Pediatric Heart Reconstruction",
-        "org_name": "Natalia Broz",
+        "org_name": "Akari Seiner - PhD Candidate",
         "location": "BSONE 709",
         "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24444",
         "start_time": 1782396000,
@@ -353,20 +249,6 @@
         "event_link": "https://drexel.edu/events/Event?_i=46624_122773",
         "event_status": "in-person",
         "theme": "academic",
-        "perks": []
-    },
-    {
-        "id": "0f5de348605acfa6b24a2b285c0de708",
-        "source": "dragonlink",
-        "name": "Humpty Dumplings Fundraiser",
-        "org_name": "Hearts In Motion",
-        "location": "Humpty Dumplings",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
-        "start_time": 1782399600,
-        "end_time": 1782435600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12467336",
-        "event_status": "in-person",
-        "theme": "fundraising",
         "perks": []
     },
     {
@@ -384,67 +266,20 @@
         "perks": []
     },
     {
-        "id": "2acc8d2c67ce7eaf9ddc7787479baedf",
-        "source": "dragonlink",
-        "name": "Free Cone & Free Speech",
-        "org_name": "Lindy Center for Civic Engagement",
+        "id": "a23048954876583786278f963347be28",
+        "source": "drexel_events",
+        "name": "Free Cones & Free Speech",
+        "org_name": "Lindy Center",
         "location": "Lindy Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/fddebae7-70ef-4dfc-a6d2-1ef9a89f7666b16a49b2-080e-4045-aa05-4fa5557c4f00.png",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24450",
         "start_time": 1782410400,
         "end_time": 1782415800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12478016",
+        "event_link": "https://drexel.edu/events/Event?_i=46638_122930",
         "event_status": "in-person",
-        "theme": "social",
+        "theme": "community",
         "perks": [
             "free_food"
         ]
-    },
-    {
-        "id": "44bbcf701a8f801456a2608ff24b497f",
-        "source": "dragonlink",
-        "name": "Summer Bash BBQ",
-        "org_name": "Elkins Park Student Success & Campus Engagement",
-        "location": "Elkin's Park Parking Lot",
-        "image_url": "https://drexel.campuslabs.com/engage/image/9d00c5ae-8d35-4702-8b42-76cee0577499ad824555-7f3c-458d-8505-f8da1598ab12.png",
-        "start_time": 1782423000,
-        "end_time": 1782430200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12481249",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food",
-            "free_stuff"
-        ]
-    },
-    {
-        "id": "e24cf8d7a56fd8e370d0dce178dc43d4",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1782424800,
-        "end_time": 1782432000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477332",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "1ec806dbb434169d243c87ae1ac18397",
-        "source": "dragonlink",
-        "name": "Board Game Night",
-        "org_name": "Unplugged Gaming Organization",
-        "location": "CREESE - Greenawalt Room A",
-        "image_url": "https://drexel.campuslabs.com/engage/image/a3b6dc57-eae5-428c-abe6-80b5c048f81915622aa5-9919-4dc2-bbc2-1bdb782c228d.png",
-        "start_time": 1782424800,
-        "end_time": 1782434700,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12479945",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
     },
     {
         "id": "fef4d10cee72909c1fde7417bfc714ab",
@@ -475,48 +310,18 @@
         "perks": []
     },
     {
-        "id": "a37be87968c5a17a5a4f6987da1421c1",
-        "source": "dragonlink",
+        "id": "47d9491b70b86ec4a3803b0172718c8d",
+        "source": "drexel_events",
         "name": "Pre-Writing Workshop: Graduate Fellowships",
         "org_name": "Pennoni Honors College",
         "location": "Online",
-        "image_url": "https://drexel.campuslabs.com/engage/image/28d52ee0-2423-4ef7-ac51-29a0041d8efb010e7333-7bbd-4bc1-8625-886d277b504e.png",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24410",
         "start_time": 1782489600,
         "end_time": 1782493200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464990",
+        "event_link": "https://drexel.edu/events/Event?_i=46547_122534",
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
-    },
-    {
-        "id": "5a918b8bb5baaee21e53cc87555deaff",
-        "source": "dragonlink",
-        "name": "Accessible Recreational Activities Day",
-        "org_name": "Drexel Association of Prosthetics and Orthotics",
-        "location": "Hafner Community Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/31aab295-ceac-4e96-a11d-7714369e400cff285963-7411-4e7c-a41e-b771b6dfcfb7.PNG",
-        "start_time": 1782568800,
-        "end_time": 1782583200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12381198",
-        "event_status": "in-person",
-        "theme": "athletics",
-        "perks": []
-    },
-    {
-        "id": "25b661fcd00e814bcbcf25974993ac8c",
-        "source": "dragonlink",
-        "name": "Magic: The Gathering",
-        "org_name": "Drexel Gaming Association",
-        "location": "CREESE - Greenawalt Room A",
-        "image_url": "https://drexel.campuslabs.com/engage/image/25262933-0147-4b1d-917a-75fc0051a1c0373c1fbe-8f06-4291-b972-95f4994d131a.png",
-        "start_time": 1782586800,
-        "end_time": 1782608400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12486457",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food"
-        ]
     },
     {
         "id": "f05874ffdceaa4044798c0ddb55abdec",
@@ -575,16 +380,16 @@
         "perks": []
     },
     {
-        "id": "3f4f508ee7d9608f411a2d0a25aeb359",
-        "source": "dragonlink",
+        "id": "85bfd858faf4fc959526e006cea0a3f7",
+        "source": "drexel_events",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/6bd0b7d6-c601-4231-83b1-f5ac7581539a6e4d8993-a1ee-4ba5-a4e1-7d6ea3a9504f.png",
+        "location": "Online",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24411",
         "start_time": 1782837000,
         "end_time": 1782840600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464997",
-        "event_status": "in-person",
+        "event_link": "https://drexel.edu/events/Event?_i=46548_122536",
+        "event_status": "virtual",
         "theme": "academic",
         "perks": []
     },
@@ -603,34 +408,6 @@
         "perks": []
     },
     {
-        "id": "710629030adf50147b2a0d3cbf804ac7",
-        "source": "dragonlink",
-        "name": "Board Game Night",
-        "org_name": "Unplugged Gaming Organization",
-        "location": "CREESE - Greenawalt Room A",
-        "image_url": "https://drexel.campuslabs.com/engage/image/a3b6dc57-eae5-428c-abe6-80b5c048f81915622aa5-9919-4dc2-bbc2-1bdb782c228d.png",
-        "start_time": 1782856800,
-        "end_time": 1782866700,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12479946",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "623d861fb2d3491de5377627895df58b",
-        "source": "dragonlink",
-        "name": "DSC Bible Study",
-        "org_name": "Drexel Students for Christ",
-        "location": "Ida Chen & Commons",
-        "image_url": "https://drexel.campuslabs.com/engage/image/9b25dfc4-8a81-41e4-b99c-52bf809fc95a445f8c78-a7e0-4ab1-8938-e75d841712ca.png",
-        "start_time": 1782858600,
-        "end_time": 1782862200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12481978",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": []
-    },
-    {
         "id": "e2309746c3beca4e5463c999abadb749",
         "source": "drexel_events",
         "name": "America\u2019s National Anniversaries & Philadelphia on the World Stage",
@@ -640,20 +417,6 @@
         "start_time": 1782918000,
         "end_time": 1783022400,
         "event_link": "https://drexel.edu/events/Event?_i=46629_122806",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "f0d774c303a9b98fee1ffdd52ed06420",
-        "source": "dragonlink",
-        "name": "NCB & Queen Lane Scavenger Hunt",
-        "org_name": "Biomedical Science Graduate Student Association",
-        "location": "NCB & Queen Lane",
-        "image_url": "https://drexel.campuslabs.com/engage/image/45f41a9e-ffe9-4166-937e-fe997baf5965e7397238-57da-4554-a868-77170a363748.png",
-        "start_time": 1782921600,
-        "end_time": 1785517200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12485439",
         "event_status": "in-person",
         "theme": "social",
         "perks": []
@@ -687,20 +450,6 @@
         "perks": []
     },
     {
-        "id": "4fc45b4073052fbae0f3f1db1da2903d",
-        "source": "dragonlink",
-        "name": "Chipotle Fundraiser",
-        "org_name": "Hearts In Motion",
-        "location": "Chipotle Wyncote location",
-        "image_url": "https://drexel.campuslabs.com/engage/image/f522bd8a-2f62-482b-864a-1869bfc20d09d40066ef-047e-4ab2-884a-88702d2fb68d.png",
-        "start_time": 1782936000,
-        "end_time": 1782950400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464167",
-        "event_status": "in-person",
-        "theme": "fundraising",
-        "perks": []
-    },
-    {
         "id": "798dab53e180dfe7f3157956c6591f23",
         "source": "drexel_events",
         "name": "Virtual Information Session: Pre-medical Pre-health Programs: Ask the Admissions Director",
@@ -713,22 +462,6 @@
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
-    },
-    {
-        "id": "407366e0179a1b27c8accc7cefaa9371",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1783029600,
-        "end_time": 1783036800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477333",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
     },
     {
         "id": "94aa64498e5d57e6f4eb917d4ea52030",
@@ -815,15 +548,15 @@
         "perks": []
     },
     {
-        "id": "deb49541886c524da29b84b14b2e67b0",
-        "source": "dragonlink",
+        "id": "b7764f065429a30c71f80263f40ada74",
+        "source": "drexel_events",
         "name": "NSF GRFP Workshop 2 - Developing a Research Statement",
         "org_name": "Pennoni Honors College",
         "location": "Online",
-        "image_url": "https://drexel.campuslabs.com/engage/image/5b7541cd-c84a-478e-b21d-43bb777eb3662404923a-f527-4130-a25c-5859285f15ca.png",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24404",
         "start_time": 1783441800,
         "end_time": 1783445400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12462722",
+        "event_link": "https://drexel.edu/events/Event?_i=46537_122514",
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
@@ -885,22 +618,6 @@
         "perks": []
     },
     {
-        "id": "d8786e08b41f3fc4fea4c126c634e283",
-        "source": "dragonlink",
-        "name": "Midweek Pick-Me-Up",
-        "org_name": "Elkins Park Student Success & Campus Engagement",
-        "location": "Elkins Park Small Cafe",
-        "image_url": "https://drexel.campuslabs.com/engage/image/72fb8946-4eef-4003-b982-aab74a6105f837f57d8f-f72c-45a2-95c2-111f69c8de35.png",
-        "start_time": 1783526400,
-        "end_time": 1783533600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12485786",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
         "id": "5d87491519afda6639d41f7b89a7fc18",
         "source": "drexel_events",
         "name": "Divorce as a New Beginning: Finding Balance in Transition",
@@ -957,22 +674,6 @@
         "perks": []
     },
     {
-        "id": "3cd68801c4d204bbf0f90fbfe2573e7e",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1783634400,
-        "end_time": 1783641600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477334",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
         "id": "aa383ddfcc7995e24029a4d862e53b2e",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
@@ -1015,50 +716,6 @@
         "perks": []
     },
     {
-        "id": "fda99872a86994b11021905aa0fefb3a",
-        "source": "dragonlink",
-        "name": "Game Night",
-        "org_name": "Biomedical Science Graduate Student Association",
-        "location": "New College Building 3rd Floor Student Lounge",
-        "image_url": "https://drexel.campuslabs.com/engage/image/45f41a9e-ffe9-4166-937e-fe997baf5965e7397238-57da-4554-a868-77170a363748.png",
-        "start_time": 1783717200,
-        "end_time": 1783724400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12485441",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "2ab4fb8d5588c04e84288bc3e1744db0",
-        "source": "dragonlink",
-        "name": "Beach Day Trip",
-        "org_name": "Elkins Park Student Success & Campus Engagement",
-        "location": "Belmar Beach, NJ",
-        "image_url": "https://drexel.campuslabs.com/engage/image/5d1df1e9-49db-41db-8bcb-2995e6ee80eaa02b9896-08ed-4246-b16b-cef843be94d1.png",
-        "start_time": 1783774800,
-        "end_time": 1783814400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12483350",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "607c2c05e9fd6af521562edbc2f5efe5",
-        "source": "dragonlink",
-        "name": "Red Cross Blood Drive",
-        "org_name": "Student Academy of the American Academy of Physician Assistants",
-        "location": "Haffner Gym",
-        "image_url": "https://drexel.campuslabs.com/engage/image/057c9617-f40c-4473-a4be-16e0cacf389f0ab5cb11-993b-4076-9c37-0bd13524a832.png",
-        "start_time": 1783947600,
-        "end_time": 1783965600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12424241",
-        "event_status": "in-person",
-        "theme": "fundraising",
-        "perks": []
-    },
-    {
         "id": "4a31d84b4d3655504a5044e267b66061",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
@@ -1087,20 +744,6 @@
         "perks": []
     },
     {
-        "id": "95a117e56a25fb0057355455353304ba",
-        "source": "dragonlink",
-        "name": "Pie a professor event",
-        "org_name": "Hearts In Motion",
-        "location": "Outside Drexel Elkins Park",
-        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
-        "start_time": 1783954800,
-        "end_time": 1783969200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12469268",
-        "event_status": "in-person",
-        "theme": "fundraising",
-        "perks": []
-    },
-    {
         "id": "6c2581aba5923095070e861fc373feb7",
         "source": "drexel_events",
         "name": "What even is Graduate Clinical Psychology School?!",
@@ -1113,22 +756,6 @@
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
-    },
-    {
-        "id": "54c13ae109d9c18e2cf913e2d30bbae4",
-        "source": "dragonlink",
-        "name": "Student Council Meeting",
-        "org_name": "Elkins Park Student Council",
-        "location": "S305A",
-        "image_url": "https://drexel.campuslabs.com/engage/image/0d91d137-ff35-44b8-b776-ae0a389826bd61edf788-a8dd-48a1-a274-e5717e726ad8.png",
-        "start_time": 1783976400,
-        "end_time": 1783987200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464166",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food"
-        ]
     },
     {
         "id": "ce6747bb9c3dc3cb0b0b644504dd09e0",
@@ -1201,16 +828,16 @@
         "perks": []
     },
     {
-        "id": "6915c79568fd3f7342f936aef1ed0501",
-        "source": "dragonlink",
+        "id": "9d827a981f49604c9cc8107e10d3ff5e",
+        "source": "drexel_events",
         "name": "Graduate Fellowships Writing Group",
         "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/6bd0b7d6-c601-4231-83b1-f5ac7581539a6e4d8993-a1ee-4ba5-a4e1-7d6ea3a9504f.png",
+        "location": "Online",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24411",
         "start_time": 1784046600,
         "end_time": 1784050200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464998",
-        "event_status": "in-person",
+        "event_link": "https://drexel.edu/events/Event?_i=46548_122537",
+        "event_status": "virtual",
         "theme": "academic",
         "perks": []
     },
@@ -1225,20 +852,6 @@
         "end_time": 1784052000,
         "event_link": "https://drexel.edu/events/Event?_i=46623_122771",
         "event_status": "virtual",
-        "theme": "social",
-        "perks": []
-    },
-    {
-        "id": "b1414ba90db7036925daf93784f327d1",
-        "source": "dragonlink",
-        "name": "Soccer Watch Party",
-        "org_name": "Biomedical Science Graduate Student Association",
-        "location": "Queen Lane Lower SAC",
-        "image_url": "https://drexel.campuslabs.com/engage/image/45f41a9e-ffe9-4166-937e-fe997baf5965e7397238-57da-4554-a868-77170a363748.png",
-        "start_time": 1784055600,
-        "end_time": 1784066400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12485440",
-        "event_status": "in-person",
         "theme": "social",
         "perks": []
     },
@@ -1343,22 +956,6 @@
         "perks": []
     },
     {
-        "id": "47ff852b25dcc97afbec1a5c2ec0cea9",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1784239200,
-        "end_time": 1784246400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477335",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
         "id": "86a01c3eaa0fd3da0d45a2dabbc8a932",
         "source": "drexel_events",
         "name": "Drexel University Digital Development Camp, VirtuaQuest",
@@ -1373,20 +970,6 @@
         "perks": []
     },
     {
-        "id": "62fb3fc502d932bd52139f0a9869316f",
-        "source": "drexel_events",
-        "name": "Writing Retreat for Faculty and Staff",
-        "org_name": "Elizabeth Kimball",
-        "location": "Online",
-        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798",
-        "start_time": 1784300400,
-        "end_time": 1784305800,
-        "event_link": "https://drexel.edu/events/Event?_i=45558_119344",
-        "event_status": "virtual",
-        "theme": "academic",
-        "perks": []
-    },
-    {
         "id": "cc8f98c6f2561f6f4c84e8affd695cd8",
         "source": "drexel_events",
         "name": "Study Abroad 101",
@@ -1396,6 +979,20 @@
         "start_time": 1784300400,
         "end_time": 1784304000,
         "event_link": "https://drexel.edu/events/Event?_i=46342_121714",
+        "event_status": "virtual",
+        "theme": "academic",
+        "perks": []
+    },
+    {
+        "id": "62fb3fc502d932bd52139f0a9869316f",
+        "source": "drexel_events",
+        "name": "Writing Retreat for Faculty and Staff",
+        "org_name": "Elizabeth Kimball",
+        "location": "Online",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=23798",
+        "start_time": 1784300400,
+        "end_time": 1784305800,
+        "event_link": "https://drexel.edu/events/Event?_i=45558_119344",
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
@@ -1485,15 +1082,15 @@
         "perks": []
     },
     {
-        "id": "26b186c92e364b8f274f2a9f67884d50",
-        "source": "dragonlink",
+        "id": "3855124bf6ad7922a8383a6c203d4506",
+        "source": "drexel_events",
         "name": "NSF GRFP Workshop 3 - Developing a Personal Statement",
         "org_name": "Pennoni Honors College",
         "location": "Online",
-        "image_url": "https://drexel.campuslabs.com/engage/image/0688d1c4-6f1a-4113-82fd-58f38011a11d8ef44bac-c9c6-4d55-825b-37238f24a900.png",
+        "image_url": "http://events.drexel.edu/displaymedia.aspx?whatToDo=picture&thumbnail=thumbnail&thumbnailwidth=223&id=24405",
         "start_time": 1784651400,
         "end_time": 1784655000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12462725",
+        "event_link": "https://drexel.edu/events/Event?_i=46538_122516",
         "event_status": "virtual",
         "theme": "academic",
         "perks": []
@@ -1597,188 +1194,17 @@
         "perks": []
     },
     {
-        "id": "f0e4d56a35ba8b93f8761d77f608d686",
-        "source": "dragonlink",
-        "name": "Drexel Spirit Fest",
-        "org_name": "Elkins Park Student Success & Campus Engagement",
-        "location": "Elkins Park Small Cafe",
-        "image_url": "https://drexel.campuslabs.com/engage/image/34e6d95d-6f39-4d40-99c6-9cebf6011d97fd89fd4f-40be-43d4-9822-008e35771437.png",
-        "start_time": 1784822400,
-        "end_time": 1784829600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12485792",
-        "event_status": "in-person",
-        "theme": "social",
-        "perks": [
-            "free_food",
-            "free_stuff"
-        ]
-    },
-    {
-        "id": "57ed8b691ee91f0590a65d33cfc553a2",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1784844000,
-        "end_time": 1784851200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477336",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "74750ef80a4deaa04dd580c0254fa76d",
-        "source": "dragonlink",
-        "name": "Graduate Fellowships Writing Group",
-        "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/6bd0b7d6-c601-4231-83b1-f5ac7581539a6e4d8993-a1ee-4ba5-a4e1-7d6ea3a9504f.png",
-        "start_time": 1785256200,
-        "end_time": 1785259800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12464999",
+        "id": "7d71f18d276bdf0a0324c2f22a86f42d",
+        "source": "drexel_events",
+        "name": "Drexel University Digital Development Camp, VirtuaQuest",
+        "org_name": "College of Computing and Informatics",
+        "location": "CCI 1000",
+        "image_url": "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg",
+        "start_time": 1784898000,
+        "end_time": 1784923200,
+        "event_link": "https://drexel.edu/events/Event?_i=46084_121023",
         "event_status": "in-person",
         "theme": "academic",
         "perks": []
-    },
-    {
-        "id": "5c761cbd55c6af816738c9850634fc9e",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1785448800,
-        "end_time": 1785456000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477337",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "a1f9c937a84f27552ed882ee9ec8cc2e",
-        "source": "dragonlink",
-        "name": "NSF GRFP Workshop 4 - Bringing It All Together",
-        "org_name": "Pennoni Honors College",
-        "location": "Online",
-        "image_url": "https://drexel.campuslabs.com/engage/image/1eaa2717-9c50-45c2-82ba-26909c6e551971c8b23d-a02c-471a-a2d7-35e84a7a2738.png",
-        "start_time": 1785861000,
-        "end_time": 1785864600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12462736",
-        "event_status": "virtual",
-        "theme": "academic",
-        "perks": []
-    },
-    {
-        "id": "9cd45149b18a32f216066673798df78f",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1786053600,
-        "end_time": 1786060800,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477338",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "05474c23350f818784d5f2986266c402",
-        "source": "dragonlink",
-        "name": "Graduate Fellowships Writing Group",
-        "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/6bd0b7d6-c601-4231-83b1-f5ac7581539a6e4d8993-a1ee-4ba5-a4e1-7d6ea3a9504f.png",
-        "start_time": 1786465800,
-        "end_time": 1786469400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12465000",
-        "event_status": "in-person",
-        "theme": "academic",
-        "perks": []
-    },
-    {
-        "id": "25140480fe5a151f9d136bb32d4c48ea",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1786658400,
-        "end_time": 1786665600,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477339",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "5e13935193b1e5a4f18676a191ec0a2a",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1787263200,
-        "end_time": 1787270400,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477340",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "888fc9cba4816d96e2fb6c92ccf34a56",
-        "source": "dragonlink",
-        "name": "Graduate Fellowships Writing Group",
-        "org_name": "Pennoni Honors College",
-        "location": "Bentley Hall 2nd Floor Annex",
-        "image_url": "https://drexel.campuslabs.com/engage/image/6bd0b7d6-c601-4231-83b1-f5ac7581539a6e4d8993-a1ee-4ba5-a4e1-7d6ea3a9504f.png",
-        "start_time": 1787675400,
-        "end_time": 1787679000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12465001",
-        "event_status": "in-person",
-        "theme": "academic",
-        "perks": []
-    },
-    {
-        "id": "cfd2644c021409f0e7b845f0a838f632",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1787868000,
-        "end_time": 1787875200,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477341",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
-    },
-    {
-        "id": "bacf2484fc8de2dfb8e499aa8b116928",
-        "source": "dragonlink",
-        "name": "Pizza in the Park",
-        "org_name": "Drexel Newman Catholic Community",
-        "location": "The Newman Center",
-        "image_url": "https://drexel.campuslabs.com/engage/image/7d301eed-67d7-461d-b059-7b5f355325c11a7eac83-7750-416a-a159-9abfc147726c.png",
-        "start_time": 1788472800,
-        "end_time": 1788480000,
-        "event_link": "https://drexel.campuslabs.com/engage/event/12477342",
-        "event_status": "in-person",
-        "theme": "spirituality",
-        "perks": [
-            "free_food"
-        ]
     }
 ]
