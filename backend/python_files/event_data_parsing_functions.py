@@ -9,7 +9,7 @@ from openai import OpenAI
 from pydantic import BaseModel
 
 import requests
-from backend.event_class import Event
+from backend.python_files.event_class import Event
 
 PHILLY_TZ = ZoneInfo("America/New_York")
 HTTP_TIMEOUT = (5, 30)
@@ -219,6 +219,8 @@ def dragonlink_event_parsing(event_json, kwargs):
     if str(event_json["id"]) in specific_events_to_exclude:
         return None
     kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
+    if event_id_hash(source + str(event_json["id"])) != kwargs["_id"]:
+        raise ValueError(f"Event ID collision: {event_json['id']} and {kwargs['_id']}")
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
@@ -286,6 +288,8 @@ def drexel_event_parsing(event_json, kwargs):
         kwargs["org_name"] = "Drexel University"
 
     kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
+    if event_id_hash(source + str(event_json["id"])) != kwargs["_id"]:
+        raise ValueError(f"Event ID collision: {event_json['id']} and {kwargs['_id']}")
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
     if "<a" in kwargs["location"]:

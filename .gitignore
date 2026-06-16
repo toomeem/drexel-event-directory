@@ -1,4 +1,4 @@
-backend/.env
+backend/python_files/.env
 frontend/.env
 frontend/.env.local
 /backend/.lambda_venv/

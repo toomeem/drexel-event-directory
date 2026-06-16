@@ -8,7 +8,7 @@ import psycopg2
 from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
     collect_dragonlink_events, collect_drexel_events, create_drexel_athletics_events, openai_client
 from dotenv import load_dotenv
-from event_class import Event
+from backend.python_files.event_class import Event
 
 
 def create_event_chunk_file(event):
@@ -26,7 +26,7 @@ def create_event_chunk_file(event):
 
 
 def clear_tmp_dir():
-    path = "chunking_tmp_dir/"
+    path = "../chunking_tmp_dir/"
     for file in os.listdir(path):
         os.remove(os.path.join(path, file))
 
@@ -98,7 +98,7 @@ def load_events_from_file(path="events.json"):
 
 
 def save_events_to_file(events):
-    with open("events.json", "w", encoding="utf-8") as f:
+    with open("../events.json", "w", encoding="utf-8") as f:
         json.dump([event.to_json() for event in events], f, indent=4)
 
 
