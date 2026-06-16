@@ -1,5 +1,6 @@
 use hashing to avoid deleting and re-adding events each time
 use multithreading when collecting events
+update thesis defenses to have the org name be the speaker
 create a dev db to save money while iterating on data cleaning and filtering
 split some of the data cleaning into separate functions
 shorten org names to try to prevent them from being over one line
@@ -11,6 +12,7 @@ rename virtual to online
 improve event type labeling (a yoga event wasn't labeled as "athletics")
 parse event name to check for "credit" perk ("15 Wellness Points")
 remove more events (office hours, walk-in hours, events for faculty)
+MAKE WEBSITE MOBILE-FRIENDLY
 add filtering
     add filter bundles to make it easier to look for specific types of events
     "starting soon" label
@@ -42,3 +44,6 @@ more default images
 get more sources
     add club/intramural sports
 add section for new students that explains stuff and has a map of campus
+add section for suggestions for me
+
+if this gets popular: create a mobile app

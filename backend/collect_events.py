@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import time
 import uuid
 from datetime import datetime, timedelta
@@ -222,6 +223,7 @@ def dragonlink_event_parsing(event_json, kwargs):
 
     if str(event_json["id"]) in specific_events_to_exclude:
         return None
+    kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
@@ -271,6 +273,7 @@ def dragonlink_event_parsing(event_json, kwargs):
 
     kwargs["perks"] = [i.lower().replace(" ", "_") for i in event_json["benefitNames"]]
     kwargs["theme"] = kwargs["theme"].lower()
+
     return kwargs
 
 
@@ -287,6 +290,7 @@ def drexel_event_parsing(event_json, kwargs):
     else:
         kwargs["org_name"] = "Drexel University"
 
+    kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
     if "<a" in kwargs["location"]:
@@ -358,6 +362,7 @@ def drexel_athletics_event_parsing(event_json, kwargs):
         print(f"Unknown athletics sport shortname: {sport_short_raw}")
         sport_shorthand = sport_short_raw
 
+    kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
     kwargs["name"] = " ".join(["DREX", at_vs, opponent])
     kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
     kwargs["location"] = event_json["location"]
@@ -368,6 +373,10 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     kwargs["theme"] = "athletics"
     kwargs["perks"] = []
     return kwargs
+
+
+def event_id_hash(hash_str):
+    return hex(abs(hash(hash_str)))[2:]
 
 
 def create_event_object(source, event_json, client):
@@ -406,7 +415,6 @@ def create_event_object(source, event_json, client):
     if kwargs["name"].startswith("CANCELLED"):
         return None
     kwargs["name"] = kwargs["name"].replace("(15 Wellness Points)", "").strip(" ;:/,*")
-    kwargs["_id"] = str(uuid.uuid7().hex)
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
@@ -652,8 +660,8 @@ def upload_all_events_to_s3():
 
 def main():
     update_events_file(openai_client)
-    fill_db()
-    upload_all_events_to_s3()
+    # fill_db()
+    # upload_all_events_to_s3()
 
 
 if __name__ == "__main__":
