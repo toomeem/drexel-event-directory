@@ -27,9 +27,13 @@ def test_lambda():
     pprint(response.json())
 
 
-if __name__ == "__main__":
-    load_dotenv()
-    start = time.time()
+def event_id_hash(hash_str):
+    return hex(abs(hash(hash_str)))[2:]
 
+
+if __name__ == "__main__":
+    # load_dotenv()
+    start = time.time()
+    print(event_id_hash("drexel_events30646_122203"))
     end = time.time()
     # print(f"Time taken: {round(end - start, 2)} seconds")

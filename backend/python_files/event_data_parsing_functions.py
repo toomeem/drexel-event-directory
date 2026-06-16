@@ -21,6 +21,12 @@ class OnlineStatus(BaseModel):
     physical_location: str
 
 
+def event_id_hash(hash_str):
+    hash_num = hex(abs(hash(hash_str)))[2:]
+    print(f"{hash_str}:{hash_num}")
+    return hash_num
+
+
 def _fmt_hm(dt, with_ampm=False):
     h = dt.strftime("%I").lstrip("0") or "12"
     return f"{h}:{dt.strftime('%M %p')}" if with_ampm else f"{h}:{dt.strftime('%M')}"
@@ -198,8 +204,6 @@ def dragonlink_event_parsing(event_json, kwargs):
     if str(event_json["id"]) in specific_events_to_exclude:
         return None
     kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
-    if event_id_hash(source + str(event_json["id"])) != kwargs["_id"]:
-        raise ValueError(f"Event ID collision: {event_json['id']} and {kwargs['_id']}")
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
@@ -267,8 +271,6 @@ def drexel_event_parsing(event_json, kwargs):
         kwargs["org_name"] = "Drexel University"
 
     kwargs["_id"] = event_id_hash(source + str(event_json["id"]))
-    if event_id_hash(source + str(event_json["id"])) != kwargs["_id"]:
-        raise ValueError(f"Event ID collision: {event_json['id']} and {kwargs['_id']}")
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
     if "<a" in kwargs["location"]:
@@ -351,10 +353,6 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     kwargs["theme"] = "athletics"
     kwargs["perks"] = []
     return kwargs
-
-
-def event_id_hash(hash_str):
-    return hex(abs(hash(hash_str)))[2:]
 
 
 def create_event_object(source, event_json, client):
