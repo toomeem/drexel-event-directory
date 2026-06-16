@@ -56,15 +56,9 @@ def normalize_time(source, time_str):
 
 
 def simplify_location(location):
-    if not location:
-        return None
     if "cancelled" in location.lower():
         return None
-
-    online_placeholders = ["online", "remote", "virtual", "virtual event", "zoom"]
-    if location.lower() in online_placeholders:
-        return "Online"
-
+    location = str(location)
     strip_chars = " ,.-*"
     total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
                           "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
@@ -136,6 +130,8 @@ def simplify_location(location):
     for k, v in total_replace_list.items():
         if k in location:
             return v
+    if "or virtually" in location.lower() or "and virtual" in location.lower():
+        location = location.split("or virtually", 1)[0]
     location = location.strip(strip_chars)
     for suffix in suffixes:
         location = location.removesuffix(suffix)
@@ -190,26 +186,6 @@ def match_default_image(name, org_name, location):
         if key in name or key in org_name or key in location:
             return image
     return drexel_default_image
-
-
-_online_status_cache = {}
-
-
-def get_online_status(client, location):
-    if location in _online_status_cache:
-        return _online_status_cache[location]
-    response = client.chat.completions.parse(model="gpt-5-nano-2025-08-07", messages=[{"role": "system", "content": '''
-                        You are an expert at structured data extraction.
-                        You will be given information about the location of an event on Drexel University's campus and your task is to determine whether the event is hybrid, virtual or in-person.
-                        If an event is virtual, it will explicitly state that is is event_status/virtual and will likely say 'zoom' or 'meet'. If it doesn't clearly state that it is virtual, you will assume it is in-person.
-                        You will first select the 'event_status' field. Here are the only allowed responses for the event_status field: ['in-person', 'virtual', 'hybrid'].
-                        If the event is hybrid, It will explicitly state a physical location and that it is virtual/event_status. I will most likely signal this using 'and'/'&' or 'or' to show that there are multiple options. Example 'PISB 108 & Online'
-                        For hybrid events, for the 'physical_location' parameter just return the physical location and ignore any information about the virtual aspect of the event. For in-person events, just return the location as the 'physical_location' and for virtual events, return 'N/A' for the physical location.
-                 ''', }, {"role": "user", "content": location}, ], response_format=OnlineStatus, )
-    response_object = response.choices[0].message.parsed
-    result = {"event_status": response_object.event_status, "physical_location": response_object.physical_location}
-    _online_status_cache[location] = result
-    return result
 
 
 def dragonlink_event_parsing(event_json, kwargs):
@@ -383,7 +359,9 @@ def event_id_hash(hash_str):
 
 def create_event_object(source, event_json, client):
     online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
-    online_location_default_text = "Online"
+    online_location_default_text = ["Online", "Zoom (Link in description)", "Zoom",
+                                    "Virtual - see reminder email for link", "Online Event", "Remote",
+                                    "Zoom: Register on Handshake"]
     exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
                       "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
                       "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
@@ -424,23 +402,22 @@ def create_event_object(source, event_json, client):
         kwargs["event_status"] = "in-person"
     elif kwargs["location"] == online_location_default_text:
         kwargs["event_status"] = "virtual"
-    elif "and virtual" in kwargs["location"]:
-        kwargs["event_status"] = "hybrid"
     elif any(keyword in str(kwargs["location"]).lower() for keyword in online_keywords):
-        online_status_response = get_online_status(client, kwargs["location"])
-        kwargs["event_status"] = online_status_response["event_status"]
-        if kwargs["event_status"] == "hybrid":
-            kwargs["location"] = online_status_response["physical_location"]
-        elif kwargs["event_status"] == "virtual":
-            kwargs["location"] = online_location_default_text
+        hybrid_keywords = ["or virtually", "hybrid", "and virtual"]
+        for i in hybrid_keywords:
+            if i in str(kwargs["location"]).lower():
+                kwargs["event_status"] = "hybrid"
+            else:
+                kwargs["event_status"] = "virtual"
     else:
         kwargs["event_status"] = "in-person"
 
-    kwargs["location"] = simplify_location(kwargs["location"])
+    if kwargs["event_status"] == "virtual":
+        kwargs["location"] = "Online"
+    else:
+        kwargs["location"] = simplify_location(kwargs["location"])
     if kwargs["location"] is None:
         return None
-    if kwargs["location"] == "Online":
-        kwargs["event_status"] = "virtual"
 
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
@@ -452,7 +429,6 @@ def create_event_object(source, event_json, client):
         kwargs["org_name"] = kwargs["org_name"].replace(i, "", 1)
     kwargs["org_name"] = kwargs["org_name"].strip(";-,. ")
     # todo: remove "Drexel " prefix from org names with a few exceptions
-
     return Event(**kwargs)
 
 
@@ -464,8 +440,12 @@ def create_dragonlink_api_url(count):
 
 
 def collect_dragonlink_events(count=300):
-    response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT).json()
+    response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT)
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} {response.text}")
+        return []
 
+    response = dict(response.json())
     os.makedirs("json_examples", exist_ok=True)
     with open("backend/json_examples/dragonlink_response.json", "w", encoding="utf-8") as f:
         json.dump(response, f, indent=4)
@@ -478,18 +458,20 @@ def create_drexel_events_api_url(page=1):
 
 
 def get_drexel_events_response(page):
-    time.sleep(random.random() * 0.25)
+    time.sleep(random.random() * 0.5)
     response = requests.get(create_drexel_events_api_url(page), timeout=HTTP_TIMEOUT)
     if response.status_code != 200:
         print(f"Error: {response.status_code} {response.text}")
+        return []
     return dict(response.json())["results"]
 
 
 def collect_drexel_events(count=200):
     results = []
+    events_per_page = 10
     max_threads = 5
-    total_requests = (count // 10) + 1
-    requests_nums = [i for i in range(1, total_requests)]
+    total_requests = (count // events_per_page) + 1
+    requests_nums = [i for i in range(1, total_requests + 1)]
 
     with ThreadPoolExecutor(max_workers=max_threads) as executor:
         futures = [executor.submit(get_drexel_events_response, i) for i in requests_nums]
@@ -511,9 +493,13 @@ def create_drexel_athletics_api_url(days_out=30):
     return f"https://drexeldragons.com/api/v2/Calendar/from/{start_date}/to/{end_date}"
 
 
-def create_drexel_athletics_events():
+def collect_drexel_athletics_events():
     url = create_drexel_athletics_api_url()
     response = requests.get(url, timeout=HTTP_TIMEOUT)
+
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} {response.text}")
+        return []
 
     response_json = list(response.json())
     events_json = []

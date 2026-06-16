@@ -7,14 +7,14 @@ from openai import OpenAI
 
 import boto3
 import psycopg2
-from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
-    collect_dragonlink_events, collect_drexel_events, create_drexel_athletics_events
-from dotenv import load_dotenv
 from backend.python_files.event_class import Event
+from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
+    collect_dragonlink_events, collect_drexel_events, collect_drexel_athletics_events
+from dotenv import load_dotenv
 
 
 def create_event_chunk_file(event):
-    path = "chunking_tmp_dir/" + event._id + ".json"
+    path = "backend/chunking_tmp_dir/" + event._id + ".json"
     event_json = event.to_json()
     event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
     del event_json["event_link"]
@@ -28,19 +28,19 @@ def create_event_chunk_file(event):
 
 
 def clear_tmp_dir():
-    path = "../chunking_tmp_dir/"
+    path = "backend/chunking_tmp_dir/"
     for file in os.listdir(path):
         os.remove(os.path.join(path, file))
 
 
 def clear_s3_folder(bucket):
-    folder_path = "chunked/"
+    folder_path = "backend/chunked/"
     bucket.objects.filter(Prefix=folder_path).delete()
 
 
 def upload_file_to_s3(bucket, file_name):
-    local_file_path = "chunking_tmp_dir/" + file_name + ".json"
-    s3_file_path = "chunked/" + file_name + ".json"
+    local_file_path = "backend/chunking_tmp_dir/" + file_name + ".json"
+    s3_file_path = "backend/chunked/" + file_name + ".json"
     bucket.upload_file(local_file_path, s3_file_path)
 
 
@@ -53,11 +53,12 @@ def sync_s3_knowledge_base():
 
 def collect_all_events(client):
     events = []
+    start_time = time.time()
     events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
     events.extend([create_event_object("drexel_events", event_json, client) for event_json in collect_drexel_events()])
     events.extend([create_event_object("drexel_athletics", event_json, client) for event_json in
-                   create_drexel_athletics_events()])
-
+                   collect_drexel_athletics_events()])
+    print(f"total time for all events: {round(time.time() - start_time, 2)} seconds")
     events = [e for e in events if e is not None and e.start_time is not None]
 
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
@@ -85,7 +86,7 @@ def collect_all_events(client):
     return result
 
 
-def load_events_from_file(path="events.json"):
+def load_events_from_file(path="backend/events.json"):
     with open(path, encoding="utf-8") as f:
         events_json = json.load(f)
     events = []
@@ -100,7 +101,7 @@ def load_events_from_file(path="events.json"):
 
 
 def save_events_to_file(events):
-    with open("../events.json", "w", encoding="utf-8") as f:
+    with open("backend/events.json", "w", encoding="utf-8") as f:
         json.dump([event.to_json() for event in events], f, indent=4)
 
 
@@ -155,7 +156,9 @@ def upload_all_events_to_s3():
 
 
 def main():
-    update_events_file(openai_client)  # fill_db()  # upload_all_events_to_s3()
+    update_events_file(openai_client)
+    fill_db()
+    upload_all_events_to_s3()
 
 
 if __name__ == "__main__":
