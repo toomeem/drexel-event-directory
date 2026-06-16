@@ -376,11 +376,7 @@ def drexel_athletics_event_parsing(event_json, kwargs):
     return kwargs
 
 
-def create_event_object(source, event_json, client):
-    online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
-    online_location_default_text = ["Online", "Zoom (Link in description)", "Zoom",
-                                    "Virtual - see reminder email for link", "Online Event", "Remote",
-                                    "Zoom: Register on Handshake"]
+def invalid_event(kwargs):
     exclude_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
                       "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
                       "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
@@ -388,6 +384,40 @@ def create_event_object(source, event_json, client):
                       "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
                       "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
                       "SWE Spring 2026 Officer Meetings", "In Her Own League: The Baseball Collection of Helen Beitler"]
+    if kwargs is None:
+        return True
+    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["org_name"], kwargs["location"]]):
+        return True
+    if kwargs["name"] in exclude_events:
+        return True
+    if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
+            kwargs["name"].lower() or "Chpater" in kwargs["name"]:
+        return True
+    if kwargs["name"].startswith("CANCELLED"):
+        return True
+    return False
+
+
+def get_event_status(source, location):
+    online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
+    online_location_default_text = ["Online", "Zoom (Link in description)", "Zoom",
+                                    "Virtual - see reminder email for link", "Online Event", "Remote",
+                                    "Zoom: Register on Handshake"]
+    if source == "drexel_athletics":
+        return "in-person"
+    elif location in online_location_default_text:
+        return "virtual"
+    elif any(keyword in location.lower() for keyword in online_keywords):
+        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
+        for i in hybrid_keywords:
+            if i in location.lower():
+                return "hybrid"
+        return "virtual"
+    else:
+        return "in-person"
+
+
+def create_event_object(source, event_json, client):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], }
@@ -401,37 +431,14 @@ def create_event_object(source, event_json, client):
             kwargs = drexel_athletics_event_parsing(event_json, kwargs)
         case _:
             return None
-    if kwargs is None:
+
+    if invalid_event(kwargs["name"]):
         return None
 
-    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["org_name"], kwargs["location"]]):
-        return None
-    if kwargs["name"] in exclude_events:
-        return None
-    if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
-            kwargs["name"].lower() or "Chpater" in kwargs["name"]:
-        return None
-    if kwargs["name"].startswith("CANCELLED"):
-        return None
     kwargs["name"] = kwargs["name"].replace("(15 Wellness Points)", "").strip(" ;:/,*")
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
-
-    if source == "drexel_athletics":
-        kwargs["event_status"] = "in-person"
-    elif kwargs["location"] in online_location_default_text:
-        kwargs["event_status"] = "virtual"
-    elif any(keyword in kwargs["location"].lower() for keyword in online_keywords):
-        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
-        for i in hybrid_keywords:
-            if i in kwargs["location"].lower():
-                kwargs["event_status"] = "hybrid"
-                break
-            else:
-                kwargs["event_status"] = "virtual"
-    else:
-        kwargs["event_status"] = "in-person"
-
+    kwargs["event_status"] = get_event_status(source, kwargs["location"])
     if kwargs["event_status"] == "virtual":
         kwargs["location"] = "Online"
     else:
