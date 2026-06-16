@@ -25,7 +25,6 @@ class OnlineStatus(BaseModel):
 def stable_hash(key):
     str_bytes = bytes(key, "UTF-8")
     m = hashlib.md5(str_bytes)
-    print(m.hexdigest())
     return m.hexdigest()
 
 
