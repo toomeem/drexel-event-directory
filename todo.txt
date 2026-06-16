@@ -1,9 +1,6 @@
 create a dev db to save money while iterating on data cleaning and filtering
-split some of the data cleaning into separate functions
-shorten org names to try to prevent them from being over one line
 be able to filter out event types (e.g. select all and the unselect one or more)
     update "All" button to "Select All" and "Unselect All"
-improve location cleaning
 improve event name cleaning
 rename virtual to online
 improve event type labeling (a yoga event wasn't labeled as "athletics")

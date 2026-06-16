@@ -3,8 +3,6 @@ import os
 import time
 from datetime import datetime
 
-from openai import OpenAI
-
 import boto3
 import psycopg2
 from backend.python_files.event_class import Event
@@ -71,13 +69,13 @@ def sync_s3_knowledge_base():
                                dataSourceId=os.getenv("AWS_BEDROCK_DATA_SOURCE_ID"))
 
 
-def collect_all_events(client):
+def collect_all_events():
     events = []
 
-    events.extend([create_event_object("dragonlink", event_json, client) for event_json in collect_dragonlink_events()])
-    events.extend([create_event_object("drexel_events", event_json, client) for event_json in collect_drexel_events()])
-    events.extend([create_event_object("drexel_athletics", event_json, client) for event_json in
-                   collect_drexel_athletics_events()])
+    events.extend([create_event_object("dragonlink", event_json) for event_json in collect_dragonlink_events()])
+    events.extend([create_event_object("drexel_events", event_json) for event_json in collect_drexel_events()])
+    events.extend(
+        [create_event_object("drexel_athletics", event_json) for event_json in collect_drexel_athletics_events()])
     events = [e for e in events if e is not None and e.start_time is not None]
 
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
@@ -160,9 +158,9 @@ def fill_db():
     return uploaded_event_count
 
 
-def update_events_file(client):
+def update_events_file():
     print("\nCollecting events...")
-    events = collect_all_events(client)
+    events = collect_all_events()
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
@@ -204,7 +202,7 @@ def upload_all_events_to_s3():
 
 
 def main():
-    update_events_file(openai_client)
+    update_events_file()
     fill_db()
     upload_all_events_to_s3()
 
@@ -212,7 +210,6 @@ def main():
 if __name__ == "__main__":
     start = time.time()
     load_dotenv()
-    openai_client = OpenAI()
 
     main()
 

@@ -409,7 +409,8 @@ def parse_org_name(org_name):
                     "Drexel Newman Catholic Community": "Newman Catholic Community",
                     "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
                     "College of Computing and Informatics": "CCI",
-                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants"}
+                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
+                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life"}
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
@@ -423,7 +424,7 @@ def parse_org_name(org_name):
     return org_name.strip(":*_;-,. ")
 
 
-def create_event_object(source, event_json, client):
+def create_event_object(source, event_json):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], }
