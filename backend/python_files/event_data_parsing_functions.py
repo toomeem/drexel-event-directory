@@ -45,7 +45,7 @@ def make_time_str(start_time, end_time):
     if now.strftime("%m/%d") == start_time.strftime("%m/%d"):
         time_str_prefix = "Today"
     elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
-        time_str_prefix = "Tmrw"
+        time_str_prefix = "Tomorrow"
     elif (start_time - now) > timedelta(days=7):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
@@ -168,6 +168,18 @@ def simplify_location(location):
                 f"{i}room", f"{i} ", 1)
             break
     return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ").replace("  ", " ")
+
+
+def simplify_org_name(org_name):
+    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
+                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
+                    "Drexel Newman Catholic Community": "Newman Catholic Community",
+                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
+                    "College of Computing and Informatics": "CCI",
+                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants"}
+    if org_name not in replace_list.keys():
+        return org_name
+    return replace_list[org_name]
 
 
 def match_default_image(name, org_name, location):

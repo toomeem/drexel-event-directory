@@ -29,7 +29,7 @@ def make_time_str(start_time, end_time):
     if now.strftime("%m/%d") == start_time.strftime("%m/%d"):
         time_str_prefix = "Today"
     elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
-        time_str_prefix = "Tmrw"
+        time_str_prefix = "Tomorrow"
     elif (start_time - now) > timedelta(days=7):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
