@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/backend/collect_events.py" value="44ec7e8b-c65d-4a6d-94ea-89f51ad669a2" />
+    <file url="file://$PROJECT_DIR$/backend/main.py" value="44ec7e8b-c65d-4a6d-94ea-89f51ad669a2" />
   </component>
 </project>
