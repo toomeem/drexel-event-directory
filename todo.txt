@@ -1,4 +1,3 @@
-use hashing to avoid deleting and re-adding events each time
 update thesis defenses to have the org name be the speaker
 create a dev db to save money while iterating on data cleaning and filtering
 split some of the data cleaning into separate functions

@@ -38,6 +38,26 @@ def clear_s3_folder(bucket):
     bucket.objects.filter(Prefix=folder_path).delete()
 
 
+def get_s3_event_ids(bucket):
+    folder_path = "backend/chunked/"
+    suffix = ".json"
+    event_ids = set()
+
+    for obj in bucket.objects.filter(Prefix=folder_path):
+        if obj.key == folder_path or not obj.key.endswith(suffix):
+            continue
+        event_ids.add(obj.key.removeprefix(folder_path).removesuffix(suffix))
+
+    return event_ids
+
+
+def remove_events_from_s3(bucket, event_ids):
+    if not event_ids:
+        return
+
+    bucket.delete_objects(Delete={"Objects": [{"Key": f"backend/chunked/{event_id}.json"} for event_id in event_ids]})
+
+
 def upload_file_to_s3(bucket, file_name):
     local_file_path = "backend/chunking_tmp_dir/" + file_name + ".json"
     s3_file_path = "backend/chunked/" + file_name + ".json"
@@ -105,23 +125,39 @@ def save_events_to_file(events):
 
 
 def save_events_to_db(events):
+    event_rows_by_id = {}
+    for event in events:
+        event_row = event.to_sql()
+        event_rows_by_id.setdefault(event_row[0], event_row)
+
+    if not event_rows_by_id:
+        return 0
+
     with psycopg2.connect(host=os.getenv("RDS_ENDPOINT"), database="postgres", user=os.getenv("RDS_USERNAME"),
                           password=os.getenv("RDS_PASSWORD"), port="5432") as conn:
         with conn.cursor() as cursor:
-            cursor.execute("TRUNCATE TABLE main.events")
+            cursor.execute("SELECT id FROM main.events WHERE id = ANY(%s)", (list(event_rows_by_id.keys()),))
+            existing_event_ids = {row[0] for row in cursor.fetchall()}
+            new_event_rows = [row for event_id, row in event_rows_by_id.items() if event_id not in existing_event_ids]
+
+            if not new_event_rows:
+                return 0
+
             cursor.executemany('''
                                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time,
                                                        end_time,
                                                        event_link, event_status, theme, perks)
                                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s)
-                               ''', [(e[0], e[1], e[2], e[3], e[4], e[5], e[6], e[7], e[8], e[9], e[10], e[11]) for e in
-                                     [event.to_sql() for event in events]])
+                               ''', new_event_rows)
+            return len(new_event_rows)
 
 
 def fill_db():
     events = load_events_from_file()
-    print(f"\nUploading {len(events)} events to database...")
-    save_events_to_db(events)
+    print(f"\nChecking {len(events)} events for database upload...")
+    uploaded_event_count = save_events_to_db(events)
+    print(f"\nUploaded {uploaded_event_count} new events to database.")
+    return uploaded_event_count
 
 
 def update_events_file(client):
@@ -132,7 +168,7 @@ def update_events_file(client):
 
 
 def upload_all_events_to_s3():
-    print("\nUploading events to S3...")
+    print("\nSyncing events to S3...")
 
     s3 = boto3.resource(service_name='s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
                         aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
@@ -140,18 +176,31 @@ def upload_all_events_to_s3():
     bucket = s3.Bucket(bucket_name)
 
     events = load_events_from_file()
-
-    clear_s3_folder(bucket)
-
+    events_by_id = {}
     for event in events:
+        events_by_id.setdefault(event._id, event)
+
+    existing_event_ids = get_s3_event_ids(bucket)
+    current_event_ids = set(events_by_id.keys())
+    old_event_ids = existing_event_ids - current_event_ids
+    new_event_ids = current_event_ids - existing_event_ids
+
+    remove_events_from_s3(bucket, old_event_ids)
+
+    os.makedirs("backend/chunking_tmp_dir/", exist_ok=True)
+    for event_id in new_event_ids:
+        event = events_by_id[event_id]
         create_event_chunk_file(event)
         upload_file_to_s3(bucket, event._id)
 
     clear_tmp_dir()
-    time.sleep(3)
-    sync_s3_knowledge_base()
 
-    print(f"\nUploaded {len(events)} events to S3 and synced Bedrock knowledge base.")
+    if new_event_ids or old_event_ids:
+        time.sleep(3)
+        sync_s3_knowledge_base()
+
+    print(f"\nUploaded {len(new_event_ids)} new events to S3, removed {len(old_event_ids)} old events, "
+          f"and {'synced' if new_event_ids or old_event_ids else 'skipped syncing'} Bedrock knowledge base.")
 
 
 def main():
