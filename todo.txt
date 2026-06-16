@@ -1,4 +1,3 @@
-update thesis defenses to have the org name be the speaker
 create a dev db to save money while iterating on data cleaning and filtering
 split some of the data cleaning into separate functions
 shorten org names to try to prevent them from being over one line

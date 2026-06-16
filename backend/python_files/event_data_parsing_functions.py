@@ -282,6 +282,13 @@ def drexel_event_parsing(event_json, kwargs):
         kwargs["org_name"] = department_names[0]
     else:
         kwargs["org_name"] = "Drexel University"
+    research_keywords = ["PhD Research Proposal", "PhD Thesis Defense"]
+    for i in research_keywords:
+        if i in event_json["body"]:
+            speaker = event_json["body"].split("Speaker:&#160;</strong><br />")[0]
+            speaker = speaker.split("<br />")[0]
+            kwargs["org_name"] = speaker
+            break
 
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     kwargs["name"] = event_json["title"]
