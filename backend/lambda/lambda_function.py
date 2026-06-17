@@ -51,7 +51,8 @@ def db_entry_to_json(db_entry):
             "start_time": round(start_time.timestamp()) if start_time else None,
             "end_time": round(end_time.timestamp()) if end_time else None, "event_link": db_entry[8],
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, "food_related": db_entry[12],
-            "popular": db_entry[13], "weekly": db_entry[14], "for_new_students": db_entry[15], }
+            "popular": db_entry[13], "weekly": db_entry[14], "for_new_students": db_entry[15],
+            "on_campus": db_entry[16], }
 
 
 MAX_SEARCH_LEN = 100
@@ -117,6 +118,7 @@ def lambda_handler(event, context):
     weekly = parse_bool_filter("weekly")
     for_new_students = parse_bool_filter("for_new_students")
     popular = parse_bool_filter("popular")
+    on_campus = parse_bool_filter("on_campus")
     connection = None
     try:
         connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
@@ -139,6 +141,7 @@ def lambda_handler(event, context):
                                   popular,
                                   weekly,
                                   for_new_students,
+                                  on_campus,
                                   COUNT(*) OVER () AS total_count
                            FROM main.events
                            WHERE end_time > now()
@@ -151,14 +154,15 @@ def lambda_handler(event, context):
                              AND (NOT %s OR weekly)
                              AND (NOT %s OR for_new_students)
                              AND (NOT %s OR popular)
+                             AND (NOT %s OR on_campus)
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
                                  search_pattern, search_pattern, search_pattern, food_related, weekly, for_new_students,
-                                 popular, page_event_count, offset))
+                                 popular, on_campus, page_event_count, offset))
             events = cursor.fetchall()
 
-        total = events[0][16] if events else 0
+        total = events[0][17] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
                 "body": json.dumps({"total_events": total, "body": [db_entry_to_json(e) for e in events]})}
 

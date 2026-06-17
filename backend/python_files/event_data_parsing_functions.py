@@ -76,19 +76,17 @@ def simplify_location(location):
                           "A.J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
                           "Anthony J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
                           "AJ Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad", "Online Event": "Online",
-                          "Zoom": "Online", "Geary Auditorium": "Geary Auditorium",
-                          "Mandell Theater": "Mandell Theater", "Drexel Park": "Drexel Park",
-                          "Education Abroad Office": "Education Abroad Office",
+                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad",
+                          "Geary Auditorium": "Geary Auditorium", "Mandell Theater": "Mandell Theater",
+                          "Drexel Park": "Drexel Park", "Education Abroad Office": "Education Abroad Office",
                           "Academic Building Suite 201": "Education Abroad Office",
                           "Hill Seminar Room": "Hill Seminar Room", "LeBow Eng. 240": "Hill Seminar Room",
                           "Lindy Center for Civic Engagement": "Lindy Center", "The Lindy Center": "Lindy Center",
                           "NSBITT 111": "NSBITT Stein Auditorium", "Stein Auditorium": "NSBITT Stein Auditorium",
                           "NSBITT 125 - Ruth Auditorium": "NSBITT Ruth Auditorium", "Korman Quad": "Korman Quad",
-                          "Humpty Dumplings Glenside": "Humpty Dumplings", "Register on Handshake": "Online",
-                          "zoom:": "Online", "The Kimmel Center": "The Kimmel Center", "Penny Park": "Penny Park",
-                          "Mitchell Auditorium": "BSONE Mitchell Auditorium",
-                          "Penn's Landing 401 S Christopher Columbus Blvd": "Penn's Landing",
+                          "Humpty Dumplings Glenside": "Humpty Dumplings", "The Kimmel Center": "The Kimmel Center",
+                          "Penny Park": "Penny Park", "Mitchell Auditorium": "BSONE Mitchell Auditorium",
+                          "Penn's Landing": "Penn's Landing",
                           "Cancer Center at the Thomas Jefferson University": "Cancer Center at the Thomas Jefferson University",
                           "URBN Annex Screening Room": "URBN Screening Room",
                           "MAIN - Auditorium": "Main Building Auditorium",
@@ -249,6 +247,30 @@ def is_for_new_students(event_name, description):
     if "incoming freshman" in event_name or "incoming freshman" in description:
         return True
     return False
+
+
+def is_on_campus(event_name, org_name, location):
+    off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
+                       "Biomed Grad Student Association", "Elkins Park Student Council"]
+    off_campus_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings",
+                            "Chipotle Wyncote location", "The Kimmel Center", "Penny Park", "Penn's Landing",
+                            "Cancer Center at the Thomas Jefferson University", "Highmark Mann Center",
+                            "The Academy of Natural Sciences", "Elkin's Park Parking Lot", "Mack Miles Playground",
+                            "Parkway Central Library", "Lits Building", "Independence National Park"]
+    off_campus_keywords = ["england", "new jersey", "maryland", "elkins park", "queen lane", "humpty dumplings"]
+
+    if location in off_campus_locations:
+        return False
+    if org_name in off_campus_orgs:
+        return False
+
+    event_name = event_name.lower()
+    location = location.lower()
+    for i in off_campus_keywords:
+        if i in event_name or i in location:
+            return False
+
+    return True
 
 
 def dragonlink_event_parsing(event_json, kwargs):
@@ -491,7 +513,7 @@ def create_event_object(source, event_json):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
-              "description": ""}
+              "on_campus": True, "description": ""}
 
     match source:
         case "dragonlink":
@@ -527,6 +549,7 @@ def create_event_object(source, event_json):
     kwargs["popular"] = is_popular(kwargs["name"])
     kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
+    kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
     del kwargs["description"]
     return Event(**kwargs)
