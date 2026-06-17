@@ -66,6 +66,7 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
     popular: searchParams.get("popular") === "true",
     weekly: searchParams.get("weekly") === "true",
     forNewStudents: searchParams.get("for_new_students") === "true",
+    onCampus: searchParams.get("on_campus") === "true",
   };
 }
 
@@ -98,6 +99,7 @@ export function EventsPage() {
       popular: filters.popular || undefined,
       weekly: filters.weekly || undefined,
       for_new_students: filters.forNewStudents || undefined,
+      on_campus: filters.onCampus || undefined,
     })
       .then(({ events: data, totalEvents: total }) => {
         if (cancelled) return;
@@ -125,6 +127,7 @@ export function EventsPage() {
     filters.popular,
     filters.weekly,
     filters.forNewStudents,
+    filters.onCampus,
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
@@ -162,6 +165,7 @@ export function EventsPage() {
     if (newFilters.popular) next.set("popular", "true");
     if (newFilters.weekly) next.set("weekly", "true");
     if (newFilters.forNewStudents) next.set("for_new_students", "true");
+    if (newFilters.onCampus) next.set("on_campus", "true");
     setSearchParams(next, { replace: true });
   }
 

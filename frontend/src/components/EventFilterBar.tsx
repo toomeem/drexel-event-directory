@@ -12,6 +12,7 @@ export interface AppliedFilters {
   popular: boolean;
   weekly: boolean;
   forNewStudents: boolean;
+  onCampus: boolean;
 }
 
 interface EventFilterBarProps {
@@ -196,6 +197,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
     filters.popular,
     filters.weekly,
     filters.forNewStudents,
+    filters.onCampus,
   ].filter(Boolean).length;
   const hasActiveFilters =
     filters.eventStatus.length > 0 ||
@@ -218,6 +220,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
       popular: false,
       weekly: false,
       forNewStudents: false,
+      onCampus: false,
     });
   }
 
@@ -271,6 +274,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
                 { key: "popular", label: "Popular" },
                 { key: "weekly", label: "Weekly" },
                 { key: "forNewStudents", label: "For New Students" },
+                { key: "onCampus", label: "On Campus" },
               ] as { key: keyof AppliedFilters; label: string }[]
             ).map(({ key, label }, index) => {
               const checked = filters[key] as boolean;

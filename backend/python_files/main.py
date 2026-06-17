@@ -114,7 +114,8 @@ def load_events_from_file(path="backend/events.json"):
                   start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
                   end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None, event_link=e["event_link"],
                   event_status=e["event_status"], theme=e["theme"], perks=e["perks"], food_related=e["food_related"],
-                  popular=e["popular"], weekly=e["weekly"], for_new_students=e["for_new_students"], ))
+                  popular=e["popular"], weekly=e["weekly"], for_new_students=e["for_new_students"],
+                  on_campus=e["on_campus"]))
     return events
 
 

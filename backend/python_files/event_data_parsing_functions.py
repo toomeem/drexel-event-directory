@@ -106,7 +106,8 @@ def simplify_location(location):
                           "Daskalakis Athletic Center": "DAC", "Parkway Central Library": "Parkway Central Library",
                           "Lits Building": "Lits Building", "Independence National Park": "Independence National Park",
                           "3509 Brandywine St & the corner of 36th and Spring Garden": "3509 Brandywine St",
-                          "West Philadelphia": "West Philadelphia"}
+                          "West Philadelphia": "West Philadelphia",
+                          "Hafner Community Center": "Hafner Community Center"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
@@ -256,8 +257,10 @@ def is_on_campus(event_name, org_name, location):
                             "Chipotle Wyncote location", "The Kimmel Center", "Penny Park", "Penn's Landing",
                             "Cancer Center at the Thomas Jefferson University", "Highmark Mann Center",
                             "The Academy of Natural Sciences", "Elkin's Park Parking Lot", "Mack Miles Playground",
-                            "Parkway Central Library", "Lits Building", "Independence National Park"]
-    off_campus_keywords = ["england", "new jersey", "maryland", "elkins park", "queen lane", "humpty dumplings"]
+                            "Parkway Central Library", "Lits Building", "Independence National Park",
+                            "Hafter Center Patio", "Hafner Community Center", "Haffner Gym"]
+    off_campus_keywords = ["england", "new jersey", "maryland", "elkins park", "queen lane", "humpty dumplings",
+                           "new college building", "hafner", "hafter", "haffner", "nj"]
 
     if location in off_campus_locations:
         return False
@@ -267,7 +270,7 @@ def is_on_campus(event_name, org_name, location):
     event_name = event_name.lower()
     location = location.lower()
     for i in off_campus_keywords:
-        if i in event_name or i in location:
+        if i in event_name or i in org_name or i in location:
             return False
 
     return True
