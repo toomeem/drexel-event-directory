@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FilterDropdown, type FilterOption } from "./FilterDropdown";
+import { FilterOptionGroup } from "./FilterOptionGroup";
 
 export interface AppliedFilters {
   search: string;
@@ -212,27 +213,44 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
           Clear
         </button>
       </div>
-      <FilterDropdown
-        label="Status"
-        options={STATUS_OPTIONS}
-        selected={filters.eventStatus}
-        multi={false}
-        onApply={(values) => onChange({ ...filters, eventStatus: values })}
-      />
-      <FilterDropdown
-        label="Event Type"
-        options={THEME_OPTIONS}
-        selected={filters.themes}
-        multi={true}
-        onApply={(values) => onChange({ ...filters, themes: values })}
-      />
-      <FilterDropdown
-        label="Perks"
-        options={PERK_OPTIONS}
-        selected={filters.perks}
-        multi={true}
-        onApply={(values) => onChange({ ...filters, perks: values })}
-      />
+      <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-status-label">
+          Status
+        </p>
+        <FilterOptionGroup
+          label="Status"
+          options={STATUS_OPTIONS}
+          selected={filters.eventStatus}
+          onSelect={(values) => onChange({ ...filters, eventStatus: values })}
+          labelledBy="filter-status-label"
+        />
+      </div>
+      <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-theme-label">
+          Event Type
+        </p>
+        <FilterDropdown
+          label="Event Type"
+          options={THEME_OPTIONS}
+          selected={filters.themes}
+          multi={true}
+          showLabel={false}
+          onApply={(values) => onChange({ ...filters, themes: values })}
+        />
+      </div>
+      <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-perks-label">
+          Perks
+        </p>
+        <FilterDropdown
+          label="Perks"
+          options={PERK_OPTIONS}
+          selected={filters.perks}
+          multi={true}
+          showLabel={false}
+          onApply={(values) => onChange({ ...filters, perks: values })}
+        />
+      </div>
     </aside>
   );
 }

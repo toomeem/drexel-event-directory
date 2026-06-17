@@ -12,6 +12,7 @@ interface FilterDropdownProps {
   multi: boolean;
   onApply: (values: string[]) => void;
   defaultLabel?: string;
+  showLabel?: boolean;
 }
 
 export function FilterDropdown({
@@ -21,6 +22,7 @@ export function FilterDropdown({
   multi,
   onApply,
   defaultLabel = "All",
+  showLabel = true,
 }: FilterDropdownProps) {
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<string[]>(selected);
@@ -55,13 +57,21 @@ export function FilterDropdown({
   const optionValues = options.map((o) => o.value);
   const allOptionsSelected =
     optionValues.length > 0 && optionValues.every((value) => draft.includes(value));
-  const buttonLabel = !isActive
-    ? label
-    : multi
-      ? selected.length === options.length
-        ? `${label} (All)`
-        : `${label} (${selected.length})`
-      : `${label}: ${options.find((o) => o.value === selected[0])?.label ?? selected[0]}`;
+  const buttonLabel = showLabel
+    ? !isActive
+      ? label
+      : multi
+        ? selected.length === options.length
+          ? `${label} (All)`
+          : `${label} (${selected.length})`
+        : `${label}: ${options.find((o) => o.value === selected[0])?.label ?? selected[0]}`
+    : !isActive
+      ? defaultLabel
+      : multi
+        ? selected.length === options.length
+          ? defaultLabel
+          : `${selected.length} selected`
+        : options.find((o) => o.value === selected[0])?.label ?? selected[0];
 
   function toggleSingle(value: string) {
     onApply(selected[0] === value ? [] : [value]);
