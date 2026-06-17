@@ -195,7 +195,7 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
         onApply={(values) => onChange({ ...filters, eventStatus: values })}
       />
       <FilterDropdown
-        label="Theme"
+        label="Event Type"
         options={THEME_OPTIONS}
         selected={filters.themes}
         multi={true}

@@ -52,10 +52,15 @@ export function FilterDropdown({
   }, [open]);
 
   const isActive = selected.length > 0;
+  const optionValues = options.map((o) => o.value);
+  const allOptionsSelected =
+    optionValues.length > 0 && optionValues.every((value) => draft.includes(value));
   const buttonLabel = !isActive
     ? label
     : multi
-      ? `${label} (${selected.length})`
+      ? selected.length === options.length
+        ? `${label} (All)`
+        : `${label} (${selected.length})`
       : `${label}: ${options.find((o) => o.value === selected[0])?.label ?? selected[0]}`;
 
   function toggleSingle(value: string) {
@@ -75,13 +80,12 @@ export function FilterDropdown({
   }
 
   function clearAll() {
-    if (multi) {
-      onApply([]);
-      setOpen(false);
-    } else {
-      onApply([]);
-      setOpen(false);
-    }
+    onApply([]);
+    setOpen(false);
+  }
+
+  function toggleAllMulti() {
+    setDraft(allOptionsSelected ? [] : optionValues);
   }
 
   return (
@@ -117,18 +121,32 @@ export function FilterDropdown({
         <div className="filter-dropdown__panel" role="listbox">
           <ul className="filter-dropdown__options">
             <li>
-              <button
-                type="button"
-                className={
-                  "filter-dropdown__option filter-dropdown__option--default" +
-                  (selected.length === 0
-                    ? " filter-dropdown__option--selected"
-                    : "")
-                }
-                onClick={clearAll}
-              >
-                {defaultLabel}
-              </button>
+              {multi ? (
+                <button
+                  type="button"
+                  className={
+                    "filter-dropdown__option filter-dropdown__option--default" +
+                    (allOptionsSelected ? " filter-dropdown__option--selected" : "")
+                  }
+                  onClick={toggleAllMulti}
+                  disabled={options.length === 0}
+                >
+                  {allOptionsSelected ? "Unselect All" : "Select All"}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className={
+                    "filter-dropdown__option filter-dropdown__option--default" +
+                    (selected.length === 0
+                      ? " filter-dropdown__option--selected"
+                      : "")
+                  }
+                  onClick={clearAll}
+                >
+                  {defaultLabel}
+                </button>
+              )}
             </li>
             {options.length === 0 && (
               <li className="filter-dropdown__empty">No options available</li>

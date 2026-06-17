@@ -547,6 +547,16 @@ img {
   background: var(--color-placeholder);
 }
 
+.filter-dropdown__option:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.filter-dropdown__option:disabled:hover {
+  background: transparent;
+}
+
 .filter-dropdown__option--selected {
   font-weight: 600;
   color: var(--color-drexel-blue);
@@ -648,8 +658,21 @@ img {
   margin: 0 auto;
 }
 
+.about-page__hero {
+  padding-bottom: 6px;
+}
+
+.about-page__eyebrow {
+  margin: 0 0 8px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .about-page__title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   margin: 0 0 12px;
   color: var(--color-drexel-blue);
@@ -660,6 +683,10 @@ img {
   color: var(--color-text-muted);
   line-height: 1.6;
   margin: 0 0 8px;
+}
+
+.about-page__intro {
+  max-width: 760px;
 }
 
 .about-page__section {
@@ -686,13 +713,30 @@ img {
 
 .about-page__feature-list {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   color: var(--color-text-muted);
   font-size: 15px;
   line-height: 1.55;
+  list-style: none;
+}
+
+.about-page__feature-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.about-page__feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-drexel-gold);
 }
 
 .about-page__source-list {
@@ -724,6 +768,12 @@ img {
 
 .about-page__source-name:hover {
   text-decoration: underline;
+}
+
+.about-page__source-name:focus-visible {
+  outline: 2px solid var(--color-drexel-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 .about-page__source-desc {
@@ -809,6 +859,10 @@ img {
   color: var(--color-drexel-gold);
 }
 
+:root[data-theme="dark"] .about-page__feature-list li::before {
+  background: var(--color-accent);
+}
+
 :root[data-theme="dark"] .about-page__source-item {
   border-color: var(--color-border);
   background: var(--color-surface);
@@ -835,6 +889,19 @@ img {
 
   .site-header__nav {
     gap: 18px;
+  }
+
+  .about-page__title {
+    font-size: 28px;
+  }
+
+  .about-page__row {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .about-page__source-list {
+    flex-direction: column;
   }
 }
 
