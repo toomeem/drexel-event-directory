@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { FilterOption } from "./FilterDropdown";
 
 interface FilterOptionGroupProps {
@@ -7,6 +8,7 @@ interface FilterOptionGroupProps {
   onSelect: (values: string[]) => void;
   labelledBy?: string;
   multi?: boolean;
+  initialVisibleCount?: number;
 }
 
 export function FilterOptionGroup({
@@ -16,8 +18,15 @@ export function FilterOptionGroup({
   onSelect,
   labelledBy,
   multi = false,
+  initialVisibleCount,
 }: FilterOptionGroupProps) {
+  const [expanded, setExpanded] = useState(false);
   const groupName = `filter-${label.toLowerCase().replace(/\s+/g, "-")}`;
+
+  const canCollapse =
+    initialVisibleCount !== undefined && options.length > initialVisibleCount;
+  const visibleOptions =
+    canCollapse && !expanded ? options.slice(0, initialVisibleCount) : options;
 
   function handleChange(value: string) {
     onSelect([value]);
@@ -45,7 +54,7 @@ export function FilterOptionGroup({
       aria-labelledby={labelledBy}
     >
       <ul className="filter-option-group__options">
-        {options.map((option) => {
+        {visibleOptions.map((option) => {
           const isSelected = multi
             ? selected.includes(option.value)
             : selected[0] === option.value;
@@ -80,6 +89,17 @@ export function FilterOptionGroup({
           );
         })}
       </ul>
+      {canCollapse && (
+        <button
+          type="button"
+          className="filter-option-group__toggle"
+          onClick={() => setExpanded((v) => !v)}
+        >
+          {expanded
+            ? "Show less"
+            : `Show ${options.length - initialVisibleCount!} more`}
+        </button>
+      )}
     </div>
   );
 }

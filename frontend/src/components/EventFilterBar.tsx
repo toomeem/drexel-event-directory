@@ -353,6 +353,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
           multi={true}
           onSelect={(values) => onChange({ ...filters, themes: values })}
           labelledBy="filter-theme-label"
+          initialVisibleCount={5}
         />
       </div>
       </div>
