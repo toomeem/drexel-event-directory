@@ -3,7 +3,6 @@ be able to filter out event types (e.g. select all and the unselect one or more)
     update "All" button to "Select All" and "Unselect All"
 rename virtual to online
 improve event type labeling (a yoga event wasn't labeled as "athletics")
-remove more events (office hours, walk-in hours, events for faculty)
 MAKE WEBSITE MOBILE-FRIENDLY
 add filtering
     add filter bundles to make it easier to look for specific types of events
