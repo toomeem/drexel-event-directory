@@ -21,6 +21,18 @@ const EVENTS_PER_ROW = 4;
 
 const VALID_DATE_RANGES: DateRange[] = ["today", "week", "month"];
 const VALID_STATUSES: EventStatus[] = ["in-person", "virtual", "hybrid"];
+const THEME_VALUES = [
+  "academic",
+  "arts",
+  "athletics",
+  "career",
+  "community",
+  "cultural",
+  "fundraising",
+  "social",
+  "spirituality",
+];
+const PERK_VALUES = ["free_food", "free_stuff", "credit"];
 
 function parseFilters(searchParams: URLSearchParams): AppliedFilters {
   const dateRaw = searchParams.get("dateRange");
@@ -119,10 +131,16 @@ export function EventsPage() {
     if (newFilters.eventStatus[0]) {
       next.set("event_status", newFilters.eventStatus[0]);
     }
-    if (newFilters.themes.length > 0) {
+    if (
+      newFilters.themes.length > 0 &&
+      newFilters.themes.length < THEME_VALUES.length
+    ) {
       next.set("theme", newFilters.themes.join(","));
     }
-    if (newFilters.perks.length > 0) {
+    if (
+      newFilters.perks.length > 0 &&
+      newFilters.perks.length < PERK_VALUES.length
+    ) {
       next.set("perks", newFilters.perks.join(","));
     }
     if (newFilters.search.trim()) {

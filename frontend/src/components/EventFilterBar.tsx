@@ -202,21 +202,23 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
 
   return (
     <aside className="event-filter-sidebar" aria-label="Additional filters">
-      <div className="event-filter-sidebar__header">
-        <h2 className="event-filter-sidebar__title">Filters</h2>
-        <button
-          type="button"
-          className="event-filter-sidebar__clear"
-          onClick={clearFilters}
-          disabled={!hasActiveFilters}
-        >
-          Clear
-        </button>
-      </div>
-      <div className="sidebar-filter-section">
-        <p className="sidebar-filter-section__label" id="filter-status-label">
-          Status
-        </p>
+      <div className="sidebar-filter-section sidebar-filter-section--with-clear">
+        <div className="sidebar-filter-section__header">
+          <p
+            className="sidebar-filter-section__label"
+            id="filter-status-label"
+          >
+            Status
+          </p>
+          <button
+            type="button"
+            className="sidebar-filter-section__clear"
+            onClick={clearFilters}
+            disabled={!hasActiveFilters}
+          >
+            Clear
+          </button>
+        </div>
         <FilterOptionGroup
           label="Status"
           options={STATUS_OPTIONS}
@@ -240,15 +242,15 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
       </div>
       <div className="sidebar-filter-section">
         <p className="sidebar-filter-section__label" id="filter-theme-label">
-          Event Type
+          Event Theme
         </p>
-        <FilterDropdown
+        <FilterOptionGroup
           label="Event Type"
           options={THEME_OPTIONS}
           selected={filters.themes}
           multi={true}
-          showLabel={false}
-          onApply={(values) => onChange({ ...filters, themes: values })}
+          onSelect={(values) => onChange({ ...filters, themes: values })}
+          labelledBy="filter-theme-label"
         />
       </div>
     </aside>
