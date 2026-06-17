@@ -197,6 +197,18 @@ def match_default_image(name, org_name, location):
     return drexel_default_image
 
 
+def is_athletic_event(event_name, org_name, location):
+    athletics_keywords = ["pilates", "bhangra", "yoga", "zumba", "salsa", "spikeball", "spike ball",
+                          "drexel dragon jedi meeting", "kayaking", "paintball", "hike", "hiking", "skiing",
+                          "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
+                          "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
+    if org_name == "Weekend Warriors":
+        return True
+    if "vidas" in location.lower():
+        return True
+    return any([keyword in event_name.lower() for keyword in athletics_keywords])
+
+
 def dragonlink_event_parsing(event_json, kwargs):
     source = "dragonlink"
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
@@ -223,18 +235,10 @@ def dragonlink_event_parsing(event_json, kwargs):
                       "Drexel Asian Baptist Student Koinonia", "Story Fellowship", "Cru",
                       "Drexel Newman Catholic Community", "Crosswalk Christian Fellowship", "Drexel WEH",
                       "Hindu YUVA @ Drexel", "Open Door Christian Community ", "Drexel Students for Christ"]
-    athletics_keywords = ["pilates", "bhangra", "yoga", "zumba", "salsa", "spikeball", "spike ball",
-                          "drexel dragon jedi meeting", "kayaking", "paintball", "hike", "hiking", "skiing",
-                          "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
-                          "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
 
-    if "General Body Meeting" in event_json["categoryNames"] or "Presidents Meeting" in event_json["categoryNames"]:
-        return None
-    elif kwargs["org_name"] in religious_orgs:
+    if kwargs["org_name"] in religious_orgs:
         kwargs["theme"] = "spirituality"
-    elif kwargs["org_name"] == "Weekend Warriors":
-        kwargs["theme"] = "athletics"
-    elif any([keyword in kwargs["name"].lower() for keyword in athletics_keywords]):
+    elif is_athletic_event(kwargs["name"], kwargs["org_name"], kwargs["location"]):
         kwargs["theme"] = "athletics"
     elif event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
         kwargs["theme"] = event_json["theme"].lower()
@@ -295,7 +299,9 @@ def drexel_event_parsing(event_json, kwargs):
 
     type_names = event_json.get("typeNames") or []
     department_names = event_json.get("departmentNames") or []
-    if "Exhibit" in type_names or "Performing Arts" in department_names:
+    if is_athletic_event(kwargs["name"], kwargs["org_name"], kwargs["location"]):
+        kwargs["theme"] = "athletics"
+    elif "Exhibit" in type_names or "Performing Arts" in department_names:
         kwargs["theme"] = "arts"
     elif "Academic Events" in type_names or "Academic Support" in type_names:
         kwargs["theme"] = "academic"
@@ -386,7 +392,7 @@ def invalid_event(kwargs):
     if kwargs["name"] in excluded_events:
         return True
     if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
-            kwargs["name"].lower() or "Chpater" in kwargs["name"]:
+            kwargs["name"].lower() or "Chpater" in kwargs["name"] or "Presidents Meeting" in kwargs["name"]:
         return True
     if kwargs["name"].startswith("CANCELLED"):
         return True
