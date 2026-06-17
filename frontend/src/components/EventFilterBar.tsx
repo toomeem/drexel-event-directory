@@ -354,9 +354,28 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
         />
       </div>
       <div className="sidebar-filter-section">
-        <p className="sidebar-filter-section__label" id="filter-theme-label">
-          Event Theme
-        </p>
+        <div className="sidebar-filter-section__header">
+          <p className="sidebar-filter-section__label" id="filter-theme-label">
+            Theme
+          </p>
+          <button
+            type="button"
+            className="filter-option-group__select-all"
+            onClick={() =>
+              onChange({
+                ...filters,
+                themes:
+                  filters.themes.length === THEME_OPTIONS.length
+                    ? []
+                    : THEME_OPTIONS.map((o) => o.value),
+              })
+            }
+          >
+            {filters.themes.length === THEME_OPTIONS.length
+              ? "Deselect all"
+              : "Select all"}
+          </button>
+        </div>
         <FilterOptionGroup
           label="Event Type"
           options={THEME_OPTIONS}

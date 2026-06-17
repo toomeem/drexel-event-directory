@@ -741,7 +741,8 @@ img {
     accent-color: var(--color-drexel-gold);
 }
 
-.filter-option-group__toggle {
+.filter-option-group__toggle,
+.filter-option-group__select-all {
     align-self: flex-start;
     margin: 2px 4px 0;
     padding: 2px 6px;
@@ -755,15 +756,19 @@ img {
     text-underline-offset: 2px;
 }
 
-.filter-option-group__toggle:hover {
+
+.filter-option-group__toggle:hover,
+.filter-option-group__select-all:hover {
     color: var(--color-drexel-gold);
 }
 
-:root[data-theme="dark"] .filter-option-group__toggle {
+:root[data-theme="dark"] .filter-option-group__toggle,
+:root[data-theme="dark"] .filter-option-group__select-all {
     color: var(--color-drexel-gold);
 }
 
-:root[data-theme="dark"] .filter-option-group__toggle:hover {
+:root[data-theme="dark"] .filter-option-group__toggle:hover,
+:root[data-theme="dark"] .filter-option-group__select-all:hover {
     color: var(--color-drexel-blue);
 }
 
