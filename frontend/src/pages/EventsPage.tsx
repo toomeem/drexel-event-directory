@@ -146,16 +146,10 @@ export function EventsPage() {
     if (newFilters.eventStatus[0]) {
       next.set("event_status", newFilters.eventStatus[0]);
     }
-    if (
-      newFilters.themes.length > 0 &&
-      newFilters.themes.length < THEME_VALUES.length
-    ) {
+    if (newFilters.themes.length > 0) {
       next.set("theme", newFilters.themes.join(","));
     }
-    if (
-      newFilters.perks.length > 0 &&
-      newFilters.perks.length < PERK_VALUES.length
-    ) {
+    if (newFilters.perks.length > 0) {
       next.set("perks", newFilters.perks.join(","));
     }
     if (newFilters.search.trim()) {
