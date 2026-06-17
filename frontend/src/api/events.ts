@@ -1,5 +1,5 @@
 export type EventSource = "drexel_events" | "dragonlink" | "drexel_athletics";
-export type EventStatus = "in-person" | "virtual" | "hybrid";
+export type EventStatus = "in-person" | "online" | "hybrid";
 export type DateRange = "today" | "week" | "month";
 
 export interface DrexelEvent {

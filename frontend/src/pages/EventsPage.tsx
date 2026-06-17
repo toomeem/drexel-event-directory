@@ -20,7 +20,7 @@ const EVENT_ROWS_PER_PAGE = 6;
 const EVENTS_PER_ROW = 4;
 
 const VALID_DATE_RANGES: DateRange[] = ["today", "week", "month"];
-const VALID_STATUSES: EventStatus[] = ["in-person", "virtual", "hybrid"];
+const VALID_STATUSES: EventStatus[] = ["in-person", "online", "hybrid"];
 const THEME_VALUES = [
   "academic",
   "arts",

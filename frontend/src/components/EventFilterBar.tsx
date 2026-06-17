@@ -34,7 +34,7 @@ const DATE_OPTIONS: FilterOption[] = [
 
 const STATUS_OPTIONS: FilterOption[] = [
   { value: "in-person", label: "In-Person" },
-  { value: "virtual", label: "Virtual" },
+  { value: "online", label: "Online" },
   { value: "hybrid", label: "Hybrid" },
 ];
 

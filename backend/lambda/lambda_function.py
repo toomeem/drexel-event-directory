@@ -33,7 +33,7 @@ def make_time_str(start_time, end_time):
     elif (start_time - now) > timedelta(days=7):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
-        time_str_prefix = datetime.strftime(start_time, "%a")
+        time_str_prefix = datetime.strftime(start_time, "%A")
     return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
 
 
@@ -86,7 +86,7 @@ def lambda_handler(event, context):
     elif date_filter == "month":
         date_end = (now + timedelta(days=30)).timestamp()
     event_status = params.get("event_status")
-    if event_status not in ("in-person", "virtual", "hybrid"):
+    if event_status not in ("in-person", "online", "hybrid"):
         event_status = None
     valid_themes = {"academic", "arts", "athletics", "career", "community", "cultural", "fundraising", "social",
                     "spirituality"}

@@ -18,7 +18,7 @@ HTTP_TIMEOUT = (5, 30)
 
 
 class OnlineStatus(BaseModel):
-    event_status: str  # in-person, virtual, hybrid
+    event_status: str  # in-person, online, hybrid
     physical_location: str
 
 
@@ -49,7 +49,7 @@ def make_time_str(start_time, end_time):
     elif (start_time - now) > timedelta(days=7):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
-        time_str_prefix = datetime.strftime(start_time, "%a")
+        time_str_prefix = datetime.strftime(start_time, "%A")
     return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
 
 
@@ -407,13 +407,13 @@ def get_event_status(source, location):
     if source == "drexel_athletics":
         return "in-person"
     elif location in online_location_default_text:
-        return "virtual"
+        return "online"
     elif any(keyword in location.lower() for keyword in online_keywords):
         hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
         for i in hybrid_keywords:
             if i in location.lower():
                 return "hybrid"
-        return "virtual"
+        return "online"
     else:
         return "in-person"
 
@@ -469,7 +469,7 @@ def create_event_object(source, event_json):
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
-    if kwargs["event_status"] == "virtual":
+    if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
         kwargs["location"] = simplify_location(kwargs["location"])

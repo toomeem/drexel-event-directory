@@ -217,7 +217,7 @@ img {
   border-color: #854d0e;
 }
 
-.event-card__perk--virtual {
+.event-card__perk--online {
   background: #2563eb;
   color: #ffffff;
   border-color: #1d4ed8;
@@ -252,7 +252,7 @@ img {
   50% { opacity: 0.5; transform: scale(0.75); }
 }
 
-:root[data-theme="dark"] .event-card__perk--virtual {
+:root[data-theme="dark"] .event-card__perk--online {
   background: #1d4ed8;
   border-color: #1e40af;
 }
