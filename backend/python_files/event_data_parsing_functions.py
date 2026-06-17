@@ -225,11 +225,27 @@ def is_food_related(event_name, perks, location, description):
     return False
 
 
+def is_popular(event_name):
+    popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night", "Pie a professor event",
+                      "Rise & Roar: Future Dragons Breakfast"]
+    return event_name in popular_events
+
+
 def is_weekly(event_name, description):
     weekly_events = ["Board Game Night", "Pizza in the Park", "DSC Bible Study", "Graduate Fellowships Writing Group"]
     if "weekly" in event_name.lower() or "weekly" in description.lower():
         return True
     return event_name in weekly_events
+
+
+def is_for_new_students(event_name, description):
+    event_name = event_name.lower()
+    description = description.lower()
+    if "future dragons" in event_name or "future dragons" in description:
+        return True
+    if "incoming freshman" in event_name or "incoming freshman" in description:
+        return True
+    return False
 
 
 def dragonlink_event_parsing(event_json, kwargs):
@@ -291,10 +307,9 @@ def dragonlink_event_parsing(event_json, kwargs):
 def drexel_event_parsing(event_json, kwargs):
     if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
         return None
-    if "Faculty" in event_json["audiences"]:
-        if "Undergraduate Students" not in event_json["audiences"] and "Graduate Students" not in event_json[
-            "audiences"]:
-            return None
+    correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students"]
+    if event_json["audiences"] and not any([i in event_json["audiences"] for i in correct_audiences]):
+        return None
 
     source = "drexel_events"
     authors = event_json.get("authors")
@@ -504,7 +519,9 @@ def create_event_object(source, event_json):
             return None
 
     kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
+    kwargs["popular"] = is_popular(kwargs["name"])
     kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
+    kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
 
     del kwargs["description"]
     return Event(**kwargs)

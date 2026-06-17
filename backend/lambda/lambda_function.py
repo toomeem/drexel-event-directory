@@ -50,7 +50,8 @@ def db_entry_to_json(db_entry):
             "location": db_entry[4], "image_url": db_entry[5], "time": time_str.replace(":00", ""),
             "start_time": round(start_time.timestamp()) if start_time else None,
             "end_time": round(end_time.timestamp()) if end_time else None, "event_link": db_entry[8],
-            "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, }
+            "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, "food_related": db_entry[12],
+            "popular": db_entry[13], "weekly": db_entry[14], "for_new_students": db_entry[15], }
 
 
 MAX_SEARCH_LEN = 100
@@ -107,6 +108,15 @@ def lambda_handler(event, context):
         if s:
             s = s.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
             search_pattern = f"%{s}%"
+
+    def parse_bool_filter(name):
+        val = params.get(name)
+        return val is not None and val.strip().lower() in ("1", "true", "yes")
+
+    food_related = parse_bool_filter("food_related")
+    weekly = parse_bool_filter("weekly")
+    for_new_students = parse_bool_filter("for_new_students")
+    popular = parse_bool_filter("popular")
     connection = None
     try:
         connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
@@ -125,6 +135,10 @@ def lambda_handler(event, context):
                                   event_status,
                                   theme,
                                   perks,
+                                  food_related,
+                                  popular,
+                                  weekly,
+                                  for_new_students,
                                   COUNT(*) OVER () AS total_count
                            FROM main.events
                            WHERE end_time > now()
@@ -133,13 +147,18 @@ def lambda_handler(event, context):
                              AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
                              AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
                              AND (%s::text IS NULL OR name ILIKE %s OR org_name ILIKE %s)
+                             AND (NOT %s OR food_related)
+                             AND (NOT %s OR weekly)
+                             AND (NOT %s OR for_new_students)
+                             AND (NOT %s OR popular)
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
-                                 search_pattern, search_pattern, search_pattern, page_event_count, offset))
+                                 search_pattern, search_pattern, search_pattern, food_related, weekly, for_new_students,
+                                 popular, page_event_count, offset))
             events = cursor.fetchall()
 
-        total = events[0][12] if events else 0
+        total = events[0][16] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
                 "body": json.dumps({"total_events": total, "body": [db_entry_to_json(e) for e in events]})}
 

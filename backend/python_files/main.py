@@ -145,8 +145,10 @@ def save_events_to_db(events):
             cursor.executemany('''
                                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time,
                                                        end_time,
-                                                       event_link, event_status, theme, perks)
-                               VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s)
+                                                       event_link, event_status, theme, perks, food_related, popular,
+                                                       weekly, for_new_students)
+                               VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s, %s,
+                                       %s, %s, %s)
                                ''', new_event_rows)
             return len(new_event_rows)
 
