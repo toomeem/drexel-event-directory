@@ -186,10 +186,13 @@ export function EventFilterBar({
 }
 
 export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) {
+  const [open, setOpen] = useState(false);
   const hasActiveFilters =
     filters.eventStatus.length > 0 ||
     filters.themes.length > 0 ||
     filters.perks.length > 0;
+  const activeFilterCount =
+    filters.eventStatus.length + filters.themes.length + filters.perks.length;
 
   function clearFilters() {
     onChange({
@@ -201,7 +204,46 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
   }
 
   return (
-    <aside className="event-filter-sidebar" aria-label="Additional filters">
+    <aside
+      className={
+        "event-filter-sidebar" + (open ? " event-filter-sidebar--open" : "")
+      }
+      aria-label="Additional filters"
+    >
+      <button
+        type="button"
+        className="event-filter-sidebar__toggle"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        aria-controls="event-filter-sidebar-content"
+      >
+        <span className="event-filter-sidebar__toggle-label">
+          Filters
+          {activeFilterCount > 0 && (
+            <span className="event-filter-sidebar__toggle-badge">
+              {activeFilterCount}
+            </span>
+          )}
+        </span>
+        <svg
+          className="event-filter-sidebar__toggle-chevron"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      <div
+        id="event-filter-sidebar-content"
+        className="event-filter-sidebar__content"
+      >
       <div className="sidebar-filter-section sidebar-filter-section--with-clear">
         <div className="sidebar-filter-section__header">
           <p
@@ -252,6 +294,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
           onSelect={(values) => onChange({ ...filters, themes: values })}
           labelledBy="filter-theme-label"
         />
+      </div>
       </div>
     </aside>
   );
