@@ -15,6 +15,13 @@ from backend.python_files.event_class import Event
 
 PHILLY_TZ = ZoneInfo("America/New_York")
 HTTP_TIMEOUT = (5, 30)
+religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
+                  "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
+                  "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
+                  "Cru": "christian", "Drexel Newman Catholic Community": "christian",
+                  "Crosswalk Christian Fellowship": "christian", "Drexel WEH": "christian",
+                  "Hindu YUVA @ Drexel": "hindu", "Open Door Christian Community": "christian",
+                  "Drexel Students for Christ": "christian"}
 
 
 class OnlineStatus(BaseModel):
@@ -299,12 +306,7 @@ def dragonlink_event_parsing(event_json, kwargs):
         kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
     kwargs["event_link"] = dragonlink_event_url + event_json["id"]
 
-    religious_orgs = ["Jewish Student Association", "Drexel Muslim Students Association", "Every Nation Campus",
-                      "Drexel Asian Baptist Student Koinonia", "Story Fellowship", "Cru",
-                      "Drexel Newman Catholic Community", "Crosswalk Christian Fellowship", "Drexel WEH",
-                      "Hindu YUVA @ Drexel", "Open Door Christian Community ", "Drexel Students for Christ"]
-
-    if kwargs["org_name"] in religious_orgs:
+    if kwargs["org_name"] in religious_orgs.keys():
         kwargs["theme"] = "spirituality"
     elif is_athletic_event(kwargs["name"], kwargs["org_name"], kwargs["location"]):
         kwargs["theme"] = "athletics"
@@ -516,7 +518,7 @@ def create_event_object(source, event_json):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
-              "on_campus": True, "description": ""}
+              "on_campus": True, "religion": None, "description": ""}
 
     match source:
         case "dragonlink":
@@ -553,6 +555,8 @@ def create_event_object(source, event_json):
     kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
+    if kwargs["org_name"] in religious_orgs.keys():
+        kwargs["religion"] = religious_orgs[kwargs["org_name"]]
 
     del kwargs["description"]
     return Event(**kwargs)

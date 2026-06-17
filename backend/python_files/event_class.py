@@ -1,6 +1,6 @@
 class Event:
     def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link, event_status,
-                 theme, perks, food_related, popular, weekly, for_new_students, on_campus):
+                 theme, perks, food_related, popular, weekly, for_new_students, on_campus, religion):
         self._id = _id
         self.source = source
         self.name = name
@@ -18,6 +18,7 @@ class Event:
         self.weekly = weekly
         self.for_new_students = for_new_students
         self.on_campus = on_campus
+        self.religion = religion  # 'christian', 'jewish', 'muslim', 'hindu', None
 
     def get_start_timestamp(self):
         return round(self.start_time.timestamp()) if self.start_time else None
@@ -46,10 +47,11 @@ class Event:
                 "location": self.location, "image_url": self.image_url, "start_time": self.get_start_timestamp(),
                 "end_time": self.get_end_timestamp(), "event_link": self.event_link, "event_status": self.event_status,
                 "theme": self.theme, "perks": self.perks, "food_related": self.food_related, "popular": self.popular,
-                "weekly": self.weekly, "for_new_students": self.for_new_students, "on_campus": self.on_campus}
+                "weekly": self.weekly, "for_new_students": self.for_new_students, "on_campus": self.on_campus,
+                "religion": self.religion}
 
     def to_sql(self):
         return (self._id, self.source, self.name, self.org_name, self.location, self.image_url,
                 self.get_start_timestamp(), self.get_end_timestamp(), self.event_link, self.event_status, self.theme,
                 "|".join(self.perks), self.food_related, self.popular, self.weekly, self.for_new_students,
-                self.on_campus)
+                self.on_campus, self.religion)

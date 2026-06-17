@@ -115,7 +115,7 @@ def load_events_from_file(path="backend/events.json"):
                   end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None, event_link=e["event_link"],
                   event_status=e["event_status"], theme=e["theme"], perks=e["perks"], food_related=e["food_related"],
                   popular=e["popular"], weekly=e["weekly"], for_new_students=e["for_new_students"],
-                  on_campus=e["on_campus"]))
+                  on_campus=e["on_campus"], religion=e["religion"]))
     return events
 
 
@@ -147,9 +147,9 @@ def save_events_to_db(events):
                                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time,
                                                        end_time,
                                                        event_link, event_status, theme, perks, food_related, popular,
-                                                       weekly, for_new_students, on_campus)
+                                                       weekly, for_new_students, on_campus, religion)
                                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s, %s,
-                                       %s, %s, %s, %s)
+                                       %s, %s, %s, %s, %s)
                                ''', new_event_rows)
             return len(new_event_rows)
 
