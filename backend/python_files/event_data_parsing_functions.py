@@ -130,8 +130,8 @@ def simplify_location(location):
                     ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
                     ("Academic Building", "ACADMC"), ("Gerri C. LeBow Hall", "LEBOW"),
                     ("Drexel Health Sciences Building", "HSB"), ("Health Sciences Building", "HSB"),
-                    ("Room 209", "RUSH 209"), ("(,", "("), (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""),
-                    (" , ", " "), ("  ", " "), ("  ", " "), (" , ", " "), ("  ", " "), ]
+                    ("Room 209", "RUSH 209"), ("<br>", " "), ("<br>", " "), ("(,", "("), (",)", ")"), (" )", ")"),
+                    (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "), ("  ", " "), (" , ", " "), ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
@@ -147,7 +147,7 @@ def simplify_location(location):
     for i in remove_list:
         location = location.replace(i, "", 1)
     for old, new in replace_list:
-        location = location.replace(old, new)
+        location = location.replace(old, new, 1)
     location = location.strip(strip_chars)
     for i in building_shortnames:
         if i in location:
@@ -209,6 +209,29 @@ def is_athletic_event(event_name, org_name, location):
     return any([keyword in event_name.lower() for keyword in athletics_keywords])
 
 
+def is_food_related(event_name, perks, location, description):
+    food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
+    food_keywords = ["food", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks", "breakfast", "lunch",
+                     "dinner", "refreshments" "coffee"]
+    if "free_food" in perks:
+        return True
+    if location in food_locations:
+        return True
+    event_name = event_name.lower()
+    description = description.lower()
+    for i in food_keywords:
+        if i in event_name or i in description:
+            return True
+    return False
+
+
+def is_weekly(event_name, description):
+    weekly_events = ["Board Game Night", "Pizza in the Park", "DSC Bible Study", "Graduate Fellowships Writing Group"]
+    if "weekly" in event_name.lower() or "weekly" in description.lower():
+        return True
+    return event_name in weekly_events
+
+
 def dragonlink_event_parsing(event_json, kwargs):
     source = "dragonlink"
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
@@ -224,6 +247,7 @@ def dragonlink_event_parsing(event_json, kwargs):
     kwargs["location"] = event_json["location"]
     kwargs["start_time"] = normalize_time(source, event_json["startsOn"])
     kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
+    kwargs["description"] = event_json["description"]
 
     if event_json["imagePath"]:
         kwargs["image_url"] = dragonlink_image_url + event_json["imagePath"]
@@ -293,6 +317,7 @@ def drexel_event_parsing(event_json, kwargs):
     kwargs["location"] = event_json["address"]
     kwargs["start_time"] = normalize_time(source, event_json["startDate"])
     kwargs["end_time"] = normalize_time(source, event_json["endDate"])
+    kwargs["description"] = event_json["body"]
     kwargs["event_link"] = event_json["contentUrl"]
     if event_json["image"]:
         kwargs["image_url"] = event_json["image"]
@@ -445,7 +470,8 @@ def parse_org_name(org_name):
 def create_event_object(source, event_json):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
-              "perks": [], }
+              "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
+              "description": ""}
 
     match source:
         case "dragonlink":
@@ -459,13 +485,14 @@ def create_event_object(source, event_json):
     if invalid_event(kwargs):
         return None
 
-    if "15 wellness points" in kwargs["name"].lower():
+    if "15 Wellness Points" in kwargs["name"]:
         kwargs["perks"].append("credit")
         kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
 
     kwargs["name"] = kwargs["name"].replace("()", "").strip(" ;:/,*")
     kwargs["org_name"] = parse_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
+
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
 
@@ -476,6 +503,10 @@ def create_event_object(source, event_json):
         if kwargs["location"] is None:
             return None
 
+    kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
+    kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
+
+    del kwargs["description"]
     return Event(**kwargs)
 
 
