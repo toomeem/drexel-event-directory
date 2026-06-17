@@ -1,27 +1,19 @@
 save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
-rename virtual to online
-improve event type labeling (a yoga event wasn't labeled as "athletics")
 MAKE WEBSITE MOBILE-FRIENDLY
 add filtering
     add filter bundles to make it easier to look for specific types of events
-    "starting soon" label
-    "popular" label
-    "for new students" label
     "for grad students" label
     "field trip" label
     "fun" label
     "workshop" label
     "good for newcomers" label
     "volunteering" label
-    "weekly" label
     "greek life" label
     "political" label
 add additional filtering for religious events to filter by religion (use org name to label)
     maybe add specific religion icons?
     allow filtering out religious events
 add icons for each event type
-    add food icons for food events that aren't necessarily free
-add button to turn on/off AI features
 add form to add a new event
 improve search
 more default images
@@ -29,8 +21,6 @@ more default images
     add default images for orgs that host a lot of events but don't have images (study abroad office)
     add default images for thesis defenses?
     check event descriptions for links and check the links for images? (could work for a specific list of sites)
-get more sources
-    add club/intramural sports
 add section for new students that explains stuff and has a map of campus
 add section for suggestions for me
 

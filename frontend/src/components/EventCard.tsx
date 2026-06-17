@@ -18,6 +18,13 @@ function isLive(event: DrexelEvent): boolean {
   return now >= event.start_time && now <= event.end_time;
 }
 
+function isStartingSoon(event: DrexelEvent): boolean {
+  if (!event.start_time) return false;
+  const now = Date.now() / 1000;
+  const STARTING_SOON_THRESHOLD = 60 * 60;
+  return now < event.start_time && event.start_time - now <= STARTING_SOON_THRESHOLD;
+}
+
 function safeHttpUrl(raw: string | null | undefined): string | null {
   if (!raw) return null;
   try {
@@ -33,6 +40,7 @@ export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;
   const live = isLive(event);
+  const startingSoon = isStartingSoon(event);
   const safeLink = safeHttpUrl(event.event_link);
 
   const handleClick = () => {
@@ -54,12 +62,18 @@ export function EventCard({ event }: EventCardProps) {
         ) : (
           <div className="event-card__image-placeholder" aria-hidden="true" />
         )}
-        {(live || (Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "online" || event.event_status === "hybrid") && (
+        {(live || startingSoon || (Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "online" || event.event_status === "hybrid") && (
           <ul className="event-card__perks">
             {live && (
               <li className="event-card__perk event-card__perk--live">
                 <span className="event-card__perk-live-dot" aria-hidden="true" />
                 Live
+              </li>
+            )}
+            {startingSoon && (
+              <li className="event-card__perk event-card__perk--starting-soon">
+                <span className="event-card__perk-starting-soon-dot" aria-hidden="true" />
+                Starting Soon
               </li>
             )}
             {event.event_status === "online" && (

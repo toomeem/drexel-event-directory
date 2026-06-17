@@ -252,6 +252,29 @@ img {
   50% { opacity: 0.5; transform: scale(0.75); }
 }
 
+.event-card__perk--starting-soon {
+  background: #ea580c;
+  color: #ffffff;
+  border-color: #c2410c;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.event-card__perk-starting-soon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  flex-shrink: 0;
+  animation: starting-soon-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes starting-soon-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+
 :root[data-theme="dark"] .event-card__perk--online {
   background: #1d4ed8;
   border-color: #1e40af;
@@ -265,6 +288,11 @@ img {
 :root[data-theme="dark"] .event-card__perk--live {
   background: #b91c1c;
   border-color: #991b1b;
+}
+
+:root[data-theme="dark"] .event-card__perk--starting-soon {
+  background: #c2410c;
+  border-color: #a16207;
 }
 
 .event-card__image {
