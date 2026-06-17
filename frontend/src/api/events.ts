@@ -44,6 +44,7 @@ export interface EventFilters {
   weekly?: boolean;
   for_new_students?: boolean;
   on_campus?: boolean;
+  religion?: string[];
 }
 
 export async function fetchEvents(
@@ -77,6 +78,9 @@ export async function fetchEvents(
   if (filters.weekly) params.set("weekly", "true");
   if (filters.for_new_students) params.set("for_new_students", "true");
   if (filters.on_campus) params.set("on_campus", "true");
+  if (filters.religion && filters.religion.length > 0) {
+    params.set("religion", filters.religion.join(","));
+  }
   const url = `${endpoint}?${params.toString()}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);

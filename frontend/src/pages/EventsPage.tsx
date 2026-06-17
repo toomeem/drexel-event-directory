@@ -27,6 +27,7 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
   const statusRaw = searchParams.get("event_status");
   const themeRaw = searchParams.get("theme");
   const perksRaw = searchParams.get("perks");
+  const religionRaw = searchParams.get("religion");
   const searchRaw = searchParams.get("search");
   return {
     search: searchRaw ?? "",
@@ -55,6 +56,9 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
     weekly: searchParams.get("weekly") === "true",
     forNewStudents: searchParams.get("for_new_students") === "true",
     onCampus: searchParams.get("on_campus") === "true",
+    religion: religionRaw
+      ? religionRaw.split(",").map((r) => r.trim().toLowerCase()).filter(Boolean)
+      : [],
   };
 }
 
@@ -72,6 +76,7 @@ export function EventsPage() {
   const eventStatus = filters.eventStatus[0];
   const themesKey = filters.themes.join(",");
   const perksKey = filters.perks.join(",");
+  const religionKey = filters.religion.join(",");
   const searchKey = filters.search;
 
   useEffect(() => {
@@ -88,6 +93,7 @@ export function EventsPage() {
       weekly: filters.weekly || undefined,
       for_new_students: filters.forNewStudents || undefined,
       on_campus: filters.onCampus || undefined,
+      religion: religionKey ? religionKey.split(",") : undefined,
     })
       .then(({ events: data, totalEvents: total }) => {
         if (cancelled) return;
@@ -116,6 +122,7 @@ export function EventsPage() {
     filters.weekly,
     filters.forNewStudents,
     filters.onCampus,
+    religionKey,
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
@@ -148,6 +155,7 @@ export function EventsPage() {
     if (newFilters.weekly) next.set("weekly", "true");
     if (newFilters.forNewStudents) next.set("for_new_students", "true");
     if (newFilters.onCampus) next.set("on_campus", "true");
+    if (newFilters.religion.length > 0) next.set("religion", newFilters.religion.join(","));
     setSearchParams(next, { replace: true });
   }
 

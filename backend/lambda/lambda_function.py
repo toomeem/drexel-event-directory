@@ -157,7 +157,7 @@ def lambda_handler(event, context):
                              AND (NOT %s OR for_new_students)
                              AND (NOT %s OR popular)
                              AND (NOT %s OR on_campus)
-                             AND (NOT %s OR religion)
+                             AND (NOT %s OR religion IS NOT NULL)
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,

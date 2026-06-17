@@ -13,6 +13,7 @@ export interface AppliedFilters {
   weekly: boolean;
   forNewStudents: boolean;
   onCampus: boolean;
+  religion: string[];
 }
 
 interface EventFilterBarProps {
@@ -66,6 +67,13 @@ const PERK_OPTIONS: FilterOption[] = PERK_VALUES.map((v) => ({
   value: v,
   label: titleCase(v),
 }));
+
+const RELIGION_OPTIONS: FilterOption[] = [
+  { value: "christian", label: "Christian" },
+  { value: "jewish", label: "Jewish" },
+  { value: "muslim", label: "Muslim" },
+  { value: "hindu", label: "Hindu" },
+];
 
 const SEARCH_DEBOUNCE_MS = 300;
 
@@ -203,11 +211,13 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
     filters.eventStatus.length > 0 ||
     filters.themes.length > 0 ||
     filters.perks.length > 0 ||
+    filters.religion.length > 0 ||
     boolFilterCount > 0;
   const activeFilterCount =
     filters.eventStatus.length +
     filters.themes.length +
     filters.perks.length +
+    filters.religion.length +
     boolFilterCount;
 
   function clearFilters() {
@@ -221,6 +231,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
       weekly: false,
       forNewStudents: false,
       onCampus: false,
+      religion: [],
     });
   }
 
@@ -354,6 +365,19 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
           onSelect={(values) => onChange({ ...filters, themes: values })}
           labelledBy="filter-theme-label"
           initialVisibleCount={5}
+        />
+      </div>
+      <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-religion-label">
+          Religion
+        </p>
+        <FilterOptionGroup
+          label="Religion"
+          options={RELIGION_OPTIONS}
+          selected={filters.religion}
+          multi={true}
+          onSelect={(values) => onChange({ ...filters, religion: values })}
+          labelledBy="filter-religion-label"
         />
       </div>
       </div>
