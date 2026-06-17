@@ -121,7 +121,8 @@ def simplify_location(location):
                    "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3200 Chestnut St",
                    "3141 Chestnut Street", "3141 Chestnut St", "Table Space 1 -", "Table Space 1", "Table Space 2 -",
                    "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
-                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)"]
+                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)",
+                   "3220 Market Street", ", Second Floor"]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
                     ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),

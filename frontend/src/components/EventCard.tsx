@@ -62,6 +62,9 @@ export function EventCard({ event }: EventCardProps) {
         ) : (
           <div className="event-card__image-placeholder" aria-hidden="true" />
         )}
+        {event.popular && (
+          <span className="event-card__popular" aria-label="Popular event">🔥</span>
+        )}
         {(live || startingSoon || (Array.isArray(event.perks) && event.perks.length > 0) || event.event_status === "online" || event.event_status === "hybrid") && (
           <ul className="event-card__perks">
             {live && (
