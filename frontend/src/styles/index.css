@@ -339,7 +339,7 @@ img {
 .events-page {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .events-page__layout {
@@ -380,6 +380,7 @@ img {
   gap: 12px;
   margin-bottom: 2px;
   padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -422,12 +423,8 @@ img {
 .sidebar-filter-section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 6px 0;
-}
-
-.sidebar-filter-section + .sidebar-filter-section {
-  border-top: 1px solid var(--color-border);
+  gap: 2px;
+  padding:  0;
 }
 
 .sidebar-filter-section__label {
@@ -455,7 +452,6 @@ img {
   margin: 0;
   padding: 4px;
   list-style: none;
-  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-bg);
   overflow: hidden;
@@ -479,7 +475,8 @@ img {
 }
 
 .filter-option-group__option:hover {
-  background: var(--color-placeholder);
+  color: var(--color-drexel-blue);
+  font-weight: 600;
 }
 
 .filter-option-group__input {
