@@ -378,7 +378,7 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 2px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border);
 }
@@ -422,8 +422,8 @@ img {
 .sidebar-filter-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px 0;
+  gap: 4px;
+  padding: 6px 0;
 }
 
 .sidebar-filter-section + .sidebar-filter-section {
@@ -432,7 +432,7 @@ img {
 
 .sidebar-filter-section__label {
   margin: 0;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -461,22 +461,18 @@ img {
   overflow: hidden;
 }
 
-.filter-option-group__options li + li {
-  border-top: 1px solid var(--color-border);
-}
-
 .filter-option-group__option {
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 8px 10px;
+  padding: 3px 10px;
   border: none;
   border-radius: 0;
   background: transparent;
   color: var(--color-text);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   text-align: left;
   cursor: pointer;
   transition: background 0.12s ease, color 0.12s ease;
@@ -972,18 +968,17 @@ img {
 }
 
 .ai-toggle {
-  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 7px;
   border: none;
   background: transparent;
-  padding: 0 4px;
+  padding: 0;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.72);
   font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   flex-shrink: 0;
   transition: color 0.12s ease;
 }
@@ -996,33 +991,18 @@ img {
   line-height: 1;
 }
 
-.ai-toggle__no {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 26px;
-  height: 26px;
-  transform: translate(-50%, -50%);
-  border: 2px solid #e53935;
-  border-radius: 50%;
-  pointer-events: none;
+.ai-toggle__checkbox {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-drexel-gold);
+  flex-shrink: 0;
 }
 
-.ai-toggle__no::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2px;
-  height: calc(100% + 6px);
-  background: #e53935;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.ai-toggle:focus-visible {
+.ai-toggle__checkbox:focus-visible {
   outline: 2px solid var(--color-drexel-gold);
   outline-offset: 2px;
-  border-radius: var(--radius-sm);
 }
 
 :root[data-theme="dark"] .ai-toggle {

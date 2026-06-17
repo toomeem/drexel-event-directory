@@ -23,22 +23,21 @@ export function SiteHeader({
 
         </NavLink>
         <nav className="site-header__nav">
-          <button
-            type="button"
-            className={"ai-toggle" + (aiEnabled ? " ai-toggle--on" : "")}
-            onClick={onToggleAi}
-            role="switch"
-            aria-checked={aiEnabled}
-            aria-label={
-              aiEnabled ? "Disable AI features" : "Enable AI features"
-            }
+          <label
+            className="ai-toggle"
             title={aiEnabled ? "Disable AI features" : "Enable AI features"}
           >
             <span className="ai-toggle__label">AI</span>
-            {!aiEnabled && (
-              <span className="ai-toggle__no" aria-hidden="true" />
-            )}
-          </button>
+            <input
+              type="checkbox"
+              className="ai-toggle__checkbox"
+              checked={aiEnabled}
+              onChange={onToggleAi}
+              aria-label={
+                aiEnabled ? "Disable AI features" : "Enable AI features"
+              }
+            />
+          </label>
           <NavLink
             to="/"
             end

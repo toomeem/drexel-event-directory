@@ -226,6 +226,19 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
         />
       </div>
       <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-perks-label">
+          Perks
+        </p>
+        <FilterOptionGroup
+          label="Perks"
+          options={PERK_OPTIONS}
+          selected={filters.perks}
+          multi={true}
+          onSelect={(values) => onChange({ ...filters, perks: values })}
+          labelledBy="filter-perks-label"
+        />
+      </div>
+      <div className="sidebar-filter-section">
         <p className="sidebar-filter-section__label" id="filter-theme-label">
           Event Type
         </p>
@@ -236,19 +249,6 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
           multi={true}
           showLabel={false}
           onApply={(values) => onChange({ ...filters, themes: values })}
-        />
-      </div>
-      <div className="sidebar-filter-section">
-        <p className="sidebar-filter-section__label" id="filter-perks-label">
-          Perks
-        </p>
-        <FilterDropdown
-          label="Perks"
-          options={PERK_OPTIONS}
-          selected={filters.perks}
-          multi={true}
-          showLabel={false}
-          onApply={(values) => onChange({ ...filters, perks: values })}
         />
       </div>
     </aside>
