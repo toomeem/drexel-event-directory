@@ -75,7 +75,7 @@ export function FilterDropdown({
   }
 
   function applyMulti() {
-    onApply(draft);
+    onApply(allOptionsSelected ? [] : draft);
     setOpen(false);
   }
 

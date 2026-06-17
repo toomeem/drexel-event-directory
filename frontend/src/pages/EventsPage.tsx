@@ -103,6 +103,7 @@ export function EventsPage() {
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
+  const resultLabel = totalEvents === 1 ? "result" : "results";
 
   function goToPage(page: number) {
     const next = new URLSearchParams(searchParams);
@@ -133,6 +134,11 @@ export function EventsPage() {
   return (
     <div className="events-page">
       <EventFilterBar filters={filters} onChange={applyFilters} />
+      {status === "ready" && (
+        <p className="events-page__result-count">
+          {totalEvents.toLocaleString()} {resultLabel}
+        </p>
+      )}
       {status === "loading" && (
         <p className="events-page__status">Loading events…</p>
       )}
