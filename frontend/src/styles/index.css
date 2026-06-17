@@ -971,6 +971,68 @@ img {
   border-color: var(--color-drexel-gold);
 }
 
+.ai-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0 4px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  transition: color 0.12s ease;
+}
+
+.ai-toggle:hover {
+  color: #ffffff;
+}
+
+.ai-toggle__label {
+  line-height: 1;
+}
+
+.ai-toggle__no {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #e53935;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ai-toggle__no::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: calc(100% + 6px);
+  background: #e53935;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ai-toggle:focus-visible {
+  outline: 2px solid var(--color-drexel-gold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+:root[data-theme="dark"] .ai-toggle {
+  color: var(--color-text-muted);
+}
+
+:root[data-theme="dark"] .ai-toggle:hover {
+  color: var(--color-text);
+}
+
 :root[data-theme="dark"] .site-header {
   background: var(--color-surface);
   border-bottom-color: var(--color-drexel-gold);

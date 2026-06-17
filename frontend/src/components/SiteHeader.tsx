@@ -5,9 +5,16 @@ const LOGO_URL = "https://drexel-events-general-bucket-034584778101-us-east-1-an
 interface SiteHeaderProps {
   theme: "light" | "dark";
   onToggleTheme: () => void;
+  aiEnabled: boolean;
+  onToggleAi: () => void;
 }
 
-export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
+export function SiteHeader({
+  theme,
+  onToggleTheme,
+  aiEnabled,
+  onToggleAi,
+}: SiteHeaderProps) {
   return (
     <header className="site-header">
       <div className="site-header__inner">
@@ -16,6 +23,22 @@ export function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
 
         </NavLink>
         <nav className="site-header__nav">
+          <button
+            type="button"
+            className={"ai-toggle" + (aiEnabled ? " ai-toggle--on" : "")}
+            onClick={onToggleAi}
+            role="switch"
+            aria-checked={aiEnabled}
+            aria-label={
+              aiEnabled ? "Disable AI features" : "Enable AI features"
+            }
+            title={aiEnabled ? "Disable AI features" : "Enable AI features"}
+          >
+            <span className="ai-toggle__label">AI</span>
+            {!aiEnabled && (
+              <span className="ai-toggle__no" aria-hidden="true" />
+            )}
+          </button>
           <NavLink
             to="/"
             end
