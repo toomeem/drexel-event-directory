@@ -18,10 +18,10 @@ HTTP_TIMEOUT = (5, 30)
 religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
                   "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
                   "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
-                  "Cru": "christian", "Drexel Newman Catholic Community": "christian",
-                  "Crosswalk Christian Fellowship": "christian", "Drexel WEH": "christian",
-                  "Hindu YUVA @ Drexel": "hindu", "Open Door Christian Community": "christian",
-                  "Drexel Students for Christ": "christian"}
+                  "Cru": "christian", "Newman Catholic Community": "christian",
+                  "Crosswalk Christian Fellowship": "christian", "Christian Fellowship Club": "christian",
+                  "Drexel WEH": "christian", "Hindu YUVA @ Drexel": "hindu",
+                  "Open Door Christian Community": "christian", "Drexel Students for Christ": "christian"}
 
 
 class OnlineStatus(BaseModel):

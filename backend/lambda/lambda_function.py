@@ -119,7 +119,12 @@ def lambda_handler(event, context):
     for_new_students = parse_bool_filter("for_new_students")
     popular = parse_bool_filter("popular")
     on_campus = parse_bool_filter("on_campus")
-    religion = parse_bool_filter("religion")
+    valid_religions = {"christian", "jewish", "muslim", "hindu"}
+    religion_filter = None
+    religion_param = params.get("religion")
+    if religion_param:
+        candidates = [r.strip().lower() for r in religion_param.split(",") if r.strip()]
+        religion_filter = [r for r in candidates if r in valid_religions] or None
     connection = None
     try:
         connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
@@ -157,12 +162,12 @@ def lambda_handler(event, context):
                              AND (NOT %s OR for_new_students)
                              AND (NOT %s OR popular)
                              AND (NOT %s OR on_campus)
-                             AND (NOT %s OR religion IS NOT NULL)
+                             AND (%s::text[] IS NULL OR LOWER(religion) = ANY (%s::text[]))
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
                                  search_pattern, search_pattern, search_pattern, food_related, weekly, for_new_students,
-                                 popular, on_campus, religion, page_event_count, offset))
+                                 popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
             events = cursor.fetchall()
 
         total = events[0][18] if events else 0
