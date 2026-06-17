@@ -69,9 +69,9 @@ img {
 .app-main {
   flex: 1;
   width: 100%;
-  max-width: 1280px;
+  max-width: min(1400px, calc(100vw - 32px));
   margin: 0 auto;
-  padding: 24px 0 32px;
+  padding: 24px 16px 32px;
 }
 
 .site-header {
@@ -83,10 +83,10 @@ img {
 }
 
 .site-header__inner {
-  max-width: 1280px;
+  max-width: min(1400px, calc(100vw - 32px));
   margin: 0 auto;
   height: var(--header-height);
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -145,8 +145,8 @@ img {
 
 .event-grid {
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .event-card {
@@ -285,10 +285,10 @@ img {
 }
 
 .event-card__body {
-  padding: 10px 12px 12px;
+  padding: 8px 10px 10px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   flex: 1;
 }
 
@@ -306,7 +306,7 @@ img {
 
 .event-card__title {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
   color: var(--color-text);
@@ -318,7 +318,7 @@ img {
 
 .event-card__location {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
   display: flex;
   align-items: flex-start;
@@ -331,8 +331,8 @@ img {
 }
 
 .event-card__host {
-  margin: 4px 0 0;
-  font-size: 13px;
+  margin: 3px 0 0;
+  font-size: 12px;
   color: var(--color-text-subtle);
 }
 
@@ -344,8 +344,8 @@ img {
 
 .events-page__layout {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 16px;
   align-items: start;
 }
 
@@ -956,13 +956,29 @@ img {
   border-color: var(--color-accent);
 }
 
+@media (max-width: 1200px) {
+  .event-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .event-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .site-header__inner {
     padding: 0 16px;
   }
 
   .app-main {
-    padding: 24px 16px 48px;
+    padding: 24px 12px 48px;
+  }
+
+  .event-grid {
+    grid-template-columns: 1fr;
   }
 
   .site-header__nav {
