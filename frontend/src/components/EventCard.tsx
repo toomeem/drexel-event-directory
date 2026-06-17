@@ -36,6 +36,21 @@ function safeHttpUrl(raw: string | null | undefined): string | null {
   }
 }
 
+export function EventCardSkeleton() {
+  return (
+    <article className="event-card event-card--skeleton" aria-hidden="true">
+      <div className="event-card__media skeleton-block" />
+      <div className="event-card__body">
+        <div className="skeleton-line skeleton-line--short" />
+        <div className="skeleton-line skeleton-line--title" />
+        <div className="skeleton-line skeleton-line--title skeleton-line--title-second" />
+        <div className="skeleton-line skeleton-line--medium" />
+        <div className="skeleton-line skeleton-line--short" />
+      </div>
+    </article>
+  );
+}
+
 export function EventCard({ event }: EventCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const showImage = event.image_url && !imageFailed;

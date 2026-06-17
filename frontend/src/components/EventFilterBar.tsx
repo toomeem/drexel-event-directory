@@ -271,7 +271,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
             {(
               [
                 { key: "foodRelated", label: "Food Related" },
-                { key: "popular", label: "Popular" },
+                { key: "popular", label: "Popular🔥" },
                 { key: "weekly", label: "Weekly" },
                 { key: "forNewStudents", label: "For New Students" },
                 { key: "onCampus", label: "On Campus" },

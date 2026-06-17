@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { useSearchParams } from "react-router-dom";
-import { EventCard } from "../components/EventCard";
+import { EventCard, EventCardSkeleton } from "../components/EventCard";
 import {
   EventFilterBar,
   EventSidebarFilters,
@@ -21,18 +21,6 @@ const EVENTS_PER_ROW = 4;
 
 const VALID_DATE_RANGES: DateRange[] = ["today", "week", "month"];
 const VALID_STATUSES: EventStatus[] = ["in-person", "online", "hybrid"];
-const THEME_VALUES = [
-  "academic",
-  "arts",
-  "athletics",
-  "career",
-  "community",
-  "cultural",
-  "fundraising",
-  "social",
-  "spirituality",
-];
-const PERK_VALUES = ["free_food", "free_stuff", "credit"];
 
 function parseFilters(searchParams: URLSearchParams): AppliedFilters {
   const dateRaw = searchParams.get("dateRange");
@@ -174,7 +162,11 @@ export function EventsPage() {
         <EventSidebarFilters filters={filters} onChange={applyFilters} />
         <div className="events-page__content">
           {status === "loading" && (
-            <p className="events-page__status">Loading events...</p>
+            <div className="event-grid">
+              {Array.from({ length: eventCount }, (_, i) => (
+                <EventCardSkeleton key={i} />
+              ))}
+            </div>
           )}
           {status === "error" && (
             <p className="events-page__status events-page__status--error">

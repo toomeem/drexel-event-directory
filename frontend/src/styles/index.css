@@ -423,6 +423,51 @@ img {
     color: var(--color-text-subtle);
 }
 
+/* Skeleton loading */
+@keyframes skeleton-shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+}
+
+.skeleton-block,
+.skeleton-line {
+    background: linear-gradient(
+        90deg,
+        var(--color-placeholder) 25%,
+        var(--color-border-strong) 50%,
+        var(--color-placeholder) 75%
+    );
+    background-size: 800px 100%;
+    animation: skeleton-shimmer 1.6s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+}
+
+.event-card--skeleton .event-card__media {
+    background: unset;
+}
+
+.skeleton-line {
+    height: 12px;
+    margin-bottom: 2px;
+}
+
+.skeleton-line--short {
+    width: 55%;
+}
+
+.skeleton-line--medium {
+    width: 70%;
+}
+
+.skeleton-line--title {
+    height: 14px;
+    width: 90%;
+}
+
+.skeleton-line--title-second {
+    width: 60%;
+}
+
 .events-page {
     display: flex;
     flex-direction: column;
