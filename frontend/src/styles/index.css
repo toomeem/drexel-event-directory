@@ -342,11 +342,78 @@ img {
   gap: 24px;
 }
 
-.events-page__result-count {
-  margin: -8px 0 0;
+.events-page__layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.events-page__content {
+  min-width: 0;
+}
+
+.filter-bar__result-count {
+  margin: 0 0 0 auto;
   color: var(--color-text-muted);
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.event-filter-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+}
+
+.event-filter-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.event-filter-sidebar__title {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.event-filter-sidebar__clear {
+  border: none;
+  background: transparent;
+  color: var(--color-drexel-blue);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.event-filter-sidebar__clear:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+.event-filter-sidebar__clear:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
+.event-filter-sidebar .filter-dropdown,
+.event-filter-sidebar .filter-dropdown__btn {
+  width: 100%;
+}
+
+.event-filter-sidebar .filter-dropdown__btn {
+  justify-content: space-between;
 }
 
 .filter-bar {
@@ -862,6 +929,10 @@ img {
   color: var(--color-drexel-gold);
 }
 
+:root[data-theme="dark"] .event-filter-sidebar__clear {
+  color: var(--color-drexel-gold);
+}
+
 :root[data-theme="dark"] .about-page__title {
   color: var(--color-drexel-gold);
 }
@@ -896,6 +967,14 @@ img {
 
   .site-header__nav {
     gap: 18px;
+  }
+
+  .events-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-filter-sidebar {
+    position: static;
   }
 
   .about-page__title {

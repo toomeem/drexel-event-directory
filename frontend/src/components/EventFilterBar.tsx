@@ -14,6 +14,10 @@ interface EventFilterBarProps {
   onChange: (filters: AppliedFilters) => void;
 }
 
+interface EventTopFilterBarProps extends EventFilterBarProps {
+  totalEvents: number;
+}
+
 function titleCase(s: string): string {
   return s
     .split(/[\s_]+/)
@@ -59,10 +63,15 @@ const PERK_OPTIONS: FilterOption[] = PERK_VALUES.map((v) => ({
 
 const SEARCH_DEBOUNCE_MS = 300;
 
-export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
+export function EventFilterBar({
+  filters,
+  totalEvents,
+  onChange,
+}: EventTopFilterBarProps) {
   const [searchInput, setSearchInput] = useState(filters.search);
   const debounceRef = useRef<number | undefined>(undefined);
   const lastEmittedRef = useRef(filters.search);
+  const resultLabel = totalEvents === 1 ? "result" : "results";
 
   useEffect(() => {
     if (filters.search !== lastEmittedRef.current) {
@@ -102,25 +111,6 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
     lastEmittedRef.current = "";
     onChange({ ...filters, search: "" });
   }
-
-  function clearAllFilters() {
-    setSearchInput("");
-    lastEmittedRef.current = "";
-    onChange({
-      search: "",
-      dateRange: [],
-      eventStatus: [],
-      themes: [],
-      perks: [],
-    });
-  }
-
-  const hasActiveFilters =
-    filters.search ||
-    filters.dateRange.length > 0 ||
-    filters.eventStatus.length > 0 ||
-    filters.themes.length > 0 ||
-    filters.perks.length > 0;
 
   return (
     <div className="filter-bar" role="toolbar" aria-label="Event filters">
@@ -187,6 +177,41 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
           </button>
         )}
       </div>
+      <p className="filter-bar__result-count">
+        {totalEvents.toLocaleString()} {resultLabel}
+      </p>
+    </div>
+  );
+}
+
+export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) {
+  const hasActiveFilters =
+    filters.eventStatus.length > 0 ||
+    filters.themes.length > 0 ||
+    filters.perks.length > 0;
+
+  function clearFilters() {
+    onChange({
+      ...filters,
+      eventStatus: [],
+      themes: [],
+      perks: [],
+    });
+  }
+
+  return (
+    <aside className="event-filter-sidebar" aria-label="Additional filters">
+      <div className="event-filter-sidebar__header">
+        <h2 className="event-filter-sidebar__title">Filters</h2>
+        <button
+          type="button"
+          className="event-filter-sidebar__clear"
+          onClick={clearFilters}
+          disabled={!hasActiveFilters}
+        >
+          Clear
+        </button>
+      </div>
       <FilterDropdown
         label="Status"
         options={STATUS_OPTIONS}
@@ -208,29 +233,6 @@ export function EventFilterBar({ filters, onChange }: EventFilterBarProps) {
         multi={true}
         onApply={(values) => onChange({ ...filters, perks: values })}
       />
-      <button
-        type="button"
-        className="filter-bar__clear-btn"
-        onClick={clearAllFilters}
-        disabled={!hasActiveFilters}
-        aria-label="Clear all filters"
-        title="Clear all filters"
-      >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-    </div>
+    </aside>
   );
 }

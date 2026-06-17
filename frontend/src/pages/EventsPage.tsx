@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { EventCard } from "../components/EventCard";
 import {
   EventFilterBar,
+  EventSidebarFilters,
   type AppliedFilters,
 } from "../components/EventFilterBar";
 import {
@@ -103,7 +104,6 @@ export function EventsPage() {
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
-  const resultLabel = totalEvents === 1 ? "result" : "results";
 
   function goToPage(page: number) {
     const next = new URLSearchParams(searchParams);
@@ -133,51 +133,55 @@ export function EventsPage() {
 
   return (
     <div className="events-page">
-      <EventFilterBar filters={filters} onChange={applyFilters} />
-      {status === "ready" && (
-        <p className="events-page__result-count">
-          {totalEvents.toLocaleString()} {resultLabel}
-        </p>
-      )}
-      {status === "loading" && (
-        <p className="events-page__status">Loading events…</p>
-      )}
-      {status === "error" && (
-        <p className="events-page__status events-page__status--error">
-          Couldn’t load events. Please try again later.
-        </p>
-      )}
-      {status === "ready" && events.length === 0 && (
-        <p className="events-page__status">No events match these filters.</p>
-      )}
-      {status === "ready" && events.length > 0 && (
-        <>
-          <div className="event-grid">
-            {events.map((event) => (
-              <EventCard key={event.id} event={event} />
-            ))}
-          </div>
-          <div className="pagination">
-            <button
-              className="pagination__btn"
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            <span className="pagination__info">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              className="pagination__btn"
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage >= totalPages}
-            >
-              Next
-            </button>
-          </div>
-        </>
-      )}
+      <EventFilterBar
+        filters={filters}
+        totalEvents={totalEvents}
+        onChange={applyFilters}
+      />
+      <div className="events-page__layout">
+        <EventSidebarFilters filters={filters} onChange={applyFilters} />
+        <div className="events-page__content">
+          {status === "loading" && (
+            <p className="events-page__status">Loading events...</p>
+          )}
+          {status === "error" && (
+            <p className="events-page__status events-page__status--error">
+              Couldn't load events. Please try again later.
+            </p>
+          )}
+          {status === "ready" && events.length === 0 && (
+            <p className="events-page__status">No events match these filters.</p>
+          )}
+          {status === "ready" && events.length > 0 && (
+            <>
+              <div className="event-grid">
+                {events.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+              <div className="pagination">
+                <button
+                  className="pagination__btn"
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <span className="pagination__info">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  className="pagination__btn"
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage >= totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

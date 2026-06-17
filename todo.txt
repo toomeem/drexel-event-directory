@@ -1,6 +1,4 @@
 save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
-be able to filter out event types (e.g. select all and the unselect one or more)
-    update "All" button to "Select All" and "Unselect All"
 rename virtual to online
 improve event type labeling (a yoga event wasn't labeled as "athletics")
 MAKE WEBSITE MOBILE-FRIENDLY
