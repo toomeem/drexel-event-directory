@@ -8,6 +8,10 @@ export interface AppliedFilters {
   eventStatus: string[];
   themes: string[];
   perks: string[];
+  foodRelated: boolean;
+  popular: boolean;
+  weekly: boolean;
+  forNewStudents: boolean;
 }
 
 interface EventFilterBarProps {
@@ -187,12 +191,22 @@ export function EventFilterBar({
 
 export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) {
   const [open, setOpen] = useState(false);
+  const boolFilterCount = [
+    filters.foodRelated,
+    filters.popular,
+    filters.weekly,
+    filters.forNewStudents,
+  ].filter(Boolean).length;
   const hasActiveFilters =
     filters.eventStatus.length > 0 ||
     filters.themes.length > 0 ||
-    filters.perks.length > 0;
+    filters.perks.length > 0 ||
+    boolFilterCount > 0;
   const activeFilterCount =
-    filters.eventStatus.length + filters.themes.length + filters.perks.length;
+    filters.eventStatus.length +
+    filters.themes.length +
+    filters.perks.length +
+    boolFilterCount;
 
   function clearFilters() {
     onChange({
@@ -200,6 +214,10 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
       eventStatus: [],
       themes: [],
       perks: [],
+      foodRelated: false,
+      popular: false,
+      weekly: false,
+      forNewStudents: false,
     });
   }
 
@@ -244,23 +262,61 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
         id="event-filter-sidebar-content"
         className="event-filter-sidebar__content"
       >
-      <div className="sidebar-filter-section sidebar-filter-section--with-clear">
-        <div className="sidebar-filter-section__header">
-          <p
-            className="sidebar-filter-section__label"
-            id="filter-status-label"
-          >
-            Status
-          </p>
-          <button
-            type="button"
-            className="sidebar-filter-section__clear"
-            onClick={clearFilters}
-            disabled={!hasActiveFilters}
-          >
-            Clear
-          </button>
+      <div className="sidebar-filter-section">
+        <div className="filter-option-group filter-option-group--flat" role="group" aria-label="Special filters">
+          <ul className="filter-option-group__options">
+            {(
+              [
+                { key: "foodRelated", label: "Food Related" },
+                { key: "popular", label: "Popular" },
+                { key: "weekly", label: "Weekly" },
+                { key: "forNewStudents", label: "For New Students" },
+              ] as { key: keyof AppliedFilters; label: string }[]
+            ).map(({ key, label }, index) => {
+              const checked = filters[key] as boolean;
+              return (
+                <li
+                  key={key}
+                  className={
+                    index === 0
+                      ? "filter-option-group__item--has-clear"
+                      : undefined
+                  }
+                >
+                  <label
+                    className={
+                      "filter-option-group__option" +
+                      (checked ? " filter-option-group__option--selected" : "")
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      className="filter-option-group__input"
+                      checked={checked}
+                      onChange={() => onChange({ ...filters, [key]: !checked })}
+                    />
+                    <span>{label}</span>
+                  </label>
+                  {index === 0 && (
+                    <button
+                      type="button"
+                      className="event-filter-sidebar__clear"
+                      onClick={clearFilters}
+                      disabled={!hasActiveFilters}
+                    >
+                      Clear
+                    </button>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </div>
+      </div>
+      <div className="sidebar-filter-section">
+        <p className="sidebar-filter-section__label" id="filter-status-label">
+          Status
+        </p>
         <FilterOptionGroup
           label="Status"
           options={STATUS_OPTIONS}

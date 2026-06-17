@@ -62,6 +62,10 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
           .map((p) => p.trim().toLowerCase())
           .filter(Boolean)
       : [],
+    foodRelated: searchParams.get("food_related") === "true",
+    popular: searchParams.get("popular") === "true",
+    weekly: searchParams.get("weekly") === "true",
+    forNewStudents: searchParams.get("for_new_students") === "true",
   };
 }
 
@@ -90,6 +94,10 @@ export function EventsPage() {
       themes: themesKey ? themesKey.split(",") : undefined,
       perks: perksKey ? perksKey.split(",") : undefined,
       search: searchKey || undefined,
+      food_related: filters.foodRelated || undefined,
+      popular: filters.popular || undefined,
+      weekly: filters.weekly || undefined,
+      for_new_students: filters.forNewStudents || undefined,
     })
       .then(({ events: data, totalEvents: total }) => {
         if (cancelled) return;
@@ -113,6 +121,10 @@ export function EventsPage() {
     themesKey,
     perksKey,
     searchKey,
+    filters.foodRelated,
+    filters.popular,
+    filters.weekly,
+    filters.forNewStudents,
   ]);
 
   const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
@@ -146,6 +158,10 @@ export function EventsPage() {
     if (newFilters.search.trim()) {
       next.set("search", newFilters.search.trim());
     }
+    if (newFilters.foodRelated) next.set("food_related", "true");
+    if (newFilters.popular) next.set("popular", "true");
+    if (newFilters.weekly) next.set("weekly", "true");
+    if (newFilters.forNewStudents) next.set("for_new_students", "true");
     setSearchParams(next, { replace: true });
   }
 

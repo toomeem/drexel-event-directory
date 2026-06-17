@@ -513,10 +513,9 @@ img {
 .event-filter-sidebar__header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 12px;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
+    padding: 4px 4px 0;
 }
 
 .event-filter-sidebar__title {
@@ -654,6 +653,23 @@ img {
     margin: 0;
     accent-color: var(--color-drexel-blue);
     cursor: pointer;
+}
+
+.filter-option-group--flat .filter-option-group__options {
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.filter-option-group--flat .filter-option-group__option {
+    padding-left: 0;
+}
+
+.filter-option-group__item--has-clear {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .filter-option-group__option--selected {

@@ -16,6 +16,10 @@ export interface DrexelEvent {
   event_status?: EventStatus | string | null;
   theme?: string | null;
   perks?: string[];
+  food_related?: boolean;
+  popular?: boolean;
+  weekly?: boolean;
+  for_new_students?: boolean;
 }
 
 interface EventsResponse {
@@ -35,6 +39,10 @@ export interface EventFilters {
   themes?: string[];
   perks?: string[];
   search?: string;
+  food_related?: boolean;
+  popular?: boolean;
+  weekly?: boolean;
+  for_new_students?: boolean;
 }
 
 export async function fetchEvents(
@@ -63,6 +71,10 @@ export async function fetchEvents(
   if (filters.search && filters.search.trim()) {
     params.set("search", filters.search.trim());
   }
+  if (filters.food_related) params.set("food_related", "true");
+  if (filters.popular) params.set("popular", "true");
+  if (filters.weekly) params.set("weekly", "true");
+  if (filters.for_new_students) params.set("for_new_students", "true");
   const url = `${endpoint}?${params.toString()}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
