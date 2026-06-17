@@ -186,11 +186,13 @@ def match_default_image(name, org_name, location):
     pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
     rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
     med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
+    virtuaquest = "https://drexel.edu/~/media/Images/cci/Homepage/Homepage_digdevcamp.ashx"
+    humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
     image_aliases = {"pearlstein gallery": pearlstein_image, "westphal": westphal_image, "dac": dac_image,
                      "rec center": dac_image, "main building": main_building_image, "hagerty": hagerty_library_image,
                      "korman": korman_image, "pisb": pisb_image, "papadakis": pisb_image, "science": pisb_image,
                      "rush": rush_building, "lancaster": drexel_default_image, "nursing": med_building,
-                     "medicine": med_building, }
+                     "medicine": med_building, "virtuaquest": virtuaquest, "humpty dumplings": humpty_dumplings, }
     for key, image in image_aliases.items():
         if key in name or key in org_name or key in location:
             return image
@@ -307,7 +309,8 @@ def dragonlink_event_parsing(event_json, kwargs):
 def drexel_event_parsing(event_json, kwargs):
     if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
         return None
-    correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students"]
+    correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students",
+                         "Prospective Students", "Senior Class"]
     if event_json["audiences"] and not any([i in event_json["audiences"] for i in correct_audiences]):
         return None
 
@@ -424,7 +427,8 @@ def invalid_event(kwargs):
                        "In Her Own League: The Baseball Collection of Helen Beitler", "Free Uber Rides For Seniors",
                        "Study Abroad Walk-In Hours", "Study Abroad 101",
                        "Intro to Canvas, Drexel's Learning Management System",
-                       "West Philadelphia Community Research Review Board", "Creator Studio"]
+                       "West Philadelphia Community Research Review Board", "Creator Studio",
+                       "Health Career Exploration Camp"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):

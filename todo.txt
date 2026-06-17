@@ -1,5 +1,7 @@
 save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
-MAKE WEBSITE MOBILE-FRIENDLY
+add additional filtering for religious events to filter by religion (use org name to label)
+    maybe add specific religion icons?
+add icons for each event type
 add filtering
     add filter bundles to make it easier to look for specific types of events
     "for grad students" label
@@ -10,17 +12,8 @@ add filtering
     "volunteering" label
     "greek life" label
     "political" label
-add additional filtering for religious events to filter by religion (use org name to label)
-    maybe add specific religion icons?
-    allow filtering out religious events
-add icons for each event type
 add form to add a new event
 improve search
-more default images
-    for events that occur 5+ times, manually add a default image (VirtuaQuest)
-    add default images for orgs that host a lot of events but don't have images (study abroad office)
-    add default images for thesis defenses?
-    check event descriptions for links and check the links for images? (could work for a specific list of sites)
 add section for new students that explains stuff and has a map of campus
 add section for suggestions for me
 
