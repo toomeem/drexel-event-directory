@@ -180,18 +180,20 @@ def simplify_location(location):
 
 
 def match_default_image(name, org_name, location):
+    s3_subpath = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/default_images/"
     name = name.lower() if name else ""
     org_name = org_name.lower() if org_name else ""
     location = location.lower() if location else ""
-    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
+
+    drexel_default_image = s3_subpath + "lanc_walk2.jpg"
+    dac_image = s3_subpath + "dac.jpg"
+    hagerty_library_image = s3_subpath + "library.jpg"
+    pisb_image = s3_subpath + "pisb.jpg"
+    rush_building = s3_subpath + "rush-building.jpg"
     pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
     westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
-    dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
     main_building_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Main_Building_-_Drexel_University_%2853590618820%29.jpg/250px-Main_Building_-_Drexel_University_%2853590618820%29.jpg"
-    hagerty_library_image = "https://pbs.twimg.com/media/G8D-sieWQAMOGeO.jpg"
     korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
-    pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
-    rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
     med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
     virtuaquest = "https://drexel.edu/~/media/Images/cci/Homepage/Homepage_digdevcamp.ashx"
     humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
@@ -514,6 +516,12 @@ def parse_org_name(org_name):
     return org_name.strip(":*_;-,. ")
 
 
+def get_image_s3_url(original_url):
+    # check if in s3, if not, add to s3
+    # either way return the link to it
+    pass
+
+
 def create_event_object(source, event_json):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
@@ -542,7 +550,8 @@ def create_event_object(source, event_json):
 
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
-
+    else:
+        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"])
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
