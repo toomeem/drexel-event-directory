@@ -503,8 +503,6 @@ img {
     background: var(--color-surface);
     position: sticky;
     top: calc(var(--header-height) + 24px);
-    max-height: calc(100vh - var(--header-height) - 24px - 24px);
-    overflow-y: auto;
 }
 
 .event-filter-sidebar__toggle {
@@ -563,7 +561,10 @@ img {
 }
 
 .event-filter-sidebar__content {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: calc(90vh - var(--header-height) - 72px);
 }
 
 .event-filter-sidebar__header {
