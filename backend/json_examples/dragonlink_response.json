@@ -1,5 +1,5 @@
 {
-    "@odata.count": 48,
+    "@odata.count": 68,
     "@search.coverage": null,
     "@search.facets": {
         "CategoryIds": [
@@ -7,15 +7,36 @@
                 "type": 0,
                 "from": null,
                 "to": null,
+                "value": "10612",
+                "count": 1
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "19658",
+                "count": 1
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "22028",
+                "count": 1
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
                 "value": "271",
-                "count": 6
+                "count": 10
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "273",
-                "count": 1
+                "count": 2
             },
             {
                 "type": 0,
@@ -29,28 +50,28 @@
                 "from": null,
                 "to": null,
                 "value": "275",
-                "count": 12
+                "count": 30
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "276",
-                "count": 15
+                "count": 16
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "278",
-                "count": 10
+                "count": 25
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "279",
-                "count": 4
+                "count": 3
             },
             {
                 "type": 0,
@@ -64,13 +85,20 @@
                 "from": null,
                 "to": null,
                 "value": "281",
-                "count": 2
+                "count": 1
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "282",
+                "count": 2
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "284",
                 "count": 1
             },
             {
@@ -87,7 +115,7 @@
                 "from": null,
                 "to": null,
                 "value": "Free Food",
-                "count": 21
+                "count": 25
             },
             {
                 "type": 0,
@@ -109,22 +137,29 @@
                 "type": 0,
                 "from": null,
                 "to": null,
-                "value": "Fundraising",
-                "count": 5
-            },
-            {
-                "type": 0,
-                "from": null,
-                "to": null,
-                "value": "GroupBusiness",
+                "value": "Cultural",
                 "count": 1
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
+                "value": "Fundraising",
+                "count": 4
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "GroupBusiness",
+                "count": 2
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
                 "value": "Social",
-                "count": 17
+                "count": 19
             },
             {
                 "type": 0,
@@ -138,7 +173,7 @@
                 "from": null,
                 "to": null,
                 "value": "ThoughtfulLearning",
-                "count": 10
+                "count": 27
             }
         ],
         "BranchId": [
@@ -147,7 +182,7 @@
                 "from": null,
                 "to": null,
                 "value": 12429,
-                "count": 35
+                "count": 55
             },
             {
                 "type": 0,
@@ -159,109 +194,6 @@
         ]
     },
     "value": [
-        {
-            "id": "12482993",
-            "institutionId": 3859,
-            "organizationId": 416970,
-            "organizationIds": [],
-            "branchId": 416970,
-            "branchIds": [],
-            "organizationName": "Elkins Park Student Success & Campus Engagement",
-            "organizationProfilePicture": "cb79f974-14e4-4a7c-8805-717b1b4d345e720ccccb-5fee-4852-a689-278214a9439b.png",
-            "organizationNames": [],
-            "name": "DragonLink Tabling Event",
-            "description": "<p>Join us for our upcoming tabling event to connect, learn, and get involved! Stop by to meet our team, discover upcoming programs and opportunities, and explore ways to enhance your leadership and campus experience.</p>\r\n<div>\r\n<div>\r\n<p>Enjoy snacks, grab some free giveaways, and engage in meaningful conversations about how you can be part of our community. Whether you're looking to build connections, develop new skills, or just stop by for a quick treat, we&rsquo;d love to see you there!</p>\r\n<p>Swing by, say hello, and take the next step in getting involved!</p>\r\n</div>\r\n<br />\r\n<p>&nbsp;</p>\r\n</div>\r\n<p>&nbsp;</p>",
-            "location": "Elkins Park Cafe",
-            "startsOn": "2026-06-18T16:00:00+00:00",
-            "endsOn": "2026-06-18T19:00:00+00:00",
-            "imagePath": "29a0dc50-c552-4b76-b410-1de6b659001918cde60b-44d1-4d65-9afa-b793673c8d05.png",
-            "theme": "Social",
-            "categoryIds": [
-                "276"
-            ],
-            "categoryNames": [
-                "Social"
-            ],
-            "benefitNames": [
-                "Free Food",
-                "Free Stuff"
-            ],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.7827
-        },
-        {
-            "id": "12427640",
-            "institutionId": 3859,
-            "organizationId": 353901,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "ASHRAE",
-            "organizationProfilePicture": "5e240b05-82ac-467e-91a7-1ced32ae15d3e45d6f9d-ef29-451d-a226-05d22152b3a9.png",
-            "organizationNames": [],
-            "name": "ASHRAE LEMONADE STAND FUNDRAISER",
-            "description": "<p>Come join ASHRAE for a lemonade fundraiser during this springtime!</p>",
-            "location": "Lanc Walk - 32nd-33rd St Section 3",
-            "startsOn": "2026-06-18T22:00:00+00:00",
-            "endsOn": "2026-06-18T23:00:00+00:00",
-            "imagePath": "64a6c6f7-3a29-4aa9-a27b-11d53e013f2a5926214c-dae4-4bb8-bd8c-45446bbd1bb8.png",
-            "theme": "Fundraising",
-            "categoryIds": [
-                "279"
-            ],
-            "categoryNames": [
-                "Fundraising"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.75605
-        },
-        {
-            "id": "12482830",
-            "institutionId": 3859,
-            "organizationId": 427161,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Drexel P.U.L.S.E: Chapter of Global Public Health Brigades",
-            "organizationProfilePicture": "21243f0d-6b5e-485f-960a-54d27742e746c095ee12-4069-4704-878f-04a7484222a4.jpg",
-            "organizationNames": [],
-            "name": "Lawn Games",
-            "description": "<p class=\"p1\"><span class=\"s1\">Come join Drexel P.U.L.S.E. at Kelly Lawn on June 19th for lawn games! Get to know our organization and learn more about Drexel's Global Public Health Student Brigade chapter! Come for Cornhole, Ladder Toss, Frisbee, Connect Four, Spike Ball, Kan Jam, and Giant Jenga---we hope to see you there!</span></p>",
-            "location": "Race Lawn",
-            "startsOn": "2026-06-19T16:00:00+00:00",
-            "endsOn": "2026-06-19T19:00:00+00:00",
-            "imagePath": null,
-            "theme": "Social",
-            "categoryIds": [
-                "271",
-                "276",
-                "281"
-            ],
-            "categoryNames": [
-                "Training/Information Session",
-                "Social",
-                "Athletic"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.67602
-        },
         {
             "id": "12480104",
             "institutionId": 3859,
@@ -288,7 +220,7 @@
             "longitude": "-2.908410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.35436
+            "@search.score": 99.86068
         },
         {
             "id": "12488485",
@@ -324,8 +256,8 @@
             "latitude": "40.101220",
             "longitude": "-75.138880",
             "recScore": null,
-            "rsvpTotal": 6,
-            "@search.score": 99.327446
+            "rsvpTotal": 10,
+            "@search.score": 99.83408
         },
         {
             "id": "12484021",
@@ -353,7 +285,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.32296
+            "@search.score": 99.82965
         },
         {
             "id": "12462697",
@@ -389,7 +321,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.24436
+            "@search.score": 99.75197
         },
         {
             "id": "12481977",
@@ -417,7 +349,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.21738
+            "@search.score": 99.7253
         },
         {
             "id": "12479944",
@@ -449,7 +381,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.21963
+            "@search.score": 99.72753
+        },
+        {
+            "id": "12491001",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-06-24T19:00:00+00:00",
+            "endsOn": "2026-06-24T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.63407
         },
         {
             "id": "12484020",
@@ -483,7 +449,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.03029
+            "@search.score": 99.54041
         },
         {
             "id": "12478016",
@@ -519,7 +485,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 99.02125
+            "@search.score": 99.53149
         },
         {
             "id": "12481249",
@@ -553,8 +519,8 @@
             "latitude": null,
             "longitude": null,
             "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 99.00543
+            "rsvpTotal": 2,
+            "@search.score": 99.515854
         },
         {
             "id": "12477332",
@@ -588,7 +554,45 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.00317
+            "@search.score": 99.51362
+        },
+        {
+            "id": "12490650",
+            "institutionId": 3859,
+            "organizationId": 35861,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Theme Park Engineering and Design Group",
+            "organizationProfilePicture": "6700e7dc-5505-4d4b-b183-e3e0dcf19cd5c4c51e74-0883-4e33-af84-3c763a161bd1.jpg",
+            "organizationNames": [],
+            "name": "Drexel Theme Park Engineering and Design General Body Meeting",
+            "description": "<p>Come join us this week for one of our weekly discussions on the Theme Park industry! We will tackle a new topic each week, whether it be ride engineering, theme park history, members' co-op experience, or host design challenges!</p>\r\n<p>To see this week's GBM topic and other club activities like our projects or trips, check our club media @DrexelTPED, or stay up to date through our Discord! (<a href=\"https://discord.gg/AEfsN25z\">Click here to join our Discord</a>)</p>",
+            "location": "GHALL 368 - Classroom",
+            "startsOn": "2026-06-25T22:30:00+00:00",
+            "endsOn": "2026-06-26T00:00:00+00:00",
+            "imagePath": "2ae748ad-f12f-4a86-ab0c-90caf704ce42d57e0301-2946-4074-9dfe-de6935923f80.png",
+            "theme": "Social",
+            "categoryIds": [
+                "273",
+                "275",
+                "276",
+                "282"
+            ],
+            "categoryNames": [
+                "General Body Meeting",
+                "Educational",
+                "Social",
+                "Networking"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.51138
         },
         {
             "id": "12479945",
@@ -620,7 +624,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.00317
+            "@search.score": 99.51362
         },
         {
             "id": "12467336",
@@ -656,7 +660,7 @@
             "longitude": "-75.146840",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.034805
+            "@search.score": 99.544876
         },
         {
             "id": "12464990",
@@ -692,7 +696,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.921715
+            "@search.score": 99.43313
+        },
+        {
+            "id": "12490658",
+            "institutionId": 3859,
+            "organizationId": 12542,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Community Student Association",
+            "organizationProfilePicture": "696057c1-48fb-45b2-83cf-e10c9137eab0eb7efacb-1936-4e6e-ab4b-f4241bc21c0b.png",
+            "organizationNames": [],
+            "name": "Snow Cone Social",
+            "description": "<p>Beat the Philadelphia heat and join us for a refreshing Snow Cone Social hosted by CSA! Come cool down between classes, grab your favorite flavor, and connect with fellow Drexel Dragons in a fun, laid-back setting. Whether you&rsquo;re looking to meet new people or just take a break from the grind, this is the perfect mid-week pick-me-up. Come through to University City&rsquo;s coolest event of the season and we&rsquo;ll see you there!</p>",
+            "location": "Lancaster Walk - DAC",
+            "startsOn": "2026-06-26T21:00:00+00:00",
+            "endsOn": "2026-06-26T23:00:00+00:00",
+            "imagePath": "a242dde5-d984-4878-ace5-0eb0cb7148bd53e4a9b4-507a-4ac2-aaab-a29051b070bf.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.956830",
+            "longitude": "-75.189420",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.41074
         },
         {
             "id": "12381198",
@@ -727,8 +765,8 @@
             "latitude": "40.085780",
             "longitude": "-75.129410",
             "recScore": null,
-            "rsvpTotal": 1,
-            "@search.score": 98.82195
+            "rsvpTotal": 2,
+            "@search.score": 99.33454
         },
         {
             "id": "12486457",
@@ -762,7 +800,99 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.79925
+            "@search.score": 99.3121
+        },
+        {
+            "id": "12490851",
+            "institutionId": 3859,
+            "organizationId": 12631,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Delta Phi Epsilon",
+            "organizationProfilePicture": "29bff88b-1208-4994-a860-6f77b9ef6161acecdda3-c7ec-4ff6-b357-ecfd6c7a00b6.jpg",
+            "organizationNames": [],
+            "name": "International Leadership Forum",
+            "description": "<p>Biannual leadership conference</p>",
+            "location": "Le M\u00e9ridien",
+            "startsOn": "2026-06-25T09:30:00+00:00",
+            "endsOn": "2026-06-28T22:00:00+00:00",
+            "imagePath": null,
+            "theme": "GroupBusiness",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "35.216900",
+            "longitude": "-80.839860",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.56943
+        },
+        {
+            "id": "12489377",
+            "institutionId": 3859,
+            "organizationId": 60018,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Lindy Center for Civic Engagement",
+            "organizationProfilePicture": "e39d6e63-234f-4510-bbab-4cc1bcdd8db0d4453e6a-3816-479d-a4f2-0d5d185f4d21.png",
+            "organizationNames": [],
+            "name": "What is AI? Let's Talk About it. ",
+            "description": "<p>Sustainable &amp; Just Futures is leading a discussion on AI. Join a group of thoughtful student, faculty, and community members to talk about the infrastructure behind AI. Explore strategies of utility, strategy, and ethics to better understand the role AI plays in your life.&nbsp;</p>\r\n<p>Register here:&nbsp;https://drexel.qualtrics.com/jfe/form/SV_1zuAHnxO2Khl3mu&nbsp;</p>\r\n<p>&nbsp;</p>",
+            "location": "Lindy Center for Civic Engagement",
+            "startsOn": "2026-06-29T20:00:00+00:00",
+            "endsOn": "2026-06-29T22:00:00+00:00",
+            "imagePath": "ee157511-e653-4006-8bc2-80d973ff81e8e268d216-9a2a-4b47-bd1e-400219166d9e.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "19658"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Sustainability"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.958080",
+            "longitude": "-75.188270",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.0916
+        },
+        {
+            "id": "12490648",
+            "institutionId": 3859,
+            "organizationId": 405561,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "MedFit Mind and Movement",
+            "organizationProfilePicture": "00e237d0-6566-4a92-bc6e-6e2207873c47ed312334-dfee-4e2d-8fd6-891509e5d45f.png",
+            "organizationNames": [],
+            "name": "MedFit Summer General Body Meeting",
+            "description": "<p>Join us for our summer term general body! We will be reviewing MedFit's mission, upcoming events, how to stay connected and more!</p>",
+            "location": "PEARL 101 - Classroom",
+            "startsOn": "2026-06-29T23:00:00+00:00",
+            "endsOn": "2026-06-30T00:00:00+00:00",
+            "imagePath": "aa441d7d-2316-4a09-886d-196f3fc911949a86c955-4167-4633-bc43-83c2a9ab7f71.png",
+            "theme": "Social",
+            "categoryIds": [],
+            "categoryNames": [],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 99.078064
         },
         {
             "id": "12464997",
@@ -796,7 +926,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.48238
+            "@search.score": 98.999016
         },
         {
             "id": "12481978",
@@ -824,7 +954,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.45492
+            "@search.score": 98.97188
         },
         {
             "id": "12479946",
@@ -856,7 +986,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.45721
+            "@search.score": 98.97414
+        },
+        {
+            "id": "12491002",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-01T19:00:00+00:00",
+            "endsOn": "2026-07-01T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 98.87903
         },
         {
             "id": "12464167",
@@ -892,7 +1056,7 @@
             "longitude": "-75.154600",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.35635
+            "@search.score": 98.8745
         },
         {
             "id": "12477333",
@@ -926,7 +1090,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.23686
+            "@search.score": 98.75644
         },
         {
             "id": "12462722",
@@ -962,7 +1126,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.70666
+            "@search.score": 98.232635
         },
         {
             "id": "12485786",
@@ -996,7 +1160,73 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 97.59702
+            "@search.score": 98.12434
+        },
+        {
+            "id": "12491003",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-08T19:00:00+00:00",
+            "endsOn": "2026-07-08T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 98.11049
+        },
+        {
+            "id": "12490540",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Field Trip: Art and Community Protest at the Asian Arts Initiative",
+            "description": "<div style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; color: #000000;\" data-olk-copy-source=\"MailCompose\">Join us for a visit to the Asian Arts Initiative gallery in Chinatown to explore their current exhibit on the community's history of organizing and protest. Attendees will be welcomed by curator Cole Roberts for a further discussion on the specific role of youth and inter-generational organizing in Chinatown. <strong>To depart together from Bentley Hall, </strong>please meet Leah Gates in the Bentley lobby by the fireplace by 4:30. <span style=\"font-size: 14.6667px;\">Students are responsible for their own SEPTA fare to travel to the exhibit. You are also welcome to meet us at the gallery (1219 Vine Street)&nbsp;at 5. Please let us know in the RSVP which you plan to do. This event is open to all; please feel free to invite and bring friends.</span></div>\r\n<div style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 14.6667px; color: #000000;\">&nbsp;</div>\r\n<div style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; color: #000000;\">\"The &ldquo;No Arena&rdquo; movement was a landmark moment for the power of everyday people organizing against displacement. On the occasion of America&rsquo;s 250th Anniversary, <em>No Arena: Making A Movement</em>&nbsp; highlights a decentralized grassroots movement that was led by people of color, serving as a model for what our democracy can be. This exhibition celebrates a movement that inspired people across the city to come together for community-led futures and against the proposed 76 Place arena development, a basketball arena proposed to be built less than one block from Chinatown. Through archival materials, audio installations, first-hand accounts of key moments, and insight into the strategies that propelled the movement, the exhibition creates a living history of No Arena that reflects the messiness and vitality of organizing and honors the thousands of supporters who built community power to defend our city. This exhibition is presented by Asian Americans United, Asian Pacific Islander Political Alliance, Philadelphia Folklore Project, and Asian Arts Initiative.\" <a href=\"https://asianartsinitiative.org/programs/no-arena-making-a-movement\">Learn more at asianartsinitiative.org</a>.</div>\r\n<div style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; color: #000000;\">&nbsp;</div>\r\n<div style=\"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetica, sans-serif; font-size: 11pt; color: #000000;\">For questions or to request accommodations, please contact Leah Gates at lhg33@drexel.edu.</div>",
+            "location": "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5",
+            "startsOn": "2026-07-09T20:30:00+00:00",
+            "endsOn": "2026-07-09T22:00:00+00:00",
+            "imagePath": "c9b43e25-2594-44a0-8a3e-1bdc905d2ff36181e839-a3b8-4a70-a716-8b95c3264140.png",
+            "theme": "Cultural",
+            "categoryIds": [
+                "284"
+            ],
+            "categoryNames": [
+                "Cultural"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.958120",
+            "longitude": "-75.189700",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 97.99263
         },
         {
             "id": "12477334",
@@ -1030,7 +1260,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.45666
+            "@search.score": 97.98569
         },
         {
             "id": "12485441",
@@ -1064,7 +1294,7 @@
             "longitude": "-75.163870",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.34873
+            "@search.score": 97.87908
         },
         {
             "id": "12483350",
@@ -1096,7 +1326,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 97.27349
+            "@search.score": 97.80476
         },
         {
             "id": "12424241",
@@ -1124,7 +1354,42 @@
             "longitude": "-75.129410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.04698
+            "@search.score": 97.58105
+        },
+        {
+            "id": "12489054",
+            "institutionId": 3859,
+            "organizationId": 416970,
+            "organizationIds": [],
+            "branchId": 416970,
+            "branchIds": [],
+            "organizationName": "Elkins Park Student Success & Campus Engagement",
+            "organizationProfilePicture": "cb79f974-14e4-4a7c-8805-717b1b4d345e720ccccb-5fee-4852-a689-278214a9439b.png",
+            "organizationNames": [],
+            "name": "Open House",
+            "description": "<p>&nbsp;</p>\r\n<div>\r\n<p><strong>Grand Opening Open House: Come Check Out Our New Space!&nbsp;</strong></p>\r\n<p>We&rsquo;ve officially moved&mdash;and we&rsquo;re celebrating in style! Join us for an exciting Open House as we welcome you into our brand-new space.</p>\r\n<p>Come explore, connect, and have some fun! Meet the amazing Student Success &amp; Student Affairs staff, learn about the resources available to support you, and see how you can get involved.</p>\r\n<p>What to expect:<br />&bull; Light refreshments to enjoy while you mingle<br />&bull; Raffles and exciting giveaways (you don&rsquo;t want to miss these!)<br />&bull; Opportunities to meet and connect with our team<br />&bull; A first look at our new home</p>\r\n<p>Bring a friend, stop by, and help us kick off this exciting new chapter. We can&rsquo;t wait to see you there!</p>\r\n</div>\r\n<p>&nbsp;</p>",
+            "location": "North Building 4th Floor",
+            "startsOn": "2026-07-13T16:00:00+00:00",
+            "endsOn": "2026-07-13T18:00:00+00:00",
+            "imagePath": "8f86e6bc-ef8f-47a0-9b31-fc781c19c508a39bc37d-d7a2-4ad3-ad04-239a7bc18614.png",
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food",
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 97.567024
         },
         {
             "id": "12469268",
@@ -1156,7 +1421,7 @@
             "longitude": "-75.129410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.03752
+            "@search.score": 97.5717
         },
         {
             "id": "12464166",
@@ -1190,7 +1455,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.00912
+            "@search.score": 97.54365
         },
         {
             "id": "12464998",
@@ -1224,7 +1489,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.91668
+            "@search.score": 97.45235
         },
         {
             "id": "12485440",
@@ -1252,7 +1517,77 @@
             "longitude": "-75.179150",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.90481
+            "@search.score": 97.44063
+        },
+        {
+            "id": "12491004",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-15T19:00:00+00:00",
+            "endsOn": "2026-07-15T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 97.327965
+        },
+        {
+            "id": "12490917",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Nerd Night @ Drexel U",
+            "description": "<p>Nerd Night @ Drexel U is a quarterly event sponsored by Undergraduate Research &amp; Enrichment Programs. This event features three informal talks by Drexel students about their research or other topics of interest. In between talks there are rounds of trivia. Come nerd out with us!</p>\r\n<p>RSVP on DragonLink to attend.</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-15T22:00:00+00:00",
+            "endsOn": "2026-07-16T00:00:00+00:00",
+            "imagePath": "a32635d4-b84e-4f10-9eed-6a604104a180a67b082a-6255-4128-a6b5-ff0e2a03cc7e.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 97.31386
         },
         {
             "id": "12477335",
@@ -1286,7 +1621,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.662025
+            "@search.score": 97.20086
         },
         {
             "id": "12462725",
@@ -1322,7 +1657,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.11191
+            "@search.score": 96.65764
+        },
+        {
+            "id": "12491005",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-22T19:00:00+00:00",
+            "endsOn": "2026-07-22T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 96.53093
         },
         {
             "id": "12485792",
@@ -1357,7 +1726,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 95.881615
+            "@search.score": 96.43025
         },
         {
             "id": "12477336",
@@ -1391,7 +1760,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.85243
+            "@search.score": 96.40145
         },
         {
             "id": "12464999",
@@ -1425,7 +1794,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.291794
+            "@search.score": 95.84796
+        },
+        {
+            "id": "12491006",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-07-29T19:00:00+00:00",
+            "endsOn": "2026-07-29T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 95.71884
         },
         {
             "id": "12477337",
@@ -1459,7 +1862,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.027306
+            "@search.score": 95.58688
         },
         {
             "id": "12485439",
@@ -1487,7 +1890,43 @@
             "longitude": "-75.164140",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.37471
+            "@search.score": 98.89263
+        },
+        {
+            "id": "12490927",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Gilman Scholarship Info Session",
+            "description": "<p>Are you interested in studying abroad? Are you a Federal Pell grant recipient? If you answered yes to both of those questions, join us to learn about the Benjamin A. Gilman Scholarship. This opportunity provides funding for students of limited financial means to study or intern abroad in a country of their choice. During this information session we will review eligibility criteria and the application components.</p>\r\n<p>RSVP on DragonLink to attend</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-08-03T16:00:00+00:00",
+            "endsOn": "2026-08-03T17:00:00+00:00",
+            "imagePath": "8af8a231-c067-48ee-8fd5-1b650c3cb27361b9fb57-8f83-419e-a4a3-4ea922877ba6.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "271",
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 95.14408
         },
         {
             "id": "12462736",
@@ -1523,7 +1962,77 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.45573
+            "@search.score": 95.02274
+        },
+        {
+            "id": "12491007",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 1st Floor",
+            "startsOn": "2026-08-05T19:00:00+00:00",
+            "endsOn": "2026-08-05T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 94.89112
+        },
+        {
+            "id": "12490935",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Undergraduate STEM Fellowships Info Session",
+            "description": "<p>Many fellowships and scholarships provide opportunities for undergraduates interested in careers in scientific research and application. This session will provide an overview of several funded opportunities for undergraduates to pursue STEM research, graduate study, and leadership development, including the NOAA Hollings Scholarship, Goldwater Scholarship, DoD SMART Program, and DAAD Research Internships in Science &amp; Engineering. Learn more at <a href=\"https://dragonlink.drexel.edu/submitter/organization/pennonihonorscollege/eventsubmission/drexel.edu/fellowships\">drexel.edu/fellowships</a>.</p>\r\n<p>RSVP on DragonLink to attend</p>",
+            "location": "Bentley 156",
+            "startsOn": "2026-08-05T21:00:00+00:00",
+            "endsOn": "2026-08-05T22:00:00+00:00",
+            "imagePath": "c5a8199a-c958-4a2d-b48d-c8f66823de5b1515c396-6b18-4dba-a1e6-71031cc326a8.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "271",
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 94.88117
         },
         {
             "id": "12477338",
@@ -1557,7 +2066,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.18603
+            "@search.score": 94.75659
         },
         {
             "id": "12465000",
@@ -1591,7 +2100,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.60308
+            "@search.score": 94.18138
+        },
+        {
+            "id": "12491008",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-08-12T19:00:00+00:00",
+            "endsOn": "2026-08-12T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 94.04715
         },
         {
             "id": "12477339",
@@ -1625,7 +2168,125 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.327965
+            "@search.score": 93.90995
+        },
+        {
+            "id": "12490970",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Gilman Scholarship Info Session",
+            "description": "<p>Are you interested in studying abroad? Are you a Federal Pell grant recipient? If you answered yes to both of those questions, join us to learn about the Benjamin A. Gilman Scholarship. This opportunity provides funding for students of limited financial means to study or intern abroad in a country of their choice. During this information session we will review eligibility criteria and the application components.</p>\r\n<p><a href=\"https://drexel.zoom.us/meeting/register/CepatDZzRhyRUKFboBsvGQ#/registration\"><strong>Register on Zoom to attend</strong></a></p>",
+            "location": "Online",
+            "startsOn": "2026-08-19T18:00:00+00:00",
+            "endsOn": "2026-08-19T19:00:00+00:00",
+            "imagePath": "5a95122c-47d3-4341-b885-094888ad780072d1f04c-3577-42c8-90ab-c10740b55990.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "271",
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 93.19145
+        },
+        {
+            "id": "12491009",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "UREP Drop-In Hours",
+            "description": "<p>Do you have questions about undergraduate research, fellowships, or enrichment programs? Drop-in hours are a chance to chat with staff and UREP ambassadors and get answers to your questions. No RSVP required!</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-08-19T19:00:00+00:00",
+            "endsOn": "2026-08-19T21:00:00+00:00",
+            "imagePath": "2494ac61-6738-417f-a578-a6191d2bf4e50fafe210-3f41-4c3d-adc4-d1c5e4fa86e5.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 93.18628
+        },
+        {
+            "id": "12490667",
+            "institutionId": 3859,
+            "organizationId": 12497,
+            "organizationIds": [
+                "12497",
+                "383397"
+            ],
+            "branchId": 12429,
+            "branchIds": [
+                "12429"
+            ],
+            "organizationName": "Fraternity and Sorority Life",
+            "organizationProfilePicture": "98a1856d-e2da-45d9-9c02-672da3bdcb06a48138ce-882f-4352-b385-c8f82d3c0c83.jpg",
+            "organizationNames": [
+                "Fraternity and Sorority Life",
+                "Student Life Leadership Curriculum"
+            ],
+            "name": "FSL Health & Safety Training",
+            "description": "<p><span style=\"text-decoration: underline;\"><a href=\"https://drexel.qualtrics.com/jfe/form/SV_bBmaUTugdQwA4oC\"><strong>Register to attend this program here.</strong></a></span></p>\r\n<p>&nbsp;</p>\r\n<p>Health &amp; Safety Training is designed to prepare fraternity &amp; sorority leaders to manage four core areas of risk:&nbsp;<br />1. Alcohol &amp; Substance Use<br />2. Hazing<br />3. Bystander Intervention<br />4. Mental Health<br /><br />This training will equip leaders with the skills needed to cultivate a culture of care within their chapter and the larger fraternity and sorority community. Contributions from peer offices on campus will ensure attendees are connected to a strong network of campus resources to aid in the development of this culture.<br /><br />All active chapters are required to register four (4) attendees for the 2026-2027 Health &amp; Safety Training as a component of the 2026-2027 Leadership Curriculum. The recommended officers are President, Risk Manager, Social Officer and New Member Educator, however chapters may submit registrations for alternate delegates if needed. Chapters with active membership below four will not be penalized.&nbsp; Chapters may send additional attendees beyond the four required representatives by contacting lnw43@drexel.edu prior to August 13. Food will be provided.<br /><br /><strong>Registration for Health &amp; Safety Training is due via Qualtrics by August 13 at 12pm. Please contact Lindsay Wolf (lnw43@drexel.edu) for any questions.&nbsp;</strong></p>",
+            "location": "Main Lobby",
+            "startsOn": "2026-08-20T19:30:00+00:00",
+            "endsOn": "2026-08-20T22:30:00+00:00",
+            "imagePath": "cf3c76d2-c27e-4d58-a563-c80157739fba0de205f4-2966-4f58-9168-cbb4aadd89a8.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "271",
+                "275",
+                "10612",
+                "22028"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Leadership Development",
+                "Fraternity and Sorority Life"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.954450",
+            "longitude": "-75.189320",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 93.05928
         },
         {
             "id": "12477340",
@@ -1659,7 +2320,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 92.45242
+            "@search.score": 93.0463
         },
         {
             "id": "12465001",
@@ -1693,7 +2354,77 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 91.845314
+            "@search.score": 92.447586
+        },
+        {
+            "id": "12490996",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "Gilman Scholarship Info Session",
+            "description": "<p>Are you interested in studying abroad? Are you a Federal Pell grant recipient? If you answered yes to both of those questions, join us to learn about the Benjamin A. Gilman Scholarship. This opportunity provides funding for students of limited financial means to study or intern abroad in a country of their choice. During this information session we will review eligibility criteria and the application components.</p>\r\n<p>RSVP on DragonLink to attend</p>",
+            "location": "Bentley 2nd Floor",
+            "startsOn": "2026-08-25T20:00:00+00:00",
+            "endsOn": "2026-08-25T21:00:00+00:00",
+            "imagePath": "49dc5884-713f-4292-98c0-c011b3b916e3193a91a6-fef5-418a-bf9a-352f66dd0522.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "271",
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Training/Information Session",
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 92.42915
+        },
+        {
+            "id": "12491024",
+            "institutionId": 3859,
+            "organizationId": 321743,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Pennoni Honors College",
+            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
+            "organizationNames": [],
+            "name": "STAR Scholars Summer Showcase",
+            "description": "<p>Save the date for the 2026 STAR Scholars Summer Showcase!</p>\r\n<p>Join us for the end-of-summer celebration of the research, scholarship, and creative work completed by our 2026 STAR Scholars. We look forward to seeing you there!</p>\r\n<p>9:30am-11:00am - Poster Session A<br />11:30am-1:00pm - Poster Session B <br />1:30pm-3:00pm - Poster Session C</p>",
+            "location": "Bentley Hall 1st Floor",
+            "startsOn": "2026-08-27T13:15:00+00:00",
+            "endsOn": "2026-08-27T19:00:00+00:00",
+            "imagePath": "0e55c073-cf27-4df5-a75f-7c6dee00822e4de499fc-cd9c-4310-a60c-a2fa61aa1fbe.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "278"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Academic"
+            ],
+            "benefitNames": [],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.957990",
+            "longitude": "-75.189580",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 92.2113
         },
         {
             "id": "12477341",
@@ -1727,7 +2458,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 91.558685
+            "@search.score": 92.16495
         },
         {
             "id": "12477342",
@@ -1761,7 +2492,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 90.645966
+            "@search.score": 91.26515
         }
     ]
 }
