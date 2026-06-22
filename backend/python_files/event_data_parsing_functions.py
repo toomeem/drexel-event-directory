@@ -8,9 +8,9 @@ from datetime import datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
+import requests
 from pydantic import BaseModel
 
-import requests
 from backend.python_files.event_class import Event
 
 PHILLY_TZ = ZoneInfo("America/New_York")
@@ -458,7 +458,7 @@ def invalid_event(kwargs):
                        "Study Abroad Walk-In Hours", "Study Abroad 101",
                        "Intro to Canvas, Drexel's Learning Management System",
                        "West Philadelphia Community Research Review Board", "Creator Studio",
-                       "Health Career Exploration Camp"]
+                       "Health Career Exploration Camp", "Revisit 1876"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
@@ -550,8 +550,8 @@ def create_event_object(source, event_json):
 
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
-    else:
-        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"])
+    # else:
+    #     kwargs["image_url"] = get_image_s3_url(kwargs["image_url"])
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:

@@ -2,9 +2,8 @@ import os
 import time
 from pprint import pprint
 
-from PIL import Image
-
 import requests
+from PIL import Image
 
 
 def test_eventbrite():
