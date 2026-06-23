@@ -57,7 +57,7 @@ def remove_events_from_s3(bucket, event_ids):
     bucket.delete_objects(Delete={"Objects": [{"Key": f"backend/chunked/{event_id}.json"} for event_id in event_ids]})
 
 
-def upload_file_to_s3(bucket, file_name):
+def upload_chunk_file_to_s3(bucket, file_name):
     local_file_path = "backend/chunking_tmp_dir/" + file_name + ".json"
     s3_file_path = "backend/chunked/" + file_name + ".json"
     bucket.upload_file(local_file_path, s3_file_path)
@@ -70,13 +70,16 @@ def sync_s3_knowledge_base():
                                dataSourceId=os.getenv("AWS_BEDROCK_DATA_SOURCE_ID"))
 
 
-def collect_all_events():
+def collect_all_events(bucket):
     events = []
 
-    events.extend([create_event_object("dragonlink", event_json) for event_json in collect_dragonlink_events()])
-    events.extend([create_event_object("drexel_events", event_json) for event_json in collect_drexel_events()])
     events.extend(
-        [create_event_object("drexel_athletics", event_json) for event_json in collect_drexel_athletics_events()])
+        [create_event_object("dragonlink", event_json, bucket) for event_json in collect_dragonlink_events()])
+    events.extend(
+        [create_event_object("drexel_events", event_json, bucket) for event_json in collect_drexel_events()])
+    events.extend(
+        [create_event_object("drexel_athletics", event_json, bucket) for event_json in
+         collect_drexel_athletics_events()])
     events = [e for e in events if e is not None and e.start_time is not None]
 
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
@@ -163,20 +166,15 @@ def fill_db():
     return uploaded_event_count
 
 
-def update_events_file():
+def update_events_file(bucket):
     print("\nCollecting events...")
-    events = collect_all_events()
+    events = collect_all_events(bucket)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
 
-def upload_all_events_to_s3():
+def upload_all_events_to_s3(bucket):
     print("\nSyncing events to S3...")
-
-    s3 = boto3.resource(service_name='s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-                        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
-    bucket_name = os.getenv("S3_BUCKET_NAME")
-    bucket = s3.Bucket(bucket_name)
 
     events = load_events_from_file()
     events_by_id = {}
@@ -194,7 +192,7 @@ def upload_all_events_to_s3():
     for event_id in new_event_ids:
         event = events_by_id[event_id]
         create_event_chunk_file(event)
-        upload_file_to_s3(bucket, event._id)
+        upload_chunk_file_to_s3(bucket, event._id)
 
     clear_tmp_dir()
 
@@ -207,9 +205,14 @@ def upload_all_events_to_s3():
 
 
 def main():
-    update_events_file()
+    s3 = boto3.resource(service_name='s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
+    bucket_name = os.getenv("S3_BUCKET_NAME")
+    bucket = s3.Bucket(bucket_name)
+
+    update_events_file(bucket)
     fill_db()
-    upload_all_events_to_s3()
+    upload_all_events_to_s3(bucket)
 
 
 if __name__ == "__main__":

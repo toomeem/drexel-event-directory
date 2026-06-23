@@ -516,13 +516,21 @@ def parse_org_name(org_name):
     return org_name.strip(":*_;-,. ")
 
 
-def get_image_s3_url(original_url):
+def upload_event_image_file_to_s3(bucket, file_name):
+    local_file_path = "backend/event_image_tmp_dir/" + file_name
+    s3_file_path = "images/event_specific_images/" + file_name
+    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={'ACL': 'public-read'})
+
+
+def get_image_s3_url(original_url, bucket):
     # check if in s3, if not, add to s3
     # either way return the link to it
+    # images = s3_client.list_objects_v2(Prefix="images/event_specific_images/")
+    # pprint(images)
     pass
 
 
-def create_event_object(source, event_json):
+def create_event_object(source, event_json, bucket):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
@@ -550,8 +558,8 @@ def create_event_object(source, event_json):
 
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
-    # else:
-    #     kwargs["image_url"] = get_image_s3_url(kwargs["image_url"])
+    else:
+        get_image_s3_url(kwargs["image_url"], bucket)
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
