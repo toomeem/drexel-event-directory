@@ -526,15 +526,19 @@ def upload_event_image_file_to_s3(bucket, file_name):
     bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={'ACL': 'public-read'})
 
 
-def get_image_s3_url(original_url, bucket):
+def get_image_s3_url(original_url, s3_client, bucket_name):
     # check if in s3, if not, add to s3
     # either way return the link to it
-    # images = s3_client.list_objects_v2(Prefix="images/event_specific_images/")
-    # pprint(images)
+    s3_subpath = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/specific_event_images/"
+    images = s3_client.list_objects_v2(bucket_name=bucket_name, Prefix="images/event_specific_images/")
+    image_extension = original_url.split(".")[-1]
+    image_id = stable_hash(original_url) + image_extension
+    if image_id in images:
+        return s3_subpath + image_id
     pass
 
 
-def create_event_object(source, event_json, bucket):
+def create_event_object(source, event_json, s3_client, bucket_name):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
@@ -563,7 +567,7 @@ def create_event_object(source, event_json, bucket):
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
     else:
-        get_image_s3_url(kwargs["image_url"], bucket)
+        get_image_s3_url(kwargs["image_url"], s3_client, bucket_name)
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
