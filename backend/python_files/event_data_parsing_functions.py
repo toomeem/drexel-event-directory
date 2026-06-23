@@ -114,7 +114,8 @@ def simplify_location(location):
                           "Lits Building": "Lits Building", "Independence National Park": "Independence National Park",
                           "3509 Brandywine St & the corner of 36th and Spring Garden": "3509 Brandywine St",
                           "West Philadelphia": "West Philadelphia",
-                          "Hafner Community Center": "Hafner Community Center"}
+                          "Hafner Community Center": "Hafner Community Center",
+                          "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5": "Bentley Hall"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
@@ -290,7 +291,7 @@ def dragonlink_event_parsing(event_json, kwargs):
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
-    specific_events_to_exclude = ["12449523", "12449521"]
+    specific_events_to_exclude = ["12449523", "12449521", "12492168"]
 
     if str(event_json["id"]) in specific_events_to_exclude:
         return None
@@ -344,6 +345,8 @@ def drexel_event_parsing(event_json, kwargs):
     if event_json["audiences"] and not any([i in event_json["audiences"] for i in correct_audiences]):
         return None
 
+    if "Registration for this event has closed" in event_json["body"]:
+        return None
     source = "drexel_events"
     authors = event_json.get("authors")
     department_names = event_json.get("departmentNames")
@@ -458,7 +461,8 @@ def invalid_event(kwargs):
                        "Study Abroad Walk-In Hours", "Study Abroad 101",
                        "Intro to Canvas, Drexel's Learning Management System",
                        "West Philadelphia Community Research Review Board", "Creator Studio",
-                       "Health Career Exploration Camp", "Revisit 1876"]
+                       "Health Career Exploration Camp", "Revisit 1876", ]
+    # "Drexel University Digital Development Camp, VirtuaQuest"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
