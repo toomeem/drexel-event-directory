@@ -8,6 +8,7 @@ from datetime import datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
+import boto3
 import requests
 from pydantic import BaseModel
 
@@ -520,22 +521,44 @@ def parse_org_name(org_name):
     return org_name.strip(":*_;-,. ")
 
 
-def upload_event_image_file_to_s3(bucket, file_name):
-    local_file_path = "backend/event_image_tmp_dir/" + file_name
-    s3_file_path = "images/event_specific_images/" + file_name
-    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={'ACL': 'public-read'})
+def upload_file_to_s3(s3_client, bucket_name, local_file_path, s3_file_path):
+    bucket = boto3.resource("s3").Bucket(bucket_name)
+    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={"ACL": "public-read"})
+
+
+def image_in_s3(s3_client, bucket_name, file_name):
+    s3 = boto3.client('s3')
+    response = s3.list_objects_v2(Bucket=bucket_name, Prefix="images/event_specific_images/")
+
+    for obj in response.get('Contents', []):
+        if file_name in obj["Key"]:
+            return True
+    return False
 
 
 def get_image_s3_url(original_url, s3_client, bucket_name):
     # check if in s3, if not, add to s3
     # either way return the link to it
-    s3_subpath = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/specific_event_images/"
-    images = s3_client.list_objects_v2(bucket_name=bucket_name, Prefix="images/event_specific_images/")
-    image_extension = original_url.split(".")[-1]
-    image_id = stable_hash(original_url) + image_extension
-    if image_id in images:
-        return s3_subpath + image_id
-    pass
+    if "drexel-events-general-bucket-034584778101" in original_url:
+        return original_url
+
+    s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
+    if "?" in original_url:
+        image_extension = original_url.split("?")[0].split(".")[-1]
+    else:
+        image_extension = original_url.split(".")[-1]
+
+    image_name = stable_hash(original_url) + "." + image_extension
+    local_file_path = "backend/event_image_tmp_dir/" + image_name
+    s3_file_path = "images/event_specific_images/" + image_name
+
+    if not image_in_s3(s3_client, bucket_name, image_name):
+        img_data = requests.get(original_url).content
+        with open(local_file_path, "wb") as handler:
+            handler.write(img_data)
+        upload_file_to_s3(s3_client, bucket_name, local_file_path, s3_file_path)
+
+    return s3_base_path + s3_file_path
 
 
 def create_event_object(source, event_json, s3_client, bucket_name):
@@ -567,7 +590,7 @@ def create_event_object(source, event_json, s3_client, bucket_name):
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
     else:
-        get_image_s3_url(kwargs["image_url"], s3_client, bucket_name)
+        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"], s3_client, bucket_name)
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
@@ -608,7 +631,7 @@ def collect_dragonlink_events(count=300):
     return response["value"]
 
 
-def create_drexel_events_api_url(page=1):
+def create_drexel_events_api_url(page):
     return f"https://drexel.edu/api/du/scevent?pageId=%7B1F80CA59-5675-4C76-B499-BA06662B3E34%7D&page={page}&perPage=10&sortOrder=asc&loadAllPages=false&q=&sortBy=relevance&startDate=&endDate="
 
 

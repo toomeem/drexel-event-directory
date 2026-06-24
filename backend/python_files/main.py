@@ -26,8 +26,7 @@ def create_event_chunk_file(event):
         json.dump(event_json, f)
 
 
-def clear_tmp_dir():
-    path = "backend/chunking_tmp_dir/"
+def clear_directory(path):
     for file in os.listdir(path):
         os.remove(os.path.join(path, file))
 
@@ -190,13 +189,13 @@ def upload_all_events_to_s3(bucket):
 
     remove_events_from_s3(bucket, old_event_ids)
 
-    os.makedirs("backend/chunking_tmp_dir/", exist_ok=True)
     for event_id in new_event_ids:
         event = events_by_id[event_id]
         create_event_chunk_file(event)
         upload_chunk_file_to_s3(bucket, event._id)
 
-    clear_tmp_dir()
+    clear_directory("backend/chunking_tmp_dir/")
+    clear_directory("backend/event_image_tmp_dir/")
 
     if new_event_ids or old_event_ids:
         time.sleep(3)
@@ -207,10 +206,10 @@ def upload_all_events_to_s3(bucket):
 
 
 def main():
-    s3_client = boto3.resource(service_name='s3', aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
-                               aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"))
+    s3_client = boto3.client(service_name="s3", aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+                             aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY"), region_name="us-east-1")
     bucket_name = os.getenv("S3_BUCKET_NAME")
-    bucket = s3_client.Bucket(bucket_name)
+    bucket = boto3.resource("s3").Bucket(bucket_name)
 
     update_events_file(s3_client, bucket_name)
     fill_db()
