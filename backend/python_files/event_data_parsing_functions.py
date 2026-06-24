@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 
 import boto3
 import requests
+from PIL import Image
 from pydantic import BaseModel
 
 from backend.python_files.event_class import Event
@@ -187,23 +188,41 @@ def match_default_image(name, org_name, location):
     org_name = org_name.lower() if org_name else ""
     location = location.lower() if location else ""
 
-    drexel_default_image = s3_subpath + "lanc_walk2.jpg"
-    dac_image = s3_subpath + "dac.jpg"
-    hagerty_library_image = s3_subpath + "library.jpg"
-    pisb_image = s3_subpath + "pisb.jpg"
-    rush_building = s3_subpath + "rush-building.jpg"
-    pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
-    westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
+    # pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
+    # westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
+    # korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
+    # med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
+    # humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
+    # pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
+    # rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
+    # hagerty_library_image = "https://pbs.twimg.com/media/G8D-sieWQAMOGeO.jpg"
+    # drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
+    # dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
+    # cci_image = "https://stradallc.com/app/uploads/2024/02/DrexelCCI-Lobby2.jpg"
+    # elkins_park_image = "https://drexel.edu/provost/~/media/Drexel/Provost-Group/Provost/Images/homepage/drexel-elkins-park-campus-4x3.jpg"
+    # lebow_image = "https://images.squarespace-cdn.com/content/v1/688110841312f04ea8b001bb/7b4c3d88-515e-4315-9776-9390d0e1bd11/LeBow.jpg"
     main_building_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Main_Building_-_Drexel_University_%2853590618820%29.jpg/250px-Main_Building_-_Drexel_University_%2853590618820%29.jpg"
-    korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
-    med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
-    virtuaquest = "https://drexel.edu/~/media/Images/cci/Homepage/Homepage_digdevcamp.ashx"
-    humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
+
+    drexel_default_image = s3_subpath + "drexel_default_image.jpg"
+    hagerty_library_image = s3_subpath + "hagerty_library_image.jpg"
+    pearlstein_image = s3_subpath + "pearlstein_image.jpg"
+    westphal_image = s3_subpath + "westphal_image.jpg"
+    korman_image = s3_subpath + "korman_image.jpg"
+    med_building = s3_subpath + "med_building.jpg"
+    pisb_image = s3_subpath + "pisb_image.jpg"
+    rush_building = s3_subpath + "rush_building.jpg"
+    dac_image = s3_subpath + "dac_image.jpg"
+    humpty_dumplings = s3_subpath + "humpty_dumplings.jpg"
+    cci_image = s3_subpath + "cci_image.jpg"
+    elkins_park_image = s3_subpath + "elkins_park_image.jpg"
+    lebow_image = s3_subpath + "lebow_image.jpg"
+
     image_aliases = {"pearlstein gallery": pearlstein_image, "westphal": westphal_image, "dac": dac_image,
                      "rec center": dac_image, "main building": main_building_image, "hagerty": hagerty_library_image,
                      "korman": korman_image, "pisb": pisb_image, "papadakis": pisb_image, "science": pisb_image,
                      "rush": rush_building, "lancaster": drexel_default_image, "nursing": med_building,
-                     "medicine": med_building, "virtuaquest": virtuaquest, "humpty dumplings": humpty_dumplings, }
+                     "medicine": med_building, "humpty dumplings": humpty_dumplings, "cci": cci_image,
+                     "elkin": elkins_park_image, "lebow": lebow_image, }
     for key, image in image_aliases.items():
         if key in name or key in org_name or key in location:
             return image
@@ -239,26 +258,31 @@ def is_food_related(event_name, perks, location, description):
 
 
 def is_popular(event_name):
-    popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night", "Pie a professor event",
-                      "Rise & Roar: Future Dragons Breakfast"]
+    popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night",
+                      "Rise & Roar: Future Dragons Breakfast", "Snow Cone Social",
+                      "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night @ Drexel U",
+                      "Undergraduate July Summer Open House", "Rise & Roar: Future Dragons Breakfast"]
     return event_name in popular_events
 
 
 def is_weekly(event_name, description):
-    weekly_events = ["Board Game Night", "Pizza in the Park", "DSC Bible Study", "Graduate Fellowships Writing Group"]
+    weekly_events = ["Board Game Night", "Pizza in the Park", "DSC Bible Study", "Graduate Fellowships Writing Group",
+                     "Tenants' Right and Organizing"]
     if "weekly" in event_name.lower() or "weekly" in description.lower():
         return True
     return event_name in weekly_events
 
 
 def is_for_new_students(event_name, description):
+    new_students_events = ["Undergraduate July Summer Open House", ]
     event_name = event_name.lower()
     description = description.lower()
     if "future dragons" in event_name or "future dragons" in description:
         return True
     if "incoming freshman" in event_name or "incoming freshman" in description:
         return True
-    return False
+
+    return event_name in new_students_events
 
 
 def is_on_campus(event_name, org_name, location):
@@ -462,7 +486,8 @@ def invalid_event(kwargs):
                        "Study Abroad Walk-In Hours", "Study Abroad 101",
                        "Intro to Canvas, Drexel's Learning Management System",
                        "West Philadelphia Community Research Review Board", "Creator Studio",
-                       "Health Career Exploration Camp", "Revisit 1876", ]
+                       "Health Career Exploration Camp", "Revisit 1876",
+                       "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance"]
     # "Drexel University Digital Development Camp, VirtuaQuest"]
     if kwargs is None:
         return True
@@ -521,12 +546,12 @@ def parse_org_name(org_name):
     return org_name.strip(":*_;-,. ")
 
 
-def upload_file_to_s3(s3_client, bucket_name, local_file_path, s3_file_path):
+def upload_file_to_s3(bucket_name, local_file_path, s3_file_path):
     bucket = boto3.resource("s3").Bucket(bucket_name)
     bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={"ACL": "public-read"})
 
 
-def image_in_s3(s3_client, bucket_name, file_name):
+def image_in_s3(bucket_name, file_name):
     s3 = boto3.client('s3')
     response = s3.list_objects_v2(Bucket=bucket_name, Prefix="images/event_specific_images/")
 
@@ -536,32 +561,65 @@ def image_in_s3(s3_client, bucket_name, file_name):
     return False
 
 
-def get_image_s3_url(original_url, s3_client, bucket_name):
+def resize_image(path, max_width=600, max_height=400):
+    # crop image to desired aspect ratio and resize
+    # also convert to jpeg and do other stuff to reduce file size
+    image = Image.open(path)
+    desired_aspect_ratio = max_width / max_height
+    actual_aspect_ratio = image.width / image.height
+
+    if actual_aspect_ratio != desired_aspect_ratio:
+        if actual_aspect_ratio < desired_aspect_ratio:
+            new_height = int(image.width / desired_aspect_ratio)
+            new_width = image.width
+        else:
+            new_height = image.height
+            new_width = int(image.height * desired_aspect_ratio)
+        width_difference = abs(image.width - new_width)
+        height_difference = abs(image.height - new_height)
+        top_x = (width_difference // 2)
+        top_y = (height_difference // 2)
+        bottom_x = (width_difference // 2) + new_width
+        bottom_y = (height_difference // 2) + new_height
+        image = image.crop((top_x, top_y, bottom_x, bottom_y))
+
+    image.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
+    if image.mode in ("RGBA", "LA", "P"):  # normalize to rgb
+        image = image.convert("RGBA")
+        background = Image.new("RGB", image.size, (255, 255, 255))
+        background.paste(image, mask=image.split()[-1])  # use alpha as mask
+        image = background
+    elif image.mode != "RGB":
+        image = image.convert("RGB")
+
+    save_kwargs = {"optimize": True, "quality": 80, "progressive": True}
+
+    image.save(path, format="JPEG", **save_kwargs)
+
+
+def get_image_s3_url(original_url, bucket_name):
     # check if in s3, if not, add to s3
     # either way return the link to it
     if "drexel-events-general-bucket-034584778101" in original_url:
         return original_url
 
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
-    if "?" in original_url:
-        image_extension = original_url.split("?")[0].split(".")[-1]
-    else:
-        image_extension = original_url.split(".")[-1]
 
-    image_name = stable_hash(original_url) + "." + image_extension
+    image_name = stable_hash(original_url) + ".jpg"
     local_file_path = "backend/event_image_tmp_dir/" + image_name
     s3_file_path = "images/event_specific_images/" + image_name
 
-    if not image_in_s3(s3_client, bucket_name, image_name):
+    if not image_in_s3(bucket_name, image_name):
         img_data = requests.get(original_url).content
         with open(local_file_path, "wb") as handler:
             handler.write(img_data)
-        upload_file_to_s3(s3_client, bucket_name, local_file_path, s3_file_path)
+        resize_image(local_file_path)
+        upload_file_to_s3(bucket_name, local_file_path, s3_file_path)
 
     return s3_base_path + s3_file_path
 
 
-def create_event_object(source, event_json, s3_client, bucket_name):
+def create_event_object(source, event_json, bucket_name):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
@@ -590,7 +648,7 @@ def create_event_object(source, event_json, s3_client, bucket_name):
     if kwargs["image_url"] is None:
         kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
     else:
-        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"], s3_client, bucket_name)
+        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"], bucket_name)
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:

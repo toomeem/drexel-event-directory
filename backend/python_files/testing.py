@@ -3,7 +3,6 @@ import time
 from pprint import pprint
 
 import requests
-from PIL import Image
 
 
 def test_eventbrite():
@@ -29,19 +28,8 @@ def event_id_hash(hash_str):
     return hex(abs(hash(hash_str)))[2:]
 
 
-def resize_image(path):
-    image = Image.open(path)
-    aspect_ratio = image.width / image.height
-
-    resized_image = image.resize((600, 400))
-
-    resized_image.save(path.replace("1", ""))
-
-
 if __name__ == "__main__":
     # load_dotenv()
     start = time.time()
-
-    resize_image("rush-building1.jpg")
 
     end = time.time()  # print(f"Time taken: {round(end - start, 2)} seconds")

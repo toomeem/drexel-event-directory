@@ -69,17 +69,17 @@ def sync_s3_knowledge_base():
                                dataSourceId=os.getenv("AWS_BEDROCK_DATA_SOURCE_ID"))
 
 
-def collect_all_events(s3_client, bucket_name):
+def collect_all_events(bucket_name):
     events = []
 
     events.extend(
-        [create_event_object("dragonlink", event_json, s3_client, bucket_name) for event_json in
+        [create_event_object("dragonlink", event_json, bucket_name) for event_json in
          collect_dragonlink_events()])
     events.extend(
-        [create_event_object("drexel_events", event_json, s3_client, bucket_name) for event_json in
+        [create_event_object("drexel_events", event_json, bucket_name) for event_json in
          collect_drexel_events()])
     events.extend(
-        [create_event_object("drexel_athletics", event_json, s3_client, bucket_name) for event_json in
+        [create_event_object("drexel_athletics", event_json, bucket_name) for event_json in
          collect_drexel_athletics_events()])
     events = [e for e in events if e is not None and e.start_time is not None]
 
@@ -167,9 +167,9 @@ def fill_db():
     return uploaded_event_count
 
 
-def update_events_file(s3_client, bucket_name):
+def update_events_file(bucket_name):
     print("\nCollecting events...")
-    events = collect_all_events(s3_client, bucket_name)
+    events = collect_all_events(bucket_name)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
@@ -211,7 +211,7 @@ def main():
     bucket_name = os.getenv("S3_BUCKET_NAME")
     bucket = boto3.resource("s3").Bucket(bucket_name)
 
-    update_events_file(s3_client, bucket_name)
+    update_events_file(bucket_name)
     fill_db()
     upload_all_events_to_s3(bucket)
 
