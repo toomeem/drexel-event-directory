@@ -1,9 +1,6 @@
-save event images to s3 and resize them to fit the card better (some get stretched weirdly or are too high quality)
-add additional filtering for religious events to filter by religion (use org name to label)
-    maybe add specific religion icons?
+maybe add specific religion icons?
 add icons for each event type
 add filtering
-    add filter bundles to make it easier to look for specific types of events
     "for grad students" label
     "field trip" label
     "fun" label
@@ -16,5 +13,3 @@ add form to add a new event
 improve search
 add section for new students that explains stuff and has a map of campus
 add section for suggestions for me
-
-if this gets popular: create a mobile app
