@@ -1,18 +1,18 @@
 const SOURCES = [
     {
-        name: "Drexel Events",
+        name: "Drexel Events 🗓️",
         url: "https://drexel.edu/events?q&sortBy=relevance&sortOrder=asc&page=1&startDate&endDate",
         description:
             "The official Drexel University events calendar, covering academic talks, workshops, career fairs, cultural programs, and university-wide happenings.",
     },
     {
-        name: "DragonLink",
+        name: "DragonLink 🐉",
         url: "https://drexel.campuslabs.com/engage/",
         description:
             "Drexel's student engagement platform, where registered student organizations post club meetings, social events, fundraisers, and more.",
     },
     {
-        name: "Drexel Athletics",
+        name: "Drexel Athletics 🏀",
         url: "https://drexeldragons.com/",
         description:
             "The official home of Drexel Dragons athletics, providing schedules for all varsity sports including basketball, soccer, lacrosse, swimming, and more.",
@@ -30,7 +30,7 @@ export function AboutPage() {
     return (
         <div className="about-page">
             <header className="about-page__hero">
-                <p className="about-page__eyebrow">Drexel Event Directory</p>
+                <p className="about-page__eyebrow">Drexel Event Hub</p>
                 <h1 className="about-page__title">One place to find campus events.</h1>
                 <p className="about-page__body about-page__intro">
                     Drexel Event Hub brings together events happening on and around Drexel
@@ -65,7 +65,6 @@ export function AboutPage() {
                                 className="about-page__source-name"
                             >
                                 {source.name}
-                                {/*<span aria-hidden="true"> -&gt;</span>*/}
                             </a>
                             <p className="about-page__source-desc">{source.description}</p>
                         </li>
