@@ -1,9 +1,10 @@
 # Makefile
 
-PYTHON_VERSION := py -3.14
+# Set this to python3, python3.14, or your active virtual environment's python command
+PYTHON_VERSION := python3
 PACKAGE_DIR := .lambda_package
 PACKAGE_NAME := lambda_package.zip
-LAMBDA_FUNCTION := lambda_function.py # Add other files separated by spaces if necessary
+LAMBDA_FUNCTION := lambda_function.py
 
 # Default target executed when no arguments are given to make.
 default: clean package
@@ -19,12 +20,12 @@ dependencies:
 
 # Package the dependencies and lambda function into a zip
 package: dependencies
-	copy lambda\$(LAMBDA_FUNCTION) $(PACKAGE_DIR)
-	powershell -Command "Compress-Archive -Path $(PACKAGE_DIR)\* -DestinationPath $(PACKAGE_NAME) -Force"
+	cp lambda/$(LAMBDA_FUNCTION) $(PACKAGE_DIR)/
+	cd $(PACKAGE_DIR) && zip -r ../$(PACKAGE_NAME) .
 
 # Clean up
 clean:
-	-rmdir /s /q $(PACKAGE_DIR) 2>nul
-	-del /q $(PACKAGE_NAME) 2>nul
+	rm -rf $(PACKAGE_DIR)
+	rm -f $(PACKAGE_NAME)
 
 .PHONY: default dependencies package clean

@@ -3,7 +3,7 @@ import os
 from datetime import timedelta, datetime
 from zoneinfo import ZoneInfo
 
-import psycopg2
+import pg8000.dbapi
 
 PHILLY_TZ = ZoneInfo("America/New_York")
 
@@ -127,9 +127,11 @@ def lambda_handler(event, context):
         religion_filter = [r for r in candidates if r in valid_religions] or None
     connection = None
     try:
-        connection = psycopg2.connect(host=proxy_host_name, user=db_user_name, password=password, dbname=db_name,
-                                      port=port, sslmode='require')
-        with connection.cursor() as cursor:
+        connection = pg8000.dbapi.connect(host=proxy_host_name, user=db_user_name, password=password,
+                                          database=db_name,
+                                          port=port, ssl_context=True)
+        cursor = connection.cursor()
+        try:
             cursor.execute('''
                            SELECT id,
                                   source,
@@ -153,7 +155,7 @@ def lambda_handler(event, context):
                            FROM main.events
                            WHERE end_time > now()
                              AND start_time <= to_timestamp(%s)
-                             AND (%s IS NULL OR event_status = %s)
+                             AND (%s::text IS NULL OR event_status = %s)
                              AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
                              AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
                              AND (%s::text IS NULL OR name ILIKE %s OR org_name ILIKE %s)
@@ -169,6 +171,8 @@ def lambda_handler(event, context):
                                  search_pattern, search_pattern, search_pattern, food_related, weekly, for_new_students,
                                  popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
             events = cursor.fetchall()
+        finally:
+            cursor.close()
 
         total = events[0][18] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
