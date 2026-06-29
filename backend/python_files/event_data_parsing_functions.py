@@ -316,7 +316,7 @@ def dragonlink_event_parsing(event_json, kwargs):
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
-    specific_events_to_exclude = ["12449523", "12449521", "12492168"]
+    specific_events_to_exclude = ["12449523", "12449521", "12492168", "12490851"]
 
     if str(event_json["id"]) in specific_events_to_exclude:
         return None

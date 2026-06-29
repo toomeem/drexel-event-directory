@@ -75,7 +75,7 @@ export function AboutPage() {
 
             <div className="about-page__row">
                 <section className="about-page__section">
-                    <h2 className="about-page__section-title">For Recruiters &#128513</h2>
+                    <h2 className="about-page__section-title">For Recruiters 😁</h2>
                     <p className="about-page__body">
                         This project highlights React, TypeScript, API integration,
                         filtering, responsive UI, and deployment work.\n{" "}

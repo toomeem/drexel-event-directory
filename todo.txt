@@ -2,6 +2,7 @@ create s3 hosting for website
 get domain name
 point domain to s3 bucket
 
+change "weekly" to "recurring"
 maybe add specific religion icons?
 add icons for each event type
 add filtering
@@ -15,5 +16,6 @@ add filtering
     "political" label
 add form to add a new event
 improve search
+add calendar viewing option
 add section for new students that explains stuff and has a map of campus
 add section for suggestions for me
