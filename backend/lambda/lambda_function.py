@@ -96,7 +96,8 @@ def lambda_handler(event, context):
     event_status = params.get("event_status")
     if event_status not in ("in-person", "online", "hybrid"):
         event_status = None
-    valid_themes = {"academic", "arts", "athletics", "career", "community", "cultural", "fundraising", "social",
+    valid_themes = {"academic", "arts", "athletics", "career", "community", "cultural", "fundraising", "health",
+                    "social",
                     "spirituality"}
     themes = None
     theme_param = params.get("theme")

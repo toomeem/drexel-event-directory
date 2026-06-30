@@ -25,13 +25,6 @@ interface EventTopFilterBarProps extends EventFilterBarProps {
     totalEvents: number;
 }
 
-function titleCase(s: string): string {
-    return s
-        .split(/[\s_]+/)
-        .map((w) => (w ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase() : w))
-        .join(" ");
-}
-
 const DATE_OPTIONS: FilterOption[] = [
     {value: "today", label: "Today"},
     {value: "week", label: "This Week"},
@@ -44,36 +37,30 @@ const STATUS_OPTIONS: FilterOption[] = [
     {value: "hybrid", label: "Hybrid"},
 ];
 
-const THEME_VALUES = [
-    "academic 📚",
-    "arts 🎭",
-    "athletics ⚽",
-    "career 👔",
-    "community 👥👥",
-    "cultural 🌎",
-    "health 🩺",
-    "fundraising 💸",
-    "social 🗪",
-    "spirituality 🙏",
+const THEME_OPTIONS: FilterOption[] = [
+    {value: "academic", label: "Academic 📚"},
+    {value: "arts", label: "Arts 🎭"},
+    {value: "athletics", label: "Athletics ⚽"},
+    {value: "career", label: "Career 👔"},
+    {value: "community", label: "Community 👥👥"},
+    {value: "cultural", label: "Cultural 🌎"},
+    {value: "health", label: "Health 🩺"},
+    {value: "fundraising", label: "Fundraising 💸"},
+    {value: "social", label: "Social 🗪"},
+    {value: "spirituality", label: "Spirituality 🙏"},
 ];
 
-const THEME_OPTIONS: FilterOption[] = THEME_VALUES.map((v) => ({
-    value: v,
-    label: titleCase(v),
-}));
-
-const PERK_VALUES = ["free_food🍔", "free_stuff🛍️", "credit 🎟️"];
-
-const PERK_OPTIONS: FilterOption[] = PERK_VALUES.map((v) => ({
-    value: v,
-    label: titleCase(v),
-}));
+const PERK_OPTIONS: FilterOption[] = [
+    {value: "free_food", label: "Free Food 🍔"},
+    {value: "free_stuff", label: "Free Stuff 🛍️"},
+    {value: "credit", label: "Credit 🎟️"},
+];
 
 const RELIGION_OPTIONS: FilterOption[] = [
-    {value: "christian", label: "Christian✞"},
-    {value: "jewish", label: "Jewish✡︎"},
-    {value: "muslim", label: "Muslim☪︎"},
-    {value: "hindu", label: "Hinduॐ"},
+    {value: "christian", label: "Christian ✞"},
+    {value: "jewish", label: "Jewish ✡︎"},
+    {value: "muslim", label: "Muslim ☪︎"},
+    {value: "hindu", label: "Hindu ॐ"},
 ];
 
 const SEARCH_DEBOUNCE_MS = 300;

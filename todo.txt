@@ -6,12 +6,12 @@ add icons for each event type
 add filtering
     "for grad students" label
     "field trip" label
-    "fun" label
     "workshop" label
     "good for newcomers" label
     "volunteering" label
     "greek life" label
     "political" label
+
 add form to add a new event
 improve search
 add calendar viewing option
