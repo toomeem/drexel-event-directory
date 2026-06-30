@@ -18,7 +18,7 @@ const SOURCES = [
             "The official home of Drexel Dragons athletics, providing schedules for all varsity sports including basketball, soccer, lacrosse, swimming, and more.",
     },
     {
-        name: "uCity Lawn",
+        name: "uCity Lawn 🌳",
         url: "https://ucitysquare.com/events/month/",
         description:
             "uCity Square's event calendar for The Lawn and nearby public programming, including yoga sessions, beer garden nights, concerts, and community events.",
