@@ -8,7 +8,8 @@ import pg8000.dbapi
 import boto3
 from backend.python_files.event_class import Event
 from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
-    collect_dragonlink_events, collect_drexel_events, collect_drexel_athletics_events, get_all_ucity_square_events
+    collect_dragonlink_events, collect_drexel_events, collect_drexel_athletics_events, get_all_ucity_square_urls, \
+    create_ucity_square_event_from_url
 from dotenv import load_dotenv
 
 
@@ -72,28 +73,38 @@ def sync_s3_knowledge_base():
 def collect_all_events(bucket_name):
     events = []
 
+    ucity_square_urls = get_all_ucity_square_urls(months_out=3)
+    half_ucity_square_urls = len(ucity_square_urls) // 2
+    events.extend(
+        [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[:half_ucity_square_urls]])
+    events = [e for e in events if e is not None]
+    event_count = len(events)
+    print(f"\nCollected {event_count} UCity Square events.")
+
     events.extend(
         [create_event_object("dragonlink", event_json, bucket_name) for event_json in
          collect_dragonlink_events(count=300)])
+    events = [e for e in events if e is not None]
+    print(f"Collected {len(events) - event_count} Dragonlink events.")
     event_count = len(events)
-    print(f"Collected {event_count} Dragonlink events.")
 
     events.extend(
         [create_event_object("drexel_events", event_json, bucket_name) for event_json in
          collect_drexel_events(count=200)])
+    events = [e for e in events if e is not None]
     print(f"Collected {len(events) - event_count} Drexel events.")
     event_count = len(events)
 
     events.extend(
         [create_event_object("drexel_athletics", event_json, bucket_name) for event_json in
          collect_drexel_athletics_events(days_out=90)])
+    events = [e for e in events if e is not None]
     print(f"Collected {len(events) - event_count} Drexel Athletics events.")
     event_count = len(events)
 
-    events.extend(get_all_ucity_square_events(bucket_name, months_out=2))
-    print(f"Collected {len(events) - event_count} UCity Square events.")
-
-    events = [e for e in events if e is not None]
+    events.extend(
+        [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
+    print(f"Collected {len(events) - event_count} more UCity Square events.")
 
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
 

@@ -20,7 +20,10 @@ def _fmt_hm(dt, with_ampm=False):
 
 
 def make_time_str(start_time, end_time):
+    start_time = start_time.astimezone(PHILLY_TZ)
+    end_time = end_time.astimezone(PHILLY_TZ)
     now = datetime.now(PHILLY_TZ)
+
     if end_time - start_time > timedelta(hours=24):
         if (start_time - now) > timedelta(days=7):
             return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")

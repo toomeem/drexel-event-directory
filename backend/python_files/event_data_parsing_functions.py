@@ -47,6 +47,8 @@ def _fmt_hm(dt, with_ampm=False):
 
 
 def make_time_str(start_time, end_time):
+    start_time = start_time.astimezone(PHILLY_TZ)
+    end_time = end_time.astimezone(PHILLY_TZ)
     now = datetime.now(PHILLY_TZ)
     if end_time - start_time > timedelta(hours=24):
         if (start_time - now) > timedelta(days=7):
@@ -196,34 +198,20 @@ def match_default_image(name, org_name, location):
     org_name = org_name.lower() if org_name else ""
     location = location.lower() if location else ""
 
-    # pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
-    # westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
-    # korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
-    # med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
-    # humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
-    # pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
-    # rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
-    # hagerty_library_image = "https://pbs.twimg.com/media/G8D-sieWQAMOGeO.jpg"
-    # drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
-    # dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
-    # cci_image = "https://stradallc.com/app/uploads/2024/02/DrexelCCI-Lobby2.jpg"
-    # elkins_park_image = "https://drexel.edu/provost/~/media/Drexel/Provost-Group/Provost/Images/homepage/drexel-elkins-park-campus-4x3.jpg"
-    # lebow_image = "https://images.squarespace-cdn.com/content/v1/688110841312f04ea8b001bb/7b4c3d88-515e-4315-9776-9390d0e1bd11/LeBow.jpg"
+    pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
+    westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
+    korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
+    med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
+    humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
+    pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
+    rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
+    hagerty_library_image = "https://pbs.twimg.com/media/G8D-sieWQAMOGeO.jpg"
+    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
+    dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
+    cci_image = "https://stradallc.com/app/uploads/2024/02/DrexelCCI-Lobby2.jpg"
+    elkins_park_image = "https://drexel.edu/provost/~/media/Drexel/Provost-Group/Provost/Images/homepage/drexel-elkins-park-campus-4x3.jpg"
+    lebow_image = "https://images.squarespace-cdn.com/content/v1/688110841312f04ea8b001bb/7b4c3d88-515e-4315-9776-9390d0e1bd11/LeBow.jpg"
     main_building_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Main_Building_-_Drexel_University_%2853590618820%29.jpg/250px-Main_Building_-_Drexel_University_%2853590618820%29.jpg"
-
-    drexel_default_image = s3_subpath + "drexel_default_image.jpg"
-    hagerty_library_image = s3_subpath + "hagerty_library_image.jpg"
-    pearlstein_image = s3_subpath + "pearlstein_image.jpg"
-    westphal_image = s3_subpath + "westphal_image.jpg"
-    korman_image = s3_subpath + "korman_image.jpg"
-    med_building = s3_subpath + "med_building.jpg"
-    pisb_image = s3_subpath + "pisb_image.jpg"
-    rush_building = s3_subpath + "rush_building.jpg"
-    dac_image = s3_subpath + "dac_image.jpg"
-    humpty_dumplings = s3_subpath + "humpty_dumplings.jpg"
-    cci_image = s3_subpath + "cci_image.jpg"
-    elkins_park_image = s3_subpath + "elkins_park_image.jpg"
-    lebow_image = s3_subpath + "lebow_image.jpg"
 
     image_aliases = {"pearlstein gallery": pearlstein_image, "westphal": westphal_image, "dac": dac_image,
                      "rec center": dac_image, "main building": main_building_image, "hagerty": hagerty_library_image,
@@ -509,7 +497,7 @@ def invalid_event(kwargs):
                        "Health Career Exploration Camp", "Revisit 1876",
                        "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
                        "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
-                       "Fall House Manager Training"]
+                       "Fall House Manager Training", "Student Council Meeting"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
@@ -696,7 +684,7 @@ def create_event_object(source, event_json, bucket_name):
     if kwargs["org_name"] in religious_orgs.keys():
         kwargs["religion"] = religious_orgs[kwargs["org_name"]]
 
-    health_keywords = ["yoga", "zumba", "health clinic", "health info", "wellness"]
+    health_keywords = ["yoga", "zumba", "health", "wellness"]
     for keyword in health_keywords:
         if keyword in kwargs["name"].lower():
             kwargs["theme"] = "health"
@@ -810,19 +798,23 @@ def get_ucity_square_calendar_urls(months_out):
     return [base_calendar_url + date_string for date_string in date_strings]
 
 
-def get_all_ucity_square_events(bucket_name, months_out):
+def get_all_ucity_square_urls(months_out):
     calendar_urls = get_ucity_square_calendar_urls(months_out)
     event_urls = []
     for url in calendar_urls:
         event_urls.extend(get_event_urls_from_calendar_page(url))
     event_urls = list(set(event_urls))
+    return event_urls
 
-    events = []
-    for url in event_urls:
-        events.append(create_ucity_square_event_from_url(url, bucket_name))
-        time.sleep(.1)
 
-    return events
+# def create_ucity_square_event_from_urls():
+#     events = []
+#     request_wait_time = 0.1
+#     for url in event_urls:
+#         events.append(create_ucity_square_event_from_url(url, bucket_name))
+#         time.sleep(request_wait_time)
+#
+#     return [i for i in events if i is not None]
 
 
 def get_event_urls_from_calendar_page(url):
@@ -843,18 +835,21 @@ def get_event_urls_from_calendar_page(url):
     return event_links
 
 
-def match_ucity_square_default_image(name):
-    ucity_square_default_image = "https://www.universitycity.org/wp-content/uploads/2026/03/original_images_106297125_3131683786946849_7604964815855804720_n_sjgx8c2w9.jpg"
+def match_ucity_square_default_image(name, location):
+    ucity_square_lawn_default_image = "https://www.universitycity.org/wp-content/uploads/2026/03/original_images_106297125_3131683786946849_7604964815855804720_n_sjgx8c2w9.jpg"
     yoga_image = "https://www.eventbrite.com/e/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F952808923%252F1814176558193%252F1%252Foriginal.20250204-222847%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D1880%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3De8039340c96baf2e46017e0bacae4c79&w=1880&q=75"
     beer_garden_image = "https://www.universitycity.org/wp-content/uploads/2026/03/UCDSummerSeries2025_Final_181.jpg"
     food_truck_image = "https://ucitysquare.com/wp-content/uploads/2024/02/food-trucks.png"
+    the_3675_market_st_image = "https://ucitysquare.com/wp-content/uploads/2023/09/S-3675-Market-3-1600x1600.webp"
     if "yoga" in name.lower():
         return yoga_image
     if "beer garden" in name.lower():
         return beer_garden_image
     if "food truck" in name.lower():
         return food_truck_image
-    return ucity_square_default_image
+    if location == "3675 Market St":
+        return the_3675_market_st_image
+    return ucity_square_lawn_default_image
 
 
 def match_ucity_square_event_theme(name, description):
@@ -878,7 +873,7 @@ def simplify_ucity_square_event_name(name):
     return name.strip()
 
 
-def get_ucity_square_event_perks(name, description):
+def get_ucity_square_event_perks(name):
     free_food_events = ["life sciences luncheon"]
     free_stuff_events = ["stay flossy: embroidery workshop"]
     perks = []
@@ -897,16 +892,21 @@ def create_ucity_square_event_from_url(url, bucket_name):
               "popular": False, "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
               "description": ""}
 
-    response = requests.get(url, headers=http_header)
-    if response.status_code != 200:
-        print(f"Error: {response.status_code} {response.text}")
-        return None
+    request_wait_time = 0.1
+    time.sleep(request_wait_time)
 
+    response = requests.get(url, headers=http_header)
+    if response.status_code == 429:
+        time.sleep(2)
+        response = requests.get(url, headers=http_header)
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} - {response.text} - {url}")
+        return None
     soup = BeautifulSoup(response.text, "html.parser")
     now = datetime.now()
     time_str = soup.find("div", class_="tribe-events-schedule")
     if time_str is None:
-        print(url)
+        print(f"Error: {url}")
         return None
     time_str = time_str.text.strip().split("\n")[0].split(" ")
     month = time_str[0]
@@ -936,15 +936,15 @@ def create_ucity_square_event_from_url(url, bucket_name):
         kwargs["location"] = "3675 Market St"
 
     event_image_url = soup.find("div", class_="tribe-events-event-image")
-    image_base_url = "https://ucitysquare.com"
     if event_image_url:
+        image_base_url = "https://ucitysquare.com"
         original_image_url = image_base_url + event_image_url.find("img")["src"]
     else:
-        original_image_url = match_ucity_square_default_image(kwargs["name"])
+        original_image_url = match_ucity_square_default_image(kwargs["name"], kwargs["location"])
     kwargs["image_url"] = get_image_s3_url(original_image_url, bucket_name)
 
     kwargs["theme"] = match_ucity_square_event_theme(kwargs["name"], kwargs["description"])
-    kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"], kwargs["description"])
+    kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"])
     kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
     kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
 
