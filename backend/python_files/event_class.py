@@ -11,7 +11,7 @@ class Event:
         self.end_time = end_time
         self.event_link = event_link
         self.event_status = event_status  # 'in-person', 'online', 'hybrid'
-        self.theme = theme  # academic, arts, athletics, career, community, cultural, fundraising, social, spirituality
+        self.theme = theme  # academic, arts, athletics, career, community, cultural, fundraising, health, social, spirituality
         self.perks = perks  # free_food, free_stuff, credit
         self.food_related = food_related
         self.popular = popular

@@ -238,7 +238,7 @@ def match_default_image(name, org_name, location):
 
 
 def is_athletic_event(event_name, org_name, location):
-    athletics_keywords = ["pilates", "bhangra", "yoga", "zumba", "salsa", "spikeball", "spike ball",
+    athletics_keywords = ["pilates", "bhangra", "salsa", "spikeball", "spike ball",
                           "drexel dragon jedi meeting", "kayaking", "paintball", "hike", "hiking", "skiing",
                           "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
                           "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
@@ -269,7 +269,9 @@ def is_popular(event_name):
     popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night",
                       "Rise & Roar: Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night @ Drexel U",
-                      "Undergraduate July Summer Open House", "Rise & Roar: Future Dragons Breakfast"]
+                      "Undergraduate July Summer Open House", "Rise & Roar: Future Dragons Breakfast",
+                      "STAR Scholars Summer Showcase"
+                      ]
     return event_name in popular_events
 
 
@@ -428,6 +430,8 @@ def drexel_event_parsing(event_json, kwargs):
         kwargs["theme"] = "academic"
     elif "Diversity & Inclusion" in type_names:
         kwargs["theme"] = "cultural"
+    elif "health advocate" in kwargs["description"].lower():
+        kwargs["theme"] = "health"
     elif "Community Service" in type_names or "Civic Engagement" in type_names:
         kwargs["theme"] = "community"
     elif "ANS: Museum Activities" in type_names:
@@ -503,8 +507,9 @@ def invalid_event(kwargs):
                        "Intro to Canvas, Drexel's Learning Management System",
                        "West Philadelphia Community Research Review Board", "Creator Studio",
                        "Health Career Exploration Camp", "Revisit 1876",
-                       "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance"]
-    # "Drexel University Digital Development Camp, VirtuaQuest"]
+                       "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
+                       "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
+                       "Fall House Manager Training"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
@@ -663,7 +668,7 @@ def create_event_object(source, event_json, bucket_name):
         kwargs["perks"].append("credit")
         kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
 
-    kwargs["name"] = kwargs["name"].replace("()", "").strip(" ;/,*")
+    kwargs["name"] = kwargs["name"].replace("  ", " ").replace("()", "").strip(" ;/,*")
     kwargs["org_name"] = parse_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
 
@@ -690,6 +695,12 @@ def create_event_object(source, event_json, bucket_name):
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
     if kwargs["org_name"] in religious_orgs.keys():
         kwargs["religion"] = religious_orgs[kwargs["org_name"]]
+
+    health_keywords = ["yoga", "zumba", "health clinic", "health info", "wellness"]
+    for keyword in health_keywords:
+        if keyword in kwargs["name"].lower():
+            kwargs["theme"] = "health"
+            break
 
     del kwargs["description"]
     return Event(**kwargs)
@@ -919,7 +930,7 @@ def create_ucity_square_event_from_url(url, bucket_name):
         exit(1)
     description = description.text.strip().replace("\xa0", " ")
     kwargs["description"] = description
-    if "The Lawn at uCity Square" in description:
+    if "The Lawn at uCity Square" in description or "Beer Garden" in kwargs["name"]:
         kwargs["location"] = "The Lawn at uCity Square"
     else:
         kwargs["location"] = "3675 Market St"
