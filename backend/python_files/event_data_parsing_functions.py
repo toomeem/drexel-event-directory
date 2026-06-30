@@ -317,16 +317,20 @@ def is_on_campus(event_name, org_name, location):
     return True
 
 
-def dragonlink_event_parsing(event_json, kwargs):
+def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
     source = "dragonlink"
     dragonlink_base_url = "https://drexel.campuslabs.com/engage/"
+    specific_events_to_exclude = ["12449523", "12449521", "12492168", "12490851", "12485439"]
     dragonlink_image_url = dragonlink_base_url + "image/"
     dragonlink_event_url = dragonlink_base_url + "event/"
-    specific_events_to_exclude = ["12449523", "12449521", "12492168", "12490851", "12485439"]
 
     if str(event_json["id"]) in specific_events_to_exclude:
         return None
+
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
+    if kwargs["_id"] in existing_event_ids:
+        return None
+
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
@@ -368,17 +372,23 @@ def dragonlink_event_parsing(event_json, kwargs):
     return kwargs
 
 
-def drexel_event_parsing(event_json, kwargs):
-    if "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
-        return None
+def drexel_event_parsing(event_json, kwargs, existing_event_ids):
+    source = "drexel_events"
     correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students",
                          "Prospective Students", "Senior Class"]
-    if event_json["audiences"] and not any([i in event_json["audiences"] for i in correct_audiences]):
+    kwargs["_id"] = stable_hash(source + str(event_json["id"]))
+
+    if kwargs["_id"] in existing_event_ids:
+        return None
+    elif "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
+        return None
+    elif event_json["audiences"] and not any([i in event_json["audiences"] for i in correct_audiences]):
+        return None
+    elif "registration for this event has closed" in event_json["body"].lower():
+        return None
+    elif "registration is now closed" in event_json["body"].lower():
         return None
 
-    if "Registration for this event has closed" in event_json["body"]:
-        return None
-    source = "drexel_events"
     authors = event_json.get("authors")
     department_names = event_json.get("departmentNames")
     if authors:
@@ -394,13 +404,12 @@ def drexel_event_parsing(event_json, kwargs):
             kwargs["org_name"] = speaker.replace(",", " -").strip(" ,.:\n\r")
             break
 
-    kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
     kwargs["start_time"] = normalize_time(source, event_json["startDate"])
     kwargs["end_time"] = normalize_time(source, event_json["endDate"])
-    kwargs["description"] = event_json["body"]
     kwargs["event_link"] = event_json["contentUrl"]
+    kwargs["description"] = event_json["body"]
     if event_json["image"]:
         kwargs["image_url"] = event_json["image"]
 
@@ -449,7 +458,7 @@ def drexel_event_parsing(event_json, kwargs):
     return kwargs
 
 
-def drexel_athletics_event_parsing(event_json, kwargs):
+def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
     source = "drexel_athletics"
     drexel_athletics_image = "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg"
     drexel_athletics_schedule_url = "https://drexeldragons.com/sports/"
@@ -461,6 +470,10 @@ def drexel_athletics_event_parsing(event_json, kwargs):
                                 "mten": "mens-tennis", "wten": "womens-tennis", "wrestling": "wrestling",
                                 "fhockey": "field-hockey", "softball": "softball", }
 
+    kwargs["_id"] = stable_hash(source + str(event_json["id"]))
+    if kwargs["_id"] in existing_event_ids:
+        return None
+
     at_vs = event_json["atVs"]
     opponent = event_json["opponent"]["title"]
     sport_short_raw = event_json["sport"]["globalSportShortname"]
@@ -469,7 +482,6 @@ def drexel_athletics_event_parsing(event_json, kwargs):
         print(f"Unknown athletics sport shortname: {sport_short_raw}")
         sport_shorthand = sport_short_raw
 
-    kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     kwargs["name"] = " ".join(["DREX", at_vs, opponent])
     kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
     kwargs["location"] = event_json["location"]
@@ -634,7 +646,7 @@ def get_image_s3_url(original_url, bucket_name):
     return s3_base_path + s3_file_path
 
 
-def create_event_object(source, event_json, bucket_name):
+def create_event_object(source, event_json, bucket_name, existing_event_ids):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "recurring": False, "for_new_students": False,
@@ -642,11 +654,11 @@ def create_event_object(source, event_json, bucket_name):
 
     match source:
         case "dragonlink":
-            kwargs = dragonlink_event_parsing(event_json, kwargs)
+            kwargs = dragonlink_event_parsing(event_json, kwargs, existing_event_ids)
         case "drexel_events":
-            kwargs = drexel_event_parsing(event_json, kwargs)
+            kwargs = drexel_event_parsing(event_json, kwargs, existing_event_ids)
         case "drexel_athletics":
-            kwargs = drexel_athletics_event_parsing(event_json, kwargs)
+            kwargs = drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids)
         case _:
             return None
     if invalid_event(kwargs):
