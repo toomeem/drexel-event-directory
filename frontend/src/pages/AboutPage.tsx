@@ -17,13 +17,19 @@ const SOURCES = [
         description:
             "The official home of Drexel Dragons athletics, providing schedules for all varsity sports including basketball, soccer, lacrosse, swimming, and more.",
     },
+    {
+        name: "uCity Lawn",
+        url: "https://ucitysquare.com/events/month/",
+        description:
+            "uCity Square's event calendar for The Lawn and nearby public programming, including yoga sessions, beer garden nights, concerts, and community events.",
+    },
 ];
 
 const FEATURES = [
     "Filter by date range, event format, event type, and perks",
     "Search across event names, organizers, and descriptions",
     "Ask the built-in assistant questions about upcoming events",
-    "Browse deduplicated listings from multiple official Drexel sources",
+    "Browse deduplicated listings from multiple campus and neighborhood sources",
 ];
 
 export function AboutPage() {
@@ -52,8 +58,8 @@ export function AboutPage() {
             <section className="about-page__section">
                 <h2 className="about-page__section-title">Data Sources</h2>
                 <p className="about-page__body">
-                    Event data is collected from three official Drexel sources and
-                    deduplicated automatically.
+                    Event data is collected from four campus and neighborhood sources
+                    and deduplicated automatically.
                 </p>
                 <ul className="about-page__source-list">
                     {SOURCES.map((source) => (
