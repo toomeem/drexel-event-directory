@@ -1,13 +1,16 @@
 # Drexel Event Hub
 
-A web app that aggregates upcoming events from across Drexel University into a single, filterable directory — with an AI-powered chatbot assistant.
+A web app that aggregates upcoming events from across Drexel University into a single, filterable directory — with an
+AI-powered chatbot assistant.
 
 Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/drexel-event-directory)
 
 ## Features
 
 - Browse upcoming events from DragonLink, Drexel.edu, Drexel Athletics, and UCity Square
-- Rich filtering: theme (academic, arts, social, athletics, etc.), event format (in-person, online, hybrid), perks (free food, free stuff, credit), date range (today / week / month), religion, and flags like on-campus, popular, recurring, and new-student events
+- Rich filtering: theme (academic, arts, social, athletics, etc.), event format (in-person, online, hybrid), perks (free
+  food, free stuff, credit), date range (today / week / month), religion, and flags like on-campus, popular, recurring,
+  and new-student events
 - Keyword search across event and organization names
 - Light/dark theme toggle
 - Events API served from AWS Lambda, backed by a PostgreSQL (RDS) database
@@ -16,24 +19,25 @@ Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/dr
 ## Architecture
 
 ```
-                ┌─────────────┐         ┌──────────────────────┐
-   Sources ───▶ │ main.py     │ ──────▶ │ events.json          │
- (scrapers)     │ (collector) │         └──────────┬───────────┘
-                └─────────────┘                    │
-                       │                ┌──────────┴───────────┐
-                       │                ▼                      ▼
-                       │         PostgreSQL (RDS)      S3 chunks + Bedrock
-                       │                ▲              Knowledge Base (chatbot)
-                       │                │                      ▲
-        ┌──────────────┴───┐    ┌───────┴────────┐    ┌────────┴────────┐
-        │ Frontend (React) │ ─▶ │ Events Lambda  │    │ Chatbot Lambda  │
-        └──────────────────┘    │ lambda_function│    │ chatbot_lambda  │
-                                 └────────────────┘    └─────────────────┘
+                ┌─────────────┐
+   Sources ───▶ │ main.py     │ ──────────┬─────────────────┬──────────────────┐
+ (scrapers)     └─────────────┘           ▼                 ▼                  ▼
+                                  PostgreSQL (RDS)   S3 Image Storage  Bedrock Knowledge Base
+                                          ▲                 ▲              for RAG
+                                          │                 │                  ▲
+                                 ┌────────┴───────┐         │        ┌─────────┴───────┐
+                                 │ Events Lambda  │         │        │ Chatbot Lambda  │
+                                 └────────────────┘         │        └─────────────────┘
+                                          ▲                 │                  ▲
+                                          │        ┌────────┴───────┐          │
+                                          └────────┤Frontend (React)├──────────┘
+                                                   └────────────────┘
 ```
 
-- `main.py` scrapes all sources, de-duplicates events, writes `events.json`, upserts into PostgreSQL, and syncs event "chunks" to S3 for the Bedrock knowledge base.
+- `main.py` scrapes all sources, de-duplicates events, inserts into PostgreSQL, uploads event
+  images to S3, and syncs event "chunks" to a separate S3 bucket for the Bedrock knowledge base.
 - The events Lambda queries PostgreSQL with the active filters and returns paginated results to the frontend.
-- The chatbot Lambda proxies user questions to a Bedrock Agent backed by the S3 knowledge base.
+- The chatbot Lambda proxies user questions from the frontend to a Bedrock Agent backed by the S3 knowledge base.
 
 ## Project Structure
 
@@ -61,12 +65,12 @@ drexel-event-directory/
 
 ## Event Sources
 
-| Source | Data |
-|---|---|
-| [DragonLink](https://drexel.campuslabs.com/engage/) | Student organization events |
-| [Drexel Events](https://drexel.edu/events/) | University-wide events and academic programming |
-| [Drexel Athletics](https://drexeldragons.com/) | Home and away athletic competitions |
-| UCity Square | Neighborhood and community events around campus |
+| Source                                              | Data                                            |
+|-----------------------------------------------------|-------------------------------------------------|
+| [DragonLink](https://drexel.campuslabs.com/engage/) | Student organization events                     |
+| [Drexel Events](https://drexel.edu/events/)         | University-wide events and academic programming |
+| [Drexel Athletics](https://drexeldragons.com/)      | Home and away athletic competitions             |
+| [UCity Square](https://ucitysquare.com/)            | Neighborhood and community events near campus   |
 
 ## Backend
 
@@ -74,7 +78,9 @@ The data pipeline and APIs run on Python 3.14.
 
 ### Collecting events
 
-`main.py` orchestrates the pipeline: it scrapes each source, removes duplicates (preferring more authoritative sources), saves a snapshot to `events.json`, inserts new rows into PostgreSQL, and syncs per-event JSON chunks to S3 for the chatbot's Bedrock knowledge base.
+`main.py` orchestrates the pipeline: it scrapes each source, removes duplicates (preferring more authoritative sources),
+saves a snapshot to `events.json`, inserts new rows into PostgreSQL, and syncs per-event JSON chunks to S3 for the
+chatbot's Bedrock knowledge base.
 
 ```bash
 # run from the repository root
@@ -97,11 +103,13 @@ cd backend
 make
 ```
 
-This installs the dependencies in `lambda/requirements.txt` for `manylinux2014_x86_64` and produces `lambda_package.zip`. Required Lambda environment variables: `RDS_ENDPOINT` and `RDS_PASSWORD`.
+This installs the dependencies in `lambda/requirements.txt` for `manylinux2014_x86_64` and produces
+`lambda_package.zip`. Required Lambda environment variables: `RDS_ENDPOINT` and `RDS_PASSWORD`.
 
 ### Chatbot API (Lambda)
 
-`python_files/chatbot_lambda.py` proxies sanitized user input to a Bedrock Agent. Required environment variables: `AWS_BEDROCK_AGENT_ID`, `AWS_BEDROCK_AGENT_ALIAS_ID`, `AWS_BEDROCK_KNOWLEDGE_BASE_ID`.
+`python_files/chatbot_lambda.py` proxies sanitized user input to a Bedrock Agent. Required environment variables:
+`AWS_BEDROCK_AGENT_ID`, `AWS_BEDROCK_AGENT_ALIAS_ID`, `AWS_BEDROCK_KNOWLEDGE_BASE_ID`.
 
 ## Frontend
 
