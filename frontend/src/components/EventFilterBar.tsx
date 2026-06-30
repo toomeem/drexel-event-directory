@@ -10,7 +10,7 @@ export interface AppliedFilters {
   perks: string[];
   foodRelated: boolean;
   popular: boolean;
-  weekly: boolean;
+  recurring: boolean;
   forNewStudents: boolean;
   onCampus: boolean;
   religion: string[];
@@ -203,7 +203,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
   const boolFilterCount = [
     filters.foodRelated,
     filters.popular,
-    filters.weekly,
+    filters.recurring,
     filters.forNewStudents,
     filters.onCampus,
   ].filter(Boolean).length;
@@ -228,7 +228,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
       perks: [],
       foodRelated: false,
       popular: false,
-      weekly: false,
+      recurring: false,
       forNewStudents: false,
       onCampus: false,
       religion: [],
@@ -283,7 +283,7 @@ export function EventSidebarFilters({ filters, onChange }: EventFilterBarProps) 
               [
                 { key: "foodRelated", label: "Food Related" },
                 { key: "popular", label: "Popular🔥" },
-                { key: "weekly", label: "Weekly" },
+                { key: "recurring", label: "Recurring" },
                 { key: "forNewStudents", label: "For New Students" },
                 { key: "onCampus", label: "On Campus" },
               ] as { key: keyof AppliedFilters; label: string }[]

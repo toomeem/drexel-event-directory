@@ -269,17 +269,20 @@ def is_popular(event_name):
     return event_name in popular_events
 
 
-def is_weekly(event_name, description):
-    weekly_events = ["board game night", "pizza in the park", "dsc bible study", "graduate fellowships writing group",
-                     "tenants' right and organizing", "asl club", "reset lab: a guided mind & body reset",
-                     "stay flossy: embroidery workshop", "ucity square beer garden", "food truck thursdays at the lawn",
-                     "yoga at ucity square", "university city summer series concert: worldtown soundsystem collective",
-                     "creativemornings", "monthly innovation exchange", "life sciences luncheon"]
-    if "weekly" in event_name.lower() or "weekly" in description.lower():
+def is_recurring(event_name, description):
+    recurring_events = ["board game night", "pizza in the park", "dsc bible study",
+                        "graduate fellowships writing group",
+                        "tenants' right and organizing", "asl club", "reset lab: a guided mind & body reset",
+                        "stay flossy: embroidery workshop", "ucity square beer garden",
+                        "food truck thursdays at the lawn",
+                        "yoga at ucity square",
+                        "university city summer series concert: worldtown soundsystem collective",
+                        "creativemornings", "monthly innovation exchange", "life sciences luncheon"]
+    if "recurring" in event_name.lower() or "recurring" in description.lower():
         return True
     if "monthly" in event_name.lower() or "monthly" in description.lower():
         return True
-    return event_name.lower() in weekly_events
+    return event_name.lower() in recurring_events
 
 
 def is_for_new_students(event_name, description):
@@ -637,7 +640,7 @@ def get_image_s3_url(original_url, bucket_name):
 def create_event_object(source, event_json, bucket_name):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
-              "perks": [], "food_related": False, "popular": False, "weekly": False, "for_new_students": False,
+              "perks": [], "food_related": False, "popular": False, "recurring": False, "for_new_students": False,
               "on_campus": True, "religion": None, "description": ""}
 
     match source:
@@ -678,7 +681,7 @@ def create_event_object(source, event_json, bucket_name):
 
     kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
     kwargs["popular"] = is_popular(kwargs["name"])
-    kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
+    kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
     if kwargs["org_name"] in religious_orgs.keys():
@@ -876,7 +879,7 @@ def create_ucity_square_event_from_url(url, bucket_name):
     kwargs = {"_id": stable_hash(url), "source": "ucity_square", "name": None, "org_name": "uCity Square",
               "location": None, "image_url": None, "start_time": None, "end_time": None,
               "event_link": url, "event_status": "in-person", "theme": None, "perks": [], "food_related": False,
-              "popular": False, "weekly": False, "for_new_students": False, "on_campus": True, "religion": None,
+              "popular": False, "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
               "description": ""}
 
     response = requests.get(url, headers=http_header)
@@ -927,7 +930,8 @@ def create_ucity_square_event_from_url(url, bucket_name):
 
     kwargs["theme"] = match_ucity_square_event_theme(kwargs["name"], kwargs["description"])
     kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"], kwargs["description"])
-    kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
+    kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
+    kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
 
     del kwargs["description"]
     return Event(**kwargs)

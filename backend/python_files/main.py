@@ -75,20 +75,23 @@ def collect_all_events(bucket_name):
     events.extend(
         [create_event_object("dragonlink", event_json, bucket_name) for event_json in
          collect_dragonlink_events(count=300)])
-    count = len(events)
-    print(f"Collected {len(events)} Dragonlink events.")
+    event_count = len(events)
+    print(f"Collected {event_count} Dragonlink events.")
 
     events.extend(
         [create_event_object("drexel_events", event_json, bucket_name) for event_json in
          collect_drexel_events(count=200)])
-    print(f"Collected {len(events) - count} Drexel events.")
-    count = len(events)
+    print(f"Collected {len(events) - event_count} Drexel events.")
+    event_count = len(events)
 
     events.extend(
         [create_event_object("drexel_athletics", event_json, bucket_name) for event_json in
          collect_drexel_athletics_events(days_out=90)])
+    print(f"Collected {len(events) - event_count} Drexel Athletics events.")
+    event_count = len(events)
+
     events.extend(get_all_ucity_square_events(bucket_name, months_out=2))
-    print(f"Collected {len(events) - count} UCity Square events.")
+    print(f"Collected {len(events) - event_count} UCity Square events.")
 
     events = [e for e in events if e is not None]
 
@@ -128,7 +131,7 @@ def load_events_from_file(path="backend/events.json"):
                   start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
                   end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None, event_link=e["event_link"],
                   event_status=e["event_status"], theme=e["theme"], perks=e["perks"], food_related=e["food_related"],
-                  popular=e["popular"], weekly=e["weekly"], for_new_students=e["for_new_students"],
+                  popular=e["popular"], recurring=e["recurring"], for_new_students=e["for_new_students"],
                   on_campus=e["on_campus"], religion=e["religion"]))
     return events
 
@@ -163,7 +166,7 @@ def save_events_to_db(events):
                                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time,
                                                        end_time,
                                                        event_link, event_status, theme, perks, food_related, popular,
-                                                       weekly, for_new_students, on_campus, religion)
+                                                       recurring, for_new_students, on_campus, religion)
                                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s, %s,
                                        %s, %s, %s, %s, %s)
                                ''', new_event_rows)

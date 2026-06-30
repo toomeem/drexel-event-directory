@@ -18,8 +18,10 @@ export interface DrexelEvent {
     perks?: string[];
     food_related?: boolean;
     popular?: boolean;
-    weekly?: boolean;
+    recurring?: boolean;
     for_new_students?: boolean;
+    on_campus?: boolean;
+    religion?: string[];
 }
 
 interface EventsResponse {
@@ -41,7 +43,7 @@ export interface EventFilters {
     search?: string;
     food_related?: boolean;
     popular?: boolean;
-    weekly?: boolean;
+    recurring?: boolean;
     for_new_students?: boolean;
     on_campus?: boolean;
     religion?: string[];
@@ -70,7 +72,7 @@ export async function fetchEvents(
     }
     if (filters.food_related) params.set("food_related", "true");
     if (filters.popular) params.set("popular", "true");
-    if (filters.weekly) params.set("weekly", "true");
+    if (filters.recurring) params.set("recurring", "true");
     if (filters.for_new_students) params.set("for_new_students", "true");
     if (filters.on_campus) params.set("on_campus", "true");
     if (filters.religion && filters.religion.length > 0) {

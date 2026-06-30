@@ -53,7 +53,9 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
       : [],
     foodRelated: searchParams.get("food_related") === "true",
     popular: searchParams.get("popular") === "true",
-    weekly: searchParams.get("weekly") === "true",
+    recurring:
+      searchParams.get("recurring") === "true" ||
+      searchParams.get("weekly") === "true",
     forNewStudents: searchParams.get("for_new_students") === "true",
     onCampus: searchParams.get("on_campus") === "true",
     religion: religionRaw
@@ -90,7 +92,7 @@ export function EventsPage() {
       search: searchKey || undefined,
       food_related: filters.foodRelated || undefined,
       popular: filters.popular || undefined,
-      weekly: filters.weekly || undefined,
+      recurring: filters.recurring || undefined,
       for_new_students: filters.forNewStudents || undefined,
       on_campus: filters.onCampus || undefined,
       religion: religionKey ? religionKey.split(",") : undefined,
@@ -119,7 +121,7 @@ export function EventsPage() {
     searchKey,
     filters.foodRelated,
     filters.popular,
-    filters.weekly,
+    filters.recurring,
     filters.forNewStudents,
     filters.onCampus,
     religionKey,
@@ -152,7 +154,7 @@ export function EventsPage() {
     }
     if (newFilters.foodRelated) next.set("food_related", "true");
     if (newFilters.popular) next.set("popular", "true");
-    if (newFilters.weekly) next.set("weekly", "true");
+    if (newFilters.recurring) next.set("recurring", "true");
     if (newFilters.forNewStudents) next.set("for_new_students", "true");
     if (newFilters.onCampus) next.set("on_campus", "true");
     if (newFilters.religion.length > 0) next.set("religion", newFilters.religion.join(","));

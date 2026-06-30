@@ -51,7 +51,7 @@ def db_entry_to_json(db_entry):
             "start_time": round(start_time.timestamp()) if start_time else None,
             "end_time": round(end_time.timestamp()) if end_time else None, "event_link": db_entry[8],
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, "food_related": db_entry[12],
-            "popular": db_entry[13], "weekly": db_entry[14], "for_new_students": db_entry[15],
+            "popular": db_entry[13], "recurring": db_entry[14], "for_new_students": db_entry[15],
             "on_campus": db_entry[16], "religion": db_entry[17], }
 
 
@@ -115,7 +115,7 @@ def lambda_handler(event, context):
         return val is not None and val.strip().lower() in ("1", "true", "yes")
 
     food_related = parse_bool_filter("food_related")
-    weekly = parse_bool_filter("weekly")
+    recurring = parse_bool_filter("recurring")
     for_new_students = parse_bool_filter("for_new_students")
     popular = parse_bool_filter("popular")
     on_campus = parse_bool_filter("on_campus")
@@ -147,7 +147,7 @@ def lambda_handler(event, context):
                                   perks,
                                   food_related,
                                   popular,
-                                  weekly,
+                                  recurring,
                                   for_new_students,
                                   on_campus,
                                   religion,
@@ -160,7 +160,7 @@ def lambda_handler(event, context):
                              AND (%s::text[] IS NULL OR string_to_array(LOWER(perks), '|') && %s::text[])
                              AND (%s::text IS NULL OR name ILIKE %s OR org_name ILIKE %s)
                              AND (NOT %s OR food_related)
-                             AND (NOT %s OR weekly)
+                             AND (NOT %s OR recurring)
                              AND (NOT %s OR for_new_students)
                              AND (NOT %s OR popular)
                              AND (NOT %s OR on_campus)
@@ -168,7 +168,8 @@ def lambda_handler(event, context):
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
                            ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
-                                 search_pattern, search_pattern, search_pattern, food_related, weekly, for_new_students,
+                                 search_pattern, search_pattern, search_pattern, food_related, recurring,
+                                 for_new_students,
                                  popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
             events = cursor.fetchall()
         finally:

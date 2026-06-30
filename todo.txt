@@ -1,8 +1,6 @@
 create s3 hosting for website
-get domain name
 point domain to s3 bucket
 
-change "weekly" to "recurring"
 maybe add specific religion icons?
 add icons for each event type
 add filtering
