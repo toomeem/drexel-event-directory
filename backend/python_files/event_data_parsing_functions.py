@@ -8,15 +8,19 @@ from datetime import datetime, timedelta
 from urllib.parse import quote
 from zoneinfo import ZoneInfo
 
-import boto3
-import requests
+import PIL
 from PIL import Image
+from bs4 import BeautifulSoup
 from pydantic import BaseModel
 
+import boto3
+import requests
 from backend.python_files.event_class import Event
 
 PHILLY_TZ = ZoneInfo("America/New_York")
 HTTP_TIMEOUT = (5, 30)
+http_header = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"}
 religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
                   "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
                   "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
@@ -244,7 +248,7 @@ def is_athletic_event(event_name, org_name, location):
 def is_food_related(event_name, perks, location, description):
     food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
     food_keywords = ["food", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks", "breakfast", "lunch",
-                     "dinner", "refreshments" "coffee"]
+                     "dinner", "refreshments" "coffee", "beer", "wine", "cocktails", "meal", "cookout"]
     if "free_food" in perks:
         return True
     if location in food_locations:
@@ -266,11 +270,16 @@ def is_popular(event_name):
 
 
 def is_weekly(event_name, description):
-    weekly_events = ["Board Game Night", "Pizza in the Park", "DSC Bible Study", "Graduate Fellowships Writing Group",
-                     "Tenants' Right and Organizing"]
+    weekly_events = ["board game night", "pizza in the park", "dsc bible study", "graduate fellowships writing group",
+                     "tenants' right and organizing", "asl club", "reset lab: a guided mind & body reset",
+                     "stay flossy: embroidery workshop", "ucity square beer garden", "food truck thursdays at the lawn",
+                     "yoga at ucity square", "university city summer series concert: worldtown soundsystem collective",
+                     "creativemornings", "monthly innovation exchange", "life sciences luncheon"]
     if "weekly" in event_name.lower() or "weekly" in description.lower():
         return True
-    return event_name in weekly_events
+    if "monthly" in event_name.lower() or "monthly" in description.lower():
+        return True
+    return event_name.lower() in weekly_events
 
 
 def is_for_new_students(event_name, description):
@@ -564,7 +573,12 @@ def image_in_s3(bucket_name, file_name):
 def resize_image(path, max_width=600, max_height=400):
     # crop image to desired aspect ratio and resize
     # also convert to jpeg and do other stuff to reduce file size
-    image = Image.open(path)
+    # returns success value
+
+    try:
+        image = Image.open(path)
+    except PIL.UnidentifiedImageError:
+        return False
     desired_aspect_ratio = max_width / max_height
     actual_aspect_ratio = image.width / image.height
 
@@ -613,7 +627,8 @@ def get_image_s3_url(original_url, bucket_name):
         img_data = requests.get(original_url).content
         with open(local_file_path, "wb") as handler:
             handler.write(img_data)
-        resize_image(local_file_path)
+        if not resize_image(local_file_path):
+            return None
         upload_file_to_s3(bucket_name, local_file_path, s3_file_path)
 
     return s3_base_path + s3_file_path
@@ -641,14 +656,19 @@ def create_event_object(source, event_json, bucket_name):
         kwargs["perks"].append("credit")
         kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
 
-    kwargs["name"] = kwargs["name"].replace("()", "").strip(" ;:/,*")
+    kwargs["name"] = kwargs["name"].replace("()", "").strip(" ;/,*")
     kwargs["org_name"] = parse_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
 
     if kwargs["image_url"] is None:
-        kwargs["image_url"] = match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"])
+        kwargs["image_url"] = get_image_s3_url(
+            match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"]), bucket_name)
     else:
         kwargs["image_url"] = get_image_s3_url(kwargs["image_url"], bucket_name)
+        if kwargs["image_url"] is None:
+            kwargs["image_url"] = get_image_s3_url(
+                match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"]), bucket_name)
+
     if kwargs["event_status"] == "online":
         kwargs["location"] = "Online"
     else:
@@ -675,7 +695,7 @@ def create_dragonlink_api_url(count):
     return base_url + "?endsAfter=" + timestamp + base_filters + str(count)
 
 
-def collect_dragonlink_events(count=300):
+def collect_dragonlink_events(count):
     response = requests.get(create_dragonlink_api_url(count), timeout=HTTP_TIMEOUT)
     if response.status_code != 200:
         print(f"Error: {response.status_code} {response.text}")
@@ -702,7 +722,7 @@ def get_drexel_events_response(page):
     return dict(response.json())["results"]
 
 
-def collect_drexel_events(count=200):
+def collect_drexel_events(count):
     results = []
     events_per_page = 10
     max_threads = 5
@@ -721,7 +741,7 @@ def collect_drexel_events(count=200):
     return results
 
 
-def create_drexel_athletics_api_url(days_out=90):
+def create_drexel_athletics_api_url(days_out):
     # set default days_out to higher amount after streamlining data collection process
     now = datetime.now()
     start_date = now.strftime("%m-%d-%Y")
@@ -729,8 +749,8 @@ def create_drexel_athletics_api_url(days_out=90):
     return f"https://drexeldragons.com/api/v2/Calendar/from/{start_date}/to/{end_date}"
 
 
-def collect_drexel_athletics_events():
-    url = create_drexel_athletics_api_url()
+def collect_drexel_athletics_events(days_out):
+    url = create_drexel_athletics_api_url(days_out)
     response = requests.get(url, timeout=HTTP_TIMEOUT)
 
     if response.status_code != 200:
@@ -751,3 +771,163 @@ def collect_drexel_athletics_events():
         json.dump(events_json, f, indent=4)
 
     return events_json
+
+
+def get_ucity_square_calendar_urls(months_out):
+    base_calendar_url = "https://ucitysquare.com/events/month/"
+    date_strings = []
+    now = datetime.now()
+    current_year = now.year
+    current_month = now.month
+
+    i = 0
+    while i < months_out:
+        date_strings.append(f"{current_year}-{current_month:02d}")
+        current_month += 1
+        if current_month > 12:
+            current_month = 1
+            current_year += 1
+        i += 1
+
+    return [base_calendar_url + date_string for date_string in date_strings]
+
+
+def get_all_ucity_square_events(bucket_name, months_out):
+    calendar_urls = get_ucity_square_calendar_urls(months_out)
+    event_urls = []
+    for url in calendar_urls:
+        event_urls.extend(get_event_urls_from_calendar_page(url))
+    event_urls = list(set(event_urls))
+
+    events = []
+    for url in event_urls:
+        events.append(create_ucity_square_event_from_url(url, bucket_name))
+        time.sleep(.1)
+
+    return events
+
+
+def get_event_urls_from_calendar_page(url):
+    def is_past(tag):
+        day_div = tag.parent.parent.parent
+        tag_date = datetime.strptime(day_div.get("id"), "tribe-events-calendar-day-%Y-%m-%d")
+        return tag_date < datetime.now()
+
+    event_links = []
+    response = requests.get(url, headers=http_header)
+    soup = BeautifulSoup(response.text, "html.parser")
+    events = soup.find_all("div", class_="tribe-events-calendar-month__calendar-event-details")
+
+    for event in events:
+        if is_past(event):
+            continue
+        event_links.append(event.contents[3].a["href"])
+    return event_links
+
+
+def match_ucity_square_default_image(name):
+    ucity_square_default_image = "https://www.universitycity.org/wp-content/uploads/2026/03/original_images_106297125_3131683786946849_7604964815855804720_n_sjgx8c2w9.jpg"
+    yoga_image = "https://www.eventbrite.com/e/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F952808923%252F1814176558193%252F1%252Foriginal.20250204-222847%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D1880%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3De8039340c96baf2e46017e0bacae4c79&w=1880&q=75"
+    beer_garden_image = "https://www.universitycity.org/wp-content/uploads/2026/03/UCDSummerSeries2025_Final_181.jpg"
+    food_truck_image = "https://ucitysquare.com/wp-content/uploads/2024/02/food-trucks.png"
+    if "yoga" in name.lower():
+        return yoga_image
+    if "beer garden" in name.lower():
+        return beer_garden_image
+    if "food truck" in name.lower():
+        return food_truck_image
+    return ucity_square_default_image
+
+
+def match_ucity_square_event_theme(name, description):
+    # academic, arts, athletics, career, community, cultural, fundraising, health, social, spirituality
+    theme_keyword_match = {"yoga": "athletics", "beer garden": "social", "food truck": "social",
+                           "innovation exchange": "career", "life sciences": "academic",
+                           "embroidery workshop": "arts", "reset lab": "health", "asl": "arts",
+                           "retention by design": "career",
+                           "university city summer series concert": "arts", "creativemornings": "community",
+                           "monthly innovation exchange": "career"}
+    for keyword, theme in theme_keyword_match.items():
+        if keyword in name.lower() or keyword in description.lower():
+            return theme
+    return "social"
+
+
+def simplify_ucity_square_event_name(name):
+    remove_list = ["– Spring", "– Summer", "– Fall", "– Winter", "at The Lawn", "()", "  "]
+    for remove_str in remove_list:
+        name = name.replace(remove_str, "")
+    return name.strip()
+
+
+def get_ucity_square_event_perks(name, description):
+    free_food_events = ["life sciences luncheon"]
+    free_stuff_events = ["stay flossy: embroidery workshop"]
+    perks = []
+
+    if name.lower() in free_food_events:
+        perks.append("free_food")
+    if name.lower() in free_stuff_events:
+        perks.append("free_stuff")
+    return perks
+
+
+def create_ucity_square_event_from_url(url, bucket_name):
+    kwargs = {"_id": stable_hash(url), "source": "ucity_square", "name": None, "org_name": "uCity Square",
+              "location": None, "image_url": None, "start_time": None, "end_time": None,
+              "event_link": url, "event_status": "in-person", "theme": None, "perks": [], "food_related": False,
+              "popular": False, "weekly": False, "for_new_students": False, "on_campus": True, "religion": None,
+              "description": ""}
+
+    response = requests.get(url, headers=http_header)
+    if response.status_code != 200:
+        print(f"Error: {response.status_code} {response.text}")
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    now = datetime.now()
+    time_str = soup.find("div", class_="tribe-events-schedule")
+    if time_str is None:
+        print(url)
+        return None
+    time_str = time_str.text.strip().split("\n")[0].split(" ")
+    month = time_str[0]
+    day = time_str[1]
+    start_time_str = time_str[3] + " " + time_str[4]
+    end_time_str = time_str[6] + " " + time_str[7]
+    year = now.year
+    if datetime.strptime(month, "%B").month < now.month:
+        year += 1
+    format_str = "%Y %B %d %I:%M %p"
+    kwargs["start_time"] = datetime.strptime(f"{year} {month} {day} {start_time_str}", format_str)
+    kwargs["end_time"] = datetime.strptime(f"{year} {month} {day} {end_time_str}", format_str)
+
+    if kwargs["end_time"] < (now + timedelta(hours=1)):
+        return None
+
+    kwargs["name"] = simplify_ucity_square_event_name(soup.find("h1").text)
+    description = soup.find("div", class_="tribe-events-single-event-description tribe-events-content")
+    if description is None:
+        print(url)
+        exit(1)
+    description = description.text.strip().replace("\xa0", " ")
+    kwargs["description"] = description
+    if "The Lawn at uCity Square" in description:
+        kwargs["location"] = "The Lawn at uCity Square"
+    else:
+        kwargs["location"] = "3675 Market St"
+
+    event_image_url = soup.find("div", class_="tribe-events-event-image")
+    image_base_url = "https://ucitysquare.com"
+    if event_image_url:
+        original_image_url = image_base_url + event_image_url.find("img")["src"]
+    else:
+        original_image_url = match_ucity_square_default_image(kwargs["name"])
+    kwargs["image_url"] = get_image_s3_url(original_image_url, bucket_name)
+
+    kwargs["theme"] = match_ucity_square_event_theme(kwargs["name"], kwargs["description"])
+    kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"], kwargs["description"])
+    kwargs["weekly"] = is_weekly(kwargs["name"], kwargs["description"])
+
+    del kwargs["description"]
+    return Event(**kwargs)

@@ -1,6 +1,4 @@
-import os
 import time
-from pprint import pprint
 
 import requests
 
@@ -15,17 +13,6 @@ def test_eventbrite():
     # url = "https://www.eventbrite.com/api/v3/promoted/events"
     response = requests.get(url, headers=headers)
     print(response.status_code, response.text)
-
-
-def test_lambda():
-    url = os.getenv("LAMBDA_ENDPOINT")
-    response = requests.get(url, params={"page": 2})
-
-    pprint(response.json())
-
-
-def event_id_hash(hash_str):
-    return hex(abs(hash(hash_str)))[2:]
 
 
 if __name__ == "__main__":

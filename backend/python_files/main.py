@@ -3,13 +3,13 @@ import os
 import time
 from datetime import datetime
 
-import boto3
-import psycopg2
-from dotenv import load_dotenv
+import pg8000.dbapi
 
+import boto3
 from backend.python_files.event_class import Event
 from backend.python_files.event_data_parsing_functions import make_time_str, create_event_object, \
-    collect_dragonlink_events, collect_drexel_events, collect_drexel_athletics_events
+    collect_dragonlink_events, collect_drexel_events, collect_drexel_athletics_events, get_all_ucity_square_events
+from dotenv import load_dotenv
 
 
 def create_event_chunk_file(event):
@@ -74,16 +74,25 @@ def collect_all_events(bucket_name):
 
     events.extend(
         [create_event_object("dragonlink", event_json, bucket_name) for event_json in
-         collect_dragonlink_events()])
+         collect_dragonlink_events(count=300)])
+    count = len(events)
+    print(f"Collected {len(events)} Dragonlink events.")
+
     events.extend(
         [create_event_object("drexel_events", event_json, bucket_name) for event_json in
-         collect_drexel_events()])
+         collect_drexel_events(count=200)])
+    print(f"Collected {len(events) - count} Drexel events.")
+    count = len(events)
+
     events.extend(
         [create_event_object("drexel_athletics", event_json, bucket_name) for event_json in
-         collect_drexel_athletics_events()])
-    events = [e for e in events if e is not None and e.start_time is not None]
+         collect_drexel_athletics_events(days_out=90)])
+    events.extend(get_all_ucity_square_events(bucket_name, months_out=2))
+    print(f"Collected {len(events) - count} UCity Square events.")
 
-    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2}
+    events = [e for e in events if e is not None]
+
+    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
 
     # group possible duplicates by start time first
     by_start = {}
@@ -138,9 +147,11 @@ def save_events_to_db(events):
     if not event_rows_by_id:
         return 0
 
-    with psycopg2.connect(host=os.getenv("RDS_ENDPOINT"), database="postgres", user=os.getenv("RDS_USERNAME"),
-                          password=os.getenv("RDS_PASSWORD"), port="5432") as conn:
-        with conn.cursor() as cursor:
+    conn = pg8000.dbapi.connect(host=os.getenv("RDS_ENDPOINT"), database="postgres", user=os.getenv("RDS_USERNAME"),
+                                password=os.getenv("RDS_PASSWORD"), port=5432, ssl_context=True)
+    try:
+        cursor = conn.cursor()
+        try:
             cursor.execute("SELECT id FROM main.events WHERE id = ANY(%s)", (list(event_rows_by_id.keys()),))
             existing_event_ids = {row[0] for row in cursor.fetchall()}
             new_event_rows = [row for event_id, row in event_rows_by_id.items() if event_id not in existing_event_ids]
@@ -156,7 +167,12 @@ def save_events_to_db(events):
                                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s, %s,
                                        %s, %s, %s, %s, %s)
                                ''', new_event_rows)
+            conn.commit()
             return len(new_event_rows)
+        finally:
+            cursor.close()
+    finally:
+        conn.close()
 
 
 def fill_db():
