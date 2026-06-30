@@ -30,11 +30,17 @@ def make_time_str(start_time, end_time):
         time_str_prefix = "Today"
     elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
         time_str_prefix = "Tomorrow"
-    elif (start_time - now) > timedelta(days=7):
+    elif (start_time - now) > timedelta(days=6):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
         time_str_prefix = datetime.strftime(start_time, "%A")
-    return f"{time_str_prefix} - {_fmt_hm(start_time)}-{_fmt_hm(end_time, with_ampm=True)}"
+    if start_time.month != end_time.month:
+        return f"{time_str_prefix} @ {_fmt_hm(start_time)} - {datetime.strftime(end_time, "%A")}{_fmt_hm(end_time, with_ampm=True)}"
+    elif start_time.hour < 12 < end_time.hour or (start_time - end_time) > timedelta(hours=12):
+        return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)} - {_fmt_hm(end_time, with_ampm=True)}"
+    elif start_time == end_time:
+        return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)}"
+    return f"{time_str_prefix} @ {_fmt_hm(start_time)} - {_fmt_hm(end_time, with_ampm=True)}"
 
 
 def db_entry_to_json(db_entry):
