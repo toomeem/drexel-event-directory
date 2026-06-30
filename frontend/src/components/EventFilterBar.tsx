@@ -62,7 +62,7 @@ const THEME_OPTIONS: FilterOption[] = THEME_VALUES.map((v) => ({
     label: titleCase(v),
 }));
 
-const PERK_VALUES = ["free_food🍔", "free_stuff🛍️", "credit🎟️"];
+const PERK_VALUES = ["free_food🍔", "free_stuff🛍️", "credit 🎟️"];
 
 const PERK_OPTIONS: FilterOption[] = PERK_VALUES.map((v) => ({
     value: v,
@@ -70,10 +70,10 @@ const PERK_OPTIONS: FilterOption[] = PERK_VALUES.map((v) => ({
 }));
 
 const RELIGION_OPTIONS: FilterOption[] = [
-    {value: "christian", label: "Christian"},
-    {value: "jewish", label: "Jewish"},
-    {value: "muslim", label: "Muslim"},
-    {value: "hindu", label: "Hindu"},
+    {value: "christian", label: "Christian✞"},
+    {value: "jewish", label: "Jewish✡︎"},
+    {value: "muslim", label: "Muslim☪︎"},
+    {value: "hindu", label: "Hinduॐ"},
 ];
 
 const SEARCH_DEBOUNCE_MS = 300;
@@ -286,7 +286,7 @@ export function EventSidebarFilters({filters, onChange}: EventFilterBarProps) {
                                     {key: "foodRelated", label: "Food Related🍔"},
                                     {key: "popular", label: "Popular🔥"},
                                     {key: "recurring", label: "Recurring 🗘"},
-                                    {key: "forNewStudents", label: "For New Students"},
+                                    {key: "forNewStudents", label: "For New Students🎉"},
                                     {key: "onCampus", label: "On Campus📍"},
                                 ] as { key: keyof AppliedFilters; label: string }[]
                             ).map(({key, label}, index) => {
