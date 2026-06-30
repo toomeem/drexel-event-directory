@@ -1,6 +1,12 @@
 create s3 hosting for website
 point domain to s3 bucket
 
+potential sources to add:
+    the post: https://www.thepostphl.com/
+    cira green: https://www.sunsetsocialphl.com/events
+    gather food hall: https://gatherfoodhall.com/happenings/
+    philly gov events: https://www.phila.gov/the-latest/all-events/?category=Philadelphia%20Parks%20%26%20Recreation
+
 maybe add specific religion icons?
 add icons for each event type
 add filtering

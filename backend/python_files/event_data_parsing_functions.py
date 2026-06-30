@@ -807,16 +807,6 @@ def get_all_ucity_square_urls(months_out):
     return event_urls
 
 
-# def create_ucity_square_event_from_urls():
-#     events = []
-#     request_wait_time = 0.1
-#     for url in event_urls:
-#         events.append(create_ucity_square_event_from_url(url, bucket_name))
-#         time.sleep(request_wait_time)
-#
-#     return [i for i in events if i is not None]
-
-
 def get_event_urls_from_calendar_page(url):
     def is_past(tag):
         day_div = tag.parent.parent.parent
