@@ -5,14 +5,6 @@ from zoneinfo import ZoneInfo
 
 import pg8000.dbapi
 
-PHILLY_TZ = ZoneInfo("America/New_York")
-
-proxy_host_name = os.environ["RDS_ENDPOINT"]
-db_user_name = "postgres"
-db_name = "postgres"
-password = os.environ["RDS_PASSWORD"]
-port = 5432
-
 
 def _fmt_hm(dt, with_ampm=False):
     h = dt.strftime("%I").lstrip("0") or "12"
@@ -20,6 +12,7 @@ def _fmt_hm(dt, with_ampm=False):
 
 
 def make_time_str(start_time, end_time):
+    PHILLY_TZ = ZoneInfo("America/New_York")
     start_time = start_time.astimezone(PHILLY_TZ)
     end_time = end_time.astimezone(PHILLY_TZ)
     now = datetime.now(PHILLY_TZ)
@@ -47,6 +40,7 @@ def make_time_str(start_time, end_time):
 
 
 def db_entry_to_json(db_entry):
+    PHILLY_TZ = ZoneInfo("America/New_York")
     start_time = db_entry[6].astimezone(PHILLY_TZ)
     end_time = db_entry[7].astimezone(PHILLY_TZ)
 
@@ -64,17 +58,22 @@ def db_entry_to_json(db_entry):
             "on_campus": db_entry[16], "religion": db_entry[17], }
 
 
-MAX_SEARCH_LEN = 100
-VALID_PERKS = {"free_food", "free_stuff", "credit"}
-
-CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin", "Content-Type": "application/json", }
-
-
 def lambda_handler(event, context):
+    CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin",
+                    "Content-Type": "application/json", }
+    MAX_SEARCH_LEN = 100
+    VALID_PERKS = {"free_food", "free_stuff", "credit"}
+    PHILLY_TZ = ZoneInfo("America/New_York")
+    MAX_PAGE = 100
     EVENT_ROWS_PER_PAGE = 6
     EVENTS_PER_ROW = 4
-    MAX_PAGE = 1000
+
+    proxy_host_name = os.environ["RDS_ENDPOINT"]
+    db_user_name = os.environ["RDS_USERNAME"]
+    password = os.environ["RDS_PASSWORD"]
+    db_name = "postgres"
+    port = 5432
 
     page_event_count = EVENT_ROWS_PER_PAGE * EVENTS_PER_ROW
     now = datetime.now(PHILLY_TZ)

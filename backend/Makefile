@@ -11,7 +11,7 @@ default: clean package
 
 # Install dependencies for Linux x86_64 directly into package dir
 dependencies:
-	$(PYTHON_VERSION) -m pip install -r lambda/requirements.txt \
+	$(PYTHON_VERSION) -m pip install -r requirements.txt \
 		--platform manylinux2014_x86_64 \
 		--implementation cp \
 		--python-version 3.14 \
@@ -20,7 +20,7 @@ dependencies:
 
 # Package the dependencies and lambda function into a zip
 package: dependencies
-	cp lambda/$(LAMBDA_FUNCTION) $(PACKAGE_DIR)/
+	cp python_files/$(LAMBDA_FUNCTION) $(PACKAGE_DIR)/
 	cd $(PACKAGE_DIR) && zip -r ../$(PACKAGE_NAME) .
 
 # Clean up

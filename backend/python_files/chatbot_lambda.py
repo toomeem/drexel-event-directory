@@ -5,24 +5,14 @@ import uuid
 
 import boto3
 
-AGENT_ID = os.environ['AWS_BEDROCK_AGENT_ID']
-AGENT_ALIAS_ID = os.environ['AWS_BEDROCK_AGENT_ALIAS_ID']
-KNOWLEDGE_BASE_ID = os.environ['AWS_BEDROCK_KNOWLEDGE_BASE_ID']
-MAX_INPUT_LEN = 400
-MAX_CHUNKS = 15
 
-# sanitize session ids
-SESSION_ID_RE = re.compile(r"^[0-9a-f]{32}$")
-
-CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS",
-                "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin", "Content-Type": "application/json", }
-
-
-def _response(status, body):
+def _response(status, body, CORS_HEADERS):
     return {"statusCode": status, "headers": CORS_HEADERS, "body": json.dumps(body)}
 
 
 def sanitize_input(value):
+    MAX_INPUT_LEN = 400
+
     if not isinstance(value, str):
         raise ValueError("input must be a string")
     cleaned = "".join(c for c in value if c == "\n" or c == "\t" or (c.isprintable() and ord(c) >= 0x20))
@@ -35,12 +25,23 @@ def sanitize_input(value):
 
 
 def resolve_session_id(raw):
+    # sanitize session ids
+    SESSION_ID_RE = re.compile(r"^[0-9a-f]{32}$")
+
     if isinstance(raw, str) and SESSION_ID_RE.match(raw):
         return raw
     return uuid.uuid4().hex
 
 
 def lambda_handler(event, context):
+    CORS_HEADERS = {"Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin",
+                    "Content-Type": "application/json", }
+    AGENT_ID = os.environ['AWS_BEDROCK_AGENT_ID']
+    AGENT_ALIAS_ID = os.environ['AWS_BEDROCK_AGENT_ALIAS_ID']
+    KNOWLEDGE_BASE_ID = os.environ['AWS_BEDROCK_KNOWLEDGE_BASE_ID']
+    MAX_CHUNKS = 15
+
     if event.get("requestContext", {}).get("http", {}).get("method") == "OPTIONS":
         return {"statusCode": 200, "headers": CORS_HEADERS, "body": ""}
 
@@ -48,16 +49,16 @@ def lambda_handler(event, context):
         try:
             payload = json.loads(event['body']) if isinstance(event['body'], str) else event['body']
         except (ValueError, TypeError):
-            return _response(400, {"error": "invalid JSON body"})
+            return _response(400, {"error": "invalid JSON body"}, CORS_HEADERS)
     else:
         payload = event
     if not isinstance(payload, dict):
-        return _response(400, {"error": "invalid payload"})
+        return _response(400, {"error": "invalid payload"}, CORS_HEADERS)
 
     try:
         input_text = sanitize_input(payload.get('input', ''))
     except ValueError as e:
-        return _response(400, {"error": str(e)})
+        return _response(400, {"error": str(e)}, CORS_HEADERS)
 
     session_id = resolve_session_id(payload.get('id'))
 
