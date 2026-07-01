@@ -91,7 +91,7 @@ def collect_all_events(bucket_name):
     existing_event_ids = event_ids_db()
     events = []
 
-    ucity_square_urls = [i for i in get_all_ucity_square_urls(months_out=3) if stable_hash(i) not in existing_event_ids]
+    ucity_square_urls = [i for i in get_all_ucity_square_urls(months_out=2) if stable_hash(i) not in existing_event_ids]
     half_ucity_square_urls = len(ucity_square_urls) // 2
     events.extend(
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[:half_ucity_square_urls]])

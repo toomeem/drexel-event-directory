@@ -1,6 +1,8 @@
 create s3 hosting for website
 point domain to s3 bucket
 
+improve mobile interface so that it shows at least two events per row
+
 potential sources to add:
     the post: https://www.thepostphl.com/
     cira green: https://www.sunsetsocialphl.com/events
@@ -18,7 +20,6 @@ add filtering
     "greek life" label
     "political" label
 
-add form to add a new event
 improve search
 add calendar viewing option
 add section for new students that explains stuff and has a map of campus
