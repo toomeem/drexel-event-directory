@@ -1,3 +1,5 @@
+import time
+
 import PIL
 from PIL import Image
 
@@ -29,6 +31,7 @@ def resize_image(path, max_width=600, max_height=400):
     try:
         image = Image.open(path)
     except PIL.UnidentifiedImageError:
+        print(f"UnidentifiedImageError: {path}")
         return False
     desired_aspect_ratio = max_width / max_height
     actual_aspect_ratio = image.width / image.height
@@ -60,6 +63,7 @@ def resize_image(path, max_width=600, max_height=400):
     save_kwargs = {"optimize": True, "quality": 80, "progressive": True}
 
     image.save(path, format="JPEG", **save_kwargs)
+    return True
 
 
 def get_image_s3_url(original_url, bucket_name):
@@ -75,11 +79,19 @@ def get_image_s3_url(original_url, bucket_name):
     s3_file_path = "images/event_specific_images/" + image_name
 
     if not image_in_s3(bucket_name, image_name):
-        img_data = requests.get(original_url).content
+        img_data = requests.get(original_url)
         with open(local_file_path, "wb") as handler:
-            handler.write(img_data)
+            handler.write(img_data.content)
         if not resize_image(local_file_path):
-            return None
+            time.sleep(0.5)
+            img_data = requests.get(original_url)
+            time.sleep(2)
+            with open(local_file_path, "wb") as handler:
+                handler.write(img_data.content)
+            time.sleep(0.5)
+            if not resize_image(local_file_path):
+                print(f"Error resizing image: {original_url}")
+                return None
         upload_file_to_s3(bucket_name, local_file_path, s3_file_path)
 
     return s3_base_path + s3_file_path

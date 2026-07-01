@@ -14,3 +14,5 @@ frontend/.env.local
 /frontend/package-lock.json
 .venv
 backend/event_image_tmp_dir!/backend/chunking_tmp_dir/
+backend/json_examples/
+backend/events.json
