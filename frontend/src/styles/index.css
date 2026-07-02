@@ -1505,8 +1505,8 @@ img {
     }
 
     .event-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
     }
 
     .filter-bar {
@@ -1589,11 +1589,32 @@ img {
     }
 
     .event-card__body {
-        padding: 10px 12px 12px;
+        padding: 8px;
     }
 
     .event-card__title {
-        font-size: 15px;
+        font-size: 13px;
+    }
+
+    .event-card__time,
+    .event-card__host {
+        font-size: 11px;
+    }
+
+    .event-card__location {
+        font-size: 12px;
+    }
+
+    .event-card__time,
+    .event-card__location,
+    .event-card__host {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .event-card__perk {
+        font-size: 10px;
+        padding: 2px 5px;
     }
 }
 
