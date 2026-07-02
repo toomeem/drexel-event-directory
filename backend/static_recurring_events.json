@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Open Mic Night",
+    "org_name": "The Post",
+    "location": "The Post at Cira Garage",
+    "image_url": "https://static.wixstatic.com/media/3bd471_f8f12a85b13b4a93881c3c46be181e16~mv2.png",
+    "start_time": "18:00",
+    "end_time": "20:00",
+    "weekday": "monday",
+    "event_link": "https://www.thepostphl.com/",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [],
+    "food_related": true,
+    "popular": false,
+    "for_new_students": false
+  },
+  {
+    "name": "Quizzo Tuesdays",
+    "org_name": "The Post",
+    "location": "The Post at Cira Garage",
+    "image_url": "https://static.wixstatic.com/media/52a1c1_3a46a8d2851040b4b74fee8b1a1ea3dd~mv2.jpg",
+    "start_time": "20:00",
+    "end_time": null,
+    "weekday": "tuesday",
+    "event_link": "https://www.thepostphl.com/",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [],
+    "food_related": true,
+    "popular": false,
+    "for_new_students": false
+  },
+  {
+    "name": "Game Nights at The Post",
+    "org_name": "The Post",
+    "location": "The Post at Cira Garage",
+    "image_url": "https://static.wixstatic.com/media/3bd471_3a318c41ab364496a96a10f4c03b09ac~mv2.jpg",
+    "start_time": "19:00",
+    "end_time": "22:00",
+    "weekday": "wednesday",
+    "event_link": "https://www.thepostphl.com/",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [],
+    "food_related": true,
+    "popular": false,
+    "for_new_students": false
+  },
+  {
+    "name": "Switch Showdowns",
+    "org_name": "The Post",
+    "location": "The Post at Cira Garage",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUaLikdEVD_pEeExGi9_LrautM4tkF9ihrwgPA27K5-Dj3-92l1oUsmEM&s=10",
+    "start_time": "18:00",
+    "end_time": null,
+    "weekday": "saturday",
+    "event_link": "https://www.thepostphl.com/",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [
+      "prizes"
+    ],
+    "food_related": true,
+    "popular": true,
+    "for_new_students": false
+  }
+]

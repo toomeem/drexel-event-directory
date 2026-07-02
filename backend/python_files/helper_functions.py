@@ -199,8 +199,10 @@ def is_popular(event_name):
                       "Rise & Roar: Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night @ Drexel U",
                       "Undergraduate July Summer Open House", "Rise & Roar: Future Dragons Breakfast",
-                      "STAR Scholars Summer Showcase"
+                      "STAR Scholars Summer Showcase", "Welcome Week: Night on the Row 2026"
                       ]
+    if "welcome week" in event_name.lower():
+        return True
     return event_name in popular_events
 
 
@@ -228,7 +230,8 @@ def is_for_new_students(event_name, description):
         return True
     if "incoming freshman" in event_name or "incoming freshman" in description:
         return True
-
+    if "welcome week" in event_name or "welcome week" in description:
+        return True
     return event_name in new_students_events
 
 
