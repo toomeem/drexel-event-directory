@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 
 from backend.python_files.event_class import Event
 from backend.python_files.helper_functions import stable_hash
+from backend.python_files.image_parsing_functions import get_image_s3_url
 
 
 # this is just for weekly static events at local places
@@ -27,7 +28,7 @@ def find_next_occurrence(weekday_str):
     return now + timedelta(days=7 - days_ahead)
 
 
-def static_event_definition_to_event_object(event_definition):
+def static_event_definition_to_event_object(event_definition, bucket_name):
     date = find_next_occurrence(event_definition["weekday"])
 
     start_time = datetime.strptime(event_definition["start_time"], "%H:%M").time()
@@ -40,8 +41,7 @@ def static_event_definition_to_event_object(event_definition):
         end = None
 
     _id = stable_hash(event_definition["name"] + str(start.timestamp()))
-
-    # todo: implement image parsing
+    image_url = get_image_s3_url(event_definition["image_url"], bucket_name)
 
     return Event(
         _id=id,
@@ -49,7 +49,7 @@ def static_event_definition_to_event_object(event_definition):
         name=event_definition["name"],
         org_name=event_definition["org_name"],
         location=event_definition["location"],
-        image_url=event_definition["image_url"],
+        image_url=image_url,
         start_time=start,
         end_time=end if end else None,
         event_link=event_definition["event_link"],

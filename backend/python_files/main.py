@@ -87,6 +87,33 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
     return Event(**kwargs)
 
 
+def collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count):
+    events = []
+    for event_json in collect_dragonlink_events(count):
+        event = create_event_object("dragonlink", event_json, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
+def collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count):
+    events = []
+    for event_json in collect_drexel_events(count):
+        event = create_event_object("drexel_events", event_json, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
+def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out):
+    events = []
+    for event_json in collect_drexel_athletics_events(days_out):
+        event = create_event_object("drexel_athletics", event_json, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
 def collect_all_events(bucket_name):
     existing_event_ids = event_ids_db()
     events = []
@@ -99,24 +126,15 @@ def collect_all_events(bucket_name):
     event_count = len(events)
     print(f"\nCollected {event_count} UCity Square events.")
 
-    events.extend(
-        [create_event_object("dragonlink", event_json, bucket_name, existing_event_ids) for event_json in
-         collect_dragonlink_events(count=300)])
-    events = [e for e in events if e is not None]
+    events.extend(collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count=300))
     print(f"Collected {len(events) - event_count} Dragonlink events.")
     event_count = len(events)
 
-    events.extend(
-        [create_event_object("drexel_events", event_json, bucket_name, existing_event_ids) for event_json in
-         collect_drexel_events(count=200)])
-    events = [e for e in events if e is not None]
+    events.extend(collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count=350))
     print(f"Collected {len(events) - event_count} Drexel events.")
     event_count = len(events)
 
-    events.extend(
-        [create_event_object("drexel_athletics", event_json, bucket_name, existing_event_ids) for event_json in
-         collect_drexel_athletics_events(days_out=90)])
-    events = [e for e in events if e is not None]
+    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out=90))
     print(f"Collected {len(events) - event_count} Drexel Athletics events.")
     event_count = len(events)
 

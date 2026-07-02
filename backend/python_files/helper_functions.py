@@ -276,7 +276,8 @@ def invalid_event(kwargs):
                        "Health Career Exploration Camp", "Revisit 1876",
                        "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
                        "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
-                       "Fall House Manager Training", "Student Council Meeting"]
+                       "Fall House Manager Training", "Student Council Meeting",
+                       "America’s National Anniversaries & Philadelphia on the World Stage"]
     if kwargs is None:
         return True
     if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
