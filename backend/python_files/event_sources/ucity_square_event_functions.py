@@ -112,15 +112,16 @@ def create_ucity_square_event_from_url(url, bucket_name):
               "popular": False, "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
               "description": ""}
 
-    request_wait_time = 0.2
+    request_wait_time = 0.3
     time.sleep(request_wait_time)
 
     response = requests.get(url, headers=http_header)
     if response.status_code == 429:
-        time.sleep(2)
+        print("Got rate limited, sleeping for 5 seconds")
+        time.sleep(5)
         response = requests.get(url, headers=http_header)
     if response.status_code != 200:
-        print(f"Error: {response.status_code} - {response.text} - {url}")
+        print(f"Error: {response.status_code} - {url}")
         return None
     soup = BeautifulSoup(response.text, "html.parser")
     now = datetime.now()

@@ -44,9 +44,12 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
     source = "drexel_events"
     correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students",
                          "Prospective Students", "Senior Class"]
+    excluded_event_ids = ["46659_123060"]
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
 
     if kwargs["_id"] in existing_event_ids:
+        return None
+    elif event_json["id"] in excluded_event_ids:
         return None
     elif "deadline" in str(event_json["typeNames"]).lower() or event_json["allDay"]:
         return None

@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from backend.python_files.event_class import Event
 from backend.python_files.lambda_function import make_time_str
@@ -20,6 +21,45 @@ def normalize_time(source, time_str):
         time_str = time_str.replace("Z", "")
     dt = datetime.fromisoformat(time_str)
     return dt
+
+
+def simplify_event_name(name):
+    remove_list = ["15 Wellness Points", "(All Goodwin Programs)", "(AI)", "()"]
+    replace_list = {"  ": " "}
+
+    for i in remove_list:
+        name = name.replace(i, "", 1)
+    for old, new in replace_list.items():
+        name = name.replace(old, new, 1)
+
+    return name.strip(" ;/,*")
+
+
+def simplify_org_name(org_name):
+    if not org_name:
+        return "Drexel University"
+    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
+                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
+                    "Drexel Newman Catholic Community": "Newman Catholic Community",
+                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
+                    "College of Computing and Informatics": "CCI",
+                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
+                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life",
+                    "Biomedical Science Graduate Student Association": "Biomed Grad Student Association",
+                    "Wilbur W. Oaks Physician Assistant Student Society": "Physician Assistant Student Society"}
+    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
+                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
+                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
+                       "Incorporated", "Inc.", "Student Group", ", ,"]
+    org_name = org_name.strip()
+
+    if org_name in replace_list.keys():
+        return replace_list[org_name]
+    if org_name.startswith("Drexel University"):
+        org_name = org_name.replace("Drexel University", "", 1)
+    for i in org_name_remove:
+        org_name = org_name.replace(i, "", 1)
+    return org_name.strip(":*_;-,. ")
 
 
 def simplify_location(location):
@@ -68,13 +108,16 @@ def simplify_location(location):
                           "3509 Brandywine St & the corner of 36th and Spring Garden": "3509 Brandywine St",
                           "West Philadelphia": "West Philadelphia",
                           "Hafner Community Center": "Hafner Community Center",
-                          "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5": "Bentley Hall"}
+                          "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5": "Bentley Hall",
+                          "Bentley Hall 2nd Floor Annex": "Bentley Hall 2nd Floor",
+                          "Tu Rinconcito": "Tu Rinconcito",
+                          "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
                 "- All Sections", "- Danzinger Conference Room"]
     remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "In person at the", "In person at", "Pa 19104",
-                   "Pa 19103", "Pa 19106", "19103", "19104", "19106", "Philadelphia", ", PA",
+                   "Pa 19103", "Pa 19106", "19103", "19104", "19106", "Philadelphia", "Phila.,", ", PA",
                    "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
                    "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
                    "RSVP Required to Attend", "60 N. 36th Street", "33rd and Market Street", ", USA", "(if rain-W106)",
@@ -82,7 +125,7 @@ def simplify_location(location):
                    "3141 Chestnut Street", "3141 Chestnut St", "Table Space 1 -", "Table Space 1", "Table Space 2 -",
                    "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
                    "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)",
-                   "3220 Market Street", ", Second Floor"]
+                   "3220 Market Street", ", Second Floor", "CNHP Lobby Table", "outside the cafeteria", ]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
                     ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
                     ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),
@@ -180,7 +223,8 @@ def is_athletic_event(event_name, org_name, location):
 
 def is_food_related(event_name, perks, location, description):
     food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
-    food_keywords = ["food", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks", "breakfast", "lunch",
+    food_keywords = ["food", "coffee", "bake sale", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks",
+                     "breakfast", "lunch",
                      "dinner", "refreshments" "coffee", "beer", "wine", "cocktails", "meal", "cookout"]
     if "free_food" in perks:
         return True
@@ -214,12 +258,20 @@ def is_recurring(event_name, description):
                         "food truck thursdays at the lawn",
                         "yoga at ucity square",
                         "university city summer series concert: worldtown soundsystem collective",
-                        "creativemornings", "monthly innovation exchange", "life sciences luncheon"]
-    if "recurring" in event_name.lower() or "recurring" in description.lower():
-        return True
-    if "monthly" in event_name.lower() or "monthly" in description.lower():
-        return True
-    return event_name.lower() in recurring_events
+                        "creativemornings", "life sciences luncheon", "wellness hub", "open play pickleball",
+                        "free health clinic"]
+    day_names = ["sundays", "mondays", "tuesdays", "wednesdays", "thursdays", "fridays", "saturdays"]
+    recurring_keywords = ["recurring", "monthly", "weekly", "series", "weeklies"]
+    event_name = event_name.lower()
+    description = description.lower()
+
+    for keyword in recurring_keywords:
+        if keyword in event_name or keyword in description:
+            return True
+    for day_name in day_names:
+        if day_name in event_name or day_name in description:
+            return True
+    return event_name in recurring_events
 
 
 def is_for_new_students(event_name, description):
@@ -261,6 +313,38 @@ def is_on_campus(event_name, org_name, location):
     return True
 
 
+def get_event_status(source, location):
+    online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
+    online_location_default_text = ["Online", "Zoom (Link in description)", "Zoom",
+                                    "Virtual - see reminder email for link", "Online Event", "Remote",
+                                    "Zoom: Register on Handshake"]
+    if source == "drexel_athletics":
+        return "in-person"
+    elif location in online_location_default_text:
+        return "online"
+    elif any(keyword in location.lower() for keyword in online_keywords):
+        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
+        for i in hybrid_keywords:
+            if i in location.lower():
+                return "hybrid"
+        return "online"
+    else:
+        return "in-person"
+
+
+def enrich_perks(name, description, perks):
+    perk_keywords = {"prizes": "prizes", "15 wellness points": "credit"}
+
+    name = name.lower()
+    description = description.lower()
+
+    for keyword, perk_type in perk_keywords.items():
+        if keyword in name or keyword in description:
+            perks.append(perk_type)
+
+    return list(set(perks))
+
+
 def invalid_event(kwargs):
     excluded_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
                        "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
@@ -290,49 +374,6 @@ def invalid_event(kwargs):
     if kwargs["name"].startswith("CANCELLED"):
         return True
     return False
-
-
-def get_event_status(source, location):
-    online_keywords = ["zoom", "virtual", "hybrid", "handshake", "online", "remote"]
-    online_location_default_text = ["Online", "Zoom (Link in description)", "Zoom",
-                                    "Virtual - see reminder email for link", "Online Event", "Remote",
-                                    "Zoom: Register on Handshake"]
-    if source == "drexel_athletics":
-        return "in-person"
-    elif location in online_location_default_text:
-        return "online"
-    elif any(keyword in location.lower() for keyword in online_keywords):
-        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
-        for i in hybrid_keywords:
-            if i in location.lower():
-                return "hybrid"
-        return "online"
-    else:
-        return "in-person"
-
-
-def parse_org_name(org_name):
-    if not org_name:
-        return "Drexel University"
-    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
-                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
-                    "Drexel Newman Catholic Community": "Newman Catholic Community",
-                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
-                    "College of Computing and Informatics": "CCI",
-                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
-                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life",
-                    "Biomedical Science Graduate Student Association": "Biomed Grad Student Association"}
-    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
-                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
-                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
-                       "Incorporated", "Inc.", "Student Group", ", ,"]
-    if org_name in replace_list.keys():
-        return replace_list[org_name]
-    if org_name.startswith("Drexel University"):
-        org_name = org_name.replace("Drexel University", "", 1)
-    for i in org_name_remove:
-        org_name = org_name.replace(i, "", 1)
-    return org_name.strip(":*_;-,. ")
 
 
 def clear_directory(path):
@@ -378,3 +419,11 @@ def load_events_from_file(path="backend/events.json"):
 def save_events_to_file(events):
     with open("backend/events.json", "w", encoding="utf-8") as f:
         json.dump([event.to_json() for event in events], f, indent=4)
+
+
+def manual_event_fixes(event):
+    if event._id == "7dcb5b09133454510007247120737074":
+        PHILLY_TZ = ZoneInfo("America/New_York")
+        event.end_time = datetime(2026, 7, 18, 13).astimezone(PHILLY_TZ)
+
+    return event

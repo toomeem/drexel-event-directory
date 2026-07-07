@@ -13,10 +13,10 @@ from backend.python_files.event_sources.drexel_athletics_event_functions import 
 from backend.python_files.event_sources.drexel_event_functions import collect_drexel_events, drexel_event_parsing
 from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
     create_ucity_square_event_from_url
-from backend.python_files.helper_functions import stable_hash, invalid_event, parse_org_name, get_event_status, \
+from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes
+    manual_event_fixes, simplify_event_name, enrich_perks
 from backend.python_files.image_parsing_functions import get_image_s3_url
 from dotenv import load_dotenv
 
@@ -93,13 +93,9 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
     if invalid_event(kwargs):
         return None
 
-    if "15 Wellness Points" in kwargs["name"]:
-        kwargs["perks"].append("credit")
-        kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
-
-    kwargs["name"] = kwargs["name"].replace("  ", " ").replace("()", "").strip(" ;/,*").replace(
-        "(All Goodwin Programs)", "").replace("(AI)", "")
-    kwargs["org_name"] = parse_org_name(kwargs["org_name"])
+    kwargs["perks"] = enrich_perks(kwargs["name"], kwargs["description"], kwargs["perks"])
+    kwargs["name"] = simplify_event_name(kwargs["name"])
+    kwargs["org_name"] = simplify_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
 
     if kwargs["image_url"] is None:
@@ -134,7 +130,7 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
             break
 
     del kwargs["description"]
-    return manual_event_fixes(Event(**kwargs))
+    return Event(**kwargs)
 
 
 def collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count):
@@ -162,6 +158,34 @@ def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_id
         if event is not None:
             events.append(event)
     return events
+
+
+def dedup_events(events_in_db, events):
+    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
+
+    # group possible duplicates by start time first
+    events_by_start = {}
+    for e in events:
+        events_by_start.setdefault(e.start_time.timestamp(), []).append(e)
+
+    result = []
+    for candidates in events_by_start.values():
+        clusters = []
+        for event in candidates:
+            if event in events_in_db:
+                continue
+            for cluster in clusters:
+                if any(event == existing for existing in cluster):
+                    cluster.append(event)
+                    break
+            else:
+                clusters.append([event])
+
+        for cluster in clusters:
+            result.append(max(cluster, key=lambda e: source_priority.get(e.source, -1)))
+
+    result.sort(key=lambda e: e.start_time.timestamp())
+    return result
 
 
 def collect_all_events(bucket_name, events_in_db):
@@ -192,31 +216,11 @@ def collect_all_events(bucket_name, events_in_db):
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
     print(f"Collected {len(events) - event_count} more UCity Square events.")
 
-    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
+    events = [manual_event_fixes(event) for event in events]
 
-    # group possible duplicates by start time first
-    events_by_start = {}
-    for e in events:
-        events_by_start.setdefault(e.start_time.timestamp(), []).append(e)
+    events = dedup_events(events_in_db, events)
 
-    result = []
-    for candidates in events_by_start.values():
-        clusters = []
-        for event in candidates:
-            if event in events_in_db:
-                continue
-            for cluster in clusters:
-                if any(event == existing for existing in cluster):
-                    cluster.append(event)
-                    break
-            else:
-                clusters.append([event])
-
-        for cluster in clusters:
-            result.append(max(cluster, key=lambda e: source_priority.get(e.source, -1)))
-
-    result.sort(key=lambda e: e.start_time.timestamp())
-    return result
+    return events
 
 
 def update_events_file(bucket_name):
