@@ -20,9 +20,6 @@ class Event:
         self.on_campus = on_campus
         self.religion = religion  # 'christian', 'jewish', 'muslim', 'hindu', None
 
-    def get_start_timestamp(self):
-        return round(self.start_time.timestamp()) if self.start_time else None
-
     def get_end_timestamp(self):
         return round(self.end_time.timestamp()) if self.end_time else None
 
@@ -30,12 +27,11 @@ class Event:
         if not isinstance(other, Event):
             return NotImplemented
         if self.source == other.source and self.source != "drexel_athletics":
-            return self.org_name == other.org_name and self.start_time == other.start_time
+            return self.org_name == other.org_name and (
+                    self.start_time.timestamp() == other.start_time.timestamp() or self.get_end_timestamp() == other.get_end_timestamp())
         # only filter out events by the start time because duplicates can have different end times
-        if self.get_start_timestamp() != other.get_start_timestamp():
+        if self.start_time.timestamp() != other.start_time.timestamp() and self.get_end_timestamp() != other.get_end_timestamp():
             return False
-        if self.location.strip() == other.location.strip():
-            return True
         if self.name.lower().strip() == other.name.lower().strip():
             return True
         if self.org_name.lower().strip() == other.org_name.lower().strip():
@@ -44,7 +40,7 @@ class Event:
 
     def to_json(self):
         return {"id": self._id, "source": self.source, "name": self.name, "org_name": self.org_name,
-                "location": self.location, "image_url": self.image_url, "start_time": self.get_start_timestamp(),
+                "location": self.location, "image_url": self.image_url, "start_time": self.start_time.timestamp(),
                 "end_time": self.get_end_timestamp(), "event_link": self.event_link, "event_status": self.event_status,
                 "theme": self.theme, "perks": self.perks, "food_related": self.food_related, "popular": self.popular,
                 "recurring": self.recurring, "for_new_students": self.for_new_students, "on_campus": self.on_campus,
@@ -52,6 +48,6 @@ class Event:
 
     def to_sql(self):
         return (self._id, self.source, self.name, self.org_name, self.location, self.image_url,
-                self.get_start_timestamp(), self.get_end_timestamp(), self.event_link, self.event_status, self.theme,
+                self.start_time.timestamp(), self.get_end_timestamp(), self.event_link, self.event_status, self.theme,
                 "|".join(self.perks), self.food_related, self.popular, self.recurring, self.for_new_students,
                 self.on_campus, self.religion)

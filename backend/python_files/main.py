@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import timezone
 
 import pg8000.dbapi
 
@@ -14,9 +15,57 @@ from backend.python_files.event_sources.ucity_square_event_functions import get_
     create_ucity_square_event_from_url
 from backend.python_files.helper_functions import stable_hash, invalid_event, parse_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
-    is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file
+    is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
+    manual_event_fixes
 from backend.python_files.image_parsing_functions import get_image_s3_url
 from dotenv import load_dotenv
+
+
+def simple_events_in_db():
+    conn = pg8000.dbapi.connect(host=os.getenv("RDS_ENDPOINT"), database="postgres", user=os.getenv("RDS_USERNAME"),
+                                password=os.getenv("RDS_PASSWORD"), port=5432, ssl_context=True)
+    try:
+        cursor = conn.cursor()
+        try:
+            cursor.execute("SELECT id, name, source, org_name, start_time FROM main.events")
+            return cursor.fetchall()
+        finally:
+            cursor.close()
+    finally:
+        conn.close()
+
+
+def get_events_from_db():
+    events = []
+    event_data = simple_events_in_db()
+    for row in event_data:
+        # The start_time column is "timestamp without time zone" stored in UTC, so
+        # pg8000 returns a naive datetime. Mark it as UTC-aware, otherwise
+        # get_start_timestamp() would reinterpret it in the local zone and shift the
+        # epoch by the local UTC offset, breaking equality checks against new events.
+        start_time = row[4].replace(tzinfo=timezone.utc)
+        event = Event(
+            _id=row[0],
+            source=row[2],
+            name=row[1],
+            org_name=row[3],
+            start_time=start_time,
+            location=None,
+            end_time=None,
+            image_url=None,
+            event_link=None,
+            event_status=None,
+            theme=None,
+            perks=None,
+            food_related=False,
+            popular=False,
+            recurring=False,
+            for_new_students=False,
+            on_campus=True,
+            religion=None
+        )
+        events.append(event)
+    return events
 
 
 def create_event_object(source, event_json, bucket_name, existing_event_ids):
@@ -48,7 +97,8 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
         kwargs["perks"].append("credit")
         kwargs["name"] = kwargs["name"].replace("15 Wellness Points", "")
 
-    kwargs["name"] = kwargs["name"].replace("  ", " ").replace("()", "").strip(" ;/,*")
+    kwargs["name"] = kwargs["name"].replace("  ", " ").replace("()", "").strip(" ;/,*").replace(
+        "(All Goodwin Programs)", "").replace("(AI)", "")
     kwargs["org_name"] = parse_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
 
@@ -84,7 +134,7 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
             break
 
     del kwargs["description"]
-    return Event(**kwargs)
+    return manual_event_fixes(Event(**kwargs))
 
 
 def collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count):
@@ -114,8 +164,8 @@ def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_id
     return events
 
 
-def collect_all_events(bucket_name):
-    existing_event_ids = event_ids_db()
+def collect_all_events(bucket_name, events_in_db):
+    existing_event_ids = [i._id for i in events_in_db]
     events = []
 
     ucity_square_urls = [i for i in get_all_ucity_square_urls(months_out=2) if stable_hash(i) not in existing_event_ids]
@@ -145,14 +195,16 @@ def collect_all_events(bucket_name):
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
 
     # group possible duplicates by start time first
-    by_start = {}
+    events_by_start = {}
     for e in events:
-        by_start.setdefault(e.get_start_timestamp(), []).append(e)
+        events_by_start.setdefault(e.start_time.timestamp(), []).append(e)
 
     result = []
-    for candidates in by_start.values():
+    for candidates in events_by_start.values():
         clusters = []
         for event in candidates:
+            if event in events_in_db:
+                continue
             for cluster in clusters:
                 if any(event == existing for existing in cluster):
                     cluster.append(event)
@@ -163,29 +215,17 @@ def collect_all_events(bucket_name):
         for cluster in clusters:
             result.append(max(cluster, key=lambda e: source_priority.get(e.source, -1)))
 
-    result.sort(key=lambda e: e.get_start_timestamp())
+    result.sort(key=lambda e: e.start_time.timestamp())
     return result
 
 
 def update_events_file(bucket_name):
     print("\nCollecting events...")
-    events = collect_all_events(bucket_name)
+
+    db_events = get_events_from_db()
+    events = collect_all_events(bucket_name, db_events)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
-
-
-def event_ids_db():
-    conn = pg8000.dbapi.connect(host=os.getenv("RDS_ENDPOINT"), database="postgres", user=os.getenv("RDS_USERNAME"),
-                                password=os.getenv("RDS_PASSWORD"), port=5432, ssl_context=True)
-    try:
-        cursor = conn.cursor()
-        try:
-            cursor.execute("SELECT id FROM main.events")
-            return {row[0] for row in cursor.fetchall()}
-        finally:
-            cursor.close()
-    finally:
-        conn.close()
 
 
 def save_events_to_db(events):
@@ -264,7 +304,7 @@ def upload_all_events_to_s3(bucket, events):
     events_dict = {event._id: event for event in events}
     new_event_ids = set(events_dict.keys())
 
-    event_ids_in_db = event_ids_db()
+    event_ids_in_db = [i._id for i in get_events_from_db()]
     event_ids_in_s3 = get_s3_event_ids(bucket)
 
     old_event_ids = [i for i in event_ids_in_s3 if (i not in new_event_ids) and (i not in event_ids_in_db)]
