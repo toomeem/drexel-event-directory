@@ -201,9 +201,24 @@ export function EventsPage() {
                 >
                   Previous
                 </button>
-                <span className="pagination__info">
-                  Page {currentPage} of {totalPages}
-                </span>
+                <div className="pagination__pages">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                    (page) => (
+                      <button
+                        key={page}
+                        className={
+                          page === currentPage
+                            ? "pagination__page pagination__page--active"
+                            : "pagination__page"
+                        }
+                        onClick={() => goToPage(page)}
+                        aria-current={page === currentPage ? "page" : undefined}
+                      >
+                        {page}
+                      </button>
+                    )
+                  )}
+                </div>
                 <button
                   className="pagination__btn"
                   onClick={() => goToPage(currentPage + 1)}
