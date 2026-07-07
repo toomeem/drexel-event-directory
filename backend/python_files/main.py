@@ -11,6 +11,7 @@ from backend.python_files.event_sources.dragonlink_event_functions import collec
 from backend.python_files.event_sources.drexel_athletics_event_functions import collect_drexel_athletics_events, \
     drexel_athletics_event_parsing
 from backend.python_files.event_sources.drexel_event_functions import collect_drexel_events, drexel_event_parsing
+from backend.python_files.event_sources.static_recurring_events import get_static_events
 from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
     create_ucity_square_event_from_url
 from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
@@ -209,12 +210,15 @@ def collect_all_events(bucket_name, events_in_db):
     print(f"Collected {len(events) - event_count} Drexel Athletics events.")
     event_count = len(events)
 
+    events.extend(get_static_events(bucket_name, occurrences=4))
+    print(f"Added {len(events) - event_count} static events.")
+    event_count = len(events)
+
     events.extend(
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
     print(f"Collected {len(events) - event_count} more UCity Square events.")
 
     events = [manual_event_fixes(event) for event in events]
-
     events = dedup_events(events_in_db, events)
 
     return events

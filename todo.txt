@@ -4,8 +4,6 @@ potential sources to add:
     cira green: https://www.sunsetsocialphl.com/events
     gather food hall: https://gatherfoodhall.com/happenings/
 
-update page num selector to look like "< 1 2 3 4 5 6 7 8 >"
-
 maybe add specific religion icons?
 add icons for each event type
 add filtering

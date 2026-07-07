@@ -1,5 +1,5 @@
-import copy
 import json
+from copy import deepcopy
 from datetime import datetime, timedelta
 
 from backend.python_files.event_class import Event
@@ -23,9 +23,9 @@ def get_weekday_num(weekday_str):
 def find_next_occurrence(weekday_str):
     weekday_num = get_weekday_num(weekday_str)
     now = datetime.today()
-    curr_weekday_num = now.weekday()
-    days_ahead = weekday_num - curr_weekday_num
-    return now + timedelta(days=7 - days_ahead)
+    while now.weekday() != weekday_num:
+        now += timedelta(days=1)
+    return now
 
 
 def static_event_definition_to_event_object(event_definition, bucket_name):
@@ -40,7 +40,7 @@ def static_event_definition_to_event_object(event_definition, bucket_name):
     else:
         end = None
 
-    _id = stable_hash(event_definition["name"] + str(start.timestamp()))
+    id = stable_hash(event_definition["name"] + str(start.timestamp()))
     image_url = get_image_s3_url(event_definition["image_url"], bucket_name)
 
     return Event(
@@ -65,21 +65,26 @@ def static_event_definition_to_event_object(event_definition, bucket_name):
     )
 
 
-def get_instance_of_each_event(event_definitions):
-    return [static_event_definition_to_event_object(event_definition) for event_definition in event_definitions]
+def get_instance_of_each_event(event_definitions, bucket_name):
+    return [static_event_definition_to_event_object(event_definition, bucket_name) for event_definition in
+            event_definitions]
 
 
-def get_all_events(weeks_out=4):
+def get_static_events(bucket_name, occurrences=4):
     event_definitions = get_static_event_definitions()
-    events = get_instance_of_each_event(event_definitions)
+    original_events = get_instance_of_each_event(event_definitions, bucket_name)
 
-    for event in events:
-        for i in range(1, weeks_out + 1):
-            new_event = copy.deepcopy(event)
-            new_event.start_time = event.start_time + timedelta(days=7 * i)
-            if event.end_time:
-                new_event.end_time = event.end_time + timedelta(days=7 * i)
+    all_events = []
+    for original_event in original_events:
+        all_events.append(original_event)
+        for i in range(1, occurrences):
+            new_event = deepcopy(original_event)
+
+            new_event.start_time = original_event.start_time + timedelta(days=7 * i)
+            if original_event.end_time:
+                new_event.end_time = original_event.end_time + timedelta(days=7 * i)
             new_event._id = stable_hash(new_event.name + str(new_event.start_time.timestamp()))
-            events.append(new_event)
 
-    return events
+            all_events.append(new_event)
+
+    return all_events

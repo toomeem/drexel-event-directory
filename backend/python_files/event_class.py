@@ -38,6 +38,9 @@ class Event:
             return True
         return False
 
+    def __str__(self):
+        return f"Event(id={self._id}, source={self.source}, name={self.name}, org_name={self.org_name}, location={self.location}, image_url={self.image_url}, start_time={self.start_time}, end_time={self.end_time}, event_link={self.event_link}, event_status={self.event_status}, theme={self.theme}, perks={self.perks}, food_related={self.food_related}, popular={self.popular}, recurring={self.recurring}, for_new_students={self.for_new_students}, on_campus={self.on_campus}, religion={self.religion})"
+
     def to_json(self):
         return {"id": self._id, "source": self.source, "name": self.name, "org_name": self.org_name,
                 "location": self.location, "image_url": self.image_url, "start_time": self.start_time.timestamp(),

@@ -13,11 +13,12 @@ def _fmt_hm(dt, with_ampm=False):
 
 def make_time_str(start_time, end_time):
     PHILLY_TZ = ZoneInfo("America/New_York")
-    start_time = start_time.astimezone(PHILLY_TZ)
-    end_time = end_time.astimezone(PHILLY_TZ)
     now = datetime.now(PHILLY_TZ)
+    start_time = start_time.astimezone(PHILLY_TZ)
+    if end_time:
+        end_time = end_time.astimezone(PHILLY_TZ)
 
-    if end_time - start_time > timedelta(hours=24):
+    if end_time and (end_time - start_time > timedelta(hours=24)):
         if (start_time - now) > timedelta(days=7):
             return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
         return f"{start_time.strftime('%b')} {start_time.day} - {end_time.day}"
@@ -30,7 +31,10 @@ def make_time_str(start_time, end_time):
         time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
     else:
         time_str_prefix = datetime.strftime(start_time, "%A")
-    if start_time.month != end_time.month:
+
+    if not end_time:
+        return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)}"
+    elif start_time.month != end_time.month:
         return f"{time_str_prefix} @ {_fmt_hm(start_time)} - {datetime.strftime(end_time, "%A")}{_fmt_hm(end_time, with_ampm=True)}"
     elif start_time.hour < 12 < end_time.hour or (start_time - end_time) > timedelta(hours=12):
         return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)} - {_fmt_hm(end_time, with_ampm=True)}"
@@ -42,7 +46,9 @@ def make_time_str(start_time, end_time):
 def db_entry_to_json(db_entry):
     PHILLY_TZ = ZoneInfo("America/New_York")
     start_time = db_entry[6].astimezone(PHILLY_TZ)
-    end_time = db_entry[7].astimezone(PHILLY_TZ)
+    end_time = db_entry[7]
+    if end_time:
+        end_time = end_time.astimezone(PHILLY_TZ)
 
     time_str = make_time_str(start_time, end_time)
     if db_entry[11]:
@@ -86,6 +92,7 @@ def lambda_handler(event, context):
     except (ValueError, TypeError):
         page = 1
     offset = (page - 1) * page_event_count
+    day_start = datetime(year=now.year, month=now.month, day=now.day, tzinfo=PHILLY_TZ).timestamp()
     date_filter = params.get("dateRange")
     date_end = 9999999999
     if date_filter == "today":
@@ -162,7 +169,8 @@ def lambda_handler(event, context):
                                   religion,
                                   COUNT(*) OVER () AS total_count
                            FROM main.events
-                           WHERE end_time > now()
+                           WHERE start_time >= to_timestamp(%s)
+                             AND (end_time IS NULL OR end_time > now())
                              AND start_time <= to_timestamp(%s)
                              AND (%s::text IS NULL OR event_status = %s)
                              AND (%s::text[] IS NULL OR LOWER(theme) = ANY (%s::text[]))
@@ -176,10 +184,11 @@ def lambda_handler(event, context):
                              AND (%s::text[] IS NULL OR LOWER(religion) = ANY (%s::text[]))
                            ORDER BY start_time, id
                            LIMIT %s OFFSET %s
-                           ''', (date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
-                                 search_pattern, search_pattern, search_pattern, food_related, recurring,
-                                 for_new_students,
-                                 popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
+                           ''',
+                           (day_start, date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
+                            search_pattern, search_pattern, search_pattern, food_related, recurring,
+                            for_new_students,
+                            popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
             events = cursor.fetchall()
         finally:
             cursor.close()
