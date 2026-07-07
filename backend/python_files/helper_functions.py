@@ -24,15 +24,17 @@ def normalize_time(source, time_str):
 
 
 def simplify_event_name(name):
-    remove_list = ["15 Wellness Points", "(All Goodwin Programs)", "(AI)", "()"]
-    replace_list = {"  ": " "}
+    remove_list = ["15 Wellness Points", "Mission Ready:", "(All Goodwin Programs)", "(AI)", "()", ]
+    replace_list = {"Virtual Information Session": "Info Session", "Artificial Intelligence": "AI",
+                    "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
+                    "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective"}
 
     for i in remove_list:
         name = name.replace(i, "", 1)
     for old, new in replace_list.items():
         name = name.replace(old, new, 1)
 
-    return name.strip(" ;/,*")
+    return name.strip(" ;/,*").replace("  ", " ")
 
 
 def simplify_org_name(org_name):
@@ -46,7 +48,8 @@ def simplify_org_name(org_name):
                     "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
                     "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life",
                     "Biomedical Science Graduate Student Association": "Biomed Grad Student Association",
-                    "Wilbur W. Oaks Physician Assistant Student Society": "Physician Assistant Student Society"}
+                    "Wilbur W. Oaks Physician Assistant Student Society": "Physician Assistant Student Society",
+                    "Hafter Student Community Center": "Hafter Student Center"}
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
@@ -111,7 +114,10 @@ def simplify_location(location):
                           "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5": "Bentley Hall",
                           "Bentley Hall 2nd Floor Annex": "Bentley Hall 2nd Floor",
                           "Tu Rinconcito": "Tu Rinconcito",
-                          "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music"}
+                          "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music",
+                          "New College Building 3rd Floor": "NCB Student Lounge",
+                          "Outside Drexel Elkins Park": "Drexel Elkins Park",
+                          "CREESE - Greenawalt Room A": "CREESE Room A"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
