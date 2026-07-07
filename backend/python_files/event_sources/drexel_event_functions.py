@@ -5,7 +5,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
-from backend.python_files.helper_functions import stable_hash, normalize_time, is_athletic_event
+from backend.python_files.helper_functions import stable_hash, normalize_time
 
 
 def create_drexel_events_api_url(page):
@@ -86,9 +86,8 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
 
     type_names = event_json.get("typeNames") or []
     department_names = event_json.get("departmentNames") or []
-    if is_athletic_event(kwargs["name"], kwargs["org_name"], kwargs["location"]):
-        kwargs["theme"] = "athletics"
-    elif "Exhibit" in type_names or "Performing Arts" in department_names:
+
+    if "Exhibit" in type_names or "Performing Arts" in department_names:
         kwargs["theme"] = "arts"
     elif "Academic Events" in type_names or "Academic Support" in type_names:
         kwargs["theme"] = "academic"
@@ -114,7 +113,7 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
     features = event_json.get("features") or []
     for feature in features:
         if feature == "Giveaways":
-            kwargs["perks"].append("free_stuff")
+            kwargs["perks"].append("giveaway")
         elif "credit" in feature.lower() or feature == "CEU Available":
             kwargs["perks"].append("credit")
         elif feature == "Free Food":

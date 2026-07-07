@@ -53,6 +53,8 @@ const THEME_OPTIONS: FilterOption[] = [
 const PERK_OPTIONS: FilterOption[] = [
     {value: "free_food", label: "Free Food 🍔"},
     {value: "free_stuff", label: "Free Stuff 🛍️"},
+    {value: "prizes", label: "Prizes 🥇"},
+    {value: "giveaway", label: "Giveaway 🎁"},
     {value: "credit", label: "Credit 🎟️"},
 ];
 
@@ -340,6 +342,7 @@ export function EventSidebarFilters({filters, onChange}: EventFilterBarProps) {
                         multi={true}
                         onSelect={(values) => onChange({...filters, perks: values})}
                         labelledBy="filter-perks-label"
+                        initialVisibleCount={2}
                     />
                 </div>
                 <div className="sidebar-filter-section">

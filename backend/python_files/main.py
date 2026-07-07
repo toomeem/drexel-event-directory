@@ -16,7 +16,7 @@ from backend.python_files.event_sources.ucity_square_event_functions import get_
 from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes, simplify_event_name, enrich_perks
+    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks
 from backend.python_files.image_parsing_functions import get_image_s3_url
 from dotenv import load_dotenv
 
@@ -119,15 +119,12 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
     kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
+    kwargs["theme"] = event_theme_additional_checks(kwargs["name"], kwargs["description"],
+                                                    kwargs["org_name"], kwargs["location"], kwargs["theme"])
+
     if kwargs["org_name"] in religious_orgs.keys():
         kwargs["religion"] = religious_orgs[kwargs["org_name"]]
         kwargs["theme"] = "spirituality"
-
-    health_keywords = ["yoga", "zumba", "health", "wellness"]
-    for keyword in health_keywords:
-        if keyword in kwargs["name"].lower():
-            kwargs["theme"] = "health"
-            break
 
     del kwargs["description"]
     return Event(**kwargs)

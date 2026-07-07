@@ -24,7 +24,8 @@ def normalize_time(source, time_str):
 
 
 def simplify_event_name(name):
-    remove_list = ["15 Wellness Points", "Mission Ready:", "(All Goodwin Programs)", "(AI)", "()", ]
+    remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)", "()",
+                   "@ Drexel University", "@ Drexel U", "@ Drexel", ]
     replace_list = {"Virtual Information Session": "Info Session", "Artificial Intelligence": "AI",
                     "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective"}
@@ -217,10 +218,10 @@ def match_default_image(name, org_name, location):
 
 def is_athletic_event(event_name, org_name, location):
     athletics_keywords = ["pilates", "bhangra", "salsa", "spikeball", "spike ball",
-                          "drexel dragon jedi meeting", "kayaking", "paintball", "hike", "hiking", "skiing",
+                          "kayaking", "paintball", "hike", "hiking", "skiing",
                           "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
                           "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
-    if org_name == "Weekend Warriors":
+    if org_name == "Weekend Warriors" or org_name == "Dragon Jedi":
         return True
     if "vidas" in location.lower():
         return True
@@ -230,8 +231,8 @@ def is_athletic_event(event_name, org_name, location):
 def is_food_related(event_name, perks, location, description):
     food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
     food_keywords = ["food", "coffee", "bake sale", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks",
-                     "breakfast", "lunch",
-                     "dinner", "refreshments" "coffee", "beer", "wine", "cocktails", "meal", "cookout"]
+                     "breakfast", "lunch", "dinner", "refreshments" "coffee", "beer", "wine", "cocktails", "meal",
+                     "cookout", "water ice"]
     if "free_food" in perks:
         return True
     if location in food_locations:
@@ -246,9 +247,9 @@ def is_food_related(event_name, perks, location, description):
 
 def is_popular(event_name):
     popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night",
-                      "Rise & Roar: Future Dragons Breakfast", "Snow Cone Social",
-                      "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night @ Drexel U",
-                      "Undergraduate July Summer Open House", "Rise & Roar: Future Dragons Breakfast",
+                      "Future Dragons Breakfast", "Snow Cone Social",
+                      "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
+                      "Undergrad July Summer Open House",
                       "STAR Scholars Summer Showcase", "Welcome Week: Night on the Row 2026"
                       ]
     if "welcome week" in event_name.lower():
@@ -281,16 +282,20 @@ def is_recurring(event_name, description):
 
 
 def is_for_new_students(event_name, description):
-    new_students_events = ["Undergraduate July Summer Open House", ]
+    new_student_events = ["Undergrad July Summer Open House",
+                          "Field Trip: Art and Community Protest at the Asian Arts Initiative"]
     event_name = event_name.lower()
     description = description.lower()
-    if "future dragons" in event_name or "future dragons" in description:
+    keywords = ["new student", "future dragons", "incoming freshman", "welcome week"]
+
+    for keyword in keywords:
+        if keyword in event_name or keyword in description:
+            return True
+
+    if "undergrad" in event_name and "open house" in event_name:
         return True
-    if "incoming freshman" in event_name or "incoming freshman" in description:
-        return True
-    if "welcome week" in event_name or "welcome week" in description:
-        return True
-    return event_name in new_students_events
+
+    return event_name in [i.lower() for i in new_student_events]
 
 
 def is_on_campus(event_name, org_name, location):
@@ -301,7 +306,7 @@ def is_on_campus(event_name, org_name, location):
                             "Cancer Center at the Thomas Jefferson University", "Highmark Mann Center",
                             "The Academy of Natural Sciences", "Elkin's Park Parking Lot", "Mack Miles Playground",
                             "Parkway Central Library", "Lits Building", "Independence National Park",
-                            "Hafter Center Patio", "Hafner Community Center", "Haffner Gym"]
+                            "Hafter Center Patio", "Hafner Community Center", "Hafner Student Center", "Haffner Gym"]
     off_campus_keywords = ["england", "new jersey", "maryland", "elkins park", "queen lane", "humpty dumplings",
                            "new college building", "hafner", "hafter", "haffner", "nj"]
 
@@ -339,7 +344,9 @@ def get_event_status(source, location):
 
 
 def enrich_perks(name, description, perks):
-    perk_keywords = {"prizes": "prizes", "15 wellness points": "credit"}
+    perk_keywords = {"prizes": "prizes", "15 wellness points": "credit", "giveaway": "giveaway",
+                     "free food": "free_food", "free stuff": "free_stuff", "free merch": "free_stuff",
+                     "free bling": "free_stuff", "FSL Health & Safety Training": "credit"}
 
     name = name.lower()
     description = description.lower()
@@ -349,6 +356,23 @@ def enrich_perks(name, description, perks):
             perks.append(perk_type)
 
     return list(set(perks))
+
+
+def event_theme_additional_checks(name, description, org_name, location, theme):
+    if is_athletic_event(name, org_name, location):
+        return "athletics"
+    name = name.lower()
+    description = description.lower()
+    health_keywords = ["yoga", "zumba", "health", "wellness"]
+    for keyword in health_keywords:
+        if keyword in name or keyword in description:
+            return "health"
+    academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
+                         "info session", "molecular medicine", "clinical research"]
+    for keyword in academic_keywords:
+        if keyword in name or keyword in description:
+            return "academic"
+    return theme
 
 
 def invalid_event(kwargs):

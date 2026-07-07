@@ -76,6 +76,5 @@ def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
         kwargs["theme"] = "social"
 
     kwargs["perks"] = [i.lower().replace(" ", "_") for i in event_json["benefitNames"]]
-    kwargs["theme"] = kwargs["theme"].lower()
 
     return kwargs
