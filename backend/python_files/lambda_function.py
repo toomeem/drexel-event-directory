@@ -63,7 +63,7 @@ def lambda_handler(event, context):
                     "Access-Control-Allow-Headers": "Content-Type", "Vary": "Origin",
                     "Content-Type": "application/json", }
     MAX_SEARCH_LEN = 100
-    VALID_PERKS = {"free_food", "free_stuff", "credit"}
+    VALID_PERKS = {"free_food", "free_stuff", "credit", "prizes", "giveaway"}
     PHILLY_TZ = ZoneInfo("America/New_York")
     MAX_PAGE = 100
     EVENT_ROWS_PER_PAGE = 6
