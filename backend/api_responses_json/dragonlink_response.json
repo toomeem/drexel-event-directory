@@ -21,6 +21,13 @@
                 "type": 0,
                 "from": null,
                 "to": null,
+                "value": "21326",
+                "count": 1
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
                 "value": "21743",
                 "count": 1
             },
@@ -29,21 +36,21 @@
                 "from": null,
                 "to": null,
                 "value": "22028",
-                "count": 5
+                "count": 6
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "271",
-                "count": 10
+                "count": 9
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "273",
-                "count": 29
+                "count": 28
             },
             {
                 "type": 0,
@@ -64,14 +71,14 @@
                 "from": null,
                 "to": null,
                 "value": "276",
-                "count": 37
+                "count": 38
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "278",
-                "count": 20
+                "count": 19
             },
             {
                 "type": 0,
@@ -105,8 +112,15 @@
                 "type": 0,
                 "from": null,
                 "to": null,
-                "value": "8659",
+                "value": "286",
                 "count": 1
+            },
+            {
+                "type": 0,
+                "from": null,
+                "to": null,
+                "value": "8659",
+                "count": 2
             }
         ],
         "BenefitNames": [
@@ -115,14 +129,14 @@
                 "from": null,
                 "to": null,
                 "value": "Free Food",
-                "count": 36
+                "count": 37
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": "Free Stuff",
-                "count": 6
+                "count": 7
             }
         ],
         "Theme": [
@@ -189,86 +203,18 @@
                 "from": null,
                 "to": null,
                 "value": 12429,
-                "count": 95
+                "count": 94
             },
             {
                 "type": 0,
                 "from": null,
                 "to": null,
                 "value": 416970,
-                "count": 11
+                "count": 12
             }
         ]
     },
     "value": [
-        {
-            "id": "12462722",
-            "institutionId": 3859,
-            "organizationId": 321743,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Pennoni Honors College",
-            "organizationProfilePicture": "d1b706ec-c82b-4100-8cd1-6148482dd8f90d6ba58c-29d9-4bbf-8129-2a12a4e4ca73.jpg",
-            "organizationNames": [],
-            "name": "NSF GRFP Workshop 2 - Developing a Research Statement",
-            "description": "<p>This workshop will provide a deep dive into the NSF GRFP Research Statement. It is helpful for attendees to have a research direction in mind, but applicants at all stages will benefit from attending.</p>\r\n<p>This is the second of four biweekly summer workshops on the NSF GRFP; applicants are also encouraged to participate in our grad fellowships biweekly writing group. You can learn more about these events and review materials from previous info sessions and workshops on our <a href=\"https://drexel0.sharepoint.com/sites/Pennoni-UREP-Public/Fellowships/SitePages/NSF-GRFP-Workshops-and-Events.aspx\">NSF Applicant Resource Site (Drexel login required)</a>.</p>\r\n<p>The National Science Foundation&rsquo;s Graduate Research Fellowship Program (GRFP) provides selected fellows with three years of funding, including a living stipend and tuition funds, to support a research-focused doctoral degree in STEM, social sciences, or STEM education. The current application cycle is open to US citizens and permanent residents planning to begin their first graduate program in Fall 2027, or who will be in the 1st year of a PhD program in Fall 2026. BS-MS students planning to continue on to a PhD program are only eligible to apply in their final year of BS-MS study (and not as first year doctoral students).</p>\r\n<p><a href=\"https://drexel.zoom.us/meeting/register/hpQ8wo5kRMiN8aKoztxeoQ\">Register on Zoom to attend</a></p>",
-            "location": "Online",
-            "startsOn": "2026-07-07T16:30:00+00:00",
-            "endsOn": "2026-07-07T17:30:00+00:00",
-            "imagePath": "5b7541cd-c84a-478e-b21d-43bb777eb3662404923a-f527-4130-a25c-5859285f15ca.png",
-            "theme": "ThoughtfulLearning",
-            "categoryIds": [
-                "271",
-                "275",
-                "278"
-            ],
-            "categoryNames": [
-                "Training/Information Session",
-                "Educational",
-                "Academic"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.96739
-        },
-        {
-            "id": "12501371",
-            "institutionId": 3859,
-            "organizationId": 99190,
-            "organizationIds": [],
-            "branchId": 12429,
-            "branchIds": [],
-            "organizationName": "Alpha Omega Epsilon ",
-            "organizationProfilePicture": "33785371-0bd5-4f79-bb25-de6b0fefa2e9b249cbb7-da36-4229-9666-4b282f32c990.png",
-            "organizationNames": [],
-            "name": "Chapter",
-            "description": "<p>Weekly chapter meeting</p>",
-            "location": "PEARL 101 - Classroom",
-            "startsOn": "2026-07-07T22:30:00+00:00",
-            "endsOn": "2026-07-08T01:00:00+00:00",
-            "imagePath": null,
-            "theme": "Social",
-            "categoryIds": [
-                "273"
-            ],
-            "categoryNames": [
-                "General Body Meeting"
-            ],
-            "benefitNames": [],
-            "visibility": "Public",
-            "status": "Approved",
-            "latitude": null,
-            "longitude": null,
-            "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 99.94086
-        },
         {
             "id": "12485786",
             "institutionId": 3859,
@@ -300,8 +246,8 @@
             "latitude": null,
             "longitude": null,
             "recScore": null,
-            "rsvpTotal": 6,
-            "@search.score": 99.86781
+            "rsvpTotal": 8,
+            "@search.score": 99.96686
         },
         {
             "id": "12491003",
@@ -335,7 +281,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.85008
+            "@search.score": 99.949165
         },
         {
             "id": "12492764",
@@ -371,8 +317,8 @@
             "latitude": null,
             "longitude": null,
             "recScore": null,
-            "rsvpTotal": 54,
-            "@search.score": 99.76134
+            "rsvpTotal": 58,
+            "@search.score": 99.86063
         },
         {
             "id": "12490540",
@@ -404,7 +350,7 @@
             "longitude": "-75.189700",
             "recScore": null,
             "rsvpTotal": 3,
-            "@search.score": 99.7369
+            "@search.score": 99.83624
         },
         {
             "id": "12477334",
@@ -438,7 +384,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.73023
+            "@search.score": 99.8296
         },
         {
             "id": "12501390",
@@ -474,7 +420,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.73023
+            "@search.score": 99.8296
         },
         {
             "id": "12485441",
@@ -508,7 +454,7 @@
             "longitude": "-75.163870",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.62788
+            "@search.score": 99.72747
         },
         {
             "id": "12501354",
@@ -542,7 +488,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.618965
+            "@search.score": 99.71858
         },
         {
             "id": "12501418",
@@ -576,7 +522,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.52974
+            "@search.score": 99.62956
         },
         {
             "id": "12424241",
@@ -604,7 +550,7 @@
             "longitude": "-75.129410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.34176
+            "@search.score": 99.44202
         },
         {
             "id": "12469268",
@@ -636,7 +582,7 @@
             "longitude": "-75.129410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.33279
+            "@search.score": 99.43307
         },
         {
             "id": "12499814",
@@ -670,7 +616,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.30362
+            "@search.score": 99.40397
         },
         {
             "id": "12501391",
@@ -706,7 +652,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.30137
+            "@search.score": 99.401726
         },
         {
             "id": "12501419",
@@ -740,7 +686,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.30137
+            "@search.score": 99.401726
         },
         {
             "id": "12464998",
@@ -774,7 +720,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.21823
+            "@search.score": 99.31878
         },
         {
             "id": "12485440",
@@ -802,7 +748,7 @@
             "longitude": "-75.179150",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.206985
+            "@search.score": 99.307556
         },
         {
             "id": "12501372",
@@ -834,7 +780,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.19123
+            "@search.score": 99.29185
         },
         {
             "id": "12491004",
@@ -868,7 +814,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.09886
+            "@search.score": 99.199684
         },
         {
             "id": "12490917",
@@ -904,7 +850,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 4,
-            "@search.score": 99.08533
+            "@search.score": 99.18619
         },
         {
             "id": "12498599",
@@ -936,7 +882,7 @@
             "longitude": "-75.129410",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.997246
+            "@search.score": 99.09831
         },
         {
             "id": "12501381",
@@ -964,7 +910,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 99.008545
+            "@search.score": 99.10959
         },
         {
             "id": "12477335",
@@ -998,7 +944,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.97689
+            "@search.score": 99.07801
         },
         {
             "id": "12501392",
@@ -1026,7 +972,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.97689
+            "@search.score": 99.07801
         },
         {
             "id": "12499642",
@@ -1061,7 +1007,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.972374
+            "@search.score": 99.073494
         },
         {
             "id": "12501355",
@@ -1095,7 +1041,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.863655
+            "@search.score": 98.965034
         },
         {
             "id": "12501420",
@@ -1129,7 +1075,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.77284
+            "@search.score": 98.874435
         },
         {
             "id": "12501387",
@@ -1161,7 +1107,7 @@
             "longitude": "-75.145320",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.679565
+            "@search.score": 98.78138
         },
         {
             "id": "12499815",
@@ -1195,7 +1141,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.542694
+            "@search.score": 98.64484
         },
         {
             "id": "12501393",
@@ -1223,7 +1169,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.54041
+            "@search.score": 98.642555
         },
         {
             "id": "12501421",
@@ -1257,7 +1203,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.54041
+            "@search.score": 98.642555
         },
         {
             "id": "12492059",
@@ -1285,7 +1231,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.45808
+            "@search.score": 98.56042
         },
         {
             "id": "12462725",
@@ -1321,7 +1267,49 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.45579
+            "@search.score": 98.55813
+        },
+        {
+            "id": "12503360",
+            "institutionId": 3859,
+            "organizationId": 390446,
+            "organizationIds": [],
+            "branchId": 12429,
+            "branchIds": [],
+            "organizationName": "Drexel Student Health Center",
+            "organizationProfilePicture": "83ea2190-feda-4156-a515-7b71576784a3079f9e17-455e-491b-abe3-882dd53b05c2.png",
+            "organizationNames": [],
+            "name": "Zero HIV Stigma Day: Free HIV/STI Testing",
+            "description": "<p>In honor of Zero HIV Stigma Day, stop by the Student Health Center on 7/21 to get tested for HIV/STI. No appointment or health insurance is needed for this event!</p>",
+            "location": "Drexel Student Health Center",
+            "startsOn": "2026-07-21T14:00:00+00:00",
+            "endsOn": "2026-07-21T19:00:00+00:00",
+            "imagePath": "c714ab71-16ab-442c-aeb2-fb8fcff9ed3583df58f4-ec54-4363-8c6d-cab09d38f6a2.png",
+            "theme": "ThoughtfulLearning",
+            "categoryIds": [
+                "275",
+                "286",
+                "8659",
+                "21326",
+                "22028"
+            ],
+            "categoryNames": [
+                "Educational",
+                "Diversity",
+                "Freshman Focused",
+                "Recovery",
+                "Fraternity and Sorority Life"
+            ],
+            "benefitNames": [
+                "Free Stuff"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": "39.956330",
+            "longitude": "-75.191790",
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 98.56955
         },
         {
             "id": "12501373",
@@ -1353,7 +1341,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.42831
+            "@search.score": 98.530716
         },
         {
             "id": "12491005",
@@ -1387,7 +1375,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.334274
+            "@search.score": 98.43691
         },
         {
             "id": "12501388",
@@ -1415,7 +1403,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 2,
-            "@search.score": 98.3159
+            "@search.score": 98.41859
         },
         {
             "id": "12477336",
@@ -1449,7 +1437,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.21012
+            "@search.score": 98.31305
         },
         {
             "id": "12501394",
@@ -1485,7 +1473,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.21012
+            "@search.score": 98.31305
         },
         {
             "id": "12501356",
@@ -1519,7 +1507,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.09483
+            "@search.score": 98.198044
         },
         {
             "id": "12501422",
@@ -1553,7 +1541,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.00239
+            "@search.score": 98.10582
         },
         {
             "id": "12499816",
@@ -1587,7 +1575,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.76807
+            "@search.score": 97.87206
         },
         {
             "id": "12501395",
@@ -1623,7 +1611,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.76574
+            "@search.score": 97.86974
         },
         {
             "id": "12501423",
@@ -1657,7 +1645,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.76574
+            "@search.score": 97.86974
         },
         {
             "id": "12464999",
@@ -1691,7 +1679,41 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.67957
+            "@search.score": 97.78378
+        },
+        {
+            "id": "12503126",
+            "institutionId": 3859,
+            "organizationId": 424141,
+            "organizationIds": [],
+            "branchId": 416970,
+            "branchIds": [],
+            "organizationName": "Elkins Park Student Council",
+            "organizationProfilePicture": "207c32d6-b061-422c-83b4-fb5477cafe9f20852642-c9ff-4a9c-9afa-1673d7356542.png",
+            "organizationNames": [],
+            "name": "Finals Food",
+            "description": "<p>Summer semester finals food!</p>",
+            "location": "Drexel University Elkins Park - Cafe",
+            "startsOn": "2026-07-28T21:00:00+00:00",
+            "endsOn": "2026-07-28T23:00:00+00:00",
+            "imagePath": null,
+            "theme": "Social",
+            "categoryIds": [
+                "276"
+            ],
+            "categoryNames": [
+                "Social"
+            ],
+            "benefitNames": [
+                "Free Food"
+            ],
+            "visibility": "Public",
+            "status": "Approved",
+            "latitude": null,
+            "longitude": null,
+            "recScore": null,
+            "rsvpTotal": 0,
+            "@search.score": 97.76285
         },
         {
             "id": "12498057",
@@ -1725,7 +1747,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 13,
-            "@search.score": 97.64926
+            "@search.score": 97.75354
         },
         {
             "id": "12501374",
@@ -1757,7 +1779,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.651596
+            "@search.score": 97.75587
         },
         {
             "id": "12491006",
@@ -1791,7 +1813,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.55585
+            "@search.score": 97.660355
         },
         {
             "id": "12477337",
@@ -1825,7 +1847,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.42942
+            "@search.score": 97.53423
         },
         {
             "id": "12501396",
@@ -1861,7 +1883,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.42942
+            "@search.score": 97.53423
         },
         {
             "id": "12499643",
@@ -1896,7 +1918,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.42473
+            "@search.score": 97.52956
         },
         {
             "id": "12485439",
@@ -1958,7 +1980,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.31202
+            "@search.score": 97.41712
         },
         {
             "id": "12501424",
@@ -1992,7 +2014,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.21787
+            "@search.score": 97.323204
         },
         {
             "id": "12490927",
@@ -2028,7 +2050,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 97.00528
+            "@search.score": 97.11114
         },
         {
             "id": "12499817",
@@ -2062,7 +2084,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.979225
+            "@search.score": 97.085144
         },
         {
             "id": "12501397",
@@ -2098,7 +2120,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.97686
+            "@search.score": 97.08278
         },
         {
             "id": "12501425",
@@ -2132,7 +2154,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.97686
+            "@search.score": 97.08278
         },
         {
             "id": "12462736",
@@ -2168,7 +2190,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.88909
+            "@search.score": 96.99523
         },
         {
             "id": "12501375",
@@ -2200,7 +2222,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.860596
+            "@search.score": 96.966805
         },
         {
             "id": "12491007",
@@ -2234,7 +2256,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.76307
+            "@search.score": 96.869514
         },
         {
             "id": "12490935",
@@ -2270,7 +2292,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 96.75354
+            "@search.score": 96.860016
         },
         {
             "id": "12477338",
@@ -2304,7 +2326,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.634285
+            "@search.score": 96.74105
         },
         {
             "id": "12501403",
@@ -2340,7 +2362,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.634285
+            "@search.score": 96.74105
         },
         {
             "id": "12501358",
@@ -2374,7 +2396,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.51469
+            "@search.score": 96.62176
         },
         {
             "id": "12501426",
@@ -2408,7 +2430,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.41878
+            "@search.score": 96.526085
         },
         {
             "id": "12499818",
@@ -2442,7 +2464,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.175644
+            "@search.score": 96.283554
         },
         {
             "id": "12501402",
@@ -2478,7 +2500,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.173225
+            "@search.score": 96.28114
         },
         {
             "id": "12501427",
@@ -2512,7 +2534,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.173225
+            "@search.score": 96.28114
         },
         {
             "id": "12465000",
@@ -2546,7 +2568,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.08381
+            "@search.score": 96.19195
         },
         {
             "id": "12494107",
@@ -2592,8 +2614,8 @@
             "latitude": null,
             "longitude": null,
             "recScore": null,
-            "rsvpTotal": 0,
-            "@search.score": 96.05718
+            "rsvpTotal": 1,
+            "@search.score": 96.1654
         },
         {
             "id": "12501376",
@@ -2625,7 +2647,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 96.05476
+            "@search.score": 96.16298
         },
         {
             "id": "12499711",
@@ -2657,7 +2679,7 @@
             "longitude": "-75.174280",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.9748
+            "@search.score": 96.08321
         },
         {
             "id": "12491008",
@@ -2691,7 +2713,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.95539
+            "@search.score": 96.06386
         },
         {
             "id": "12501401",
@@ -2727,7 +2749,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.82416
+            "@search.score": 95.93296
         },
         {
             "id": "12477339",
@@ -2761,7 +2783,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.82416
+            "@search.score": 95.93296
         },
         {
             "id": "12499644",
@@ -2796,7 +2818,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.81929
+            "@search.score": 95.9281
         },
         {
             "id": "12501359",
@@ -2830,7 +2852,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.70229
+            "@search.score": 95.81139
         },
         {
             "id": "12501428",
@@ -2864,7 +2886,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.604546
+            "@search.score": 95.7139
         },
         {
             "id": "12501400",
@@ -2900,7 +2922,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.35429
+            "@search.score": 95.46428
         },
         {
             "id": "12501429",
@@ -2934,7 +2956,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.35429
+            "@search.score": 95.46428
         },
         {
             "id": "12501386",
@@ -2966,7 +2988,7 @@
             "longitude": "-75.145320",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 98.78875
+            "@search.score": 98.890305
         },
         {
             "id": "12501377",
@@ -2998,7 +3020,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.23354
+            "@search.score": 95.34385
         },
         {
             "id": "12490970",
@@ -3034,7 +3056,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.1372
+            "@search.score": 95.24775
         },
         {
             "id": "12491009",
@@ -3068,7 +3090,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.132256
+            "@search.score": 95.24281
         },
         {
             "id": "12490667",
@@ -3116,7 +3138,7 @@
             "longitude": "-75.189320",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 95.01089
+            "@search.score": 95.12176
         },
         {
             "id": "12477340",
@@ -3150,7 +3172,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.99848
+            "@search.score": 95.10939
         },
         {
             "id": "12501399",
@@ -3186,7 +3208,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.99848
+            "@search.score": 95.10939
         },
         {
             "id": "12501360",
@@ -3220,7 +3242,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.874245
+            "@search.score": 94.98547
         },
         {
             "id": "12501430",
@@ -3254,7 +3276,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.7746
+            "@search.score": 94.886086
         },
         {
             "id": "12501398",
@@ -3290,7 +3312,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.51945
+            "@search.score": 94.63159
         },
         {
             "id": "12501431",
@@ -3324,7 +3346,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.51945
+            "@search.score": 94.63159
         },
         {
             "id": "12465001",
@@ -3358,7 +3380,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.42652
+            "@search.score": 94.5389
         },
         {
             "id": "12490996",
@@ -3394,7 +3416,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.40891
+            "@search.score": 94.52135
         },
         {
             "id": "12501378",
@@ -3426,7 +3448,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.39633
+            "@search.score": 94.508804
         },
         {
             "id": "12491024",
@@ -3460,7 +3482,7 @@
             "longitude": "-75.189580",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.20089
+            "@search.score": 94.31387
         },
         {
             "id": "12477341",
@@ -3494,7 +3516,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.15664
+            "@search.score": 94.26973
         },
         {
             "id": "12501406",
@@ -3530,7 +3552,7 @@
             "longitude": "-75.188450",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.15664
+            "@search.score": 94.26973
         },
         {
             "id": "12499645",
@@ -3565,7 +3587,7 @@
             "longitude": "-75.188270",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.15157
+            "@search.score": 94.26469
         },
         {
             "id": "12501361",
@@ -3599,7 +3621,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 94.029945
+            "@search.score": 94.14337
         },
         {
             "id": "12501432",
@@ -3633,7 +3655,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.928314
+            "@search.score": 94.04201
         },
         {
             "id": "12501433",
@@ -3667,7 +3689,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.668076
+            "@search.score": 93.78246
         },
         {
             "id": "12477342",
@@ -3701,7 +3723,7 @@
             "longitude": "-75.197950",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.29798
+            "@search.score": 93.41335
         },
         {
             "id": "12501434",
@@ -3735,7 +3757,7 @@
             "longitude": null,
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 93.06504
+            "@search.score": 93.18104
         },
         {
             "id": "12498989",
@@ -3788,7 +3810,7 @@
             "longitude": "77.210330",
             "recScore": null,
             "rsvpTotal": 0,
-            "@search.score": 91.51668
+            "@search.score": 91.636925
         },
         {
             "id": "12498979",
@@ -3832,7 +3854,7 @@
             "longitude": "-75.189420",
             "recScore": null,
             "rsvpTotal": 1,
-            "@search.score": 88.032364
+            "@search.score": 88.16274
         }
     ]
 }

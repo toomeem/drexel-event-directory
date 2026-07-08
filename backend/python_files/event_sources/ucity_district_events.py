@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import requests
 from backend.python_files.helper_functions import stable_hash
@@ -30,7 +30,7 @@ def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
     except ValueError:
         kwargs["start_time"] = datetime.strptime(event_json["meta"]["vibemap_event_start_date"], "%Y-%m-%d %H:%M:%S")
         kwargs["end_time"] = datetime.strptime(event_json["meta"]["vibemap_event_end_date"], "%Y-%m-%d %H:%M:%S")
-    if (kwargs["end_time"] - kwargs["start_time"]) > timedelta(hours=24):
+    if kwargs["end_time"].day != kwargs["start_time"].day:
         return None
 
     kwargs["name"] = event_json["title"]

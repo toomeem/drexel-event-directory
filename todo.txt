@@ -5,6 +5,8 @@ potential sources to add:
 
 remove theme option "community"
 
+add static single event collector like the static recurring event collector
+
 maybe add specific religion icons?
 add icons for each event type
 add filtering

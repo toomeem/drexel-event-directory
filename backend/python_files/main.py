@@ -217,6 +217,10 @@ def collect_all_events(bucket_name, events_in_db):
     print(f"Collected {len(events) - event_count} Drexel Athletics events.")
     event_count = len(events)
 
+    events.extend(collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count=500))
+    print(f"Collected {len(events) - event_count} uCity District events.")
+    event_count = len(events)
+
     events.extend(get_static_events(bucket_name, occurrences=4))
     print(f"Added {len(events) - event_count} static events.")
     event_count = len(events)
@@ -224,8 +228,6 @@ def collect_all_events(bucket_name, events_in_db):
     events.extend(
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
     print(f"Collected {len(events) - event_count} more UCity Square events.")
-
-    events.extend(collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count=500))
 
     events = [manual_event_fixes(event) for event in events]
     events = dedup_events(events_in_db, events)

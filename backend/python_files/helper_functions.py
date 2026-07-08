@@ -39,7 +39,7 @@ def simplify_event_name(name):
 
 
 def simplify_org_name(org_name):
-    if not org_name:
+    if not org_name or org_name == "Drexel University":
         return "Drexel University"
     replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
                     "Undergraduate Student Government Association": "Undergrad Student Gov Association",
@@ -101,6 +101,7 @@ def simplify_location(location):
                           "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Black Box Theater",
                           "Dornsife Center for Neighborhood Partnership": "Dornsife Center",
                           "Dornsife Center For Neighborhood Partnerships": "Dornsife Center",
+                          "3509 Spring Garden St": "Dornsife Center",
                           "Highmark Mann Center": "Highmark Mann Center",
                           "Mack Miles Playground": "Mack Miles Playground",
                           "Office of Graduate Studies": "Office of Graduate Studies",
@@ -118,7 +119,9 @@ def simplify_location(location):
                           "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music",
                           "New College Building 3rd Floor": "NCB Student Lounge",
                           "Outside Drexel Elkins Park": "Drexel Elkins Park",
-                          "CREESE - Greenawalt Room A": "CREESE Room A", "4300 Chester Ave": "Clark Park"}
+                          "CREESE - Greenawalt Room A": "CREESE Room A", "4300 Chester Ave": "Clark Park",
+                          "Sunset Social": "Cira Green Rooftop",
+                          }
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
