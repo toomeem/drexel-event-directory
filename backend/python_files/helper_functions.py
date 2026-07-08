@@ -118,7 +118,7 @@ def simplify_location(location):
                           "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music",
                           "New College Building 3rd Floor": "NCB Student Lounge",
                           "Outside Drexel Elkins Park": "Drexel Elkins Park",
-                          "CREESE - Greenawalt Room A": "CREESE Room A"}
+                          "CREESE - Greenawalt Room A": "CREESE Room A", "4300 Chester Ave": "Clark Park"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
@@ -267,7 +267,7 @@ def is_recurring(event_name, description):
                         "university city summer series concert: worldtown soundsystem collective",
                         "creativemornings", "life sciences luncheon", "wellness hub", "open play pickleball",
                         "free health clinic"]
-    day_names = ["sundays", "mondays", "tuesdays", "wednesdays", "thursdays", "fridays", "saturdays"]
+    day_names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     recurring_keywords = ["recurring", "monthly", "weekly", "series", "weeklies"]
     event_name = event_name.lower()
     description = description.lower()
@@ -276,7 +276,9 @@ def is_recurring(event_name, description):
         if keyword in event_name or keyword in description:
             return True
     for day_name in day_names:
-        if day_name in event_name or day_name in description:
+        if day_name + "s" in event_name or day_name + "s" in description:
+            return True
+        if f"every {day_name}" in event_name or f"every {day_name}" in description:
             return True
     return event_name in recurring_events
 
@@ -361,18 +363,41 @@ def enrich_perks(name, description, perks):
 def event_theme_additional_checks(name, description, org_name, location, theme):
     if is_athletic_event(name, org_name, location):
         return "athletics"
+
     name = name.lower()
     description = description.lower()
+
     health_keywords = ["yoga", "zumba", "health", "wellness"]
+    academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
+                         "info session", "molecular medicine", "clinical research"]
+    art_keywords = ["arts", "gallery", "exhibit", "museum"]
     for keyword in health_keywords:
         if keyword in name or keyword in description:
             return "health"
-    academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
-                         "info session", "molecular medicine", "clinical research"]
     for keyword in academic_keywords:
         if keyword in name or keyword in description:
             return "academic"
     return theme
+
+
+def get_religion(name, org_name, location):
+    religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
+                      "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
+                      "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
+                      "Cru": "christian", "Newman Catholic Community": "christian",
+                      "Crosswalk Christian Fellowship": "christian", "Christian Fellowship Club": "christian",
+                      "Drexel WEH": "christian", "Hindu YUVA @ Drexel": "hindu",
+                      "Open Door Christian Community": "christian", "Drexel Students for Christ": "christian"}
+    religious_keywords = {"church": "christian", "methodist": "christian", "synagogue": "jewish"}
+    if org_name in religious_orgs.keys():
+        return religious_orgs[org_name]
+    name = name.lower()
+    org_name = org_name.lower()
+    location = location.lower()
+    for keyword in religious_keywords.keys():
+        if keyword in name or keyword in org_name or keyword in location:
+            return religious_keywords[keyword]
+    return None
 
 
 def invalid_event(kwargs):
@@ -452,8 +477,11 @@ def save_events_to_file(events):
 
 
 def manual_event_fixes(event):
-    if event._id == "7dcb5b09133454510007247120737074":
-        PHILLY_TZ = ZoneInfo("America/New_York")
-        event.end_time = datetime(2026, 7, 18, 13).astimezone(PHILLY_TZ)
+    match event._id:
+        case "7dcb5b09133454510007247120737074":
+            PHILLY_TZ = ZoneInfo("America/New_York")
+            event.end_time = datetime(2026, 7, 18, 13).astimezone(PHILLY_TZ)
+        case "22a66ff543a693b1d383744c3f715f5e":
+            event.org_name = event.name
 
     return event

@@ -12,12 +12,14 @@ from backend.python_files.event_sources.drexel_athletics_event_functions import 
     drexel_athletics_event_parsing
 from backend.python_files.event_sources.drexel_event_functions import collect_drexel_events, drexel_event_parsing
 from backend.python_files.event_sources.static_recurring_events import get_static_events
+from backend.python_files.event_sources.ucity_district_events import ucity_district_event_parsing, \
+    collect_ucity_district_events
 from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
     create_ucity_square_event_from_url
 from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks
+    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion
 from backend.python_files.image_parsing_functions import get_image_s3_url
 from dotenv import load_dotenv
 
@@ -70,13 +72,6 @@ def get_events_from_db():
 
 
 def create_event_object(source, event_json, bucket_name, existing_event_ids):
-    religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
-                      "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
-                      "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
-                      "Cru": "christian", "Newman Catholic Community": "christian",
-                      "Crosswalk Christian Fellowship": "christian", "Christian Fellowship Club": "christian",
-                      "Drexel WEH": "christian", "Hindu YUVA @ Drexel": "hindu",
-                      "Open Door Christian Community": "christian", "Drexel Students for Christ": "christian"}
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "recurring": False, "for_new_students": False,
@@ -89,6 +84,8 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
             kwargs = drexel_event_parsing(event_json, kwargs, existing_event_ids)
         case "drexel_athletics":
             kwargs = drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids)
+        case "ucity_district":
+            kwargs = ucity_district_event_parsing(event_json, kwargs, existing_event_ids)
         case _:
             return None
     if invalid_event(kwargs):
@@ -120,12 +117,12 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
     kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
-    kwargs["theme"] = event_theme_additional_checks(kwargs["name"], kwargs["description"],
-                                                    kwargs["org_name"], kwargs["location"], kwargs["theme"])
-
-    if kwargs["org_name"] in religious_orgs.keys():
-        kwargs["religion"] = religious_orgs[kwargs["org_name"]]
+    kwargs["religion"] = get_religion(kwargs["name"], kwargs["org_name"], kwargs["location"])
+    if kwargs["religion"]:
         kwargs["theme"] = "spirituality"
+    else:
+        kwargs["theme"] = event_theme_additional_checks(kwargs["name"], kwargs["description"],
+                                                        kwargs["org_name"], kwargs["location"], kwargs["theme"])
 
     del kwargs["description"]
     return Event(**kwargs)
@@ -158,8 +155,18 @@ def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_id
     return events
 
 
+def collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count):
+    events = []
+    for event_json in collect_ucity_district_events(count):
+        event = create_event_object("ucity_district", event_json, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
 def dedup_events(events_in_db, events):
-    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3, "other": 4, }
+    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3,
+                       "ucity_district": 4, "other": 5, }
 
     # group possible duplicates by start time first
     events_by_start = {}
@@ -217,6 +224,8 @@ def collect_all_events(bucket_name, events_in_db):
     events.extend(
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
     print(f"Collected {len(events) - event_count} more UCity Square events.")
+
+    events.extend(collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count=500))
 
     events = [manual_event_fixes(event) for event in events]
     events = dedup_events(events_in_db, events)

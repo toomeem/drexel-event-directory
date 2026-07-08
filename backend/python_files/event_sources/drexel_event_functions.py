@@ -33,8 +33,8 @@ def collect_drexel_events(count):
         for future in as_completed(futures):
             results.extend(future.result())
 
-    os.makedirs("../json_examples", exist_ok=True)
-    with open("backend/json_examples/drexel_events_response.json", "w", encoding="utf-8") as f:
+    os.makedirs("../api_responses_json", exist_ok=True)
+    with open("backend/api_responses_json/drexel_events_response.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=4)
 
     return results

@@ -1,8 +1,9 @@
 create automated checks for static recurring events
 
 potential sources to add:
-    cira green: https://www.sunsetsocialphl.com/events
     gather food hall: https://gatherfoodhall.com/happenings/
+
+remove theme option "community"
 
 maybe add specific religion icons?
 add icons for each event type

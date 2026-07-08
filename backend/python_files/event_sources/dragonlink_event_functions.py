@@ -21,8 +21,8 @@ def collect_dragonlink_events(count):
         return []
 
     response = dict(response.json())
-    os.makedirs("../json_examples", exist_ok=True)
-    with open("backend/json_examples/dragonlink_response.json", "w", encoding="utf-8") as f:
+    os.makedirs("../api_responses_json", exist_ok=True)
+    with open("backend/api_responses_json/dragonlink_response.json", "w", encoding="utf-8") as f:
         json.dump(response, f, indent=4)
 
     return response["value"]

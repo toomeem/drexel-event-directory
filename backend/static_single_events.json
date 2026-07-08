@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Stop and Smell The Rosé Rooftop Wine Festival",
+    "org_name": "Sunset Social",
+    "location": "Cira Green Rooftop",
+    "image_url": "https://static.wixstatic.com/media/242fb1_183439b9ba49444ea4ee27b6c6de1ac7~mv2.jpg",
+    "start_time": "2026/08/08 - 15:00",
+    "end_time": "2026/08/08 - 18:00",
+    "event_link": "https://tinyurl.com/53r5ea8c",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [],
+    "food_related": true,
+    "popular": false,
+    "for_new_students": false
+  },
+  {
+    "name": "Roots 2 Fruit Festival",
+    "org_name": "Sunset Social",
+    "location": "Cira Green Rooftop",
+    "image_url": "https://static.wixstatic.com/media/1a076f_130a61ac971c4d96baf1f675d1a27cba~mv2.png",
+    "start_time": "2026/09/12 - 12:00",
+    "end_time": "2026/09/12 - 18:00",
+    "event_link": "https://www.4bidden4ruit.com/event-details/root-2-fruit-festival-2026",
+    "event_status": "in-person",
+    "theme": "social",
+    "perks": [
+      "giveaway",
+      "free_stuff"
+    ],
+    "food_related": true,
+    "popular": true,
+    "for_new_students": true
+  }
+]

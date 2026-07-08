@@ -31,8 +31,8 @@ def collect_drexel_athletics_events(days_out):
         for event in day["events"]:
             events_json.append(event)
 
-    os.makedirs("../json_examples", exist_ok=True)
-    with open("backend/json_examples/drexel_athletics_response.json", "w", encoding="utf-8") as f:
+    os.makedirs("../api_responses_json", exist_ok=True)
+    with open("backend/api_responses_json/drexel_athletics_response.json", "w", encoding="utf-8") as f:
         json.dump(events_json, f, indent=4)
 
     return events_json
