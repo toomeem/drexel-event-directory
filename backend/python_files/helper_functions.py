@@ -120,7 +120,12 @@ def simplify_location(location):
                           "New College Building 3rd Floor": "NCB Student Lounge",
                           "Outside Drexel Elkins Park": "Drexel Elkins Park",
                           "CREESE - Greenawalt Room A": "CREESE Room A", "4300 Chester Ave": "Clark Park",
-                          "Sunset Social": "Cira Green Rooftop",
+                          "Sunset Social": "Cira Green Rooftop", "Drexel Square": "Drexel Square",
+                          "3025 Market St": "Drexel Square", "Babe & Young’s Fashions": "Babe & Young’s Fashions",
+                          "110 South 52nd St": "Babe & Young’s Fashions",
+                          "Trolley Portal Gardens": "Trolley Portal Gardens",
+                          "40th St & Baltimore Avenue": "Trolley Portal Gardens",
+                          "PA Arts Gallery": "PA Arts Gallery", "5011 Baltimore Avenue": "PA Arts Gallery"
                           }
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",

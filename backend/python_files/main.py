@@ -6,6 +6,7 @@ import pg8000.dbapi
 
 import boto3
 from backend.python_files.event_class import Event
+from backend.python_files.event_sources.bbj_events import bbj_event_parsing, get_bbj_events
 from backend.python_files.event_sources.dragonlink_event_functions import collect_dragonlink_events, \
     dragonlink_event_parsing
 from backend.python_files.event_sources.drexel_athletics_event_functions import collect_drexel_athletics_events, \
@@ -72,7 +73,7 @@ def get_events_from_db():
     return events
 
 
-def create_event_object(source, event_json, bucket_name, existing_event_ids):
+def create_event_object(source, event_data, bucket_name, existing_event_ids):
     kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
               "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
               "perks": [], "food_related": False, "popular": False, "recurring": False, "for_new_students": False,
@@ -80,13 +81,15 @@ def create_event_object(source, event_json, bucket_name, existing_event_ids):
 
     match source:
         case "dragonlink":
-            kwargs = dragonlink_event_parsing(event_json, kwargs, existing_event_ids)
+            kwargs = dragonlink_event_parsing(event_data, kwargs, existing_event_ids)
         case "drexel_events":
-            kwargs = drexel_event_parsing(event_json, kwargs, existing_event_ids)
+            kwargs = drexel_event_parsing(event_data, kwargs, existing_event_ids)
         case "drexel_athletics":
-            kwargs = drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids)
+            kwargs = drexel_athletics_event_parsing(event_data, kwargs, existing_event_ids)
         case "ucity_district":
-            kwargs = ucity_district_event_parsing(event_json, kwargs, existing_event_ids)
+            kwargs = ucity_district_event_parsing(event_data, kwargs, existing_event_ids)
+        case "bbj":
+            kwargs = bbj_event_parsing(event_data, kwargs, existing_event_ids)
         case _:
             return None
     if invalid_event(kwargs):
@@ -165,6 +168,15 @@ def collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids,
     return events
 
 
+def collect_and_parse_all_bbj_events(bucket_name, existing_event_ids):
+    events = []
+    for event_json in get_bbj_events():
+        event = create_event_object("bbj", event_json, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
 def dedup_events(events_in_db, events):
     source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3,
                        "ucity_district": 4, "other": 5, }
@@ -224,6 +236,10 @@ def collect_all_events(bucket_name, events_in_db, days_out):
 
     events.extend(get_static_events(bucket_name, occurrences=6))
     print(f"Added {len(events) - event_count} static events.")
+    event_count = len(events)
+
+    events.extend(collect_and_parse_all_bbj_events(bucket_name, existing_event_ids))
+    print(f"Added {len(events) - event_count} Black Bottom Jazz events.")
     event_count = len(events)
 
     events.extend(
