@@ -19,7 +19,8 @@ from backend.python_files.event_sources.ucity_square_event_functions import get_
 from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion
+    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
+    is_past_max_days_out
 from backend.python_files.image_parsing_functions import get_image_s3_url
 from dotenv import load_dotenv
 
@@ -193,7 +194,7 @@ def dedup_events(events_in_db, events):
     return result
 
 
-def collect_all_events(bucket_name, events_in_db):
+def collect_all_events(bucket_name, events_in_db, days_out):
     existing_event_ids = [i._id for i in events_in_db]
     events = []
 
@@ -205,7 +206,7 @@ def collect_all_events(bucket_name, events_in_db):
     event_count = len(events)
     print(f"\nCollected {event_count} UCity Square events.")
 
-    events.extend(collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count=300))
+    events.extend(collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count=350))
     print(f"Collected {len(events) - event_count} Dragonlink events.")
     event_count = len(events)
 
@@ -213,7 +214,7 @@ def collect_all_events(bucket_name, events_in_db):
     print(f"Collected {len(events) - event_count} Drexel events.")
     event_count = len(events)
 
-    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out=90))
+    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out=days_out))
     print(f"Collected {len(events) - event_count} Drexel Athletics events.")
     event_count = len(events)
 
@@ -221,7 +222,7 @@ def collect_all_events(bucket_name, events_in_db):
     print(f"Collected {len(events) - event_count} uCity District events.")
     event_count = len(events)
 
-    events.extend(get_static_events(bucket_name, occurrences=4))
+    events.extend(get_static_events(bucket_name, occurrences=6))
     print(f"Added {len(events) - event_count} static events.")
     event_count = len(events)
 
@@ -229,17 +230,18 @@ def collect_all_events(bucket_name, events_in_db):
         [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
     print(f"Collected {len(events) - event_count} more UCity Square events.")
 
+    events = [i for i in events if not is_past_max_days_out(i, days_out)]
     events = [manual_event_fixes(event) for event in events]
     events = dedup_events(events_in_db, events)
 
     return events
 
 
-def update_events_file(bucket_name):
+def update_events_file(bucket_name, days_out):
     print("\nCollecting events...")
 
     db_events = get_events_from_db()
-    events = collect_all_events(bucket_name, db_events)
+    events = collect_all_events(bucket_name, db_events, days_out)
     save_events_to_file(events)
     print(f"\nSaved {len(events)} events to file.")
 
@@ -354,8 +356,8 @@ def upload_to_db_and_s3(bucket):
     upload_all_events_to_s3(bucket, events)
 
 
-def main(bucket_name):
-    update_events_file(bucket_name)
+def main(bucket_name, days_out):
+    update_events_file(bucket_name, days_out)
 
     bucket = boto3.resource("s3").Bucket(bucket_name)
     upload_to_db_and_s3(bucket)
@@ -365,7 +367,7 @@ if __name__ == "__main__":
     start = time.time()
     load_dotenv()
 
-    main(os.getenv("S3_BUCKET_NAME"))
+    main(os.getenv("S3_BUCKET_NAME"), days_out=60)
 
     end = time.time()
     print(f"\nFinished in {round((end - start), 1)} seconds.")

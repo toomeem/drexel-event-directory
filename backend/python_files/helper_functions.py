@@ -488,3 +488,7 @@ def manual_event_fixes(event):
             event.org_name = event.name
 
     return event
+
+
+def is_past_max_days_out(event, max_days_out):
+    return (event.start_time - datetime.now(tz=event.start_time.tzinfo)).days > max_days_out
