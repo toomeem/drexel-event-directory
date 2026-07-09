@@ -25,7 +25,7 @@ def normalize_time(source, time_str):
 
 def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)", "()",
-                   "@ Drexel University", "@ Drexel U", "@ Drexel", ]
+                   "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)"]
     replace_list = {"Virtual Information Session": "Info Session", "Artificial Intelligence": "AI",
                     "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective"}
@@ -229,9 +229,11 @@ def is_athletic_event(event_name, org_name, location):
                           "kayaking", "paintball", "hike", "hiking", "skiing",
                           "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
                           "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
-    if org_name == "Weekend Warriors" or org_name == "Dragon Jedi":
+    if org_name == "Weekend Warriors":
         return True
-    if "vidas" in location.lower():
+    elif org_name == "Dragon Jedi" and "afterclub hangout" not in event_name.lower():
+        return True
+    elif "vidas" in location.lower():
         return True
     return any([keyword in event_name.lower() for keyword in athletics_keywords])
 
@@ -356,7 +358,8 @@ def get_event_status(source, location):
 def enrich_perks(name, description, perks):
     perk_keywords = {"prizes": "prizes", "15 wellness points": "credit", "giveaway": "giveaway",
                      "free food": "free_food", "free stuff": "free_stuff", "free merch": "free_stuff",
-                     "free bling": "free_stuff", "FSL Health & Safety Training": "credit"}
+                     "free bling": "free_stuff", "FSL Health & Safety Training": "credit",
+                     "we will provide snacks": "free_food", "snacks provided": "free_food"}
 
     name = name.lower()
     description = description.lower()
@@ -379,12 +382,19 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
                          "info session", "molecular medicine", "clinical research"]
     art_keywords = ["arts", "gallery", "exhibit", "museum"]
+    fundraiser_keywords = ["fundraiser", "fundraising", "raise fund"]
     for keyword in health_keywords:
         if keyword in name or keyword in description:
             return "health"
     for keyword in academic_keywords:
         if keyword in name or keyword in description:
             return "academic"
+    for keyword in art_keywords:
+        if keyword in name or keyword in description:
+            return "art"
+    for keyword in fundraiser_keywords:
+        if keyword in name or keyword in description:
+            return "fundraising"
     return theme
 
 
@@ -409,33 +419,38 @@ def get_religion(name, org_name, location):
 
 
 def invalid_event(kwargs):
-    excluded_events = ["Drexel FSAE Sping GBM 2025", "Study Hours", "Drexel University Circle K General Body Meeting",
-                       "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
-                       "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
-                       "Dorm Objects 101 Guided Tours", "GBM #5",
-                       "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
-                       "Recognition Office Hours", "Chapter", "UREP Drop-In Hours", "SASE Spring Term E-board Meetings",
-                       "SWE Spring 2026 Officer Meetings",
-                       "In Her Own League: The Baseball Collection of Helen Beitler", "Free Uber Rides For Seniors",
-                       "Study Abroad Walk-In Hours", "Study Abroad 101",
-                       "Intro to Canvas, Drexel's Learning Management System",
-                       "West Philadelphia Community Research Review Board", "Creator Studio",
-                       "Health Career Exploration Camp", "Revisit 1876",
-                       "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
-                       "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
-                       "Fall House Manager Training", "Student Council Meeting",
-                       "America’s National Anniversaries & Philadelphia on the World Stage"]
+    excluded_event_names = ["Study Hours", "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
+                            "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
+                            "Dorm Objects 101 Guided Tours",
+                            "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
+                            "Recognition Office Hours", "Chapter", "UREP Drop-In Hours",
+                            "In Her Own League: The Baseball Collection of Helen Beitler",
+                            "Free Uber Rides For Seniors",
+                            "Study Abroad Walk-In Hours", "Study Abroad 101",
+                            "Intro to Canvas, Drexel's Learning Management System",
+                            "West Philadelphia Community Research Review Board", "Creator Studio",
+                            "Health Career Exploration Camp", "Revisit 1876",
+                            "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
+                            "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
+                            "Fall House Manager Training", "Student Council Meeting",
+                            "America’s National Anniversaries & Philadelphia on the World Stage"]
+    excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617"]
     if kwargs is None:
         return True
-    if not all([kwargs["start_time"], kwargs["end_time"], kwargs["name"], kwargs["location"]]):
+    elif not all([kwargs["_id"], kwargs["name"], kwargs["start_time"], kwargs["location"]]):
         return True
-    if kwargs["name"] in excluded_events:
+    elif kwargs["name"] in excluded_event_names:
         return True
-    if "general body meeting" in kwargs["name"].lower() or "gbm" in kwargs["name"].lower() or "chapter meeting" in \
-            kwargs["name"].lower() or "Chpater" in kwargs["name"] or "Presidents Meeting" in kwargs["name"]:
+    elif kwargs["name"].startswith("CANCELLED"):
         return True
-    if kwargs["name"].startswith("CANCELLED"):
+    elif kwargs["_id"] in excluded_event_ids:
         return True
+    name = kwargs["name"].lower()
+    general_body_meeting_keywords = ["general body meeting", "gbm", "chapter meeting", "presidents meeting",
+                                     "e-board meeting", "officer meeting", "exec board"]
+    for keyword in general_body_meeting_keywords:
+        if keyword in name:
+            return True
     return False
 
 

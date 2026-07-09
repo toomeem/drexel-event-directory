@@ -7,14 +7,13 @@ remove theme option "community"
 
 add static single event collector like the static recurring event collector
 
-convert some functions to "event" class funtions
+convert some functions to "event" class functions
 
 maybe add specific religion icons?
 add icons for each event type
 add filtering
     "for grad students" label
-    "field trip" label
-    "workshop" label
+    "info session" label
     "good for newcomers" label
     "volunteering" label
     "greek life" label

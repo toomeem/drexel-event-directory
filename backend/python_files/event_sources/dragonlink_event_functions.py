@@ -4,7 +4,7 @@ from datetime import datetime
 from urllib.parse import quote
 
 import requests
-from backend.python_files.helper_functions import stable_hash, normalize_time, is_athletic_event
+from backend.python_files.helper_functions import stable_hash, normalize_time
 
 
 def create_dragonlink_api_url(count):
@@ -55,9 +55,7 @@ def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
         kwargs["image_url"] = dragonlink_image_url + event_json["organizationProfilePicture"]
     kwargs["event_link"] = dragonlink_event_url + event_json["id"]
 
-    if is_athletic_event(kwargs["name"], kwargs["org_name"], kwargs["location"]):
-        kwargs["theme"] = "athletics"
-    elif event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
+    if event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
         kwargs["theme"] = event_json["theme"].lower()
     elif "Credit" in event_json["categoryNames"] or event_json["theme"] == "CommunityService":
         kwargs["theme"] = "community"
