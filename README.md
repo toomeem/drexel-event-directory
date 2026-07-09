@@ -7,9 +7,9 @@ Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/dr
 
 ## Features
 
-- Browse upcoming events from DragonLink, Drexel.edu, Drexel Athletics, and UCity Square
+- Browse upcoming events aggregated from seven campus and neighborhood sources
 - Rich filtering: theme (academic, arts, social, athletics, etc.), event format (in-person, online, hybrid), perks (free
-  food, free stuff, credit), date range (today / week / month), religion, and flags like on-campus, popular, recurring,
+  food, free stuff, etc.), date range (today / week / month), religion, and flags like on-campus, popular, recurring,
   and new-student events
 - Keyword search across event and organization names
 - Light/dark theme toggle
@@ -34,7 +34,7 @@ Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/dr
                                                    └────────────────┘
 ```
 
-- `main.py` scrapes all sources, de-duplicates events, inserts into PostgreSQL, uploads event
+- `python_files/main.py` scrapes all sources, de-duplicates events, inserts into PostgreSQL, uploads event
   images to S3, and syncs event "chunks" to a separate S3 bucket for the Bedrock knowledge base.
 - The events Lambda queries PostgreSQL with the active filters and returns paginated results to the frontend.
 - The chatbot Lambda proxies user questions from the frontend to a Bedrock Agent backed by the S3 knowledge base.
@@ -52,25 +52,38 @@ drexel-event-directory/
     ├── python_files/
     │   ├── main.py                            # Collects, de-dupes, and uploads events (DB + S3)
     │   ├── event_class.py                     # Event data model
-    │   ├── event_data_parsing_functions.py    # Source scrapers and normalization
+    │   ├── event_sources/                     # Per-source scrapers and parsers
+    │   │   ├── dragonlink_event_functions.py
+    │   │   ├── drexel_event_functions.py
+    │   │   ├── drexel_athletics_event_functions.py
+    │   │   ├── ucity_square_event_functions.py
+    │   │   ├── ucity_district_events.py
+    │   │   ├── bbj_events.py
+    │   │   └── static_recurring_events.py
+    │   ├── helper_functions.py                # Data normalization, dedup, tagging, and file/S3 helpers
+    │   ├── image_parsing_functions.py         # Image compression and S3 upload
+    │   ├── lambda_function.py                 # AWS Lambda handler for the database API
     │   ├── chatbot_lambda.py                  # AWS Lambda handler for the chatbot API
     │   └── testing.py
-    ├── lambda/
-    │   ├── lambda_function.py                 # AWS Lambda handler for the events API
-    │   └── requirements.txt                   # Events Lambda dependencies
-    ├── json_examples/                         # Sample raw responses from each source
-    ├── events.json                            # Latest collected event snapshot
+    ├── api_responses_json/                    # Sample raw responses from each source
+    ├── events.json                            # Temp file for storing processed events
+    ├── static_recurring_events.json           # Hand-curated recurring events
+    ├── static_single_events.json              # Hand-curated one-off events (in progress)
+    ├── requirements.txt                       # Backend / Lambda dependencies
     └── Makefile                               # Builds and zips the events Lambda deployment package
 ```
 
 ## Event Sources
 
-| Source                                              | Data                                            |
-|-----------------------------------------------------|-------------------------------------------------|
-| [DragonLink](https://drexel.campuslabs.com/engage/) | Student organization events                     |
-| [Drexel Events](https://drexel.edu/events/)         | University-wide events and academic programming |
-| [Drexel Athletics](https://drexeldragons.com/)      | Home and away athletic competitions             |
-| [UCity Square](https://ucitysquare.com/)            | Neighborhood and community events near campus   |
+| Source                                                            | Data                                                          |
+|-------------------------------------------------------------------|---------------------------------------------------------------|
+| [Drexel Events](https://drexel.edu/events/)                       | University-wide events and academic programming               |
+| [DragonLink](https://drexel.campuslabs.com/engage/)               | Student organization events                                   |
+| [Drexel Athletics](https://drexeldragons.com/)                    | Home and away athletic competitions                           |
+| [uCity Square](https://ucitysquare.com/events/month/)             | Neighborhood events on The Lawn near campus                   |
+| [University City District](https://www.universitycity.org/events) | District-wide public programming and community events         |
+| [Local Restaurants and Venues](https://www.thepostphl.com/)       | Recurring events at The Post at Cira Garage and Sunset Social |
+| [Black Bottom Jazz](https://blackbottomjazz.org/)                 | Recurring live jazz series in the neighborhood                |
 
 ## Backend
 
@@ -78,9 +91,9 @@ The data pipeline and APIs run on Python 3.14.
 
 ### Collecting events
 
-`main.py` orchestrates the pipeline: it scrapes each source, removes duplicates (preferring more authoritative sources),
-saves a snapshot to `events.json`, inserts new rows into PostgreSQL, and syncs per-event JSON chunks to S3 for the
-chatbot's Bedrock knowledge base.
+`python_files/main.py` orchestrates the pipeline: it scrapes each source, removes duplicates (preferring more
+authoritative sources), saves a snapshot to `events.json`, inserts new rows into PostgreSQL, and syncs per-event JSON
+chunks to S3 for the chatbot's Bedrock knowledge base.
 
 ```bash
 # run from the repository root
@@ -96,14 +109,15 @@ Required environment variables (via a `.env` file):
 
 ### Events API (Lambda)
 
-`lambda/lambda_function.py` serves paginated, filtered event results from PostgreSQL. Build the deployment package with:
+`python_files/lambda_function.py` serves paginated, filtered event results from PostgreSQL. Build the deployment
+package with:
 
 ```bash
 cd backend
 make
 ```
 
-This installs the dependencies in `lambda/requirements.txt` for `manylinux2014_x86_64` and produces
+This installs the dependencies in `requirements.txt` for `manylinux2014_x86_64` and produces
 `lambda_package.zip`. Required Lambda environment variables: `RDS_ENDPOINT` and `RDS_PASSWORD`.
 
 ### Chatbot API (Lambda)

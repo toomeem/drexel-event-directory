@@ -21,7 +21,25 @@ const SOURCES = [
         name: "uCity Lawn 🌳",
         url: "https://ucitysquare.com/events/month/",
         description:
-            "uCity Square's event calendar for The Lawn and nearby public programming, including yoga sessions, beer garden nights, concerts, and community events.",
+            "uCity Square's event calendar for The Lawn and nearby public programming, including yoga sessions, concerts, and community events.",
+    },
+    {
+        name: "University City District 🏙️",
+        url: "https://www.universitycity.org/events",
+        description:
+            "University City District's neighborhood calendar, covering public programming, workshops, live music, and community happenings.",
+    },
+    {
+        name: "Neighborhood Hangouts 🎲",
+        url: "https://www.thepostphl.com/",
+        description:
+            "Weekly recurring events at nearby spots like The Post at Cira Garage and Sunset Social, including open mic nights, quizzo, game nights, and movie nights.",
+    },
+    {
+        name: "Black Bottom Jazz 🎷",
+        url: "https://blackbottomjazz.org/",
+        description:
+            "The Black Bottom Lives On! jazz series, bringing recurring live jazz performances and cultural programming to the neighborhood.",
     },
 ];
 
@@ -29,7 +47,7 @@ const FEATURES = [
     "Filter by date range, event format, event type, and perks",
     "Search across event names, organizers, and descriptions",
     "Ask the built-in assistant questions about upcoming events",
-    "Browse deduplicated listings from multiple campus and neighborhood sources",
+    "Browse listings from multiple campus and neighborhood sources",
 ];
 
 export function AboutPage() {
@@ -58,8 +76,8 @@ export function AboutPage() {
             <section className="about-page__section">
                 <h2 className="about-page__section-title">Data Sources</h2>
                 <p className="about-page__body">
-                    Event data is collected from four campus and neighborhood sources
-                    and deduplicated automatically.
+                    Event data is collected from seven campus and neighborhood
+                    sources and deduplicated automatically.
                 </p>
                 <ul className="about-page__source-list">
                     {SOURCES.map((source) => (
@@ -68,11 +86,15 @@ export function AboutPage() {
                                 href={source.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="about-page__source-name"
+                                className="about-page__source-link"
                             >
-                                {source.name}
+                                <span className="about-page__source-name">
+                                    {source.name}
+                                </span>
+                                <span className="about-page__source-desc">
+                                    {source.description}
+                                </span>
                             </a>
-                            <p className="about-page__source-desc">{source.description}</p>
                         </li>
                     ))}
                 </ul>
@@ -80,10 +102,8 @@ export function AboutPage() {
 
             <div className="about-page__row">
                 <section className="about-page__section">
-                    <h2 className="about-page__section-title">For Recruiters 😁</h2>
-                    <p className="about-page__body">
-                        This project highlights React, TypeScript, API integration,
-                        filtering, responsive UI, and deployment work.\n{" "}
+                    <div className="about-page__section-header">
+                        <h2 className="about-page__section-title">For Recruiters 😁</h2>
                         <a
                             href="https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/resume_V3.pdf"
                             target="_blank"
@@ -93,14 +113,18 @@ export function AboutPage() {
                             View my resume
                             <span aria-hidden="true"> -&gt;</span>
                         </a>
+                    </div>
+                    <p className="about-page__body">
+                        A full-stack project with a Python data pipeline, a
+                        SQL database, served through a React and
+                        TypeScript frontend, and hosted on AWS infrastructure (Lambda, S3,
+                        RDS, Bedrock),.
                     </p>
                 </section>
 
                 <section className="about-page__section">
-                    <h2 className="about-page__section-title">Open Source</h2>
-                    <p className="about-page__body">
-                        The frontend and related project code are available on GitHub for
-                        review.{" "}
+                    <div className="about-page__section-header">
+                        <h2 className="about-page__section-title">Open Source</h2>
                         <a
                             href="https://github.com/toomeem/drexel-event-directory/"
                             target="_blank"
@@ -110,6 +134,10 @@ export function AboutPage() {
                             View the source on GitHub
                             <span aria-hidden="true"> -&gt;</span>
                         </a>
+                    </div>
+                    <p className="about-page__body">
+                        The full codebase is available on GitHub. The README covers the architecture and
+                        how to run it locally.
                     </p>
                 </section>
             </div>
