@@ -105,14 +105,14 @@ def lambda_handler(event, context):
     event_status = params.get("event_status")
     if event_status not in ("in-person", "online", "hybrid"):
         event_status = None
-    valid_themes = {"academic", "arts", "athletics", "career", "community", "cultural", "fundraising", "health",
-                    "social",
-                    "spirituality"}
-    themes = None
+    valid_themes = {"academic", "arts", "athletics", "career", "cultural", "fundraising", "health",
+                    "social", "spirituality"}
     theme_param = params.get("theme")
     if theme_param:
         candidates = [t.strip().lower() for t in theme_param.split(",")]
         themes = [t for t in candidates if t in valid_themes] or None
+    else:
+        themes = None
     perks_filter = None
     perks_param = params.get("perks")
     if perks_param:

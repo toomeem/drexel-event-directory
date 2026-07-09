@@ -64,7 +64,9 @@ def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
 
     kwargs["name"] = " ".join(["DREX", at_vs, opponent])
     kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
-    kwargs["location"] = event_json["location"]
+    kwargs["location"] = event_json["location"].strip('.,-_ ')
+    if event_json["facility"]:
+        kwargs["location"] += f" ({event_json['facility']['title']})"
     kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
     kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
     kwargs["image_url"] = drexel_athletics_image

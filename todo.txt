@@ -3,8 +3,6 @@ create automated checks for static recurring events
 potential sources to add:
     gather food hall: https://gatherfoodhall.com/happenings/
 
-remove theme option "community"
-
 add static single event collector like the static recurring event collector
 
 convert some functions to "event" class functions

@@ -99,8 +99,6 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
         kwargs["theme"] = "cultural"
     elif "health advocate" in kwargs["description"].lower():
         kwargs["theme"] = "health"
-    elif "Community Service" in type_names or "Civic Engagement" in type_names:
-        kwargs["theme"] = "community"
     elif "ANS: Museum Activities" in type_names:
         kwargs["theme"] = "social"
     elif "Student Life & Organizations" in type_names:

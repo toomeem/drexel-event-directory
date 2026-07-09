@@ -57,8 +57,6 @@ def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
 
     if event_json["theme"] in ["Arts", "Athletics", "Cultural", "Fundraising", "Social", "Spirituality"]:
         kwargs["theme"] = event_json["theme"].lower()
-    elif "Credit" in event_json["categoryNames"] or event_json["theme"] == "CommunityService":
-        kwargs["theme"] = "community"
     elif "Philanthropy" in event_json["categoryNames"] or "Fundraising" in event_json["categoryNames"]:
         kwargs["theme"] = "fundraising"
     elif "Social" in event_json["categoryNames"] or "Fraternity and Sorority Life" in event_json["categoryNames"]:
@@ -68,8 +66,6 @@ def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
         kwargs["theme"] = "career"
     elif "Academic" in event_json["categoryNames"] or "Educational" in event_json["categoryNames"]:
         kwargs["theme"] = "academic"
-    elif "Residence Life - Community and Civic Engagement" in event_json["categoryNames"]:
-        kwargs["theme"] = "community"
     else:
         kwargs["theme"] = "social"
 

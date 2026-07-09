@@ -42,7 +42,6 @@ const THEME_OPTIONS: FilterOption[] = [
     {value: "arts", label: "Arts 🎭"},
     {value: "athletics", label: "Athletics ⚽"},
     {value: "career", label: "Career 👔"},
-    {value: "community", label: "Community 👥👥"},
     {value: "cultural", label: "Cultural 🌎"},
     {value: "health", label: "Health 🩺"},
     {value: "fundraising", label: "Fundraising 💸"},

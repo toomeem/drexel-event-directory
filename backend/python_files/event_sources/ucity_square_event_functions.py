@@ -72,12 +72,12 @@ def match_ucity_square_default_image(name, location):
 
 
 def match_ucity_square_event_theme(name, description):
-    # academic, arts, athletics, career, community, cultural, fundraising, health, social, spirituality
+    # academic, arts, athletics, career, cultural, fundraising, health, social, spirituality
     theme_keyword_match = {"yoga": "athletics", "beer garden": "social", "food truck": "social",
                            "innovation exchange": "career", "life sciences": "academic",
                            "embroidery workshop": "arts", "reset lab": "health", "asl": "arts",
                            "retention by design": "career",
-                           "university city summer series concert": "arts", "creativemornings": "community",
+                           "university city summer series concert": "arts",
                            "monthly innovation exchange": "career"}
     for keyword, theme in theme_keyword_match.items():
         if keyword in name.lower() or keyword in description.lower():

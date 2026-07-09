@@ -125,8 +125,7 @@ def simplify_location(location):
                           "110 South 52nd St": "Babe & Young’s Fashions",
                           "Trolley Portal Gardens": "Trolley Portal Gardens",
                           "40th St & Baltimore Avenue": "Trolley Portal Gardens",
-                          "PA Arts Gallery": "PA Arts Gallery", "5011 Baltimore Avenue": "PA Arts Gallery"
-                          }
+                          "PA Arts Gallery": "PA Arts Gallery", "5011 Baltimore Avenue": "PA Arts Gallery"}
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
@@ -141,16 +140,17 @@ def simplify_location(location):
                    "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
                    "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)",
                    "3220 Market Street", ", Second Floor", "CNHP Lobby Table", "outside the cafeteria", ]
-    replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "),
-                    ("Papadakis Integrated Sciences Building", "PISB"), ("College of Computing & Informatics", "CCI"),
-                    ("Creese Student Center", "CREESE"), ("Drexel University Campus", "Drexel Campus"),
+    replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "), ("Philadelphia.", "Philadelphia"),
+                    ("N.J.", "NJ"), ("N.J", "NJ"), ("Papadakis Integrated Sciences Building", "PISB"),
+                    ("College of Computing & Informatics", "CCI"), ("Creese Student Center", "CREESE"),
+                    ("Drexel University Campus", "Drexel Campus"), (" - Alumni Garden", " Garden"),
                     ("Bossone Research and Enterprise Center", "BSONE"), ("Bossone Research Center", "BSONE"),
-                    ("Rush building", "RUSH"), ("Rush Building", "RUSH"), (" - Alumni Garden", " Garden"),
+                    ("Rush building", "RUSH"), ("Rush Building", "RUSH"), ("Gerri C. LeBow Hall", "LEBOW"),
                     ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
-                    ("Academic Building", "ACADMC"), ("Gerri C. LeBow Hall", "LEBOW"),
-                    ("Drexel Health Sciences Building", "HSB"), ("Health Sciences Building", "HSB"),
-                    ("Room 209", "RUSH 209"), ("<br>", " "), ("<br>", " "), ("(,", "("), (",)", ")"), (" )", ")"),
-                    (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "), ("  ", " "), (" , ", " "), ("  ", " "), ]
+                    ("Academic Building", "ACADMC"), ("Drexel Health Sciences Building", "HSB"),
+                    ("Health Sciences Building", "HSB"), ("Room 209", "RUSH 209"), ("<br>", " "), ("<br>", " "),
+                    ("(,", "("), (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "),
+                    ("  ", " "), (" , ", " "), ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
@@ -163,6 +163,8 @@ def simplify_location(location):
     location = location.strip(strip_chars)
     for suffix in suffixes:
         location = location.removesuffix(suffix)
+    if location.startswith("Philadelphia"):
+        return location.replace(", Pa", "").replace("Philadelphia.", "Philadelphia")
     for i in remove_list:
         location = location.replace(i, "", 1)
     for old, new in replace_list:
@@ -381,8 +383,15 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     health_keywords = ["yoga", "zumba", "health", "wellness"]
     academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
                          "info session", "molecular medicine", "clinical research"]
-    art_keywords = ["arts", "gallery", "exhibit", "museum"]
+    art_keywords = ["arts", "gallery", "exhibit", "museum", "shakespeare", "open mic", "music bingo", "live music",
+                    "jazz", "opera", "orchestra", "matinees", "movie", "roland kaiser", "cinéspeak", "film", "theater",
+                    "concert", "dance",
+                    "late night series", "south african experience", "creativemornings", "fyrestorm"]
     fundraiser_keywords = ["fundraiser", "fundraising", "raise fund"]
+
+    for keyword in fundraiser_keywords:
+        if keyword in name or keyword in description:
+            return "fundraising"
     for keyword in health_keywords:
         if keyword in name or keyword in description:
             return "health"
@@ -392,9 +401,7 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     for keyword in art_keywords:
         if keyword in name or keyword in description:
             return "art"
-    for keyword in fundraiser_keywords:
-        if keyword in name or keyword in description:
-            return "fundraising"
+
     return theme
 
 

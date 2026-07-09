@@ -12,8 +12,7 @@ def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
                             "Summer Series with Worldtown Soundsystem", "Wheelthrowing 101: Thursday Evenings",
                             "Native Futurism by Holly Wilson",
                             "Young Artist Summer Camp: Potions & Pigments: Art from the natural worlds"]
-    excluded_event_locations = ["Booker's Restaurant & Bar", "Dahlak",
-                                ]
+    excluded_event_locations = ["Booker's Restaurant & Bar", "Dahlak"]
 
     if event_json["title"] in excluded_event_names:
         return None
