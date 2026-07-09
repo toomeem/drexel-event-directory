@@ -140,6 +140,8 @@ def collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, cou
         event = create_event_object("dragonlink", event_json, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"Collected {len(events)} Dragonlink events.")
     return events
 
 
@@ -149,6 +151,8 @@ def collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count):
         event = create_event_object("drexel_events", event_json, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"Collected {len(events)} Drexel events.")
     return events
 
 
@@ -158,6 +162,8 @@ def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_id
         event = create_event_object("drexel_athletics", event_json, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"Collected {len(events)} Drexel Athletics events.")
     return events
 
 
@@ -168,6 +174,8 @@ def collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, m
         event = create_event_object("ucity_square", event_data, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"\nCollected {len(events)} UCity Square events.")
     return events
 
 
@@ -177,6 +185,8 @@ def collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids,
         event = create_event_object("ucity_district", event_json, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"Collected {len(events)} uCity District events.")
     return events
 
 
@@ -186,6 +196,8 @@ def collect_and_parse_all_bbj_events(bucket_name, existing_event_ids):
         event = create_event_object("bbj", event_json, bucket_name, existing_event_ids)
         if event is not None:
             events.append(event)
+
+    print(f"Added {len(events)} Black Bottom Jazz events.")
     return events
 
 
@@ -223,31 +235,12 @@ def collect_all_events(bucket_name, events_in_db, days_out):
     events = []
 
     events.extend(collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, months_out=2))
-    event_count = len(events)
-    print(f"\nCollected {event_count} UCity Square events.")
-
     events.extend(collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count=350))
-    print(f"Collected {len(events) - event_count} Dragonlink events.")
-    event_count = len(events)
-
     events.extend(collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count=350))
-    print(f"Collected {len(events) - event_count} Drexel events.")
-    event_count = len(events)
-
-    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, [], days_out=days_out))
-    print(f"Collected {len(events) - event_count} Drexel Athletics events.")
-    event_count = len(events)
-
+    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out=days_out))
     events.extend(collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count=500))
-    print(f"Collected {len(events) - event_count} uCity District events.")
-    event_count = len(events)
-
-    events.extend(get_static_events(bucket_name, occurrences=6))
-    print(f"Added {len(events) - event_count} static events.")
-    event_count = len(events)
-
+    events.extend(get_static_events(bucket_name, existing_event_ids, occurrences=6))
     events.extend(collect_and_parse_all_bbj_events(bucket_name, existing_event_ids))
-    print(f"Added {len(events) - event_count} Black Bottom Jazz events.")
 
     events = [i for i in events if not is_past_max_days_out(i, days_out)]
     events = [manual_event_fixes(event) for event in events]

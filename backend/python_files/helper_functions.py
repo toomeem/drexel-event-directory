@@ -361,7 +361,7 @@ def enrich_perks(name, description, perks):
     perk_keywords = {"prizes": "prizes", "15 wellness points": "credit", "giveaway": "giveaway",
                      "free food": "free_food", "free stuff": "free_stuff", "free merch": "free_stuff",
                      "free bling": "free_stuff", "FSL Health & Safety Training": "credit",
-                     "we will provide snacks": "free_food", "snacks provided": "free_food"}
+                     "we will provide snacks": "free_food", "snacks provided": "free_food", "free scoop": "free_food"}
 
     name = name.lower()
     description = description.lower()

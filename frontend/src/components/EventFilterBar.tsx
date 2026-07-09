@@ -51,9 +51,9 @@ const THEME_OPTIONS: FilterOption[] = [
 
 const PERK_OPTIONS: FilterOption[] = [
     {value: "free_food", label: "Free Food 🍔"},
+    {value: "giveaway", label: "Giveaway 🎁"},
     {value: "free_stuff", label: "Free Stuff 🛍️"},
     {value: "prizes", label: "Prizes 🥇"},
-    {value: "giveaway", label: "Giveaway 🎁"},
     {value: "credit", label: "Credit 🎟️"},
 ];
 

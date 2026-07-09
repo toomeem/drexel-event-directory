@@ -70,7 +70,7 @@ def get_instance_of_each_event(event_definitions, bucket_name):
             event_definitions]
 
 
-def get_static_events(bucket_name, occurrences=4):
+def get_static_events(bucket_name, existing_event_ids, occurrences=4):
     event_definitions = get_static_event_definitions()
     original_events = get_instance_of_each_event(event_definitions, bucket_name)
 
@@ -87,4 +87,6 @@ def get_static_events(bucket_name, occurrences=4):
 
             all_events.append(new_event)
 
+    all_events = [event for event in all_events if event._id not in existing_event_ids]
+    print(f"Added {len(all_events)} static events.")
     return all_events

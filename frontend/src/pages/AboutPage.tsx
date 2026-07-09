@@ -33,7 +33,7 @@ const SOURCES = [
         name: "Neighborhood Hangouts 🎲",
         url: "https://www.thepostphl.com/",
         description:
-            "Weekly recurring events at nearby spots like The Post at Cira Garage and Sunset Social, including open mic nights, quizzo, game nights, and movie nights.",
+            "Weekly recurring events at nearby spots like The Post at Cira Garage, Sunset Social, and Gather Food Hall, including music bingo, quizzo, game nights, and movie nights.",
     },
     {
         name: "Black Bottom Jazz 🎷",
