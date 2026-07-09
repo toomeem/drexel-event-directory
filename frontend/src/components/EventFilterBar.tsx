@@ -347,7 +347,7 @@ export function EventSidebarFilters({filters, onChange}: EventFilterBarProps) {
                 <div className="sidebar-filter-section">
                     <div className="sidebar-filter-section__header">
                         <p className="sidebar-filter-section__label" id="filter-theme-label">
-                            Theme
+                            Category
                         </p>
                         <button
                             type="button"
