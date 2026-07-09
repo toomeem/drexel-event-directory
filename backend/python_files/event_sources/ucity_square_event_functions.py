@@ -1,12 +1,10 @@
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 
 import requests
-from backend.python_files.event_class import Event
-from backend.python_files.helper_functions import stable_hash, is_food_related, is_recurring
-from backend.python_files.image_parsing_functions import get_image_s3_url
+from backend.python_files.helper_functions import stable_hash
 
 
 def get_ucity_square_calendar_urls(months_out):
@@ -33,8 +31,9 @@ def get_all_ucity_square_urls(months_out):
     event_urls = []
     for url in calendar_urls:
         event_urls.extend(get_event_urls_from_calendar_page(url))
-    event_urls = list(set(event_urls))
-    return event_urls
+
+    event_urls = [i for i in event_urls if not "ucity-square-beer-garden" in i]
+    return list(set(event_urls))
 
 
 def get_event_urls_from_calendar_page(url):
@@ -105,16 +104,7 @@ def get_ucity_square_event_perks(name):
     return perks
 
 
-def create_ucity_square_event_from_url(url, bucket_name):
-    kwargs = {"_id": stable_hash(url), "source": "ucity_square", "name": None, "org_name": "uCity Square",
-              "location": None, "image_url": None, "start_time": None, "end_time": None,
-              "event_link": url, "event_status": "in-person", "theme": None, "perks": [], "food_related": False,
-              "popular": False, "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
-              "description": ""}
-
-    request_wait_time = 0.3
-    time.sleep(request_wait_time)
-
+def get_ucity_square_event_data(url):
     response = requests.get(url, headers=http_header)
     if response.status_code == 429:
         print("Got rate limited, sleeping for 5 seconds")
@@ -123,12 +113,18 @@ def create_ucity_square_event_from_url(url, bucket_name):
     if response.status_code != 200:
         print(f"Error: {response.status_code} - {url}")
         return None
+    return response
+
+
+def create_ucity_square_event_from_url(response, kwargs, existing_event_ids):
+    kwargs["_id"] = stable_hash(response.url)
+    if kwargs["_id"] in existing_event_ids:
+        return None
+
     soup = BeautifulSoup(response.text, "html.parser")
     now = datetime.now()
+
     time_str = soup.find("div", class_="tribe-events-schedule")
-    if time_str is None:
-        print(f"Error: {url}")
-        return None
     time_str = time_str.text.strip().split("\n")[0].split(" ")
     month = time_str[0]
     day = time_str[1]
@@ -141,17 +137,11 @@ def create_ucity_square_event_from_url(url, bucket_name):
     kwargs["start_time"] = datetime.strptime(f"{year} {month} {day} {start_time_str}", format_str)
     kwargs["end_time"] = datetime.strptime(f"{year} {month} {day} {end_time_str}", format_str)
 
-    if kwargs["end_time"] < (now + timedelta(hours=1)):
-        return None
-
     kwargs["name"] = simplify_ucity_square_event_name(soup.find("h1").text)
     description = soup.find("div", class_="tribe-events-single-event-description tribe-events-content")
-    if description is None:
-        print(url)
-        exit(1)
     description = description.text.strip().replace("\xa0", " ")
     kwargs["description"] = description
-    if "The Lawn at uCity Square" in description or "Beer Garden" in kwargs["name"]:
+    if "The Lawn at uCity Square" in description:
         kwargs["location"] = "The Lawn at uCity Square"
     else:
         kwargs["location"] = "3675 Market St"
@@ -162,15 +152,12 @@ def create_ucity_square_event_from_url(url, bucket_name):
         original_image_url = image_base_url + event_image_url.find("img")["src"]
     else:
         original_image_url = match_ucity_square_default_image(kwargs["name"], kwargs["location"])
-    kwargs["image_url"] = get_image_s3_url(original_image_url, bucket_name)
 
+    kwargs["event_link"] = response.url
     kwargs["theme"] = match_ucity_square_event_theme(kwargs["name"], kwargs["description"])
     kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"])
-    kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
-    kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
 
-    del kwargs["description"]
-    return Event(**kwargs)
+    return kwargs
 
 
 http_header = {

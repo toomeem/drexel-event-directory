@@ -16,8 +16,8 @@ from backend.python_files.event_sources.static_recurring_events import get_stati
 from backend.python_files.event_sources.ucity_district_events import ucity_district_event_parsing, \
     collect_ucity_district_events
 from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
-    create_ucity_square_event_from_url
-from backend.python_files.helper_functions import stable_hash, invalid_event, simplify_org_name, get_event_status, \
+    create_ucity_square_event_from_url, get_ucity_square_event_data
+from backend.python_files.helper_functions import invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
     manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
@@ -86,6 +86,8 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
             kwargs = drexel_event_parsing(event_data, kwargs, existing_event_ids)
         case "drexel_athletics":
             kwargs = drexel_athletics_event_parsing(event_data, kwargs, existing_event_ids)
+        case "ucity_square":
+            kwargs = create_ucity_square_event_from_url(event_data, kwargs, existing_event_ids)
         case "ucity_district":
             kwargs = ucity_district_event_parsing(event_data, kwargs, existing_event_ids)
         case "bbj":
@@ -159,6 +161,16 @@ def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_id
     return events
 
 
+def collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, months_out):
+    events = []
+    for event_url in get_all_ucity_square_urls(months_out):
+        event_data = get_ucity_square_event_data(event_url)
+        event = create_event_object("ucity_square", event_data, bucket_name, existing_event_ids)
+        if event is not None:
+            events.append(event)
+    return events
+
+
 def collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count):
     events = []
     for event_json in collect_ucity_district_events(count):
@@ -210,11 +222,7 @@ def collect_all_events(bucket_name, events_in_db, days_out):
     existing_event_ids = [i._id for i in events_in_db]
     events = []
 
-    ucity_square_urls = [i for i in get_all_ucity_square_urls(months_out=2) if stable_hash(i) not in existing_event_ids]
-    half_ucity_square_urls = len(ucity_square_urls) // 2
-    events.extend(
-        [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[:half_ucity_square_urls]])
-    events = [e for e in events if e is not None]
+    events.extend(collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, months_out=2))
     event_count = len(events)
     print(f"\nCollected {event_count} UCity Square events.")
 
@@ -240,11 +248,6 @@ def collect_all_events(bucket_name, events_in_db, days_out):
 
     events.extend(collect_and_parse_all_bbj_events(bucket_name, existing_event_ids))
     print(f"Added {len(events) - event_count} Black Bottom Jazz events.")
-    event_count = len(events)
-
-    events.extend(
-        [create_ucity_square_event_from_url(url, bucket_name) for url in ucity_square_urls[half_ucity_square_urls:]])
-    print(f"Collected {len(events) - event_count} more UCity Square events.")
 
     events = [i for i in events if not is_past_max_days_out(i, days_out)]
     events = [manual_event_fixes(event) for event in events]
