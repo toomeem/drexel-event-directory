@@ -138,7 +138,7 @@ def simplify_location(location):
                    "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3200 Chestnut St",
                    "3141 Chestnut Street", "3141 Chestnut St", "Table Space 1 -", "Table Space 1", "Table Space 2 -",
                    "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
-                   "3509 Spring Garden St", "60 N 36th St.", "3675 Market Street", "(Exclusive)", "(no specific room)",
+                   "3509 Spring Garden St", "60 N 36th St.", "(Exclusive)", "(no specific room)",
                    "3220 Market Street", ", Second Floor", "CNHP Lobby Table", "outside the cafeteria", ]
     replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "), ("Philadelphia.", "Philadelphia"),
                     ("N.J.", "NJ"), ("N.J", "NJ"), ("Papadakis Integrated Sciences Building", "PISB"),
@@ -467,7 +467,7 @@ def clear_directory(path):
 
 
 def create_event_chunk_file(event):
-    path = "backend/chunking_tmp_dir/" + event._id + ".json"
+    path = "backend/temp_folders/chunking_tmp_dir/" + event._id + ".json"
     event_json = event.to_json()
     event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
     del event_json["event_link"]

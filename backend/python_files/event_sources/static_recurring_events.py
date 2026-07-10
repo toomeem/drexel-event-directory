@@ -11,7 +11,7 @@ from backend.python_files.image_parsing_functions import get_image_s3_url
 
 
 def get_static_event_definitions():
-    with open("backend/static_recurring_events.json") as f:
+    with open("backend/data_files/static_recurring_events.json") as f:
         return json.load(f)
 
 

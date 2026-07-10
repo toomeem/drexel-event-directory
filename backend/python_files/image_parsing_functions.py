@@ -75,7 +75,7 @@ def get_image_s3_url(original_url, bucket_name):
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
 
     image_name = stable_hash(original_url) + ".jpg"
-    local_file_path = "backend/event_image_tmp_dir/" + image_name
+    local_file_path = "backend/temp_folders/event_image_tmp_dir/" + image_name
     s3_file_path = "images/event_specific_images/" + image_name
 
     if not image_in_s3(bucket_name, image_name):

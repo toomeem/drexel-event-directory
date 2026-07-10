@@ -270,7 +270,7 @@ def remove_events_from_s3(bucket, event_ids):
 
 
 def upload_chunk_file_to_s3(bucket, file_name):
-    local_file_path = "backend/chunking_tmp_dir/" + file_name + ".json"
+    local_file_path = "backend/temp_folders/chunking_tmp_dir/" + file_name + ".json"
     s3_file_path = "backend/chunked/" + file_name + ".json"
     bucket.upload_file(local_file_path, s3_file_path)
 
@@ -301,8 +301,8 @@ def upload_all_events_to_s3(bucket, events):
         create_event_chunk_file(event)
         upload_chunk_file_to_s3(bucket, event_id)
 
-    clear_directory("backend/chunking_tmp_dir/")
-    clear_directory("backend/event_image_tmp_dir/")
+    clear_directory("backend/temp_folders/chunking_tmp_dir/")
+    clear_directory("backend/temp_folders/event_image_tmp_dir/")
 
     print(f"\nUploaded {len(events_to_add_to_s3)} new events to S3, removed {len(old_event_ids)} old events, "
           f"and {'synced' if events_to_add_to_s3 or old_event_ids else 'skipped syncing'} Bedrock knowledge base.")
