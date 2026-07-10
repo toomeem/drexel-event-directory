@@ -54,54 +54,16 @@ def get_event_urls_from_calendar_page(url):
     return event_links
 
 
-def match_ucity_square_default_image(name, location):
+def match_ucity_square_default_image(name):
     ucity_square_lawn_default_image = "https://www.universitycity.org/wp-content/uploads/2026/03/original_images_106297125_3131683786946849_7604964815855804720_n_sjgx8c2w9.jpg"
     yoga_image = "https://www.eventbrite.com/e/_next/image?url=https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F952808923%252F1814176558193%252F1%252Foriginal.20250204-222847%3Fcrop%3Dfocalpoint%26fit%3Dcrop%26w%3D1880%26auto%3Dformat%252Ccompress%26q%3D75%26sharp%3D10%26fp-x%3D0.5%26fp-y%3D0.5%26s%3De8039340c96baf2e46017e0bacae4c79&w=1880&q=75"
-    beer_garden_image = "https://www.universitycity.org/wp-content/uploads/2026/03/UCDSummerSeries2025_Final_181.jpg"
     food_truck_image = "https://ucitysquare.com/wp-content/uploads/2024/02/food-trucks.png"
-    the_3675_market_st_image = "https://ucitysquare.com/wp-content/uploads/2023/09/S-3675-Market-3-1600x1600.webp"
+
     if "yoga" in name.lower():
         return yoga_image
-    if "beer garden" in name.lower():
-        return beer_garden_image
     if "food truck" in name.lower():
         return food_truck_image
-    if location == "3675 Market St":
-        return the_3675_market_st_image
     return ucity_square_lawn_default_image
-
-
-def match_ucity_square_event_theme(name, description):
-    # academic, arts, athletics, career, cultural, fundraising, health, social, spirituality
-    theme_keyword_match = {"yoga": "athletics", "beer garden": "social", "food truck": "social",
-                           "innovation exchange": "career", "life sciences": "academic",
-                           "embroidery workshop": "arts", "reset lab": "health", "asl": "arts",
-                           "retention by design": "career",
-                           "university city summer series concert": "arts",
-                           "monthly innovation exchange": "career"}
-    for keyword, theme in theme_keyword_match.items():
-        if keyword in name.lower() or keyword in description.lower():
-            return theme
-    return "social"
-
-
-def simplify_ucity_square_event_name(name):
-    remove_list = ["– Spring", "– Summer", "– Fall", "– Winter", "at The Lawn", "()", "  "]
-    for remove_str in remove_list:
-        name = name.replace(remove_str, "")
-    return name.strip()
-
-
-def get_ucity_square_event_perks(name):
-    free_food_events = ["life sciences luncheon"]
-    free_stuff_events = ["stay flossy: embroidery workshop"]
-    perks = []
-
-    if name.lower() in free_food_events:
-        perks.append("free_food")
-    if name.lower() in free_stuff_events:
-        perks.append("free_stuff")
-    return perks
 
 
 def get_ucity_square_event_data(url):
@@ -137,25 +99,21 @@ def create_ucity_square_event_from_url(response, kwargs, existing_event_ids):
     kwargs["start_time"] = datetime.strptime(f"{year} {month} {day} {start_time_str}", format_str)
     kwargs["end_time"] = datetime.strptime(f"{year} {month} {day} {end_time_str}", format_str)
 
-    kwargs["name"] = simplify_ucity_square_event_name(soup.find("h1").text)
+    kwargs["name"] = soup.find("h1").text
     description = soup.find("div", class_="tribe-events-single-event-description tribe-events-content")
-    description = description.text.strip().replace("\xa0", " ")
-    kwargs["description"] = description
-    if "The Lawn at uCity Square" in description:
+    kwargs["description"] = description.text.strip().replace("\xa0", " ")
+    kwargs["org_name"] = "uCity Square"
+    if "The Lawn at uCity Square" in kwargs["description"]:
         kwargs["location"] = "The Lawn at uCity Square"
     else:
         kwargs["location"] = "3675 Market St"
 
     event_image_url = soup.find("div", class_="tribe-events-event-image")
     if event_image_url:
-        image_base_url = "https://ucitysquare.com"
-        original_image_url = image_base_url + event_image_url.find("img")["src"]
+        kwargs["image_url"] = "https://ucitysquare.com" + event_image_url.find("img")["src"]
     else:
-        original_image_url = match_ucity_square_default_image(kwargs["name"], kwargs["location"])
-
+        kwargs["image_url"] = match_ucity_square_default_image(kwargs["name"])
     kwargs["event_link"] = response.url
-    kwargs["theme"] = match_ucity_square_event_theme(kwargs["name"], kwargs["description"])
-    kwargs["perks"] = get_ucity_square_event_perks(kwargs["name"])
 
     return kwargs
 

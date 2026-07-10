@@ -24,8 +24,9 @@ def normalize_time(source, time_str):
 
 
 def simplify_event_name(name):
-    remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)", "()",
-                   "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)"]
+    remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
+                   "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
+                   "– Winter", "at The Lawn", "()"]
     replace_list = {"Virtual Information Session": "Info Session", "Artificial Intelligence": "AI",
                     "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective"}
@@ -41,16 +42,8 @@ def simplify_event_name(name):
 def simplify_org_name(org_name):
     if not org_name or org_name == "Drexel University":
         return "Drexel University"
-    replace_list = {"Drexel P.U.L.S.E: Chapter of Global Public Health Brigades": "P.U.L.S.E",
-                    "Undergraduate Student Government Association": "Undergrad Student Gov Association",
-                    "Drexel Newman Catholic Community": "Newman Catholic Community",
-                    "Drexel Association of Prosthetics and Orthotics": "Association of Prosthetics and Orthotics",
-                    "College of Computing and Informatics": "CCI",
-                    "Student Academy of the American Academy of Physician Assistants": "American Academy of Physician Assistants",
-                    "Elkins Park Student Success & Campus Engagement": "Elkins Park Student Life",
-                    "Biomedical Science Graduate Student Association": "Biomed Grad Student Association",
-                    "Wilbur W. Oaks Physician Assistant Student Society": "Physician Assistant Student Society",
-                    "Hafter Student Community Center": "Hafter Student Center"}
+    with open("backend/data_files/org_name_replace_list.json") as f:
+        replace_list = json.load(f)
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
@@ -71,86 +64,16 @@ def simplify_location(location):
         return None
     location = str(location)
     strip_chars = " ,.-*"
-    total_replace_list = {"Nesbitt 140": "Nesbitt Collaboratory", "Nesbitt Collaboratory": "Nesbitt Collaboratory",
-                          "Nesbitt Hall, Collaboratory": "Nesbitt Collaboratory",
-                          "Rincliffe Gallery": "Rincliffe Gallery", "Pearlstein Gallery": "Pearlstein Gallery",
-                          "Peck Alumni Center Gallery": "Peck Alumni Center Gallery", "Lanc Walk": "Lancaster Walk",
-                          "Lancaster Walk": "Lancaster Walk", "Hagerty Library": "Hagerty Library",
-                          "Hagerty": "Hagerty Library", "A. J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "A.J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "Anthony J. Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "AJ Drexel Picture Gallery": "A. J. Drexel Picture Gallery",
-                          "Lockheed Martin Launchpad": "Lockheed Martin Launchpad",
-                          "Geary Auditorium": "Geary Auditorium", "Mandell Theater": "Mandell Theater",
-                          "Drexel Park": "Drexel Park", "Education Abroad Office": "Education Abroad Office",
-                          "Academic Building Suite 201": "Education Abroad Office",
-                          "Hill Seminar Room": "Hill Seminar Room", "LeBow Eng. 240": "Hill Seminar Room",
-                          "Lindy Center for Civic Engagement": "Lindy Center", "The Lindy Center": "Lindy Center",
-                          "NSBITT 111": "NSBITT Stein Auditorium", "Stein Auditorium": "NSBITT Stein Auditorium",
-                          "NSBITT 125 - Ruth Auditorium": "NSBITT Ruth Auditorium", "Korman Quad": "Korman Quad",
-                          "Humpty Dumplings Glenside": "Humpty Dumplings", "The Kimmel Center": "The Kimmel Center",
-                          "Penny Park": "Penny Park", "Mitchell Auditorium": "BSONE Mitchell Auditorium",
-                          "Penn's Landing": "Penn's Landing",
-                          "Cancer Center at the Thomas Jefferson University": "Cancer Center at the Thomas Jefferson University",
-                          "URBN Annex Screening Room": "URBN Screening Room",
-                          "MAIN - Auditorium": "Main Building Auditorium",
-                          "Main Auditorium": "Main Building Auditorium",
-                          "Main Auditorium in Main Building": "Main Building Auditorium",
-                          "Main Auditorium\r\nMain Building": "Main Building Auditorium",
-                          "The Academy of Natural Sciences": "The Academy of Natural Sciences",
-                          "The Curtis Atrium": "The Curtis Atrium", "Black Box Theater": "URBN Black Box Theater",
-                          "Dornsife Center for Neighborhood Partnership": "Dornsife Center",
-                          "Dornsife Center For Neighborhood Partnerships": "Dornsife Center",
-                          "3509 Spring Garden St": "Dornsife Center",
-                          "Highmark Mann Center": "Highmark Mann Center",
-                          "Mack Miles Playground": "Mack Miles Playground",
-                          "Office of Graduate Studies": "Office of Graduate Studies",
-                          "Office of Graduate Students": "Office of Graduate Studies",
-                          "Elkin's Park Parking Lot": "Elkin's Park Parking Lot", "Dragon Statue": "Dragon Statue",
-                          "Drexel University Recreation Center": "DAC", "Drexel Recreation Center": "DAC",
-                          "Daskalakis Athletic Center": "DAC", "Parkway Central Library": "Parkway Central Library",
-                          "Lits Building": "Lits Building", "Independence National Park": "Independence National Park",
-                          "3509 Brandywine St & the corner of 36th and Spring Garden": "3509 Brandywine St",
-                          "West Philadelphia": "West Philadelphia",
-                          "Hafner Community Center": "Hafner Community Center",
-                          "Meet in Bentley Hall Lobby at 4:30 or at Asian Arts Initiative (1219 Vine Street) at 5": "Bentley Hall",
-                          "Bentley Hall 2nd Floor Annex": "Bentley Hall 2nd Floor",
-                          "Tu Rinconcito": "Tu Rinconcito",
-                          "Veterans Lounge": "Veterans Lounge", "Academy of Music": "Academy of Music",
-                          "New College Building 3rd Floor": "NCB Student Lounge",
-                          "Outside Drexel Elkins Park": "Drexel Elkins Park",
-                          "CREESE - Greenawalt Room A": "CREESE Room A", "4300 Chester Ave": "Clark Park",
-                          "Sunset Social": "Cira Green Rooftop", "Drexel Square": "Drexel Square",
-                          "3025 Market St": "Drexel Square", "Babe & Young’s Fashions": "Babe & Young’s Fashions",
-                          "110 South 52nd St": "Babe & Young’s Fashions",
-                          "Trolley Portal Gardens": "Trolley Portal Gardens",
-                          "40th St & Baltimore Avenue": "Trolley Portal Gardens",
-                          "PA Arts Gallery": "PA Arts Gallery", "5011 Baltimore Avenue": "PA Arts Gallery"}
+    with open("backend/data_files/location_total_replace_list.json") as f:
+        total_replace_list = json.load(f)
+    with open("backend/data_files/location_replace_list.json") as f:
+        replace_list = json.load(f)
+    with open("backend/data_files/location_remove_list.json") as f:
+        remove_list = json.load(f)
     suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
                 " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
                 "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
                 "- All Sections", "- Danzinger Conference Room"]
-    remove_list = ["\r", "\r", "\r", "\r", "\n", "\n", "\n", "\n", "In person at the", "In person at", "Pa 19104",
-                   "Pa 19103", "Pa 19106", "19103", "19104", "19106", "Philadelphia", "Phila.,", ", PA",
-                   "located at the northeast corner of 33rd and Chestnut Streets", "located at 32nd and Market Streets",
-                   "101 N 33rd St", "(Main 010 A)", "located at", "3230 Market Street", "- Group Exercise Studio -",
-                   "RSVP Required to Attend", "60 N. 36th Street", "33rd and Market Street", ", USA", "(if rain-W106)",
-                   "3501 Market Street", "3401 Filbert Street", "3200 Chestnut Street", "3200 Chestnut St",
-                   "3141 Chestnut Street", "3141 Chestnut St", "Table Space 1 -", "Table Space 1", "Table Space 2 -",
-                   "Table Space 2", "one block north of Market Street", "located at 60 N. 36th Street", " - Class Lab",
-                   "3509 Spring Garden St", "60 N 36th St.", "(Exclusive)", "(no specific room)",
-                   "3220 Market Street", ", Second Floor", "CNHP Lobby Table", "outside the cafeteria", ]
-    replace_list = [(" Streets", " St"), (" Street", " St"), ("\n", " "), ("Philadelphia.", "Philadelphia"),
-                    ("N.J.", "NJ"), ("N.J", "NJ"), ("Papadakis Integrated Sciences Building", "PISB"),
-                    ("College of Computing & Informatics", "CCI"), ("Creese Student Center", "CREESE"),
-                    ("Drexel University Campus", "Drexel Campus"), (" - Alumni Garden", " Garden"),
-                    ("Bossone Research and Enterprise Center", "BSONE"), ("Bossone Research Center", "BSONE"),
-                    ("Rush building", "RUSH"), ("Rush Building", "RUSH"), ("Gerri C. LeBow Hall", "LEBOW"),
-                    ("Pearlstein Business Learning Center", "PEARL"), ("Nesbitt Hall", "NSBITT"),
-                    ("Academic Building", "ACADMC"), ("Drexel Health Sciences Building", "HSB"),
-                    ("Health Sciences Building", "HSB"), ("Room 209", "RUSH 209"), ("<br>", " "), ("<br>", " "),
-                    ("(,", "("), (",)", ")"), (" )", ")"), (" )", ")"), ("()", ""), (" , ", " "), ("  ", " "),
-                    ("  ", " "), (" , ", " "), ("  ", " "), ]
     building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
@@ -167,62 +90,31 @@ def simplify_location(location):
         return location.replace(", Pa", "").replace("Philadelphia.", "Philadelphia")
     for i in remove_list:
         location = location.replace(i, "", 1)
-    for old, new in replace_list:
+    for old, new in replace_list.items():
         location = location.replace(old, new, 1)
     location = location.strip(strip_chars)
+
     for i in building_shortnames:
         if i in location:
-            location = location.replace(f"({i})", "", 1).replace(f"{i} Center", f"{i} ", 1).replace(f"{i} center",
-                                                                                                    f"{i} ", 1)
-            location = (
-                location.replace(f"{i}, Room", f"{i} ", 1).replace(f"{i}, room", f"{i} ", 1).replace(f"{i} - Room",
-                                                                                                     f"{i} ",
-                                                                                                     1).replace(
-                    f"{i} - room", f"{i} ", 1).replace(f"{i} Room", f"{i} ", 1).replace(f"{i} room", f"{i} ",
-                                                                                        1).replace(f"{i}Room", i,
-                                                                                                   1).replace(
-                    f"{i}room", f"{i} ", 1).replace(f"{i} Suite", f"{i} ", 1).replace(f"{i} Meeting room", f"{i} ",
-                                                                                      1).replace(f"{i} Meeting Room",
-                                                                                                 i).replace(
-                    f"{i} meeting room", f"{i} ", 1).replace(f"{i},", f"{i} ", 1)).replace(f"{i}Suite", f"{i} ",
-                                                                                           1).replace(f"{i}Room",
-                                                                                                      f"{i} ",
-                                                                                                      1).replace(
-                f"{i}room", f"{i} ", 1)
+            with open("backend/data_files/location_shortname_simplify_replace_list.json") as f:
+                location_shortname_simplify_replace_list = json.load(f)
+            for old, new in location_shortname_simplify_replace_list.items():
+                location = location.replace(old.replace("{i}", f"{i}"), new.replace("{i}", f"{i}"), 1)
             break
-    return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ").replace("  ", " ")
+    return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ")
 
 
 def match_default_image(name, org_name, location):
-    s3_subpath = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/default_images/"
-    name = name.lower() if name else ""
-    org_name = org_name.lower() if org_name else ""
-    location = location.lower() if location else ""
+    name, org_name, location = name.lower(), org_name.lower(), location.lower()
 
-    pearlstein_image = "https://drexel.edu/news/~/media/Drexel/Core-Site-Group/News/Images/v2/story-images/2022/March/Pearlstein_gallery96-copy/pearlstein_gallery96-copy_16x9.jpg?w=3200&hash=E14D6C3BEF38BF17CAAD5EABC5C9162F"
-    westphal_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQejsADyZdJy0QWh6odgCt42Bw9A5fsAPtXMg&s"
-    korman_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHPfEMM3sZWBAwamvamv8lvT4LzQmfcwQw&s"
-    med_building = "https://www.salus.edu/news-stories/_files/images/drexel-nursing-building-pic1.jpg"
-    humpty_dumplings = "https://humptysdumplings.com/wp-content/themes/humptysdumplings/images/logo.jpg"
-    pisb_image = "https://www.architectmagazine.com/wp-content/uploads/sites/5/2013/616a38fa-c2f8-4e1f-85e3-e23d8bcb9126.jpg"
-    rush_building = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/admissions/virtual-tour/rush-building.jpg"
-    hagerty_library_image = "https://pbs.twimg.com/media/G8D-sieWQAMOGeO.jpg"
-    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
-    dac_image = "https://www.sasaki.com/wp-content/uploads/2019/10/TurDRC09_website-1800x1350.jpg"
-    cci_image = "https://stradallc.com/app/uploads/2024/02/DrexelCCI-Lobby2.jpg"
-    elkins_park_image = "https://drexel.edu/provost/~/media/Drexel/Provost-Group/Provost/Images/homepage/drexel-elkins-park-campus-4x3.jpg"
-    lebow_image = "https://images.squarespace-cdn.com/content/v1/688110841312f04ea8b001bb/7b4c3d88-515e-4315-9776-9390d0e1bd11/LeBow.jpg"
-    main_building_image = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Main_Building_-_Drexel_University_%2853590618820%29.jpg/250px-Main_Building_-_Drexel_University_%2853590618820%29.jpg"
+    with open("backend/data_files/default_image_keyword_list.json") as f:
+        image_aliases = json.load(f)
 
-    image_aliases = {"pearlstein gallery": pearlstein_image, "westphal": westphal_image, "dac": dac_image,
-                     "rec center": dac_image, "main building": main_building_image, "hagerty": hagerty_library_image,
-                     "korman": korman_image, "pisb": pisb_image, "papadakis": pisb_image, "science": pisb_image,
-                     "rush": rush_building, "lancaster": drexel_default_image, "nursing": med_building,
-                     "medicine": med_building, "humpty dumplings": humpty_dumplings, "cci": cci_image,
-                     "elkin": elkins_park_image, "lebow": lebow_image, }
     for key, image in image_aliases.items():
         if key in name or key in org_name or key in location:
             return image
+
+    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
     return drexel_default_image
 
 
@@ -270,15 +162,8 @@ def is_popular(event_name):
 
 
 def is_recurring(event_name, description):
-    recurring_events = ["board game night", "pizza in the park", "dsc bible study",
-                        "graduate fellowships writing group",
-                        "tenants' right and organizing", "asl club", "reset lab: a guided mind & body reset",
-                        "stay flossy: embroidery workshop", "ucity square beer garden",
-                        "food truck thursdays at the lawn",
-                        "yoga at ucity square",
-                        "university city summer series concert: worldtown soundsystem collective",
-                        "creativemornings", "life sciences luncheon", "wellness hub", "open play pickleball",
-                        "free health clinic"]
+    with open("backend/data_files/dynamic_recurring_event_list.json") as f:
+        recurring_events = json.load(f)
     day_names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     recurring_keywords = ["recurring", "monthly", "weekly", "series", "weeklies"]
     event_name = event_name.lower()
@@ -313,19 +198,11 @@ def is_for_new_students(event_name, description):
 
 
 def is_on_campus(event_name, org_name, location):
+    with open("backend/data_files/off_campus_keyword_list.json") as f:
+        off_campus_keywords = json.load(f)
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
                        "Biomed Grad Student Association", "Elkins Park Student Council"]
-    off_campus_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings",
-                            "Chipotle Wyncote location", "The Kimmel Center", "Penny Park", "Penn's Landing",
-                            "Cancer Center at the Thomas Jefferson University", "Highmark Mann Center",
-                            "The Academy of Natural Sciences", "Elkin's Park Parking Lot", "Mack Miles Playground",
-                            "Parkway Central Library", "Lits Building", "Independence National Park",
-                            "Hafter Center Patio", "Hafner Community Center", "Hafner Student Center", "Haffner Gym"]
-    off_campus_keywords = ["england", "new jersey", "maryland", "elkins park", "queen lane", "humpty dumplings",
-                           "new college building", "hafner", "hafter", "haffner", "nj"]
 
-    if location in off_campus_locations:
-        return False
     if org_name in off_campus_orgs:
         return False
 
@@ -358,10 +235,8 @@ def get_event_status(source, location):
 
 
 def enrich_perks(name, description, perks):
-    perk_keywords = {"prizes": "prizes", "15 wellness points": "credit", "giveaway": "giveaway",
-                     "free food": "free_food", "free stuff": "free_stuff", "free merch": "free_stuff",
-                     "free bling": "free_stuff", "FSL Health & Safety Training": "credit",
-                     "we will provide snacks": "free_food", "snacks provided": "free_food", "free scoop": "free_food"}
+    with open("backend/data_files/perk_keyword_list.json") as f:
+        perk_keywords = json.load(f)
 
     name = name.lower()
     description = description.lower()
@@ -380,14 +255,15 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     name = name.lower()
     description = description.lower()
 
-    health_keywords = ["yoga", "zumba", "health", "wellness"]
+    health_keywords = ["yoga", "zumba", "health", "wellness", "reset lab"]
     academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
-                         "info session", "molecular medicine", "clinical research"]
+                         "info session", "molecular medicine", "clinical research", "life sciences"]
     art_keywords = ["arts", "gallery", "exhibit", "museum", "shakespeare", "open mic", "music bingo", "live music",
                     "jazz", "opera", "orchestra", "matinees", "movie", "roland kaiser", "cinéspeak", "film", "theater",
-                    "concert", "dance",
-                    "late night series", "south african experience", "creativemornings", "fyrestorm"]
+                    "concert", "dance", "embroidery", "asl", "late night series", "south african experience",
+                    "creativemornings", "fyrestorm"]
     fundraiser_keywords = ["fundraiser", "fundraising", "raise fund"]
+    career_keywords = ["career", "innovation exchange", "retention by design"]
 
     for keyword in fundraiser_keywords:
         if keyword in name or keyword in description:
@@ -401,18 +277,16 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     for keyword in art_keywords:
         if keyword in name or keyword in description:
             return "art"
+    for keyword in career_keywords:
+        if keyword in name or keyword in description:
+            return "career"
 
     return theme
 
 
 def get_religion(name, org_name, location):
-    religious_orgs = {"Chabad Student Group": "jewish", "Jewish Student Association": "jewish",
-                      "Drexel Muslim Students Association": "muslim", "Every Nation Campus": "christian",
-                      "Drexel Asian Baptist Student Koinonia": "christian", "Story Fellowship": "christian",
-                      "Cru": "christian", "Newman Catholic Community": "christian",
-                      "Crosswalk Christian Fellowship": "christian", "Christian Fellowship Club": "christian",
-                      "Drexel WEH": "christian", "Hindu YUVA @ Drexel": "hindu",
-                      "Open Door Christian Community": "christian", "Drexel Students for Christ": "christian"}
+    with open("backend/data_files/religious_org_list.json") as f:
+        religious_orgs = json.load(f)
     religious_keywords = {"church": "christian", "methodist": "christian", "synagogue": "jewish"}
     if org_name in religious_orgs.keys():
         return religious_orgs[org_name]
@@ -426,22 +300,10 @@ def get_religion(name, org_name, location):
 
 
 def invalid_event(kwargs):
-    excluded_event_names = ["Study Hours", "Ukranian Non-Profit Physical Goods Drive", "Dorm Objects 101",
-                            "Visualizing Health: A Photography Exhibit", "Graduate Student Writing Group",
-                            "Dorm Objects 101 Guided Tours",
-                            "Exploring National Anniversaries Through the Atwater Kent Collection at Drexel",
-                            "Recognition Office Hours", "Chapter", "UREP Drop-In Hours",
-                            "In Her Own League: The Baseball Collection of Helen Beitler",
-                            "Free Uber Rides For Seniors",
-                            "Study Abroad Walk-In Hours", "Study Abroad 101",
-                            "Intro to Canvas, Drexel's Learning Management System",
-                            "West Philadelphia Community Research Review Board", "Creator Studio",
-                            "Health Career Exploration Camp", "Revisit 1876",
-                            "Lunch & Learn: Improving Interprofessional Communication to Reduce Conflicting Caregiver Guidance",
-                            "Graduate Student Resume Drop-Ins", "Graduate Students Resume Drop-Ins",
-                            "Fall House Manager Training", "Student Council Meeting",
-                            "America’s National Anniversaries & Philadelphia on the World Stage"]
+    with open("backend/data_files/excluded_event_names.json") as f:
+        excluded_event_names = json.load(f)
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617"]
+
     if kwargs is None:
         return True
     elif not all([kwargs["_id"], kwargs["name"], kwargs["start_time"], kwargs["location"]]):
@@ -513,7 +375,8 @@ def manual_event_fixes(event):
             event.end_time = datetime(2026, 7, 18, 13).astimezone(PHILLY_TZ)
         case "22a66ff543a693b1d383744c3f715f5e":
             event.org_name = event.name
-
+        case "c63a185e9635dee8d40ae36fdedb20c9":
+            event.location = "Lancaster Ave & 33rd -> Market St & 2nd"
     return event
 
 

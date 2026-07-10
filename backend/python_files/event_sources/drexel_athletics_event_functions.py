@@ -61,6 +61,8 @@ def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
         sport_shorthand = sport_short_raw
 
     kwargs["name"] = " ".join(["DREX", at_vs, opponent])
+    if at_vs == "at":
+        kwargs["on_campus"] = False
     kwargs["org_name"] = f"Drexel {event_json['sport']['title']}"
     kwargs["location"] = event_json["location"].strip('.,-_ ')
     if event_json["facility"]:
@@ -70,5 +72,5 @@ def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
     kwargs["image_url"] = drexel_athletics_image
     kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
     kwargs["theme"] = "athletics"
-    kwargs["perks"] = []
+
     return kwargs
