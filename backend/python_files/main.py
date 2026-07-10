@@ -134,76 +134,9 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
     return Event(**kwargs)
 
 
-def collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count):
-    events = []
-    for event_json in collect_dragonlink_events(count):
-        event = create_event_object("dragonlink", event_json, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"Collected {len(events)} Dragonlink events.")
-    return events
-
-
-def collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count):
-    events = []
-    for event_json in collect_drexel_events(count):
-        event = create_event_object("drexel_events", event_json, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"Collected {len(events)} Drexel events.")
-    return events
-
-
-def collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out):
-    events = []
-    for event_json in collect_drexel_athletics_events(days_out):
-        event = create_event_object("drexel_athletics", event_json, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"Collected {len(events)} Drexel Athletics events.")
-    return events
-
-
-def collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, months_out):
-    events = []
-    for event_url in get_all_ucity_square_urls(months_out):
-        event_data = get_ucity_square_event_data(event_url)
-        event = create_event_object("ucity_square", event_data, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"\nCollected {len(events)} UCity Square events.")
-    return events
-
-
-def collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count):
-    events = []
-    for event_json in collect_ucity_district_events(count):
-        event = create_event_object("ucity_district", event_json, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"Collected {len(events)} uCity District events.")
-    return events
-
-
-def collect_and_parse_all_bbj_events(bucket_name, existing_event_ids):
-    events = []
-    for event_json in get_bbj_events():
-        event = create_event_object("bbj", event_json, bucket_name, existing_event_ids)
-        if event is not None:
-            events.append(event)
-
-    print(f"Added {len(events)} Black Bottom Jazz events.")
-    return events
-
-
 def dedup_events(events_in_db, events):
-    source_priority = {"drexel_events": 0, "drexel_athletics": 1, "dragonlink": 2, "ucity_square": 3,
-                       "ucity_district": 4, "other": 5, }
+    source_priority = ["bbj", "drexel_events", "drexel_athletics", "ucity_square", "ucity_district", "dragonlink",
+                       "static_recurring_events"]
 
     # group possible duplicates by start time first
     events_by_start = {}
@@ -224,23 +157,44 @@ def dedup_events(events_in_db, events):
                 clusters.append([event])
 
         for cluster in clusters:
-            result.append(max(cluster, key=lambda e: source_priority.get(e.source, -1)))
+            result.append(max(cluster, key=lambda e: source_priority.index(e.source)))
 
     result.sort(key=lambda e: e.start_time.timestamp())
     return result
 
 
 def collect_all_events(bucket_name, events_in_db, days_out):
+    sources = ["dragonlink", "drexel_events", "drexel_athletics", "ucity_square", "ucity_district", "bbj",
+               "static_recurring_events"]
     existing_event_ids = [i._id for i in events_in_db]
     events = []
 
-    events.extend(collect_and_parse_all_ucity_square_events(bucket_name, existing_event_ids, months_out=2))
-    events.extend(collect_and_parse_all_dragonlink_events(bucket_name, existing_event_ids, count=350))
-    events.extend(collect_and_parse_all_drexel_events(bucket_name, existing_event_ids, count=350))
-    events.extend(collect_and_parse_all_drexel_athletics_events(bucket_name, existing_event_ids, days_out=days_out))
-    events.extend(collect_and_parse_all_ucity_district_events(bucket_name, existing_event_ids, count=500))
-    events.extend(get_static_events(bucket_name, existing_event_ids, occurrences=6))
-    events.extend(collect_and_parse_all_bbj_events(bucket_name, existing_event_ids))
+    for source in sources:
+        event_count = len(events)
+        match source:
+            case "dragonlink":
+                event_data_list = collect_dragonlink_events(count=350)
+            case "drexel_events":
+                event_data_list = collect_drexel_events(count=350)
+            case "drexel_athletics":
+                event_data_list = collect_drexel_athletics_events(days_out=days_out)
+            case "ucity_square":
+                event_data_list = [get_ucity_square_event_data(i) for i in get_all_ucity_square_urls(months_out=2)]
+            case "ucity_district":
+                event_data_list = collect_ucity_district_events(count=500)
+            case "bbj":
+                event_data_list = get_bbj_events()
+            case "static_recurring_events":
+                event_data_list = get_static_events(bucket_name, existing_event_ids, occurrences=6)
+            case _:
+                event_data_list = []
+
+        for event_data in event_data_list:
+            event = create_event_object(source, event_data, bucket_name, existing_event_ids)
+            if event is not None:
+                events.append(event)
+
+        print(f"Collected {len(events) - event_count} events from {source}.")
 
     events = [i for i in events if not is_past_max_days_out(i, days_out)]
     events = [manual_event_fixes(event) for event in events]
