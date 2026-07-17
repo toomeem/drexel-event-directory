@@ -33,7 +33,8 @@ def simplify_event_name(name):
                     "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective",
                     " : ": ": "}
-
+    if "cancelled" in name.lower():
+        return None
     if "Hosted by" in name:
         name = name.split("Hosted by", 1)[0]
     elif "Presents:" in name:
@@ -51,8 +52,8 @@ def simplify_event_name(name):
 def simplify_org_name(org_name, event_name, description):
     if not org_name or org_name == "Drexel University":
         return "Drexel University"
-    with open("backend/data_files/org_name_replace_list.json") as f:
-        replace_list = json.load(f)
+    with open("backend/data_files/org_name_total_replace_list.json") as f:
+        total_replace_list = json.load(f)
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
@@ -63,8 +64,8 @@ def simplify_org_name(org_name, event_name, description):
         return "In the Mix"
     elif "Dissertation Defense: " in event_name:
         org_name = event_name.split("Dissertation Defense: ", 1)[1]
-    elif org_name in replace_list.keys():
-        return replace_list[org_name]
+    elif org_name in total_replace_list.keys():
+        return total_replace_list[org_name]
     elif org_name.startswith("Drexel University"):
         org_name = org_name.replace("Drexel University", "", 1)
     for i in org_name_remove:
@@ -104,7 +105,7 @@ def simplify_location(location):
     for i in remove_list:
         location = location.replace(i, "", 1)
     for old, new in replace_list.items():
-        location = location.replace(old, new, 1)
+        location = location.replace(old, new)
     location = location.strip(strip_chars)
 
     for i in building_shortnames:
@@ -389,7 +390,7 @@ def manual_event_fixes(event):
         case "22a66ff543a693b1d383744c3f715f5e":
             event.org_name = event.name
         case "c63a185e9635dee8d40ae36fdedb20c9":
-            event.location = "Lancaster Ave & 33rd -> Market St & 2nd"
+            event.location = "Lanc Ave & 33rd -> Market St & 2nd"
 
     return event
 
