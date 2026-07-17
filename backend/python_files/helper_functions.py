@@ -33,8 +33,7 @@ def simplify_event_name(name):
                     "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective",
                     " : ": ": "}
-    if "cancelled" in name.lower():
-        return None
+
     if "Hosted by" in name:
         name = name.split("Hosted by", 1)[0]
     elif "Presents:" in name:
@@ -324,7 +323,7 @@ def invalid_event(kwargs):
         return True
     elif kwargs["name"] in excluded_event_names:
         return True
-    elif kwargs["name"].startswith("CANCELLED"):
+    elif "cancelled" in kwargs["name"]:
         return True
     elif kwargs["_id"] in excluded_event_ids:
         return True
