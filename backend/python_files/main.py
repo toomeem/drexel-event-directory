@@ -98,8 +98,8 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
         return None
 
     kwargs["perks"] = enrich_perks(kwargs["name"], kwargs["description"], kwargs["perks"])
+    kwargs["org_name"] = simplify_org_name(kwargs["org_name"], kwargs["name"], kwargs["description"])
     kwargs["name"] = simplify_event_name(kwargs["name"])
-    kwargs["org_name"] = simplify_org_name(kwargs["org_name"])
     kwargs["event_status"] = get_event_status(source, kwargs["location"])
 
     if kwargs["image_url"] is None:
