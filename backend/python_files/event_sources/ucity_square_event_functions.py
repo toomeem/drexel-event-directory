@@ -1,9 +1,9 @@
 import time
 from datetime import datetime
 
+import requests
 from bs4 import BeautifulSoup
 
-import requests
 from backend.python_files.helper_functions import stable_hash
 
 

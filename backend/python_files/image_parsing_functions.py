@@ -1,10 +1,10 @@
 import time
 
 import PIL
-from PIL import Image
-
 import boto3
 import requests
+from PIL import Image
+
 from backend.python_files.helper_functions import stable_hash
 
 

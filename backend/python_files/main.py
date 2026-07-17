@@ -2,9 +2,10 @@ import os
 import time
 from datetime import timezone
 
-import pg8000.dbapi
-
 import boto3
+import pg8000.dbapi
+from dotenv import load_dotenv
+
 from backend.python_files.event_class import Event
 from backend.python_files.event_sources.bbj_events import bbj_event_parsing, get_bbj_events
 from backend.python_files.event_sources.dragonlink_event_functions import collect_dragonlink_events, \
@@ -23,7 +24,6 @@ from backend.python_files.helper_functions import invalid_event, simplify_org_na
     manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
     is_past_max_days_out
 from backend.python_files.image_parsing_functions import get_image_s3_url
-from dotenv import load_dotenv
 
 
 def simple_events_in_db():

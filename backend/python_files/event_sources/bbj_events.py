@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
 
+import requests
 from bs4 import BeautifulSoup
 
-import requests
 from backend.python_files.helper_functions import stable_hash
 
 
