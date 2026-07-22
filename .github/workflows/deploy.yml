@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   deploy:
@@ -23,16 +23,50 @@ jobs:
         run: npm ci
         working-directory: frontend
 
-      - name: Build
+      # GitHub Pages build. main -> served at /drexel-event-directory/,
+      # dev -> served at /drexel-event-directory/dev/ (staging preview subpath).
+      - name: Build for GitHub Pages
         run: npm run build
         working-directory: frontend
         env:
           VITE_LAMBDA_ENDPOINT: 'https://py256leklagmag7zxvhltladtu0aflsd.lambda-url.us-east-1.on.aws/'
           VITE_CHATBOT_LAMBDA_ENDPOINT: 'https://bp7tncg4c4pbgfy4rpgpm5nhky0tazbg.lambda-url.us-east-1.on.aws/'
-          VITE_BASE_PATH: '/drexel-event-directory/'
+          VITE_BASE_PATH: ${{ github.ref == 'refs/heads/main' && '/drexel-event-directory/' || '/drexel-event-directory/dev/' }}
 
-      - name: Deploy
+      # keep_files: true so deploying one branch's subtree does not wipe the
+      # other branch's output already published on gh-pages.
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: frontend/dist
+          destination_dir: ${{ github.ref == 'refs/heads/main' && '.' || 'dev' }}
+          keep_files: true
+
+      # AWS production deploy (main only). Rebuild with base "/" for the
+      # custom-domain CloudFront origin, overwriting the Pages build in dist.
+      - name: Build for AWS (custom domain)
+        if: github.ref == 'refs/heads/main'
+        run: npm run build
+        working-directory: frontend
+        env:
+          VITE_LAMBDA_ENDPOINT: 'https://py256leklagmag7zxvhltladtu0aflsd.lambda-url.us-east-1.on.aws/'
+          VITE_CHATBOT_LAMBDA_ENDPOINT: 'https://bp7tncg4c4pbgfy4rpgpm5nhky0tazbg.lambda-url.us-east-1.on.aws/'
+          VITE_BASE_PATH: '/'
+
+      - name: Configure AWS credentials
+        if: github.ref == 'refs/heads/main'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3 and invalidate CloudFront
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws s3 sync frontend/dist "s3://$AWS_S3_BUCKET" --delete
+          aws cloudfront create-invalidation --distribution-id "$AWS_CLOUDFRONT_DISTRIBUTION_ID" --paths '/*'
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }}
