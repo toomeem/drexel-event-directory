@@ -118,7 +118,7 @@ export function AboutPage() {
                         A full-stack project with a Python data pipeline, a
                         SQL database, served through a React and
                         TypeScript frontend, and hosted on AWS infrastructure (Lambda, S3,
-                        RDS, Bedrock),.
+                        RDS, Bedrock, CloudFront).
                     </p>
                 </section>
 

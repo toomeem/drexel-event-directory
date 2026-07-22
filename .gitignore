@@ -1,4 +1,6 @@
 backend/python_files/.env
+__pycache__/
+*.pyc
 frontend/.env
 frontend/.env.local
 /backend/.lambda_venv/
@@ -10,7 +12,6 @@ frontend/.env.local
 /frontend/.claude/
 /frontend/.idea/
 /frontend/dist/
-/frontend/namecheap-upload.zip
 /frontend/node_modules/
 /frontend/package-lock.json
 .venv
