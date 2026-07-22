@@ -29,6 +29,7 @@ jobs:
         env:
           VITE_LAMBDA_ENDPOINT: 'https://py256leklagmag7zxvhltladtu0aflsd.lambda-url.us-east-1.on.aws/'
           VITE_CHATBOT_LAMBDA_ENDPOINT: 'https://bp7tncg4c4pbgfy4rpgpm5nhky0tazbg.lambda-url.us-east-1.on.aws/'
+          VITE_BASE_PATH: '/drexel-event-directory/'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

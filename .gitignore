@@ -9,7 +9,8 @@ frontend/.env.local
 *.iml
 /frontend/.claude/
 /frontend/.idea/
-/frontend/dist/assets/
+/frontend/dist/
+/frontend/namecheap-upload.zip
 /frontend/node_modules/
 /frontend/package-lock.json
 .venv
