@@ -315,6 +315,7 @@ def get_religion(name, org_name, location):
 def invalid_event(kwargs):
     with open("backend/data_files/excluded_event_names.json") as f:
         excluded_event_names = json.load(f)
+    excluded_event_text = ["ages 6–11"]
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617"]
 
     if kwargs is None:
@@ -328,6 +329,9 @@ def invalid_event(kwargs):
     elif kwargs["_id"] in excluded_event_ids:
         return True
     name = kwargs["name"].lower()
+    for i in excluded_event_text:
+        if i in name:
+            return True
     general_body_meeting_keywords = ["general body meeting", "gbm", "chapter meeting", "presidents meeting",
                                      "e-board meeting", "officer meeting", "exec board"]
     for keyword in general_body_meeting_keywords:
@@ -394,5 +398,11 @@ def manual_event_fixes(event):
     return event
 
 
-def is_past_max_days_out(event, max_days_out):
+def is_within_date_range(event, max_days_out):
+    if event.end_time:
+        if event.end_time < datetime.now(tz=event.start_time.tzinfo):
+            return True
+    else:
+        if event.start_time.date() < datetime.now(tz=event.start_time.tzinfo).date():
+            return True
     return (event.start_time - datetime.now(tz=event.start_time.tzinfo)).days > max_days_out

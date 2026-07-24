@@ -22,7 +22,7 @@ from backend.python_files.helper_functions import invalid_event, simplify_org_na
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
     manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
-    is_past_max_days_out
+    is_within_date_range
 from backend.python_files.image_parsing_functions import get_image_s3_url
 
 
@@ -187,7 +187,7 @@ def collect_all_events(bucket_name, events_in_db, days_out):
             case "static_recurring_events":
                 event_data_list = get_static_events(bucket_name, existing_event_ids, occurrences=6)
             case _:
-                event_data_list = []
+                pass
 
         for event_data in event_data_list:
             event = create_event_object(source, event_data, bucket_name, existing_event_ids)
@@ -196,8 +196,8 @@ def collect_all_events(bucket_name, events_in_db, days_out):
 
         print(f"Collected {len(events) - event_count} events from {source}.")
 
-    events = [i for i in events if not is_past_max_days_out(i, days_out)]
     events = [manual_event_fixes(event) for event in events]
+    events = [i for i in events if not is_within_date_range(i, days_out)]
     events = dedup_events(events_in_db, events)
 
     return events
