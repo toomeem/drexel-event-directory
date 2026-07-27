@@ -26,13 +26,17 @@ def normalize_time(source, time_str):
 def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
-                   "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Movies in Clark Park:",
-                   "Zero HIV Stigma Day:", "Stay Flossy:"]
+                   "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
+                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ",
+                   "Press & Repeat:", "In-person!"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
-                    "Artificial Intelligence": "AI",
-                    "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
-                    "University City Summer Series Concert: Worldtown Soundsystem Collective": "Summer Series Concert: Worldtown Soundsystem Collective",
-                    " : ": ": "}
+                    "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
+                    "University City Summer Series Concert": "Summer Series Concert",
+                    "Vibrant Coffee Roasters Coffee Run": "Coffee Run",
+                    "Global Relations & International Design Department": "Global Relations & International Design Dept",
+                    "Master of Science Degree in Speech-Language Pathology Prospective Student": "Speech-Language Pathology Prospective Student",
+                    "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
+                    "Movies in Clark Park:": "Movie Night:", "and": "&", "&amp;": "&", " : ": ": "}
 
     if "Hosted by" in name:
         name = name.split("Hosted by", 1)[0]
@@ -166,11 +170,17 @@ def is_popular(event_name):
     popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night",
                       "Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
-                      "Undergrad July Summer Open House",
-                      "STAR Scholars Summer Showcase", "Welcome Week: Night on the Row 2026"
+                      "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
+                      "Welcome Week: Night on the Row 2026", "Dean's Cup"
                       ]
-    if "welcome week" in event_name.lower():
-        return True
+    popular_keywords = ["welcome week", "open house"]
+
+    if "elkin" in event_name.lower():
+        return False
+
+    for keyword in popular_keywords:
+        if keyword in event_name.lower():
+            return True
     return event_name in popular_events
 
 
@@ -195,10 +205,11 @@ def is_recurring(event_name, description):
 
 def is_for_new_students(event_name, description):
     new_student_events = ["Undergrad July Summer Open House",
-                          "Field Trip: Art and Community Protest at the Asian Arts Initiative"]
+                          "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Dean's Cup"]
     event_name = event_name.lower()
     description = description.lower()
-    keywords = ["new student", "future dragons", "incoming freshman", "welcome week"]
+    keywords = ["new student", "future dragons", "incoming freshman", "welcome week", "prospective student",
+                "welcome tradition", "discover involvement opportunities", "explore campus life"]
 
     for keyword in keywords:
         if keyword in event_name or keyword in description:
@@ -238,7 +249,7 @@ def get_event_status(source, location):
     elif location in online_location_default_text:
         return "online"
     elif any(keyword in location.lower() for keyword in online_keywords):
-        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom"]
+        hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom", "and Zoom"]
         for i in hybrid_keywords:
             if i in location.lower():
                 return "hybrid"
@@ -315,7 +326,8 @@ def get_religion(name, org_name, location):
 def invalid_event(kwargs):
     with open("backend/data_files/excluded_event_names.json") as f:
         excluded_event_names = json.load(f)
-    excluded_event_text = ["ages 6–11"]
+    excluded_event_text = ["ages 6–11", "allison zuckerman",
+                           "these exhibits", "series of online and in-person exhibits", "leadership retreat"]
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617"]
 
     if kwargs is None:
@@ -329,8 +341,9 @@ def invalid_event(kwargs):
     elif kwargs["_id"] in excluded_event_ids:
         return True
     name = kwargs["name"].lower()
+    description = kwargs["description"].lower()
     for i in excluded_event_text:
-        if i in name:
+        if i in name or i in description:
             return True
     general_body_meeting_keywords = ["general body meeting", "gbm", "chapter meeting", "presidents meeting",
                                      "e-board meeting", "officer meeting", "exec board"]
