@@ -27,8 +27,9 @@ def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ",
-                   "Press & Repeat:", "In-person!"]
+                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ", "In-person!",
+                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:",
+                   "Press & Repeat:"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -327,8 +328,9 @@ def invalid_event(kwargs):
     with open("backend/data_files/excluded_event_names.json") as f:
         excluded_event_names = json.load(f)
     excluded_event_text = ["ages 6–11", "allison zuckerman",
-                           "these exhibits", "series of online and in-person exhibits", "leadership retreat"]
-    excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617"]
+                           "these exhibits", "online and in-person exhibits", "leadership retreat",
+                           "further exhibits celebrate"]
+    excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632"]
 
     if kwargs is None:
         return True

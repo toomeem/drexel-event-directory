@@ -13,11 +13,18 @@ def create_drexel_events_api_url(page):
 
 
 def get_drexel_events_response(page):
-    time.sleep(random.random() * 0.5)
-    response = requests.get(create_drexel_events_api_url(page))
+    time.sleep(random.random() * 0.5)  # wait up to 0.5 seconds
+    url = create_drexel_events_api_url(page)
+    response = requests.get(url)
     if response.status_code != 200:
         print(f"Error: {response.status_code} {response.text}")
-        return []
+        exit()
+    if dict(response.json()) == {}:
+        if page > 1:
+            return []
+        else:
+            print(f"error with url: '{url}'")
+            exit()
     return dict(response.json())["results"]
 
 

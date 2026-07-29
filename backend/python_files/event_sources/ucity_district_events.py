@@ -19,6 +19,8 @@ def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
         return None
     elif event_json["meta"]["vibemap_event_hotspots_place"] in excluded_event_locations:
         return None
+    elif event_json["meta"]["vibemap_event_is_all_day"]:
+        return None
 
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     if kwargs["_id"] in existing_event_ids:
