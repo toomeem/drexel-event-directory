@@ -119,16 +119,18 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
             return None
 
     kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
-    kwargs["popular"] = is_popular(kwargs["name"])
     kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
     kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
     kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
     kwargs["religion"] = get_religion(kwargs["name"], kwargs["org_name"], kwargs["location"])
+
     if kwargs["religion"]:
         kwargs["theme"] = "spirituality"
+        kwargs["popular"] = False
     else:
         kwargs["theme"] = event_theme_additional_checks(kwargs["name"], kwargs["description"],
                                                         kwargs["org_name"], kwargs["location"], kwargs["theme"])
+        kwargs["popular"] = is_popular(kwargs["name"])
 
     del kwargs["description"]
     return Event(**kwargs)

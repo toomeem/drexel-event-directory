@@ -28,8 +28,7 @@ def simplify_event_name(name):
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
                    "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ", "In-person!",
-                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:",
-                   "Press & Repeat:"]
+                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Press & Repeat:", "DSC ", "USGA "]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -37,7 +36,8 @@ def simplify_event_name(name):
                     "Global Relations & International Design Department": "Global Relations & International Design Dept",
                     "Master of Science Degree in Speech-Language Pathology Prospective Student": "Speech-Language Pathology Prospective Student",
                     "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
-                    "Movies in Clark Park:": "Movie Night:", "and": "&", "&amp;": "&", " : ": ": "}
+                    "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
+                    " and ": "&", "&amp;": "&", " : ": ": "}
 
     if "Hosted by" in name:
         name = name.split("Hosted by", 1)[0]
@@ -172,7 +172,7 @@ def is_popular(event_name):
                       "Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
-                      "Welcome Week: Night on the Row 2026", "Dean's Cup"
+                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out"
                       ]
     popular_keywords = ["welcome week", "open house"]
 
@@ -206,7 +206,8 @@ def is_recurring(event_name, description):
 
 def is_for_new_students(event_name, description):
     new_student_events = ["Undergrad July Summer Open House",
-                          "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Dean's Cup"]
+                          "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Dean's Cup",
+                          "National Night Out"]
     event_name = event_name.lower()
     description = description.lower()
     keywords = ["new student", "future dragons", "incoming freshman", "welcome week", "prospective student",
@@ -312,7 +313,8 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
 def get_religion(name, org_name, location):
     with open("backend/data_files/religious_org_list.json") as f:
         religious_orgs = json.load(f)
-    religious_keywords = {"church": "christian", "methodist": "christian", "synagogue": "jewish"}
+    religious_keywords = {"church": "christian", "cathedral": "christian", "bible": "christian",
+                          "methodist": "christian", "eucharist": "christian", "synagogue": "jewish"}
     if org_name in religious_orgs.keys():
         return religious_orgs[org_name]
     name = name.lower()
@@ -329,7 +331,7 @@ def invalid_event(kwargs):
         excluded_event_names = json.load(f)
     excluded_event_text = ["ages 6–11", "allison zuckerman",
                            "these exhibits", "online and in-person exhibits", "leadership retreat",
-                           "further exhibits celebrate"]
+                           "further exhibits celebrate", "english conversation group"]
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632"]
 
     if kwargs is None:
