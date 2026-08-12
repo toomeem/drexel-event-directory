@@ -62,7 +62,8 @@ def resize_image(path, max_width=600, max_height=400):
 
     save_kwargs = {"optimize": True, "quality": 80, "progressive": True}
 
-    image.save(path, format="JPEG", **save_kwargs)
+    new_path = path.rsplit(".", 1)[0] + ".jpg"
+    image.save(new_path, format="JPEG", **save_kwargs)
     return True
 
 
@@ -74,7 +75,14 @@ def get_image_s3_url(original_url, bucket_name):
 
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
 
-    image_name = stable_hash(original_url) + ".jpg"
+    image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif"]
+    file_type_list = [i for i in image_file_types if i in original_url.lower()]
+    if len(file_type_list) > 0:
+        file_type = file_type_list[0]
+    else:
+        file_type = ".jpg"
+
+    image_name = stable_hash(original_url) + file_type
     local_file_path = "backend/temp_folders/event_image_tmp_dir/" + image_name
     s3_file_path = "images/event_specific_images/" + image_name
 

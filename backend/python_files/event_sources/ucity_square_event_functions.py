@@ -32,7 +32,8 @@ def get_all_ucity_square_urls(months_out):
     for url in calendar_urls:
         event_urls.extend(get_event_urls_from_calendar_page(url))
 
-    event_urls = [i for i in event_urls if not "ucity-square-beer-garden" in i]
+    excluded_event_text = ["beer-garden"]
+    event_urls = [i for i in event_urls if not any(excluded_text in i for excluded_text in excluded_event_text)]
     return list(set(event_urls))
 
 
@@ -69,12 +70,20 @@ def match_ucity_square_default_image(name):
 def get_ucity_square_event_data(url):
     response = requests.get(url, headers=http_header)
     if response.status_code == 429:
-        print("Got rate limited, sleeping for 5 seconds")
-        time.sleep(5)
+        time.sleep(15)
         response = requests.get(url, headers=http_header)
+        if response.status_code == 429:
+            time.sleep(10)
+            if response.status_code == 429:
+                print(f"Error: {response.status_code} - {url}")
+                return None
+            response = requests.get(url, headers=http_header)
     if response.status_code != 200:
-        print(f"Error: {response.status_code} - {url}")
-        return None
+        time.sleep(2)
+        response = requests.get(url, headers=http_header)
+        if response.status_code != 200:
+            print(f"Error: {response.status_code} - {url}")
+            return None
     return response
 
 

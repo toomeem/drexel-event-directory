@@ -2,6 +2,7 @@ import hashlib
 import json
 import os
 from datetime import datetime
+from pprint import pprint
 from zoneinfo import ZoneInfo
 
 from backend.python_files.event_class import Event
@@ -27,8 +28,8 @@ def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ", "In-person!",
-                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Press & Repeat:", "DSC ", "USGA "]
+                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ", "In-person!", "Press & Repeat:", "DSC ", "USGA ",
+                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Made to Wear, Made with Care:"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -416,10 +417,15 @@ def manual_event_fixes(event):
 
 
 def is_within_date_range(event, max_days_out):
-    if event.end_time:
-        if event.end_time < datetime.now(tz=event.start_time.tzinfo):
-            return True
-    else:
-        if event.start_time.date() < datetime.now(tz=event.start_time.tzinfo).date():
-            return True
-    return (event.start_time - datetime.now(tz=event.start_time.tzinfo)).days > max_days_out
+    try:
+        if event.end_time:
+            if event.end_time < datetime.now(tz=event.start_time.tzinfo):
+                return True
+        else:
+            if event.start_time.date() < datetime.now(tz=event.start_time.tzinfo).date():
+                return True
+        return (event.start_time - datetime.now(tz=event.start_time.tzinfo)).days > max_days_out
+    except:
+        print("Error in is_within_date_range")
+        pprint(event.start_time)
+        return False

@@ -92,6 +92,8 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
             kwargs = ucity_district_event_parsing(event_data, kwargs, existing_event_ids)
         case "bbj":
             kwargs = bbj_event_parsing(event_data, kwargs, existing_event_ids)
+        case "static_recurring_events":
+            kwargs = event_data
         case _:
             return None
     if invalid_event(kwargs):
@@ -166,8 +168,10 @@ def dedup_events(events_in_db, events):
 
 
 def collect_all_events(bucket_name, events_in_db, days_out):
-    sources = ["dragonlink", "drexel_events", "drexel_athletics", "ucity_square", "ucity_district", "bbj",
-               "static_recurring_events"]
+    sources = ["static_recurring_events", "ucity_district"
+               # , "bbj", "dragonlink", "drexel_athletics", "ucity_square",
+               #        "drexel_events"
+               ]
     existing_event_ids = [i._id for i in events_in_db]
     events = []
 
@@ -189,9 +193,11 @@ def collect_all_events(bucket_name, events_in_db, days_out):
             case "static_recurring_events":
                 event_data_list = get_static_events(bucket_name, existing_event_ids, occurrences=6)
             case _:
-                pass
+                continue
 
         for event_data in event_data_list:
+            if event_data is None:
+                continue
             event = create_event_object(source, event_data, bucket_name, existing_event_ids)
             if event is not None:
                 events.append(event)

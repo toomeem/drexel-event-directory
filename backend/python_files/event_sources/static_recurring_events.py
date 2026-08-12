@@ -87,5 +87,15 @@ def get_static_events(bucket_name, existing_event_ids, occurrences=4):
 
             all_events.append(new_event)
 
-    all_events = [event for event in all_events if event._id not in existing_event_ids]
-    return all_events
+    event_json_list = []
+    for event in all_events:
+        if event._id not in existing_event_ids:
+            event_json = event.to_json()
+            event_json["_id"] = event_json.pop("id")
+            event_json["description"] = ""
+            event_json["start_time"] = datetime.fromtimestamp(event_json["start_time"])
+            if event_json["end_time"]:
+                event_json["end_time"] = datetime.fromtimestamp(event_json["end_time"])
+            event_json_list.append(event_json)
+
+    return event_json_list
