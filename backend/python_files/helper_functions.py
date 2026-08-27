@@ -173,7 +173,7 @@ def is_popular(event_name):
                       "Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
-                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out"
+                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots"
                       ]
     popular_keywords = ["welcome week", "open house"]
 
@@ -228,13 +228,15 @@ def is_on_campus(event_name, org_name, location):
     with open("backend/data_files/off_campus_keyword_list.json") as f:
         off_campus_keywords = json.load(f)
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
-                       "Biomed Grad Student Association", "Elkins Park Student Council"]
+                       "Biomed Grad Student Association", "Elkins Park Student Council",
+                       "Elkins Park Student Engagement & Student Success"]
 
     if org_name in off_campus_orgs:
         return False
 
     event_name = event_name.lower()
     location = location.lower()
+    org_name = org_name.lower()
     for i in off_campus_keywords:
         if i in event_name or i in org_name or i in location:
             return False

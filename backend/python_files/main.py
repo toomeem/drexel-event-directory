@@ -168,10 +168,8 @@ def dedup_events(events_in_db, events):
 
 
 def collect_all_events(bucket_name, events_in_db, days_out):
-    sources = ["static_recurring_events", "ucity_district"
-               # , "bbj", "dragonlink", "drexel_athletics", "ucity_square",
-               #        "drexel_events"
-               ]
+    sources = ["static_recurring_events", "ucity_district", "bbj", "dragonlink", "drexel_athletics", "ucity_square",
+               "drexel_events"]
     existing_event_ids = [i._id for i in events_in_db]
     events = []
 
