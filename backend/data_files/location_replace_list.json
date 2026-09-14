@@ -14,8 +14,10 @@
   "Bossone Research Center": "BSONE",
   "Rush building": "RUSH",
   "Rush Building": "RUSH",
-  "Gerri C. LeBow Hall": "LEBOW",
-  "Pearlstein Business Learning Center": "PEARL",
+  "Gerri C. LeBow Hall": "Lebow",
+  "Gerri C. Lebow Hall": "Lebow",
+  "Pearlstein Business Learning Center": "Pearlstein",
+  "Pearlstein Learning Center": "Pearlstein",
   "Nesbitt Hall": "NSBITT",
   "Academic Building": "ACADMC",
   "Drexel Health Sciences Building": "HSB",
@@ -30,5 +32,11 @@
   "  ": " ",
   "Drexel University Elkins Park": "Elkins Park",
   "Drexel Elkins Park": "Elkins Park",
-  " Md": " MD"
+  " Md": " MD",
+  "Fraternity House": "house",
+  "Steinbright Career Development Center": "Steinbright",
+  "Conference Room": "Room",
+  "Room Suite": "Room",
+  "Main Building Graduate Studies,": "Main Building",
+  "Drexel University Main Building": "Main Building"
 }

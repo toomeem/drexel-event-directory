@@ -32,7 +32,7 @@ def get_all_ucity_square_urls(months_out):
     for url in calendar_urls:
         event_urls.extend(get_event_urls_from_calendar_page(url))
 
-    excluded_event_text = ["beer-garden"]
+    excluded_event_text = ["beer-garden", "cinespeak"]
     event_urls = [i for i in event_urls if not any(excluded_text in i for excluded_text in excluded_event_text)]
     return list(set(event_urls))
 

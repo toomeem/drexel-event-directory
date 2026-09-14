@@ -28,8 +28,16 @@ def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "EWB", "WEH", "ABSK", "amp;", "Cru ", "In-person!", "Press & Repeat:", "DSC ", "USGA ",
-                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Made to Wear, Made with Care:"]
+                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "(Cru) ", "In-person!", "Press & Repeat:", "DSC ",
+                   "USGA ",
+                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Made to Wear, Made with Care:",
+                   "Tea, Truth & Teal:", "The Kenning Place:", " - Lambda Alpha Upsilon", "Italia è Moda: ",
+                   "Harm Reduction Week - ", "(XAWs)", "(RCR)", "Urologic Health Community Outreach:",
+                   "Know Your Power:", "Little Explorers:", "Food: ", ": From Ideas to Impact", "@ 5:30pm",
+                   "From Classroom to Career:", "INSIDE HUSTLE:", "Networking in the Age of Technology:",
+                   "Welcome Week Event:", "Under Pressure:", "Law Fair Prep:", "Wrapped in Style:", "Brick by Brick:",
+                   ": Meet The Program Director", "Harm Reduction Week - ", "Tau Beta Pi - ", "SWE Welcome Week - ",
+                   " with NOMAS", " with Cru", "Intro Physician Panel"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -38,6 +46,9 @@ def simplify_event_name(name):
                     "Master of Science Degree in Speech-Language Pathology Prospective Student": "Speech-Language Pathology Prospective Student",
                     "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
                     "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
+                    "Paints with Engineers without Borders": "Paint with EWB",
+                    "followed by a group dinner at an urban eatery.": "followed by a group dinner",
+                    "Orientation Night: Find Your Community": "Orientation Night",
                     " and ": "&", "&amp;": "&", " : ": ": "}
 
     if "Hosted by" in name:
@@ -75,6 +86,8 @@ def simplify_org_name(org_name, event_name, description):
         org_name = org_name.replace("Drexel University", "", 1)
     for i in org_name_remove:
         org_name = org_name.replace(i, "", 1)
+    if len(org_name) > 30 and "," in org_name:
+        org_name = org_name.split(",", 1)[0]
     return org_name.strip("&:*_;-,. ")
 
 
@@ -97,6 +110,8 @@ def simplify_location(location):
                            "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
                            "DAC"]
 
+    if "<a href=" in location:
+        location = location.split("<a href=", 1)[0]
     for k, v in total_replace_list.items():
         if k in location:
             return v
@@ -175,7 +190,7 @@ def is_popular(event_name):
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
                       "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots"
                       ]
-    popular_keywords = ["welcome week", "open house"]
+    popular_keywords = ["welcome week", "open house", "activities fair"]
 
     if "elkin" in event_name.lower():
         return False
@@ -335,7 +350,8 @@ def invalid_event(kwargs):
     excluded_event_text = ["ages 6–11", "allison zuckerman",
                            "these exhibits", "online and in-person exhibits", "leadership retreat",
                            "further exhibits celebrate", "english conversation group"]
-    excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632"]
+    excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632",
+                          "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315"]
 
     if kwargs is None:
         return True
