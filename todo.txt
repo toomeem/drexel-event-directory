@@ -1,3 +1,7 @@
+hide chat on mobile
+
+label AI generated event images
+
 create automated checks for static recurring events
 
 potential sources to add:
