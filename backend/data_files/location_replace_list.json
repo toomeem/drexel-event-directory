@@ -33,10 +33,16 @@
   "Drexel University Elkins Park": "Elkins Park",
   "Drexel Elkins Park": "Elkins Park",
   " Md": " MD",
-  "Fraternity House": "house",
+  "Fraternity House": "House",
   "Steinbright Career Development Center": "Steinbright",
   "Conference Room": "Room",
   "Room Suite": "Room",
   "Main Building Graduate Studies,": "Main Building",
-  "Drexel University Main Building": "Main Building"
+  "Drexel University Main Building": "Main Building",
+  "Drexel UniversityMain Building": "Main Building",
+  " and ": " & ",
+  "Claire M. Fagin": "Fagin",
+  ", Room": " Room",
+  ", room": " room",
+  "Penn Kleinman Center for Energy Policy": "Kleinman Center"
 }

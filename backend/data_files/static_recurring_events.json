@@ -110,8 +110,8 @@
     "theme": "art",
     "perks": [],
     "food_related": true,
-    "popular": false,
-    "for_new_students": false
+    "popular": true,
+    "for_new_students": true
   },
   {
     "name": "Paws & Pints Thursdays",

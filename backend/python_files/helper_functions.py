@@ -28,16 +28,18 @@ def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "(Cru) ", "In-person!", "Press & Repeat:", "DSC ",
-                   "USGA ",
-                   "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "Made to Wear, Made with Care:",
+                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "Cru ", "In-person!", "Press & Repeat:", "DSC ",
+                   "USGA ", "Emergency Group and Jeffrey Alexander + The Heavy Lidders:",
+                   "Made to Wear, Made with Care:", "FUN-Damentals:",
                    "Tea, Truth & Teal:", "The Kenning Place:", " - Lambda Alpha Upsilon", "Italia è Moda: ",
-                   "Harm Reduction Week - ", "(XAWs)", "(RCR)", "Urologic Health Community Outreach:",
-                   "Know Your Power:", "Little Explorers:", "Food: ", ": From Ideas to Impact", "@ 5:30pm",
+                   "Harm Reduction Week - ", "(XAWs)", "(RCR)", "Urologic Health Community Outreach:", "(MAPS)",
+                   "Know Your Power:", "followed by a group dinner at an urban eatery.",
+                   "Little Explorers:", "Food: ", ": From Ideas to Impact", "@ 5:30pm", "PHDSAG Welcome Week -",
                    "From Classroom to Career:", "INSIDE HUSTLE:", "Networking in the Age of Technology:",
                    "Welcome Week Event:", "Under Pressure:", "Law Fair Prep:", "Wrapped in Style:", "Brick by Brick:",
                    ": Meet The Program Director", "Harm Reduction Week - ", "Tau Beta Pi - ", "SWE Welcome Week - ",
-                   " with NOMAS", " with Cru", "Intro Physician Panel"]
+                   " with NOMAS", " with Cru", "Intro Physician Panel", "(CE Course)", "IN-PERSON",
+                   "Philly Builds Bio 5th Annual Philadelphia", "(STIs)", " - PHL Campus"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -47,10 +49,16 @@ def simplify_event_name(name):
                     "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
                     "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
                     "Paints with Engineers without Borders": "Paint with EWB",
-                    "followed by a group dinner at an urban eatery.": "followed by a group dinner",
+                    "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
                     "Orientation Night: Find Your Community": "Orientation Night",
-                    " and ": "&", "&amp;": "&", " : ": ": "}
+                    "Steinbright Career&Co-op Services": "Career & Co-op Services",
+                    " and ": " & ", "&amp;": "&", " : ": ": "}
+    total_replace_list = {"DKPC Dance Workshop:": "Dance Workshop",
+                          "Health Center Career Day: ": "Health Center Career Day"}
 
+    for k, v in total_replace_list.items():
+        if k in name:
+            return v
     if "Hosted by" in name:
         name = name.split("Hosted by", 1)[0]
     elif "Presents:" in name:
@@ -190,7 +198,8 @@ def is_popular(event_name):
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
                       "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots"
                       ]
-    popular_keywords = ["welcome week", "open house", "activities fair"]
+    popular_keywords = ["welcome week", "open house", "activities fair", "sports night", "career fair", "career day",
+                        "drexel night live"]
 
     if "elkin" in event_name.lower():
         return False
@@ -226,7 +235,7 @@ def is_for_new_students(event_name, description):
                           "National Night Out"]
     event_name = event_name.lower()
     description = description.lower()
-    keywords = ["new student", "future dragons", "incoming freshman", "welcome week", "prospective student",
+    keywords = ["freshman", "new student", "future dragons", "incoming freshman", "welcome week", "prospective student",
                 "welcome tradition", "discover involvement opportunities", "explore campus life"]
 
     for keyword in keywords:
@@ -245,13 +254,16 @@ def is_on_campus(event_name, org_name, location):
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
                        "Biomed Grad Student Association", "Elkins Park Student Council",
                        "Elkins Park Student Engagement & Student Success"]
-
-    if org_name in off_campus_orgs:
-        return False
+    on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus"]
 
     event_name = event_name.lower()
     location = location.lower()
     org_name = org_name.lower()
+    for i in on_campus_keywords:
+        if i in event_name or i in org_name or i in location:
+            return True
+    if org_name in off_campus_orgs:
+        return False
     for i in off_campus_keywords:
         if i in event_name or i in org_name or i in location:
             return False
@@ -349,9 +361,11 @@ def invalid_event(kwargs):
         excluded_event_names = json.load(f)
     excluded_event_text = ["ages 6–11", "allison zuckerman",
                            "these exhibits", "online and in-person exhibits", "leadership retreat",
-                           "further exhibits celebrate", "english conversation group"]
+                           "further exhibits celebrate", "english conversation group", "penn career services"]
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632",
-                          "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315"]
+                          "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315",
+                          "bfc42d51ac9e94f78ef45bf092cf91ab", "a761754e7b045c6980243f21e2e0c5d7",
+                          "853c550c18844c7d33193277d5fb2796", "b482b9b3e8b2eb2dbe1a9a0d36b73d19"]
 
     if kwargs is None:
         return True

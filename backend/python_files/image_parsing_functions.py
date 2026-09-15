@@ -75,12 +75,19 @@ def get_image_s3_url(original_url, bucket_name):
 
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
 
-    image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif"]
+    image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif", ".pdf"]
     file_type_list = [i for i in image_file_types if i in original_url.lower()]
     if len(file_type_list) > 0:
         file_type = file_type_list[0]
     else:
         file_type = ".jpg"
+
+    if file_type == ".pdf":
+        return None  # pdfs are not supported for now
+    if original_url.count(file_type) > 1:
+        original_url = original_url.split(file_type)[0] + file_type
+    if "wikimedia.org/wikipedia/commons/thumb" in original_url:
+        original_url = original_url.replace("/thumb", "", 1).replace("%28", "(", 1).replace("%29", ")", 1)
 
     image_name = stable_hash(original_url) + file_type
     local_file_path = "backend/temp_folders/event_image_tmp_dir/" + image_name

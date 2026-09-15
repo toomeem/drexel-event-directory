@@ -1,5 +1,5 @@
 hide chat on mobile
-
+covert pdf to image
 label AI generated event images
 
 create automated checks for static recurring events
