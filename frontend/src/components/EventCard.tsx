@@ -12,10 +12,14 @@ function formatPerk(perk: string): string {
         .join(" ");
 }
 
+// fallback for events with no end time to add "live" label
+const DEFAULT_EVENT_DURATION = 2 * 60 * 60;
+
 function isLive(event: DrexelEvent): boolean {
-    if (!event.start_time || !event.end_time) return false;
+    if (!event.start_time) return false;
     const now = Date.now() / 1000;
-    return now >= event.start_time && now <= event.end_time;
+    const endTime = event.end_time ?? event.start_time + DEFAULT_EVENT_DURATION;
+    return now >= event.start_time && now <= endTime;
 }
 
 function isStartingSoon(event: DrexelEvent): boolean {
