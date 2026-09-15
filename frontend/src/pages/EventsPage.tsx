@@ -10,6 +10,33 @@ type Status = "loading" | "ready" | "error";
 const EVENT_ROWS_PER_PAGE = 6;
 const EVENTS_PER_ROW = 4;
 
+type PageItem = number | "ellipsis";
+
+/**
+ * Build a compact list of page items with ellipses so the pagination bar
+ * stays on a single line even when there are many pages.
+ * Always shows the first and last page. Near the start or end, up to four
+ * consecutive pages are shown; otherwise a window around the current page.
+ */
+function getPageItems(currentPage: number, totalPages: number): PageItem[] {
+    if (totalPages <= 7) {
+        return Array.from({length: totalPages}, (_, i) => i + 1);
+    }
+
+    if (currentPage <= 3) {
+        // Near the start: 1 2 3 4 … last
+        return [1, 2, 3, 4, "ellipsis", totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+        // Near the end: 1 … last-3 last-2 last-1 last
+        return [1, "ellipsis", totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    // Middle: 1 … current-1 current current+1 … last
+    return [1, "ellipsis", currentPage - 1, currentPage, currentPage + 1, "ellipsis", totalPages];
+}
+
 const VALID_DATE_RANGES: DateRange[] = ["today", "week", "month"];
 const VALID_STATUSES: EventStatus[] = ["in-person", "online", "hybrid"];
 
@@ -193,21 +220,30 @@ export function EventsPage() {
                                     Previous
                                 </button>
                                 <div className="pagination__pages">
-                                    {Array.from({length: totalPages}, (_, i) => i + 1).map(
-                                        (page) => (
-                                            <button
-                                                key={page}
-                                                className={
-                                                    page === currentPage
-                                                        ? "pagination__page pagination__page--active"
-                                                        : "pagination__page"
-                                                }
-                                                onClick={() => goToPage(page)}
-                                                aria-current={page === currentPage ? "page" : undefined}
-                                            >
-                                                {page}
-                                            </button>
-                                        )
+                                    {getPageItems(currentPage, totalPages).map(
+                                        (item, index) =>
+                                            item === "ellipsis" ? (
+                                                <span
+                                                    key={`ellipsis-${index}`}
+                                                    className="pagination__ellipsis"
+                                                    aria-hidden="true"
+                                                >
+                                                    …
+                                                </span>
+                                            ) : (
+                                                <button
+                                                    key={item}
+                                                    className={
+                                                        item === currentPage
+                                                            ? "pagination__page pagination__page--active"
+                                                            : "pagination__page"
+                                                    }
+                                                    onClick={() => goToPage(item)}
+                                                    aria-current={item === currentPage ? "page" : undefined}
+                                                >
+                                                    {item}
+                                                </button>
+                                            )
                                     )}
                                 </div>
                                 <button

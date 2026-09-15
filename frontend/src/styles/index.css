@@ -1086,8 +1086,18 @@ img {
     display: flex;
     align-items: center;
     gap: 6px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
+}
+
+.pagination__ellipsis {
+    min-width: 24px;
+    padding: 8px 4px;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    user-select: none;
 }
 
 .pagination__page {
