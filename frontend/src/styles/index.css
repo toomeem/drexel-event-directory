@@ -1156,6 +1156,10 @@ img {
     margin-top: 22px;
 }
 
+.about-page__hero + .about-page__section {
+    margin-top: 6px;
+}
+
 .about-page__row {
     display: flex;
     gap: 32px;

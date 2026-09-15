@@ -30,7 +30,7 @@ const SOURCES = [
             "University City District's neighborhood calendar, covering public programming, workshops, live music, and community happenings.",
     },
     {
-        name: "Neighborhood Hangouts 🎲",
+        name: "Local Restaurants 🎲",
         url: "https://www.thepostphl.com/",
         description:
             "Weekly recurring events at nearby spots like The Post at Cira Garage, Sunset Social, and Gather Food Hall, including music bingo, quizzo, game nights, and movie nights.",
@@ -46,24 +46,16 @@ const SOURCES = [
 const FEATURES = [
     "Filter by date range, event format, event type, and perks",
     "Search across event names, organizers, and descriptions",
-    "Ask the built-in assistant questions about upcoming events",
     "Browse listings from multiple campus and neighborhood sources",
+    "Ask the built-in assistant questions about upcoming events",
 ];
 
 export function AboutPage() {
     return (
         <div className="about-page">
             <header className="about-page__hero">
-                <p className="about-page__eyebrow">Drexel Event Hub</p>
-                <h1 className="about-page__title">One place to find campus events.</h1>
-                <p className="about-page__body about-page__intro">
-                    Drexel Event Hub brings together events happening on and around Drexel
-                    University's campus. Instead of checking several sites, you can browse,
-                    filter, and search for club meetings, academic lectures, athletics
-                    games, career events, and cultural programs from a single directory.
-                </p>
+                <h1 className="about-page__title">The one-stop shop for campus events.</h1>
             </header>
-
             <section className="about-page__section">
                 <h2 className="about-page__section-title">Features</h2>
                 <ul className="about-page__feature-list">
@@ -74,10 +66,10 @@ export function AboutPage() {
             </section>
 
             <section className="about-page__section">
-                <h2 className="about-page__section-title">Data Sources</h2>
+                <h2 className="about-page__section-title">Sources of Events</h2>
                 <p className="about-page__body">
                     Event data is collected from seven campus and neighborhood
-                    sources and deduplicated automatically.
+                    sources
                 </p>
                 <ul className="about-page__source-list">
                     {SOURCES.map((source) => (
@@ -128,7 +120,7 @@ export function AboutPage() {
                     rel="noopener noreferrer"
                     className="about-page__source-name"
                 >
-                    View the source on GitHub
+                    View the code on GitHub
                     <span aria-hidden="true"> -&gt;</span>
                 </a>
             </div>
