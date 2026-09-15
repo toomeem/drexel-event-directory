@@ -1,17 +1,6 @@
-import {
-    useCallback,
-    useEffect,
-    useLayoutEffect,
-    useMemo,
-    useRef,
-    useState,
-    type KeyboardEvent,
-} from "react";
+import {type KeyboardEvent, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState,} from "react";
 import ReactMarkdown from "react-markdown";
-import {
-    CHATBOT_INPUT_MAX_LEN,
-    sendChatMessage,
-} from "../api/chatbot";
+import {CHATBOT_INPUT_MAX_LEN, sendChatMessage,} from "../api/chatbot";
 
 type Role = "user" | "assistant";
 
