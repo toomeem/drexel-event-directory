@@ -101,7 +101,7 @@ export function AboutPage() {
             </section>
 
             <div className="about-page__row">
-                <section className="about-page__section">
+                {/* <section className="about-page__section">
                     <div className="about-page__section-header">
                         <h2 className="about-page__section-title">For Recruiters 😁</h2>
                         <a
@@ -120,26 +120,17 @@ export function AboutPage() {
                         TypeScript frontend, and hosted on AWS infrastructure (Lambda, S3,
                         RDS, Bedrock, CloudFront).
                     </p>
-                </section>
+                </section> */}
 
-                <section className="about-page__section">
-                    <div className="about-page__section-header">
-                        <h2 className="about-page__section-title">Open Source</h2>
-                        <a
-                            href="https://github.com/toomeem/drexel-event-directory/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="about-page__source-name"
-                        >
-                            View the source on GitHub
-                            <span aria-hidden="true"> -&gt;</span>
-                        </a>
-                    </div>
-                    <p className="about-page__body">
-                        The full codebase is available on GitHub. The README covers the architecture and
-                        how to run it locally.
-                    </p>
-                </section>
+                <a
+                    href="https://github.com/toomeem/drexel-event-directory/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="about-page__source-name"
+                >
+                    View the source on GitHub
+                    <span aria-hidden="true"> -&gt;</span>
+                </a>
             </div>
         </div>
     );

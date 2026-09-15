@@ -47,20 +47,23 @@ export function SiteHeader({
                         title={aiEnabled ? "Disable AI features" : "Enable AI features"}
                     >
                         <span className="ai-toggle__label">AI</span>
-                        <input
-                            type="checkbox"
-                            className="ai-toggle__checkbox"
-                            checked={aiEnabled}
-                            onChange={onToggleAi}
-                            aria-label={
-                                aiEnabled ? "Disable AI features" : "Enable AI features"
-                            }
-                        />
+                        <span className="ai-toggle__switch">
+                            <input
+                                type="checkbox"
+                                className="ai-toggle__checkbox"
+                                checked={aiEnabled}
+                                onChange={onToggleAi}
+                                aria-label={
+                                    aiEnabled ? "Disable AI features" : "Enable AI features"
+                                }
+                            />
+                            <span className="ai-toggle__slider"/>
+                        </span>
                     </label>
-                    <a href="https://forms.gle/4SEyUWndEL94oH2K6" className="site-header__nav-link" onClick={closeMenu}
+                    {/* <a href="https://forms.gle/4SEyUWndEL94oH2K6" className="site-header__nav-link" onClick={closeMenu}
                        target="_blank" rel="noopener noreferrer">
                         Missing an event?
-                    </a>
+                    </a> */}
                     <NavLink
                         to="/"
                         end
