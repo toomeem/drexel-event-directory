@@ -244,7 +244,7 @@ def is_popular(event_name):
                       ]
     popular_keywords = ["open house", "activities fair", "sports night", "career fair", "career day",
                         "drexel night live", "stop-the-bleed challenge", "outdoor movie night", "festival",
-                        "block party"]
+                        "block party", "nerd night", "treasure hunt", "scavenger hunt"]
 
     if "elkin" in event_name.lower():
         return False
@@ -299,7 +299,7 @@ def is_on_campus(event_name, org_name, location):
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
                        "Biomed Grad Student Association", "Elkins Park Student Council",
                        "Elkins Park Student Engagement & Student Success"]
-    on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus"]
+    on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus", "drex at ", "drexel at "]
 
     event_name = event_name.lower()
     location = location.lower()
@@ -411,7 +411,8 @@ def is_invalid_event(kwargs):
                           "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315",
                           "bfc42d51ac9e94f78ef45bf092cf91ab", "a761754e7b045c6980243f21e2e0c5d7",
                           "853c550c18844c7d33193277d5fb2796", "b482b9b3e8b2eb2dbe1a9a0d36b73d19",
-                          "b4041fdfa1589c870b0140c6b7858f91"]
+                          "b4041fdfa1589c870b0140c6b7858f91", "b51973fe51fbbb11ef3e5e0d04e960ed",
+                          "14aac6c5b9473a85c55adb2685db3828", "5d8f61b8393eb05907a77a9048bd7e4b"]
 
     if kwargs is None:
         return True

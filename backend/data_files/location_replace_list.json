@@ -43,6 +43,8 @@
   "Northeast corner": "corner",
   "Southeast corner": "corner",
   " Chapter House": " house",
+  ", Pa": ", PA",
+  "./": "/",
   "<br>": " ",
   "(,": "",
   ":)": ")",

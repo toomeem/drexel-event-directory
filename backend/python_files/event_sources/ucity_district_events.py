@@ -65,7 +65,7 @@ def collect_ucity_district_events(count):
                              "archaeology-institute-of-america-lecture", "professional-development-webinar-series",
                              "building-resilience-through-ptsd-massage", "restorative-yoga-ayurvedic-bodywork",
                              "rend-collective", "penn-student-making-workshop", "ralph-lemon-the-fugitivity-of-water",
-                             "youth-soccer"]
+                             "youth-soccer", "sas-commons"]
     response = requests.get(f"https://www.universitycity.org/wp-json/vibemap/v1/events-data?page=1&per_page={count}")
     events = []
 
