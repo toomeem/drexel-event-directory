@@ -78,7 +78,7 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
             speaker = event_json["body"].split("Advisor:")[0]
             speaker = speaker.split("Speaker:")[1]
             speaker = speaker.split("<br />")[1]
-            kwargs["org_name"] = speaker.replace(",", " -").strip(" ,.:\n\r")
+            kwargs["org_name"] = speaker.replace(",", " -").strip(" ,.:\n\r ")
             break
 
     kwargs["name"] = event_json["title"]

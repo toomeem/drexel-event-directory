@@ -13,7 +13,7 @@ function formatPerk(perk: string): string {
 }
 
 // fallback for events with no end time to add "live" label
-const DEFAULT_EVENT_DURATION = 2 * 60 * 60;
+const DEFAULT_EVENT_DURATION = 3 * 60 * 60;
 
 function isLive(event: DrexelEvent): boolean {
     if (!event.start_time) return false;

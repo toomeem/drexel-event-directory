@@ -18,7 +18,7 @@ from backend.python_files.event_sources.ucity_district_events import ucity_distr
     collect_ucity_district_events
 from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
     create_ucity_square_event_from_url, get_ucity_square_event_data
-from backend.python_files.helper_functions import invalid_event, simplify_org_name, get_event_status, \
+from backend.python_files.helper_functions import is_invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
     manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
@@ -96,7 +96,7 @@ def create_event_object(source, event_data, bucket_name, existing_event_ids):
             kwargs = event_data
         case _:
             return None
-    if invalid_event(kwargs):
+    if is_invalid_event(kwargs):
         return None
 
     kwargs["perks"] = enrich_perks(kwargs["name"], kwargs["description"], kwargs["perks"])

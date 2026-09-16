@@ -8,8 +8,7 @@ from backend.python_files.helper_functions import stable_hash
 def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
     source = "ucity_district"
     # some of these are excluded because they are collected by the uCity square pipline
-    excluded_event_names = ["Life Sciences Luncheon", "Weekly improvised music drop-in jam session",
-                            "Food Truck Thursdays at The Lawn", "Monthly Innovation eXchange",
+    excluded_event_names = ["Weekly improvised music drop-in jam session", "Monthly Innovation eXchange",
                             "Summer Series with Worldtown Soundsystem", "Wheelthrowing 101: Thursday Evenings",
                             "Native Futurism by Holly Wilson",
                             "Young Artist Summer Camp: Potions & Pigments: Art from the natural worlds"]
@@ -56,5 +55,19 @@ def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
 
 
 def collect_ucity_district_events(count):
+    excluded_url_keywords = ["little-explorers", "allison-zuckerman", "ortizs-war", "benedetta-tagliabue",
+                             "food-truck-thursdays", "septa-replacing-trolleys-with-buses", "health-center-career-day",
+                             "fugitivity-of-water-2", "coffee-with-a-codex", "manuscript-studies-interest-group",
+                             "black-womens-debt-free-college-pathways", "penn-led-international-action-collaborative",
+                             "guided-tour-sacred-objects-religion-and-ritual", "gswsfqt-open-house",
+                             "archaeology-institute-of-america-lecture", "professional-development-webinar-series",
+                             "building-resilience-through-ptsd-massage", "restorative-yoga-ayurvedic-bodywork",
+                             "rend-collective", "penn-student-making-workshop"]
     response = requests.get(f"https://www.universitycity.org/wp-json/vibemap/v1/events-data?page=1&per_page={count}")
-    return dict(response.json())["events"]
+    events = []
+
+    for i in dict(response.json())["events"]:
+        if any(keyword in i["permalink"] for keyword in excluded_url_keywords):
+            continue
+        events.append(i)
+    return events

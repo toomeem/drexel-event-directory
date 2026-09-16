@@ -37,21 +37,26 @@ def get_all_ucity_square_urls(months_out):
     return list(set(event_urls))
 
 
-def get_event_urls_from_calendar_page(url):
-    def is_past(tag):
-        day_div = tag.parent.parent.parent
-        tag_date = datetime.strptime(day_div.get("id"), "tribe-events-calendar-day-%Y-%m-%d")
-        return tag_date < datetime.now()
+def is_past(tag):
+    day_div = tag.parent.parent.parent
+    tag_date = datetime.strptime(day_div.get("id"), "tribe-events-calendar-day-%Y-%m-%d")
+    return tag_date < datetime.now()
 
+
+def get_event_urls_from_calendar_page(url):
+    excluded_url_keywords = ["life-science-luncheon", "fun-damentals-ucity-square-book-club/2026-09-16"]
     event_links = []
     response = requests.get(url, headers=http_header)
     soup = BeautifulSoup(response.text, "html.parser")
     events = soup.find_all("div", class_="tribe-events-calendar-month__calendar-event-details")
 
     for event in events:
+        event_url = event.contents[3].a["href"]
         if is_past(event):
             continue
-        event_links.append(event.contents[3].a["href"])
+        if any(excluded_text in event_url for excluded_text in excluded_url_keywords):
+            continue
+        event_links.append(event_url)
     return event_links
 
 

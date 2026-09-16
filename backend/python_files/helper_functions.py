@@ -3,7 +3,6 @@ import json
 import os
 from datetime import datetime
 from pprint import pprint
-from zoneinfo import ZoneInfo
 
 from backend.python_files.event_class import Event
 from backend.python_files.lambda_function import make_time_str
@@ -29,17 +28,19 @@ def simplify_event_name(name):
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
                    "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "Cru ", "In-person!", "Press & Repeat:", "DSC ",
-                   "USGA ", "Emergency Group and Jeffrey Alexander + The Heavy Lidders:",
-                   "Made to Wear, Made with Care:", "FUN-Damentals:",
+                   "USGA ", "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "(PSFS)", "(ENT)",
+                   "Made to Wear, Made with Care:", "FUN-Damentals:", "(RCR)", "(XAWs)", "(MAPS)",
                    "Tea, Truth & Teal:", "The Kenning Place:", " - Lambda Alpha Upsilon", "Italia è Moda: ",
-                   "Harm Reduction Week - ", "(XAWs)", "(RCR)", "Urologic Health Community Outreach:", "(MAPS)",
-                   "Know Your Power:", "followed by a group dinner at an urban eatery.",
-                   "Little Explorers:", "Food: ", ": From Ideas to Impact", "@ 5:30pm", "PHDSAG Welcome Week -",
+                   "Harm Reduction Week -", "Harm Reduction Week:", "Know Your Power:", "PHDSAG Welcome Week -",
+                   "Urologic Health Community Outreach:", "Little Explorers:", "Food: ", ": From Ideas to Impact",
+                   "followed by a group dinner at an urban eatery.", "@ 5:30pm",
                    "From Classroom to Career:", "INSIDE HUSTLE:", "Networking in the Age of Technology:",
                    "Welcome Week Event:", "Under Pressure:", "Law Fair Prep:", "Wrapped in Style:", "Brick by Brick:",
-                   ": Meet The Program Director", "Harm Reduction Week - ", "Tau Beta Pi - ", "SWE Welcome Week - ",
+                   ": Meet The Program Director", "Tau Beta Pi - ", "SWE Welcome Week - ", "Hear Tomorrow:",
                    " with NOMAS", " with Cru", "Intro Physician Panel", "(CE Course)", "IN-PERSON",
-                   "Philly Builds Bio 5th Annual Philadelphia", "(STIs)", " - PHL Campus"]
+                   "Philly Builds Bio 5th Annual Philadelphia", "(STIs)", " - PHL Campus", "Ask the Reviewers:",
+                   "- Alpha Chi Rho Fall Rush Event", "- Alpha Chi Rho Fall Recruitment Event",
+                   "- Your Guide to Success", "in Front of Alpha Chi Rho House"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -48,13 +49,25 @@ def simplify_event_name(name):
                     "Master of Science Degree in Speech-Language Pathology Prospective Student": "Speech-Language Pathology Prospective Student",
                     "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
                     "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
-                    "Paints with Engineers without Borders": "Paint with EWB",
+                    "Paints with Engineers without Borders": "Paint with EWB", "Salus at Drexel University": "Salus",
                     "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
                     "Orientation Night: Find Your Community": "Orientation Night",
                     "Steinbright Career&Co-op Services": "Career & Co-op Services",
+                    "(ENC Men's Small Group)": "(ENC Men's Group)",
+                    "(ENC Women's Small Group)": "(ENC Women's Group)",
                     " and ": " & ", "&amp;": "&", " : ": ": "}
     total_replace_list = {"DKPC Dance Workshop:": "Dance Workshop",
-                          "Health Center Career Day: ": "Health Center Career Day"}
+                          "Health Center Career Day: ": "Health Center Career Day",
+                          "Sazón Latin Food Festival": "Sazón Latin Food Festival",
+                          "Truman and Udall Scholarships Info Session": "Truman and Udall Scholarships Info Session",
+                          "Senior Series: Next Steps": "Senior Series: Next Steps",
+                          "XPoNential Music Festival:": "XPoNential Music Festival",
+                          "A shuttle shopping trip": "Shuttle Shopping Trip",
+                          "Goldwater Scholarship Info Session": "Goldwater Scholarship Info Session",
+                          "Cardiology Subspecialties:": "Cardiology Subspecialties",
+                          "Your Career Pathway:": "Your Career Pathway",
+                          "ISSS Lunch & Dialogue:": "ISSS Lunch & Dialogue",
+                          "Decoding the Co-op Job Description:": "Decoding the Co-op Job Description"}
 
     for k, v in total_replace_list.items():
         if k in name:
@@ -70,7 +83,7 @@ def simplify_event_name(name):
     for old, new in replace_list.items():
         name = name.replace(old, new, 1)
 
-    return name.strip(" :;/,*").replace("  ", " ")
+    return name.strip(" :;/,* ").replace("  ", " ")
 
 
 def simplify_org_name(org_name, event_name, description):
@@ -96,14 +109,14 @@ def simplify_org_name(org_name, event_name, description):
         org_name = org_name.replace(i, "", 1)
     if len(org_name) > 30 and "," in org_name:
         org_name = org_name.split(",", 1)[0]
-    return org_name.strip("&:*_;-,. ")
+    return org_name.strip("&:*_;-,.  ")
 
 
 def simplify_location(location):
     if "cancelled" in location.lower():
         return None
     location = str(location)
-    strip_chars = " ,.-*&"
+    strip_chars = " ,.-*& "
     with open("backend/data_files/location_total_replace_list.json") as f:
         total_replace_list = json.load(f)
     with open("backend/data_files/location_replace_list.json") as f:
@@ -196,10 +209,11 @@ def is_popular(event_name):
                       "Future Dragons Breakfast", "Snow Cone Social",
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
-                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots"
+                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots",
+                      "Mario Kartboard RC Challenge", "Tour Around Chinatown"
                       ]
-    popular_keywords = ["welcome week", "open house", "activities fair", "sports night", "career fair", "career day",
-                        "drexel night live"]
+    popular_keywords = ["open house", "activities fair", "sports night", "career fair", "career day",
+                        "drexel night live", "stop-the-bleed challenge"]
 
     if "elkin" in event_name.lower():
         return False
@@ -356,7 +370,7 @@ def get_religion(name, org_name, location):
     return None
 
 
-def invalid_event(kwargs):
+def is_invalid_event(kwargs):
     with open("backend/data_files/excluded_event_names.json") as f:
         excluded_event_names = json.load(f)
     excluded_event_text = ["ages 6–11", "allison zuckerman",
@@ -365,7 +379,8 @@ def invalid_event(kwargs):
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632",
                           "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315",
                           "bfc42d51ac9e94f78ef45bf092cf91ab", "a761754e7b045c6980243f21e2e0c5d7",
-                          "853c550c18844c7d33193277d5fb2796", "b482b9b3e8b2eb2dbe1a9a0d36b73d19"]
+                          "853c550c18844c7d33193277d5fb2796", "b482b9b3e8b2eb2dbe1a9a0d36b73d19",
+                          "b4041fdfa1589c870b0140c6b7858f91"]
 
     if kwargs is None:
         return True
@@ -436,15 +451,10 @@ def save_events_to_file(events):
 
 
 def manual_event_fixes(event):
+    # this function may be empty because I will remove code for old events
     match event._id:
-        case "7dcb5b09133454510007247120737074":
-            PHILLY_TZ = ZoneInfo("America/New_York")
-            event.end_time = datetime(2026, 7, 18, 13).astimezone(PHILLY_TZ)
-        case "22a66ff543a693b1d383744c3f715f5e":
-            event.org_name = event.name
-        case "c63a185e9635dee8d40ae36fdedb20c9":
-            event.location = "Lanc Ave & 33rd -> Market St & 2nd"
-
+        case "0fa765439efaf392c376016f6397cb26":
+            event.perks.append("free_stuff")
     return event
 
 
