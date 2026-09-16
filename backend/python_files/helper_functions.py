@@ -27,7 +27,8 @@ def simplify_event_name(name):
     remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
                    "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
                    "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "Cru ", "In-person!", "Press & Repeat:", "DSC ",
+                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "Cru ", "In-person!", "In-Person", "Press & Repeat:",
+                   "DSC ", "Drexel Theme Park Engineering and Design", "Fall Rush Event-",
                    "USGA ", "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "(PSFS)", "(ENT)",
                    "Made to Wear, Made with Care:", "FUN-Damentals:", "(RCR)", "(XAWs)", "(MAPS)",
                    "Tea, Truth & Teal:", "The Kenning Place:", " - Lambda Alpha Upsilon", "Italia è Moda: ",
@@ -39,23 +40,40 @@ def simplify_event_name(name):
                    ": Meet The Program Director", "Tau Beta Pi - ", "SWE Welcome Week - ", "Hear Tomorrow:",
                    " with NOMAS", " with Cru", "Intro Physician Panel", "(CE Course)", "IN-PERSON",
                    "Philly Builds Bio 5th Annual Philadelphia", "(STIs)", " - PHL Campus", "Ask the Reviewers:",
-                   "- Alpha Chi Rho Fall Rush Event", "- Alpha Chi Rho Fall Recruitment Event",
-                   "- Your Guide to Success", "in Front of Alpha Chi Rho House"]
+                   "- Alpha Chi Rho Fall Rush Event", "- Alpha Chi Rho Fall Recruitment Event", "with AMWA",
+                   "with Medlife", "with Dragon's First", "With PULSE", "with Fiber Arts Club", "Global Connect -",
+                   "- Your Guide to Success", "in Front of Alpha Chi Rho House", "Spiral Q Fundraiser:",
+                   "Gap Year, Smart Choice?", "Master of Laboratory Animal Science:", "Drexel Students for Christ",
+                   ": Alpha Chi Rho", "- Rush Event", ]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
                     "Vibrant Coffee Roasters Coffee Run": "Coffee Run",
                     "Global Relations & International Design Department": "Global Relations & International Design Dept",
-                    "Master of Science Degree in Speech-Language Pathology Prospective Student": "Speech-Language Pathology Prospective Student",
+                    "Master of Science Degree in Speech-Language Pathology Prospective": "Speech-Language Pathology Prospective",
                     "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
                     "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
                     "Paints with Engineers without Borders": "Paint with EWB", "Salus at Drexel University": "Salus",
-                    "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
-                    "Orientation Night: Find Your Community": "Orientation Night",
-                    "Steinbright Career&Co-op Services": "Career & Co-op Services",
-                    "(ENC Men's Small Group)": "(ENC Men's Group)",
-                    "(ENC Women's Small Group)": "(ENC Women's Group)",
-                    " and ": " & ", "&amp;": "&", " : ": ": "}
+                    "Salus at Drexel": "Salus", "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
+                    "Physician Assistant": "PA", "Orientation Night: Find Your Community": "Orientation Night",
+                    "(ENC Men's Small Group)": "(Men's Group)", "Drexel EMS": "DUEMS",
+                    "Welcome Week: Night on the Row 2026": "Welcome Week: Night on the Row",
+                    "(ENC Women's Small Group)": "(Women's Group)", "Welcome Week Info Session": "Info Session",
+                    "the Center for Black Culture": " the CBC", "Online Open House": "Open House",
+                    "the NSF Graduate Research Fellowship": "the NSF Grad Research Fellowship",
+                    "Employment Information Webinar": "Employment Webinar",
+                    "Fall Rush Event": "Rush Event",
+                    "Winter Rush Event": "Rush Event",
+                    "Spring Rush Event": "Rush Event",
+                    "Summer Rush Event": "Rush Event",
+                    "Drexel Night Live Welcome Week": "Welcome Week",
+                    "Weekend Warriors Welcome Week": "Welcome Week",
+                    "Drexel Players Welcome Week": "Welcome Week",
+                    "POWER Interfaith West-Southwest": "West-Southwest ",
+                    "Steinbright Career & Co-op Services": "Steinbright",
+                    "Philadelphia Pétanque Club Tournament": "Philly Pétanque Club Tournament",
+                    "Super Smash Brothers Ultimate Weekly": "Super Smash Bros Ultimate Weekly",
+                    " and ": " & ", "&amp;": "&", " : ": ": ", " !": "!"}
     total_replace_list = {"DKPC Dance Workshop:": "Dance Workshop",
                           "Health Center Career Day: ": "Health Center Career Day",
                           "Sazón Latin Food Festival": "Sazón Latin Food Festival",
@@ -67,7 +85,13 @@ def simplify_event_name(name):
                           "Cardiology Subspecialties:": "Cardiology Subspecialties",
                           "Your Career Pathway:": "Your Career Pathway",
                           "ISSS Lunch & Dialogue:": "ISSS Lunch & Dialogue",
-                          "Decoding the Co-op Job Description:": "Decoding the Co-op Job Description"}
+                          "Decoding the Co-op Job Description:": "Decoding the Co-op Job Description",
+                          "Welcome Week Kickoff BBQ": "Welcome Week Kickoff BBQ",
+                          "Resumes, Cover Letters, & LinkedIn:": "Resumes, Cover Letters, & LinkedIn",
+                          "Tips for Meaningful Professional Relationships": "Tips for Meaningful Professional Relationships",
+                          "Illuminating Fraternity & Sorority Community": "Illuminating Fraternity & Sorority Community",
+                          "Interest Group Introduction Meeting": "Introduction Meeting",
+                          "FCA Weekly Huddle": "FCA Weekly Huddle"}
 
     for k, v in total_replace_list.items():
         if k in name:
@@ -83,40 +107,46 @@ def simplify_event_name(name):
     for old, new in replace_list.items():
         name = name.replace(old, new, 1)
 
-    return name.strip(" :;/,* ").replace("  ", " ")
+    return name.strip(" :;/,*  ").replace("  ", " ")
 
 
 def simplify_org_name(org_name, event_name, description):
-    if not org_name or org_name == "Drexel University":
+    if org_name == "Drexel University":
         return "Drexel University"
+
     with open("backend/data_files/org_name_total_replace_list.json") as f:
         total_replace_list = json.load(f)
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
                        "Incorporated", "Inc.", "Student Group", ", ,", "& Bulletin Bar"]
-    org_name = org_name.strip()
+    if not org_name:
+        org_name = ""
+    strip_chars = "&:*_;-,.   "
+    org_name = org_name.strip(strip_chars)
 
     if "hosted by in the mix" in event_name.lower() or "hosted by in the mix" in description.lower():
         return "In the Mix"
     elif "Dissertation Defense: " in event_name:
         org_name = event_name.split("Dissertation Defense: ", 1)[1]
+    elif "Pétanque Club" in event_name:
+        return "Philadelphia Pétanque Club"
     elif org_name in total_replace_list.keys():
         return total_replace_list[org_name]
     elif org_name.startswith("Drexel University"):
         org_name = org_name.replace("Drexel University", "", 1)
     for i in org_name_remove:
         org_name = org_name.replace(i, "", 1)
-    if len(org_name) > 30 and "," in org_name:
+    if len(org_name.strip(strip_chars)) > 30 and "," in org_name:
         org_name = org_name.split(",", 1)[0]
-    return org_name.strip("&:*_;-,.  ")
+    return org_name.strip(strip_chars)
 
 
 def simplify_location(location):
     if "cancelled" in location.lower():
         return None
     location = str(location)
-    strip_chars = " ,.-*& "
+    strip_chars = " ,.-*&  "
     with open("backend/data_files/location_total_replace_list.json") as f:
         total_replace_list = json.load(f)
     with open("backend/data_files/location_replace_list.json") as f:
@@ -210,10 +240,11 @@ def is_popular(event_name):
                       "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
                       "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots",
-                      "Mario Kartboard RC Challenge", "Tour Around Chinatown"
+                      "Mario Kartboard RC Challenge", "Tour Around Chinatown", "Free Community Concert"
                       ]
     popular_keywords = ["open house", "activities fair", "sports night", "career fair", "career day",
-                        "drexel night live", "stop-the-bleed challenge"]
+                        "drexel night live", "stop-the-bleed challenge", "outdoor movie night", "festival",
+                        "block party"]
 
     if "elkin" in event_name.lower():
         return False
@@ -455,6 +486,8 @@ def manual_event_fixes(event):
     match event._id:
         case "0fa765439efaf392c376016f6397cb26":
             event.perks.append("free_stuff")
+        case "bd72149c8676d5c78c7a2de5d634b5ee":
+            event.perks.append("free_food")
     return event
 
 

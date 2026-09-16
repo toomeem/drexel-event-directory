@@ -20,6 +20,8 @@ def ucity_district_event_parsing(event_json, kwargs, existing_event_ids):
         return None
     elif event_json["meta"]["vibemap_event_is_all_day"]:
         return None
+    elif event_json["meta"]["vibemap_event_organizer"] == "Penn Libraries":
+        return None
 
     kwargs["_id"] = stable_hash(source + str(event_json["id"]))
     if kwargs["_id"] in existing_event_ids:
@@ -62,7 +64,8 @@ def collect_ucity_district_events(count):
                              "guided-tour-sacred-objects-religion-and-ritual", "gswsfqt-open-house",
                              "archaeology-institute-of-america-lecture", "professional-development-webinar-series",
                              "building-resilience-through-ptsd-massage", "restorative-yoga-ayurvedic-bodywork",
-                             "rend-collective", "penn-student-making-workshop"]
+                             "rend-collective", "penn-student-making-workshop", "ralph-lemon-the-fugitivity-of-water",
+                             "youth-soccer"]
     response = requests.get(f"https://www.universitycity.org/wp-json/vibemap/v1/events-data?page=1&per_page={count}")
     events = []
 

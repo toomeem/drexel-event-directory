@@ -28,5 +28,10 @@
   "(and snacks)": "free_food",
   "we will supply all you need": "free_stuff",
   "produce pick- me-up": "free_food",
-  "free tote ": "free_stuff"
+  "free tote ": "free_stuff",
+  "tote bag painting": "free_stuff",
+  "free tote bag": "free_stuff",
+  "make keychains": "free_stuff",
+  "snacks and supplies will be provided": "free_food",
+  "snacks and supplies provided": "free_stuff"
 }
