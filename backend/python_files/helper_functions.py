@@ -389,7 +389,8 @@ def get_religion(name, org_name, location):
     with open("backend/data_files/religious_org_list.json") as f:
         religious_orgs = json.load(f)
     religious_keywords = {"church": "christian", "cathedral": "christian", "bible": "christian",
-                          "methodist": "christian", "eucharist": "christian", "synagogue": "jewish"}
+                          "methodist": "christian", "eucharist": "christian", "synagogue": "jewish", "muslim": "muslim",
+                          "mosque": "muslim", "islamic": "muslim", "hindu": "hindu", "jummah": "muslim"}
     if org_name in religious_orgs.keys():
         return religious_orgs[org_name]
     name = name.lower()

@@ -16,5 +16,39 @@
     "food_related": true,
     "popular": true,
     "for_new_students": true
+  },
+  {
+    "name": "Challah Bake",
+    "org_name": "Drexel Chabad",
+    "location": "Race Lawn",
+    "image_url": "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/event_specific_images/challah_bake.jpg",
+    "start_time": "2026/09/17 - 12:00",
+    "end_time": "2026/09/17 - 14:00",
+    "event_link": "https://www.instagram.com/jewishdragons/",
+    "event_status": "in-person",
+    "theme": "spirituality",
+    "perks": [
+      "free_food"
+    ],
+    "food_related": true,
+    "popular": true,
+    "for_new_students": true
+  },
+  {
+    "name": "Yom Kippur Pre-fast Dinner",
+    "org_name": "Drexel Chabad",
+    "location": "3645 Lancaster Ave",
+    "image_url": "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/event_specific_images/high_holidays.png",
+    "start_time": "2026/09/20 - 17:00",
+    "end_time": "2026/09/20 - 18:00",
+    "event_link": "https://www.instagram.com/jewishdragons/",
+    "event_status": "in-person",
+    "theme": "spirituality",
+    "perks": [
+      "free_food"
+    ],
+    "food_related": true,
+    "popular": false,
+    "for_new_students": true
   }
 ]
