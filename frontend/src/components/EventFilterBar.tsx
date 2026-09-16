@@ -194,7 +194,9 @@ export function EventSidebarFilters({filters, onChange}: EventFilterBarProps) {
         filters.popular,
         filters.recurring,
         filters.forNewStudents,
-        filters.onCampus,
+        // On Campus is checked by default, so it only counts as an active filter
+        // when it has been unchecked.
+        !filters.onCampus,
     ].filter(Boolean).length;
     const hasActiveFilters =
         filters.eventStatus.length > 0 ||
@@ -219,7 +221,7 @@ export function EventSidebarFilters({filters, onChange}: EventFilterBarProps) {
             popular: false,
             recurring: false,
             forNewStudents: false,
-            onCampus: false,
+            onCampus: true,
             religion: [],
         });
     }

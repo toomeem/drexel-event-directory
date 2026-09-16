@@ -74,7 +74,11 @@ export async function fetchEvents(
     if (filters.popular) params.set("popular", "true");
     if (filters.recurring) params.set("recurring", "true");
     if (filters.for_new_students) params.set("for_new_students", "true");
-    if (filters.on_campus) params.set("on_campus", "true");
+    // The backend defaults on_campus to true (on-campus only). Send it
+    // explicitly (including "false") so off-campus events can be included.
+    if (filters.on_campus !== undefined) {
+        params.set("on_campus", String(filters.on_campus));
+    }
     if (filters.religion && filters.religion.length > 0) {
         params.set("religion", filters.religion.join(","));
     }

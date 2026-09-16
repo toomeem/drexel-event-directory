@@ -126,15 +126,17 @@ def lambda_handler(event, context):
             s = s.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
             search_pattern = f"%{s}%"
 
-    def parse_bool_filter(name):
+    def parse_bool_filter(name, default=False):
         val = params.get(name)
-        return val is not None and val.strip().lower() in ("1", "true", "yes")
+        if val is None:
+            return default
+        return val.strip().lower() in ("1", "true", "yes")
 
     food_related = parse_bool_filter("food_related")
     recurring = parse_bool_filter("recurring")
     for_new_students = parse_bool_filter("for_new_students")
     popular = parse_bool_filter("popular")
-    on_campus = parse_bool_filter("on_campus")
+    on_campus = parse_bool_filter("on_campus", default=True)
     valid_religions = {"christian", "jewish", "muslim", "hindu"}
     religion_filter = None
     religion_param = params.get("religion")

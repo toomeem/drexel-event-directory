@@ -75,7 +75,8 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
             searchParams.get("recurring") === "true" ||
             searchParams.get("weekly") === "true",
         forNewStudents: searchParams.get("for_new_students") === "true",
-        onCampus: searchParams.get("on_campus") === "true",
+        // Defaults to checked (on-campus only); unchecking sets on_campus=false.
+        onCampus: searchParams.get("on_campus") !== "false",
         religion: religionRaw
             ? religionRaw.split(",").map((r) => r.trim().toLowerCase()).filter(Boolean)
             : [],
@@ -112,7 +113,9 @@ export function EventsPage() {
             popular: filters.popular || undefined,
             recurring: filters.recurring || undefined,
             for_new_students: filters.forNewStudents || undefined,
-            on_campus: filters.onCampus || undefined,
+            // Checked = on-campus only (backend default, send nothing);
+            // unchecked = include off-campus (send on_campus=false).
+            on_campus: filters.onCampus ? undefined : false,
             religion: religionKey ? religionKey.split(",") : undefined,
         })
             .then(({events: data, totalEvents: total}) => {
@@ -174,7 +177,7 @@ export function EventsPage() {
         if (newFilters.popular) next.set("popular", "true");
         if (newFilters.recurring) next.set("recurring", "true");
         if (newFilters.forNewStudents) next.set("for_new_students", "true");
-        if (newFilters.onCampus) next.set("on_campus", "true");
+        if (!newFilters.onCampus) next.set("on_campus", "false");
         if (newFilters.religion.length > 0) next.set("religion", newFilters.religion.join(","));
         setSearchParams(next, {replace: true});
     }
