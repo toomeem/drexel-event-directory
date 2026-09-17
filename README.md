@@ -3,7 +3,7 @@
 A web app that aggregates upcoming events from across Drexel University into a single, filterable directory — with an
 AI-powered chatbot assistant.
 
-Live at: [toomeem.github.io/drexel-event-directory](https://toomeem.github.io/drexel-event-directory)
+Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
 
 ## Features
 
