@@ -130,7 +130,9 @@ export function EventCard({event}: EventCardProps) {
                     </svg>
                     {event.location}
                 </p>
-                <p className="event-card__host">Hosted by <strong>{event.org_name}</strong></p>
+                {event.org_name && (
+                    <p className="event-card__host">Hosted by <strong>{event.org_name}</strong></p>
+                )}
             </div>
         </article>
     );
