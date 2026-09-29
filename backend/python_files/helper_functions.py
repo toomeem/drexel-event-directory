@@ -44,7 +44,7 @@ def simplify_event_name(name):
                    "with Medlife", "with Dragon's First", "With PULSE", "with Fiber Arts Club", "Global Connect -",
                    "- Your Guide to Success", "in Front of Alpha Chi Rho House", "Spiral Q Fundraiser:",
                    "Gap Year, Smart Choice?", "Master of Laboratory Animal Science:", "Drexel Students for Christ",
-                   ": Alpha Chi Rho", "- Rush Event", ]
+                   ": Alpha Chi Rho", "- Rush Event", "America250:", "Coffee & Conversations:", ": Tuesday Evenings"]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -119,7 +119,9 @@ def simplify_org_name(org_name, event_name, description):
     org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
-                       "Incorporated", "Inc.", "Student Group", ", ,", "& Bulletin Bar"]
+                       "Incorporated", "Inc.", "Student Group", ", ,", "& Bulletin Bar", "at the Wharton School",
+                       "at the University of Pennsylvania", ]
+    org_name_replace = {"the University of Pennsylvania": "UPenn"}
     if not org_name:
         org_name = ""
     strip_chars = "&:*_;-,.   "
@@ -137,6 +139,8 @@ def simplify_org_name(org_name, event_name, description):
         org_name = org_name.replace("Drexel University", "", 1)
     for i in org_name_remove:
         org_name = org_name.replace(i, "", 1)
+    for old, new in org_name_replace.items():
+        org_name = org_name.replace(old, new, 1)
     if len(org_name.strip(strip_chars)) > 30 and "," in org_name:
         org_name = org_name.split(",", 1)[0]
     return org_name.strip(strip_chars)
@@ -299,7 +303,8 @@ def is_on_campus(event_name, org_name, location):
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
                        "Biomed Grad Student Association", "Elkins Park Student Council",
                        "Elkins Park Student Engagement & Student Success"]
-    on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus", "drex at ", "drexel at "]
+    on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus", "drex at ", "drexel at ", "drex & ",
+                          "drexel & "]
 
     event_name = event_name.lower()
     location = location.lower()
@@ -407,13 +412,15 @@ def is_invalid_event(kwargs):
         excluded_event_names = json.load(f)
     excluded_event_text = ["ages 6–11", "allison zuckerman",
                            "these exhibits", "online and in-person exhibits", "leadership retreat",
-                           "further exhibits celebrate", "english conversation group", "penn career services"]
+                           "further exhibits celebrate", "english conversation group", "penn career services",
+                           "wharton"]
     excluded_event_ids = ["d0b6c726f28fb1f105d6df9c02797617", "0335b8dae0d26e119f677a1c0e7a5632",
                           "5c494b603c0948422b4a67420193f878", "dcb251cf674e95d063f4ce901c9e1315",
                           "bfc42d51ac9e94f78ef45bf092cf91ab", "a761754e7b045c6980243f21e2e0c5d7",
                           "853c550c18844c7d33193277d5fb2796", "b482b9b3e8b2eb2dbe1a9a0d36b73d19",
                           "b4041fdfa1589c870b0140c6b7858f91", "b51973fe51fbbb11ef3e5e0d04e960ed",
-                          "14aac6c5b9473a85c55adb2685db3828", "5d8f61b8393eb05907a77a9048bd7e4b"]
+                          "14aac6c5b9473a85c55adb2685db3828", "5d8f61b8393eb05907a77a9048bd7e4b",
+                          "b3e4c376b9cbb68059f607d1d0e0c2c0", "3eb1c8b7c4b770a012ba32f7db0e7a9b"]
 
     if kwargs is None:
         return True
