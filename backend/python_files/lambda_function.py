@@ -185,7 +185,8 @@ def lambda_handler(event, context):
                              AND (NOT %s OR on_campus)
                              AND (%s::text[] IS NULL OR LOWER(religion) = ANY (%s::text[]))
                            ORDER BY start_time, id
-                           LIMIT %s OFFSET %s
+                               LIMIT %s
+                           OFFSET %s
                            ''',
                            (day_start, date_end, event_status, event_status, themes, themes, perks_filter, perks_filter,
                             search_pattern, search_pattern, search_pattern, food_related, recurring,
