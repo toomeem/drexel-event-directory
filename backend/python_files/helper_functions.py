@@ -46,8 +46,12 @@ def simplify_event_name(name):
                    "Gap Year, Smart Choice?", "Master of Laboratory Animal Science:", "Drexel Students for Christ",
                    ": Alpha Chi Rho", "- Rush Event", "America250:", "Coffee & Conversations:", ": Tuesday Evenings",
                    "– A CHIBE Book Talk with Damon Centola, PhD", "CLASS is in Session - ", "- Philadelphia, PA",
-                   "- Philadelphia", "Writers Room X Blue Stoop:",
-                   "- The Board & Brew", ": The Art of the Video Game"]
+                   "- Philadelphia", "Writers Room X Blue Stoop:", "Pick Me!",
+                   "- The Board & Brew", ": The Art of the Video Game", "DAAD RISE:", "| Sigma Psi Zeta",
+                   "Fall 2026 Phi Delta Epsilon Rush:",
+                   "Winter 2026 Phi Delta Epsilon Rush:",
+                   "Spring 2027 Phi Delta Epsilon Rush:",
+                   ]
     replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
                     "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
                     "University City Summer Series Concert": "Summer Series Concert",
@@ -59,9 +63,10 @@ def simplify_event_name(name):
                     "Paints with Engineers without Borders": "Paint with EWB", "Salus at Drexel University": "Salus",
                     "Salus at Drexel": "Salus", "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
                     "Physician Assistant": "PA", "Orientation Night: Find Your Community": "Orientation Night",
-                    "(ENC Men's Small Group)": "(Men's Group)", "Drexel EMS": "DUEMS",
+                    "Small Group (ENC Men's Small Group)": "(Men's Small Group)", "Drexel EMS": "DUEMS",
                     "Welcome Week: Night on the Row 2026": "Welcome Week: Night on the Row",
-                    "(ENC Women's Small Group)": "(Women's Group)", "Welcome Week Info Session": "Info Session",
+                    "Small Group (ENC Women's Small Group)": "(Women's Small Group)",
+                    "Welcome Week Info Session": "Info Session",
                     "the Center for Black Culture": " the CBC", "Online Open House": "Open House",
                     "the NSF Graduate Research Fellowship": "the NSF Grad Research Fellowship",
                     "Employment Information Webinar": "Employment Webinar",
@@ -76,6 +81,12 @@ def simplify_event_name(name):
                     "Steinbright Career & Co-op Services": "Steinbright",
                     "Philadelphia Pétanque Club Tournament": "Philly Pétanque Club Tournament",
                     "Super Smash Brothers Ultimate Weekly": "Super Smash Bros Ultimate Weekly",
+                    "Event Fall 2026": "Event",
+                    "Event Winter 2026": "Event",
+                    "Event Spring 2027": "Event",
+                    "Event Summer 2027": "Event",
+                    "A Live Conversation with": "A Conversation with",
+                    "Weekend Warriors Recruitment": "Recruitment",
                     " and ": " & ", "&amp;": "&", " : ": ": ", " !": "!"}
     total_replace_list = {"DKPC Dance Workshop:": "Dance Workshop",
                           "Health Center Career Day: ": "Health Center Career Day",
@@ -94,7 +105,7 @@ def simplify_event_name(name):
                           "Tips for Meaningful Professional Relationships": "Tips for Meaningful Professional Relationships",
                           "Illuminating Fraternity & Sorority Community": "Illuminating Fraternity & Sorority Community",
                           "Interest Group Introduction Meeting": "Introduction Meeting",
-                          "FCA Weekly Huddle": "FCA Weekly Huddle",
+                          "FCA Weekly Huddle": "FCA Weekly Huddle", "Bid Day": "Bid Day", "Bid day": "Bid Day",
                           "Meet the Mockers Over Mocktails: Mock Trial Recruitment Event": "Meet the Mockers Over Mocktails"}
 
     for k, v in total_replace_list.items():
@@ -124,7 +135,7 @@ def simplify_org_name(org_name, event_name, description):
                        "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
                        "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
                        "Incorporated", "Inc.", "Student Group", ", ,", "& Bulletin Bar", "at the Wharton School",
-                       "at the University of Pennsylvania", "(AISS)", "(CHIBE)"]
+                       "at the University of Pennsylvania", "(AISS)", "(CHIBE)", "(phide)"]
     org_name_replace = {"the University of Pennsylvania": "UPenn"}
     if not org_name:
         org_name = ""
@@ -147,7 +158,7 @@ def simplify_org_name(org_name, event_name, description):
         org_name = org_name.replace(old, new, 1)
     if len(org_name.strip(strip_chars)) > 30 and "," in org_name:
         org_name = org_name.split(",", 1)[0]
-    return org_name.strip(strip_chars)
+    return org_name.strip(strip_chars).capitalize()
 
 
 def simplify_location(location):
@@ -176,6 +187,8 @@ def simplify_location(location):
             return v
     if "or virtually" in location.lower() or "and virtual" in location.lower():
         location = location.split("or virtually", 1)[0]
+    elif "rain location" in location.lower():
+        location = location.split("rain location", 1)[0]
     location = location.strip(strip_chars)
     for suffix in suffixes:
         location = location.removesuffix(suffix)
@@ -194,7 +207,7 @@ def simplify_location(location):
             for old, new in location_shortname_simplify_replace_list.items():
                 location = location.replace(old.replace("{i}", f"{i}"), new.replace("{i}", f"{i}"), 1)
             break
-    return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ")
+    return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ")  # .capitalize()
 
 
 def match_default_image(name, org_name, location):
@@ -249,7 +262,7 @@ def is_popular(event_name):
                       "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
                       "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots",
                       "Mario Kartboard RC Challenge", "Tour Around Chinatown", "Free Community Concert",
-                      "Zip lining at Treetop Quest"
+                      "Zip lining at Treetop Quest", "Pickleball Tournement"
                       ]
     popular_keywords = ["open house", "activities fair", "sports night", "career fair", "career day",
                         "drexel night live", "stop-the-bleed challenge", "outdoor movie night", "festival",
@@ -399,7 +412,8 @@ def get_religion(name, org_name, location):
         religious_orgs = json.load(f)
     religious_keywords = {"church": "christian", "cathedral": "christian", "bible": "christian",
                           "methodist": "christian", "eucharist": "christian", "synagogue": "jewish", "muslim": "muslim",
-                          "mosque": "muslim", "islamic": "muslim", "hindu": "hindu", "jummah": "muslim"}
+                          "mosque": "muslim", "islamic": "muslim", "hindu": "hindu", "jummah": "muslim",
+                          "arab": "muslim"}
     if org_name in religious_orgs.keys():
         return religious_orgs[org_name]
     name = name.lower()
@@ -420,10 +434,12 @@ def is_invalid_event(kwargs):
                            "wharton", "advising hours", "resume drop-ins", "resume reviews with steinbright",
                            "for youth", "recruitphilly", "for kids", "for seniors", "for young adults",
                            "executive board meeting", "general body meeting", "gbm", "chapter meeting",
-                           "presidents meeting", "e-board meeting", "officer meeting", "exec board", "drop-in hours"]
+                           "presidents meeting", "e-board meeting", "officer meeting", "exec board", "drop-in hours",
+                           "yoga with pvp"]
     excluded_event_ids = ["14aac6c5b9473a85c55adb2685db3828", "5d8f61b8393eb05907a77a9048bd7e4b",
                           "b3e4c376b9cbb68059f607d1d0e0c2c0", "3eb1c8b7c4b770a012ba32f7db0e7a9b",
-                          "e4a25cf92e71ab1b5b35691a9cd7d7fd"]
+                          "e4a25cf92e71ab1b5b35691a9cd7d7fd", "b09db2b9046b52311f9b897abc551ea0",
+                          "876ab39058860ed2b803de63cc0a6d78"]
     excluded_orgs = ["University of Pennsylvania", "University of Pennsylvania Career Services",
                      "University of Pennsylvania School of Arts and Sciences",
                      "University of Pennsylvania Carey Law School Alumni Office", "Drexel University Alumni Relations"]

@@ -35,5 +35,7 @@
   "snacks and supplies will be provided": "free_food",
   "snacks and supplies provided": "free_stuff",
   "pot painting": "free_stuff",
-  "candy sukkahs": "free_food"
+  "candy sukkahs": "free_food",
+  "shabbat dinner": "free_food",
+  "bid dinner": "free_food"
 }

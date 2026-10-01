@@ -44,7 +44,8 @@ def is_past(tag):
 
 
 def get_event_urls_from_calendar_page(url):
-    excluded_url_keywords = ["life-science-luncheon", "fun-damentals-ucity-square-book-club/2026-09-16"]
+    excluded_url_keywords = ["life-science-luncheon", "fun-damentals-ucity-square-book-club/2026-09-16",
+                             "summer-series"]
     event_links = []
     response = requests.get(url, headers=http_header)
     soup = BeautifulSoup(response.text, "html.parser")
