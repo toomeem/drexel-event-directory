@@ -193,13 +193,20 @@ def lambda_handler(event, context):
                             for_new_students,
                             popular, on_campus, religion_filter, religion_filter, page_event_count, offset))
             events = cursor.fetchall()
+            cursor.execute('''
+                           SELECT COUNT(*)
+                           FROM main.events
+                           WHERE start_time >= to_timestamp(%s)
+                             AND (end_time IS NULL OR end_time > now())
+                           ''', (day_start,))
+            total = cursor.fetchone()[0]
         finally:
             cursor.close()
 
-        total = events[0][18] if events else 0
+        matched = events[0][18] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
-                "body": json.dumps({"returned_events": len(events), "total_events": total,
-                                    "body": [db_entry_to_json(e) for e in events]})}
+                "body": json.dumps({"returned_events": len(events), "matched_events": matched,
+                                    "total_events": total, "body": [db_entry_to_json(e) for e in events]})}
 
     except Exception as e:
         print(f"lambda_handler error: {e!r}")

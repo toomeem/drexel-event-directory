@@ -86,6 +86,7 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
 export function EventsPage() {
     const [events, setEvents] = useState<DrexelEvent[]>([]);
     const [returnedEvents, setReturnedEvents] = useState(0);
+    const [matchedEvents, setMatchedEvents] = useState(0);
     const [totalEvents, setTotalEvents] = useState(0);
     const [status, setStatus] = useState<Status>("loading");
     const [searchParams, setSearchParams] = useSearchParams();
@@ -119,10 +120,11 @@ export function EventsPage() {
             on_campus: filters.onCampus ? undefined : false,
             religion: religionKey ? religionKey.split(",") : undefined,
         })
-            .then(({events: data, returnedEvents: returned, totalEvents: total}) => {
+            .then(({events: data, returnedEvents: returned, matchedEvents: matched, totalEvents: total}) => {
                 if (cancelled) return;
                 setEvents(data);
                 setReturnedEvents(returned);
+                setMatchedEvents(matched);
                 setTotalEvents(total);
                 setStatus("ready");
             })
@@ -150,7 +152,8 @@ export function EventsPage() {
         religionKey,
     ]);
 
-    const totalPages = Math.max(1, Math.ceil(totalEvents / eventCount));
+    const totalPages = Math.max(1, Math.ceil(matchedEvents / eventCount));
+    const underMaintenance = status === "ready" && returnedEvents === 0 && totalEvents === 0;
 
     function goToPage(page: number) {
         const next = new URLSearchParams(searchParams);
@@ -207,7 +210,12 @@ export function EventsPage() {
                             Couldn't load events. Please try again later.
                         </p>
                     )}
-                    {status === "ready" && events.length === 0 && (
+                    {underMaintenance && (
+                        <p className="events-page__status">
+                            The site is under maintenance. Please check back in a few minutes.
+                        </p>
+                    )}
+                    {status === "ready" && events.length === 0 && !underMaintenance && (
                         <p className="events-page__status">No events match these filters.</p>
                     )}
                     {status === "ready" && events.length > 0 && (

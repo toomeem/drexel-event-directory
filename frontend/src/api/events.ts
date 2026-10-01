@@ -28,12 +28,14 @@ interface EventsResponse {
     statusCode: number;
     body: DrexelEvent[];
     returned_events: number;
+    matched_events: number;
     total_events: number;
 }
 
 export interface FetchEventsResult {
     events: DrexelEvent[];
     returnedEvents: number;
+    matchedEvents: number;
     totalEvents: number;
 }
 
@@ -91,6 +93,7 @@ export async function fetchEvents(
     return {
         events: data.body,
         returnedEvents: data.returned_events,
+        matchedEvents: data.matched_events,
         totalEvents: data.total_events,
     };
 }
