@@ -27,11 +27,13 @@ export interface DrexelEvent {
 interface EventsResponse {
     statusCode: number;
     body: DrexelEvent[];
+    returned_events: number;
     total_events: number;
 }
 
 export interface FetchEventsResult {
     events: DrexelEvent[];
+    returnedEvents: number;
     totalEvents: number;
 }
 
@@ -86,5 +88,9 @@ export async function fetchEvents(
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Failed to fetch events: ${res.status}`);
     const data: EventsResponse = await res.json();
-    return {events: data.body, totalEvents: data.total_events};
+    return {
+        events: data.body,
+        returnedEvents: data.returned_events,
+        totalEvents: data.total_events,
+    };
 }

@@ -22,6 +22,7 @@ interface EventFilterBarProps {
 }
 
 interface EventTopFilterBarProps extends EventFilterBarProps {
+    returnedEvents: number;
     totalEvents: number;
 }
 
@@ -68,6 +69,7 @@ const SEARCH_DEBOUNCE_MS = 300;
 
 export function EventFilterBar({
                                    filters,
+                                   returnedEvents,
                                    totalEvents,
                                    onChange,
                                }: EventTopFilterBarProps) {
@@ -181,7 +183,7 @@ export function EventFilterBar({
                 )}
             </div>
             <p className="filter-bar__result-count">
-                {totalEvents.toLocaleString()} {resultLabel}
+                {returnedEvents.toLocaleString()} of {totalEvents.toLocaleString()} {resultLabel}
             </p>
         </div>
     );

@@ -85,6 +85,7 @@ function parseFilters(searchParams: URLSearchParams): AppliedFilters {
 
 export function EventsPage() {
     const [events, setEvents] = useState<DrexelEvent[]>([]);
+    const [returnedEvents, setReturnedEvents] = useState(0);
     const [totalEvents, setTotalEvents] = useState(0);
     const [status, setStatus] = useState<Status>("loading");
     const [searchParams, setSearchParams] = useSearchParams();
@@ -118,9 +119,10 @@ export function EventsPage() {
             on_campus: filters.onCampus ? undefined : false,
             religion: religionKey ? religionKey.split(",") : undefined,
         })
-            .then(({events: data, totalEvents: total}) => {
+            .then(({events: data, returnedEvents: returned, totalEvents: total}) => {
                 if (cancelled) return;
                 setEvents(data);
+                setReturnedEvents(returned);
                 setTotalEvents(total);
                 setStatus("ready");
             })
@@ -186,6 +188,7 @@ export function EventsPage() {
         <div className="events-page">
             <EventFilterBar
                 filters={filters}
+                returnedEvents={returnedEvents}
                 totalEvents={totalEvents}
                 onChange={applyFilters}
             />

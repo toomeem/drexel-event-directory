@@ -198,7 +198,8 @@ def lambda_handler(event, context):
 
         total = events[0][18] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
-                "body": json.dumps({"total_events": total, "body": [db_entry_to_json(e) for e in events]})}
+                "body": json.dumps({"returned_events": len(events), "total_events": total,
+                                    "body": [db_entry_to_json(e) for e in events]})}
 
     except Exception as e:
         print(f"lambda_handler error: {e!r}")
