@@ -191,7 +191,7 @@ export function EventsPage() {
         <div className="events-page">
             <EventFilterBar
                 filters={filters}
-                returnedEvents={returnedEvents}
+                matchedEvents={matchedEvents}
                 totalEvents={totalEvents}
                 onChange={applyFilters}
             />
