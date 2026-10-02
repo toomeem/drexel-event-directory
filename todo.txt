@@ -1,4 +1,3 @@
-hide chat on mobile
 covert pdf to image
 label AI generated event images
 
@@ -25,6 +24,3 @@ improve search
 add calendar viewing option
 add section for new students that explains stuff and has a map of campus
 add section for suggestions for me
-
-create s3 hosting for website
-point domain to s3 bucket

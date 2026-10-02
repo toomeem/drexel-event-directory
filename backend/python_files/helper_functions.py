@@ -212,15 +212,17 @@ def simplify_location(location):
 
 def match_default_image(name, org_name, location):
     name, org_name, location = name.lower(), org_name.lower(), location.lower()
-
+    default_images_s3_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/default_images/"
     with open("backend/data_files/default_image_keyword_list.json") as f:
         image_aliases = json.load(f)
 
     for key, image in image_aliases.items():
         if key in name or key in org_name or key in location:
+            if image.startswith("s3/"):
+                image = default_images_s3_path + image[3:]
             return image
 
-    drexel_default_image = "https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Images/home/where-dragons-soar/lancasterwalk-area-lawn-3200x1600_16x9/lancasterwalk-area-lawn-3200x1600_16x9_16x9.jpg"
+    drexel_default_image = default_images_s3_path + "drexel_default_image.jpg"
     return drexel_default_image
 
 

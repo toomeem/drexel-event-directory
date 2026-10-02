@@ -7,23 +7,55 @@ from PIL import Image
 
 from backend.python_files.helper_functions import stable_hash
 
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+
 
 def upload_file_to_s3(bucket_name, local_file_path, s3_file_path):
     bucket = boto3.resource("s3").Bucket(bucket_name)
-    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={"ACL": "public-read"})
+    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={"ACL": "public-read", "ContentType": "image/jpeg"})
 
 
-def image_in_s3(bucket_name, file_name):
-    s3 = boto3.client('s3')
-    response = s3.list_objects_v2(Bucket=bucket_name, Prefix="images/event_specific_images/")
+def image_in_s3(bucket_name, s3_file_path):
+    try:
+        boto3.client("s3").head_object(Bucket=bucket_name, Key=s3_file_path)
+        return True
+    except Exception:
+        return False
 
-    for obj in response.get('Contents', []):
-        if file_name in obj["Key"]:
-            return True
+
+def download_image(url, local_file_path, max_attempts=3):
+    # retries only on 429 and 5xx
+    headers = {"User-Agent": USER_AGENT}
+
+    for attempt in range(max_attempts):
+        try:
+            response = requests.get(url, headers=headers, timeout=20)
+        except requests.RequestException:
+            break
+
+        is_last_attempt = attempt == max_attempts
+        if response.status_code == 429 and not is_last_attempt:
+            time.sleep(10)
+            continue
+        elif response.status_code >= 500 and not is_last_attempt:
+            time.sleep(5)
+            continue
+        elif response.status_code != 200:
+            break
+
+        content_type = response.headers.get("Content-Type", "").lower()
+        if not content_type.startswith(("image/", "application/octet-stream", "binary/octet-stream")):
+            break
+
+        with open(local_file_path, "wb") as handler:
+            handler.write(response.content)
+        return True
+
+    print(f"Error downloading image: {url}")
     return False
 
 
-def resize_image(path, max_width=600, max_height=400):
+def resize_image(path, output_path, max_width=600, max_height=400):
     # crop image to desired aspect ratio and resize
     # also convert to jpeg and do other stuff to reduce file size
     # returns success value
@@ -62,8 +94,7 @@ def resize_image(path, max_width=600, max_height=400):
 
     save_kwargs = {"optimize": True, "quality": 80, "progressive": True}
 
-    new_path = path.rsplit(".", 1)[0] + ".jpg"
-    image.save(new_path, format="JPEG", **save_kwargs)
+    image.save(output_path, format="JPEG", **save_kwargs)
     return True
 
 
@@ -74,6 +105,7 @@ def get_image_s3_url(original_url, bucket_name):
         return original_url
 
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
+    tmp_dir = "backend/temp_folders/event_image_tmp_dir/"
 
     image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif", ".pdf"]
     file_type_list = [i for i in image_file_types if i in original_url.lower()]
@@ -89,24 +121,17 @@ def get_image_s3_url(original_url, bucket_name):
     if "wikimedia.org/wikipedia/commons/thumb" in original_url:
         original_url = original_url.replace("/thumb", "", 1).replace("%28", "(", 1).replace("%29", ")", 1)
 
-    image_name = stable_hash(original_url) + file_type
-    local_file_path = "backend/temp_folders/event_image_tmp_dir/" + image_name
-    s3_file_path = "images/event_specific_images/" + image_name
+    url_hash = stable_hash(original_url)
+    download_path = tmp_dir + url_hash + "_original" + file_type
+    resized_path = tmp_dir + url_hash + ".jpg"
+    s3_file_path = "images/event_specific_images/" + url_hash + ".jpg"
 
-    if not image_in_s3(bucket_name, image_name):
-        img_data = requests.get(original_url)
-        with open(local_file_path, "wb") as handler:
-            handler.write(img_data.content)
-        if not resize_image(local_file_path):
-            time.sleep(0.5)
-            img_data = requests.get(original_url)
-            time.sleep(2)
-            with open(local_file_path, "wb") as handler:
-                handler.write(img_data.content)
-            time.sleep(0.5)
-            if not resize_image(local_file_path):
-                print(f"Error resizing image: {original_url}")
-                return None
-        upload_file_to_s3(bucket_name, local_file_path, s3_file_path)
+    if not image_in_s3(bucket_name, s3_file_path):
+        if not download_image(original_url, download_path):
+            return None
+        if not resize_image(download_path, resized_path):
+            print(f"Error resizing image: {original_url}")
+            return None
+        upload_file_to_s3(bucket_name, resized_path, s3_file_path)
 
     return s3_base_path + s3_file_path
