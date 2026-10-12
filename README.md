@@ -7,7 +7,7 @@ Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
 
 ## Features
 
-- Browse upcoming events aggregated from seven campus and neighborhood sources
+- Browse upcoming events aggregated from six campus and neighborhood sources
 - Rich filtering: theme (academic, arts, social, athletics, etc.), event format (in-person, online, hybrid), perks (free
   food, free stuff, etc.), date range (today / week / month), religion, and flags like on-campus, popular, recurring,
   and new-student events
@@ -58,7 +58,6 @@ drexel-event-directory/
     │   │   ├── drexel_athletics_event_functions.py
     │   │   ├── ucity_square_event_functions.py
     │   │   ├── ucity_district_events.py
-    │   │   ├── bbj_events.py
     │   │   └── static_recurring_events.py
     │   ├── helper_functions.py                # Data normalization, dedup, tagging, and file/S3 helpers
     │   ├── image_parsing_functions.py         # Image compression and S3 upload
@@ -83,7 +82,6 @@ drexel-event-directory/
 | [uCity Square](https://ucitysquare.com/events/month/)             | Neighborhood events on The Lawn near campus                   |
 | [University City District](https://www.universitycity.org/events) | District-wide public programming and community events         |
 | [Local Restaurants and Venues](https://www.thepostphl.com/)       | Recurring events at The Post at Cira Garage and Sunset Social |
-| [Black Bottom Jazz](https://blackbottomjazz.org/)                 | Recurring live jazz series in the neighborhood                |
 
 ## Backend
 

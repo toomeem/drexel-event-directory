@@ -35,12 +35,6 @@ const SOURCES = [
         description:
             "Weekly recurring events at nearby spots like The Post at Cira Garage, Sunset Social, and Gather Food Hall, including music bingo, quizzo, game nights, and movie nights.",
     },
-    {
-        name: "Black Bottom Jazz 🎷",
-        url: "https://blackbottomjazz.org/",
-        description:
-            "The Black Bottom Lives On! jazz series, bringing recurring live jazz performances and cultural programming to the neighborhood.",
-    },
 ];
 
 const FEATURES = [
@@ -68,7 +62,7 @@ export function AboutPage() {
             <section className="about-page__section">
                 <h2 className="about-page__section-title">Sources of Events</h2>
                 <p className="about-page__body">
-                    Event data is collected from seven campus and neighborhood
+                    Event data is collected from six campus and neighborhood
                     sources
                 </p>
                 <ul className="about-page__source-list">

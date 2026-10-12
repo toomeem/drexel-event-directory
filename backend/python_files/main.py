@@ -6,7 +6,6 @@ import pg8000.dbapi
 from dotenv import load_dotenv
 
 from backend.python_files.event_class import Event
-from backend.python_files.event_sources.bbj_events import BBJEventSource
 from backend.python_files.event_sources.dragonlink_event_functions import DragonlinkEventSource
 from backend.python_files.event_sources.drexel_athletics_event_functions import DrexelAthleticsEventSource
 from backend.python_files.event_sources.drexel_event_functions import DrexelEventSource
@@ -22,7 +21,6 @@ from backend.python_files.image_parsing_functions import get_image_s3_url
 EVENT_SOURCE_TYPES = (
     StaticRecurringEventSource,
     UCityDistrictEventSource,
-    BBJEventSource,
     DragonlinkEventSource,
     DrexelAthleticsEventSource,
     UCitySquareEventSource,
