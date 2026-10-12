@@ -28,4 +28,7 @@ clean:
 	rm -rf $(PACKAGE_DIR)
 	rm -f $(PACKAGE_NAME)
 
-.PHONY: default dependencies package clean
+test:
+	cd .. && $(PYTHON_VERSION) -m unittest discover -s backend/tests -v
+
+.PHONY: default dependencies package clean test

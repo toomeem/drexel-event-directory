@@ -116,6 +116,19 @@ The pipeline expects an existing PostgreSQL `main.events` table. Required enviro
 - `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` — AWS credentials
 - `AWS_BEDROCK_KNOWLEDGE_BASE_ID`, `AWS_BEDROCK_DATA_SOURCE_ID` — Bedrock knowledge base sync
 
+### Tests
+
+The backend test suite runs entirely offline. It covers the event models, rule helpers, static recurring-event
+definitions and scheduling, saved-response parsers, pipeline de-duplication, time formatting, and image resizing.
+
+```bash
+# From the repository root:
+python3 -m unittest discover -s backend/tests -v
+
+# Or:
+make -C backend test
+```
+
 ### Events API (Lambda)
 
 `python_files/lambda_function.py` serves paginated, filtered event results from PostgreSQL. Build the deployment
