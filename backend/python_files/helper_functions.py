@@ -2,10 +2,12 @@ import hashlib
 import json
 import os
 from datetime import datetime
+from functools import cache
 
 from backend.python_files.event_class import Event
 
 
+@cache
 def _load_data_file(file_name):
     with open(os.path.join("backend/data_files", file_name), encoding="utf-8") as f:
         return json.load(f)
