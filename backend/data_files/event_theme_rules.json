@@ -1,0 +1,59 @@
+{
+  "health": [
+    "yoga",
+    "zumba",
+    "health",
+    "wellness",
+    "reset lab"
+  ],
+  "academic": [
+    "academic",
+    "academics",
+    "university",
+    "graduate",
+    "grad school",
+    "graduate school",
+    "webinar",
+    "info session",
+    "molecular medicine",
+    "clinical research",
+    "life sciences"
+  ],
+  "art": [
+    "arts",
+    "gallery",
+    "exhibit",
+    "museum",
+    "shakespeare",
+    "open mic",
+    "music bingo",
+    "live music",
+    "jazz",
+    "opera",
+    "orchestra",
+    "matinees",
+    "movie",
+    "roland kaiser",
+    "cinéspeak",
+    "film",
+    "theater",
+    "concert",
+    "dance",
+    "embroidery",
+    "asl",
+    "late night series",
+    "south african experience",
+    "creativemornings",
+    "fyrestorm"
+  ],
+  "fundraising": [
+    "fundraiser",
+    "fundraising",
+    "raise fund"
+  ],
+  "career": [
+    "career",
+    "innovation exchange",
+    "retention by design"
+  ]
+}

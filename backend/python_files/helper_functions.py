@@ -2,10 +2,13 @@ import hashlib
 import json
 import os
 from datetime import datetime
-from pprint import pprint
 
 from backend.python_files.event_class import Event
-from backend.python_files.lambda_function import make_time_str, is_date_only
+
+
+def _load_data_file(file_name):
+    with open(os.path.join("backend/data_files", file_name), encoding="utf-8") as f:
+        return json.load(f)
 
 
 def stable_hash(key):
@@ -22,91 +25,9 @@ def normalize_time(time_str):
 
 
 def simplify_event_name(name):
-    remove_list = ["15 Wellness Points", "Rise & Roar:", "Mission Ready:", "(All Goodwin Programs)", "(AI)",
-                   "@ Drexel University", "@ Drexel U", "@ Drexel", "(ACH)", "– Spring", "– Summer", "– Fall",
-                   "– Winter", "Live at The Lawn:", "at The Lawn", "()", "Zero HIV Stigma Day:", "Stay Flossy:",
-                   "(D/S)", "(EWB)", "(WEH)", "ABSK", "amp;", "Cru ", "In-person!", "In-Person", "Press & Repeat:",
-                   "DSC ", "Drexel Theme Park Engineering and Design", "Fall Rush Event-",
-                   "USGA ", "Emergency Group and Jeffrey Alexander + The Heavy Lidders:", "(PSFS)", "(ENT)",
-                   "Made to Wear, Made with Care:", "FUN-Damentals:", "(RCR)", "(XAWs)", "(MAPS)",
-                   "Tea, Truth & Teal:", "The Kenning Place:", " - Lambda Alpha Upsilon", "Italia è Moda: ",
-                   "Harm Reduction Week -", "Harm Reduction Week:", "Know Your Power:", "PHDSAG Welcome Week -",
-                   "Urologic Health Community Outreach:", "Little Explorers:", "Food: ", ": From Ideas to Impact",
-                   "followed by a group dinner at an urban eatery.", "@ 5:30pm",
-                   "From Classroom to Career:", "INSIDE HUSTLE:", "Networking in the Age of Technology:",
-                   "Welcome Week Event:", "Under Pressure:", "Law Fair Prep:", "Wrapped in Style:", "Brick by Brick:",
-                   ": Meet The Program Director", "Tau Beta Pi - ", "SWE Welcome Week - ", "Hear Tomorrow:",
-                   " with NOMAS", " with Cru", "Intro Physician Panel", "(CE Course)", "IN-PERSON",
-                   "Philly Builds Bio 5th Annual Philadelphia", "(STIs)", " - PHL Campus", "Ask the Reviewers:",
-                   "- Alpha Chi Rho Fall Rush Event", "- Alpha Chi Rho Fall Recruitment Event", "with AMWA",
-                   "with Medlife", "with Dragon's First", "With PULSE", "with Fiber Arts Club", "Global Connect -",
-                   "- Your Guide to Success", "in Front of Alpha Chi Rho House", "Spiral Q Fundraiser:",
-                   "Gap Year, Smart Choice?", "Master of Laboratory Animal Science:", "Drexel Students for Christ",
-                   ": Alpha Chi Rho", "- Rush Event", "America250:", "Coffee & Conversations:", ": Tuesday Evenings",
-                   "– A CHIBE Book Talk with Damon Centola, PhD", "CLASS is in Session - ", "- Philadelphia, PA",
-                   "- Philadelphia", "Writers Room X Blue Stoop:", "Pick Me!",
-                   "- The Board & Brew", ": The Art of the Video Game", "DAAD RISE:", "| Sigma Psi Zeta",
-                   "Fall 2026 Phi Delta Epsilon Rush:",
-                   "Winter 2026 Phi Delta Epsilon Rush:",
-                   "Spring 2027 Phi Delta Epsilon Rush:",
-                   ]
-    replace_list = {"Virtual Information Session": "Info Session", "Information Session": "Info Session",
-                    "Artificial Intelligence": "AI", "Graduate Student": "Grad Student", "Undergraduate": "Undergrad",
-                    "University City Summer Series Concert": "Summer Series Concert",
-                    "Vibrant Coffee Roasters Coffee Run": "Coffee Run",
-                    "Global Relations & International Design Department": "Global Relations & International Design Dept",
-                    "Master of Science Degree in Speech-Language Pathology Prospective": "Speech-Language Pathology Prospective",
-                    "The Lawn at UCity Square x cinéSPEAK present Elio": "UCity Square x cinéSPEAK present Elio",
-                    "Movies in Clark Park:": "Movie Night:", "Dragon Jedi Afterclub Hangout": "Afterclub Hangout",
-                    "Paints with Engineers without Borders": "Paint with EWB", "Salus at Drexel University": "Salus",
-                    "Salus at Drexel": "Salus", "Drexel Dragon Jedi Welcome Week Practice": "Welcome Week Practice",
-                    "Physician Assistant": "PA", "Orientation Night: Find Your Community": "Orientation Night",
-                    "Small Group (ENC Men's Small Group)": "(Men's Small Group)", "Drexel EMS": "DUEMS",
-                    "Welcome Week: Night on the Row 2026": "Welcome Week: Night on the Row",
-                    "Small Group (ENC Women's Small Group)": "(Women's Small Group)",
-                    "Welcome Week Info Session": "Info Session",
-                    "the Center for Black Culture": " the CBC", "Online Open House": "Open House",
-                    "the NSF Graduate Research Fellowship": "the NSF Grad Research Fellowship",
-                    "Employment Information Webinar": "Employment Webinar",
-                    "Fall Rush Event": "Rush Event",
-                    "Winter Rush Event": "Rush Event",
-                    "Spring Rush Event": "Rush Event",
-                    "Summer Rush Event": "Rush Event",
-                    "Drexel Night Live Welcome Week": "Welcome Week",
-                    "Weekend Warriors Welcome Week": "Welcome Week",
-                    "Drexel Players Welcome Week": "Welcome Week",
-                    "POWER Interfaith West-Southwest": "West-Southwest ",
-                    "Steinbright Career & Co-op Services": "Steinbright",
-                    "Philadelphia Pétanque Club Tournament": "Philly Pétanque Club Tournament",
-                    "Super Smash Brothers Ultimate Weekly": "Super Smash Bros Ultimate Weekly",
-                    "Event Fall 2026": "Event",
-                    "Event Winter 2026": "Event",
-                    "Event Spring 2027": "Event",
-                    "Event Summer 2027": "Event",
-                    "A Live Conversation with": "A Conversation with",
-                    "Weekend Warriors Recruitment": "Recruitment",
-                    " and ": " & ", "&amp;": "&", " : ": ": ", " !": "!"}
-    total_replace_list = {"DKPC Dance Workshop:": "Dance Workshop",
-                          "Health Center Career Day: ": "Health Center Career Day",
-                          "Sazón Latin Food Festival": "Sazón Latin Food Festival",
-                          "Truman and Udall Scholarships Info Session": "Truman and Udall Scholarships Info Session",
-                          "Senior Series: Next Steps": "Senior Series: Next Steps",
-                          "XPoNential Music Festival:": "XPoNential Music Festival",
-                          "A shuttle shopping trip": "Shuttle Shopping Trip",
-                          "Goldwater Scholarship Info Session": "Goldwater Scholarship Info Session",
-                          "Cardiology Subspecialties:": "Cardiology Subspecialties",
-                          "Your Career Pathway:": "Your Career Pathway",
-                          "ISSS Lunch & Dialogue:": "ISSS Lunch & Dialogue",
-                          "Decoding the Co-op Job Description:": "Decoding the Co-op Job Description",
-                          "Welcome Week Kickoff BBQ": "Welcome Week Kickoff BBQ",
-                          "Resumes, Cover Letters, & LinkedIn:": "Resumes, Cover Letters, & LinkedIn",
-                          "Tips for Meaningful Professional Relationships": "Tips for Meaningful Professional Relationships",
-                          "Illuminating Fraternity & Sorority Community": "Illuminating Fraternity & Sorority Community",
-                          "Interest Group Introduction Meeting": "Introduction Meeting",
-                          "FCA Weekly Huddle": "FCA Weekly Huddle", "Bid Day": "Bid Day", "Bid day": "Bid Day",
-                          "Meet the Mockers Over Mocktails: Mock Trial Recruitment Event": "Meet the Mockers Over Mocktails"}
+    rules = _load_data_file("event_name_simplification.json")
 
-    for k, v in total_replace_list.items():
+    for k, v in rules["total_replace"].items():
         if k in name:
             return v
     if "Hosted by" in name:
@@ -115,9 +36,9 @@ def simplify_event_name(name):
         name = name.split("Presents:", 1)[1]
     elif "Dissertation Defense: " in name:
         name = name.split("Dissertation Defense: ", 1)[0] + "Dissertation Defense"
-    for i in remove_list:
+    for i in rules["remove"]:
         name = name.replace(i, "", 1)
-    for old, new in replace_list.items():
+    for old, new in rules["replace"].items():
         name = name.replace(old, new, 1)
 
     return name.strip(" :;/,*  ").replace("  ", " ")
@@ -127,14 +48,7 @@ def simplify_org_name(org_name, event_name, description):
     if org_name == "Drexel University":
         return "Drexel University"
 
-    with open("backend/data_files/org_name_total_replace_list.json") as f:
-        total_replace_list = json.load(f)
-    org_name_remove = ["Drexel Chapter", "Drexel University Chapter", "Drexel Student Chapter",
-                       "Drexel University Student Chapter", "Gamma Chapter", "Drexel Section", "at Drexel University",
-                       "(CCMADS)", "Shake Team", "&amp", "Philadelphia City Chapter", "at Drexel", "(USGO)",
-                       "Incorporated", "Inc.", "Student Group", ", ,", "& Bulletin Bar", "at the Wharton School",
-                       "at the University of Pennsylvania", "(AISS)", "(CHIBE)", "(phide)"]
-    org_name_replace = {"the University of Pennsylvania": "UPenn"}
+    rules = _load_data_file("org_name_simplification.json")
     if not org_name:
         org_name = ""
     strip_chars = "&:*_;-,.   "
@@ -146,13 +60,13 @@ def simplify_org_name(org_name, event_name, description):
         org_name = event_name.split("Dissertation Defense: ", 1)[1]
     elif "Pétanque Club" in event_name:
         return "Philadelphia Pétanque Club"
-    elif org_name in total_replace_list.keys():
-        return total_replace_list[org_name]
+    elif org_name in rules["total_replace"]:
+        return rules["total_replace"][org_name]
     elif org_name.startswith("Drexel University"):
         org_name = org_name.replace("Drexel University", "", 1)
-    for i in org_name_remove:
+    for i in rules["remove"]:
         org_name = org_name.replace(i, "", 1)
-    for old, new in org_name_replace.items():
+    for old, new in rules["replace"].items():
         org_name = org_name.replace(old, new, 1)
     if len(org_name.strip(strip_chars)) > 30 and "," in org_name:
         org_name = org_name.split(",", 1)[0]
@@ -164,23 +78,11 @@ def simplify_location(location):
         return None
     location = str(location)
     strip_chars = " ,.-*&  "
-    with open("backend/data_files/location_total_replace_list.json") as f:
-        total_replace_list = json.load(f)
-    with open("backend/data_files/location_replace_list.json") as f:
-        replace_list = json.load(f)
-    with open("backend/data_files/location_remove_list.json") as f:
-        remove_list = json.load(f)
-    suffixes = [" - Classroom w/ 14 PCs", " - Classroom w/ 6 PCs", " - Classroom w/ 8 PCs", " - COM Classroom",
-                " - Classroom", " - Roberta Rosen Sheller Chapel", " - Auditorium", " - Conference",
-                "- 1st Floor Exclusive", "(Section 1)", "(2nd Floor)", "(4th Floor)", "(6th Floor)", "(Exclusive)",
-                "- All Sections", "- Danzinger Conference Room"]
-    building_shortnames = ["PISB", "CREESE", "BSONE", "RUSH", "ACADMC", "RANDEL", "RANDELL", "GHALL", "MAIN", "URBN",
-                           "URBN", "PEARL", "CAT", "NSBITT", "Korman", "HSB", "ROSS", "LEBOW", "LeBow", "JEMIC", "CCI",
-                           "DAC"]
+    rules = _load_data_file("location_simplification.json")
 
     if "<a href=" in location:
         location = location.split("<a href=", 1)[0]
-    for k, v in total_replace_list.items():
+    for k, v in rules["total_replace"].items():
         if k in location:
             return v
     if "or virtually" in location.lower() or "and virtual" in location.lower():
@@ -188,21 +90,19 @@ def simplify_location(location):
     elif "rain location" in location.lower():
         location = location.split("rain location", 1)[0]
     location = location.strip(strip_chars)
-    for suffix in suffixes:
+    for suffix in rules["suffixes"]:
         location = location.removesuffix(suffix)
     if location.startswith("Philadelphia"):
         return location.replace(", Pa", "").replace("Philadelphia.", "Philadelphia")
-    for i in remove_list:
+    for i in rules["remove"]:
         location = location.replace(i, "", 1)
-    for old, new in replace_list.items():
+    for old, new in rules["replace"].items():
         location = location.replace(old, new)
     location = location.strip(strip_chars)
 
-    for i in building_shortnames:
+    for i in rules["building_shortnames"]:
         if i in location:
-            with open("backend/data_files/building_shortname_replace_list.json") as f:
-                location_shortname_simplify_replace_list = json.load(f)
-            for old, new in location_shortname_simplify_replace_list.items():
+            for old, new in rules["building_shortname_replace"].items():
                 location = location.replace(old.replace("{i}", f"{i}"), new.replace("{i}", f"{i}"), 1)
             break
     return location.strip(strip_chars).replace(" , ", " ").replace("  ", " ")  # .capitalize()
@@ -211,8 +111,7 @@ def simplify_location(location):
 def match_default_image(name, org_name, location):
     name, org_name, location = name.lower(), org_name.lower(), location.lower()
     default_images_s3_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/images/default_images/"
-    with open("backend/data_files/default_image_keyword_list.json") as f:
-        image_aliases = json.load(f)
+    image_aliases = _load_data_file("default_image_keyword_list.json")
 
     for key, image in image_aliases.items():
         if key in name or key in org_name or key in location:
@@ -225,99 +124,75 @@ def match_default_image(name, org_name, location):
 
 
 def is_athletic_event(event_name, org_name, location):
-    athletics_keywords = ["pilates", "bhangra", "salsa", "spikeball", "spike ball",
-                          "kayaking", "paintball", "hike", "hiking", "skiing",
-                          "snowboarding", "rafting", "horseback riding", "paddleboarding", "canoeing", "canoe",
-                          "surfing", "scuba", "biking", "dance workshop", "dance class", "sumo night"]
+    keywords = _load_data_file("athletic_event_rules.json")["keywords"]
     if org_name == "Weekend Warriors":
         return True
     elif org_name == "Dragon Jedi" and "afterclub hangout" not in event_name.lower():
         return True
     elif "vidas" in location.lower():
         return True
-    return any([keyword in event_name.lower() for keyword in athletics_keywords])
+    return any(keyword in event_name.lower() for keyword in keywords)
 
 
 def is_food_related(event_name, perks, location, description):
-    food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
-    food_keywords = ["food", "coffee", "bake sale", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks",
-                     "breakfast", "lunch", "dinner", "refreshments", "coffee", "beer", "wine", "cocktails", "meal",
-                     "cookout", "water ice"]
+    rules = _load_data_file("food_event_rules.json")
     if "free_food" in perks:
         return True
-    if location in food_locations:
+    if location in rules["locations"]:
         return True
     event_name = event_name.lower()
     description = description.lower()
-    for i in food_keywords:
+    for i in rules["keywords"]:
         if i in event_name or i in description:
             return True
     return False
 
 
 def is_popular(event_name):
-    popular_events = ["Lawn Games", "Summer Bash BBQ", "Free Cone & Free Speech", "Game Night",
-                      "Future Dragons Breakfast", "Snow Cone Social",
-                      "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Nerd Night",
-                      "Undergrad July Summer Open House", "STAR Scholars Summer Showcase",
-                      "Welcome Week: Night on the Row 2026", "Dean's Cup", "National Night Out", "Lego Battle Bots",
-                      "Mario Kartboard RC Challenge", "Tour Around Chinatown", "Free Community Concert",
-                      "Zip lining at Treetop Quest", "Pickleball Tournement"
-                      ]
-    popular_keywords = ["open house", "activities fair", "sports night", "career fair", "career day",
-                        "drexel night live", "stop-the-bleed challenge", "outdoor movie night", "festival",
-                        "block party", "nerd night", "treasure hunt", "scavenger hunt", "involvement fair"]
+    rules = _load_data_file("popular_event_rules.json")
 
     if "elkin" in event_name.lower():
         return False
 
-    for keyword in popular_keywords:
+    for keyword in rules["keywords"]:
         if keyword in event_name.lower():
             return True
-    return event_name in popular_events
+    return event_name in rules["events"]
 
 
 def is_recurring(event_name, description):
-    with open("backend/data_files/dynamic_recurring_event_list.json") as f:
-        recurring_events = json.load(f)
-    day_names = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
-    recurring_keywords = ["recurring", "monthly", "weekly", "series", "weeklies"]
+    rules = _load_data_file("recurring_event_rules.json")
     event_name = event_name.lower()
     description = description.lower()
 
-    for keyword in recurring_keywords:
+    for keyword in rules["keywords"]:
         if keyword in event_name or keyword in description:
             return True
-    for day_name in day_names:
+    for day_name in rules["day_names"]:
         if day_name + "s" in event_name or day_name + "s" in description:
             return True
         if f"every {day_name}" in event_name or f"every {day_name}" in description:
             return True
-    return event_name in recurring_events
+    return event_name in rules["events"]
 
 
 def is_for_new_students(event_name, description):
-    new_student_events = ["Undergrad July Summer Open House",
-                          "Field Trip: Art and Community Protest at the Asian Arts Initiative", "Dean's Cup",
-                          "National Night Out"]
+    rules = _load_data_file("new_student_event_rules.json")
     event_name = event_name.lower()
     description = description.lower()
-    keywords = ["freshman", "new student", "future dragons", "incoming freshman", "welcome week", "prospective student",
-                "welcome tradition", "discover involvement opportunities", "explore campus life"]
 
-    for keyword in keywords:
+    for keyword in rules["keywords"]:
         if keyword in event_name or keyword in description:
             return True
 
     if "undergrad" in event_name and "open house" in event_name:
         return True
 
-    return event_name in [i.lower() for i in new_student_events]
+    return event_name in [i.lower() for i in rules["events"]]
 
 
 def is_on_campus(event_name, org_name, location):
-    with open("backend/data_files/off_campus_keyword_list.json") as f:
-        off_campus_keywords = json.load(f)
+    off_campus_keywords = _load_data_file("off_campus_keyword_list.json")
     off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
                        "Biomed Grad Student Association", "Elkins Park Student Council",
                        "Elkins Park Student Engagement & Student Success"]
@@ -358,8 +233,7 @@ def get_event_status(source, location):
 
 
 def enrich_perks(name, description, perks):
-    with open("backend/data_files/perk_keyword_list.json") as f:
-        perk_keywords = json.load(f)
+    perk_keywords = _load_data_file("perk_keyword_list.json")
 
     name = name.lower()
     description = description.lower()
@@ -375,32 +249,23 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     if is_athletic_event(name, org_name, location):
         return "athletics"
 
+    rules = _load_data_file("event_theme_rules.json")
     name = name.lower()
     description = description.lower()
 
-    health_keywords = ["yoga", "zumba", "health", "wellness", "reset lab"]
-    academic_keywords = ["academic", "academics", "university", "graduate", "grad school", "graduate school", "webinar",
-                         "info session", "molecular medicine", "clinical research", "life sciences"]
-    art_keywords = ["arts", "gallery", "exhibit", "museum", "shakespeare", "open mic", "music bingo", "live music",
-                    "jazz", "opera", "orchestra", "matinees", "movie", "roland kaiser", "cinéspeak", "film", "theater",
-                    "concert", "dance", "embroidery", "asl", "late night series", "south african experience",
-                    "creativemornings", "fyrestorm"]
-    fundraiser_keywords = ["fundraiser", "fundraising", "raise fund"]
-    career_keywords = ["career", "innovation exchange", "retention by design"]
-
-    for keyword in fundraiser_keywords:
+    for keyword in rules["fundraising"]:
         if keyword in name or keyword in description:
             return "fundraising"
-    for keyword in health_keywords:
+    for keyword in rules["health"]:
         if keyword in name or keyword in description:
             return "health"
-    for keyword in academic_keywords:
+    for keyword in rules["academic"]:
         if keyword in name or keyword in description:
             return "academic"
-    for keyword in art_keywords:
+    for keyword in rules["art"]:
         if keyword in name or keyword in description:
             return "art"
-    for keyword in career_keywords:
+    for keyword in rules["career"]:
         if keyword in name or keyword in description:
             return "career"
 
@@ -408,59 +273,38 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
 
 
 def get_religion(name, org_name, location):
-    with open("backend/data_files/religious_org_list.json") as f:
-        religious_orgs = json.load(f)
-    religious_keywords = {"church": "christian", "cathedral": "christian", "bible": "christian",
-                          "methodist": "christian", "eucharist": "christian", "synagogue": "jewish", "muslim": "muslim",
-                          "mosque": "muslim", "islamic": "muslim", "hindu": "hindu", "jummah": "muslim",
-                          "arab": "muslim"}
-    if org_name in religious_orgs.keys():
-        return religious_orgs[org_name]
+    rules = _load_data_file("religion_rules.json")
+    if org_name in rules["organizations"]:
+        return rules["organizations"][org_name]
     name = name.lower()
     org_name = org_name.lower()
     location = location.lower()
-    for keyword in religious_keywords.keys():
+    for keyword in rules["keywords"]:
         if keyword in name or keyword in org_name or keyword in location:
-            return religious_keywords[keyword]
+            return rules["keywords"][keyword]
     return None
 
 
 def is_invalid_event(kwargs):
-    with open("backend/data_files/excluded_event_names.json") as f:
-        excluded_event_names = json.load(f)
-    excluded_event_text = ["ages 6–11", "allison zuckerman",
-                           "these exhibits", "online and in-person exhibits", "leadership retreat",
-                           "further exhibits celebrate", "english conversation group", "penn career services",
-                           "wharton", "advising hours", "resume drop-ins", "resume reviews with steinbright",
-                           "for youth", "recruitphilly", "for kids", "for seniors", "for young adults",
-                           "executive board meeting", "general body meeting", "gbm", "chapter meeting",
-                           "presidents meeting", "e-board meeting", "officer meeting", "exec board", "drop-in hours",
-                           "yoga with pvp"]
-    excluded_event_ids = ["14aac6c5b9473a85c55adb2685db3828", "5d8f61b8393eb05907a77a9048bd7e4b",
-                          "b3e4c376b9cbb68059f607d1d0e0c2c0", "3eb1c8b7c4b770a012ba32f7db0e7a9b",
-                          "e4a25cf92e71ab1b5b35691a9cd7d7fd", "b09db2b9046b52311f9b897abc551ea0",
-                          "876ab39058860ed2b803de63cc0a6d78"]
-    excluded_orgs = ["University of Pennsylvania", "University of Pennsylvania Career Services",
-                     "University of Pennsylvania School of Arts and Sciences",
-                     "University of Pennsylvania Carey Law School Alumni Office", "Drexel University Alumni Relations"]
+    rules = _load_data_file("invalid_event_rules.json")
 
     if kwargs is None:
         return True
     elif not all([kwargs["_id"], kwargs["name"], kwargs["start_time"], kwargs["location"]]):
         return True
-    elif kwargs["name"] in excluded_event_names:
+    elif kwargs["name"] in rules["event_names"]:
         return True
     elif "cancelled" in kwargs["name"]:
         return True
-    elif kwargs["_id"] in excluded_event_ids:
+    elif kwargs["_id"] in rules["ids"]:
         return True
     name = kwargs["name"].lower()
     description = kwargs["description"].lower()
-    for i in excluded_event_text:
+    for i in rules["text"]:
         if i in name or i in description:
             return True
     if kwargs["org_name"]:
-        for org in excluded_orgs:
+        for org in rules["organizations"]:
             if org in kwargs["org_name"]:
                 return True
     return False
@@ -473,17 +317,8 @@ def clear_directory(path):
 
 def create_event_chunk_file(event):
     path = "backend/temp_folders/chunking_tmp_dir/" + event._id + ".json"
-    event_json = event.to_json()
-    event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time,
-                                                     is_date_only(event.source, event.start_time))
-    del event_json["event_link"]
-    del event_json["image_url"]
-    del event_json["id"]
-    del event_json["start_time"]
-    del event_json["end_time"]
-
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(event_json, f)
+        json.dump(event.to_chunk_json(), f)
 
 
 def clear_s3_folder(bucket):
@@ -494,17 +329,7 @@ def clear_s3_folder(bucket):
 def load_events_from_file(path="backend/events.json"):
     with open(path, encoding="utf-8") as f:
         events_json = json.load(f)
-    events = []
-    for e in events_json:
-        events.append(
-            Event(_id=e["id"], source=e["source"], name=e["name"], org_name=e["org_name"], location=e["location"],
-                  image_url=e["image_url"],
-                  start_time=datetime.fromtimestamp(e["start_time"]) if e["start_time"] else None,
-                  end_time=datetime.fromtimestamp(e["end_time"]) if e["end_time"] else None, event_link=e["event_link"],
-                  event_status=e["event_status"], theme=e["theme"], perks=e["perks"], food_related=e["food_related"],
-                  popular=e["popular"], recurring=e["recurring"], for_new_students=e["for_new_students"],
-                  on_campus=e["on_campus"], religion=e["religion"]))
-    return events
+    return [Event.from_json(event_json) for event_json in events_json]
 
 
 def save_events_to_file(events):
@@ -520,18 +345,3 @@ def manual_event_fixes(event):
         case "bd72149c8676d5c78c7a2de5d634b5ee":
             event.perks.append("free_food")
     return event
-
-
-def is_within_date_range(event, max_days_out):
-    try:
-        if event.end_time:
-            if event.end_time < datetime.now(tz=event.start_time.tzinfo):
-                return True
-        else:
-            if event.start_time.date() < datetime.now(tz=event.start_time.tzinfo).date():
-                return True
-        return (event.start_time - datetime.now(tz=event.start_time.tzinfo)).days > max_days_out
-    except:
-        print("Error in is_within_date_range")
-        pprint(event.start_time)
-        return False

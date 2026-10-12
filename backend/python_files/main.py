@@ -1,29 +1,34 @@
 import os
 import time
-from datetime import timezone
 
 import boto3
 import pg8000.dbapi
 from dotenv import load_dotenv
 
 from backend.python_files.event_class import Event
-from backend.python_files.event_sources.bbj_events import bbj_event_parsing, get_bbj_events
-from backend.python_files.event_sources.dragonlink_event_functions import collect_dragonlink_events, \
-    dragonlink_event_parsing
-from backend.python_files.event_sources.drexel_athletics_event_functions import collect_drexel_athletics_events, \
-    drexel_athletics_event_parsing
-from backend.python_files.event_sources.drexel_event_functions import collect_drexel_events, drexel_event_parsing
-from backend.python_files.event_sources.static_recurring_events import get_static_events
-from backend.python_files.event_sources.ucity_district_events import ucity_district_event_parsing, \
-    collect_ucity_district_events
-from backend.python_files.event_sources.ucity_square_event_functions import get_all_ucity_square_urls, \
-    create_ucity_square_event_from_url, get_ucity_square_event_data
+from backend.python_files.event_sources.bbj_events import BBJEventSource
+from backend.python_files.event_sources.dragonlink_event_functions import DragonlinkEventSource
+from backend.python_files.event_sources.drexel_athletics_event_functions import DrexelAthleticsEventSource
+from backend.python_files.event_sources.drexel_event_functions import DrexelEventSource
+from backend.python_files.event_sources.static_recurring_events import StaticRecurringEventSource
+from backend.python_files.event_sources.ucity_district_events import UCityDistrictEventSource
+from backend.python_files.event_sources.ucity_square_event_functions import UCitySquareEventSource
 from backend.python_files.helper_functions import is_invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
     is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion, \
-    is_within_date_range
+    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion
 from backend.python_files.image_parsing_functions import get_image_s3_url
+
+EVENT_SOURCE_TYPES = (
+    StaticRecurringEventSource,
+    UCityDistrictEventSource,
+    BBJEventSource,
+    DragonlinkEventSource,
+    DrexelAthleticsEventSource,
+    UCitySquareEventSource,
+    DrexelEventSource,
+)
+SOURCE_PRIORITIES = {source_type.name: source_type.priority for source_type in EVENT_SOURCE_TYPES}
 
 
 def simple_events_in_db():
@@ -41,107 +46,67 @@ def simple_events_in_db():
 
 
 def get_events_from_db():
-    events = []
-    event_data = simple_events_in_db()
-    for row in event_data:
-        # The start_time column is "timestamp without time zone" stored in UTC, so
-        # pg8000 returns a naive datetime. Mark it as UTC-aware, otherwise
-        # get_start_timestamp() would reinterpret it in the local zone and shift the
-        # epoch by the local UTC offset, breaking equality checks against new events.
-        start_time = row[4].replace(tzinfo=timezone.utc)
-        event = Event(
-            _id=row[0],
-            source=row[2],
-            name=row[1],
-            org_name=row[3],
-            start_time=start_time,
-            location=None,
-            end_time=None,
-            image_url=None,
-            event_link=None,
-            event_status=None,
-            theme=None,
-            perks=None,
-            food_related=False,
-            popular=False,
-            recurring=False,
-            for_new_students=False,
-            on_campus=True,
-            religion=None
-        )
-        events.append(event)
-    return events
+    return [Event.from_db_row(row) for row in simple_events_in_db()]
 
 
-def create_event_object(source, event_data, bucket_name, existing_event_ids):
-    kwargs = {"_id": None, "source": source, "name": None, "org_name": None, "location": None, "image_url": None,
-              "start_time": None, "end_time": None, "event_link": None, "event_status": None, "theme": None,
-              "perks": [], "food_related": False, "popular": False, "recurring": False, "for_new_students": False,
-              "on_campus": True, "religion": None, "description": ""}
+def create_event_object(event_source, event_data, bucket_name):
+    event_fields = {"_id": None, "source": event_source.name, "name": None, "org_name": None, "location": None,
+                    "image_url": None, "start_time": None, "end_time": None, "event_link": None,
+                    "event_status": None, "theme": None, "perks": [], "food_related": False, "popular": False,
+                    "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
+                    "description": ""}
 
-    match source:
-        case "dragonlink":
-            kwargs = dragonlink_event_parsing(event_data, kwargs, existing_event_ids)
-        case "drexel_events":
-            kwargs = drexel_event_parsing(event_data, kwargs, existing_event_ids)
-        case "drexel_athletics":
-            kwargs = drexel_athletics_event_parsing(event_data, kwargs, existing_event_ids)
-        case "ucity_square":
-            kwargs = create_ucity_square_event_from_url(event_data, kwargs, existing_event_ids)
-        case "ucity_district":
-            kwargs = ucity_district_event_parsing(event_data, kwargs, existing_event_ids)
-        case "bbj":
-            kwargs = bbj_event_parsing(event_data, kwargs, existing_event_ids)
-        case "static_recurring_events":
-            kwargs = event_data
-        case _:
-            return None
-    if is_invalid_event(kwargs):
+    event_fields = event_source.parse(event_data, event_fields)
+    if is_invalid_event(event_fields):
         return None
 
-    kwargs["perks"] = enrich_perks(kwargs["name"], kwargs["description"], kwargs["perks"])
-    kwargs["org_name"] = simplify_org_name(kwargs["org_name"], kwargs["name"], kwargs["description"])
-    kwargs["name"] = simplify_event_name(kwargs["name"])
-    kwargs["event_status"] = get_event_status(source, kwargs["location"])
+    event_fields["perks"] = enrich_perks(
+        event_fields["name"], event_fields["description"], event_fields["perks"])
+    event_fields["org_name"] = simplify_org_name(
+        event_fields["org_name"], event_fields["name"], event_fields["description"])
+    event_fields["name"] = simplify_event_name(event_fields["name"])
+    event_fields["event_status"] = get_event_status(event_source.name, event_fields["location"])
 
-    if kwargs["image_url"] is None:
-        kwargs["image_url"] = get_image_s3_url(
-            match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"]), bucket_name)
+    if event_fields["image_url"] is None:
+        event_fields["image_url"] = get_image_s3_url(
+            match_default_image(event_fields["name"], event_fields["org_name"], event_fields["location"]), bucket_name)
     else:
-        kwargs["image_url"] = get_image_s3_url(kwargs["image_url"], bucket_name)
-        if kwargs["image_url"] is None:
-            kwargs["image_url"] = get_image_s3_url(
-                match_default_image(kwargs["name"], kwargs["org_name"], kwargs["location"]), bucket_name)
+        event_fields["image_url"] = get_image_s3_url(event_fields["image_url"], bucket_name)
+        if event_fields["image_url"] is None:
+            event_fields["image_url"] = get_image_s3_url(
+                match_default_image(
+                    event_fields["name"], event_fields["org_name"], event_fields["location"]), bucket_name)
 
-    if kwargs["event_status"] == "online":
-        kwargs["location"] = "Online"
+    if event_fields["event_status"] == "online":
+        event_fields["location"] = "Online"
     else:
-        kwargs["location"] = simplify_location(kwargs["location"])
-        if kwargs["location"] is None:
+        event_fields["location"] = simplify_location(event_fields["location"])
+        if event_fields["location"] is None:
             return None
 
-    kwargs["food_related"] = is_food_related(kwargs["name"], kwargs["perks"], kwargs["location"], kwargs["description"])
-    kwargs["recurring"] = is_recurring(kwargs["name"], kwargs["description"])
-    kwargs["for_new_students"] = is_for_new_students(kwargs["name"], kwargs["description"])
-    kwargs["on_campus"] = is_on_campus(kwargs["name"], kwargs["org_name"], kwargs["location"])
-    kwargs["religion"] = get_religion(kwargs["name"], kwargs["org_name"], kwargs["location"])
+    event_fields["food_related"] = is_food_related(
+        event_fields["name"], event_fields["perks"], event_fields["location"], event_fields["description"])
+    event_fields["recurring"] = is_recurring(event_fields["name"], event_fields["description"])
+    event_fields["for_new_students"] = is_for_new_students(event_fields["name"], event_fields["description"])
+    event_fields["on_campus"] = is_on_campus(
+        event_fields["name"], event_fields["org_name"], event_fields["location"])
+    event_fields["religion"] = get_religion(
+        event_fields["name"], event_fields["org_name"], event_fields["location"])
 
-    if kwargs["religion"]:
-        kwargs["theme"] = "spirituality"
-        kwargs["popular"] = False
+    if event_fields["religion"]:
+        event_fields["theme"] = "spirituality"
+        event_fields["popular"] = False
     else:
-        kwargs["theme"] = event_theme_additional_checks(kwargs["name"], kwargs["description"],
-                                                        kwargs["org_name"], kwargs["location"], kwargs["theme"])
-        kwargs["popular"] = is_popular(kwargs["name"])
+        event_fields["theme"] = event_theme_additional_checks(
+            event_fields["name"], event_fields["description"], event_fields["org_name"],
+            event_fields["location"], event_fields["theme"])
+        event_fields["popular"] = is_popular(event_fields["name"])
 
-    del kwargs["description"]
-    return Event(**kwargs)
+    del event_fields["description"]
+    return Event(**event_fields)
 
 
 def dedup_events(events_in_db, events):
-    source_priority = ["bbj", "drexel_events", "drexel_athletics", "ucity_square", "ucity_district", "dragonlink",
-                       "static_recurring_events"]
-
     # group possible duplicates by start time first
     events_by_start = {}
     for e in events:
@@ -161,49 +126,33 @@ def dedup_events(events_in_db, events):
                 clusters.append([event])
 
         for cluster in clusters:
-            result.append(max(cluster, key=lambda e: source_priority.index(e.source)))
+            result.append(max(cluster, key=lambda event: SOURCE_PRIORITIES[event.source]))
 
     result.sort(key=lambda e: e.start_time.timestamp())
     return result
 
 
 def collect_all_events(bucket_name, events_in_db, days_out):
-    sources = ["static_recurring_events", "ucity_district", "bbj", "dragonlink", "drexel_athletics", "ucity_square",
-               "drexel_events"]
     existing_event_ids = [i._id for i in events_in_db]
+    event_sources = [
+        source_type(bucket_name, existing_event_ids, days_out)
+        for source_type in EVENT_SOURCE_TYPES
+    ]
     events = []
 
-    for source in sources:
+    for event_source in event_sources:
         event_count = len(events)
-        match source:
-            case "dragonlink":
-                event_data_list = collect_dragonlink_events(count=350)
-            case "drexel_events":
-                event_data_list = collect_drexel_events(count=350)
-            case "drexel_athletics":
-                event_data_list = collect_drexel_athletics_events(days_out=days_out)
-            case "ucity_square":
-                event_data_list = [get_ucity_square_event_data(i) for i in get_all_ucity_square_urls(months_out=2)]
-            case "ucity_district":
-                event_data_list = collect_ucity_district_events(count=500)
-            case "bbj":
-                event_data_list = get_bbj_events()
-            case "static_recurring_events":
-                event_data_list = get_static_events(bucket_name, existing_event_ids, occurrences=6)
-            case _:
-                continue
-
-        for event_data in event_data_list:
+        for event_data in event_source.collect():
             if event_data is None:
                 continue
-            event = create_event_object(source, event_data, bucket_name, existing_event_ids)
+            event = create_event_object(event_source, event_data, bucket_name)
             if event is not None:
                 events.append(event)
 
-        print(f"Collected {len(events) - event_count} events from {source}.")
+        print(f"Collected {len(events) - event_count} events from {event_source.name}.")
 
     events = [manual_event_fixes(event) for event in events]
-    events = [i for i in events if not is_within_date_range(i, days_out)]
+    events = [event for event in events if not event.is_out_of_range(days_out)]
     events = dedup_events(events_in_db, events)
 
     return events

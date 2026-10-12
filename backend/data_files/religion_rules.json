@@ -1,0 +1,33 @@
+{
+  "organizations": {
+    "Chabad Student Group": "jewish",
+    "Jewish Student Association": "jewish",
+    "Drexel Muslim Students Association": "muslim",
+    "Muslim Students Association": "muslim",
+    "Every Nation Campus": "christian",
+    "Drexel Asian Baptist Student Koinonia": "christian",
+    "Story Fellowship": "christian",
+    "Cru": "christian",
+    "Newman Catholic Community": "christian",
+    "Crosswalk Christian Fellowship": "christian",
+    "Christian Fellowship Club": "christian",
+    "Drexel WEH": "christian",
+    "Hindu YUVA @ Drexel": "hindu",
+    "Open Door Christian Community": "christian",
+    "Drexel Students for Christ": "christian"
+  },
+  "keywords": {
+    "church": "christian",
+    "cathedral": "christian",
+    "bible": "christian",
+    "methodist": "christian",
+    "eucharist": "christian",
+    "synagogue": "jewish",
+    "muslim": "muslim",
+    "mosque": "muslim",
+    "islamic": "muslim",
+    "hindu": "hindu",
+    "jummah": "muslim",
+    "arab": "muslim"
+  }
+}
