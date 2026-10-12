@@ -5,7 +5,7 @@ from datetime import datetime
 from pprint import pprint
 
 from backend.python_files.event_class import Event
-from backend.python_files.lambda_function import make_time_str
+from backend.python_files.lambda_function import make_time_str, is_date_only
 
 
 def stable_hash(key):
@@ -17,8 +17,6 @@ def stable_hash(key):
 def normalize_time(source, time_str):
     if not time_str:
         return None
-    if source == "drexel_athletics":
-        time_str = time_str.replace("Z", "")
     dt = datetime.fromisoformat(time_str)
     return dt
 
@@ -476,7 +474,8 @@ def clear_directory(path):
 def create_event_chunk_file(event):
     path = "backend/temp_folders/chunking_tmp_dir/" + event._id + ".json"
     event_json = event.to_json()
-    event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time)
+    event_json["formatted_time_str"] = make_time_str(event.start_time, event.end_time,
+                                                     is_date_only(event.source, event.start_time))
     del event_json["event_link"]
     del event_json["image_url"]
     del event_json["id"]

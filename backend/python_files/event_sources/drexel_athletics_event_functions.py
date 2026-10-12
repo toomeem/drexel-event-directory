@@ -1,9 +1,16 @@
 import json
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 import requests
 
 from backend.python_files.helper_functions import stable_hash, normalize_time
+
+
+def local_midnight(date_str):
+    if not date_str:
+        return None
+    return datetime.fromisoformat(date_str[:10]).replace(tzinfo=ZoneInfo("America/New_York"))
 
 
 def create_drexel_athletics_api_url(days_out):
@@ -68,8 +75,13 @@ def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
     kwargs["location"] = event_json["location"].strip('.,-_ ')
     if event_json["facility"]:
         kwargs["location"] += f" ({event_json['facility']['title']})"
-    kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
-    kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
+    if event_json["allDay"] or event_json["tbd"]:
+        # date-only events are stored at local midnight, which make_time_str treats as having no time
+        kwargs["start_time"] = local_midnight(event_json["date"])
+        kwargs["end_time"] = local_midnight(event_json["enddate"])
+    else:
+        kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
+        kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
     kwargs["image_url"] = drexel_athletics_image
     kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
     kwargs["theme"] = "athletics"

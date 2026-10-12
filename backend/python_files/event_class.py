@@ -26,11 +26,12 @@ class Event:
     def __eq__(self, other):
         if not isinstance(other, Event):
             return NotImplemented
+        same_start = self.start_time.timestamp() == other.start_time.timestamp()
+        same_end = self.end_time is not None and self.get_end_timestamp() == other.get_end_timestamp()
         if self.source == other.source and self.source != "drexel_athletics":
-            return self.org_name == other.org_name and (
-                    self.start_time.timestamp() == other.start_time.timestamp() or self.get_end_timestamp() == other.get_end_timestamp())
+            return self.org_name == other.org_name and (same_start or same_end)
         # only filter out events by the start time because duplicates can have different end times
-        if self.start_time.timestamp() != other.start_time.timestamp() and self.get_end_timestamp() != other.get_end_timestamp():
+        if not same_start and not same_end:
             return False
         if self.name.lower().strip() == other.name.lower().strip():
             return True

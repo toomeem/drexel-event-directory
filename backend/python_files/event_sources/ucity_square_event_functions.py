@@ -32,8 +32,10 @@ def get_all_ucity_square_urls(months_out):
     for url in calendar_urls:
         event_urls.extend(get_event_urls_from_calendar_page(url))
 
-    excluded_event_text = ["beer-garden", "cinespeak"]
-    event_urls = [i for i in event_urls if not any(excluded_text in i for excluded_text in excluded_event_text)]
+    excluded_event_text = ["beer-garden", "cinespeak", "life-science-luncheon",
+                           "fun-damentals-ucity-square-book-club/2026-09-16",
+                           "summer-series"]
+    event_urls = [url for url in event_urls if not any(excluded_text in url for excluded_text in excluded_event_text)]
     return list(set(event_urls))
 
 
@@ -44,8 +46,6 @@ def is_past(tag):
 
 
 def get_event_urls_from_calendar_page(url):
-    excluded_url_keywords = ["life-science-luncheon", "fun-damentals-ucity-square-book-club/2026-09-16",
-                             "summer-series"]
     event_links = []
     response = requests.get(url, headers=http_header)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -54,8 +54,6 @@ def get_event_urls_from_calendar_page(url):
     for event in events:
         event_url = event.contents[3].a["href"]
         if is_past(event):
-            continue
-        if any(excluded_text in event_url for excluded_text in excluded_url_keywords):
             continue
         event_links.append(event_url)
     return event_links
@@ -74,16 +72,15 @@ def match_ucity_square_default_image(name):
 
 
 def get_ucity_square_event_data(url):
+    time.sleep(1)
     response = requests.get(url, headers=http_header)
     if response.status_code == 429:
-        time.sleep(15)
+        time.sleep(30)
         response = requests.get(url, headers=http_header)
         if response.status_code == 429:
-            time.sleep(10)
-            if response.status_code == 429:
-                print(f"Error: {response.status_code} - {url}")
-                return None
-            response = requests.get(url, headers=http_header)
+            print(f"Error: {response.status_code} - {url}")
+            return None
+        response = requests.get(url, headers=http_header)
     if response.status_code != 200:
         time.sleep(2)
         response = requests.get(url, headers=http_header)
