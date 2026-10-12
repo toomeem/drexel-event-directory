@@ -33,7 +33,7 @@ def download_image(url, local_file_path, max_attempts=3):
         except requests.RequestException:
             break
 
-        is_last_attempt = attempt == max_attempts
+        is_last_attempt = attempt == max_attempts - 1
         if response.status_code == 429 and not is_last_attempt:
             time.sleep(10)
             continue

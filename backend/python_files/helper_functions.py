@@ -14,7 +14,7 @@ def stable_hash(key):
     return m.hexdigest()
 
 
-def normalize_time(source, time_str):
+def normalize_time(time_str):
     if not time_str:
         return None
     dt = datetime.fromisoformat(time_str)
@@ -241,7 +241,7 @@ def is_athletic_event(event_name, org_name, location):
 def is_food_related(event_name, perks, location, description):
     food_locations = ["Elkins Park Cafe", "The Highland Pub & Kitchen", "Humpty Dumplings", "Chipotle Wyncote location"]
     food_keywords = ["food", "coffee", "bake sale", "lemonade stand", "chipotle", "bbq", "ice cream", "pizza", "snacks",
-                     "breakfast", "lunch", "dinner", "refreshments" "coffee", "beer", "wine", "cocktails", "meal",
+                     "breakfast", "lunch", "dinner", "refreshments", "coffee", "beer", "wine", "cocktails", "meal",
                      "cookout", "water ice"]
     if "free_food" in perks:
         return True
