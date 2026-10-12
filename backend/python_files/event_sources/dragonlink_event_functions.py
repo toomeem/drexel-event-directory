@@ -20,7 +20,7 @@ class DragonlinkEventSource(EventSource):
         return base_url + "?endsAfter=" + timestamp + base_filters + str(count)
 
     def collect(self):
-        response = requests.get(self._create_api_url(350))
+        response = requests.get(self._create_api_url(350), timeout=30)
         if response.status_code != 200:
             print(f"Error: {response.status_code} {response.text}")
             return []

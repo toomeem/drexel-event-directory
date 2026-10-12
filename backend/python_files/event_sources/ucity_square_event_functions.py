@@ -39,7 +39,7 @@ class UCitySquareEventSource(EventSource):
         return tag_date < datetime.now()
 
     def _event_urls_from_calendar_page(self, url):
-        response = requests.get(url, headers=HTTP_HEADER)
+        response = requests.get(url, headers=HTTP_HEADER, timeout=30)
         soup = BeautifulSoup(response.text, "html.parser")
         events = soup.find_all("div", class_="tribe-events-calendar-month__calendar-event-details")
         return [event.contents[3].a["href"] for event in events if not self._is_past(event)]
@@ -72,17 +72,17 @@ class UCitySquareEventSource(EventSource):
     @staticmethod
     def _get_event_data(url):
         time.sleep(1)
-        response = requests.get(url, headers=HTTP_HEADER)
+        response = requests.get(url, headers=HTTP_HEADER, timeout=30)
         if response.status_code == 429:
             time.sleep(30)
-            response = requests.get(url, headers=HTTP_HEADER)
+            response = requests.get(url, headers=HTTP_HEADER, timeout=30)
             if response.status_code == 429:
                 print(f"Error: {response.status_code} - {url}")
                 return None
-            response = requests.get(url, headers=HTTP_HEADER)
+            response = requests.get(url, headers=HTTP_HEADER, timeout=30)
         if response.status_code != 200:
             time.sleep(2)
-            response = requests.get(url, headers=HTTP_HEADER)
+            response = requests.get(url, headers=HTTP_HEADER, timeout=30)
             if response.status_code != 200:
                 print(f"Error: {response.status_code} - {url}")
                 return None

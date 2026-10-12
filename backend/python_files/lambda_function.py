@@ -62,12 +62,14 @@ def make_time_str(start_time, end_time, date_only=False):
 
     if not end_time:
         return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)}"
-    elif start_time.month != end_time.month:
-        return f"{time_str_prefix} @ {_fmt_hm(start_time)} - {datetime.strftime(end_time, "%A")}{_fmt_hm(end_time, with_ampm=True)}"
-    elif start_time.hour < 12 < end_time.hour or (start_time - end_time) > timedelta(hours=12):
-        return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)} - {_fmt_hm(end_time, with_ampm=True)}"
     elif start_time == end_time:
         return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)}"
+    elif start_time.date() != end_time.date():
+        end_time_prefix = _day_label(end_time.date(), today)
+        return (f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)} - "
+                f"{end_time_prefix} @ {_fmt_hm(end_time, with_ampm=True)}")
+    elif start_time.strftime("%p") != end_time.strftime("%p"):
+        return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)} - {_fmt_hm(end_time, with_ampm=True)}"
     return f"{time_str_prefix} @ {_fmt_hm(start_time)} - {_fmt_hm(end_time, with_ampm=True)}"
 
 

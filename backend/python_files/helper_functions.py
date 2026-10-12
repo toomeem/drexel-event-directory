@@ -195,9 +195,9 @@ def is_for_new_students(event_name, description):
 
 def is_on_campus(event_name, org_name, location):
     off_campus_keywords = _load_data_file("off_campus_keyword_list.json")
-    off_campus_orgs = ["Elkins Park Student Life", "Elkins Park Bennett Career Center",
-                       "Biomed Grad Student Association", "Elkins Park Student Council",
-                       "Elkins Park Student Engagement & Student Success"]
+    off_campus_orgs = ["elkins park student life", "elkins park bennett career center",
+                       "biomed grad student association", "elkins park student council",
+                       "elkins park student engagement & student success"]
     on_campus_keywords = ["philly campus", "phl campus", "philadelphia campus"]
 
     event_name = event_name.lower()

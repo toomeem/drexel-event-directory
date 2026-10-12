@@ -20,7 +20,7 @@ class DrexelEventSource(EventSource):
     def _get_response(self, page):
         time.sleep(random.random() * 0.5)  # wait up to 0.5 seconds
         url = self._create_api_url(page)
-        response = requests.get(url)
+        response = requests.get(url, timeout=30)
         if response.status_code != 200:
             print(f"Error: {response.status_code} {response.text}")
             exit()

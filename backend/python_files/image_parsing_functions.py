@@ -29,7 +29,7 @@ def download_image(url, local_file_path, max_attempts=3):
 
     for attempt in range(max_attempts):
         try:
-            response = requests.get(url, headers=headers, timeout=20)
+            response = requests.get(url, headers=headers, timeout=30)
         except requests.RequestException:
             break
 

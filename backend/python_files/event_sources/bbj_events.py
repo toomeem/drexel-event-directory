@@ -12,7 +12,7 @@ class BBJEventSource(EventSource):
     priority = 0
 
     def collect(self):
-        response = requests.get("https://blackbottomjazz.org/")
+        response = requests.get("https://blackbottomjazz.org/", timeout=30)
         soup = BeautifulSoup(response.text, "html.parser")
         return soup.find_all("div", class_="event-card")
 

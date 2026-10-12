@@ -24,7 +24,7 @@ class UCityDistrictEventSource(EventSource):
                                  "penn-student-making-workshop", "ralph-lemon-the-fugitivity-of-water",
                                  "youth-soccer", "sas-commons"]
         response = requests.get(
-            "https://www.universitycity.org/wp-json/vibemap/v1/events-data?page=1&per_page=500")
+            "https://www.universitycity.org/wp-json/vibemap/v1/events-data?page=1&per_page=500", timeout=30)
         return [event for event in dict(response.json())["events"]
                 if not any(keyword in event["permalink"] for keyword in excluded_url_keywords)]
 
