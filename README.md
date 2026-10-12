@@ -7,7 +7,7 @@ Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
 
 ## Features
 
-- Browse upcoming events aggregated from six campus and neighborhood sources
+- Browse upcoming events from five scraped calendars plus hand-curated recurring listings
 - Rich filtering: theme (academic, arts, social, athletics, etc.), event format (in-person, online, hybrid), perks (free
   food, free stuff, etc.), date range (today / week / month), religion, and flags like on-campus, popular, recurring,
   and new-student events
@@ -34,8 +34,8 @@ Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
                                                    └────────────────┘
 ```
 
-- `python_files/main.py` scrapes all sources, de-duplicates events, inserts into PostgreSQL, uploads event
-  images to S3, and syncs event "chunks" to a separate S3 bucket for the Bedrock knowledge base.
+- `backend/python_files/main.py` collects all sources, de-duplicates events, inserts them into PostgreSQL, stores event
+  images and knowledge-base event chunks in S3, and starts a Bedrock knowledge-base ingestion job.
 - The events Lambda queries PostgreSQL with the active filters and returns paginated results to the frontend.
 - The chatbot Lambda proxies user questions from the frontend to a Bedrock Agent backed by the S3 knowledge base.
 
@@ -43,65 +43,77 @@ Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
 
 ```
 drexel-event-directory/
-├── frontend/                  # React + TypeScript + Vite app
+├── .github/workflows/
+│   └── deploy.yml                         # GitHub Pages and AWS frontend deployment
+├── frontend/                              # React + TypeScript + Vite app
+│   ├── public/
 │   └── src/
-│       ├── api/               # events + chatbot API clients
-│       ├── components/        # cards, filters, header, chatbot widget
-│       └── pages/             # Events and About pages
+│       ├── api/                           # Events and chatbot API clients
+│       ├── components/                    # Cards, filters, header, and chatbot widget
+│       └── pages/                         # Events and About pages
 └── backend/
+    ├── data_files/                        # Rules, defaults, and hand-curated event definitions
+    │   ├── static_recurring_events.json
+    │   └── static_single_events.json      # Present but not currently loaded by the pipeline
     ├── python_files/
-    │   ├── main.py                            # Collects, de-dupes, and uploads events (DB + S3)
-    │   ├── event_class.py                     # Event data model
-    │   ├── event_sources/                     # Per-source scrapers and parsers
+    │   ├── main.py                        # Collects, de-duplicates, and uploads events
+    │   ├── event_class.py                 # Event data model
+    │   ├── event_sources/                 # Per-source collectors and parsers
+    │   │   ├── event_source.py
     │   │   ├── dragonlink_event_functions.py
     │   │   ├── drexel_event_functions.py
     │   │   ├── drexel_athletics_event_functions.py
     │   │   ├── ucity_square_event_functions.py
     │   │   ├── ucity_district_events.py
     │   │   └── static_recurring_events.py
-    │   ├── helper_functions.py                # Data normalization, dedup, tagging, and file/S3 helpers
-    │   ├── image_parsing_functions.py         # Image compression and S3 upload
-    │   ├── lambda_function.py                 # AWS Lambda handler for the database API
-    │   ├── chatbot_lambda.py                  # AWS Lambda handler for the chatbot API
+    │   ├── helper_functions.py            # Normalization, tagging, and file/S3 helpers
+    │   ├── image_parsing_functions.py     # Image processing and S3 upload
+    │   ├── lambda_function.py             # Events API Lambda handler
+    │   ├── chatbot_lambda.py              # Chatbot Lambda handler
     │   └── testing.py
-    ├── api_responses_json/                    # Sample raw responses from each source
-    ├── events.json                            # Temp file for storing processed events
-    ├── static_recurring_events.json           # Hand-curated recurring events
-    ├── static_single_events.json              # Hand-curated one-off events (in progress)
-    ├── requirements.txt                       # Backend / Lambda dependencies
-    └── Makefile                               # Builds and zips the events Lambda deployment package
+    ├── events.json                        # Generated snapshot of processed events
+    ├── requirements.txt                   # Events Lambda package dependencies
+    └── Makefile                           # Builds the events Lambda deployment package
 ```
 
 ## Event Sources
 
-| Source                                                            | Data                                                          |
-|-------------------------------------------------------------------|---------------------------------------------------------------|
-| [Drexel Events](https://drexel.edu/events/)                       | University-wide events and academic programming               |
-| [DragonLink](https://drexel.campuslabs.com/engage/)               | Student organization events                                   |
-| [Drexel Athletics](https://drexeldragons.com/)                    | Home and away athletic competitions                           |
-| [uCity Square](https://ucitysquare.com/events/month/)             | Neighborhood events on The Lawn near campus                   |
-| [University City District](https://www.universitycity.org/events) | District-wide public programming and community events         |
-| [Local Restaurants and Venues](https://www.thepostphl.com/)       | Recurring events at The Post at Cira Garage and Sunset Social |
+| Source                                                            | Collection method                                              |
+|-------------------------------------------------------------------|----------------------------------------------------------------|
+| [Drexel Events](https://drexel.edu/events/)                       | University-wide events and academic programming                |
+| [DragonLink](https://drexel.campuslabs.com/engage/)               | Student organization events                                    |
+| [Drexel Athletics](https://drexeldragons.com/)                    | Home and away athletic competitions                            |
+| [uCity Square](https://ucitysquare.com/events/month/)             | Neighborhood events on The Lawn near campus                    |
+| [University City District](https://www.universitycity.org/events) | District-wide public programming and community events          |
+| Local Restaurants and Venues                                      | Hand-curated weekly listings in `static_recurring_events.json` |
 
 ## Backend
 
-The data pipeline and APIs run on Python 3.14.
+The Lambda build targets Python 3.14. The collection pipeline additionally imports `boto3`, `beautifulsoup4`, and
+`Pillow`; these are not included in `backend/requirements.txt`, which is currently scoped to the events Lambda package.
 
 ### Collecting events
 
-`python_files/main.py` orchestrates the pipeline: it scrapes each source, removes duplicates (preferring more
-authoritative sources), saves a snapshot to `events.json`, inserts new rows into PostgreSQL, and syncs per-event JSON
-chunks to S3 for the chatbot's Bedrock knowledge base.
+`backend/python_files/main.py` orchestrates the pipeline: it collects each source, removes duplicates (preferring more
+authoritative sources), saves a snapshot to `backend/events.json`, inserts new rows into PostgreSQL, uploads images and
+per-event JSON chunks to S3, and syncs the chatbot's Bedrock knowledge base.
 
 ```bash
 # run from the repository root
-python -m backend.python_files.main
+python3 -m pip install -r backend/requirements.txt boto3 beautifulsoup4 Pillow
+cp backend/python_files/.env.example backend/python_files/.env
+
+# Export the file because the pipeline is launched from the repository root.
+set -a
+source backend/python_files/.env
+set +a
+python3 -m backend.python_files.main
 ```
 
-Required environment variables (via a `.env` file):
+The pipeline expects an existing PostgreSQL `main.events` table. Required environment variables:
 
 - `RDS_ENDPOINT`, `RDS_USERNAME`, `RDS_PASSWORD` — PostgreSQL connection
-- `S3_BUCKET_NAME` — bucket for event images and knowledge-base chunks
+- `S3_BUCKET_NAME` — S3 bucket for event images and `backend/chunked/` knowledge-base documents
 - `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` — AWS credentials
 - `AWS_BEDROCK_KNOWLEDGE_BASE_ID`, `AWS_BEDROCK_DATA_SOURCE_ID` — Bedrock knowledge base sync
 
@@ -116,7 +128,7 @@ make
 ```
 
 This installs the dependencies in `requirements.txt` for `manylinux2014_x86_64` and produces
-`lambda_package.zip`. Required Lambda environment variables: `RDS_ENDPOINT` and `RDS_PASSWORD`.
+`lambda_package.zip`. Required Lambda environment variables: `RDS_ENDPOINT`, `RDS_USERNAME`, and `RDS_PASSWORD`.
 
 ### Chatbot API (Lambda)
 
@@ -129,7 +141,11 @@ A React + TypeScript app built with Vite.
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev      # start the dev server
 npm run build    # type-check and build for production
 ```
+
+The production API endpoints are currently defined in `frontend/src/api/events.ts` and
+`frontend/src/api/chatbot.ts`. Pushes to `main` and `dev` deploy GitHub Pages builds; pushes to `main` also deploy the
+frontend to S3 and invalidate its CloudFront distribution.
