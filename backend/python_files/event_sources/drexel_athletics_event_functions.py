@@ -6,6 +6,7 @@ import requests
 
 from backend.python_files.event_sources.event_source import EventSource
 from backend.python_files.helper_functions import stable_hash, normalize_time
+from backend.python_files.paths import API_RESPONSES_DIR
 
 
 class DrexelAthleticsEventSource(EventSource):
@@ -36,12 +37,13 @@ class DrexelAthleticsEventSource(EventSource):
             if day["events"] is not None:
                 events_json.extend(day["events"])
 
-        with open("backend/data_files/api_responses_json/drexel_athletics_response.json", "w", encoding="utf-8") as f:
+        with (API_RESPONSES_DIR / "drexel_athletics_response.json").open("w", encoding="utf-8") as f:
             json.dump(events_json, f, indent=4)
 
         return events_json
 
-    def parse(self, event_json, event_fields):
+    def parse(self, event_json):
+        event_fields = self.new_event_draft()
         drexel_athletics_image = "https://drexel.edu/identity/~/media/Drexel/UMaC-Site-Group/Identity/Images/athletics/resized_logos/Athletics-Wordmark-DU-Blue-yellow-3200x1800-Identity-Images.jpg"
         drexel_athletics_schedule_url = "https://drexeldragons.com/sports/"
         drexel_athletics_aliases = {"mbball": "mens-basketball", "wbball": "womens-basketball",
@@ -53,8 +55,8 @@ class DrexelAthleticsEventSource(EventSource):
                                     "wten": "womens-tennis", "wrestling": "wrestling",
                                     "fhockey": "field-hockey", "softball": "softball"}
 
-        event_fields["_id"] = stable_hash(self.name + str(event_json["id"]))
-        if event_fields["_id"] in self.existing_event_ids:
+        event_fields._id = stable_hash(self.name + str(event_json["id"]))
+        if event_fields._id in self.existing_event_ids:
             return None
 
         at_vs = event_json["atVs"]
@@ -65,22 +67,22 @@ class DrexelAthleticsEventSource(EventSource):
             print(f"Unknown athletics sport shortname: {sport_short_raw}")
             sport_shorthand = sport_short_raw
 
-        event_fields["name"] = " ".join(["DREX", at_vs, opponent])
+        event_fields.name = " ".join(["DREX", at_vs, opponent])
         if at_vs == "at":
-            event_fields["on_campus"] = False
-        event_fields["org_name"] = f"Drexel {event_json['sport']['title']}"
-        event_fields["location"] = event_json["location"].strip('.,-_ ')
+            event_fields.on_campus = False
+        event_fields.org_name = f"Drexel {event_json['sport']['title']}"
+        event_fields.location = event_json["location"].strip('.,-_ ')
         if event_json["facility"]:
-            event_fields["location"] += f" ({event_json['facility']['title']})"
+            event_fields.location += f" ({event_json['facility']['title']})"
         if event_json["allDay"] or event_json["tbd"]:
             # Date-only events are stored at local midnight for make_time_str.
-            event_fields["start_time"] = self._local_midnight(event_json["date"])
-            event_fields["end_time"] = self._local_midnight(event_json["enddate"])
+            event_fields.start_time = self._local_midnight(event_json["date"])
+            event_fields.end_time = self._local_midnight(event_json["enddate"])
         else:
-            event_fields["start_time"] = normalize_time(event_json["dateUtc"])
-            event_fields["end_time"] = normalize_time(event_json["endDateUtc"])
-        event_fields["image_url"] = drexel_athletics_image
-        event_fields["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
-        event_fields["theme"] = "athletics"
+            event_fields.start_time = normalize_time(event_json["dateUtc"])
+            event_fields.end_time = normalize_time(event_json["endDateUtc"])
+        event_fields.image_url = drexel_athletics_image
+        event_fields.event_link = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
+        event_fields.theme = "athletics"
 
         return event_fields

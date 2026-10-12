@@ -1,15 +1,14 @@
 import hashlib
 import json
-import os
 from datetime import datetime
 from functools import cache
 
-from backend.python_files.event_class import Event
-
+from backend.python_files.event_class import EventDraft
+from backend.python_files.paths import DATA_DIR
 
 @cache
 def _load_data_file(file_name):
-    with open(os.path.join("backend/data_files", file_name), encoding="utf-8") as f:
+    with (DATA_DIR / file_name).open(encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -24,6 +23,10 @@ def normalize_time(time_str):
         return None
     dt = datetime.fromisoformat(time_str)
     return dt
+
+
+def _contains_any(keywords, *texts):
+    return any(keyword in text for keyword in keywords for text in texts)
 
 
 def simplify_event_name(name):
@@ -133,7 +136,7 @@ def is_athletic_event(event_name, org_name, location):
         return True
     elif "vidas" in location.lower():
         return True
-    return any(keyword in event_name.lower() for keyword in keywords)
+    return _contains_any(keywords, event_name.lower())
 
 
 def is_food_related(event_name, perks, location, description):
@@ -144,22 +147,17 @@ def is_food_related(event_name, perks, location, description):
         return True
     event_name = event_name.lower()
     description = description.lower()
-    for i in rules["keywords"]:
-        if i in event_name or i in description:
-            return True
-    return False
+    return _contains_any(rules["keywords"], event_name, description)
 
 
 def is_popular(event_name):
     rules = _load_data_file("popular_event_rules.json")
+    normalized_name = event_name.lower()
 
-    if "elkin" in event_name.lower():
+    if "elkin" in normalized_name:
         return False
 
-    for keyword in rules["keywords"]:
-        if keyword in event_name.lower():
-            return True
-    return event_name in rules["events"]
+    return _contains_any(rules["keywords"], normalized_name) or event_name in rules["events"]
 
 
 def is_recurring(event_name, description):
@@ -167,13 +165,10 @@ def is_recurring(event_name, description):
     event_name = event_name.lower()
     description = description.lower()
 
-    for keyword in rules["keywords"]:
-        if keyword in event_name or keyword in description:
-            return True
+    if _contains_any(rules["keywords"], event_name, description):
+        return True
     for day_name in rules["day_names"]:
-        if day_name + "s" in event_name or day_name + "s" in description:
-            return True
-        if f"every {day_name}" in event_name or f"every {day_name}" in description:
+        if _contains_any((day_name + "s", f"every {day_name}"), event_name, description):
             return True
     return event_name in rules["events"]
 
@@ -183,9 +178,8 @@ def is_for_new_students(event_name, description):
     event_name = event_name.lower()
     description = description.lower()
 
-    for keyword in rules["keywords"]:
-        if keyword in event_name or keyword in description:
-            return True
+    if _contains_any(rules["keywords"], event_name, description):
+        return True
 
     if "undergrad" in event_name and "open house" in event_name:
         return True
@@ -203,16 +197,11 @@ def is_on_campus(event_name, org_name, location):
     event_name = event_name.lower()
     location = location.lower()
     org_name = org_name.lower()
-    for i in on_campus_keywords:
-        if i in event_name or i in org_name or i in location:
-            return True
+    if _contains_any(on_campus_keywords, event_name, org_name, location):
+        return True
     if org_name in off_campus_orgs:
         return False
-    for i in off_campus_keywords:
-        if i in event_name or i in org_name or i in location:
-            return False
-
-    return True
+    return not _contains_any(off_campus_keywords, event_name, org_name, location)
 
 
 def get_event_status(source, location):
@@ -224,12 +213,9 @@ def get_event_status(source, location):
         return "in-person"
     elif location in online_location_default_text:
         return "online"
-    elif any(keyword in location.lower() for keyword in online_keywords):
+    elif _contains_any(online_keywords, location.lower()):
         hybrid_keywords = ["or virtual", "hybrid", "and virtual", "and via Zoom", "and Zoom"]
-        for i in hybrid_keywords:
-            if i in location.lower():
-                return "hybrid"
-        return "online"
+        return "hybrid" if _contains_any(hybrid_keywords, location.lower()) else "online"
     else:
         return "in-person"
 
@@ -255,21 +241,15 @@ def event_theme_additional_checks(name, description, org_name, location, theme):
     name = name.lower()
     description = description.lower()
 
-    for keyword in rules["fundraising"]:
-        if keyword in name or keyword in description:
-            return "fundraising"
-    for keyword in rules["health"]:
-        if keyword in name or keyword in description:
-            return "health"
-    for keyword in rules["academic"]:
-        if keyword in name or keyword in description:
-            return "academic"
-    for keyword in rules["art"]:
-        if keyword in name or keyword in description:
-            return "art"
-    for keyword in rules["career"]:
-        if keyword in name or keyword in description:
-            return "career"
+    for rule_name, event_theme in (
+            ("fundraising", "fundraising"),
+            ("health", "health"),
+            ("academic", "academic"),
+            ("art", "art"),
+            ("career", "career"),
+    ):
+        if _contains_any(rules[rule_name], name, description):
+            return event_theme
 
     return theme
 
@@ -287,56 +267,28 @@ def get_religion(name, org_name, location):
     return None
 
 
-def is_invalid_event(kwargs):
+def is_invalid_event(event: EventDraft | None):
     rules = _load_data_file("invalid_event_rules.json")
 
-    if kwargs is None:
+    if event is None:
         return True
-    elif not all([kwargs["_id"], kwargs["name"], kwargs["start_time"], kwargs["location"]]):
+    elif not all([event._id, event.name, event.start_time, event.location]):
         return True
-    elif kwargs["name"] in rules["event_names"]:
+    elif event.name in rules["event_names"]:
         return True
-    elif "cancelled" in kwargs["name"]:
+    elif "cancelled" in event.name:
         return True
-    elif kwargs["_id"] in rules["ids"]:
+    elif event._id in rules["ids"]:
         return True
-    name = kwargs["name"].lower()
-    description = kwargs["description"].lower()
-    for i in rules["text"]:
-        if i in name or i in description:
-            return True
-    if kwargs["org_name"]:
+    name = event.name.lower()
+    description = event.description.lower()
+    if _contains_any(rules["text"], name, description):
+        return True
+    if event.org_name:
         for org in rules["organizations"]:
-            if org in kwargs["org_name"]:
+            if org in event.org_name:
                 return True
     return False
-
-
-def clear_directory(path):
-    for file in os.listdir(path):
-        os.remove(os.path.join(path, file))
-
-
-def create_event_chunk_file(event):
-    path = "backend/temp_folders/chunking_tmp_dir/" + event._id + ".json"
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(event.to_chunk_json(), f)
-
-
-def clear_s3_folder(bucket):
-    folder_path = "backend/chunked/"
-    bucket.objects.filter(Prefix=folder_path).delete()
-
-
-def load_events_from_file(path="backend/events.json"):
-    with open(path, encoding="utf-8") as f:
-        events_json = json.load(f)
-    return [Event.from_json(event_json) for event_json in events_json]
-
-
-def save_events_to_file(events):
-    with open("backend/events.json", "w", encoding="utf-8") as f:
-        json.dump([event.to_json() for event in events], f, indent=4)
 
 
 def manual_event_fixes(event):

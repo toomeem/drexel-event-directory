@@ -1,3 +1,4 @@
+from io import BytesIO
 import time
 
 import PIL
@@ -10,9 +11,14 @@ from backend.python_files.helper_functions import stable_hash
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 
 
-def upload_file_to_s3(bucket_name, local_file_path, s3_file_path):
-    bucket = boto3.resource("s3").Bucket(bucket_name)
-    bucket.upload_file(local_file_path, s3_file_path, ExtraArgs={"ACL": "public-read", "ContentType": "image/jpeg"})
+def upload_image_to_s3(bucket_name, image_data, s3_file_path):
+    boto3.client("s3").put_object(
+        Bucket=bucket_name,
+        Key=s3_file_path,
+        Body=image_data,
+        ACL="public-read",
+        ContentType="image/jpeg",
+    )
 
 
 def image_in_s3(bucket_name, s3_file_path):
@@ -23,8 +29,7 @@ def image_in_s3(bucket_name, s3_file_path):
         return False
 
 
-def download_image(url, local_file_path, max_attempts=3):
-    # retries only on 429 and 5xx
+def download_image(url, max_attempts=3):
     headers = {"User-Agent": USER_AGENT}
 
     for attempt in range(max_attempts):
@@ -44,27 +49,24 @@ def download_image(url, local_file_path, max_attempts=3):
             break
 
         content_type = response.headers.get("Content-Type", "").lower()
-        if not content_type.startswith(("image/", "application/octet-stream", "binary/octet-stream")):
-            break
-
-        with open(local_file_path, "wb") as handler:
-            handler.write(response.content)
-        return True
+        if content_type.startswith(("image/", "application/octet-stream", "binary/octet-stream")):
+            return response.content
+        break
 
     print(f"Error downloading image: {url}")
-    return False
+    return None
 
 
-def resize_image(path, output_path, max_width=600, max_height=400):
+def resize_image(image_data, max_width=600, max_height=400):
     # crop image to desired aspect ratio and resize
     # also convert to jpeg and do other stuff to reduce file size
     # returns success value
 
     try:
-        image = Image.open(path)
+        image = Image.open(BytesIO(image_data))
     except PIL.UnidentifiedImageError:
-        print(f"UnidentifiedImageError: {path}")
-        return False
+        print("Unidentified image data")
+        return None
     desired_aspect_ratio = max_width / max_height
     actual_aspect_ratio = image.width / image.height
 
@@ -94,8 +96,9 @@ def resize_image(path, output_path, max_width=600, max_height=400):
 
     save_kwargs = {"optimize": True, "quality": 80, "progressive": True}
 
-    image.save(output_path, format="JPEG", **save_kwargs)
-    return True
+    output = BytesIO()
+    image.save(output, format="JPEG", **save_kwargs)
+    return output.getvalue()
 
 
 def get_image_s3_url(original_url, bucket_name):
@@ -105,8 +108,6 @@ def get_image_s3_url(original_url, bucket_name):
         return original_url
 
     s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
-    tmp_dir = "backend/temp_folders/event_image_tmp_dir/"
-
     image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif", ".pdf"]
     file_type_list = [i for i in image_file_types if i in original_url.lower()]
     if len(file_type_list) > 0:
@@ -122,16 +123,16 @@ def get_image_s3_url(original_url, bucket_name):
         original_url = original_url.replace("/thumb", "", 1).replace("%28", "(", 1).replace("%29", ")", 1)
 
     url_hash = stable_hash(original_url)
-    download_path = tmp_dir + url_hash + "_original" + file_type
-    resized_path = tmp_dir + url_hash + ".jpg"
     s3_file_path = "images/event_specific_images/" + url_hash + ".jpg"
 
     if not image_in_s3(bucket_name, s3_file_path):
-        if not download_image(original_url, download_path):
+        image_data = download_image(original_url)
+        if image_data is None:
             return None
-        if not resize_image(download_path, resized_path):
+        resized_image = resize_image(image_data)
+        if resized_image is None:
             print(f"Error resizing image: {original_url}")
             return None
-        upload_file_to_s3(bucket_name, resized_path, s3_file_path)
+        upload_image_to_s3(bucket_name, resized_image, s3_file_path)
 
     return s3_base_path + s3_file_path

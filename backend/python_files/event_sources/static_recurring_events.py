@@ -1,11 +1,9 @@
 import json
-from copy import deepcopy
 from datetime import datetime, timedelta
 
-from backend.python_files.event_class import Event
 from backend.python_files.event_sources.event_source import EventSource
 from backend.python_files.helper_functions import stable_hash
-from backend.python_files.image_parsing_functions import get_image_s3_url
+from backend.python_files.paths import DATA_DIR
 
 
 class StaticRecurringEventSource(EventSource):
@@ -14,7 +12,7 @@ class StaticRecurringEventSource(EventSource):
 
     @staticmethod
     def _event_definitions():
-        with open("backend/data_files/static_recurring_events.json") as f:
+        with (DATA_DIR / "static_recurring_events.json").open(encoding="utf-8") as f:
             return json.load(f)
 
     @staticmethod
@@ -32,7 +30,7 @@ class StaticRecurringEventSource(EventSource):
             now += timedelta(days=1)
         return now
 
-    def _definition_to_event(self, event_definition):
+    def _first_occurrence(self, event_definition):
         date = self._next_occurrence(event_definition["weekday"])
         start_time = datetime.strptime(event_definition["start_time"], "%H:%M").time()
         start = datetime.combine(date, start_time)
@@ -43,57 +41,39 @@ class StaticRecurringEventSource(EventSource):
         else:
             end = None
 
-        event_id = stable_hash(event_definition["name"] + str(start.timestamp()))
-        image_url = get_image_s3_url(event_definition["image_url"], self.bucket_name)
-
-        return Event(
-            _id=event_id,
-            source=self.name,
-            name=event_definition["name"],
-            org_name=event_definition["org_name"],
-            location=event_definition["location"],
-            image_url=image_url,
-            start_time=start,
-            end_time=end,
-            event_link=event_definition["event_link"],
-            event_status=event_definition["event_status"],
-            theme=event_definition["theme"],
-            perks=event_definition["perks"],
-            food_related=event_definition["food_related"],
-            popular=event_definition["popular"],
-            recurring=True,
-            for_new_students=event_definition["for_new_students"],
-            on_campus=True,
-            religion=None,
-        )
+        return start, end
 
     def collect(self):
-        original_events = [self._definition_to_event(definition) for definition in self._event_definitions()]
-        all_events = []
+        occurrences = []
+        for definition in self._event_definitions():
+            first_start, first_end = self._first_occurrence(definition)
+            for occurrence in range(6):
+                offset = timedelta(days=7 * occurrence)
+                start = first_start + offset
+                end = first_end + offset if first_end else None
+                occurrences.append((definition, start, end))
+        return occurrences
 
-        for original_event in original_events:
-            all_events.append(original_event)
-            for occurrence in range(1, 6):
-                new_event = deepcopy(original_event)
-                new_event.start_time = original_event.start_time + timedelta(days=7 * occurrence)
-                if original_event.end_time:
-                    new_event.end_time = original_event.end_time + timedelta(days=7 * occurrence)
-                new_event._id = stable_hash(new_event.name + str(new_event.start_time.timestamp()))
-                all_events.append(new_event)
+    def parse(self, event_data):
+        definition, start, end = event_data
+        event_id = stable_hash(definition["name"] + str(start.timestamp()))
+        if event_id in self.existing_event_ids:
+            return None
 
-        event_dicts = []
-        for event in all_events:
-            if event._id in self.existing_event_ids:
-                continue
-            event_dict = event.to_json()
-            event_dict["_id"] = event_dict.pop("id")
-            event_dict["description"] = ""
-            event_dict["start_time"] = datetime.fromtimestamp(event_dict["start_time"])
-            if event_dict["end_time"]:
-                event_dict["end_time"] = datetime.fromtimestamp(event_dict["end_time"])
-            event_dicts.append(event_dict)
-
-        return event_dicts
-
-    def parse(self, event_data, event_fields):
-        return event_data
+        event_fields = self.new_event_draft()
+        event_fields._id = event_id
+        event_fields.name = definition["name"]
+        event_fields.org_name = definition["org_name"]
+        event_fields.location = definition["location"]
+        event_fields.image_url = definition["image_url"]
+        event_fields.start_time = start
+        event_fields.end_time = end
+        event_fields.event_link = definition["event_link"]
+        event_fields.event_status = definition["event_status"]
+        event_fields.theme = definition["theme"]
+        event_fields.perks = list(definition["perks"])
+        event_fields.food_related = definition["food_related"]
+        event_fields.popular = definition["popular"]
+        event_fields.recurring = True
+        event_fields.for_new_students = definition["for_new_students"]
+        return event_fields

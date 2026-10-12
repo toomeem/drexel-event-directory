@@ -28,7 +28,8 @@ class UCityDistrictEventSource(EventSource):
         return [event for event in dict(response.json())["events"]
                 if not any(keyword in event["permalink"] for keyword in excluded_url_keywords)]
 
-    def parse(self, event_json, event_fields):
+    def parse(self, event_json):
+        event_fields = self.new_event_draft()
         # Some events are excluded because they are collected by the uCity Square pipeline.
         excluded_event_names = ["Weekly improvised music drop-in jam session", "Monthly Innovation eXchange",
                                 "Summer Series with Worldtown Soundsystem", "Wheelthrowing 101: Thursday Evenings",
@@ -45,38 +46,38 @@ class UCityDistrictEventSource(EventSource):
         elif event_json["meta"]["vibemap_event_organizer"] == "Penn Libraries":
             return None
 
-        event_fields["_id"] = stable_hash(self.name + str(event_json["id"]))
-        if event_fields["_id"] in self.existing_event_ids:
+        event_fields._id = stable_hash(self.name + str(event_json["id"]))
+        if event_fields._id in self.existing_event_ids:
             return None
 
         try:
-            event_fields["start_time"] = datetime.strptime(
+            event_fields.start_time = datetime.strptime(
                 event_json["meta"]["vibemap_event_start_date"], "%Y-%m-%dT%H:%M:%S")
-            event_fields["end_time"] = datetime.strptime(
+            event_fields.end_time = datetime.strptime(
                 event_json["meta"]["vibemap_event_end_date"], "%Y-%m-%dT%H:%M:%S")
         except ValueError:
-            event_fields["start_time"] = datetime.strptime(
+            event_fields.start_time = datetime.strptime(
                 event_json["meta"]["vibemap_event_start_date"], "%Y-%m-%d %H:%M:%S")
-            event_fields["end_time"] = datetime.strptime(
+            event_fields.end_time = datetime.strptime(
                 event_json["meta"]["vibemap_event_end_date"], "%Y-%m-%d %H:%M:%S")
-        if event_fields["end_time"].day != event_fields["start_time"].day:
+        if event_fields.end_time.day != event_fields.start_time.day:
             return None
 
-        event_fields["name"] = event_json["title"]
+        event_fields.name = event_json["title"]
         if "vibemap_event_organizer" in event_json["meta"].keys():
-            event_fields["org_name"] = event_json["meta"]["vibemap_event_organizer"]
+            event_fields.org_name = event_json["meta"]["vibemap_event_organizer"]
         elif event_json["meta"]["vibemap_event_performers"]:
-            event_fields["org_name"] = event_json["meta"]["vibemap_event_performers"]
+            event_fields.org_name = event_json["meta"]["vibemap_event_performers"]
         else:
-            event_fields["org_name"] = event_json["meta"]["vibemap_event_hotspots_place"]
+            event_fields.org_name = event_json["meta"]["vibemap_event_hotspots_place"]
 
-        event_fields["location"] = event_json["meta"]["vibemap_event_hotspots_place"]
-        event_fields["image_url"] = event_json["featured_image"]
-        event_fields["event_link"] = event_json["permalink"]
-        event_fields["event_status"] = "in-person"
-        event_fields["theme"] = "social"
+        event_fields.location = event_json["meta"]["vibemap_event_hotspots_place"]
+        event_fields.image_url = event_json["featured_image"]
+        event_fields.event_link = event_json["permalink"]
+        event_fields.event_status = "in-person"
+        event_fields.theme = "social"
         if event_json["meta"]["vibemap_event_recurs"]:
-            event_fields["recurring"] = True
-        event_fields["description"] = event_json["meta"]["vibemap_event_text_full"]
+            event_fields.recurring = True
+        event_fields.description = event_json["meta"]["vibemap_event_text_full"]
 
         return event_fields

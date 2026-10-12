@@ -7,6 +7,7 @@ import requests
 
 from backend.python_files.event_sources.event_source import EventSource
 from backend.python_files.helper_functions import stable_hash, normalize_time
+from backend.python_files.paths import API_RESPONSES_DIR
 
 
 class DrexelEventSource(EventSource):
@@ -42,19 +43,20 @@ class DrexelEventSource(EventSource):
             for future in as_completed(futures):
                 results.extend(future.result())
 
-        with open("backend/data_files/api_responses_json/drexel_events_response.json", "w", encoding="utf-8") as f:
+        with (API_RESPONSES_DIR / "drexel_events_response.json").open("w", encoding="utf-8") as f:
             json.dump(results, f, indent=4)
 
         return results
 
 
-    def parse(self, event_json, event_fields):
+    def parse(self, event_json):
+        event_fields = self.new_event_draft()
         correct_audiences = ["Undergraduate Students", "Graduate Students", "Everyone", "International Students",
                              "Prospective Students", "Senior Class"]
         excluded_event_ids = ["46659_123060"]
-        event_fields["_id"] = stable_hash(self.name + str(event_json["id"]))
+        event_fields._id = stable_hash(self.name + str(event_json["id"]))
 
-        if event_fields["_id"] in self.existing_event_ids:
+        if event_fields._id in self.existing_event_ids:
             return None
         elif event_json["id"] in excluded_event_ids:
             return None
@@ -70,59 +72,59 @@ class DrexelEventSource(EventSource):
         authors = event_json.get("authors")
         department_names = event_json.get("departmentNames")
         if authors:
-            event_fields["org_name"] = authors[0]
+            event_fields.org_name = authors[0]
         elif department_names:
-            event_fields["org_name"] = department_names[0]
+            event_fields.org_name = department_names[0]
         research_keywords = ["PhD Research Proposal", "PhD Thesis Defense"]
         for keyword in research_keywords:
             if keyword in event_json["body"]:
                 speaker = event_json["body"].split("Advisor:")[0]
                 speaker = speaker.split("Speaker:")[1]
                 speaker = speaker.split("<br />")[1]
-                event_fields["org_name"] = speaker.replace(",", " -").strip(" ,.:\n\r ")
+                event_fields.org_name = speaker.replace(",", " -").strip(" ,.:\n\r ")
                 break
 
-        event_fields["name"] = event_json["title"]
-        event_fields["location"] = event_json["address"]
-        event_fields["start_time"] = normalize_time(event_json["startDate"])
-        event_fields["end_time"] = normalize_time(event_json["endDate"])
-        event_fields["event_link"] = event_json["contentUrl"]
-        event_fields["description"] = event_json["body"]
+        event_fields.name = event_json["title"]
+        event_fields.location = event_json["address"]
+        event_fields.start_time = normalize_time(event_json["startDate"])
+        event_fields.end_time = normalize_time(event_json["endDate"])
+        event_fields.event_link = event_json["contentUrl"]
+        event_fields.description = event_json["body"]
         if event_json["image"]:
-            event_fields["image_url"] = event_json["image"]
+            event_fields.image_url = event_json["image"]
 
         type_names = event_json.get("typeNames") or []
         department_names = event_json.get("departmentNames") or []
 
         if "Exhibit" in type_names or "Performing Arts" in department_names:
-            event_fields["theme"] = "arts"
+            event_fields.theme = "arts"
         elif "Academic Events" in type_names or "Academic Support" in type_names:
-            event_fields["theme"] = "academic"
+            event_fields.theme = "academic"
         elif "SCDC: Information Sessions" in type_names or "SCDC: Workshops" in type_names:
-            event_fields["theme"] = "academic"
+            event_fields.theme = "academic"
         elif "Co-op & Career Development" in type_names or "Lectures" in type_names:
-            event_fields["theme"] = "academic"
+            event_fields.theme = "academic"
         elif "Diversity & Inclusion" in type_names:
-            event_fields["theme"] = "cultural"
-        elif "health advocate" in event_fields["description"].lower():
-            event_fields["theme"] = "health"
+            event_fields.theme = "cultural"
+        elif "health advocate" in event_fields.description.lower():
+            event_fields.theme = "health"
         elif "ANS: Museum Activities" in type_names:
-            event_fields["theme"] = "social"
+            event_fields.theme = "social"
         elif "Student Life & Organizations" in type_names:
-            event_fields["theme"] = "social"
+            event_fields.theme = "social"
         elif "Seminars" in type_names:
-            event_fields["theme"] = "academic"
+            event_fields.theme = "academic"
         else:
-            event_fields["theme"] = "social"
+            event_fields.theme = "social"
 
         features = event_json.get("features") or []
         for feature in features:
             if feature == "Giveaways":
-                event_fields["perks"].append("giveaway")
+                event_fields.perks.append("giveaway")
             elif "credit" in feature.lower() or feature == "CEU Available":
-                event_fields["perks"].append("credit")
+                event_fields.perks.append("credit")
             elif feature == "Free Food":
-                event_fields["perks"].append("free_food")
+                event_fields.perks.append("free_food")
 
         unknown_perks = [feature for feature in features
                          if feature and feature not in ("Free Food", "Free Stuff", "Credit", "Online Access",

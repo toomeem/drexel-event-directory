@@ -1,3 +1,4 @@
+import json
 import os
 import time
 
@@ -14,8 +15,7 @@ from backend.python_files.event_sources.ucity_district_events import UCityDistri
 from backend.python_files.event_sources.ucity_square_event_functions import UCitySquareEventSource
 from backend.python_files.helper_functions import is_invalid_event, simplify_org_name, get_event_status, \
     match_default_image, simplify_location, is_food_related, is_popular, is_recurring, is_for_new_students, \
-    is_on_campus, clear_directory, create_event_chunk_file, load_events_from_file, save_events_to_file, \
-    manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion
+    is_on_campus, manual_event_fixes, simplify_event_name, enrich_perks, event_theme_additional_checks, get_religion
 from backend.python_files.image_parsing_functions import get_image_s3_url
 
 EVENT_SOURCE_TYPES = (
@@ -48,60 +48,49 @@ def get_events_from_db():
 
 
 def create_event_object(event_source, event_data, bucket_name):
-    event_fields = {"_id": None, "source": event_source.name, "name": None, "org_name": None, "location": None,
-                    "image_url": None, "start_time": None, "end_time": None, "event_link": None,
-                    "event_status": None, "theme": None, "perks": [], "food_related": False, "popular": False,
-                    "recurring": False, "for_new_students": False, "on_campus": True, "religion": None,
-                    "description": ""}
-
-    event_fields = event_source.parse(event_data, event_fields)
+    event_fields = event_source.parse(event_data)
     if is_invalid_event(event_fields):
         return None
 
-    event_fields["perks"] = enrich_perks(
-        event_fields["name"], event_fields["description"], event_fields["perks"])
-    event_fields["org_name"] = simplify_org_name(
-        event_fields["org_name"], event_fields["name"], event_fields["description"])
-    event_fields["name"] = simplify_event_name(event_fields["name"])
-    event_fields["event_status"] = get_event_status(event_source.name, event_fields["location"])
+    event_fields.perks = enrich_perks(event_fields.name, event_fields.description, event_fields.perks)
+    event_fields.org_name = simplify_org_name(
+        event_fields.org_name, event_fields.name, event_fields.description)
+    event_fields.name = simplify_event_name(event_fields.name)
+    event_fields.event_status = get_event_status(event_source.name, event_fields.location)
 
-    if event_fields["image_url"] is None:
-        event_fields["image_url"] = get_image_s3_url(
-            match_default_image(event_fields["name"], event_fields["org_name"], event_fields["location"]), bucket_name)
+    if event_fields.image_url is None:
+        event_fields.image_url = get_image_s3_url(
+            match_default_image(event_fields.name, event_fields.org_name, event_fields.location), bucket_name)
     else:
-        event_fields["image_url"] = get_image_s3_url(event_fields["image_url"], bucket_name)
-        if event_fields["image_url"] is None:
-            event_fields["image_url"] = get_image_s3_url(
-                match_default_image(
-                    event_fields["name"], event_fields["org_name"], event_fields["location"]), bucket_name)
+        event_fields.image_url = get_image_s3_url(event_fields.image_url, bucket_name)
+        if event_fields.image_url is None:
+            event_fields.image_url = get_image_s3_url(
+                match_default_image(event_fields.name, event_fields.org_name, event_fields.location), bucket_name)
 
-    if event_fields["event_status"] == "online":
-        event_fields["location"] = "Online"
+    if event_fields.event_status == "online":
+        event_fields.location = "Online"
     else:
-        event_fields["location"] = simplify_location(event_fields["location"])
-        if event_fields["location"] is None:
+        event_fields.location = simplify_location(event_fields.location)
+        if event_fields.location is None:
             return None
 
-    event_fields["food_related"] = is_food_related(
-        event_fields["name"], event_fields["perks"], event_fields["location"], event_fields["description"])
-    event_fields["recurring"] = is_recurring(event_fields["name"], event_fields["description"])
-    event_fields["for_new_students"] = is_for_new_students(event_fields["name"], event_fields["description"])
-    event_fields["on_campus"] = is_on_campus(
-        event_fields["name"], event_fields["org_name"], event_fields["location"])
-    event_fields["religion"] = get_religion(
-        event_fields["name"], event_fields["org_name"], event_fields["location"])
+    event_fields.food_related = is_food_related(
+        event_fields.name, event_fields.perks, event_fields.location, event_fields.description)
+    event_fields.recurring = is_recurring(event_fields.name, event_fields.description)
+    event_fields.for_new_students = is_for_new_students(event_fields.name, event_fields.description)
+    event_fields.on_campus = is_on_campus(event_fields.name, event_fields.org_name, event_fields.location)
+    event_fields.religion = get_religion(event_fields.name, event_fields.org_name, event_fields.location)
 
-    if event_fields["religion"]:
-        event_fields["theme"] = "spirituality"
-        event_fields["popular"] = False
+    if event_fields.religion:
+        event_fields.theme = "spirituality"
+        event_fields.popular = False
     else:
-        event_fields["theme"] = event_theme_additional_checks(
-            event_fields["name"], event_fields["description"], event_fields["org_name"],
-            event_fields["location"], event_fields["theme"])
-        event_fields["popular"] = is_popular(event_fields["name"])
+        event_fields.theme = event_theme_additional_checks(
+            event_fields.name, event_fields.description, event_fields.org_name,
+            event_fields.location, event_fields.theme)
+        event_fields.popular = is_popular(event_fields.name)
 
-    del event_fields["description"]
-    return Event(**event_fields)
+    return event_fields.to_event()
 
 
 def dedup_events(events_in_db, events):
@@ -156,13 +145,13 @@ def collect_all_events(bucket_name, events_in_db, days_out):
     return events
 
 
-def update_events_file(bucket_name, days_out):
+def collect_events(bucket_name, days_out):
     print("\nCollecting events...")
 
     db_events = get_events_from_db()
     events = collect_all_events(bucket_name, db_events, days_out)
-    save_events_to_file(events)
-    print(f"\nSaved {len(events)} events to file.")
+    print(f"\nCollected {len(events)} events.")
+    return events
 
 
 def save_events_to_db(events):
@@ -222,10 +211,12 @@ def remove_events_from_s3(bucket, event_ids):
     bucket.delete_objects(Delete={"Objects": [{"Key": f"backend/chunked/{event_id}.json"} for event_id in event_ids]})
 
 
-def upload_chunk_file_to_s3(bucket, file_name):
-    local_file_path = "backend/temp_folders/chunking_tmp_dir/" + file_name + ".json"
-    s3_file_path = "backend/chunked/" + file_name + ".json"
-    bucket.upload_file(local_file_path, s3_file_path)
+def upload_event_chunk_to_s3(bucket, event):
+    bucket.put_object(
+        Key=f"backend/chunked/{event._id}.json",
+        Body=json.dumps(event.to_chunk_json()).encode("utf-8"),
+        ContentType="application/json",
+    )
 
 
 def sync_s3_knowledge_base():
@@ -250,12 +241,7 @@ def upload_all_events_to_s3(bucket, events):
     remove_events_from_s3(bucket, old_event_ids)
 
     for event_id in events_to_add_to_s3:
-        event = events_dict[event_id]
-        create_event_chunk_file(event)
-        upload_chunk_file_to_s3(bucket, event_id)
-
-    clear_directory("backend/temp_folders/chunking_tmp_dir/")
-    clear_directory("backend/temp_folders/event_image_tmp_dir/")
+        upload_event_chunk_to_s3(bucket, events_dict[event_id])
 
     print(f"\nUploaded {len(events_to_add_to_s3)} new events to S3, removed {len(old_event_ids)} old events, "
           f"and {'synced' if events_to_add_to_s3 or old_event_ids else 'skipped syncing'} Bedrock knowledge base.")
@@ -265,9 +251,7 @@ def upload_all_events_to_s3(bucket, events):
         sync_s3_knowledge_base()
 
 
-def upload_to_db_and_s3(bucket):
-    events = load_events_from_file()
-
+def upload_to_db_and_s3(bucket, events):
     print(f"\nChecking {len(events)} events for database upload...")
     uploaded_event_count = save_events_to_db(events)
     print(f"Uploaded {uploaded_event_count} new events to database.")
@@ -276,10 +260,9 @@ def upload_to_db_and_s3(bucket):
 
 
 def main(bucket_name, days_out):
-    update_events_file(bucket_name, days_out)
-
+    events = collect_events(bucket_name, days_out)
     bucket = boto3.resource("s3").Bucket(bucket_name)
-    upload_to_db_and_s3(bucket)
+    upload_to_db_and_s3(bucket, events)
 
 
 if __name__ == "__main__":

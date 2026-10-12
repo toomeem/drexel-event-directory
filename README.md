@@ -34,8 +34,8 @@ Live at: [drexeleventhub.com](https://www.drexeleventhub.com/)
                                                    └────────────────┘
 ```
 
-- `backend/python_files/main.py` collects all sources, de-duplicates events, inserts them into PostgreSQL, stores event
-  images and knowledge-base event chunks in S3, and starts a Bedrock knowledge-base ingestion job.
+- `backend/python_files/main.py` collects all sources, de-duplicates events, inserts them into PostgreSQL, streams event
+  images and knowledge-base event chunks to S3, and starts a Bedrock knowledge-base ingestion job.
 - The events Lambda queries PostgreSQL with the active filters and returns paginated results to the frontend.
 - The chatbot Lambda proxies user questions from the frontend to a Bedrock Agent backed by the S3 knowledge base.
 
@@ -66,12 +66,11 @@ drexel-event-directory/
     │   │   ├── ucity_square_event_functions.py
     │   │   ├── ucity_district_events.py
     │   │   └── static_recurring_events.py
-    │   ├── helper_functions.py            # Normalization, tagging, and file/S3 helpers
+    │   ├── helper_functions.py            # Normalization and tagging rules
     │   ├── image_parsing_functions.py     # Image processing and S3 upload
     │   ├── lambda_function.py             # Events API Lambda handler
     │   ├── chatbot_lambda.py              # Chatbot Lambda handler
     │   └── testing.py
-    ├── events.json                        # Generated snapshot of processed events
     ├── requirements.txt                   # Events Lambda package dependencies
     └── Makefile                           # Builds the events Lambda deployment package
 ```
@@ -95,8 +94,8 @@ The Lambda build targets Python 3.14. The collection pipeline additionally impor
 ### Collecting events
 
 `backend/python_files/main.py` orchestrates the pipeline: it collects each source, removes duplicates (preferring more
-authoritative sources), saves a snapshot to `backend/events.json`, inserts new rows into PostgreSQL, uploads images and
-per-event JSON chunks to S3, and syncs the chatbot's Bedrock knowledge base.
+authoritative sources), inserts new rows into PostgreSQL, streams images and per-event JSON chunks to S3, and syncs
+the chatbot's Bedrock knowledge base.
 
 ```bash
 # run from the repository root

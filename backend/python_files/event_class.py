@@ -1,27 +1,27 @@
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 
+@dataclass(slots=True, eq=False)
 class Event:
-    def __init__(self, _id, source, name, org_name, location, image_url, start_time, end_time, event_link, event_status,
-                 theme, perks, food_related, popular, recurring, for_new_students, on_campus, religion):
-        self._id = _id
-        self.source = source
-        self.name = name
-        self.org_name = org_name
-        self.location = location
-        self.image_url = image_url
-        self.start_time = start_time
-        self.end_time = end_time
-        self.event_link = event_link
-        self.event_status = event_status  # 'in-person', 'online', 'hybrid'
-        self.theme = theme  # academic, arts, athletics, career, cultural, fundraising, health, social, spirituality
-        self.perks = perks  # free_food, free_stuff, credit, giveaway, prizes
-        self.food_related = food_related
-        self.popular = popular
-        self.recurring = recurring
-        self.for_new_students = for_new_students
-        self.on_campus = on_campus
-        self.religion = religion  # 'christian', 'jewish', 'muslim', 'hindu', None
+    _id: str
+    source: str
+    name: str
+    org_name: str
+    location: str | None
+    image_url: str | None
+    start_time: datetime
+    end_time: datetime | None
+    event_link: str | None
+    event_status: str | None
+    theme: str | None
+    perks: list[str] | None
+    food_related: bool
+    popular: bool
+    recurring: bool
+    for_new_students: bool
+    on_campus: bool
+    religion: str | None
 
     def get_end_timestamp(self):
         return round(self.end_time.timestamp()) if self.end_time else None
@@ -130,3 +130,50 @@ class Event:
         except Exception:
             print(f"Error checking date range for event {self._id}: {self.start_time}")
             return False
+
+
+@dataclass(slots=True)
+class EventDraft:
+    source: str
+    _id: str | None = None
+    name: str | None = None
+    org_name: str | None = None
+    location: str | None = None
+    image_url: str | None = None
+    start_time: datetime | None = None
+    end_time: datetime | None = None
+    event_link: str | None = None
+    event_status: str | None = None
+    theme: str | None = None
+    perks: list[str] = field(default_factory=list)
+    food_related: bool = False
+    popular: bool = False
+    recurring: bool = False
+    for_new_students: bool = False
+    on_campus: bool = True
+    religion: str | None = None
+    description: str = ""
+
+    def to_event(self) -> Event:
+        if self._id is None or self.name is None or self.start_time is None:
+            raise ValueError("event draft is missing required fields")
+        return Event(
+            _id=self._id,
+            source=self.source,
+            name=self.name,
+            org_name=self.org_name or "",
+            location=self.location,
+            image_url=self.image_url,
+            start_time=self.start_time,
+            end_time=self.end_time,
+            event_link=self.event_link,
+            event_status=self.event_status,
+            theme=self.theme,
+            perks=self.perks,
+            food_related=self.food_related,
+            popular=self.popular,
+            recurring=self.recurring,
+            for_new_students=self.for_new_students,
+            on_campus=self.on_campus,
+            religion=self.religion,
+        )

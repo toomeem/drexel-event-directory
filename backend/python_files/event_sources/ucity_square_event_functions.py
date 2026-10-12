@@ -91,9 +91,10 @@ class UCitySquareEventSource(EventSource):
     def collect(self):
         return [self._get_event_data(url) for url in self._all_event_urls(months_out=2)]
 
-    def parse(self, response, event_fields):
-        event_fields["_id"] = stable_hash(response.url)
-        if event_fields["_id"] in self.existing_event_ids:
+    def parse(self, response):
+        event_fields = self.new_event_draft()
+        event_fields._id = stable_hash(response.url)
+        if event_fields._id in self.existing_event_ids:
             return None
 
         soup = BeautifulSoup(response.text, "html.parser")
@@ -109,23 +110,23 @@ class UCitySquareEventSource(EventSource):
         if datetime.strptime(month, "%B").month < now.month:
             year += 1
         format_str = "%Y %B %d %I:%M %p"
-        event_fields["start_time"] = datetime.strptime(f"{year} {month} {day} {start_time_str}", format_str)
-        event_fields["end_time"] = datetime.strptime(f"{year} {month} {day} {end_time_str}", format_str)
+        event_fields.start_time = datetime.strptime(f"{year} {month} {day} {start_time_str}", format_str)
+        event_fields.end_time = datetime.strptime(f"{year} {month} {day} {end_time_str}", format_str)
 
-        event_fields["name"] = soup.find("h1").text
+        event_fields.name = soup.find("h1").text
         description = soup.find("div", class_="tribe-events-single-event-description tribe-events-content")
-        event_fields["description"] = description.text.strip().replace("\xa0", " ")
-        event_fields["org_name"] = "uCity Square"
-        if "The Lawn at uCity Square" in event_fields["description"]:
-            event_fields["location"] = "The Lawn at uCity Square"
+        event_fields.description = description.text.strip().replace("\xa0", " ")
+        event_fields.org_name = "uCity Square"
+        if "The Lawn at uCity Square" in event_fields.description:
+            event_fields.location = "The Lawn at uCity Square"
         else:
-            event_fields["location"] = "3675 Market St"
+            event_fields.location = "3675 Market St"
 
         event_image = soup.find("div", class_="tribe-events-event-image")
         if event_image:
-            event_fields["image_url"] = "https://ucitysquare.com" + event_image.find("img")["src"]
+            event_fields.image_url = "https://ucitysquare.com" + event_image.find("img")["src"]
         else:
-            event_fields["image_url"] = self._match_default_image(event_fields["name"])
-        event_fields["event_link"] = response.url
+            event_fields.image_url = self._match_default_image(event_fields.name)
+        event_fields.event_link = response.url
 
         return event_fields
