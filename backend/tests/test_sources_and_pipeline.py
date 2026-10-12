@@ -1,4 +1,3 @@
-import json
 import unittest
 from datetime import datetime, timezone
 from unittest.mock import patch
@@ -8,7 +7,6 @@ from backend.python_files.event_sources.dragonlink_event_functions import Dragon
 from backend.python_files.event_sources.drexel_athletics_event_functions import DrexelAthleticsEventSource
 from backend.python_files.event_sources.drexel_event_functions import DrexelEventSource
 from backend.python_files.main import create_event_object, dedup_events
-from backend.python_files.paths import API_RESPONSES_DIR
 
 
 def make_event(event_id, source, name="Shared Event", org_name="Shared Org"):
@@ -34,47 +32,92 @@ def make_event(event_id, source, name="Shared Event", org_name="Shared Org"):
     )
 
 
-class SavedResponseParserTests(unittest.TestCase):
+class SourceParserTests(unittest.TestCase):
     @staticmethod
-    def _load(file_name):
-        with (API_RESPONSES_DIR / file_name).open(encoding="utf-8") as file:
-            return json.load(file)
+    def _dragonlink_event():
+        return {
+            "id": "12345",
+            "name": "Student Organization Social",
+            "organizationName": "Test Organization",
+            "location": "Main Hall",
+            "startsOn": "2026-10-12T18:00:00-04:00",
+            "endsOn": "2026-10-12T19:00:00-04:00",
+            "description": "An event for students.",
+            "imagePath": "event-image.jpg",
+            "organizationProfilePicture": None,
+            "theme": "Social",
+            "categoryNames": [],
+            "benefitNames": ["Free Food"],
+        }
 
-    def test_dragonlink_saved_response_produces_drafts(self):
-        source = DragonlinkEventSource("unused", [], 60)
-        raw_events = self._load("dragonlink_response.json")["value"]
+    @staticmethod
+    def _drexel_event():
+        return {
+            "id": "12345_67890",
+            "title": "Academic Workshop",
+            "address": "Main Hall",
+            "startDate": "2026-10-12T18:00:00",
+            "endDate": "2026-10-12T19:00:00",
+            "contentUrl": "https://drexel.edu/events/test",
+            "body": "An event for all students.",
+            "image": "https://example.com/event.jpg",
+            "allDay": False,
+            "audiences": ["Everyone"],
+            "authors": ["Test Department"],
+            "departmentNames": ["Academic Support"],
+            "typeNames": ["Academic Events"],
+            "features": ["Free Food"],
+        }
 
-        drafts = [source.parse(raw) for raw in raw_events[:25]]
-        drafts = [draft for draft in drafts if draft is not None]
+    @staticmethod
+    def _athletics_event():
+        return {
+            "id": 12345,
+            "atVs": "vs",
+            "opponent": {"title": "Test University"},
+            "sport": {
+                "globalSportShortname": "msoc",
+                "title": "Men's Soccer",
+            },
+            "location": "Philadelphia, Pa.",
+            "facility": {"title": "Vidas Field"},
+            "allDay": False,
+            "tbd": False,
+            "date": "2026-10-12T18:00:00",
+            "enddate": "2026-10-12T20:00:00",
+            "dateUtc": "2026-10-12T22:00:00+00:00",
+            "endDateUtc": "2026-10-13T00:00:00+00:00",
+        }
 
-        self.assertTrue(drafts)
-        self.assertTrue(all(isinstance(draft, EventDraft) for draft in drafts))
-        self.assertTrue(all(draft.name and draft.start_time for draft in drafts))
+    def test_dragonlink_response_produces_draft(self):
+        draft = DragonlinkEventSource("unused", [], 60).parse(self._dragonlink_event())
 
-    def test_drexel_events_saved_response_produces_drafts(self):
-        source = DrexelEventSource("unused", [], 60)
-        raw_events = self._load("drexel_events_response.json")
+        self.assertIsInstance(draft, EventDraft)
+        self.assertEqual(draft.name, "Student Organization Social")
+        self.assertEqual(draft.perks, ["free_food"])
+        self.assertIsNotNone(draft.start_time)
 
-        drafts = [source.parse(raw) for raw in raw_events[:25]]
-        drafts = [draft for draft in drafts if draft is not None]
+    def test_drexel_events_response_produces_draft(self):
+        draft = DrexelEventSource("unused", [], 60).parse(self._drexel_event())
 
-        self.assertTrue(drafts)
-        self.assertTrue(all(isinstance(draft, EventDraft) for draft in drafts))
-        self.assertTrue(all(draft.name and draft.start_time for draft in drafts))
+        self.assertIsInstance(draft, EventDraft)
+        self.assertEqual(draft.name, "Academic Workshop")
+        self.assertEqual(draft.theme, "academic")
+        self.assertIn("free_food", draft.perks)
+        self.assertIsNotNone(draft.start_time)
 
-    def test_athletics_saved_response_produces_drafts(self):
-        source = DrexelAthleticsEventSource("unused", [], 60)
-        raw_events = self._load("drexel_athletics_response.json")
+    def test_athletics_response_produces_draft(self):
+        draft = DrexelAthleticsEventSource("unused", [], 60).parse(self._athletics_event())
 
-        drafts = [source.parse(raw) for raw in raw_events[:25]]
-
-        self.assertTrue(drafts)
-        self.assertTrue(all(isinstance(draft, EventDraft) for draft in drafts))
-        self.assertTrue(all(draft.name and draft.start_time for draft in drafts))
+        self.assertIsInstance(draft, EventDraft)
+        self.assertEqual(draft.name, "DREX vs Test University")
+        self.assertEqual(draft.theme, "athletics")
+        self.assertIn("Vidas Field", draft.location)
+        self.assertIsNotNone(draft.start_time)
 
     def test_parsers_skip_ids_that_already_exist(self):
         source = DragonlinkEventSource("unused", [], 60)
-        raw = self._load("dragonlink_response.json")["value"][0]
+        raw = self._dragonlink_event()
         draft = source.parse(raw)
         source_with_existing_id = DragonlinkEventSource("unused", [draft._id], 60)
 

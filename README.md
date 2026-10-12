@@ -119,7 +119,7 @@ The pipeline expects an existing PostgreSQL `main.events` table. Required enviro
 ### Tests
 
 The backend test suite runs entirely offline. It covers the event models, rule helpers, static recurring-event
-definitions and scheduling, saved-response parsers, pipeline de-duplication, time formatting, and image resizing.
+definitions and scheduling, source parsers, pipeline de-duplication, time formatting, and image resizing.
 
 ```bash
 # From the repository root:
