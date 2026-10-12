@@ -44,8 +44,8 @@ def dragonlink_event_parsing(event_json, kwargs, existing_event_ids):
     kwargs["name"] = event_json["name"]
     kwargs["org_name"] = event_json["organizationName"]
     kwargs["location"] = event_json["location"]
-    kwargs["start_time"] = normalize_time(source, event_json["startsOn"])
-    kwargs["end_time"] = normalize_time(source, event_json["endsOn"])
+    kwargs["start_time"] = normalize_time(event_json["startsOn"])
+    kwargs["end_time"] = normalize_time(event_json["endsOn"])
     kwargs["description"] = event_json["description"]
 
     if event_json["imagePath"]:

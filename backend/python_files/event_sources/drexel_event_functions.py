@@ -83,8 +83,8 @@ def drexel_event_parsing(event_json, kwargs, existing_event_ids):
 
     kwargs["name"] = event_json["title"]
     kwargs["location"] = event_json["address"]
-    kwargs["start_time"] = normalize_time(source, event_json["startDate"])
-    kwargs["end_time"] = normalize_time(source, event_json["endDate"])
+    kwargs["start_time"] = normalize_time(event_json["startDate"])
+    kwargs["end_time"] = normalize_time(event_json["endDate"])
     kwargs["event_link"] = event_json["contentUrl"]
     kwargs["description"] = event_json["body"]
     if event_json["image"]:

@@ -80,8 +80,8 @@ def drexel_athletics_event_parsing(event_json, kwargs, existing_event_ids):
         kwargs["start_time"] = local_midnight(event_json["date"])
         kwargs["end_time"] = local_midnight(event_json["enddate"])
     else:
-        kwargs["start_time"] = normalize_time(source, event_json["dateUtc"])
-        kwargs["end_time"] = normalize_time(source, event_json["endDateUtc"])
+        kwargs["start_time"] = normalize_time(event_json["dateUtc"])
+        kwargs["end_time"] = normalize_time(event_json["endDateUtc"])
     kwargs["image_url"] = drexel_athletics_image
     kwargs["event_link"] = drexel_athletics_schedule_url + sport_shorthand + "/schedule"
     kwargs["theme"] = "athletics"
