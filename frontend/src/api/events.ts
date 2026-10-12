@@ -11,6 +11,7 @@ export interface DrexelEvent {
     time: string;
     start_time?: number | null;
     end_time?: number | null;
+    date_only?: boolean | null;
     image_url: string | null;
     event_link: string;
     event_status?: EventStatus | string | null;

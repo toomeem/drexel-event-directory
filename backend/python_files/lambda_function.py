@@ -11,26 +11,54 @@ def _fmt_hm(dt, with_ampm=False):
     return f"{h}:{dt.strftime('%M %p')}" if with_ampm else f"{h}:{dt.strftime('%M')}"
 
 
-def make_time_str(start_time, end_time):
+def is_date_only(source, start_time):
+    # only athletics events use local midnight to mean "no time given"
+    if source != "drexel_athletics":
+        return False
+    start_time = start_time.astimezone(ZoneInfo("America/New_York"))
+    return start_time.hour == 0 and start_time.minute == 0
+
+
+def _day_label(day, today):
+    if day == today:
+        return "Today"
+    elif day == today + timedelta(days=1):
+        return "Tomorrow"
+    elif day - today > timedelta(days=6):
+        return f"{day.strftime('%b')} {day.day}"
+    return day.strftime("%A")
+
+
+def _date_range_str(start_day, end_day, today):
+    if today <= start_day <= today + timedelta(days=6) and end_day - start_day < timedelta(days=7):
+        return f"{start_day.strftime('%a')} - {end_day.strftime('%a')}"
+    elif start_day.month != end_day.month:
+        return f"{start_day.strftime('%b')} {start_day.day} - {end_day.strftime('%b')} {end_day.day}"
+    return f"{start_day.strftime('%b')} {start_day.day} - {end_day.day}"
+
+
+def make_time_str(start_time, end_time, date_only=False):
     PHILLY_TZ = ZoneInfo("America/New_York")
-    now = datetime.now(PHILLY_TZ)
+    today = datetime.now(PHILLY_TZ).date()
     start_time = start_time.astimezone(PHILLY_TZ)
     if end_time:
         end_time = end_time.astimezone(PHILLY_TZ)
 
-    if end_time and (end_time - start_time > timedelta(hours=24)):
-        if (start_time - now) > timedelta(days=7):
-            return datetime.strftime(start_time, "%a - ") + datetime.strftime(end_time, "%a")
-        return f"{start_time.strftime('%b')} {start_time.day} - {end_time.day}"
+    if date_only:
+        end_day = None
+        if end_time:
+            end_day = end_time.date()
+            # date-only end times are exclusive, e.g. a one-day event ends at the next midnight
+            if end_time.hour == 0 and end_time.minute == 0:
+                end_day -= timedelta(days=1)
+        if end_day is None or end_day <= start_time.date():
+            return _day_label(start_time.date(), today)
+        return _date_range_str(start_time.date(), end_day, today)
 
-    if now.strftime("%m/%d") == start_time.strftime("%m/%d"):
-        time_str_prefix = "Today"
-    elif (now + timedelta(days=1)).strftime("%m/%d") == start_time.strftime("%m/%d"):
-        time_str_prefix = "Tomorrow"
-    elif (start_time - now) > timedelta(days=6):
-        time_str_prefix = f"{start_time.strftime('%b')} {start_time.day}"
-    else:
-        time_str_prefix = datetime.strftime(start_time, "%A")
+    if end_time and (end_time - start_time >= timedelta(hours=24)):
+        return _date_range_str(start_time.date(), end_time.date(), today)
+
+    time_str_prefix = _day_label(start_time.date(), today)
 
     if not end_time:
         return f"{time_str_prefix} @ {_fmt_hm(start_time, with_ampm=True)}"
@@ -50,7 +78,8 @@ def db_entry_to_json(db_entry):
     if end_time:
         end_time = end_time.astimezone(PHILLY_TZ)
 
-    time_str = make_time_str(start_time, end_time)
+    date_only = is_date_only(db_entry[1], start_time)
+    time_str = make_time_str(start_time, end_time, date_only)
     if db_entry[11]:
         perks = [i for i in db_entry[11].split("|") if i]
     else:
@@ -58,7 +87,8 @@ def db_entry_to_json(db_entry):
     return {"id": db_entry[0], "source": db_entry[1], "name": db_entry[2], "org_name": db_entry[3],
             "location": db_entry[4], "image_url": db_entry[5], "time": time_str.replace(":00", ""),
             "start_time": round(start_time.timestamp()) if start_time else None,
-            "end_time": round(end_time.timestamp()) if end_time else None, "event_link": db_entry[8],
+            "end_time": round(end_time.timestamp()) if end_time else None, "date_only": date_only,
+            "event_link": db_entry[8],
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, "food_related": db_entry[12],
             "popular": db_entry[13], "recurring": db_entry[14], "for_new_students": db_entry[15],
             "on_campus": db_entry[16], "religion": db_entry[17], }

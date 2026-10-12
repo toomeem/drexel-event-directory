@@ -15,15 +15,29 @@ function formatPerk(perk: string): string {
 // fallback for events with no end time to add "live" label
 const DEFAULT_EVENT_DURATION = 3 * 60 * 60;
 
+const PHILLY_TIME_FORMAT = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "numeric",
+    minute: "numeric",
+    hourCycle: "h23",
+});
+
+// fallback for API responses without date_only: athletics events at local midnight have no time
+function isDateOnly(event: DrexelEvent): boolean {
+    if (typeof event.date_only === "boolean") return event.date_only;
+    if (event.source !== "drexel_athletics" || !event.start_time) return false;
+    return PHILLY_TIME_FORMAT.format(new Date(event.start_time * 1000)) === "00:00";
+}
+
 function isLive(event: DrexelEvent): boolean {
-    if (!event.start_time) return false;
+    if (!event.start_time || isDateOnly(event)) return false;
     const now = Date.now() / 1000;
     const endTime = event.end_time ?? event.start_time + DEFAULT_EVENT_DURATION;
     return now >= event.start_time && now <= endTime;
 }
 
 function isStartingSoon(event: DrexelEvent): boolean {
-    if (!event.start_time) return false;
+    if (!event.start_time || isDateOnly(event)) return false;
     const now = Date.now() / 1000;
     const STARTING_SOON_THRESHOLD = 60 * 60;
     return now < event.start_time && event.start_time - now <= STARTING_SOON_THRESHOLD;
@@ -60,6 +74,8 @@ export function EventCard({event}: EventCardProps) {
     const showImage = event.image_url && !imageFailed;
     const live = isLive(event);
     const startingSoon = isStartingSoon(event);
+    // older API responses append "@ 12 AM" to date-only events
+    const timeLabel = isDateOnly(event) ? event.time.split(" @ ")[0] : event.time;
     const safeLink = safeHttpUrl(event.event_link);
 
     const handleClick = () => {
@@ -118,7 +134,7 @@ export function EventCard({event}: EventCardProps) {
                         <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
                         <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
                     </svg>
-                    {event.time}
+                    {timeLabel}
                 </p>
                 <h3 className="event-card__title">{event.name}</h3>
                 <p className="event-card__location">
