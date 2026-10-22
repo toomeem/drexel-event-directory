@@ -1188,6 +1188,10 @@ img {
     color: var(--color-text);
 }
 
+.about-page__section-title--centered {
+    text-align: center;
+}
+
 .about-page__section-header {
     display: flex;
     align-items: baseline;
@@ -1198,6 +1202,22 @@ img {
 
 .about-page__section-header .about-page__section-title {
     margin: 0 0 12px;
+}
+
+.about-page__contact-list {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 8px 24px;
+}
+
+.about-page__contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .about-page__feature-list {

@@ -18,3 +18,4 @@ frontend/.env.local
 backend/event_image_tmp_dir!/backend/chunking_tmp_dir/
 backend/data_files/api_responses_json/
 backend/data_files/events.json
+/HANDOFF.md

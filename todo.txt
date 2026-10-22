@@ -1,14 +1,11 @@
 covert pdf to image
 label AI generated event images
-
 create automated checks for static recurring events
 
 potential sources to add:
     gather food hall: https://gatherfoodhall.com/happenings/
 
 add static single event collector like the static recurring event collector
-
-convert some functions to "event" class functions
 
 maybe add specific religion icons?
 add icons for each event type
