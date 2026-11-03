@@ -22,6 +22,7 @@ class Event:
     for_new_students: bool
     on_campus: bool
     religion: str | None
+    is_ai_image: bool = False
 
     def get_end_timestamp(self):
         return round(self.end_time.timestamp()) if self.end_time else None
@@ -47,6 +48,7 @@ class Event:
             for_new_students=event_json["for_new_students"],
             on_campus=event_json["on_campus"],
             religion=event_json["religion"],
+            is_ai_image=event_json.get("is_ai_image", False),
         )
 
     @classmethod
@@ -91,7 +93,7 @@ class Event:
         return False
 
     def __str__(self):
-        return f"Event(id={self._id}, source={self.source}, name={self.name}, org_name={self.org_name}, location={self.location}, image_url={self.image_url}, start_time={self.start_time}, end_time={self.end_time}, event_link={self.event_link}, event_status={self.event_status}, theme={self.theme}, perks={self.perks}, food_related={self.food_related}, popular={self.popular}, recurring={self.recurring}, for_new_students={self.for_new_students}, on_campus={self.on_campus}, religion={self.religion})"
+        return f"Event(id={self._id}, source={self.source}, name={self.name}, org_name={self.org_name}, location={self.location}, image_url={self.image_url}, start_time={self.start_time}, end_time={self.end_time}, event_link={self.event_link}, event_status={self.event_status}, theme={self.theme}, perks={self.perks}, food_related={self.food_related}, popular={self.popular}, recurring={self.recurring}, for_new_students={self.for_new_students}, on_campus={self.on_campus}, religion={self.religion}, is_ai_image={self.is_ai_image})"
 
     def to_json(self):
         return {"id": self._id, "source": self.source, "name": self.name, "org_name": self.org_name,
@@ -99,7 +101,7 @@ class Event:
                 "end_time": self.get_end_timestamp(), "event_link": self.event_link, "event_status": self.event_status,
                 "theme": self.theme, "perks": self.perks, "food_related": self.food_related, "popular": self.popular,
                 "recurring": self.recurring, "for_new_students": self.for_new_students, "on_campus": self.on_campus,
-                "religion": self.religion}
+                "religion": self.religion, "is_ai_image": self.is_ai_image}
 
     def to_chunk_json(self):
         # Imported here to avoid making the core Event model depend on the API's database package at import time.
@@ -116,7 +118,7 @@ class Event:
         return (self._id, self.source, self.name, self.org_name, self.location, self.image_url,
                 self.start_time.timestamp(), self.get_end_timestamp(), self.event_link, self.event_status, self.theme,
                 "|".join(self.perks), self.food_related, self.popular, self.recurring, self.for_new_students,
-                self.on_campus, self.religion)
+                self.on_campus, self.religion, self.is_ai_image)
 
     def is_out_of_range(self, max_days_out):
         try:
@@ -152,6 +154,7 @@ class EventDraft:
     for_new_students: bool = False
     on_campus: bool = True
     religion: str | None = None
+    is_ai_image: bool = False
     description: str = ""
 
     def to_event(self) -> Event:
@@ -176,4 +179,5 @@ class EventDraft:
             for_new_students=self.for_new_students,
             on_campus=self.on_campus,
             religion=self.religion,
+            is_ai_image=self.is_ai_image,
         )

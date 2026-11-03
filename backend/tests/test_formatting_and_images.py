@@ -51,7 +51,7 @@ class TimeFormattingTests(unittest.TestCase):
             "id", "dragonlink", "Event", "Organization", "Main Hall",
             "https://example.com/image.jpg", start, start + timedelta(hours=1),
             "https://example.com/event", "in-person", "social",
-            "free_food|prizes", True, False, False, True, True, None,
+            "free_food|prizes", True, False, False, True, True, None, True,
         )
 
         result = db_entry_to_json(row)
@@ -59,6 +59,7 @@ class TimeFormattingTests(unittest.TestCase):
         self.assertEqual(result["id"], "id")
         self.assertEqual(result["perks"], ["free_food", "prizes"])
         self.assertEqual(result["time"], "Today @ 6 - 7 PM")
+        self.assertIs(result["is_ai_image"], True)
 
 
 class ImageResizingTests(unittest.TestCase):

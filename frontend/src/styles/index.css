@@ -336,13 +336,35 @@ img {
     border-color: #a16207;
 }
 
-.event-card__popular {
+.event-card__media-icons {
     position: absolute;
     top: 8px;
     right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.event-card__popular {
     font-size: 28px;
     line-height: 1;
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.event-card__ai-image {
+    background: rgba(17, 20, 24, 0.8);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 7px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+:root[data-theme="dark"] .event-card__ai-image {
+    background: rgba(0, 0, 0, 0.85);
+    border-color: rgba(255, 255, 255, 0.45);
 }
 
 .event-card__image {
@@ -1756,7 +1778,8 @@ a.about-page__source-name:focus-visible {
         overflow-wrap: anywhere;
     }
 
-    .event-card__perk {
+    .event-card__perk,
+    .event-card__ai-image {
         font-size: 10px;
         padding: 2px 5px;
     }

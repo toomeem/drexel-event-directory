@@ -109,12 +109,28 @@ set +a
 python3 -m backend.python_files.main
 ```
 
-The pipeline expects an existing PostgreSQL `main.events` table. Required environment variables:
+The pipeline expects an existing PostgreSQL `main.events` table, including a boolean `is_ai_image` column (default
+`false`). Required environment variables:
 
 - `RDS_ENDPOINT`, `RDS_USERNAME`, `RDS_PASSWORD` — PostgreSQL connection
 - `S3_BUCKET_NAME` — S3 bucket for event images and `backend/chunked/` knowledge-base documents
 - `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` — AWS credentials
 - `AWS_BEDROCK_KNOWLEDGE_BASE_ID`, `AWS_BEDROCK_DATA_SOURCE_ID` — Bedrock knowledge base sync
+
+### AI-generated images
+
+Events whose image is AI-generated get `is_ai_image = true`, which shows an "AI" badge on the event card. An image is
+labeled only when there is affirmative evidence:
+
+- it is listed in `ai_images` in `backend/data_files/ai_image_rules.json`, by original URL, S3 URL, or S3 key (e.g.
+  `images/default_images/example.jpg`);
+- a hand-curated event in `static_recurring_events.json` sets `"is_ai_image": true`; or
+- a newly downloaded image carries the IPTC `trainedAlgorithmicMedia` or `compositeWithTrainedAlgorithmicMedia`
+  digital source type in its XMP or C2PA metadata.
+
+Resized images in S3 have no metadata, so images already in S3 are checked against the rules file only. To label an
+image the pipeline has already cached, add it to the rules file. Existing database rows are not updated by the
+pipeline and must be changed directly.
 
 ### Tests
 

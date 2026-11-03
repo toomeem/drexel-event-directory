@@ -58,14 +58,15 @@ def create_event_object(event_source, event_data, bucket_name):
     event_fields.name = simplify_event_name(event_fields.name)
     event_fields.event_status = get_event_status(event_source.name, event_fields.location)
 
-    if event_fields.image_url is None:
-        event_fields.image_url = get_image_s3_url(
+    image_url = None
+    if event_fields.image_url is not None:
+        image_url, is_ai_image = get_image_s3_url(event_fields.image_url, bucket_name)
+        event_fields.is_ai_image = event_fields.is_ai_image or is_ai_image
+    if image_url is None:
+        # the default image replaces the source image, so its AI status is evaluated on its own
+        image_url, event_fields.is_ai_image = get_image_s3_url(
             match_default_image(event_fields.name, event_fields.org_name, event_fields.location), bucket_name)
-    else:
-        event_fields.image_url = get_image_s3_url(event_fields.image_url, bucket_name)
-        if event_fields.image_url is None:
-            event_fields.image_url = get_image_s3_url(
-                match_default_image(event_fields.name, event_fields.org_name, event_fields.location), bucket_name)
+    event_fields.image_url = image_url
 
     if event_fields.event_status == "online":
         event_fields.location = "Online"
@@ -179,9 +180,9 @@ def save_events_to_db(events):
                                INSERT INTO main.events(id, source, name, org_name, location, image_url, start_time,
                                                        end_time,
                                                        event_link, event_status, theme, perks, food_related, popular,
-                                                       recurring, for_new_students, on_campus, religion)
+                                                       recurring, for_new_students, on_campus, religion, is_ai_image)
                                VALUES (%s, %s, %s, %s, %s, %s, to_timestamp(%s), to_timestamp(%s), %s, %s, %s, %s, %s,
-                                       %s, %s, %s, %s, %s)
+                                       %s, %s, %s, %s, %s, %s)
                                ''', new_event_rows)
             conn.commit()
             return len(new_event_rows)

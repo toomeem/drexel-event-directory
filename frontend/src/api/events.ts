@@ -23,6 +23,7 @@ export interface DrexelEvent {
     for_new_students?: boolean;
     on_campus?: boolean;
     religion?: string[];
+    is_ai_image?: boolean;
 }
 
 interface EventsResponse {

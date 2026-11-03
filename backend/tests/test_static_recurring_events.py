@@ -60,6 +60,7 @@ class StaticRecurringDefinitionTests(unittest.TestCase):
                 self.assertIn(definition["event_status"], {"in-person", "online", "hybrid"})
                 self.assertTrue(definition["event_link"].startswith("http"))
                 self.assertTrue(definition["image_url"].startswith("http"))
+                self.assertIsInstance(definition.get("is_ai_image", False), bool)
 
     @patch(
         "backend.python_files.event_sources.static_recurring_events.datetime",
@@ -103,6 +104,13 @@ class StaticRecurringDefinitionTests(unittest.TestCase):
         self.assertTrue(draft.recurring)
         self.assertIsNot(draft.perks, definition["perks"])
         self.assertIsNotNone(draft.to_event())
+
+    def test_parse_copies_declared_ai_image_flag(self):
+        definition = {**self.source._event_definitions()[0], "is_ai_image": True}
+
+        draft = self.source.parse((definition, datetime(2026, 10, 12, 18), None))
+
+        self.assertTrue(draft.is_ai_image)
 
     def test_parse_skips_existing_event_id(self):
         definition = self.source._event_definitions()[0]

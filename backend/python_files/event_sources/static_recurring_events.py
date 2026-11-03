@@ -76,4 +76,5 @@ class StaticRecurringEventSource(EventSource):
         event_fields.popular = definition["popular"]
         event_fields.recurring = True
         event_fields.for_new_students = definition["for_new_students"]
+        event_fields.is_ai_image = definition.get("is_ai_image", False)
         return event_fields

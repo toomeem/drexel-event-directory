@@ -139,11 +139,8 @@ class PipelineTests(unittest.TestCase):
 
         self.assertEqual(dedup_events([existing], [duplicate]), [])
 
-    @patch(
-        "backend.python_files.main.get_image_s3_url",
-        return_value="https://example.com/cached.jpg",
-    )
-    def test_create_event_object_validates_enriches_and_converts(self, _get_image):
+    @staticmethod
+    def _source(is_ai_image=False):
         class Source:
             name = "dragonlink"
 
@@ -158,15 +155,48 @@ class PipelineTests(unittest.TestCase):
                     image_url="https://example.com/original.jpg",
                     start_time=datetime(2026, 10, 12, 18),
                     description="Free food will be served.",
+                    is_ai_image=is_ai_image,
                 )
 
-        event = create_event_object(Source(), object(), "unused")
+        return Source()
+
+    @patch(
+        "backend.python_files.main.get_image_s3_url",
+        return_value=("https://example.com/cached.jpg", False),
+    )
+    def test_create_event_object_validates_enriches_and_converts(self, _get_image):
+        event = create_event_object(self._source(), object(), "unused")
 
         self.assertIsInstance(event, Event)
         self.assertTrue(event.food_related)
         self.assertTrue(event.recurring)
         self.assertIn("free_food", event.perks)
         self.assertEqual(event.image_url, "https://example.com/cached.jpg")
+        self.assertFalse(event.is_ai_image)
+
+    @patch(
+        "backend.python_files.main.get_image_s3_url",
+        return_value=("https://example.com/cached.jpg", True),
+    )
+    def test_create_event_object_labels_detected_ai_image(self, _get_image):
+        self.assertTrue(create_event_object(self._source(), object(), "unused").is_ai_image)
+
+    @patch(
+        "backend.python_files.main.get_image_s3_url",
+        return_value=("https://example.com/cached.jpg", False),
+    )
+    def test_create_event_object_keeps_source_declared_ai_image(self, _get_image):
+        self.assertTrue(create_event_object(self._source(is_ai_image=True), object(), "unused").is_ai_image)
+
+    @patch(
+        "backend.python_files.main.get_image_s3_url",
+        side_effect=[(None, False), ("https://example.com/default.jpg", False)],
+    )
+    def test_fallback_default_image_does_not_inherit_ai_flag(self, _get_image):
+        event = create_event_object(self._source(is_ai_image=True), object(), "unused")
+
+        self.assertEqual(event.image_url, "https://example.com/default.jpg")
+        self.assertFalse(event.is_ai_image)
 
 
 if __name__ == "__main__":

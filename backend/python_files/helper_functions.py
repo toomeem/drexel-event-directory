@@ -128,6 +128,20 @@ def match_default_image(name, org_name, location):
     return drexel_default_image
 
 
+def _known_ai_images():
+    rules = _load_data_file("ai_image_rules.json")
+    images = rules.get("ai_images") if isinstance(rules, dict) else None
+    if not isinstance(images, list) or not all(isinstance(i, str) and i.strip() for i in images):
+        raise ValueError("ai_image_rules.json must contain an 'ai_images' list of non-empty strings")
+    return {i.strip() for i in images}
+
+
+def is_known_ai_image(*image_refs):
+    # image_refs may be original source URLs, S3 URLs, or S3 object keys
+    known_ai_images = _known_ai_images()
+    return any(ref in known_ai_images for ref in image_refs if ref)
+
+
 def is_athletic_event(event_name, org_name, location):
     keywords = _load_data_file("athletic_event_rules.json")["keywords"]
     if org_name == "Weekend Warriors":

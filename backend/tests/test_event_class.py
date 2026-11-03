@@ -39,6 +39,7 @@ class EventDraftTests(unittest.TestCase):
             org_name="The Post",
             start_time=start,
             perks=["prizes"],
+            is_ai_image=True,
         )
 
         event = draft.to_event()
@@ -47,6 +48,12 @@ class EventDraftTests(unittest.TestCase):
         self.assertEqual(event.source, "static")
         self.assertEqual(event.start_time, start)
         self.assertEqual(event.perks, ["prizes"])
+        self.assertTrue(event.is_ai_image)
+
+    def test_to_event_defaults_to_not_ai_image(self):
+        draft = EventDraft(source="static", _id="123", name="Game Night", start_time=datetime.now())
+
+        self.assertFalse(draft.to_event().is_ai_image)
 
     def test_to_event_rejects_missing_required_fields(self):
         for draft in (
@@ -64,17 +71,32 @@ class EventTests(unittest.TestCase):
         event = make_event(
             start_time=datetime(2026, 10, 12, 18, 30),
             end_time=datetime(2026, 10, 12, 20),
+            is_ai_image=True,
         )
 
         restored = Event.from_json(event.to_json())
 
         self.assertEqual(restored.to_json(), event.to_json())
+        self.assertTrue(restored.is_ai_image)
+
+    def test_from_json_without_ai_flag_defaults_to_false(self):
+        event_json = make_event().to_json()
+        del event_json["is_ai_image"]
+
+        self.assertFalse(Event.from_json(event_json).is_ai_image)
 
     def test_to_sql_serializes_perks(self):
         row = make_event(perks=["free_food", "prizes"]).to_sql()
 
         self.assertEqual(row[11], "free_food|prizes")
-        self.assertEqual(len(row), 18)
+        self.assertEqual(len(row), 19)
+
+    def test_to_sql_places_ai_flag_last_to_match_insert_columns(self):
+        self.assertIs(make_event(is_ai_image=True).to_sql()[18], True)
+        self.assertIs(make_event().to_sql()[18], False)
+
+    def test_chunk_json_includes_ai_flag(self):
+        self.assertTrue(make_event(is_ai_image=True).to_chunk_json()["is_ai_image"])
 
     def test_same_source_events_with_same_start_and_org_are_equal(self):
         start = datetime(2026, 10, 12, 18, tzinfo=timezone.utc)

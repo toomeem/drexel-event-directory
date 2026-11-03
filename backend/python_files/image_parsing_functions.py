@@ -1,4 +1,5 @@
 from io import BytesIO
+import re
 import time
 
 import PIL
@@ -6,9 +7,13 @@ import boto3
 import requests
 from PIL import Image
 
-from backend.python_files.helper_functions import stable_hash
+from backend.python_files.helper_functions import is_known_ai_image, stable_hash
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+S3_BASE_PATH = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
+# IPTC digital source types written to XMP (and C2PA manifests) by AI image generators
+AI_DIGITAL_SOURCE_TYPE = re.compile(
+    rb"digitalsourcetype/(?:trainedalgorithmicmedia|compositewithtrainedalgorithmicmedia)", re.IGNORECASE)
 
 
 def upload_image_to_s3(bucket_name, image_data, s3_file_path):
@@ -57,6 +62,10 @@ def download_image(url, max_attempts=3):
     return None
 
 
+def has_ai_image_metadata(image_data):
+    return AI_DIGITAL_SOURCE_TYPE.search(image_data) is not None
+
+
 def resize_image(image_data, max_width=600, max_height=400):
     # crop image to desired aspect ratio and resize
     # also convert to jpeg and do other stuff to reduce file size
@@ -103,11 +112,11 @@ def resize_image(image_data, max_width=600, max_height=400):
 
 def get_image_s3_url(original_url, bucket_name):
     # check if in s3, if not, add to s3
-    # either way return the link to it
+    # returns (s3 url or None, whether the image is AI generated)
     if "drexel-events-general-bucket-034584778101" in original_url:
-        return original_url
+        return original_url, is_known_ai_image(original_url, original_url.removeprefix(S3_BASE_PATH))
 
-    s3_base_path = "https://drexel-events-general-bucket-034584778101-us-east-1-an.s3.us-east-1.amazonaws.com/"
+    source_url = original_url
     image_file_types = [".jpg", ".jpeg", ".png", ".webp", ".aspx", ".gif", ".pdf"]
     file_type_list = [i for i in image_file_types if i in original_url.lower()]
     if len(file_type_list) > 0:
@@ -116,7 +125,7 @@ def get_image_s3_url(original_url, bucket_name):
         file_type = ".jpg"
 
     if file_type == ".pdf":
-        return None  # pdfs are not supported for now
+        return None, False  # pdfs are not supported for now
     if original_url.count(file_type) > 1:
         original_url = original_url.split(file_type)[0] + file_type
     if "wikimedia.org/wikipedia/commons/thumb" in original_url:
@@ -124,15 +133,19 @@ def get_image_s3_url(original_url, bucket_name):
 
     url_hash = stable_hash(original_url)
     s3_file_path = "images/event_specific_images/" + url_hash + ".jpg"
+    s3_url = S3_BASE_PATH + s3_file_path
+    is_ai_image = is_known_ai_image(source_url, original_url, s3_url, s3_file_path)
 
+    # resized images in s3 have no metadata, so cached images rely on the rules file alone
     if not image_in_s3(bucket_name, s3_file_path):
         image_data = download_image(original_url)
         if image_data is None:
-            return None
+            return None, False
         resized_image = resize_image(image_data)
         if resized_image is None:
             print(f"Error resizing image: {original_url}")
-            return None
+            return None, False
+        is_ai_image = is_ai_image or has_ai_image_metadata(image_data)
         upload_image_to_s3(bucket_name, resized_image, s3_file_path)
 
-    return s3_base_path + s3_file_path
+    return s3_url, is_ai_image

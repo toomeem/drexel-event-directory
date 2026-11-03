@@ -93,7 +93,7 @@ def db_entry_to_json(db_entry):
             "event_link": db_entry[8],
             "event_status": db_entry[9], "theme": db_entry[10], "perks": perks, "food_related": db_entry[12],
             "popular": db_entry[13], "recurring": db_entry[14], "for_new_students": db_entry[15],
-            "on_campus": db_entry[16], "religion": db_entry[17], }
+            "on_campus": db_entry[16], "religion": db_entry[17], "is_ai_image": bool(db_entry[18]), }
 
 
 def lambda_handler(event, context):
@@ -201,6 +201,7 @@ def lambda_handler(event, context):
                                   for_new_students,
                                   on_campus,
                                   religion,
+                                  is_ai_image,
                                   COUNT(*) OVER () AS total_count
                            FROM main.events
                            WHERE start_time >= to_timestamp(%s)
@@ -235,7 +236,7 @@ def lambda_handler(event, context):
         finally:
             cursor.close()
 
-        matched = events[0][18] if events else 0
+        matched = events[0][19] if events else 0
         return {"statusCode": 200, "headers": CORS_HEADERS,
                 "body": json.dumps({"returned_events": len(events), "matched_events": matched,
                                     "total_events": total, "body": [db_entry_to_json(e) for e in events]})}
