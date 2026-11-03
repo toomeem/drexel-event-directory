@@ -1,0 +1,48 @@
+name: Deploy Events Lambda
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - backend/python_files/lambda_function.py
+      - backend/requirements.txt
+      - backend/Makefile
+  workflow_dispatch:
+
+jobs:
+  deploy-lambda:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install backend dependencies
+        run: python -m pip install -r backend/requirements.txt boto3 beautifulsoup4 Pillow
+
+      - name: Run backend tests
+        run: make -C backend test
+
+      - name: Build Lambda package
+        run: make -C backend
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Update function code
+        run: |
+          aws lambda update-function-code \
+            --function-name "$FUNCTION_NAME" \
+            --zip-file fileb://backend/lambda_package.zip
+          aws lambda wait function-updated --function-name "$FUNCTION_NAME"
+        env:
+          FUNCTION_NAME: ${{ secrets.AWS_EVENTS_LAMBDA_NAME }}
